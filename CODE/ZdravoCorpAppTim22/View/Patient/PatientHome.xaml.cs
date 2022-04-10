@@ -23,5 +23,10 @@ namespace ZdravoCorpAppTim22.View.Patient
         {
             InitializeComponent();
         }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

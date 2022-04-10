@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
     <Compile Include="Repository\MedicalAppointmentRepository.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SecretaryRepository.cs" />
+    <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\ManagerService.cs" />
     <Compile Include="Service\MedicalAppointmentService.cs" />

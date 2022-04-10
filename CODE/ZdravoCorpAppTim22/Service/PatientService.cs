@@ -8,28 +8,28 @@ namespace Service
    {
       public List<Patient> GetAll()
       {
-         throw new NotImplementedException();
+            return patientRepository.GetAll();
       }
       
       public Model.Patient GetByID(int id)
       {
-         throw new NotImplementedException();
+            return patientRepository.GetByID(id);
       }
       
       public void DeleteByID(int id)
       {
-         throw new NotImplementedException();
+            patientRepository.DeleteByID(id);
       }
       
       public void Create(Model.Patient patient)
       {
-         throw new NotImplementedException();
+            patientRepository.Create(patient);
       }
       
       public void Update(Model.Patient patient)
       {
-         throw new NotImplementedException();
-      }
+            patientRepository.Create(patient);
+        }
       
       public String path;
       

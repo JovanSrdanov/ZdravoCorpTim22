@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="PatientHome" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Zakazi pregled" HorizontalAlignment="Left" Margin="117,41,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click"/>
+        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="285,41,0,0" VerticalAlignment="Top" Width="112" Click="Button_Click" RenderTransformOrigin="1.647,0.668"/>
+        <DataGrid HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="611" RenderTransformOrigin="3.153,2.183" Margin="117,94,0,0" SelectionChanged="DataGrid_SelectionChanged"/>
+
     </Grid>
 </Window>
