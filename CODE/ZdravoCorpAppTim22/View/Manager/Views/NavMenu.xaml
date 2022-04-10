@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="ZdravoCorpAppTim22.View.Manager.Views.NavMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Global.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="MenuListBoxStyle">
+                <Setter Property="ListBox.Background" Value="{StaticResource DarkPrimary}"></Setter>
+                <Setter Property="ListBox.FontSize" Value="{StaticResource MenuFontSize}"></Setter>
+                <Setter Property="ListBox.BorderThickness" Value="0"></Setter>
+            </Style>
+
+            <Style x:Key="MenuListBoxItemStyle" TargetType="ListBoxItem">
+                <Setter Property="ListBoxItem.Background" Value="{StaticResource DarkPrimary}"></Setter>
+                <Setter Property="ListBoxItem.Foreground" Value="{StaticResource TextPrimary}"></Setter>
+                <Setter Property="ListBoxItem.Padding" Value="15 10"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="ItemBorder"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter></ContentPresenter>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="ItemBorder" Property="ListBoxItem.Background" Value="#111"></Setter>
+                                    <Setter TargetName="ItemBorder" Property="BorderThickness" Value="0 0 5 0"></Setter>
+                                    <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{StaticResource ActivePrimary}"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ItemBorder" Property="ListBoxItem.Background" Value="#000"></Setter>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+        
+        
+    </UserControl.Resources>
+    <Grid>
+        <ListBox Grid.Row="1"
+                 x:Name="NavigationMenuListBox"
+                 Style="{StaticResource MenuListBoxStyle}"
+                 ItemContainerStyle="{StaticResource MenuListBoxItemStyle}"
+                 SelectionChanged="NavigationMenuListBox_SelectionChanged"
+                 SelectedIndex="1">
+            
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/WarehousePages/WarehouseView.xaml">Warehouse Overview</local:CustomListItem>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/RoomPages/RoomView.xaml">Room Overview</local:CustomListItem>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/MedicinePages/MedicineView.xaml">Medicine Overview</local:CustomListItem>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/StaffPages/StaffView.xaml">Staff Overview</local:CustomListItem>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/RatingPages/RatingsView.xaml">Ratings</local:CustomListItem>
+            
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -3,10 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
         mc:Ignorable="d"
-        Title="ManagerHome" Height="450" Width="800">
+        Title="ManagerHome" Height="720" Width="1270"
+        Background="#292c35">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Global.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource DarkPrimary}" Width="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <views:NavMenu Grid.Row="1" 
+                            NavigationServiceProp="{Binding NavigationService, ElementName=ContentFrame}"/>
+        </Grid>
+        <ScrollViewer Grid.Column="1"
+                      PreviewMouseWheel="Content_PreviewMouseWheel">
+            <Frame x:Name="ContentFrame" 
+                   Source="Pages/RoomPages/RoomView.xaml" 
+                   NavigationUIVisibility="Hidden"
+                   Margin="15 15 15 100"/>
+        </ScrollViewer>
     </Grid>
 </Window>
