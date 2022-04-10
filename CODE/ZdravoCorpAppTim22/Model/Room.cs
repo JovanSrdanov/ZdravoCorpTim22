@@ -1,20 +1,31 @@
 using System;
+using System.ComponentModel;
 
 namespace Model
 {
    public class Room
    {
-      public bool IsAvailable(DateTime time)
-      {
-         throw new NotImplementedException();
-      }
+            
       
-      public int id;
-      public int level;
-      public RoomType type;
-      public string name;
-      
-      public System.Collections.Generic.List<Equipment> equipment;
+      public int id { get; set; }
+        public int level { get; set; }
+        public RoomType type { get; set; }
+        public string name { get; set; }
+
+        public System.Collections.Generic.List<Equipment> equipment;
+
+        public Room(int id, int level, RoomType type, string name)
+        {
+            this.id = id;
+            this.level = level;
+            this.type = type;
+            this.name = name;
+        }
+
+        public bool IsAvailable(DateTime time)
+        {
+            throw new NotImplementedException();
+        }
       
       public System.Collections.Generic.List<Equipment> Equipment
       {

@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <SolidColorBrush x:Key="DarkSecondary" Color="#292c35"></SolidColorBrush>
+    <SolidColorBrush x:Key="DarkPrimary" Color="#20242b"></SolidColorBrush>
+    <SolidColorBrush x:Key="ActivePrimary" Color="#7f00ff"></SolidColorBrush>
+    <SolidColorBrush x:Key="TextPrimary" Color="#ccc"></SolidColorBrush>
+
+    <sys:Double x:Key="HeadingFontSize">20</sys:Double>
+    <sys:Double x:Key="MenuFontSize">17</sys:Double>
+    <sys:Double x:Key="StandardFontSize">16</sys:Double>
+
+    <Style x:Key="ButtonStandard" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DarkPrimary}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Padding" Value="16 8"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="FontSize" Value="{StaticResource MenuFontSize}"></Setter>
+        <Setter Property="Margin" Value="0 0 10 0"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="{TemplateBinding Padding}">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
