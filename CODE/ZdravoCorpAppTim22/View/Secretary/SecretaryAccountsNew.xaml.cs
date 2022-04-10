@@ -85,7 +85,6 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     break;
             }
 
-            callerScreen.listBoxOfUsers.Items.Add(doctor.name + " " + doctor.surname);
             callerScreen.Show();
             this.Close();
         }

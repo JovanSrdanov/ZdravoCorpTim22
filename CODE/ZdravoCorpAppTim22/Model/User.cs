@@ -4,28 +4,28 @@ namespace Model
 {
     public class User
     {
-        public string name;
-        public string surname;
-        public string email;
-        public string jmbg;
-        public string password;
-        public DateTime birthday;
-        public string phone;
-        public Gender gender;
+        public string Name { set; get; }
+        public string Surname { set; get; }
+        public string Email { set; get; }
+        public string Jmbg { set; get; }
+        public string Password { set; get; }
+        public DateTime Birthday { set; get; }
+        public string Phone { set; get; }
+        public Gender Gender { set; get; }
 
-        public Address address;
+        public Address Address;
 
         public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address)
         {
-            this.name = name;
-            this.surname = surname;
-            this.email = email;
-            this.jmbg = jmbg;
-            this.password = password;
-            this.birthday = birthday;
-            this.phone = phone;
-            this.gender = gender;
-            this.address = address;
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Jmbg = jmbg;
+            Password = password;
+            Birthday = birthday;
+            Phone = phone;
+            Gender = gender;
+            Address = address;
         }
 
     }
