@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoCorpAppTim22.View.Doctor;
 using ZdravoCorpAppTim22.View.Manager;
-using ZdravoCorpAppTim22.View.Patient;
+using ZdravoCorpAppTim22.View.PatientView;
 using ZdravoCorpAppTim22.View.Secretary;
 
 namespace ZdravoCorpAppTim22

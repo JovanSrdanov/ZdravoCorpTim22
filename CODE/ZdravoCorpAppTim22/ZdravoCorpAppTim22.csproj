@@ -101,7 +101,7 @@
     <Compile Include="View\Manager\Views\NavMenu.xaml.cs">
       <DependentUpon>NavMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Patient\PatientHome.xaml.cs">
+    <Compile Include="View\PatientView\PatientHome.xaml.cs">
       <DependentUpon>PatientHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
@@ -170,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Patient\PatientHome.xaml">
+    <Page Include="View\PatientView\PatientHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
