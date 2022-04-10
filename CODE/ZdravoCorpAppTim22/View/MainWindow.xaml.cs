@@ -1,18 +1,4 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using ZdravoCorpAppTim22.View.Doctor;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.Patient;
@@ -39,16 +25,14 @@ namespace ZdravoCorpAppTim22
             this.Close();
         }
 
-   
+
 
         private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            SecretaryHome secretaryHome = new SecretaryHome();
+            SecretaryHome secretaryHome = new SecretaryHome(this);
             secretaryHome.Show();
-            this.Close();
-
-
+            this.Hide();
         }
 
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
