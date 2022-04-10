@@ -8,30 +8,30 @@ namespace Controller
    {
       public List<Room> GetAllRooms()
       {
-         throw new NotImplementedException();
+            return roomService.GetAllRooms();
       }
       
       public Room GetRoomByID(int id)
       {
-         throw new NotImplementedException();
+            return roomService.GetRoomByID(id);
       }
       
       public void DeleteRoomByID(int id)
       {
-         throw new NotImplementedException();
+            roomService.DeleteRoomByID(id);
       }
       
       public void CreateRoom(Room roomObj)
       {
-         throw new NotImplementedException();
+         roomService.CreateRoom(roomObj);
       }
       
       public void UpdateRoom(Room roomObj)
       {
-         throw new NotImplementedException();
+            roomService.UpdateRoom(roomObj);
       }
-      
-      public Service.RoomService roomService;
+
+        public Service.RoomService roomService = new Service.RoomService();
    
    }
 }

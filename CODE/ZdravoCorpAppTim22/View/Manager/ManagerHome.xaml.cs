@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace ZdravoCorpAppTim22.View.Manager
     /// </summary>
     public partial class ManagerHome : Window
     {
+        public static RoomController RoomController;
+
         public ManagerHome()
         {
+            RoomController = new RoomController();
             InitializeComponent();
+        }
+
+        private void Content_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 }
