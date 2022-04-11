@@ -16,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 
         public RoomViewModel()
         {
-            List<Room> roomRep = ManagerHome.RoomController.GetAllRooms();
+            List<Room> roomRep = RoomController.Instance.GetAllRooms();
             RoomList = new ObservableCollection<Room>(roomRep);
         }
     }

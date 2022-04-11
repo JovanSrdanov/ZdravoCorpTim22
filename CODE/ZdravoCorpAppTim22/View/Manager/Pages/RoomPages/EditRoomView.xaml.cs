@@ -1,7 +1,9 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
@@ -118,7 +121,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 if (!checkIfRoomExists(room.id))
                 {
-                    ManagerHome.RoomController.CreateRoom(room);
+                    RoomController.Instance.CreateRoom(room);
                 }
                 else
                 {
@@ -128,7 +131,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
             else
             {
-                ManagerHome.RoomController.UpdateRoom(room);
+                RoomController.Instance.UpdateRoom(room);
             }
 
             this.NavigationService.GoBack();
@@ -141,7 +144,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private bool checkIfRoomExists(int id)
         {
-            foreach (Room room in ManagerHome.RoomController.GetAllRooms())
+            foreach (Room room in RoomController.Instance.GetAllRooms())
             {
                 if (room.id == id)
                 {
