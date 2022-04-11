@@ -4,18 +4,32 @@ namespace Model
 {
     public class User
     {
-        public string Name { set; get; }
-        public string Surname { set; get; }
-        public string Email { set; get; }
-        public string Jmbg { set; get; }
-        public string Password { set; get; }
-        public DateTime Birthday { set; get; }
-        public string Phone { set; get; }
-        public Gender Gender { set; get; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Jmbg { get; set; }
+        public string Password { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Phone { get; set; }
+        public Gender Gender { get; set; }
 
-        public Address Address;
+        public int ID { get; set; }
 
-        public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address)
+
+        public Address address;
+        public Address Address
+        {
+            get
+            {
+                return address;
+            }
+            set
+            {
+                this.address = value;
+            }
+        }
+
+        public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address)
         {
             Name = name;
             Surname = surname;
@@ -25,8 +39,12 @@ namespace Model
             Birthday = birthday;
             Phone = phone;
             Gender = gender;
+            ID = iD;
             Address = address;
         }
 
+        public User()
+        {
+        }
     }
 }

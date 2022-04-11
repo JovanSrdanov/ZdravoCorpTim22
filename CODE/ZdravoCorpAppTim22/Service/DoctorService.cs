@@ -8,32 +8,32 @@ namespace Service
    {
       public List<Doctor> GetAll()
       {
-         throw new NotImplementedException();
+            return doctorRepository.GetAll();
       }
       
       public Model.Doctor GetByID(int id)
       {
-         throw new NotImplementedException();
-      }
+            return doctorRepository.GetByID(id);
+        }
       
       public void DeleteByID(int id)
       {
-         throw new NotImplementedException();
-      }
+            doctorRepository.DeleteByID(id);
+        }
       
       public void Create(Model.Doctor doctor)
       {
-         throw new NotImplementedException();
-      }
+            doctorRepository.Create(doctor);
+        }
       
       public void Update(Model.Doctor doctor)
       {
-         throw new NotImplementedException();
-      }
+            doctorRepository.Update(doctor);
+        }
       
       public String path;
       
-      public Repository.DoctorRepository doctorRepository;
+      public Repository.DoctorRepository doctorRepository = new Repository.DoctorRepository();
    
    }
 }
