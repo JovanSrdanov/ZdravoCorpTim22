@@ -39,16 +39,14 @@ namespace ZdravoCorpAppTim22
             this.Close();
         }
 
-   
+
 
         private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            SecretaryHome secretaryHome = new SecretaryHome();
+            SecretaryHome secretaryHome = new SecretaryHome(this);
             secretaryHome.Show();
-            this.Close();
-
-
+            this.Hide();
         }
 
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
