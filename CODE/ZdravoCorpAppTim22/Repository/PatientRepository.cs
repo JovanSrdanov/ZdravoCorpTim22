@@ -7,15 +7,33 @@ namespace Repository
     public class PatientRepository
     {
         //TO-DO Ispravi nullove 
+        private static PatientRepository instance;
 
-        public List<Patient> patients = new List<Patient> 
+        private PatientRepository()
+        {
+
+        }
+
+        public static PatientRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new PatientRepository();
+                }
+
+                return instance;
+            }
+        }
+
+        public List<Patient> patients = new List<Patient>
         {
             new Patient("Jovan","Srdanov","aaa","aaaa","aaaaa",DateTime.Now,"",Gender.male,1,null,null,null),
             new Patient("Strahinja","Srdanov1","bbb","bbbb","bbbbbb",DateTime.Now,"",Gender.male,2,null,null,null),
             new Patient("Biljana","Srdanov2","c","cc","ccc",DateTime.Now,"",Gender.male,3,null,null,null)
 
         };
-
 
         public List<Patient> GetAll()
         {
@@ -30,7 +48,7 @@ namespace Repository
 
         public void DeleteByID(int id)
         {
-            
+
             int index = patients.FindIndex(r => r.ID == id);
             patients.RemoveAt(index);
         }

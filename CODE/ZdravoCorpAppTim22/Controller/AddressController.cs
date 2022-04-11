@@ -1,8 +1,3 @@
-// File:    AddressController.cs
-// Author:  Jana Jovan
-// Created: 10 April, 2022 22:42:08
-// Purpose: Definition of Class AddressController
-
 using System;
 using System.Collections.Generic;
 
@@ -10,6 +5,26 @@ namespace Controller
 {
     public class AddressController
     {
+
+        private static AddressController instance;
+
+        private AddressController()
+        {
+
+        }
+        public static AddressController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AddressController();
+                }
+
+                return instance;
+            }
+        }
+
         public List<Address> GetAll()
         {
             return addressService.GetAll();

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Controller;
+using Model;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,19 +10,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
     public partial class SecretaryAccounts : Window
     {
         private SecretaryHome secretaryHome;
-        public List<Model.Doctor> listaDoktora = new List<Model.Doctor>();
-
-        Model.Doctor dr1 = new Model.Doctor("Mirko", "Vlaskovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 0, new Address(), Model.DoctorSpecialisationType.regular, null);
-        Model.Doctor dr2 = new Model.Doctor("Boban", "Antonic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 1, new Address(), Model.DoctorSpecialisationType.regular, null);
-        Model.Doctor dr3 = new Model.Doctor("Slavko", "Malinovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 2, new Address(), Model.DoctorSpecialisationType.specialist, null);
 
         public SecretaryAccounts(SecretaryHome secretaryHome)
         {
             InitializeComponent();
             this.secretaryHome = secretaryHome;
-            listaDoktora.Add(dr1);
-            listaDoktora.Add(dr2);
-            listaDoktora.Add(dr3);
         }
 
         public void SetUpAccountsDataGrid()
@@ -55,20 +49,28 @@ namespace ZdravoCorpAppTim22.View.Secretary
             {
                 SetUpAccountsDataGrid();
 
-                DataGridTextColumn dataGridColumnSpecialisation = new DataGridTextColumn();
-                dataGridColumnSpecialisation.Header = "Specialisation";
-                var binding = new Binding();
-                binding.Path = new PropertyPath("DoctorType");
-                dataGridColumnSpecialisation.Binding = binding;
-                dataGridColumnSpecialisation.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-                AccountsDataGrid.Columns.Add(dataGridColumnSpecialisation);
-
-                for (int i = 0; i < listaDoktora.Count; i++)
+                //Podesavanje za specijalizaciju doktora
                 {
-                    AccountsDataGrid.Items.Add(listaDoktora[i]);
+                    DataGridTextColumn dataGridColumnSpecialisation = new DataGridTextColumn();
+                    dataGridColumnSpecialisation.Header = "Specialisation";
+                    var binding = new Binding();
+                    binding.Path = new PropertyPath("DoctorType");
+                    dataGridColumnSpecialisation.Binding = binding;
+                    dataGridColumnSpecialisation.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                    AccountsDataGrid.Columns.Add(dataGridColumnSpecialisation);
+                }
+
+                List<Doctor> doktori = DoctorController.Instance.GetAll();
+
+                for (int i = 0; i < doktori.Count; i++)
+                {
+                    AccountsDataGrid.Items.Add(doktori[i]);
                 }
             }
+
         }
+
+
 
         private void Manager_RB_Checked(object sender, RoutedEventArgs e)
         {

@@ -1,33 +1,49 @@
+using Model;
+using Service;
 using System;
-
 namespace Controller
 {
     public class MedicalAppointmentController
     {
-        public Model.MedicalAppointment GetByID(int id)
+        private static MedicalAppointmentController instance;
+
+        private MedicalAppointmentController()
         {
-            return medicalAppointmentService.GetByID(id);
+
+        }
+        public static MedicalAppointmentController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalAppointmentController();
+                }
+
+                return instance;
+            }
+        }
+
+        public MedicalAppointment GetByID(int id)
+        {
+            return MedicalAppointmentService.Instance.GetByID(id);
         }
 
         public void DeleteByID(int id)
         {
-            medicalAppointmentService.DeleteByID(id);
+            MedicalAppointmentService.Instance.DeleteByID(id);
         }
 
-        public void Create(Model.MedicalAppointment medicalAppointment)
+        public void Create(MedicalAppointment medicalAppointment)
         {
-            medicalAppointmentService.Create(medicalAppointment);
+            MedicalAppointmentService.Instance.Create(medicalAppointment);
         }
 
-        public void Update(Model.MedicalAppointment medicalAppointment)
+        public void Update(MedicalAppointment medicalAppointment)
         {
-            medicalAppointmentService.Update(medicalAppointment);
+            MedicalAppointmentService.Instance.Update(medicalAppointment);
         }
-
-
         public String path;
-
-        public Service.MedicalAppointmentService medicalAppointmentService;
 
     }
 }

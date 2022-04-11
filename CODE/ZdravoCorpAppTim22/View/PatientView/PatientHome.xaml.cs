@@ -1,19 +1,8 @@
 ﻿using Controller;
 using Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
@@ -23,20 +12,17 @@ namespace ZdravoCorpAppTim22.View.PatientView
     public partial class PatientHome : Window
     {
 
-        public ObservableCollection<Patient> PatientList{ get; set; }
-        public static PatientController patientController;
+        public ObservableCollection<Patient> PatientList { get; set; }
         public List<Patient> patients;
         public PatientHome()
         {
             InitializeComponent();
 
             WelcomePatientLabel.Content = "Dobrodosli! Pacijent: " + PatientSelectionForTemporaryPurpose.LoggedPatient.Name;
-
-            patientController = new PatientController();
-            patients = patientController.GetAll();
+            patients = PatientController.Instance.GetAll();
             PatientList = new ObservableCollection<Patient>(patients);
             dataGrid.ItemsSource = PatientList;
-            
+
 
         }
 
@@ -54,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 return;
             }
             MessageBox.Show("Obrisan je pacijent sa Id: " + patient.ID);
-            patientController.DeleteByID(patient.ID);
+            PatientController.Instance.DeleteByID(patient.ID);
             PatientList.Remove(patient);
 
 
