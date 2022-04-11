@@ -103,10 +103,10 @@
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
-    <Compile Include="Repository\DataHandlers\EquipmentDataHandler.cs" />
-    <Compile Include="Repository\DataHandlers\RoomDataHandler.cs" />
-    <Compile Include="Repository\DataHandlers\Serialization\ISerializer.cs" />
-    <Compile Include="Repository\DataHandlers\Serialization\Serializer.cs" />
+    <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
