@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using Controller;
+using Model;
+using System.Text.RegularExpressions;
 using System.Windows;
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -58,31 +60,35 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 return;
             }
 
-            Model.Gender genderTemp;
+            Gender genderTemp;
 
             if ((bool)MaleRB.IsChecked)
             {
-                genderTemp = Model.Gender.male;
+                genderTemp = Gender.male;
             }
             else
             {
-                genderTemp = Model.Gender.female;
+                genderTemp = Gender.female;
             }
 
             Address addressTemp = new Address();
-            Model.DoctorSpecialisationType doctorSpecialisationType = new Model.DoctorSpecialisationType();
+            DoctorSpecialisationType doctorSpecialisationType = new DoctorSpecialisationType();
 
-            Model.Doctor doctor = new Model.Doctor(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, 4, addressTemp, doctorSpecialisationType, null);
+            Doctor doctor = new Doctor(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, 4, addressTemp, doctorSpecialisationType, null);
 
             MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
+
+
+
+
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     MessageBox.Show("New Account created!");
+                    DoctorController.Instance.Create(doctor);
                     break;
                 case MessageBoxResult.No:
                     return;
-                    break;
             }
 
             callerScreen.Show();

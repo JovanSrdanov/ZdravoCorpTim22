@@ -6,8 +6,27 @@ namespace Repository
 {
     public class MedicalAppointmentRepository
     {
-        private List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
+        private static MedicalAppointmentRepository instance;
 
+        private MedicalAppointmentRepository()
+        {
+
+        }
+
+        public static MedicalAppointmentRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalAppointmentRepository();
+                }
+
+                return instance;
+            }
+        }
+
+        private List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
 
         public Model.MedicalAppointment GetByID(int id)
         {
