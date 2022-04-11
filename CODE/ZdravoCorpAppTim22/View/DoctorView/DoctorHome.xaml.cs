@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ZdravoCorpAppTim22.View.Patient
+namespace ZdravoCorpAppTim22.View.DoctorView
 {
     /// <summary>
-    /// Interaction logic for PatientHome.xaml
+    /// Interaction logic for DoctorHome.xaml
     /// </summary>
-    public partial class PatientHome : Window
+    public partial class DoctorHome : Window
     {
-        public PatientHome()
+        public DoctorHome()
         {
             InitializeComponent();
         }
