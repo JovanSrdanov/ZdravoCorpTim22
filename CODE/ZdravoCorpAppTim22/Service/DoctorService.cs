@@ -1,39 +1,57 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
 namespace Service
 {
-   public class DoctorService
-   {
-      public List<Doctor> GetAll()
-      {
-            return doctorRepository.GetAll();
-      }
-      
-      public Model.Doctor GetByID(int id)
-      {
-            return doctorRepository.GetByID(id);
+    public class DoctorService
+    {
+        private static DoctorService instance;
+
+        private DoctorService()
+        {
+
         }
-      
-      public void DeleteByID(int id)
-      {
-            doctorRepository.DeleteByID(id);
+
+        public static DoctorService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorService();
+                }
+
+                return instance;
+            }
         }
-      
-      public void Create(Model.Doctor doctor)
-      {
-            doctorRepository.Create(doctor);
+        public List<Doctor> GetAll()
+        {
+            return DoctorRepository.Instance.GetAll();
         }
-      
-      public void Update(Model.Doctor doctor)
-      {
-            doctorRepository.Update(doctor);
+
+        public Model.Doctor GetByID(int id)
+        {
+            return DoctorRepository.Instance.GetByID(id);
         }
-      
-      public String path;
-      
-      public Repository.DoctorRepository doctorRepository = new Repository.DoctorRepository();
-   
-   }
+
+        public void DeleteByID(int id)
+        {
+            DoctorRepository.Instance.DeleteByID(id);
+        }
+
+        public void Create(Model.Doctor doctor)
+        {
+            DoctorRepository.Instance.Create(doctor);
+        }
+
+        public void Update(Model.Doctor doctor)
+        {
+            DoctorRepository.Instance.Update(doctor);
+        }
+
+        public String path;
+
+    }
 }

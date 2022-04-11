@@ -28,8 +28,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             InitializeComponent();
             datePicker.SelectedDate = DateTime.Now.Date;
             ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
-            doctorController = new DoctorController();
-            doctors = doctorController.GetAll();
+            doctors = DoctorController.Instance.GetAll();
             DoctorList = new ObservableCollection<Doctor>(doctors);
             ChooseDoctor.ItemsSource = DoctorList;
 
