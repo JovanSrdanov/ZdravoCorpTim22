@@ -28,7 +28,7 @@ namespace Service
       
       public void Update(Model.Patient patient)
       {
-            patientRepository.Create(patient);
+            patientRepository.Update(patient);
         }
       
       public String path;

@@ -9,10 +9,11 @@ namespace Model
         public int Id { get; set; }
         public AppointmentType Type { get; set; }
         public DateTime Date { get; set; }
+        public int Duration { get; set; }
 
         public Room room;
 
-        public MedicalAppointment(int id, AppointmentType type, DateTime date, Room room, Patient patient, Doctor doctor)
+        public MedicalAppointment(int id, AppointmentType type, DateTime date, Room room, Patient patient, Doctor doctor, int duration)
         {
             Id = id;
             Type = type;
@@ -20,6 +21,7 @@ namespace Model
             Room = room;
             Patient = patient;
             Doctor = doctor;
+            Duration = duration;
         }
 
         public Room Room

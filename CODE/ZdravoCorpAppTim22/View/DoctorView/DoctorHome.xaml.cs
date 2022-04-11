@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ZdravoCorpAppTim22.View.Doctor
+namespace ZdravoCorpAppTim22.View.DoctorView
 {
     /// <summary>
     /// Interaction logic for DoctorHome.xaml

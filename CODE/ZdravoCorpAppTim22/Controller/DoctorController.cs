@@ -33,7 +33,7 @@ namespace Controller
 
         public String path;
       
-      public Service.DoctorService doctorService;
+      public Service.DoctorService doctorService = new Service.DoctorService();
    
    }
 }

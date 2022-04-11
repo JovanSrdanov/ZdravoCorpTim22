@@ -6,31 +6,25 @@
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
         Title="PatientHome" Height="450" Width="800">
-    <Grid Margin="-87,0,0,-31">
-        <ListView Margin="139,80,98,72" Name="lvDataBinding" RenderTransformOrigin="0.5,0.5">
-            <ListView.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0.364"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-1.169"/>
-                </TransformGroup>
-            </ListView.RenderTransform>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="Ime: " />
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                        <TextBlock Text=", " />
-                        <TextBlock Text="Surname: " />
-                        <TextBlock Text="{Binding Surname}" FontWeight="Bold" />
-                        <TextBlock Text=" (" />
-                        <TextBlock Text="{Binding Jmbg}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                        <TextBlock Text=")" />
-                    </WrapPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <Grid Margin="10,0,0,0">
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dataGrid"  IsReadOnly="True" VerticalAlignment="Top"
+          ItemsSource="{Binding Source=PatientList}"
+          AutoGenerateColumns="False" CanUserResizeColumns="True" Height="175" Margin="135,128,125,0" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum pregleda" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Vreme" Binding="{Binding Path=Surname}"/>
+                <DataGridTextColumn Header="Lekar" Binding="{Binding Path=Jmbg}"/>
+                <DataGridTextColumn Header="Vrsta pregleda" Binding="{Binding Path=Jmbg}"/>
+                <DataGridTextColumn Header="Soba" Binding="{Binding Path=Jmbg}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AddAppointmentPatient" Content="Zakazi termin" HorizontalAlignment="Left" Margin="135,60,0,0" VerticalAlignment="Top" Width="75" Click="AddAppointmentPatient_Click" Background="#FF7EDE51"/>
+        <Button x:Name="RemoveAppointmentPatient" Content="Otkazi termin" HorizontalAlignment="Left" Margin="242,60,0,0" VerticalAlignment="Top" Width="75" Click="RemoveAppointmentPatient_Click" Background="#FFDE3232"/>
+        <TextBlock HorizontalAlignment="Left" Margin="135,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"><Run Text="Zakazani termini"/><LineBreak/><Run/></TextBlock>
+        <Label x:Name="WelcomePatientLabel" Content="Dobrodosli!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,10,0,0"/>
 
     </Grid>
 </Window>

@@ -33,7 +33,7 @@ namespace Service
       
       public String path;
       
-      public Repository.DoctorRepository doctorRepository;
+      public Repository.DoctorRepository doctorRepository = new Repository.DoctorRepository();
    
    }
 }
