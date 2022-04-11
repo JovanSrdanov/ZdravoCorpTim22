@@ -6,5 +6,10 @@
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
         Title="ChoosingAppointment" Height="450" Width="800">
-    <Grid/>
+    <Grid>
+        <Label x:Name="SelectedDateLabel" Content="Datum" HorizontalAlignment="Left" Margin="39,23,0,0" VerticalAlignment="Top" Width="213"/>
+        <Label x:Name="SelectedDoctorLabel" Content="Doktor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,54,0,0" Width="249"/>
+        <Label x:Name="SelectedAppointmentType" Content="Vrsta termina" HorizontalAlignment="Left" Margin="543,23,0,0" VerticalAlignment="Top" Width="209"/>
+        <Label x:Name="SelectedPriority" Content="Prioritet" HorizontalAlignment="Left" Margin="543,54,0,0" VerticalAlignment="Top" Width="158"/>
+    </Grid>
 </Window>

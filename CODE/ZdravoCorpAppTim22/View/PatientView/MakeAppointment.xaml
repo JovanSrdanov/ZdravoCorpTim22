@@ -11,33 +11,18 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Izabrati lekara" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <ComboBox IsSynchronizedWithCurrentItem="True" SelectedIndex="0" x:Name="ChooseDoctor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,41,0,0"  Text="{Binding Path=DoctorList, Mode=TwoWay}"  DisplayMemberPath="Name"  />
+        <ComboBox  SelectedIndex="0"  x:Name="ChooseDoctor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,41,0,0"   DisplayMemberPath="Name"  />
         <Label Content="Izabrati datum" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,136,0,0" RenderTransformOrigin="0.477,3.922"/>
         <Button x:Name="NextAppontimentChoosing" Content="Dalje" HorizontalAlignment="Left" Margin="72,266,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.256,0.275" Click="NextAppontimentChoosing_Click"/>
         <Label Content="Izabrati vrstu termina" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,77,0,0"/>
-        <ComboBox   SelectedIndex="0"  x:Name="ChooseAppointmentType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="12,103,0,0" RenderTransformOrigin="0.5,0.5" >
-            <ComboBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="2.319"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-0.445"/>
-                </TransformGroup>
-            </ComboBox.RenderTransform>
-        </ComboBox>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,163,0,0" RenderTransformOrigin="0.5,0.5">
-            <DatePicker.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="2.141"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-0.449"/>
-                </TransformGroup>
-            </DatePicker.RenderTransform>
-        </DatePicker>
-        <RadioButton Content="Lekar" HorizontalAlignment="Left" Margin="21,230,0,0" VerticalAlignment="Top"/>
+        <ComboBox   SelectedIndex="0"  x:Name="ChooseAppointmentType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="12,103,0,0" RenderTransformOrigin="0.5,0.5" />
+
+
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,163,0,0" RenderTransformOrigin="0.5,0.5"/>
+
+        <RadioButton Content="Lekar" HorizontalAlignment="Left" Margin="144,230,0,0" VerticalAlignment="Top"/>
+        <RadioButton IsChecked="True"  Content="Vreme" HorizontalAlignment="Left" Margin="11,230,0,0" VerticalAlignment="Top"/>
         <Label Content="Izabrati prioritet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,199,0,0" RenderTransformOrigin="0.477,3.922"/>
-        <RadioButton Content="Vreme" HorizontalAlignment="Left" Margin="121,230,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -24,7 +24,7 @@
         <Button x:Name="AddAppointmentPatient" Content="Zakazi termin" HorizontalAlignment="Left" Margin="135,60,0,0" VerticalAlignment="Top" Width="75" Click="AddAppointmentPatient_Click" Background="#FF7EDE51"/>
         <Button x:Name="RemoveAppointmentPatient" Content="Otkazi termin" HorizontalAlignment="Left" Margin="242,60,0,0" VerticalAlignment="Top" Width="75" Click="RemoveAppointmentPatient_Click" Background="#FFDE3232"/>
         <TextBlock HorizontalAlignment="Left" Margin="135,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"><Run Text="Zakazani termini"/><LineBreak/><Run/></TextBlock>
-        <Label x:Name="WelcomePatientLabel" Content="Dobrodosli!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,10,0,0"/>
+        <Label x:Name="WelcomePatientLabel" Content="Dobrodosli!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,10,0,0" Width="107"/>
 
     </Grid>
 </Window>

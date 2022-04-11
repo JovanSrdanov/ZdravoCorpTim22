@@ -22,6 +22,10 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public ChoosingAppointment()
         {
             InitializeComponent();
+            SelectedDateLabel.Content = "Datum: " + MakeAppointment.selectedDateTime;
+            SelectedDoctorLabel.Content = "Lekar: " + MakeAppointment.selectedDoctor.Name + " " + MakeAppointment.selectedDoctor.Surname;
+            SelectedPriority.Content = "Prioritet: ";
+            SelectedAppointmentType.Content = "Vrsta termina : " + MakeAppointment.selectedAppointmentType;
         }
     }
 }
