@@ -119,6 +119,9 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
+      <DependentUpon>DoctorAppointments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\DoctorView\DoctorAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
