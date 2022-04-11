@@ -100,7 +100,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Repository\DataHandlers\RoomData.cs" />
     <Compile Include="Repository\DataHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\DataHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
