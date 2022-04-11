@@ -101,10 +101,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\DataHandlers\EquipmentDataHandler.cs" />
+    <Compile Include="Repository\DataHandlers\RoomDataHandler.cs" />
     <Compile Include="Repository\DataHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\DataHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
     <Compile Include="Repository\MedicalAppointmentRepository.cs" />
     <Compile Include="Repository\MedicalRecordRepository.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\ManagerService.cs" />
     <Compile Include="Service\MedicalAppointmentService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
@@ -165,7 +170,7 @@
     </Compile>
     <Compile Include="View\Secretary\SecretaryAccountsNew.xaml.cs">
       <DependentUpon>SecretaryAccountsNew.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>

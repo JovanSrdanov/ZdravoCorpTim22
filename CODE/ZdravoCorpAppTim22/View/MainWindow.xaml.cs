@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.DoctorView;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.PatientView;
@@ -29,6 +31,9 @@ namespace ZdravoCorpAppTim22
 
         public MainWindow()
         {
+            RoomController rc = RoomController.Instance;
+            EquipmentController ec = EquipmentController.Instance;
+
             InitializeComponent();
         }
 
