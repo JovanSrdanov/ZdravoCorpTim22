@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoCorpAppTim22.Repository.DataHandlers;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace ZdravoCorpAppTim22.Repository
 {
     public class EquipmentRepository
     {
         public string FileName = "EquipmentData.json";
-        EquipmentDataHandler equipmentDataHandler;
+        EquipmentFileHandler equipmentFileHandler;
 
         List<Equipment> EquipmentList = new List<Equipment>();
 
         public EquipmentRepository()
         {
-            equipmentDataHandler = new EquipmentDataHandler(FileName);
-            EquipmentList = equipmentDataHandler.LoadData();
+            equipmentFileHandler = new EquipmentFileHandler(FileName);
+            EquipmentList = equipmentFileHandler.LoadData();
         }
         public List<Equipment> GetAll()
         {
@@ -35,20 +35,20 @@ namespace ZdravoCorpAppTim22.Repository
         {
             int index = EquipmentList.FindIndex(r => r.id == id);
             EquipmentList.RemoveAt(index);
-            equipmentDataHandler.SaveData(EquipmentList);
+            equipmentFileHandler.SaveData(EquipmentList);
         }
 
         public void Create(Equipment equipment)
         {
             this.EquipmentList.Add(equipment);
-            equipmentDataHandler.SaveData(EquipmentList);
+            equipmentFileHandler.SaveData(EquipmentList);
         }
 
         public void Update(Equipment equipment)
         {
             int index = EquipmentList.FindIndex(r => r.id == equipment.id);
             EquipmentList[index] = equipment;
-            equipmentDataHandler.SaveData(EquipmentList);
+            equipmentFileHandler.SaveData(EquipmentList);
         }
 
     }

@@ -6,14 +6,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoCorpAppTim22.Repository.DataHandlers.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
-namespace ZdravoCorpAppTim22.Repository.DataHandlers
+namespace ZdravoCorpAppTim22.Repository.FileHandlers
 {
-    public class EquipmentDataHandler
+    public class EquipmentFileHandler
     {
         private Serializer<List<Equipment>> serializer;
-        public EquipmentDataHandler(string fileName)
+        public EquipmentFileHandler(string fileName)
         {
             serializer = new Serializer<List<Equipment>>(fileName);
         }

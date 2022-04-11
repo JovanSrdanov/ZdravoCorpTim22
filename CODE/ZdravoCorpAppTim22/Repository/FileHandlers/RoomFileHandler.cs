@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZdravoCorpAppTim22.Repository.DataHandlers.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
-namespace ZdravoCorpAppTim22.Repository.DataHandlers
+namespace ZdravoCorpAppTim22.Repository.FileHandlers
 {
-    public class RoomDataHandler
+    public class RoomFileHandler
     {
         private Serializer<List<Room>> serializer;
 
-        public RoomDataHandler(string FileName)
+        public RoomFileHandler(string FileName)
         {
             serializer = new Serializer<List<Room>>(FileName);
         }

@@ -1,7 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using ZdravoCorpAppTim22.Repository.DataHandlers;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
@@ -10,12 +10,12 @@ namespace Repository
         public string FileName = "RoomData.json";
 
         List<Room> Rooms = new List<Room>();
-        RoomDataHandler roomDataHandler;
+        RoomFileHandler roomFileHandler;
 
         public RoomRepository()
         {
-            roomDataHandler = new RoomDataHandler(FileName);
-            Rooms = roomDataHandler.LoadData();
+            roomFileHandler = new RoomFileHandler(FileName);
+            Rooms = roomFileHandler.LoadData();
         }
 
         public List<Room> GetAll()
@@ -37,20 +37,20 @@ namespace Repository
         {
             int index = Rooms.FindIndex(r => r.id == id);
             Rooms.RemoveAt(index);
-            roomDataHandler.SaveData(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
       
         public void Create(Room roomObj)
         {
             this.Rooms.Add(roomObj);
-            roomDataHandler.SaveData(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
 
         public void Update(Room roomObj)
         {
             int index = Rooms.FindIndex(r => r.id == roomObj.id);
             Rooms[index] = roomObj;
-            roomDataHandler.SaveData(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
     }
 }
