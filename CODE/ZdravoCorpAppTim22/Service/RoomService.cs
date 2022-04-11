@@ -8,30 +8,30 @@ namespace Service
    {
       public List<Room> GetAllRooms()
       {
-         throw new NotImplementedException();
+            return roomRepository.GetAll();
       }
       
       public Room GetRoomByID(int id)
       {
-         throw new NotImplementedException();
+            return roomRepository.GetByID(id);
       }
       
       public void DeleteRoomByID(int id)
       {
-         throw new NotImplementedException();
-      }
+            roomRepository.DeleteByID(id);
+        }
       
       public void CreateRoom(Room roomObj)
       {
-         throw new NotImplementedException();
+         roomRepository.Create(roomObj);
       }
       
       public void UpdateRoom(Room roomObj)
       {
-         throw new NotImplementedException();
-      }
+            roomRepository.Update(roomObj);
+        }
       
-      public Repository.RoomRepository roomRepository;
+      public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
    
    }
 }

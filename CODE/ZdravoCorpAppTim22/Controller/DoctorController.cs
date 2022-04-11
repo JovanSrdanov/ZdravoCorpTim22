@@ -6,34 +6,34 @@ namespace Controller
 {
    public class DoctorController
    {
-      public List<Doctor> GetAll()
-      {
-         throw new NotImplementedException();
-      }
+        public List<Doctor> GetAll()
+        {
+            return doctorService.GetAll();
+        }
+
+        public Model.Doctor GetByID(int id)
+        {
+            return doctorService.GetByID(id);
+        }
+
+        public void DeleteByID(int id)
+        {
+            doctorService.DeleteByID(id);
+        }
+
+        public void Create(Model.Doctor doctor)
+        {
+            doctorService.Create(doctor);
+        }
+
+        public void Update(Model.Doctor doctor)
+        {
+            doctorService.Update(doctor);
+        }
+
+        public String path;
       
-      public Model.Doctor GetByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void DeleteByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Create(Model.Doctor doctor)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Update(Model.Doctor doctor)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public String path;
-      
-      public Service.DoctorService doctorService;
+      public Service.DoctorService doctorService = new Service.DoctorService();
    
    }
 }

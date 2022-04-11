@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoCorpAppTim22.View.Doctor;
+using ZdravoCorpAppTim22.View.DoctorView;
 using ZdravoCorpAppTim22.View.Manager;
-using ZdravoCorpAppTim22.View.Patient;
+using ZdravoCorpAppTim22.View.PatientView;
 using ZdravoCorpAppTim22.View.Secretary;
 
 namespace ZdravoCorpAppTim22
@@ -39,16 +39,14 @@ namespace ZdravoCorpAppTim22
             this.Close();
         }
 
-   
+
 
         private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            SecretaryHome secretaryHome = new SecretaryHome();
+            SecretaryHome secretaryHome = new SecretaryHome(this);
             secretaryHome.Show();
-            this.Close();
-
-
+            this.Hide();
         }
 
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
@@ -61,8 +59,8 @@ namespace ZdravoCorpAppTim22
 
         private void PatientBtn_Click(object sender, RoutedEventArgs e)
         {
-            PatientHome patientHome = new PatientHome();
-            patientHome.Show();
+            PatientSelectionForTemporaryPurpose patientSelectionForTemporaryPurpose = new PatientSelectionForTemporaryPurpose();
+            patientSelectionForTemporaryPurpose.Show();
             this.Close();
         }
     }

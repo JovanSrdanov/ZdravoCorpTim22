@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoCorpAppTim22.View.Doctor
+namespace ZdravoCorpAppTim22.View.Manager.Pages.MedicinePages
 {
     /// <summary>
-    /// Interaction logic for DoctorHome.xaml
+    /// Interaction logic for MedicineView.xaml
     /// </summary>
-    public partial class DoctorHome : Window
+    public partial class MedicineView : Page
     {
-        public DoctorHome()
+        public MedicineView()
         {
             InitializeComponent();
         }
