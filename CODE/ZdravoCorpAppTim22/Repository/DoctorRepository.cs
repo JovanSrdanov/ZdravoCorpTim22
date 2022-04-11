@@ -4,9 +4,27 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-   public class DoctorRepository
-   {
-        public static MedicalAppointmentRepository medicalAppointmentRepository;
+    public class DoctorRepository
+    {
+        private static DoctorRepository instance;
+
+        private DoctorRepository()
+        {
+
+        }
+
+        public static DoctorRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorRepository();
+                }
+
+                return instance;
+            }
+        }
 
         List<Doctor> doctors = new List<Doctor>
         {
@@ -19,34 +37,34 @@ namespace Repository
         };
 
         public List<Doctor> GetAll()
-      {
+        {
             return doctors;
-      }
-      
-      public Model.Doctor GetByID(int id)
-      {
+        }
+
+        public Doctor GetByID(int id)
+        {
             int index = doctors.FindIndex(r => r.ID == id);
             return doctors[index];
         }
-      
-      public void DeleteByID(int id)
-      {
+
+        public void DeleteByID(int id)
+        {
             int index = doctors.FindIndex(r => r.ID == id);
             doctors.RemoveAt(index);
         }
-      
-      public void Create(Model.Doctor doctor)
-      {
+
+        public void Create(Doctor doctor)
+        {
             this.doctors.Add(doctor);
         }
-      
-      public void Update(Model.Doctor doctor)
-      {
+
+        public void Update(Doctor doctor)
+        {
             int index = doctors.FindIndex(r => r.ID == doctor.ID);
             doctors[index] = doctor;
         }
-      
-      public String path;
-   
-   }
+
+        public String path;
+
+    }
 }

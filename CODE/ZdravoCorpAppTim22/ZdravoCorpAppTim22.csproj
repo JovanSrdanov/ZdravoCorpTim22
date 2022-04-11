@@ -160,6 +160,15 @@
     <Compile Include="View\PatientView\PatientHome.xaml.cs">
       <DependentUpon>PatientHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryAccounts.xaml.cs">
+      <DependentUpon>SecretaryAccounts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryAccountsEdit.xaml.cs">
+      <DependentUpon>SecretaryAccountsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryAccountsNew.xaml.cs">
+      <DependentUpon>SecretaryAccountsNew.xaml</DependentUpon>
+	</Compile>
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>
@@ -246,6 +255,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryAccounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryAccountsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryAccountsNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

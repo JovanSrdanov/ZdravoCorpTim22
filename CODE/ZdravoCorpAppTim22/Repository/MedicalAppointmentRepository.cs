@@ -22,6 +22,27 @@ namespace Repository
              new MedicalAppointment(1252, AppointmentType.examination, DateTime.Now, null, null, doctorRepository.GetByID(123), 30),
          };
            
+        private static MedicalAppointmentRepository instance;
+
+        private MedicalAppointmentRepository()
+        {
+
+        }
+
+        public static MedicalAppointmentRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalAppointmentRepository();
+                }
+
+                return instance;
+            }
+        }
+
+        private List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
 
         public Model.MedicalAppointment GetByID(int id)
         {
