@@ -3,7 +3,6 @@
 // Created: 10 April, 2022 22:26:37
 // Purpose: Definition of Class AddressService
 
-using Model;
 using System.Collections.Generic;
 
 namespace Service
@@ -15,7 +14,7 @@ namespace Service
             return addressRepository.GetAll();
         }
 
-        public Model.Address GetByID(int id)
+        public Address GetByID(int id)
         {
             return addressRepository.GetByID(id);
 
@@ -26,12 +25,12 @@ namespace Service
             addressRepository.DeleteByID(id);
         }
 
-        public void Create(Model.Address addres)
+        public void Create(Address addres)
         {
             addressRepository.Create(addres);
         }
 
-        public void Update(Model.Address addres)
+        public void Update(Address addres)
         {
             addressRepository.Update(addres);
         }

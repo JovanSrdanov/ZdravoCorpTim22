@@ -1,10 +1,8 @@
-using System;
-
 namespace Model
 {
-   public enum DoctorSpecialisationType
-   {
-      regular,
-      specialist
-   }
+    public enum DoctorSpecialisationType
+    {
+        regular,
+        specialist
+    }
 }

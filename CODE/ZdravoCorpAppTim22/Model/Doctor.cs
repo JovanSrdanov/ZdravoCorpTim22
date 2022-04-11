@@ -1,8 +1,3 @@
-// File:    Doctor.cs
-// Author:  rade-
-// Created: 8 April, 2022 14:34:22
-// Purpose: Definition of Class Doctor
-
 using System;
 
 namespace Model
@@ -11,8 +6,6 @@ namespace Model
     {
         public DoctorSpecialisationType DoctorType { get; set; }
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
-
-
 
         public Doctor()
         {

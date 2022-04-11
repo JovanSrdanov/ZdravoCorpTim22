@@ -3,20 +3,19 @@
 // Created: 10 April, 2022 22:42:08
 // Purpose: Definition of Class AddressController
 
-using Model;
 using System;
 using System.Collections.Generic;
 
 namespace Controller
 {
-   public class AddressController
-   {
+    public class AddressController
+    {
         public List<Address> GetAll()
         {
             return addressService.GetAll();
         }
 
-        public Model.Address GetByID(int id)
+        public Address GetByID(int id)
         {
             return addressService.GetByID(id);
 
@@ -27,19 +26,19 @@ namespace Controller
             addressService.DeleteByID(id);
         }
 
-        public void Create(Model.Address addres)
+        public void Create(Address addres)
         {
             addressService.Create(addres);
         }
 
-        public void Update(Model.Address addres)
+        public void Update(Address addres)
         {
             addressService.Update(addres);
         }
 
         public String path;
-      
-      public Service.AddressService addressService;
-   
-   }
+
+        public Service.AddressService addressService;
+
+    }
 }
