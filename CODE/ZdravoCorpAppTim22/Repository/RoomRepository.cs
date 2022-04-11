@@ -1,51 +1,54 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Text.Json;
+using ZdravoCorpAppTim22.Repository.DataHandlers.Serialization;
 
 namespace Repository
 {
-    
-   public class RoomRepository
-   {
-        List<Room> rooms = new List<Room> 
-        { 
-            new Room(1, 5, RoomType.operation, "500a"),
-            new Room(2, 4, RoomType.resting, "100c"),
-            new Room(3, 3, RoomType.reception, "400a"),
-            new Room(4, 1, RoomType.waiting, "300b"),
-            new Room(5, 6, RoomType.operation, "200a"),
-        };
+    public class RoomRepository
+    {
+        public string FileName = "RoomData.json";
+
+        List<Room> Rooms = new List<Room>();
+        Serializer<List<Room>> Serializer;
+
+        public RoomRepository()
+        {
+            Serializer = new Serializer<List<Room>>(FileName);
+            Rooms = Serializer.Deserialize();
+        }
 
         public List<Room> GetAll()
         {
-            return this.rooms;
+            return this.Rooms;
         }
       
-      public Room GetByID(int id)
-      {
-            int index = rooms.FindIndex(r => r.id == id);
-            return rooms[index];
+        public Room GetByID(int id)
+        {
+            int index = Rooms.FindIndex(r => r.id == id);
+            return Rooms[index];
         }
       
-      public void DeleteByID(int id)
-      {
-            int index = rooms.FindIndex(r => r.id == id);
-            rooms.RemoveAt(index);
-      }
-      
-      public void Create(Room roomObj)
-      {
-         this.rooms.Add(roomObj);
-      }
-      
-      public void Update(Room roomObj)
-      {
-            int index = rooms.FindIndex(r => r.id == roomObj.id);
-            rooms[index] = roomObj;
+        public void DeleteByID(int id)
+        {
+            int index = Rooms.FindIndex(r => r.id == id);
+            Rooms.RemoveAt(index);
+            Serializer.Serialize(Rooms);
         }
       
-      public string path;
-   
-   }
+        public void Create(Room roomObj)
+        {
+            this.Rooms.Add(roomObj);
+            Serializer.Serialize(Rooms);
+        }
+
+        public void Update(Room roomObj)
+        {
+            int index = Rooms.FindIndex(r => r.id == roomObj.id);
+            Rooms[index] = roomObj;
+            Serializer.Serialize(Rooms);
+        }
+    }
 }
