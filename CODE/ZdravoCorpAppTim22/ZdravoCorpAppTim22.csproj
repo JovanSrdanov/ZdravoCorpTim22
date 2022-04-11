@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="View\Secretary\SecretaryAccountsNew.xaml.cs">
       <DependentUpon>SecretaryAccountsNew.xaml</DependentUpon>
+	</Compile>
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>

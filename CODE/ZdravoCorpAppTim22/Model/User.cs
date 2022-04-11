@@ -46,5 +46,6 @@ namespace Model
         public User()
         {
         }
+
     }
 }

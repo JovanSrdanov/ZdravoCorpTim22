@@ -69,10 +69,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 genderTemp = Model.Gender.female;
             }
 
-            Model.Address addressTemp = new Model.Address();
+            Address addressTemp = new Address();
             Model.DoctorSpecialisationType doctorSpecialisationType = new Model.DoctorSpecialisationType();
 
-            Model.Doctor doctor = new Model.Doctor(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp, doctorSpecialisationType);
+            Model.Doctor doctor = new Model.Doctor(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, 4, addressTemp, doctorSpecialisationType, null);
 
             MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
             switch (result)

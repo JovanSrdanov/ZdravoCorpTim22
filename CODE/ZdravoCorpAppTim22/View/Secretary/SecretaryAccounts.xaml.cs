@@ -10,9 +10,9 @@ namespace ZdravoCorpAppTim22.View.Secretary
         private SecretaryHome secretaryHome;
         public List<Model.Doctor> listaDoktora = new List<Model.Doctor>();
 
-        Model.Doctor dr1 = new Model.Doctor("Mirko", "Vlaskovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, new Model.Address(), Model.DoctorSpecialisationType.regular);
-        Model.Doctor dr2 = new Model.Doctor("Boban", "Antonic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, new Model.Address(), Model.DoctorSpecialisationType.regular);
-        Model.Doctor dr3 = new Model.Doctor("Slavko", "Malinovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, new Model.Address(), Model.DoctorSpecialisationType.specialist);
+        Model.Doctor dr1 = new Model.Doctor("Mirko", "Vlaskovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 0, new Address(), Model.DoctorSpecialisationType.regular, null);
+        Model.Doctor dr2 = new Model.Doctor("Boban", "Antonic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 1, new Address(), Model.DoctorSpecialisationType.regular, null);
+        Model.Doctor dr3 = new Model.Doctor("Slavko", "Malinovic", "adsa@fgma.com", "121", "kuracPalac", System.DateTime.Now, "31231311", Model.Gender.male, 2, new Address(), Model.DoctorSpecialisationType.specialist, null);
 
         public SecretaryAccounts(SecretaryHome secretaryHome)
         {

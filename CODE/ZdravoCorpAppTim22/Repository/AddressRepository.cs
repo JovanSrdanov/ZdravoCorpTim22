@@ -3,7 +3,6 @@
 // Created: 10 April, 2022 22:20:04
 // Purpose: Definition of Class AddressRepository
 
-using Model;
 using System;
 using System.Collections.Generic;
 
@@ -26,7 +25,7 @@ namespace Repository
             return this.adresses;
         }
 
-        public Model.Address GetByID(int id)
+        public Address GetByID(int id)
         {
             int index = adresses.FindIndex(r => r.ID == id);
             return adresses[index];
@@ -38,12 +37,12 @@ namespace Repository
             adresses.RemoveAt(index);
         }
 
-        public void Create(Model.Address address)
+        public void Create(Address address)
         {
             adresses.Add(address);
         }
 
-        public void Update(Model.Address address)
+        public void Update(Address address)
         {
             int index = adresses.FindIndex(r => r.ID == address.ID);
             adresses[index] = address;
