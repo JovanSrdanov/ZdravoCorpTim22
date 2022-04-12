@@ -1,14 +1,1 @@
-[
-    {
-        "Name": "pacijentIme",
-        "Surname": "pacijentPrezime",
-        "Email": "",
-        "Jmbg": "123",
-        "Password": "123",
-        "Birthday": "2022-04-12T00:00:00+02:00",
-        "Phone": "",
-        "Gender": 0,
-        "addressID": 0,
-        "ID": 0
-    }
-]
+[{"Name":"pacijentIme","Surname":"pacijentPrezime","Email":"","Jmbg":"123","Password":"123","Birthday":"2022-04-12T00:00:00+02:00","Phone":"","Gender":0,"addressID":0,"ID":0},{"Name":"1233212313","Surname":null,"Email":null,"Jmbg":null,"Password":null,"Birthday":"0001-01-01T00:00:00","Phone":null,"Gender":1,"addressID":-1,"ID":1}]
