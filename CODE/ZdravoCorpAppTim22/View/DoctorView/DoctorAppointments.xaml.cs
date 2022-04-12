@@ -26,7 +26,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         // public static MedicalAppointmentController medicalAppointmentController;
 
         private List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>();
-
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
 
         //allAppointments.add(MedicalAppointmentController.getById(123));
@@ -38,11 +37,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         //public List<MedicalAppointment> = dr.MedicalAppointment;
 
         public int selectedDoctorId;
+        
         public DoctorAppointments(int id)
         {
             InitializeComponent();
             selectedDoctorId = id;
             List<Doctor> doctorList = DoctorController.Instance.GetAll();
+            Doctor doctor = DoctorController.Instance.GetByID(id);
+            List<MedicalAppointment> allMedicalAppointment = doctor.MedicalAppointment;
+            currentDoctorAppointments = allMedicalAppointment;
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(currentDoctorAppointments);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
         }
