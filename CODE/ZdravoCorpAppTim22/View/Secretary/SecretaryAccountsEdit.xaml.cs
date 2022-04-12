@@ -13,8 +13,8 @@ namespace ZdravoCorpAppTim22.View.Secretary
         private int currentAccount;
 
         private Patient Patient;
-        private Model.Manager Manager;
-        private Model.Secretary Secretary;
+        private ManagerClass Manager;
+        private SecretaryClass Secretary;
         private Doctor Doctor;
 
         public SecretaryAccountsEdit(SecretaryAccounts callerScreen, Patient patient)
@@ -27,7 +27,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             FillData();
         }
 
-        public SecretaryAccountsEdit(SecretaryAccounts callerScreen, Model.Manager manager)
+        public SecretaryAccountsEdit(SecretaryAccounts callerScreen, ManagerClass manager)
         {
             InitializeComponent();
             this.callerScreen = callerScreen;
@@ -37,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             FillData();
         }
 
-        public SecretaryAccountsEdit(SecretaryAccounts callerScreen, Model.Secretary secretary)
+        public SecretaryAccountsEdit(SecretaryAccounts callerScreen, SecretaryClass secretary)
         {
             InitializeComponent();
             this.callerScreen = callerScreen;

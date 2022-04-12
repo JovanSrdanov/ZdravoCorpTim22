@@ -175,6 +175,9 @@
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergency.xaml.cs">
+      <DependentUpon>SecretaryEmergency.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
@@ -268,6 +271,10 @@
     <Page Include="View\Secretary\SecretaryAccountsNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryEmergency.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Secretary\SecretaryHome.xaml">
       <SubType>Designer</SubType>

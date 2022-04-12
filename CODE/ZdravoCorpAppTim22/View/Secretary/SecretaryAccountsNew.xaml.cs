@@ -133,7 +133,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             //Patient account
             if ((bool)PatientRB.IsChecked)
             {
-                Patient patient = new Patient(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp, null);
+                Patient patient = new Patient(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp, null, null);
                 MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
                 switch (result)
                 {
@@ -149,7 +149,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             //Manager account
             if ((bool)ManagerRB.IsChecked)
             {
-                Model.Manager manager = new Model.Manager(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp);
+                ManagerClass manager = new ManagerClass(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp);
                 MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
                 switch (result)
                 {
@@ -165,7 +165,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             //Secretary account
             if ((bool)SecretaryRB.IsChecked)
             {
-                Model.Secretary secretary = new Model.Secretary(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp);
+                SecretaryClass secretary = new SecretaryClass(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp);
                 MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
                 switch (result)
                 {

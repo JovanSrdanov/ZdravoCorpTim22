@@ -79,7 +79,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             if (AccountsDataGrid != null)
             {
                 SetUpAccountsDataGrid();
-                List<Model.Manager> managers = ManagerController.Instance.GetAll();
+                List<ManagerClass> managers = ManagerController.Instance.GetAll();
 
                 for (int i = 0; i < managers.Count; i++)
                 {
@@ -117,7 +117,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             SetUpAccountsDataGrid();
 
-            List<Model.Secretary> secretaries = SecretaryController.Instance.GetAll();
+            List<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
 
             for (int i = 0; i < secretaries.Count; i++)
             {
@@ -158,12 +158,12 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 }
                 else if ((bool)Manager_RB.IsChecked)
                 {
-                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (Model.Manager)AccountsDataGrid.SelectedItem);
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (ManagerClass)AccountsDataGrid.SelectedItem);
 
                 }
                 else if ((bool)Secretary_RB.IsChecked)
                 {
-                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (Model.Secretary)AccountsDataGrid.SelectedItem);
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (SecretaryClass)AccountsDataGrid.SelectedItem);
 
                 }
             }

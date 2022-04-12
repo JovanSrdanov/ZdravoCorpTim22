@@ -1,4 +1,5 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -28,32 +29,30 @@ namespace Controller
 
         public List<ManagerClass> GetAll()
         {
-            throw new NotImplementedException();
+            return ManagerService.Instance.GetAll();
         }
 
         public Model.ManagerClass GetByID(int id)
         {
-            throw new NotImplementedException();
+            return ManagerService.Instance.GetByID(id);
         }
 
         public void DeleteByID(int id)
         {
-            throw new NotImplementedException();
+            ManagerService.Instance.DeleteByID(id);
         }
 
-        public void Create(Model.ManagerClass manager)
+        public void Create(ManagerClass manager)
         {
-            throw new NotImplementedException();
+            ManagerService.Instance.Create(manager);
         }
 
-        public void Update(Model.ManagerClass manager)
+        public void Update(ManagerClass manager)
         {
-            throw new NotImplementedException();
+            ManagerService.Instance.Update(manager);
         }
 
         public String path;
-
-        public Service.ManagerService managerService;
 
     }
 }

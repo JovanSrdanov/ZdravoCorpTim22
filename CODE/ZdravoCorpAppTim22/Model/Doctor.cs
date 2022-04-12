@@ -17,6 +17,12 @@ namespace Model
             this.medicalAppointment = medicalAppointment;
         }
 
+        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, DoctorSpecialisationType doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
+        {
+            DoctorType = doctorType;
+            this.medicalAppointment = medicalAppointment;
+        }
+
 
         public bool IsAvailable(DateTime start, DateTime end)
         {
