@@ -42,6 +42,14 @@ namespace Repository
       
         public void Create(Room roomObj)
         {
+            if (Rooms.Count > 0)
+            {
+                roomObj.id = Rooms[Rooms.Count - 1].id + 1;
+            }
+            else
+            {
+                roomObj.id = 0;
+            }
             this.Rooms.Add(roomObj);
             roomFileHandler.SaveData(Rooms);
         }
