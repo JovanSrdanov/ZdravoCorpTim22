@@ -3,7 +3,6 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.Model;
 
@@ -19,7 +18,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public DateTime enteredDateTime;
         public AppointmentType enteredAppointmentType;
         public string enteredPriority;
-        public int counterForList ;
+        public int counterForList;
 
         public ObservableCollection<MedicalAppointmentStruct> MedicalAppointmentsList { get; set; }
         public List<MedicalAppointmentStruct> medicalAppointments;
@@ -143,7 +142,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             for (int i = 0; i < counterForList; i++)
             {
-                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListStart[i], forListEnd[i],  enteredPatient, forListDoctor[i],forListRoom[i]);
+                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListStart[i], forListEnd[i], enteredPatient, forListDoctor[i], forListRoom[i]);
                 availableMedicalAppointments.Add(medicalAppointmentToAdd);
 
             }
@@ -163,7 +162,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 }
                 foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
                 {
-                    if (! (item.Doctor.ID == enteredDoctor.ID))
+                    if (!(item.Doctor.ID == enteredDoctor.ID))
                     {
                         availableMedicalAppointmentsSortDoctor.Add(item);
 
@@ -179,7 +178,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             return availableMedicalAppointments;
         }
-        
+
         private void ConfirmAppointment_Click(object sender, RoutedEventArgs e)
         {
             MedicalAppointmentStruct medicalAppointmentStruct = (MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem;
@@ -188,7 +187,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 return;
             }
             MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.MedicalAppointmentStartDateTime, medicalAppointmentStruct.MedicalAppointmentEndDateTime, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
-            MessageBox.Show("Sifra sobe je " + medicalAppointmentTemp.Room.id);
             MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
             PatientHome.MedicalAppointmentList.Add(medicalAppointmentTemp);
 

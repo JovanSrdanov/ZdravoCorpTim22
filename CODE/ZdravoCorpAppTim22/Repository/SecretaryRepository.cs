@@ -1,15 +1,19 @@
 using Model;
 using System;
 using System.Collections.Generic;
-
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 namespace Repository
 {
     public class SecretaryRepository
     {
         private static SecretaryRepository instance;
-
+        public string FileName = "SecretaryData.json";
+        SecretaryFileHandler secretaryFileHandler;
+        List<SecretaryClass> secretaries = new List<SecretaryClass>();
         private SecretaryRepository()
         {
+            secretaryFileHandler = new SecretaryFileHandler(FileName);
+            secretaries = secretaryFileHandler.LoadData();
 
         }
 
@@ -25,12 +29,6 @@ namespace Repository
                 return instance;
             }
         }
-        List<SecretaryClass> secretaries = new List<SecretaryClass>
-        {
-            new SecretaryClass("Jovan", "Zelic", "jovan@gmail.com", "1231231239", "stefan1239", DateTime.Now, "123321123", Gender.male,  null),
-            new SecretaryClass("Erzebet", "Jovanovic", "erzebet@gmail.com", "223123123", "stefan1247", DateTime.Now, "223321123", Gender.female,  null),
-            new SecretaryClass("Sulejman", "Kovacevic", "sulejman@gmail.com", "323123123", "stefan12553", DateTime.Now, "323321123", Gender.male,  null),
-        };
 
         public List<SecretaryClass> GetAll()
         {
@@ -47,6 +45,7 @@ namespace Repository
         {
             int index = secretaries.FindIndex(r => r.ID == id);
             secretaries.RemoveAt(index);
+            secretaryFileHandler.SaveData(secretaries);
         }
 
         public void Create(SecretaryClass secretary)
@@ -61,12 +60,14 @@ namespace Repository
             }
 
             secretaries.Add(secretary);
+            secretaryFileHandler.SaveData(secretaries);
         }
 
         public void Update(SecretaryClass secretary)
         {
             int index = secretaries.FindIndex(r => r.ID == secretary.ID);
             secretaries[index] = secretary;
+            secretaryFileHandler.SaveData(secretaries);
         }
 
         public String path;

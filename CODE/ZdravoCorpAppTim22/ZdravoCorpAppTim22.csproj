@@ -107,9 +107,11 @@
     <Compile Include="Repository\FileHandlers\AddressFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\DoctorFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\ManagerFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\MedicalAppointmentFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\SecretaryFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />

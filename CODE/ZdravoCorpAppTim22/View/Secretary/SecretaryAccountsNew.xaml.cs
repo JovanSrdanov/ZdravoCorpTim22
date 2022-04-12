@@ -111,6 +111,8 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 }
             }
 
+            AddressController.Instance.Create(addressTemp);
+
             //Doctor account
             if ((bool)DoctorRB.IsChecked)
             {

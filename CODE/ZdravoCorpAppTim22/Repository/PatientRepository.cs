@@ -1,5 +1,4 @@
 using Model;
-using System;
 using System.Collections.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
@@ -33,7 +32,7 @@ namespace Repository
             }
         }
 
-        
+
 
         public List<Patient> GetAll()
         {

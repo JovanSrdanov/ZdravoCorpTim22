@@ -277,7 +277,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     return;
             }
 
-
+            AddressController.Instance.Create(addressTemp);
 
             switch (currentAccount)
             {

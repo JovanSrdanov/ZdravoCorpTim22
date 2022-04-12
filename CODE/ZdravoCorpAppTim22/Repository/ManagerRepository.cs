@@ -1,6 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
@@ -8,8 +9,14 @@ namespace Repository
     {
         private static ManagerRepository instance;
 
+        public string FileName = "ManagerData.json";
+        ManagerFileHandler managerFileHandler;
+        List<ManagerClass> managers = new List<ManagerClass>();
+
         private ManagerRepository()
         {
+            managerFileHandler = new ManagerFileHandler(FileName);
+            managers = managerFileHandler.LoadData();
 
         }
 
@@ -26,12 +33,6 @@ namespace Repository
             }
         }
 
-        List<ManagerClass> managers = new List<ManagerClass>
-        {
-            new ManagerClass("Boban", "Antonic", "Boban@gmail.com", "1231231231", "stefan123", DateTime.Now, "123321123", Gender.male,  null),
-            new ManagerClass("Slavko", "Malinovic", "slavko@gmail.com", "2231231232", "stefan124", DateTime.Now, "223321123", Gender.male,  null),
-            new ManagerClass("Vinka", "Lazic", "vinka@gmail.com", "3231231233", "stefan125", DateTime.Now, "323321123", Gender.female,  null),
-        };
 
         public List<ManagerClass> GetAll()
         {
@@ -48,6 +49,7 @@ namespace Repository
         {
             int index = managers.FindIndex(r => r.ID == id);
             managers.RemoveAt(index);
+            managerFileHandler.SaveData(managers);
         }
 
         public void Create(ManagerClass manager)
@@ -62,12 +64,14 @@ namespace Repository
             }
 
             managers.Add(manager);
+            managerFileHandler.SaveData(managers);
         }
 
         public void Update(ManagerClass manager)
         {
             int index = managers.FindIndex(r => r.ID == manager.ID);
             managers[index] = manager;
+            managerFileHandler.SaveData(managers);
         }
 
         public String path;
