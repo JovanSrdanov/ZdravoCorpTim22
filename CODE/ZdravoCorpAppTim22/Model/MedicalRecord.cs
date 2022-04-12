@@ -1,11 +1,15 @@
+using System.Text.Json.Serialization;
 namespace Model
 {
     public class MedicalRecord
     {
         public int Id { get; set; }
         public BloodType BloodType { get; set; }
+
+        [JsonIgnore]
         public Patient Patient { get; set; }
 
+        [JsonConstructor]
         public MedicalRecord()
         {
         }

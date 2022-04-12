@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
+        [JsonIgnore]
         public MedicalRecord medicalRecord { get; set; }
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
 
 
@@ -30,7 +33,7 @@ namespace Model
         }
 
 
-
+        [JsonConstructor]
         public Patient()
         {
         }
@@ -82,6 +85,7 @@ namespace Model
 
         }
 
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get

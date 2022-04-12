@@ -48,7 +48,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
                 Room room = roomController.GetRoomByID(item.RoomID);
                 item.room = room;
                 room.AddMedicalAppointment(item);
-
+                
                 Doctor doctor = doctorController.GetByID(item.DoctorID);
                 item.doctor = doctor;
                 doctor.AddMedicalAppointment(item);
