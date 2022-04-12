@@ -52,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             List<MedicalAppointmentStruct> availableMedicalAppointments = new List<MedicalAppointmentStruct>();
 
             DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 7, 0, 0);
-            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 9, 0, 0);
+            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 10, 0, 0);
             DateTime appointmentTimeEnd = new DateTime();
 
             int jumpToNextAppointmetnTime = 15;
@@ -85,8 +85,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
                 List<Room> temporaryRooms = new List<Room>();
 
-                foreach (Room room in temporaryRooms)
+                foreach (Room room in suggestetRooms)
                 {
+                    
                     if (room.type == RoomType.operation)
                         temporaryRooms.Add(room);
 
