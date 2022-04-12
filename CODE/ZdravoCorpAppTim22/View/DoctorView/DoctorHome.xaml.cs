@@ -23,15 +23,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     public partial class DoctorHome : Window
     {
         public ObservableCollection<Doctor> DoctorListObservable { get; set; }
-        public static DoctorController doctorController;
+                                                // public static DoctorController doctorController;
         public List<Doctor> DoctorList;
         public DoctorHome()
         {
             InitializeComponent();
-            doctorController = new DoctorController();
-            DoctorList = doctorController.GetAll();
-            DoctorListObservable = new ObservableCollection<Doctor>(DoctorList);
-            SelectDoctorCBOX.ItemsSource = DoctorListObservable;
+                                                 //doctorController = new DoctorController();
+           DoctorList = DoctorController.Instance.GetAll();
+           DoctorListObservable = new ObservableCollection<Doctor>(DoctorList);
+           SelectDoctorCBOX.ItemsSource = DoctorListObservable;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

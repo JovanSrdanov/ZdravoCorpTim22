@@ -21,23 +21,53 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     /// </summary>
     public partial class DoctorAppointments : Window
     {
-        public static DoctorController doctorController;
-        public static MedicalAppointmentController medicalAppointmentController;
+        //public static DoctorController doctorController;
+        // public static MedicalAppointmentController medicalAppointmentController;
 
-        /*public List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>();
-        public List<MedicalAppointment> allAppointments = medicalAppointmentController.get
+        private List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>()
+        {
+            MedicalAppointmentController.Instance.GetByID(123),
+            MedicalAppointmentController.Instance.GetByID(1231),
+            MedicalAppointmentController.Instance.GetByID(1232),
+        };
 
-        foreach (MedicalAppointment temp in medicalAppointmentController.getAll()) {
-            }*/
-        private Doctor dr = doctorController.GetByID(123);
+        //allAppointments.add(MedicalAppointmentController.getById(123));
+
+
+        //foreach (MedicalAppointment temp in medicalAppointmentController.getAll()) {
+        //  }
+        // private Doctor dr = doctorController.GetByID(123);
         //public List<MedicalAppointment> = dr.MedicalAppointment;
-        
+
 
         public DoctorAppointments()
         {
             InitializeComponent();
-            List<Doctor> doctorList = doctorController.GetAll();
-            appointmentListGrid.ItemsSource = doctorList;
+            List<Doctor> doctorList = DoctorController.Instance.GetAll();
+            appointmentListGrid.ItemsSource = currentDoctorAppointments;
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalAppointment medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            if (medicalAppointment == null)
+            {
+                return;
+            }
+            MedicalAppointmentController.Instance.DeleteByID(medicalAppointment.Id);
+            currentDoctorAppointments.Remove(medicalAppointment);
+            MessageBox.Show("Apointment sa ID-em" + medicalAppointment.Id + "je obrisan");
+
         }
     }
 }
