@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.Model;
 
@@ -147,6 +148,33 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             }
 
+            if (enteredPriority.Equals("Lekar"))
+            {
+                List<MedicalAppointmentStruct> availableMedicalAppointmentsSortDoctor = new List<MedicalAppointmentStruct>();
+
+                foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+                {
+                    if (item.Doctor.ID == enteredDoctor.ID)
+                    {
+                        availableMedicalAppointmentsSortDoctor.Add(item);
+
+                    }
+
+                }
+                foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+                {
+                    if (! (item.Doctor.ID == enteredDoctor.ID))
+                    {
+                        availableMedicalAppointmentsSortDoctor.Add(item);
+
+                    }
+
+                }
+
+                availableMedicalAppointments = availableMedicalAppointmentsSortDoctor;
+
+
+            }
 
 
             return availableMedicalAppointments;

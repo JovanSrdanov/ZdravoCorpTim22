@@ -5,22 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
-        Title="PatientHome" Height="450" Width="800">
+        Title="PatientHome" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,0,0">
         <Grid.RowDefinitions>
 
         </Grid.RowDefinitions>
         <DataGrid x:Name="dataGrid"  IsReadOnly="True" VerticalAlignment="Top"
           ItemsSource="{Binding Source=PatientList}" 
-          AutoGenerateColumns="False" CanUserResizeColumns="True" Height="175" Margin="69,128,122,0" RenderTransformOrigin="0.5,0.5">
+          AutoGenerateColumns="False" CanUserResizeColumns="True" Height="175" Margin="36,128,23,0" RenderTransformOrigin="0.5,0.5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID termina" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Tip termina" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Pocetak termina" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
-                <DataGridTextColumn Header="Kraj termina" Binding="{Binding Path=MedicalAppointmentEndDateTime}"/>
-                <DataGridTextColumn Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
-                <DataGridTextColumn Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
-                <DataGridTextColumn Header="Sifra sobe" Binding="{Binding Path=Room.id}"/>
+                <DataGridTextColumn Width="*" Header="ID termina" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Width="*" Header="Tip termina" Binding="{Binding Path=Type}"/>
+                <DataGridTextColumn Width="*" Header="Pocetak termina" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
+                <DataGridTextColumn Width="*" Header="Kraj termina" Binding="{Binding Path=MedicalAppointmentEndDateTime}"/>
+                <DataGridTextColumn Width="*" Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
+                <DataGridTextColumn Width="*" Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
+                <DataGridTextColumn Width="*" Header="Sifra sobe" Binding="{Binding Path=Room.id}"/>
 
             </DataGrid.Columns>
         </DataGrid>
