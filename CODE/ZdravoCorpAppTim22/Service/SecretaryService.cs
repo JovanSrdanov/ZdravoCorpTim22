@@ -27,12 +27,12 @@ namespace Service
             }
         }
 
-        public List<Secretary> GetAll()
+        public List<SecretaryClass> GetAll()
         {
             return SecretaryRepository.Instance.GetAll();
         }
 
-        public Secretary GetByID(int id)
+        public SecretaryClass GetByID(int id)
         {
             return SecretaryRepository.Instance.GetByID(id);
         }
@@ -42,12 +42,12 @@ namespace Service
             SecretaryRepository.Instance.DeleteByID(id);
         }
 
-        public void Create(Model.Secretary secretary)
+        public void Create(Model.SecretaryClass secretary)
         {
             SecretaryRepository.Instance.Create(secretary);
         }
 
-        public void Update(Model.Secretary secretary)
+        public void Update(Model.SecretaryClass secretary)
         {
             SecretaryRepository.Instance.Update(secretary);
         }

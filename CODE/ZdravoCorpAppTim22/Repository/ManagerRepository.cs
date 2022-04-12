@@ -26,19 +26,19 @@ namespace Repository
             }
         }
 
-        List<Manager> managers = new List<Manager>
+        List<ManagerClass> managers = new List<ManagerClass>
         {
-            new Manager("Boban", "Antonic", "Boban@gmail.com", "1231231231", "stefan123", DateTime.Now, "123321123", Gender.male, 126,  null),
-            new Manager("Slavko", "Malinovic", "slavko@gmail.com", "2231231232", "stefan124", DateTime.Now, "223321123", Gender.male, 127,  null),
-            new Manager("Vinka", "Lazic", "vinka@gmail.com", "3231231233", "stefan125", DateTime.Now, "323321123", Gender.female, 128,  null),
+            new ManagerClass("Boban", "Antonic", "Boban@gmail.com", "1231231231", "stefan123", DateTime.Now, "123321123", Gender.male,  null),
+            new ManagerClass("Slavko", "Malinovic", "slavko@gmail.com", "2231231232", "stefan124", DateTime.Now, "223321123", Gender.male,  null),
+            new ManagerClass("Vinka", "Lazic", "vinka@gmail.com", "3231231233", "stefan125", DateTime.Now, "323321123", Gender.female,  null),
         };
 
-        public List<Manager> GetAll()
+        public List<ManagerClass> GetAll()
         {
             return managers;
         }
 
-        public Manager GetByID(int id)
+        public ManagerClass GetByID(int id)
         {
             int index = managers.FindIndex(r => r.ID == id);
             return managers[index];
@@ -50,12 +50,21 @@ namespace Repository
             managers.RemoveAt(index);
         }
 
-        public void Create(Manager manager)
+        public void Create(ManagerClass manager)
         {
-            this.managers.Add(manager);
+            if (managers.Count > 0)
+            {
+                manager.ID = managers[managers.Count - 1].ID + 1;
+            }
+            else
+            {
+                manager.ID = 0;
+            }
+
+            managers.Add(manager);
         }
 
-        public void Update(Manager manager)
+        public void Update(ManagerClass manager)
         {
             int index = managers.FindIndex(r => r.ID == manager.ID);
             managers[index] = manager;

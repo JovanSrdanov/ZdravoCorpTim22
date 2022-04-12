@@ -21,7 +21,9 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void EmergencyBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(this);
+            secretaryEmergency.Show();
+            this.Hide();
         }
 
         private void Window_Closed(object sender, System.EventArgs e)

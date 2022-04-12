@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="PatientSelectionForTemporaryPurpose" Height="231.888" Width="428.062">
     <Grid>
         <Label Content="Izaberite koji ste pacijent:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="133,21,0,0"/>

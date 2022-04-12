@@ -6,6 +6,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MakeAppointment" Height="335.313" Width="227.898">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>

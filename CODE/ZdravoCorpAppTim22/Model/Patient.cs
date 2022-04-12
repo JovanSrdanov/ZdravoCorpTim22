@@ -56,7 +56,30 @@ namespace Model
                 this.medicalAppointment = medicalAppointment;
             }
 
-            
+
+        }
+
+        public Patient(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, MedicalRecord medicalRecord, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
+        {
+            if (medicalRecord == null)
+            {
+                this.medicalRecord = new MedicalRecord();
+            }
+            else
+            {
+                this.medicalRecord = medicalRecord;
+            }
+
+
+            if (medicalAppointment == null)
+            {
+                medicalAppointment = new List<MedicalAppointment>();
+            }
+            else
+            {
+                this.medicalAppointment = medicalAppointment;
+            }
+
         }
 
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment

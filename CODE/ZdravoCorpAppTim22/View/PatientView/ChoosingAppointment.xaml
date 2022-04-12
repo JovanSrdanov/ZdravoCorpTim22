@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="ChoosingAppointment" Height="450" Width="800"
         >
     
@@ -20,13 +21,13 @@
           ItemsSource="{Binding Source=MedicalAppointmentsList}"
           AutoGenerateColumns="False" CanUserResizeColumns="True" Height="175" Margin="39,131,46,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID termina" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Tip termina" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Pocetak termina" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
-                <DataGridTextColumn Header="Kraj termina" Binding="{Binding Path=MedicalAppointmentEndDateTime}"/>
-                <DataGridTextColumn Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
-                <DataGridTextColumn Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
-                <DataGridTextColumn Header="Sifra sobe" Binding="{Binding Path=Room.id}"/>
+               
+                <DataGridTextColumn Width="*" Header="Tip termina" Binding="{Binding Path=Type}"/>
+                <DataGridTextColumn Width="*" Header="Pocetak termina" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
+                <DataGridTextColumn Width="*" Header="Kraj termina" Binding="{Binding Path=MedicalAppointmentEndDateTime}"/>
+                <DataGridTextColumn Width="*" Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
+                <DataGridTextColumn Width="*" Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
+                <DataGridTextColumn Width="*" Header="Sifra sobe" Binding="{Binding Path=Room.id}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="ConfirmAppointment" Content="Zakazi ovaj termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="624,361,0,0" Foreground="Black" Background="#FF23B623" Click="ConfirmAppointment_Click"/>
