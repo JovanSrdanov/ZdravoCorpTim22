@@ -20,13 +20,15 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public static Doctor selectedDoctor;
         public static DateTime selectedDateTime;
         public static AppointmentType selectedAppointmentType;
+        public static string selectedPriority;
 
 
 
         public MakeAppointment()
         {
             InitializeComponent();
-            datePicker.SelectedDate = DateTime.Now.Date;
+            datePicker.DisplayDateStart = DateTime.Now.Date.AddDays(1);
+            datePicker.SelectedDate = DateTime.Now.Date.AddDays(1);
             ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
             doctors = DoctorController.Instance.GetAll();
             DoctorList = new ObservableCollection<Doctor>(doctors);
@@ -39,6 +41,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             selectedDoctor = (Doctor)ChooseDoctor.SelectedItem;
             selectedDateTime = (DateTime)datePicker.SelectedDate;
             selectedAppointmentType = (AppointmentType)ChooseAppointmentType.SelectedItem;
+            selectedPriority = (bool)TimeRadioButton.IsChecked ? "Vreme" : "Lekar";
 
             ChoosingAppointment choosingAppointment = new ChoosingAppointment();
             choosingAppointment.Show();

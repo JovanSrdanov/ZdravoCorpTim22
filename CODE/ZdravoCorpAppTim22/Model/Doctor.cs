@@ -17,6 +17,28 @@ namespace Model
             this.medicalAppointment = medicalAppointment;
         }
 
+
+        public bool IsAvailable(DateTime start, DateTime end)
+        {
+            if (medicalAppointment == null)
+                return true;
+            else
+            {
+
+                foreach (MedicalAppointment medicalAppointmentDoctor in medicalAppointment)
+                {
+                    if (!((medicalAppointmentDoctor.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentDoctor.MedicalAppointmentEndDateTime <= start)))
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
+
+            }
+        }
+
+
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get

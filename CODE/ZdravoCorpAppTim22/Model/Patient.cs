@@ -1,11 +1,33 @@
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
     public class Patient : User
     {
-        public MedicalRecord medicalRecord{ get; set; }
+        public MedicalRecord medicalRecord { get; set; }
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
+
+
+        public bool IsAvailable(DateTime start, DateTime end)
+        {
+            if (medicalAppointment == null)
+                return true;
+            else
+            {
+
+                foreach (MedicalAppointment medicalAppointmentPatient in medicalAppointment)
+                {
+                    if (!((medicalAppointmentPatient.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentPatient.MedicalAppointmentEndDateTime <= start)))
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
+
+            }
+        }
 
 
 
@@ -15,8 +37,26 @@ namespace Model
 
         public Patient(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address, MedicalRecord medicalRecord, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, iD, address)
         {
-            this.medicalRecord = medicalRecord;
-            this.medicalAppointment = medicalAppointment;
+            if (medicalRecord == null)
+            {
+                this.medicalRecord = new MedicalRecord();
+            }
+            else
+            {
+                this.medicalRecord = medicalRecord;
+            }
+
+
+            if (medicalAppointment == null)
+            {
+                medicalAppointment = new List<MedicalAppointment>();
+            }
+            else
+            {
+                this.medicalAppointment = medicalAppointment;
+            }
+
+            
         }
 
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
@@ -65,7 +105,7 @@ namespace Model
                 }
         }
 
-     
+
         public void RemoveAllMedicalAppointment()
         {
             if (medicalAppointment != null)
