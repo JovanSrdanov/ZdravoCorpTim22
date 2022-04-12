@@ -1,12 +1,16 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class Doctor : User
     {
         public DoctorSpecialisationType DoctorType { get; set; }
+
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
 
+        [JsonConstructor]
         public Doctor()
         {
         }
@@ -17,6 +21,7 @@ namespace Model
             this.medicalAppointment = medicalAppointment;
         }
 
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get

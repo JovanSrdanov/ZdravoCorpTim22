@@ -1,6 +1,7 @@
 
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
@@ -11,7 +12,13 @@ namespace Model
         public DateTime Date { get; set; }
         public int Duration { get; set; }
 
+        [JsonIgnore]
         public Room room;
+
+        public int DoctorID { get; set; }
+        public int PatientID { get; set; }
+        public int RoomID { get; set; }
+
 
         public MedicalAppointment(int id, AppointmentType type, DateTime date, Room room, Patient patient, Doctor doctor, int duration)
         {
@@ -24,6 +31,7 @@ namespace Model
             Duration = duration;
         }
 
+        [JsonIgnore]
         public Room Room
         {
             get
@@ -48,9 +56,12 @@ namespace Model
                 }
             }
         }
+
+        [JsonIgnore]
         public Patient patient;
 
-     
+
+        [JsonIgnore]
         public Patient Patient
         {
             get
@@ -75,12 +86,16 @@ namespace Model
                 }
             }
         }
+
+        [JsonIgnore]
         public Doctor doctor;
 
+        [JsonConstructor]
         public MedicalAppointment()
         {
         }
 
+        [JsonIgnore]
         public Doctor Doctor
         {
             get

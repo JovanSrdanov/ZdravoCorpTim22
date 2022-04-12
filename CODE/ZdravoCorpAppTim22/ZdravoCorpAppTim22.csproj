@@ -103,7 +103,9 @@
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\FileHandlers\DoctorFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\MedicalAppointmentFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
@@ -124,12 +126,20 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\DoctorAppointmentCreate.xaml.cs">
+      <DependentUpon>DoctorAppointmentCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
       <DependentUpon>DoctorAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\DoctorAppointmentUpdate.xaml.cs">
+      <DependentUpon>DoctorAppointmentUpdate.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\DoctorViewModel.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -180,7 +190,15 @@
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\DoctorView\DoctorAppointmentCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView\DoctorAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\DoctorAppointmentUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,7 +22,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     /// </summary>
     public partial class DoctorHome : Window
     {
-        public ObservableCollection<Doctor> DoctorListObservable { get; set; }
+        /*public ObservableCollection<Doctor> DoctorListObservable { get; set; }
                                                 // public static DoctorController doctorController;
         public List<Doctor> DoctorList;
         public DoctorHome()
@@ -32,6 +32,23 @@ namespace ZdravoCorpAppTim22.View.DoctorView
            DoctorList = DoctorController.Instance.GetAll();
            DoctorListObservable = new ObservableCollection<Doctor>(DoctorList);
            SelectDoctorCBOX.ItemsSource = DoctorListObservable;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorAppointments doctorAppointments = new DoctorAppointments();
+            doctorAppointments.Show();
+            this.Close();
+        }*/
+
+        public DoctorViewModel DoctorViewModel;
+
+        public DoctorHome()
+        {
+            InitializeComponent();
+            DoctorViewModel = new DoctorViewModel();
+            DataContext = DoctorViewModel;
+            SelectDoctorCBOX.ItemsSource = DoctorViewModel.DoctorList;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

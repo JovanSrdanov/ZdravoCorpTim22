@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicalAppointmentController.Instance.GetByID(1232),
         };
 
+        public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
+
         //allAppointments.add(MedicalAppointmentController.getById(123));
 
 
@@ -44,17 +47,22 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             InitializeComponent();
             List<Doctor> doctorList = DoctorController.Instance.GetAll();
-            appointmentListGrid.ItemsSource = currentDoctorAppointments;
+            CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(currentDoctorAppointments);
+            appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate();
+            appCreate.Show();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            MedicalAppointment appointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
 
+            DoctorAppointmentUpdate appUpdate = new DoctorAppointmentUpdate(appointment);
+            appUpdate.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -65,7 +73,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 return;
             }
             MedicalAppointmentController.Instance.DeleteByID(medicalAppointment.Id);
-            currentDoctorAppointments.Remove(medicalAppointment);
+            CurDocAppointemntsObservable.Remove(medicalAppointment);
             MessageBox.Show("Apointment sa ID-em" + medicalAppointment.Id + "je obrisan");
 
         }
