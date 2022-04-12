@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,24 +27,22 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public event PropertyChangedEventHandler PropertyChanged;
 
         private int id;
-        private int duration;
         private string type;
+
+        private int selectedDoctorID;
 
         public ObservableCollection<Room> RoomList { get; set; }
         public List<Room> rooms;
 
-        public ObservableCollection<Doctor> DoctorList { get; set; }
-        public List<Doctor> doctors;
 
         public ObservableCollection<Patient> PatientList { get; set; }
         public List<Patient> patients;
 
-        public DoctorAppointmentCreate()
+        public DoctorAppointmentCreate(int selectedDoctorID)
         {
             InitializeComponent();
             this.DataContext = this;
-
-           // this.da = dApp;
+            this.selectedDoctorID = selectedDoctorID;
 
             AppointmentTypeCBOX.ItemsSource = Enum.GetValues(typeof(AppointmentType));
 
@@ -51,9 +50,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             RoomList = new ObservableCollection<Room>(rooms);
             AppointmentType_Copy.ItemsSource = RoomList;
 
-            doctors = DoctorController.Instance.GetAll();
-            DoctorList = new ObservableCollection<Doctor>(doctors);
-            AppointmentType_Copy2.ItemsSource = DoctorList;
 
             patients = PatientController.Instance.GetAll();
             PatientList = new ObservableCollection<Patient>(patients);
@@ -66,14 +62,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
-
-        //AppointmentTypeCBOX.ItemSource = appEnum.GetValues(typeof AppointmentType);
-        /* private void OnPropertyChanged(string propertyName = "")
-         {
-             PropertyChangedCallback?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-         }*/
-
         public int ID
         {
             get => id;
@@ -83,16 +71,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 OnPropertyChanged("ID");
             }
         }
-
-        public int Duration 
-            {
-                get => duration;
-                set
-                {
-                    duration = value;
-                    OnPropertyChanged("Duration");
-                }
-            }
 
         public string Type
         {
@@ -112,14 +90,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
 
             AppointmentType at = (AppointmentType)Enum.Parse(typeof(AppointmentType), type);
-            Doctor doctor = AppointmentType_Copy2.SelectedItem as Doctor;
+            Doctor doctor = DoctorController.Instance.GetByID(selectedDoctorID);
             Patient patient = AppointmentType_Copy1.SelectedItem as Patient;
             //DateTime? dt = datePicker.SelectedDate;
+            Room room = AppointmentType_Copy.SelectedItem as Room;
 
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(id,at,datePicker.SelectedDate.Value, null, patient, doctor, duration);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(id,at,datePicker.SelectedDate.Value, datePicker.SelectedDate.Value, room, patient, doctor);
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
 
-            Doctor dr = DoctorController.Instance.GetByID(123);
+            //Doctor dr = DoctorController.Instance.GetByID(123);
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
             
 

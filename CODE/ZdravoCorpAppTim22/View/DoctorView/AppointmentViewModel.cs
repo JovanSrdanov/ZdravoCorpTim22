@@ -17,7 +17,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             List<MedicalAppointment> appointRep = new List<MedicalAppointment>()
             {
-                MedicalAppointmentController.Instance.GetByID(123),
+                /*MedicalAppointmentController.Instance.GetByID(123),
                 MedicalAppointmentController.Instance.GetByID(1231),
                 MedicalAppointmentController.Instance.GetByID(1232),
 
@@ -27,7 +27,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
                 MedicalAppointmentController.Instance.GetByID(125),
                 MedicalAppointmentController.Instance.GetByID(1251),
-                MedicalAppointmentController.Instance.GetByID(1252),
+                MedicalAppointmentController.Instance.GetByID(1252),*/
             };
 
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(appointRep);

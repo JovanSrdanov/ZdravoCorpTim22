@@ -12,15 +12,13 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
-                <DataGridTextColumn Header="Room" Binding="{Binding Path=Room}"/>
-                <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient}"/>
-                <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor}"/>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Path=Duration}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
+                <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.id}"/>
+                <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}"/>
+                <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor.Name}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="269,259,0,0" VerticalAlignment="Top" Click="btnCreate_Click"/>
-        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="360,259,0,0" VerticalAlignment="Top" Click="btnUpdate_Click"/>
         <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="452,259,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
     </Grid>
 </Window>

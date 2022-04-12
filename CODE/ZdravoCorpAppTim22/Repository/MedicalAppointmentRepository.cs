@@ -51,19 +51,19 @@ namespace Repository
 
         public List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>()
         {
-             new MedicalAppointment(123, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(123), 30),
-             new MedicalAppointment(1231, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123), 30),
-             new MedicalAppointment(1232, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123), 30),
+            /* new MedicalAppointment(123, AppointmentType.examination, DateTime.Now,DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(123)),
+             new MedicalAppointment(1231, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123)),
+             new MedicalAppointment(1232, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123)),
 
-             new MedicalAppointment(124, AppointmentType.checkup, DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(124), 45),
-             new MedicalAppointment(1241, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123), 30),
-             new MedicalAppointment(1242, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123), 30),
+             new MedicalAppointment(124, AppointmentType.checkup, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(124)),
+             new MedicalAppointment(1241, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123)),
+             new MedicalAppointment(1242, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123)),
 
-             new MedicalAppointment(125, AppointmentType.operation, DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(125), 35),
-             new MedicalAppointment(1251, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123), 30),
-             new MedicalAppointment(1252, AppointmentType.examination, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123), 30),
+             new MedicalAppointment(125, AppointmentType.operation, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(1), DoctorRepository.Instance.GetByID(125)),
+             new MedicalAppointment(1251, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(2), DoctorRepository.Instance.GetByID(123)),
+             new MedicalAppointment(1252, AppointmentType.examination, DateTime.Now, DateTime.Now, null, PatientRepository.Instance.GetByID(3), DoctorRepository.Instance.GetByID(123)),*/
         };
-
+        
         public Model.MedicalAppointment GetByID(int id)
         {
             int index = medicalAppointments.FindIndex(r => r.Id == id);

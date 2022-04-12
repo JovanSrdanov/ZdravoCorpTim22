@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public ObservableCollection<Patient> PatientList { get; set; }
         public List<Patient> patients;
 
-
         public DoctorAppointmentUpdate(MedicalAppointment medicalAppointment)
         {
             InitializeComponent();
@@ -50,7 +50,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.medAppointment = medicalAppointment;
 
             rooms = RoomController.Instance.GetAllRooms();
+
+
             RoomList = new ObservableCollection<Room>(rooms);
+            Debug.WriteLine(rooms.Count + "");
+            MessageBox.Show(rooms.Count + "");
             AppointmentType_Copy.ItemsSource = RoomList;
 
             doctors = DoctorController.Instance.GetAll();
@@ -117,7 +121,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             Patient patient = AppointmentType_Copy1.SelectedItem as Patient;
             //DateTime? dt = datePicker.SelectedDate;
 
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(medAppointment.Id, at, datePicker.SelectedDate.Value, null, patient, doctor, duration);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(medAppointment.Id, at, datePicker.SelectedDate.Value, DateTime.Now, null, patient, doctor);
             this.Close();
         }
     }

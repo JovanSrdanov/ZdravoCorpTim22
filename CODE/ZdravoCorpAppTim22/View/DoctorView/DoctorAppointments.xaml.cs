@@ -25,12 +25,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         //public static DoctorController doctorController;
         // public static MedicalAppointmentController medicalAppointmentController;
 
-        private List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>()
-        {
-            MedicalAppointmentController.Instance.GetByID(123),
-            MedicalAppointmentController.Instance.GetByID(1231),
-            MedicalAppointmentController.Instance.GetByID(1232),
-        };
+        private List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>();
 
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
 
@@ -42,10 +37,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         // private Doctor dr = doctorController.GetByID(123);
         //public List<MedicalAppointment> = dr.MedicalAppointment;
 
-
-        public DoctorAppointments()
+        public int selectedDoctorId;
+        public DoctorAppointments(int id)
         {
             InitializeComponent();
+            selectedDoctorId = id;
             List<Doctor> doctorList = DoctorController.Instance.GetAll();
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(currentDoctorAppointments);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
@@ -53,16 +49,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate();
+            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(selectedDoctorId);
             appCreate.Show();
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            MedicalAppointment appointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
-
-            DoctorAppointmentUpdate appUpdate = new DoctorAppointmentUpdate(appointment);
-            appUpdate.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

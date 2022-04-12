@@ -30,10 +30,11 @@ namespace Model
             Room = room;
             Patient = patient;
             Doctor = doctor;
-        }
 
-        [JsonIgnore]
-        public Room room;
+           // DoctorID = doctor.ID;
+            //PatientID = patient.ID;
+           // RoomID = room.id;
+        }
         
         [JsonIgnore]
         public Room Room

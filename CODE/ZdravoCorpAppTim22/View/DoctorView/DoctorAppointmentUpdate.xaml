@@ -17,7 +17,7 @@
 
         <Label Content="Room:" HorizontalAlignment="Left" Margin="217,163,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="AppointmentType_Copy" HorizontalAlignment="Left" Margin="451,163,0,0" VerticalAlignment="Top" Width="120"
-            ItemsSource="{Binding RoomList}" DisplayMemberPath="Name"/>
+            ItemsSource="{Binding RoomList}" DisplayMemberPath="Id"/>
 
         <Label Content="Patient:" HorizontalAlignment="Left" Margin="218,206,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706"/>
         <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="451,210,0,0" VerticalAlignment="Top" Width="120"
@@ -26,10 +26,6 @@
         <Label Content="Doctor:" HorizontalAlignment="Left" Margin="218,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706"/>
         <ComboBox x:Name="AppointmentType_Copy2" HorizontalAlignment="Left" Margin="451,251,0,0" VerticalAlignment="Top" Width="120"
             ItemsSource="{Binding DoctorList}" DisplayMemberPath="Name"/>
-
-        <Label Content="Duration:" HorizontalAlignment="Left" Margin="218,294,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706"/>
-        <TextBox x:Name="durationText" HorizontalAlignment="Left" Margin="451,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.362,0.416"
-            Text="{Binding Duration, Mode=TwoWay}"/>
         <Label Content="Update appointment" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top"/>
         <Button Content="Confirm" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 

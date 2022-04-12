@@ -43,6 +43,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         public DoctorViewModel DoctorViewModel;
 
+        
+
         public DoctorHome()
         {
             InitializeComponent();
@@ -53,7 +55,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorAppointments doctorAppointments = new DoctorAppointments();
+            //public static Doctor dr = SelectDoctorCBOX.SelectedItem as Doctor;
+            Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
+            int selectedDoctorId = doctor.ID;
+            DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId);
             doctorAppointments.Show();
             this.Close();
         }
