@@ -38,7 +38,9 @@ namespace ZdravoCorpAppTim22
             var pc = PatientController.Instance.GetAll();
             var doctor = DoctorController.Instance.GetAll();    
             var ec = EquipmentController.Instance.GetAllEquipment();
-            var mac = MedicalAppointmentController.Instance;
+            var mm = MedicalAppointmentController.Instance.getAll();
+
+
 
             InitializeComponent();
         }

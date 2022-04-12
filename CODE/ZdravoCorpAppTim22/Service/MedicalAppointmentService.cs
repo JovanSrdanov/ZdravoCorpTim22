@@ -1,6 +1,8 @@
 using Model;
 using Repository;
 using System;
+using System.Collections.Generic;
+
 namespace Service
 {
     public class MedicalAppointmentService
@@ -23,6 +25,11 @@ namespace Service
 
                 return instance;
             }
+        }
+
+        public List<MedicalAppointment> getAll()
+        {
+            return MedicalAppointmentRepository.Instance.getAll();
         }
 
         public MedicalAppointment GetByID(int id)

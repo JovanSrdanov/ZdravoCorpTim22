@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
 
         public List<MedicalAppointment> LoadData()
         {
+            Debug.WriteLine("rade");
             RoomController roomController = RoomController.Instance;
             DoctorController doctorController = DoctorController.Instance;
             PatientController patientController = PatientController.Instance;
