@@ -48,16 +48,23 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
             foreach (var item in medicalAppointments)
             {
                 Room room = roomController.GetRoomByID(item.RoomID);
-                item.room = room;
-                room.AddMedicalAppointment(item);
-                
+                if(room != null)
+                {
+                    item.room = room;
+                    room.AddMedicalAppointment(item);
+                }
                 Doctor doctor = doctorController.GetByID(item.DoctorID);
-                item.doctor = doctor;
-                doctor.AddMedicalAppointment(item);
-
+                if(doctor != null)
+                {
+                    item.doctor = doctor;
+                    doctor.AddMedicalAppointment(item);
+                }
                 Patient patient = patientController.GetByID(item.PatientID);
-                item.patient = patient;
-                patient.AddMedicalAppointment(item);
+                if(patient != null)
+                {
+                    item.patient = patient;
+                    patient.AddMedicalAppointment(item);
+                }
             }
             return medicalAppointments;
         }
