@@ -1,3 +1,4 @@
+using Controller;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,16 @@ namespace Repository
         public void DeleteByID(int id)
         {
             int index = Rooms.FindIndex(r => r.id == id);
+            if (index == -1) return;
+            Room room = Rooms[index];
+            if(room.medicalAppointment != null)
+            {
+                List<MedicalAppointment> l = room.medicalAppointment;
+                foreach (MedicalAppointment m in l)
+                {
+                    MedicalAppointmentController.Instance.DeleteByID(m.Id);
+                }
+            }
             Rooms.RemoveAt(index);
             roomFileHandler.SaveData(Rooms);
         }
