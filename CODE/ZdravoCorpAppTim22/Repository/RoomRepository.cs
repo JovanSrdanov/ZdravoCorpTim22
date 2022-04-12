@@ -1,9 +1,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using ZdravoCorpAppTim22.Repository.DataHandlers.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
@@ -12,12 +10,12 @@ namespace Repository
         public string FileName = "RoomData.json";
 
         List<Room> Rooms = new List<Room>();
-        Serializer<List<Room>> Serializer;
+        RoomFileHandler roomFileHandler;
 
         public RoomRepository()
         {
-            Serializer = new Serializer<List<Room>>(FileName);
-            Rooms = Serializer.Deserialize();
+            roomFileHandler = new RoomFileHandler(FileName);
+            Rooms = roomFileHandler.LoadData();
         }
 
         public List<Room> GetAll()
@@ -28,6 +26,10 @@ namespace Repository
         public Room GetByID(int id)
         {
             int index = Rooms.FindIndex(r => r.id == id);
+            if (index == -1)
+            {
+                return null;
+            }
             return Rooms[index];
         }
       
@@ -35,20 +37,20 @@ namespace Repository
         {
             int index = Rooms.FindIndex(r => r.id == id);
             Rooms.RemoveAt(index);
-            Serializer.Serialize(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
       
         public void Create(Room roomObj)
         {
             this.Rooms.Add(roomObj);
-            Serializer.Serialize(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
 
         public void Update(Room roomObj)
         {
             int index = Rooms.FindIndex(r => r.id == roomObj.id);
             Rooms[index] = roomObj;
-            Serializer.Serialize(Rooms);
+            roomFileHandler.SaveData(Rooms);
         }
     }
 }
