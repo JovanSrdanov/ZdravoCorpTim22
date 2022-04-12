@@ -179,7 +179,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             return availableMedicalAppointments;
         }
-
+        
         private void ConfirmAppointment_Click(object sender, RoutedEventArgs e)
         {
             MedicalAppointmentStruct medicalAppointmentStruct = (MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem;
@@ -188,7 +188,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 return;
             }
             MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.MedicalAppointmentStartDateTime, medicalAppointmentStruct.MedicalAppointmentEndDateTime, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
-           
+            MessageBox.Show("Sifra sobe je " + medicalAppointmentTemp.Room.id);
             MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
             PatientHome.MedicalAppointmentList.Add(medicalAppointmentTemp);
 

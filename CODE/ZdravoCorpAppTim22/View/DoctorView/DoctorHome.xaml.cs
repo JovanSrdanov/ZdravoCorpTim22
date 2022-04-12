@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Controller;
+using Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,45 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     /// </summary>
     public partial class DoctorHome : Window
     {
+        /*public ObservableCollection<Doctor> DoctorListObservable { get; set; }
+                                                // public static DoctorController doctorController;
+        public List<Doctor> DoctorList;
         public DoctorHome()
         {
             InitializeComponent();
+                                                 //doctorController = new DoctorController();
+           DoctorList = DoctorController.Instance.GetAll();
+           DoctorListObservable = new ObservableCollection<Doctor>(DoctorList);
+           SelectDoctorCBOX.ItemsSource = DoctorListObservable;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorAppointments doctorAppointments = new DoctorAppointments();
+            doctorAppointments.Show();
+            this.Close();
+        }*/
+
+        public DoctorViewModel DoctorViewModel;
+
+        
+
+        public DoctorHome()
+        {
+            InitializeComponent();
+            DoctorViewModel = new DoctorViewModel();
+            DataContext = DoctorViewModel;
+            SelectDoctorCBOX.ItemsSource = DoctorViewModel.DoctorList;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            //public static Doctor dr = SelectDoctorCBOX.SelectedItem as Doctor;
+            Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
+            int selectedDoctorId = doctor.ID;
+            DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId);
+            doctorAppointments.Show();
+            this.Close();
         }
     }
 }
