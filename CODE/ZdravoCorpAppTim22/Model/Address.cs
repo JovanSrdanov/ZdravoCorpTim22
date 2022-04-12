@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 public class Address
 {
     public string Street { get; set; }
@@ -6,6 +8,7 @@ public class Address
     public string Country { get; set; }
     public int ID { get; set; }
 
+    [JsonConstructor]
     public Address()
     {
         Street = "";

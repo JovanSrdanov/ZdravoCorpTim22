@@ -104,11 +104,14 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\FileHandlers\AddressFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\DoctorFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\MedicalAppointmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />

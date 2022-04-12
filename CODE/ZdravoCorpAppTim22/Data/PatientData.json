@@ -1,0 +1,14 @@
+[
+    {
+        "Name": "pacijentIme",
+        "Surname": "pacijentPrezime",
+        "Email": "",
+        "Jmbg": "123",
+        "Password": "123",
+        "Birthday": "2022-04-12T00:00:00+02:00",
+        "Phone": "",
+        "Gender": 0,
+        "addressID": 0,
+        "ID": 0
+    }
+]

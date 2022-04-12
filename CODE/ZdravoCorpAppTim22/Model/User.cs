@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
@@ -13,10 +14,13 @@ namespace Model
         public string Phone { get; set; }
         public Gender Gender { get; set; }
 
+        public int addressID { get; set; }
+
         public int ID { get; set; }
 
-
+        [JsonIgnore]
         public Address address;
+        [JsonIgnore]
         public Address Address
         {
             get
@@ -56,6 +60,7 @@ namespace Model
             Address = address;
         }
 
+        [JsonConstructor]
         public User()
         {
         }

@@ -31,8 +31,14 @@ namespace ZdravoCorpAppTim22
 
         public MainWindow()
         {
-            RoomController rc = RoomController.Instance;
-            EquipmentController ec = EquipmentController.Instance;
+            var ac = AddressController.Instance.GetAll();
+            var rc = RoomController.Instance.GetAllRooms();
+            var sc = SecretaryController.Instance.GetAll();
+            var mc = ManagerController.Instance.GetAll();
+            var pc = PatientController.Instance.GetAll();
+            var doctor = DoctorController.Instance.GetAll();    
+            var ec = EquipmentController.Instance.GetAllEquipment();
+            var mac = MedicalAppointmentController.Instance;
 
             InitializeComponent();
         }

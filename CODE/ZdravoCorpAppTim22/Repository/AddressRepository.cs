@@ -5,17 +5,21 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
     public class AddressRepository
     {
         private static AddressRepository instance;
+        public string FileName = "AddressData.json";
 
-
+        List<Address> addresses = new List<Address>();
+        AddressFileHandler AddressFileHandler;
         private AddressRepository()
         {
-
+            AddressFileHandler = new AddressFileHandler(FileName);
+            addresses = AddressFileHandler.LoadData();
         }
 
         public static AddressRepository Instance
@@ -31,44 +35,46 @@ namespace Repository
             }
         }
 
-        List<Address> adresses = new List<Address>
-        {
-            new Address("Ulica1","broj1","Grad1","Drzava1",1),
-            new Address("Ulica2","broj2","Grad2","Drzava2",2),
-            new Address("Ulica3","broj3","Grad3","Drzava3",3),
-            new Address("Ulica4","broj4","Grad4","Drzava4",4),
-        };
-
-
         public List<Address> GetAll()
         {
-            return this.adresses;
+            return this.addresses;
         }
 
         public Address GetByID(int id)
         {
-            int index = adresses.FindIndex(r => r.ID == id);
-            return adresses[index];
+            int index = addresses.FindIndex(r => r.ID == id);
+            if (index == -1) return null;
+            return addresses[index];
         }
 
         public void DeleteByID(int id)
         {
-            int index = adresses.FindIndex(r => r.ID == id);
-            adresses.RemoveAt(index);
+            int index = addresses.FindIndex(r => r.ID == id);
+            addresses.RemoveAt(index);
+            AddressFileHandler.SaveData(addresses);
         }
 
         public void Create(Address address)
         {
-            adresses.Add(address);
+            if (addresses.Count > 0)
+            {
+                address.ID = addresses[addresses.Count - 1].ID + 1;
+            }
+            else
+            {
+                address.ID = 0;
+            }
+
+            addresses.Add(address);
+            AddressFileHandler.SaveData(addresses);
         }
 
         public void Update(Address address)
         {
-            int index = adresses.FindIndex(r => r.ID == address.ID);
-            adresses[index] = address;
+            int index = addresses.FindIndex(r => r.ID == address.ID);
+            addresses[index] = address;
+            AddressFileHandler.SaveData(addresses);
         }
-
-        public String path;
 
     }
 }

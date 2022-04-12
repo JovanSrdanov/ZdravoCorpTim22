@@ -14,7 +14,7 @@ namespace Service
 
         private AddressService()
         {
-
+            
         }
 
         public static AddressService Instance
