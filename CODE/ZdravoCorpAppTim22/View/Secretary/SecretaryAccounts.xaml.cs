@@ -42,8 +42,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
         }
 
-
-        private void Doctor_RB_Checked(object sender, RoutedEventArgs e)
+        public void DoctorChecked()
         {
             if (AccountsDataGrid != null)
             {
@@ -67,24 +66,68 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     AccountsDataGrid.Items.Add(doktori[i]);
                 }
             }
+        }
+
+        private void Doctor_RB_Checked(object sender, RoutedEventArgs e)
+        {
+            DoctorChecked();
 
         }
 
+        public void ManagerChecked()
+        {
+            if (AccountsDataGrid != null)
+            {
+                SetUpAccountsDataGrid();
+                List<ManagerClass> managers = ManagerController.Instance.GetAll();
 
+                for (int i = 0; i < managers.Count; i++)
+                {
+                    AccountsDataGrid.Items.Add(managers[i]);
+                }
+            }
+        }
 
         private void Manager_RB_Checked(object sender, RoutedEventArgs e)
         {
+            ManagerChecked();
+        }
+
+        public void PatientChecked()
+        {
             SetUpAccountsDataGrid();
+            List<Patient> patients = PatientController.Instance.GetAll();
+
+            for (int i = 0; i < patients.Count; i++)
+            {
+                if (patients[i].Password == null)
+                {
+                    patients[i].Surname = "THIS IS EMERGENCY ACCOUNT";
+                }
+                AccountsDataGrid.Items.Add(patients[i]);
+            }
         }
 
         private void Patient_RB_Checked(object sender, RoutedEventArgs e)
         {
+            PatientChecked();
+        }
+
+        public void SecretaryChecked()
+        {
             SetUpAccountsDataGrid();
+
+            List<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+
+            for (int i = 0; i < secretaries.Count; i++)
+            {
+                AccountsDataGrid.Items.Add(secretaries[i]);
+            }
         }
 
         private void Secretary_RB_Checked(object sender, RoutedEventArgs e)
         {
-            SetUpAccountsDataGrid();
+            SecretaryChecked();
         }
 
         private void NewAccountBtn_Click(object sender, RoutedEventArgs e)
@@ -101,7 +144,30 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 return;
             }
 
-            SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this);
+            //Opening edit account screen
+            {
+                if ((bool)Patient_RB.IsChecked)
+                {
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (Patient)AccountsDataGrid.SelectedItem);
+
+                }
+                else if ((bool)Doctor_RB.IsChecked)
+                {
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (Doctor)AccountsDataGrid.SelectedItem);
+
+                }
+                else if ((bool)Manager_RB.IsChecked)
+                {
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (ManagerClass)AccountsDataGrid.SelectedItem);
+
+                }
+                else if ((bool)Secretary_RB.IsChecked)
+                {
+                    SecretaryAccountsEdit secretaryAccountsEdit = new SecretaryAccountsEdit(this, (SecretaryClass)AccountsDataGrid.SelectedItem);
+
+                }
+            }
+
             this.Hide();
         }
 
@@ -109,6 +175,26 @@ namespace ZdravoCorpAppTim22.View.Secretary
         private void Window_Closed(object sender, System.EventArgs e)
         {
             secretaryHome.Show();
+        }
+
+        private void Window_Activated(object sender, System.EventArgs e)
+        {
+            if ((bool)Doctor_RB.IsChecked)
+            {
+                DoctorChecked();
+            }
+            else if ((bool)Patient_RB.IsChecked)
+            {
+                PatientChecked();
+            }
+            else if ((bool)Manager_RB.IsChecked)
+            {
+                ManagerChecked();
+            }
+            else if ((bool)Secretary_RB.IsChecked)
+            {
+                SecretaryChecked();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
+using Service;
 using System;
 using System.Collections.Generic;
-
 namespace Controller
 {
     public class AddressController
@@ -27,33 +27,31 @@ namespace Controller
 
         public List<Address> GetAll()
         {
-            return addressService.GetAll();
+            return AddressService.Instance.GetAll();
         }
 
         public Address GetByID(int id)
         {
-            return addressService.GetByID(id);
+            return AddressService.Instance.GetByID(id);
 
         }
 
         public void DeleteByID(int id)
         {
-            addressService.DeleteByID(id);
+            AddressService.Instance.DeleteByID(id);
         }
 
         public void Create(Address addres)
         {
-            addressService.Create(addres);
+            AddressService.Instance.Create(addres);
         }
 
         public void Update(Address addres)
         {
-            addressService.Update(addres);
+            AddressService.Instance.Update(addres);
         }
 
         public String path;
-
-        public Service.AddressService addressService;
 
     }
 }

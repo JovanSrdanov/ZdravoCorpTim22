@@ -8,7 +8,17 @@ public class Address
 
     public Address()
     {
-
+        Street = "";
+        Number = "";
+        City = "";
+        Country = "";
+    }
+    public Address(string street = "", string number = "", string city = "", string country = "")
+    {
+        Street = street;
+        Number = number;
+        City = city;
+        Country = country;
     }
 
     public Address(string street, string number, string city, string country, int iD)
@@ -18,5 +28,10 @@ public class Address
         City = city;
         Country = country;
         ID = iD;
+    }
+    public override string ToString()
+    {
+        return Street + "/" + Number + "/" + City + "/" + Country;
+
     }
 }

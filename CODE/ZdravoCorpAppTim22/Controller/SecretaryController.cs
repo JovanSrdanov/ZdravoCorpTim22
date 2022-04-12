@@ -1,4 +1,5 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -28,34 +29,32 @@ namespace Controller
             }
         }
 
-        public List<Secretary> GetAll()
+        public List<SecretaryClass> GetAll()
         {
-            throw new NotImplementedException();
+            return SecretaryService.Instance.GetAll();
         }
 
-        public Model.Secretary GetByID(int id)
+        public Model.SecretaryClass GetByID(int id)
         {
-            throw new NotImplementedException();
+            return SecretaryService.Instance.GetByID(id);
         }
 
         public void DeleteByID(int id)
         {
-            throw new NotImplementedException();
+            SecretaryService.Instance.DeleteByID(id);
         }
 
-        public void Create(Model.Secretary secretary)
+        public void Create(SecretaryClass secretary)
         {
-            throw new NotImplementedException();
+            SecretaryService.Instance.Create(secretary);
         }
 
-        public void Update(Model.Secretary secretary)
+        public void Update(SecretaryClass secretary)
         {
-            throw new NotImplementedException();
+            SecretaryService.Instance.Update(secretary);
         }
 
         public String path;
-
-        public Service.SecretaryService secretaryService;
 
     }
 }

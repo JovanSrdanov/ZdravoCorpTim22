@@ -43,6 +43,19 @@ namespace Model
             Address = address;
         }
 
+        public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address)
+        {
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Jmbg = jmbg;
+            Password = password;
+            Birthday = birthday;
+            Phone = phone;
+            Gender = gender;
+            Address = address;
+        }
+
         public User()
         {
         }
