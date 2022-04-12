@@ -283,7 +283,7 @@
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentType.cs" />
     <Compile Include="Model\Gender.cs" />
-    <Compile Include="Model\Manager.cs" />
+    <Compile Include="Model\ManagerClass.cs" />
     <Compile Include="Model\MedicalAppointment.cs" />
     <Compile Include="Model\MedicalRecord.cs" />
     <Compile Include="Model\Patient.cs" />

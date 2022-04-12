@@ -26,12 +26,12 @@ namespace Controller
             }
         }
 
-        public List<Manager> GetAll()
+        public List<ManagerClass> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Model.Manager GetByID(int id)
+        public Model.ManagerClass GetByID(int id)
         {
             throw new NotImplementedException();
         }
@@ -41,12 +41,12 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public void Create(Model.Manager manager)
+        public void Create(Model.ManagerClass manager)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Model.Manager manager)
+        public void Update(Model.ManagerClass manager)
         {
             throw new NotImplementedException();
         }
