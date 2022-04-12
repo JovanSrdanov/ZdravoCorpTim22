@@ -56,8 +56,10 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
+            <!--
             <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=ID, Mode=TwoWay}" x:Name="IDInput"/>
+            -->
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay}"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
