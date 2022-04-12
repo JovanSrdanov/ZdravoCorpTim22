@@ -1,39 +1,57 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
-
 namespace Service
 {
-   public class ManagerService
-   {
-      public List<Manager> GetAll()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Manager GetByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void DeleteByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Create(Model.Manager manager)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Update(Model.Manager manager)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public String path;
-      
-      public Repository.ManagerRepository managerRepository;
-   
-   }
+    public class ManagerService
+    {
+        private static ManagerService instance;
+
+        private ManagerService()
+        {
+
+        }
+
+        public static ManagerService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ManagerService();
+                }
+
+                return instance;
+            }
+        }
+
+        public List<Manager> GetAll()
+        {
+            return ManagerRepository.Instance.GetAll();
+        }
+
+        public Manager GetByID(int id)
+        {
+            return ManagerRepository.Instance.GetByID(id);
+        }
+
+        public void DeleteByID(int id)
+        {
+            ManagerRepository.Instance.DeleteByID(id);
+        }
+
+        public void Create(Manager manager)
+        {
+            ManagerRepository.Instance.Create(manager);
+        }
+
+        public void Update(Manager manager)
+        {
+            ManagerRepository.Instance.Update(manager);
+        }
+
+        public String path;
+
+    }
 }

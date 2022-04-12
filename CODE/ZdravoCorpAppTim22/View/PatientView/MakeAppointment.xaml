@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MakeAppointment" Height="335.313" Width="227.898">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
@@ -18,10 +20,10 @@
         <ComboBox   SelectedIndex="0"  x:Name="ChooseAppointmentType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="12,103,0,0" RenderTransformOrigin="0.5,0.5" />
 
 
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,163,0,0" RenderTransformOrigin="0.5,0.5"/>
+        <DatePicker DisplayDateStart="{x:Static sys:DateTime.Today}" x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,163,0,0" RenderTransformOrigin="0.5,0.5"/>
 
         <RadioButton Content="Lekar" HorizontalAlignment="Left" Margin="144,230,0,0" VerticalAlignment="Top"/>
-        <RadioButton IsChecked="True"  Content="Vreme" HorizontalAlignment="Left" Margin="11,230,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="TimeRadioButton" IsChecked="True"  Content="Vreme" HorizontalAlignment="Left" Margin="11,230,0,0" VerticalAlignment="Top"/>
         <Label Content="Izabrati prioritet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,199,0,0" RenderTransformOrigin="0.477,3.922"/>
 
     </Grid>

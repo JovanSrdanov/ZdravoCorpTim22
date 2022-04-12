@@ -3,39 +3,59 @@
 // Created: 10 April, 2022 22:26:37
 // Purpose: Definition of Class AddressService
 
+using Repository;
 using System.Collections.Generic;
 
 namespace Service
 {
     public class AddressService
     {
+        private static AddressService instance;
+
+        private AddressService()
+        {
+
+        }
+
+        public static AddressService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AddressService();
+                }
+
+                return instance;
+            }
+        }
+
         public List<Address> GetAll()
         {
-            return addressRepository.GetAll();
+            return AddressRepository.Instance.GetAll();
         }
 
         public Address GetByID(int id)
         {
-            return addressRepository.GetByID(id);
+            return AddressRepository.Instance.GetByID(id);
 
         }
 
         public void DeleteByID(int id)
         {
-            addressRepository.DeleteByID(id);
+            AddressRepository.Instance.DeleteByID(id);
         }
 
         public void Create(Address addres)
         {
-            addressRepository.Create(addres);
+            AddressRepository.Instance.Create(addres);
         }
 
         public void Update(Address addres)
         {
-            addressRepository.Update(addres);
+            AddressRepository.Instance.Update(addres);
         }
 
-        public Repository.AddressRepository addressRepository;
 
     }
 }

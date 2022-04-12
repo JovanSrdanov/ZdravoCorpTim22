@@ -10,6 +10,26 @@ namespace Repository
 {
     public class AddressRepository
     {
+        private static AddressRepository instance;
+
+
+        private AddressRepository()
+        {
+
+        }
+
+        public static AddressRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AddressRepository();
+                }
+
+                return instance;
+            }
+        }
 
         List<Address> adresses = new List<Address>
         {

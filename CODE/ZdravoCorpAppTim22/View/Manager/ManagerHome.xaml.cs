@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.Manager
 {
@@ -20,11 +21,8 @@ namespace ZdravoCorpAppTim22.View.Manager
     /// </summary>
     public partial class ManagerHome : Window
     {
-        public static RoomController RoomController;
-
         public ManagerHome()
         {
-            RoomController = new RoomController();
             InitializeComponent();
         }
 

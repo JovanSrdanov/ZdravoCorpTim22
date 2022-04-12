@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
 
-namespace ZdravoCorpAppTim22.Repository.DataHandlers.Serialization
+namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
 {
     public class Serializer<T> : ISerializer<T> where T : class
     {

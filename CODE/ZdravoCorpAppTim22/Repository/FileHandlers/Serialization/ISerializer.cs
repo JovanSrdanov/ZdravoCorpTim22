@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZdravoCorpAppTim22.Repository.DataHandlers.Serialization
+namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
 {
     internal interface ISerializer<T> where T : class
     {

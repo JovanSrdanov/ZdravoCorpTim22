@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
@@ -11,23 +13,12 @@ namespace Model
         public RoomType type { get; set; }
         public string name { get; set; }
 
+      
+
+        [JsonIgnore]
         public System.Collections.Generic.List<Equipment> equipment;
 
-        public Room() { }
-
-        public Room(int id, int level, RoomType type, string name)
-        {
-            this.id = id;
-            this.level = level;
-            this.type = type;
-            this.name = name;
-        }
-
-        public bool IsAvailable(DateTime time)
-        {
-            throw new NotImplementedException();
-        }
-      
+        [JsonIgnore]
         public System.Collections.Generic.List<Equipment> Equipment
         {
             get
@@ -46,7 +37,37 @@ namespace Model
                 }
             }
         }
-      
+
+        [JsonConstructor]
+        public Room() { }
+
+        public Room(int id, int level, RoomType type, string name)
+        {
+            this.id = id;
+            this.level = level;
+            this.type = type;
+            this.name = name;
+        }
+
+        public bool IsAvailable(DateTime start, DateTime end)
+        {
+            if (medicalAppointment == null)
+                return true;
+            else
+            {
+
+                foreach (MedicalAppointment medicalAppointmentRoom in medicalAppointment)
+                {
+                    if (! ((medicalAppointmentRoom.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentRoom.MedicalAppointmentEndDateTime <= start)) )
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
+                
+            }
+        }
       
         public void AddEquipment(Equipment newEquipment)
         {
@@ -61,7 +82,6 @@ namespace Model
             }
         }
       
-      
         public void RemoveEquipment(Equipment oldEquipment)
         {
             if (oldEquipment == null)
@@ -73,7 +93,6 @@ namespace Model
                     oldEquipment.Room = null;
                 }
         }
-      
       
         public void RemoveAllEquipment()
         {
@@ -88,9 +107,11 @@ namespace Model
                 tmpEquipment.Clear();
             }
         }
-        
+
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
-      
+
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get
@@ -110,7 +131,6 @@ namespace Model
             }
         }
       
-      
         public void AddMedicalAppointment(MedicalAppointment newMedicalAppointment)
         {
             if (newMedicalAppointment == null)
@@ -124,7 +144,6 @@ namespace Model
             }
         }
       
-      
         public void RemoveMedicalAppointment(MedicalAppointment oldMedicalAppointment)
         {
             if (oldMedicalAppointment == null)
@@ -136,7 +155,6 @@ namespace Model
                     oldMedicalAppointment.Room = null;
                 }
         }
-      
       
         public void RemoveAllMedicalAppointment()
         {

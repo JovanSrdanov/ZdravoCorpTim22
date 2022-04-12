@@ -1,39 +1,57 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
 namespace Service
 {
-   public class PatientService
-   {
-      public List<Patient> GetAll()
-      {
-            return patientRepository.GetAll();
-      }
-      
-      public Model.Patient GetByID(int id)
-      {
-            return patientRepository.GetByID(id);
-      }
-      
-      public void DeleteByID(int id)
-      {
-            patientRepository.DeleteByID(id);
-      }
-      
-      public void Create(Model.Patient patient)
-      {
-            patientRepository.Create(patient);
-      }
-      
-      public void Update(Model.Patient patient)
-      {
-            patientRepository.Update(patient);
+    public class PatientService
+    {
+        private static PatientService instance;
+
+        private PatientService()
+        {
+
         }
-      
-      public String path;
-      
-      public Repository.PatientRepository patientRepository = new Repository.PatientRepository();
-   
-   }
+
+        public static PatientService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new PatientService();
+                }
+
+                return instance;
+            }
+        }
+        public List<Patient> GetAll()
+        {
+            return PatientRepository.Instance.GetAll();
+        }
+
+        public Patient GetByID(int id)
+        {
+            return PatientRepository.Instance.GetByID(id);
+        }
+
+        public void DeleteByID(int id)
+        {
+            PatientRepository.Instance.DeleteByID(id);
+        }
+
+        public void Create(Model.Patient patient)
+        {
+            PatientRepository.Instance.Create(patient);
+        }
+
+        public void Update(Model.Patient patient)
+        {
+            PatientRepository.Instance.Update(patient);
+        }
+
+        public String path;
+
+    }
 }
