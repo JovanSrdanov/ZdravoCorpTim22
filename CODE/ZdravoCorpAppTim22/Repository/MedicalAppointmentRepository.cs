@@ -34,7 +34,12 @@ namespace Repository
                 return instance;
             }
         }
-        
+
+        public List<MedicalAppointment> getAll()
+        {
+            return this.medicalAppointments;
+        }
+
         public Model.MedicalAppointment GetByID(int id)
         {
             int index = medicalAppointments.FindIndex(r => r.Id == id);
