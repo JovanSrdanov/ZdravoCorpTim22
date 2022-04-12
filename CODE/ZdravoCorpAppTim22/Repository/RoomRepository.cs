@@ -1,6 +1,8 @@
+using Controller;
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
@@ -36,12 +38,30 @@ namespace Repository
         public void DeleteByID(int id)
         {
             int index = Rooms.FindIndex(r => r.id == id);
+            if (index == -1) return;
+            Room room = Rooms[index];
+            if (room.medicalAppointment != null)
+            {
+                List<MedicalAppointment> l = room.medicalAppointment;
+                foreach (MedicalAppointment m in l)
+                {
+                    MedicalAppointmentController.Instance.DeleteByID(m.Id);
+                }
+            }
             Rooms.RemoveAt(index);
             roomFileHandler.SaveData(Rooms);
         }
       
         public void Create(Room roomObj)
         {
+            if (Rooms.Count > 0)
+            {
+                roomObj.id = Rooms[Rooms.Count - 1].id + 1;
+            }
+            else
+            {
+                roomObj.id = 0;
+            }
             this.Rooms.Add(roomObj);
             roomFileHandler.SaveData(Rooms);
         }

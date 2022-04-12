@@ -1,6 +1,6 @@
 using Model;
-using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
@@ -9,9 +9,14 @@ namespace Repository
         //TO-DO Ispravi nullove 
         private static PatientRepository instance;
 
+        public List<Patient> patients = new List<Patient>();
+        public string FileName = "PatientData.json";
+        PatientFileHandler patientFileHandler;
+
         private PatientRepository()
         {
-
+            patientFileHandler = new PatientFileHandler(FileName);
+            patients = patientFileHandler.LoadData();
         }
 
         public static PatientRepository Instance
@@ -27,13 +32,7 @@ namespace Repository
             }
         }
 
-        public List<Patient> patients = new List<Patient>
-        {
-            new Patient("Jovan","Srdanov","aaa","aaaa","aaaaa",DateTime.Now,"",Gender.male,1,null,null,new List<MedicalAppointment>()),
-            new Patient("Strahinja","Srdanov1","bbb","bbbb","bbbbbb",DateTime.Now,"",Gender.male,2,null,null,null),
-            new Patient("Biljana","Srdanov2","c","cc","ccc",DateTime.Now,"",Gender.male,3,null,null,null)
 
-        };
 
         public List<Patient> GetAll()
         {
@@ -48,23 +47,31 @@ namespace Repository
 
         public void DeleteByID(int id)
         {
-
             int index = patients.FindIndex(r => r.ID == id);
             patients.RemoveAt(index);
+            patientFileHandler.SaveData(patients);
         }
 
         public void Create(Model.Patient patient)
         {
+            if (patients.Count > 0)
+            {
+                patient.ID = patients[patients.Count - 1].ID + 1;
+            }
+            else
+            {
+                patient.ID = 0;
+            }
             this.patients.Add(patient);
+            patientFileHandler.SaveData(patients);
         }
 
         public void Update(Model.Patient patient)
         {
             int index = patients.FindIndex(r => r.ID == patient.ID);
             patients[index] = patient;
+            patientFileHandler.SaveData(patients);
         }
-
-        public String path;
 
     }
 }

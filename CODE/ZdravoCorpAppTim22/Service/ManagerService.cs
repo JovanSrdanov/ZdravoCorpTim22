@@ -26,12 +26,12 @@ namespace Service
             }
         }
 
-        public List<Manager> GetAll()
+        public List<ManagerClass> GetAll()
         {
             return ManagerRepository.Instance.GetAll();
         }
 
-        public Manager GetByID(int id)
+        public ManagerClass GetByID(int id)
         {
             return ManagerRepository.Instance.GetByID(id);
         }
@@ -41,12 +41,12 @@ namespace Service
             ManagerRepository.Instance.DeleteByID(id);
         }
 
-        public void Create(Manager manager)
+        public void Create(ManagerClass manager)
         {
             ManagerRepository.Instance.Create(manager);
         }
 
-        public void Update(Manager manager)
+        public void Update(ManagerClass manager)
         {
             ManagerRepository.Instance.Update(manager);
         }

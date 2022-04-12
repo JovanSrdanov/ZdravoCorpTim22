@@ -1,17 +1,27 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class Doctor : User
     {
         public DoctorSpecialisationType DoctorType { get; set; }
+
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
 
+        [JsonConstructor]
         public Doctor()
         {
         }
 
         public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address, DoctorSpecialisationType doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, iD, address)
+        {
+            DoctorType = doctorType;
+            this.medicalAppointment = medicalAppointment;
+        }
+
+        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, DoctorSpecialisationType doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
         {
             DoctorType = doctorType;
             this.medicalAppointment = medicalAppointment;
@@ -38,7 +48,7 @@ namespace Model
             }
         }
 
-
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get

@@ -1,6 +1,8 @@
+using Controller;
 using Model;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
@@ -8,9 +10,15 @@ namespace Repository
     {
         private static DoctorRepository instance;
 
+        public string Filename = "DoctorData.json";
+        
+        List<Doctor> doctors = new List<Doctor>();
+        DoctorFileHandler doctorFileHandler;
+
         private DoctorRepository()
         {
-
+            doctorFileHandler = new DoctorFileHandler(Filename);
+            doctors = doctorFileHandler.LoadData();
         }
 
         public static DoctorRepository Instance
@@ -20,18 +28,12 @@ namespace Repository
                 if (instance == null)
                 {
                     instance = new DoctorRepository();
+
                 }
 
                 return instance;
             }
         }
-
-        List<Doctor> doctors = new List<Doctor>
-        {
-            new Doctor("Stefan", "Apostolovic", "stefan@gmail.com", "123123123", "stefan123", DateTime.Now, "123321123", Gender.male, 123, null, DoctorSpecialisationType.regular, null),
-            new Doctor("Petar", "Apostolovic1", "stefan1@gmail.com", "223123123", "stefan124", DateTime.Now, "223321123", Gender.male, 124, null, DoctorSpecialisationType.regular, null),
-            new Doctor("Marija", "Apostolovic2", "stefan2@gmail.com", "323123123", "stefan125", DateTime.Now, "323321123", Gender.male, 125, null, DoctorSpecialisationType.regular, null),
-        };
 
         public List<Doctor> GetAll()
         {
@@ -48,20 +50,29 @@ namespace Repository
         {
             int index = doctors.FindIndex(r => r.ID == id);
             doctors.RemoveAt(index);
+            doctorFileHandler.SaveData(doctors);
         }
 
         public void Create(Doctor doctor)
         {
+            if (doctors.Count > 0)
+            {
+                doctor.ID = doctors[doctors.Count - 1].ID + 1;
+            }
+            else
+            {
+                doctor.ID = 0;
+            }
             this.doctors.Add(doctor);
+            doctorFileHandler.SaveData(doctors);
         }
 
         public void Update(Doctor doctor)
         {
             int index = doctors.FindIndex(r => r.ID == doctor.ID);
             doctors[index] = doctor;
+            doctorFileHandler.SaveData(doctors);
         }
-
-        public String path;
 
     }
 }

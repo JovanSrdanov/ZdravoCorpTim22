@@ -13,7 +13,7 @@ namespace Model
         public RoomType type { get; set; }
         public string name { get; set; }
 
-      
+        
 
         [JsonIgnore]
         public System.Collections.Generic.List<Equipment> equipment;

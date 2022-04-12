@@ -104,9 +104,16 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\FileHandlers\AddressFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\DoctorFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\ManagerFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\MedicalAppointmentFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\SecretaryFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
@@ -125,9 +132,20 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\DoctorAppointmentCreate.xaml.cs">
+      <DependentUpon>DoctorAppointmentCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
+      <DependentUpon>DoctorAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\DoctorAppointmentUpdate.xaml.cs">
+      <DependentUpon>DoctorAppointmentUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\DoctorViewModel.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -175,9 +193,24 @@
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergency.xaml.cs">
+      <DependentUpon>SecretaryEmergency.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\DoctorView\DoctorAppointmentCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\DoctorAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\DoctorAppointmentUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,6 +302,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Secretary\SecretaryEmergency.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Secretary\SecretaryHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,7 +320,7 @@
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentType.cs" />
     <Compile Include="Model\Gender.cs" />
-    <Compile Include="Model\Manager.cs" />
+    <Compile Include="Model\ManagerClass.cs" />
     <Compile Include="Model\MedicalAppointment.cs" />
     <Compile Include="Model\MedicalRecord.cs" />
     <Compile Include="Model\Patient.cs" />

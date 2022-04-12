@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
+        [JsonIgnore]
         public MedicalRecord medicalRecord { get; set; }
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
 
 
@@ -30,7 +33,7 @@ namespace Model
         }
 
 
-
+        [JsonConstructor]
         public Patient()
         {
         }
@@ -56,9 +59,33 @@ namespace Model
                 this.medicalAppointment = medicalAppointment;
             }
 
-            
+
         }
 
+        public Patient(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, MedicalRecord medicalRecord, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
+        {
+            if (medicalRecord == null)
+            {
+                this.medicalRecord = new MedicalRecord();
+            }
+            else
+            {
+                this.medicalRecord = medicalRecord;
+            }
+
+
+            if (medicalAppointment == null)
+            {
+                medicalAppointment = new List<MedicalAppointment>();
+            }
+            else
+            {
+                this.medicalAppointment = medicalAppointment;
+            }
+
+        }
+
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get

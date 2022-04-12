@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="DoctorHome" Height="450" Width="800">
     <Grid>
-        
+        <ComboBox x:Name="SelectDoctorCBOX" HorizontalAlignment="Left" Margin="317,122,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=DoctorListObservable}" DisplayMemberPath="Name"
+                  SelectedIndex="0">
+        </ComboBox>
+        <Label Content="Select a doctor" HorizontalAlignment="Left" Margin="332,67,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="348,297,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click"/>
+
     </Grid>
 </Window>

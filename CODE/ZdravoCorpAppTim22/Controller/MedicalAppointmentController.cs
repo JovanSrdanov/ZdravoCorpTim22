@@ -1,6 +1,8 @@
 using Model;
 using Service;
 using System;
+using System.Collections.Generic;
+
 namespace Controller
 {
     public class MedicalAppointmentController
@@ -22,6 +24,11 @@ namespace Controller
 
                 return instance;
             }
+        }
+
+        public List<MedicalAppointment> getAll()
+        {
+            return MedicalAppointmentService.Instance.getAll();
         }
 
         public MedicalAppointment GetByID(int id)

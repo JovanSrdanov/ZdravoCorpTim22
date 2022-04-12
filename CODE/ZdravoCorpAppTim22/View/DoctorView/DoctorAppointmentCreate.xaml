@@ -1,0 +1,36 @@
+﻿<Window x:Class="ZdravoCorpAppTim22.View.DoctorView.DoctorAppointmentCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
+        mc:Ignorable="d"
+        Title="DoctorAppointmentCreate" Height="450" Width="800">
+    <Grid>
+        <Label Content="AppointmentID:" HorizontalAlignment="Left" Margin="203,55,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="437,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.362,0.416"
+                 Text="{Binding Path=ID, Mode=TwoWay}" x:Name="IDInput"/>
+
+        <Label Content="AppointmentType:" HorizontalAlignment="Left" Margin="203,99,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="AppointmentTypeCBOX" HorizontalAlignment="Left" Margin="437,99,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.486,5.748"
+                  Text="{Binding Path=Type, Mode=TwoWay}"/>
+
+        <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="437,145,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Margin="203,143,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Room:" HorizontalAlignment="Left" Margin="203,190,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="AppointmentType_Copy" HorizontalAlignment="Left" Margin="437,190,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Path=RoomList}" DisplayMemberPath="name"/>
+
+        <Label Content="Patient:" HorizontalAlignment="Left" Margin="204,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706"/>
+        <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="437,237,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Path=PatientList}" DisplayMemberPath="Name"/>
+
+        
+
+        <Button Name="confirmButton" Content="Confirm" HorizontalAlignment="Center" Margin="0,378,0,0" VerticalAlignment="Top" Click="confirmButton_Click"/>
+        <Label Content="Create new appointment" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>

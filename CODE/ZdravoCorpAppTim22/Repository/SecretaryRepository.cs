@@ -1,15 +1,19 @@
 using Model;
 using System;
 using System.Collections.Generic;
-
+using ZdravoCorpAppTim22.Repository.FileHandlers;
 namespace Repository
 {
     public class SecretaryRepository
     {
         private static SecretaryRepository instance;
-
+        public string FileName = "SecretaryData.json";
+        SecretaryFileHandler secretaryFileHandler;
+        List<SecretaryClass> secretaries = new List<SecretaryClass>();
         private SecretaryRepository()
         {
+            secretaryFileHandler = new SecretaryFileHandler(FileName);
+            secretaries = secretaryFileHandler.LoadData();
 
         }
 
@@ -25,19 +29,13 @@ namespace Repository
                 return instance;
             }
         }
-        List<Secretary> secretaries = new List<Secretary>
-        {
-            new Secretary("Jovan", "Zelic", "jovan@gmail.com", "1231231239", "stefan1239", DateTime.Now, "123321123", Gender.male, 130, null),
-            new Secretary("Erzebet", "Jovanovic", "erzebet@gmail.com", "223123123", "stefan1247", DateTime.Now, "223321123", Gender.female, 131, null),
-            new Secretary("Sulejman", "Kovacevic", "sulejman@gmail.com", "323123123", "stefan12553", DateTime.Now, "323321123", Gender.male, 132, null),
-        };
 
-        public List<Secretary> GetAll()
+        public List<SecretaryClass> GetAll()
         {
             return secretaries;
         }
 
-        public Secretary GetByID(int id)
+        public SecretaryClass GetByID(int id)
         {
             int index = secretaries.FindIndex(r => r.ID == id);
             return secretaries[index];
@@ -47,17 +45,29 @@ namespace Repository
         {
             int index = secretaries.FindIndex(r => r.ID == id);
             secretaries.RemoveAt(index);
+            secretaryFileHandler.SaveData(secretaries);
         }
 
-        public void Create(Secretary secretary)
+        public void Create(SecretaryClass secretary)
         {
-            this.secretaries.Add(secretary);
+            if (secretaries.Count > 0)
+            {
+                secretary.ID = secretaries[secretaries.Count - 1].ID + 1;
+            }
+            else
+            {
+                secretary.ID = 0;
+            }
+
+            secretaries.Add(secretary);
+            secretaryFileHandler.SaveData(secretaries);
         }
 
-        public void Update(Secretary secretary)
+        public void Update(SecretaryClass secretary)
         {
             int index = secretaries.FindIndex(r => r.ID == secretary.ID);
             secretaries[index] = secretary;
+            secretaryFileHandler.SaveData(secretaries);
         }
 
         public String path;

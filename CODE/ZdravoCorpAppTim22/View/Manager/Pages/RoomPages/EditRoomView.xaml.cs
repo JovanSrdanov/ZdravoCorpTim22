@@ -36,6 +36,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         {
             init();
             add = true;
+            id = 0;
         }
 
         public EditRoomView(Room room)
@@ -47,7 +48,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             RoomName = room.name;
             type = room.type.ToString();
 
-            IDInput.IsEnabled = false;
+            //IDInput.IsEnabled = false;
         }
 
         private void init()
@@ -113,21 +114,23 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 return;
             }
+            if (name == null || name.Equals(""))
+            {
+                MessageBox.Show("Name can't be empty");
+                return;
+            }
+            if (level < 0)
+            {
+                MessageBox.Show("Level can't be nagative");
+                return;
+            }
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(id, level, rt, name);
 
             if (add)
             {
-                if (!checkIfRoomExists(room.id))
-                {
-                    RoomController.Instance.CreateRoom(room);
-                }
-                else
-                {
-                    MessageBox.Show("Room with id: " + room.id + " already exists");
-                    return;
-                }
+                RoomController.Instance.CreateRoom(room);   
             }
             else
             {
