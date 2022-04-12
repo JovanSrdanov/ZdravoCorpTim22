@@ -26,15 +26,12 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
                 item.RoomID = item.Room.id;
                 item.DoctorID = item.Doctor.ID;
                 item.PatientID = item.PatientID;
-
-                serializer.Serialize(medicalAppointments);
             }
-
+            serializer.Serialize(medicalAppointments);
         }
 
         public List<MedicalAppointment> LoadData()
         {
-            Debug.WriteLine("rade");
             RoomController roomController = RoomController.Instance;
             DoctorController doctorController = DoctorController.Instance;
             PatientController patientController = PatientController.Instance;

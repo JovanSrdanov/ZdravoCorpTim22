@@ -2,6 +2,7 @@ using Controller;
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
@@ -39,7 +40,7 @@ namespace Repository
             int index = Rooms.FindIndex(r => r.id == id);
             if (index == -1) return;
             Room room = Rooms[index];
-            if(room.medicalAppointment != null)
+            if (room.medicalAppointment != null)
             {
                 List<MedicalAppointment> l = room.medicalAppointment;
                 foreach (MedicalAppointment m in l)
