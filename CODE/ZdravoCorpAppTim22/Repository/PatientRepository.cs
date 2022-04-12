@@ -29,7 +29,7 @@ namespace Repository
 
         public List<Patient> patients = new List<Patient>
         {
-            new Patient("Jovan","Srdanov","aaa","aaaa","aaaaa",DateTime.Now,"",Gender.male,1,null,null,null),
+            new Patient("Jovan","Srdanov","aaa","aaaa","aaaaa",DateTime.Now,"",Gender.male,1,null,null,new List<MedicalAppointment>()),
             new Patient("Strahinja","Srdanov1","bbb","bbbb","bbbbbb",DateTime.Now,"",Gender.male,2,null,null,null),
             new Patient("Biljana","Srdanov2","c","cc","ccc",DateTime.Now,"",Gender.male,3,null,null,null)
 

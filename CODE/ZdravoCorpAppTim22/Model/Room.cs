@@ -13,6 +13,8 @@ namespace Model
         public RoomType type { get; set; }
         public string name { get; set; }
 
+      
+
         [JsonIgnore]
         public System.Collections.Generic.List<Equipment> equipment;
 
@@ -47,9 +49,24 @@ namespace Model
             this.name = name;
         }
 
-        public bool IsAvailable(DateTime time)
+        public bool IsAvailable(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            if (medicalAppointment == null)
+                return true;
+            else
+            {
+
+                foreach (MedicalAppointment medicalAppointmentRoom in medicalAppointment)
+                {
+                    if (! ((medicalAppointmentRoom.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentRoom.MedicalAppointmentEndDateTime <= start)) )
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
+                
+            }
         }
       
         public void AddEquipment(Equipment newEquipment)
