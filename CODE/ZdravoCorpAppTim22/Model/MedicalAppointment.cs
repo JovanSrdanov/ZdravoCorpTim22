@@ -8,21 +8,21 @@ namespace Model
     {
         public int Id { get; set; }
         public AppointmentType Type { get; set; }
-        public DateTime Date { get; set; }
-        public int Duration { get; set; }
+        public DateTime MedicalAppointmentStartDateTime { get; set; }
+        public DateTime MedicalAppointmentEndDateTime { get; set; }
 
-        public Room room;
-
-        public MedicalAppointment(int id, AppointmentType type, DateTime date, Room room, Patient patient, Doctor doctor, int duration)
+        public MedicalAppointment(int id, AppointmentType type, DateTime medicalAppointmentStartDateTime, DateTime medicalAppointmentEndDateTime, Room room, Patient patient, Doctor doctor)
         {
             Id = id;
             Type = type;
-            Date = date;
+            MedicalAppointmentStartDateTime = medicalAppointmentStartDateTime;
+            MedicalAppointmentEndDateTime = medicalAppointmentEndDateTime;
             Room = room;
             Patient = patient;
             Doctor = doctor;
-            Duration = duration;
         }
+
+        public Room room;
 
         public Room Room
         {

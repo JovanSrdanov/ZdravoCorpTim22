@@ -12,16 +12,18 @@ namespace ZdravoCorpAppTim22.View.PatientView
     public partial class PatientHome : Window
     {
 
-        public ObservableCollection<Patient> PatientList { get; set; }
-        public List<Patient> patients;
+        public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
+        public List<MedicalAppointment> medicalAppointments;
         public PatientHome()
         {
             InitializeComponent();
 
             WelcomePatientLabel.Content = "Dobrodosli! Pacijent: " + PatientSelectionForTemporaryPurpose.LoggedPatient.Name;
-            patients = PatientController.Instance.GetAll();
-            PatientList = new ObservableCollection<Patient>(patients);
-            dataGrid.ItemsSource = PatientList;
+
+            medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.ID).MedicalAppointment;
+
+            MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
+            dataGrid.ItemsSource = MedicalAppointmentList;
 
 
         }
@@ -34,14 +36,13 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void RemoveAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGrid.SelectedItem;
-            if (patient == null)
+            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)dataGrid.SelectedItem;
+            if (medicalAppointmentTemp == null)
             {
                 return;
             }
-            MessageBox.Show("Obrisan je pacijent sa Id: " + patient.ID);
-            PatientController.Instance.DeleteByID(patient.ID);
-            PatientList.Remove(patient);
+            MedicalAppointmentController.Instance.DeleteByID(medicalAppointmentTemp.Id);
+            MedicalAppointmentList.Remove(medicalAppointmentTemp);
 
 
         }

@@ -102,6 +102,7 @@
     </ApplicationDefinition>
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\FileHandlers\EquipmentFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
