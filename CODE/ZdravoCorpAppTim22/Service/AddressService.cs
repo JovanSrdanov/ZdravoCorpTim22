@@ -55,7 +55,5 @@ namespace Service
         {
             AddressRepository.Instance.Update(addres);
         }
-
-
     }
 }

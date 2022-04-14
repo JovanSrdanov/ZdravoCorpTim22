@@ -29,6 +29,8 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             InitializeComponent();
             ViewModel = new RoomViewModel();
             DataContext = ViewModel;
+
+            
         }
 
         private void AddRoom_Click(object sender, RoutedEventArgs e)

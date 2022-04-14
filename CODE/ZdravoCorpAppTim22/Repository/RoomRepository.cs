@@ -9,15 +9,31 @@ namespace Repository
 {
     public class RoomRepository
     {
+        private static RoomRepository instance;
+
         public string FileName = "RoomData.json";
 
         List<Room> Rooms = new List<Room>();
         RoomFileHandler roomFileHandler;
 
-        public RoomRepository()
+        private RoomRepository()
         {
             roomFileHandler = new RoomFileHandler(FileName);
             Rooms = roomFileHandler.LoadData();
+        }
+
+        public static RoomRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomRepository();
+
+                }
+
+                return instance;
+            }
         }
 
         public List<Room> GetAll()

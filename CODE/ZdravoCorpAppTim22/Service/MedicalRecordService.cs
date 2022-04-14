@@ -24,9 +24,6 @@ namespace Service
       {
          throw new NotImplementedException();
       }
-      
-      public String path;
-      
       public Repository.MedicalRecordRepository medicalRecordRepository;
    
    }

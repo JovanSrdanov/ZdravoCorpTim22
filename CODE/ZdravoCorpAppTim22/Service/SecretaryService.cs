@@ -51,8 +51,5 @@ namespace Service
         {
             SecretaryRepository.Instance.Update(secretary);
         }
-
-        public String path;
-
     }
 }

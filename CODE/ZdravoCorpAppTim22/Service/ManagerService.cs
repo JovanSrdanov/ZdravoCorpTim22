@@ -50,8 +50,5 @@ namespace Service
         {
             ManagerRepository.Instance.Update(manager);
         }
-
-        public String path;
-
     }
 }

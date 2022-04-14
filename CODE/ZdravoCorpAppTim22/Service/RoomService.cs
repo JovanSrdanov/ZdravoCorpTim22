@@ -1,4 +1,5 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -6,32 +7,44 @@ namespace Service
 {
    public class RoomService
    {
-      public List<Room> GetAllRooms()
+        private static RoomService instance;
+
+        private RoomService() { }
+        public static RoomService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomService();
+                }
+                return instance;
+            }
+        }
+        public List<Room> GetAllRooms()
       {
-            return roomRepository.GetAll();
+            return RoomRepository.Instance.GetAll();
       }
       
       public Room GetRoomByID(int id)
       {
-            return roomRepository.GetByID(id);
+            return RoomRepository.Instance.GetByID(id);
       }
       
       public void DeleteRoomByID(int id)
       {
-            roomRepository.DeleteByID(id);
+            RoomRepository.Instance.DeleteByID(id);
         }
       
       public void CreateRoom(Room roomObj)
       {
-         roomRepository.Create(roomObj);
+            RoomRepository.Instance.Create(roomObj);
       }
       
       public void UpdateRoom(Room roomObj)
       {
-            roomRepository.Update(roomObj);
+            RoomRepository.Instance.Update(roomObj);
         }
-      
-      public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
    
    }
 }

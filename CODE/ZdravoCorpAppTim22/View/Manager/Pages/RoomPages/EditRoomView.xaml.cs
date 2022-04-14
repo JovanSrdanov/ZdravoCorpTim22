@@ -130,7 +130,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
             if (add)
             {
-                RoomController.Instance.CreateRoom(room);   
+                RoomController.Instance.CreateRoom(room);
             }
             else
             {

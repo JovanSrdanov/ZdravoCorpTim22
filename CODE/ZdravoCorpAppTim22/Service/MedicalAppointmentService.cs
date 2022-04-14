@@ -51,8 +51,5 @@ namespace Service
         {
             MedicalAppointmentRepository.Instance.Update(medicalAppointment);
         }
-
-        public String path;
-
     }
 }

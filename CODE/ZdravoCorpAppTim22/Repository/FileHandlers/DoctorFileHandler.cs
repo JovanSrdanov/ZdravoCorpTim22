@@ -20,42 +20,12 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
 
         public void SaveData(List<Doctor> doctors)
         {
-            foreach(Doctor doctor in doctors)
-            {
-                if(doctor.Address != null)
-                {
-                    doctor.addressID = doctor.address.ID;
-                }
-                else
-                {
-                    doctor.addressID = -1;
-                }
-            }
             serializer.Serialize(doctors);
         }
 
         public List<Doctor> LoadData()
         {
             List<Doctor> doctors = serializer.Deserialize();
-            if (doctors == null)
-            {
-                return new List<Doctor>();
-            }
-            foreach (Doctor doctor in doctors)
-            {
-                if (doctor.addressID != -1)
-                {
-                    Address ad = AddressController.Instance.GetByID(doctor.addressID);
-                    if (ad != null)
-                    {
-                        doctor.Address = ad;
-                    }
-                    else
-                    {
-                        doctor.addressID = -1;
-                    }
-                }
-            }
             return doctors == null? new List<Doctor>() : doctors;
         }
     }

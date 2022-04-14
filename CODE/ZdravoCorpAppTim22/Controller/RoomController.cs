@@ -1,4 +1,5 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -21,30 +22,29 @@ namespace Controller
             }
         }
 
-        public Service.RoomService roomService = new Service.RoomService();
         public List<Room> GetAllRooms()
         {
-            return roomService.GetAllRooms();
+            return RoomService.Instance.GetAllRooms();
         }
       
         public Room GetRoomByID(int id)
         {
-            return roomService.GetRoomByID(id);
+            return RoomService.Instance.GetRoomByID(id);
         }
       
         public void DeleteRoomByID(int id)
         {
-            roomService.DeleteRoomByID(id);
+            RoomService.Instance.DeleteRoomByID(id);
         }
       
         public void CreateRoom(Room roomObj)
         {
-            roomService.CreateRoom(roomObj);
+            RoomService.Instance.CreateRoom(roomObj);
         }
       
         public void UpdateRoom(Room roomObj)
         {
-            roomService.UpdateRoom(roomObj);
+            RoomService.Instance.UpdateRoom(roomObj);
         }
    }
 }
