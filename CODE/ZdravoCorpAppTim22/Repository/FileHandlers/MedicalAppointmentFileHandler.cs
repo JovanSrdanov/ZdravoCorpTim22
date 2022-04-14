@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,49 +22,13 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers
 
         public void SaveData(List<MedicalAppointment> medicalAppointments)
         {
-            foreach (var item in medicalAppointments)
-            {
-                item.RoomID = item.Room.id;
-                item.DoctorID = item.Doctor.ID;
-                item.PatientID = item.PatientID;
-            }
             serializer.Serialize(medicalAppointments);
         }
 
         public List<MedicalAppointment> LoadData()
         {
-            RoomController roomController = RoomController.Instance;
-            DoctorController doctorController = DoctorController.Instance;
-            PatientController patientController = PatientController.Instance;
-            List < MedicalAppointment > medicalAppointments = serializer.Deserialize();
-
-            if (medicalAppointments == null)
-            {
-                return new List<MedicalAppointment>();
-            }
-
-            foreach (var item in medicalAppointments)
-            {
-                Room room = roomController.GetRoomByID(item.RoomID);
-                if(room != null)
-                {
-                    item.room = room;
-                    room.AddMedicalAppointment(item);
-                }
-                Doctor doctor = doctorController.GetByID(item.DoctorID);
-                if(doctor != null)
-                {
-                    item.doctor = doctor;
-                    doctor.AddMedicalAppointment(item);
-                }
-                Patient patient = patientController.GetByID(item.PatientID);
-                if(patient != null)
-                {
-                    item.patient = patient;
-                    patient.AddMedicalAppointment(item);
-                }
-            }
-            return medicalAppointments;
+            List <MedicalAppointment> medicalAppointments = serializer.Deserialize();
+            return medicalAppointments == null ? new List<MedicalAppointment>() : medicalAppointments;
         }
     }
 }

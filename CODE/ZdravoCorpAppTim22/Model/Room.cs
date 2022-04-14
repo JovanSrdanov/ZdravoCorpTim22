@@ -7,13 +7,10 @@ namespace Model
 {
     public class Room
     {
-
         public int id { get; set; }
         public int level { get; set; }
         public RoomType type { get; set; }
         public string name { get; set; }
-
-        
 
         [JsonIgnore]
         public System.Collections.Generic.List<Equipment> equipment;
@@ -55,17 +52,14 @@ namespace Model
                 return true;
             else
             {
-
                 foreach (MedicalAppointment medicalAppointmentRoom in medicalAppointment)
                 {
                     if (! ((medicalAppointmentRoom.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentRoom.MedicalAppointmentEndDateTime <= start)) )
                     {
                         return false;
                     }
-
                 }
                 return true;
-                
             }
         }
       

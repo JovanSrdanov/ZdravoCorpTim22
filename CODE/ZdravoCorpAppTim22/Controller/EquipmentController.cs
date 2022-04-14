@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoCorpAppTim22.Service;
 
 namespace ZdravoCorpAppTim22.Controller
 {
@@ -24,30 +25,28 @@ namespace ZdravoCorpAppTim22.Controller
         }
         public List<Equipment> GetAllEquipment()
         {
-            return this.equipmentService.GetAllEquipment();
+            return EquipmentService.Instance.GetAllEquipment();
         }
 
         public Equipment GetEquipmentByID(int id)
         {
-            return this.equipmentService.GetEquipmentByID(id);
+            return EquipmentService.Instance.GetEquipmentByID(id);
         }
 
         public void DeleteEquipmentByID(int id)
         {
-            this.equipmentService.DeleteEquipmentByID(id);
+            EquipmentService.Instance.DeleteEquipmentByID(id);
         }
 
         public void CreateEquipment(Equipment equipment)
         {
-            this.equipmentService.CreateEquipment(equipment);
+            EquipmentService.Instance.CreateEquipment(equipment);
         }
 
         public void UpdateEquipment(Equipment equipment)
         {
-            this.equipmentService.UpdateEquipment(equipment);
+            EquipmentService.Instance.UpdateEquipment(equipment);
         }
-
-        public Service.EquipmentService equipmentService = new Service.EquipmentService();
 
     }
 }

@@ -112,8 +112,12 @@
     <Compile Include="Repository\FileHandlers\PatientFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\RoomFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\SecretaryFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\DoctorToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\EquipmentToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
-    <Compile Include="Repository\FileHandlers\Serialization\PatientFileHandler.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\PatientToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\RoomToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />

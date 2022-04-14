@@ -50,8 +50,5 @@ namespace Service
         {
             DoctorRepository.Instance.Update(doctor);
         }
-
-        public String path;
-
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
@@ -9,9 +10,10 @@ namespace Model
         public string name { get; set; }
         public int amount { get; set; }
         public EquipmentType type { get; set; }
-        [JsonIgnore]
+
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room room;
-        [JsonIgnore]
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room Room
         {
             get
@@ -36,8 +38,6 @@ namespace Model
                 }
             }
         }
-
-        public int RoomID { get; set; }
 
         [JsonConstructor]
         public Equipment() { }

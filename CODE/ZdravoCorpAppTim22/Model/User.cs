@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
@@ -13,14 +14,11 @@ namespace Model
         public DateTime Birthday { get; set; }
         public string Phone { get; set; }
         public Gender Gender { get; set; }
-
-        public int addressID { get; set; }
-
         public int ID { get; set; }
 
-        [JsonIgnore]
+        [JsonConverter(typeof(AddressToIDConverter))]
         public Address address;
-        [JsonIgnore]
+        [JsonConverter(typeof(AddressToIDConverter))]
         public Address Address
         {
             get

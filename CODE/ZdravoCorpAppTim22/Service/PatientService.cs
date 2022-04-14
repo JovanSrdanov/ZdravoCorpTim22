@@ -50,8 +50,5 @@ namespace Service
         {
             PatientRepository.Instance.Update(patient);
         }
-
-        public String path;
-
     }
 }
