@@ -19,7 +19,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
 
         public override void Write(Utf8JsonWriter writer, Patient value, JsonSerializerOptions options)
         {
-            writer.WriteNumberValue(value.ID);
+            writer.WriteNumberValue(value.Id);
         }
     }
 }

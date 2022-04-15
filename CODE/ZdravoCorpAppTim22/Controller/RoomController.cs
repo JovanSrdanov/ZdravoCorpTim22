@@ -2,14 +2,14 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
 {
-   public class RoomController
-   {
+   public class RoomController : GenericController<RoomService, Room>
+    {
         private static RoomController instance;
-
-        private RoomController() { }
+        private RoomController() : base(RoomService.Instance) { }
         public static RoomController Instance 
         {
             get
@@ -20,35 +20,6 @@ namespace Controller
                 }
                 return instance;
             }
-        }
-        public void Load()
-        {
-            RoomService.Instance.Load();
-        }
-
-        public List<Room> GetAllRooms()
-        {
-            return RoomService.Instance.GetAllRooms();
-        }
-      
-        public Room GetRoomByID(int id)
-        {
-            return RoomService.Instance.GetRoomByID(id);
-        }
-      
-        public void DeleteRoomByID(int id)
-        {
-            RoomService.Instance.DeleteRoomByID(id);
-        }
-      
-        public void CreateRoom(Room roomObj)
-        {
-            RoomService.Instance.CreateRoom(roomObj);
-        }
-      
-        public void UpdateRoom(Room roomObj)
-        {
-            RoomService.Instance.UpdateRoom(roomObj);
         }
    }
 }

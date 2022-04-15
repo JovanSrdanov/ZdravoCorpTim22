@@ -446,19 +446,19 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     switch (currentAccount)
                     {
                         case 0:
-                            PatientController.Instance.DeleteByID(Patient.ID);
+                            PatientController.Instance.DeleteByID(Patient.Id);
                             break;
 
                         case 1:
-                            ManagerController.Instance.DeleteByID(Manager.ID);
+                            ManagerController.Instance.DeleteByID(Manager.Id);
                             break;
 
                         case 2:
-                            SecretaryController.Instance.DeleteByID(Secretary.ID);
+                            SecretaryController.Instance.DeleteByID(Secretary.Id);
                             break;
 
                         case 3:
-                            DoctorController.Instance.DeleteByID(Doctor.ID);
+                            DoctorController.Instance.DeleteByID(Doctor.Id);
                             break;
                         default:
                             MessageBox.Show("Something is wrong!");

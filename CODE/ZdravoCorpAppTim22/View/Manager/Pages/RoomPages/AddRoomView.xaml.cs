@@ -112,7 +112,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(id, level, rt, name);
-            RoomController.Instance.CreateRoom(room);
+            RoomController.Instance.Create(room);
 
             this.NavigationService.GoBack();
         }

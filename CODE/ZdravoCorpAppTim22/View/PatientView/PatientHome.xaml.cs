@@ -20,7 +20,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             WelcomePatientLabel.Content = "Dobrodosli! Pacijent: " + PatientSelectionForTemporaryPurpose.LoggedPatient.Name;
 
-            medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.ID).MedicalAppointment;
+            medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
 
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             dataGrid.ItemsSource = MedicalAppointmentList;

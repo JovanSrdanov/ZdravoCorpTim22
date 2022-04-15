@@ -5,18 +5,14 @@
 
 using Repository;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
 {
-    public class AddressService
+    public class AddressService : GenericService<AddressRepository, Address>
     {
         private static AddressService instance;
-
-        private AddressService()
-        {
-            
-        }
-
+        private AddressService() : base(AddressRepository.Instance) { }
         public static AddressService Instance
         {
             get
@@ -28,36 +24,6 @@ namespace Service
 
                 return instance;
             }
-        }
-
-        public void Load()
-        {
-            AddressRepository.Instance.Load();
-        }
-
-        public List<Address> GetAll()
-        {
-            return AddressRepository.Instance.GetAll();
-        }
-
-        public Address GetByID(int id)
-        {
-            return AddressRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            AddressRepository.Instance.DeleteByID(id);
-        }
-
-        public void Create(Address addres)
-        {
-            AddressRepository.Instance.Create(addres);
-        }
-
-        public void Update(Address addres)
-        {
-            AddressRepository.Instance.Update(addres);
         }
     }
 }

@@ -5,18 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Repository;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
 {
-    public class EquipmentService
+    public class EquipmentService : GenericService<EquipmentRepository, Equipment>
     {
         private static EquipmentService instance;
-
-        private EquipmentService()
-        {
-
-        }
-
+        private EquipmentService() : base(EquipmentRepository.Instance) { }
         public static EquipmentService Instance
         {
             get
@@ -29,36 +25,5 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-
-        public void Load()
-        {
-            EquipmentRepository.Instance.Load();
-        }
-
-        public List<Equipment> GetAllEquipment()
-        {
-            return EquipmentRepository.Instance.GetAll();
-        }
-
-        public Equipment GetEquipmentByID(int id)
-        {
-            return EquipmentRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteEquipmentByID(int id)
-        {
-            EquipmentRepository.Instance.DeleteByID(id);
-        }
-
-        public void CreateEquipment(Equipment equipment)
-        {
-            EquipmentRepository.Instance.Create(equipment);
-        }
-
-        public void UpdateEquipment(Equipment equipment)
-        {
-            EquipmentRepository.Instance.Update(equipment);
-        }
-
     }
 }

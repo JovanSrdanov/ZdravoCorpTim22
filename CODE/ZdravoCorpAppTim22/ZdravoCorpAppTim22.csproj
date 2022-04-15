@@ -101,8 +101,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\Generic\GenericController.cs" />
+    <Compile Include="Controller\Generic\IController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
@@ -116,6 +119,8 @@
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\Generic\GenericRepository.cs" />
+    <Compile Include="Repository\Generic\IRepository.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
     <Compile Include="Repository\MedicalAppointmentRepository.cs" />
     <Compile Include="Repository\MedicalRecordRepository.cs" />
@@ -125,6 +130,8 @@
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\Generic\GenericService.cs" />
+    <Compile Include="Service\Generic\IService.cs" />
     <Compile Include="Service\RenovationService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\ManagerService.cs" />
@@ -171,6 +178,7 @@
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\ViewModels\RenovationViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
     <Compile Include="View\Manager\Views\CustomListItem.cs" />
     <Compile Include="View\Manager\Views\NavMenu.xaml.cs">

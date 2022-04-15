@@ -2,11 +2,12 @@
 
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-    public class MedicalAppointment
+    public class MedicalAppointment : IHasID
     {
         public int Id { get; set; }
         public AppointmentType Type { get; set; }

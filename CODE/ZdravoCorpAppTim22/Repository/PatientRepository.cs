@@ -1,10 +1,11 @@
 using Model;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class PatientRepository
+    public class PatientRepository : IRepository<Patient>
     {
         private static PatientRepository instance;
 
@@ -42,13 +43,13 @@ namespace Repository
 
         public Model.Patient GetByID(int id)
         {
-            int index = patients.FindIndex(r => r.ID == id);
+            int index = patients.FindIndex(r => r.Id == id);
             return patients[index];
         }
 
         public void DeleteByID(int id)
         {
-            int index = patients.FindIndex(r => r.ID == id);
+            int index = patients.FindIndex(r => r.Id == id);
             patients.RemoveAt(index);
             patientFileHandler.SaveData(patients);
         }
@@ -57,11 +58,11 @@ namespace Repository
         {
             if (patients.Count > 0)
             {
-                patient.ID = patients[patients.Count - 1].ID + 1;
+                patient.Id = patients[patients.Count - 1].Id + 1;
             }
             else
             {
-                patient.ID = 0;
+                patient.Id = 0;
             }
             this.patients.Add(patient);
             patientFileHandler.SaveData(patients);
@@ -69,7 +70,7 @@ namespace Repository
 
         public void Update(Model.Patient patient)
         {
-            int index = patients.FindIndex(r => r.ID == patient.ID);
+            int index = patients.FindIndex(r => r.Id == patient.Id);
             patients[index] = patient;
             patientFileHandler.SaveData(patients);
         }

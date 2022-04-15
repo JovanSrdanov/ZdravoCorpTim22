@@ -2,18 +2,14 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
 {
-    public class SecretaryService
+    public class SecretaryService : GenericService<SecretaryRepository, SecretaryClass>
     {
         private static SecretaryService instance;
-
-        private SecretaryService()
-        {
-
-        }
-
+        private SecretaryService() : base(SecretaryRepository.Instance) { }
         public static SecretaryService Instance
         {
             get
@@ -25,36 +21,6 @@ namespace Service
 
                 return instance;
             }
-        }
-
-        public void Load()
-        {
-            SecretaryRepository.Instance.Load();
-        }
-
-        public List<SecretaryClass> GetAll()
-        {
-            return SecretaryRepository.Instance.GetAll();
-        }
-
-        public SecretaryClass GetByID(int id)
-        {
-            return SecretaryRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            SecretaryRepository.Instance.DeleteByID(id);
-        }
-
-        public void Create(Model.SecretaryClass secretary)
-        {
-            SecretaryRepository.Instance.Create(secretary);
-        }
-
-        public void Update(Model.SecretaryClass secretary)
-        {
-            SecretaryRepository.Instance.Update(secretary);
         }
     }
 }

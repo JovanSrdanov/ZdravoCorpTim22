@@ -2,11 +2,12 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ZdravoCorpAppTim22.Repository.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class MedicalAppointmentRepository
+    public class MedicalAppointmentRepository : IRepository<MedicalAppointment>
     {
         public string Filename = "MedicalAppointmentData.json";
         GenericFileHandler<MedicalAppointment> medicalAppointmentFileHandler;
@@ -40,7 +41,7 @@ namespace Repository
             medicalAppointments = medicalAppointmentFileHandler.LoadData();
         }
 
-        public List<MedicalAppointment> getAll()
+        public List<MedicalAppointment> GetAll()
         {
             return this.medicalAppointments;
         }

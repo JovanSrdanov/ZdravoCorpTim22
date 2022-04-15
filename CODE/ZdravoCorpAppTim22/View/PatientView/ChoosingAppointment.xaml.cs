@@ -69,7 +69,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             }
 
             List<Doctor> suggestedDoctors = DoctorController.Instance.GetAll();
-            List<Room> suggestetRooms = RoomController.Instance.GetAllRooms();
+            List<Room> suggestetRooms = RoomController.Instance.GetAll();
 
             if (enteredAppointmentType == AppointmentType.operation)
             {
@@ -154,7 +154,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
                 foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
                 {
-                    if (item.Doctor.ID == enteredDoctor.ID)
+                    if (item.Doctor.Id == enteredDoctor.Id)
                     {
                         availableMedicalAppointmentsSortDoctor.Add(item);
 
@@ -163,7 +163,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 }
                 foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
                 {
-                    if (!(item.Doctor.ID == enteredDoctor.ID))
+                    if (!(item.Doctor.Id == enteredDoctor.Id))
                     {
                         availableMedicalAppointmentsSortDoctor.Add(item);
 

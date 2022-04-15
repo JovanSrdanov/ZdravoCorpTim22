@@ -56,7 +56,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 return;
             }
             ViewModel.RoomList.Remove(room);
-            RoomController.Instance.DeleteRoomByID(room.Id);
+            RoomController.Instance.DeleteByID(room.Id);
         }
     }
 }
