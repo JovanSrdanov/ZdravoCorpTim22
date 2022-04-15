@@ -1,11 +1,12 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-   public class Equipment
-   {
+   public class Equipment : IHasID
+    {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Amount { get; set; }

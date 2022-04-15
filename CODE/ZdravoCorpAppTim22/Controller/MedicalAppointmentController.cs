@@ -2,17 +2,14 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
 {
-    public class MedicalAppointmentController
+    public class MedicalAppointmentController : GenericController<MedicalAppointmentService, MedicalAppointment>
     {
         private static MedicalAppointmentController instance;
-
-        private MedicalAppointmentController()
-        {
-
-        }
+        private MedicalAppointmentController() : base(MedicalAppointmentService.Instance) { }
         public static MedicalAppointmentController Instance
         {
             get
@@ -24,36 +21,6 @@ namespace Controller
 
                 return instance;
             }
-        }
-
-        public void Load()
-        {
-            MedicalAppointmentService.Instance.Load();
-        }
-
-        public List<MedicalAppointment> getAll()
-        {
-            return MedicalAppointmentService.Instance.getAll();
-        }
-
-        public MedicalAppointment GetByID(int id)
-        {
-            return MedicalAppointmentService.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            MedicalAppointmentService.Instance.DeleteByID(id);
-        }
-
-        public void Create(MedicalAppointment medicalAppointment)
-        {
-            MedicalAppointmentService.Instance.Create(medicalAppointment);
-        }
-
-        public void Update(MedicalAppointment medicalAppointment)
-        {
-            MedicalAppointmentService.Instance.Update(medicalAppointment);
         }
     }
 }

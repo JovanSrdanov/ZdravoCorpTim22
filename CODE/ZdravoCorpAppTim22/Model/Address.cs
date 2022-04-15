@@ -1,12 +1,13 @@
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
 
-public class Address
+public class Address : IHasID
 {
     public string Street { get; set; }
     public string Number { get; set; }
     public string City { get; set; }
     public string Country { get; set; }
-    public int ID { get; set; }
+    public int Id { get; set; }
 
     [JsonConstructor]
     public Address()
@@ -24,13 +25,13 @@ public class Address
         Country = country;
     }
 
-    public Address(string street, string number, string city, string country, int iD)
+    public Address(string street, string number, string city, string country, int id)
     {
         Street = street;
         Number = number;
         City = city;
         Country = country;
-        ID = iD;
+        Id = id;
     }
     public override string ToString()
     {

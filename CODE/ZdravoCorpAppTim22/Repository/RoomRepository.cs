@@ -3,24 +3,16 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ZdravoCorpAppTim22.Repository.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class RoomRepository
+    public class RoomRepository : GenericRepository<Room>
     {
+        public static string FileName = "RoomData.json";
         private static RoomRepository instance;
-
-        public string FileName = "RoomData.json";
-
-        List<Room> Rooms = new List<Room>();
-        GenericFileHandler<Room> roomFileHandler;
-
-        private RoomRepository()
-        {
-            roomFileHandler = new GenericFileHandler<Room>(FileName);
-        }
-
+        private RoomRepository() : base(FileName) { }
         public static RoomRepository Instance
         {
             get
@@ -35,31 +27,11 @@ namespace Repository
             }
         }
 
-        public void Load()
+        public new void DeleteByID(int id)
         {
-            Rooms = roomFileHandler.LoadData();
-        }
-
-        public List<Room> GetAll()
-        {
-            return this.Rooms;
-        }
-      
-        public Room GetByID(int id)
-        {
-            int index = Rooms.FindIndex(r => r.Id == id);
-            if (index == -1)
-            {
-                return null;
-            }
-            return Rooms[index];
-        }
-      
-        public void DeleteByID(int id)
-        {
-            int index = Rooms.FindIndex(r => r.Id == id);
+            int index = List.FindIndex(r => r.Id == id);
             if (index == -1) return;
-            Room room = Rooms[index];
+            Room room = List[index];
             if (room.medicalAppointment != null)
             {
                 List<MedicalAppointment> l = room.medicalAppointment;
@@ -68,29 +40,8 @@ namespace Repository
                     MedicalAppointmentController.Instance.DeleteByID(m.Id);
                 }
             }
-            Rooms.RemoveAt(index);
-            roomFileHandler.SaveData(Rooms);
-        }
-      
-        public void Create(Room roomObj)
-        {
-            if (Rooms.Count > 0)
-            {
-                roomObj.Id = Rooms[Rooms.Count - 1].Id + 1;
-            }
-            else
-            {
-                roomObj.Id = 0;
-            }
-            this.Rooms.Add(roomObj);
-            roomFileHandler.SaveData(Rooms);
-        }
-
-        public void Update(Room roomObj)
-        {
-            int index = Rooms.FindIndex(r => r.Id == roomObj.Id);
-            Rooms[index] = roomObj;
-            roomFileHandler.SaveData(Rooms);
+            List.RemoveAt(index);
+            FileHandler.SaveData(List);
         }
     }
 }

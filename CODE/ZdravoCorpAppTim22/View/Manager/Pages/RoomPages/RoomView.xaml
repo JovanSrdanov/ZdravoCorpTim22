@@ -14,62 +14,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="DataGrid">
-                <Setter Property="AutoGenerateColumns" Value="False"/>
-                <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource DarkSecondary}"/>
-                <Setter Property="VerticalGridLinesBrush" Value="{StaticResource DarkSecondary}"/>
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>
-            <Style TargetType="DataGridRow">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#000"/>
-                        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-            <Style TargetType="DataGridColumnHeader">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="10"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#000"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-            <Style TargetType="DataGridRowHeader">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="Width" Value="0"/>
-            </Style>
-
-            <Style TargetType="DataGridCell">
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="DataGridCell">
-                            <Border Padding="{TemplateBinding Padding}"
-                                Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}">
-                                <ContentPresenter/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                                    <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+            
         </ResourceDictionary>
     </Page.Resources>
     <Grid>

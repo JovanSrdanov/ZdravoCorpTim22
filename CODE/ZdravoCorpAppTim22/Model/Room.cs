@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
 
 namespace Model
 {
-    public class Room
+    public class Room : IHasID
     {
         public int Id { get; set; }
         public int Level { get; set; }

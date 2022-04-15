@@ -57,7 +57,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             //public static Doctor dr = SelectDoctorCBOX.SelectedItem as Doctor;
             Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
-            int selectedDoctorId = doctor.ID;
+            int selectedDoctorId = doctor.Id;
             DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId);
             doctorAppointments.Show();
             this.Close();

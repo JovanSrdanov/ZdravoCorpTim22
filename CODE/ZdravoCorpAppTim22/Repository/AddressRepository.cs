@@ -5,11 +5,12 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Repository.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class AddressRepository
+    public class AddressRepository : IRepository<Address>
     {
         private static AddressRepository instance;
         public string FileName = "AddressData.json";
@@ -46,14 +47,14 @@ namespace Repository
 
         public Address GetByID(int id)
         {
-            int index = addresses.FindIndex(r => r.ID == id);
+            int index = addresses.FindIndex(r => r.Id == id);
             if (index == -1) return null;
             return addresses[index];
         }
 
         public void DeleteByID(int id)
         {
-            int index = addresses.FindIndex(r => r.ID == id);
+            int index = addresses.FindIndex(r => r.Id == id);
             addresses.RemoveAt(index);
             AddressFileHandler.SaveData(addresses);
         }
@@ -62,11 +63,11 @@ namespace Repository
         {
             if (addresses.Count > 0)
             {
-                address.ID = addresses[addresses.Count - 1].ID + 1;
+                address.Id = addresses[addresses.Count - 1].Id + 1;
             }
             else
             {
-                address.ID = 0;
+                address.Id = 0;
             }
 
             addresses.Add(address);
@@ -75,7 +76,7 @@ namespace Repository
 
         public void Update(Address address)
         {
-            int index = addresses.FindIndex(r => r.ID == address.ID);
+            int index = addresses.FindIndex(r => r.Id == address.Id);
             addresses[index] = address;
             AddressFileHandler.SaveData(addresses);
         }

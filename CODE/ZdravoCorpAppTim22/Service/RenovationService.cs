@@ -6,18 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
 {
-    public class RenovationService
+    public class RenovationService : GenericService<RenovationRepository, Renovation>
     {
         private static RenovationService instance;
-
-        private RenovationService()
-        {
-
-        }
-
+        private RenovationService() : base(RenovationRepository.Instance) { }
         public static RenovationService Instance
         {
             get
@@ -30,35 +26,5 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-
-        public void Load()
-        {
-            RenovationRepository.Instance.Load();
-        }
-        public List<Renovation> GetAll()
-        {
-            return RenovationRepository.Instance.GetAll();
-        }
-
-        public Renovation GetByID(int id)
-        {
-            return RenovationRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            RenovationRepository.Instance.DeleteByID(id);
-        }
-
-        public void Create(Renovation renovation)
-        {
-            RenovationRepository.Instance.Create(renovation);
-        }
-
-        public void Update(Renovation renovation)
-        {
-            RenovationRepository.Instance.Update(renovation);
-        }
-
     }
 }
