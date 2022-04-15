@@ -28,6 +28,11 @@ namespace Controller
             }
         }
 
+        public void Load()
+        {
+            PatientService.Instance.Load();
+        }
+
         public List<Patient> GetAll()
         {
             return PatientService.Instance.GetAll();
@@ -52,9 +57,5 @@ namespace Controller
         {
             PatientService.Instance.Create(patient);
         }
-
-        public String path;
-
-
     }
 }

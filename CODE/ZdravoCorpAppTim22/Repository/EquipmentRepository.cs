@@ -11,7 +11,7 @@ namespace ZdravoCorpAppTim22.Repository
     public class EquipmentRepository
     {
         public string FileName = "EquipmentData.json";
-        EquipmentFileHandler equipmentFileHandler;
+        GenericFileHandler<Equipment> EquipmentFileHandler;
 
         List<Equipment> EquipmentList = new List<Equipment>();
 
@@ -19,8 +19,7 @@ namespace ZdravoCorpAppTim22.Repository
 
         private EquipmentRepository()
         {
-            equipmentFileHandler = new EquipmentFileHandler(FileName);
-            EquipmentList = equipmentFileHandler.LoadData();
+            EquipmentFileHandler = new GenericFileHandler<Equipment>(FileName);
         }
 
         public static EquipmentRepository Instance
@@ -36,6 +35,11 @@ namespace ZdravoCorpAppTim22.Repository
             }
         }
 
+        public void Load()
+        {
+            EquipmentList = EquipmentFileHandler.LoadData();
+        }
+
         public List<Equipment> GetAll()
         {
             return this.EquipmentList;
@@ -43,29 +47,56 @@ namespace ZdravoCorpAppTim22.Repository
 
         public Equipment GetByID(int id)
         {
-            int index = EquipmentList.FindIndex(r => r.id == id);
+            int index = EquipmentList.FindIndex(r => r.Id == id);
+            if(index == -1)
+            {
+                return null;
+            }
             return EquipmentList[index];
         }
 
         public void DeleteByID(int id)
         {
-            int index = EquipmentList.FindIndex(r => r.id == id);
+            int index = EquipmentList.FindIndex(r => r.Id == id);
+            if(index == -1)
+            {
+                return;
+            }
             EquipmentList.RemoveAt(index);
-            equipmentFileHandler.SaveData(EquipmentList);
+            EquipmentFileHandler.SaveData(EquipmentList);
         }
 
         public void Create(Equipment equipment)
         {
+            if(equipment== null)
+            {
+                return;
+            }
+            if (EquipmentList.Count > 0)
+            {
+                equipment.Id = EquipmentList[EquipmentList.Count - 1].Id + 1;
+            }
+            else
+            {
+                equipment.Id = 0;
+            }
             this.EquipmentList.Add(equipment);
-            equipmentFileHandler.SaveData(EquipmentList);
+            EquipmentFileHandler.SaveData(EquipmentList);
         }
 
         public void Update(Equipment equipment)
         {
-            int index = EquipmentList.FindIndex(r => r.id == equipment.id);
+            if(equipment == null)
+            {
+                return;
+            }
+            int index = EquipmentList.FindIndex(r => r.Id == equipment.Id);
+            if(index == -1)
+            {
+                return;
+            }
             EquipmentList[index] = equipment;
-            equipmentFileHandler.SaveData(EquipmentList);
+            EquipmentFileHandler.SaveData(EquipmentList);
         }
-
     }
 }

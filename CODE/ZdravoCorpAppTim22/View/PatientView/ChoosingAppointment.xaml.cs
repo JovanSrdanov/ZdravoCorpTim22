@@ -88,7 +88,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 foreach (Room room in suggestetRooms)
                 {
                     
-                    if (room.type == RoomType.operation)
+                    if (room.Type == RoomType.operation)
                         temporaryRooms.Add(room);
 
                 }

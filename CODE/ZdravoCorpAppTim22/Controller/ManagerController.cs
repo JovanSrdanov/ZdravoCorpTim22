@@ -27,6 +27,11 @@ namespace Controller
             }
         }
 
+        public void Load()
+        {
+            ManagerService.Instance.Load();
+        }
+
         public List<ManagerClass> GetAll()
         {
             return ManagerService.Instance.GetAll();
@@ -51,8 +56,5 @@ namespace Controller
         {
             ManagerService.Instance.Update(manager);
         }
-
-        public String path;
-
     }
 }

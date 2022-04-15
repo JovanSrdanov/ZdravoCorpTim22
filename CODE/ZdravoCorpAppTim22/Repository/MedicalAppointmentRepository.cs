@@ -9,7 +9,7 @@ namespace Repository
     public class MedicalAppointmentRepository
     {
         public string Filename = "MedicalAppointmentData.json";
-        MedicalAppointmentFileHandler medicalAppointmentFileHandler;
+        GenericFileHandler<MedicalAppointment> medicalAppointmentFileHandler;
 
         List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
 
@@ -19,8 +19,7 @@ namespace Repository
 
         private MedicalAppointmentRepository()
         {
-            medicalAppointmentFileHandler = new MedicalAppointmentFileHandler(Filename);
-            medicalAppointments = medicalAppointmentFileHandler.LoadData();
+            medicalAppointmentFileHandler = new GenericFileHandler<MedicalAppointment>(Filename);
         }
 
         public static MedicalAppointmentRepository Instance
@@ -34,6 +33,11 @@ namespace Repository
 
                 return instance;
             }
+        }
+
+        public void Load()
+        {
+            medicalAppointments = medicalAppointmentFileHandler.LoadData();
         }
 
         public List<MedicalAppointment> getAll()

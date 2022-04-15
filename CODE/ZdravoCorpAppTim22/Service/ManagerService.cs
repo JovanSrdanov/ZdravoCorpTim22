@@ -26,6 +26,11 @@ namespace Service
             }
         }
 
+        public void Load()
+        {
+            ManagerRepository.Instance.Load();
+        }
+
         public List<ManagerClass> GetAll()
         {
             return ManagerRepository.Instance.GetAll();

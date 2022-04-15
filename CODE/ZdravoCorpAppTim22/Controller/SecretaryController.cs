@@ -28,6 +28,10 @@ namespace Controller
                 return instance;
             }
         }
+        public void Load()
+        {
+            SecretaryService.Instance.Load();
+        }
 
         public List<SecretaryClass> GetAll()
         {
@@ -53,8 +57,5 @@ namespace Controller
         {
             SecretaryService.Instance.Update(secretary);
         }
-
-        public String path;
-
     }
 }

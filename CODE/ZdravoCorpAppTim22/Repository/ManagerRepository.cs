@@ -10,14 +10,12 @@ namespace Repository
         private static ManagerRepository instance;
 
         public string FileName = "ManagerData.json";
-        ManagerFileHandler managerFileHandler;
+        GenericFileHandler<ManagerClass> managerFileHandler;
         List<ManagerClass> managers = new List<ManagerClass>();
 
         private ManagerRepository()
         {
-            managerFileHandler = new ManagerFileHandler(FileName);
-            managers = managerFileHandler.LoadData();
-
+            managerFileHandler = new GenericFileHandler<ManagerClass>(FileName);
         }
 
         public static ManagerRepository Instance
@@ -33,6 +31,10 @@ namespace Repository
             }
         }
 
+        public void Load()
+        {
+            managers = managerFileHandler.LoadData();
+        }
 
         public List<ManagerClass> GetAll()
         {

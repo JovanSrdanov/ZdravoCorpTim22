@@ -8,15 +8,13 @@ namespace Repository
     {
         private static SecretaryRepository instance;
         public string FileName = "SecretaryData.json";
-        SecretaryFileHandler secretaryFileHandler;
+        GenericFileHandler<SecretaryClass> secretaryFileHandler;
         List<SecretaryClass> secretaries = new List<SecretaryClass>();
         private SecretaryRepository()
         {
-            secretaryFileHandler = new SecretaryFileHandler(FileName);
-            secretaries = secretaryFileHandler.LoadData();
+            secretaryFileHandler = new GenericFileHandler<SecretaryClass>(FileName);
 
         }
-
         public static SecretaryRepository Instance
         {
             get
@@ -28,6 +26,11 @@ namespace Repository
 
                 return instance;
             }
+        }
+
+        public void Load()
+        {
+            secretaries = secretaryFileHandler.LoadData();
         }
 
         public List<SecretaryClass> GetAll()

@@ -26,6 +26,11 @@ namespace Service
                 return instance;
             }
         }
+
+        public void Load()
+        {
+            DoctorRepository.Instance.Load();
+        }
         public List<Doctor> GetAll()
         {
             return DoctorRepository.Instance.GetAll();

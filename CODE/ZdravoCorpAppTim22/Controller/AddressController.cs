@@ -25,6 +25,11 @@ namespace Controller
             }
         }
 
+        public void Load()
+        {
+            AddressService.Instance.Load();
+        }
+
         public List<Address> GetAll()
         {
             return AddressService.Instance.GetAll();
@@ -50,8 +55,5 @@ namespace Controller
         {
             AddressService.Instance.Update(addres);
         }
-
-        public String path;
-
     }
 }

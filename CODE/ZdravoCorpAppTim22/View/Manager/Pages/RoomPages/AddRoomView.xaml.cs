@@ -21,7 +21,7 @@ using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
-    public partial class EditRoomView : Page, INotifyPropertyChanged
+    public partial class AddRoomView : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,28 +30,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private string name;
         private string type;
 
-        private bool add;
-
-        public EditRoomView()
+        public AddRoomView()
         {
-            init();
-            add = true;
+            Init();
             id = 0;
         }
 
-        public EditRoomView(Room room)
-        {
-            init();
-            add = false;
-            ID = room.id;
-            Level = room.level;
-            RoomName = room.name;
-            type = room.type.ToString();
-
-            //IDInput.IsEnabled = false;
-        }
-
-        private void init()
+        private void Init()
         {
             InitializeComponent();
             DataContext = this;
@@ -127,15 +112,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(id, level, rt, name);
-
-            if (add)
-            {
-                RoomController.Instance.CreateRoom(room);
-            }
-            else
-            {
-                RoomController.Instance.UpdateRoom(room);
-            }
+            RoomController.Instance.CreateRoom(room);
 
             this.NavigationService.GoBack();
         }
@@ -143,18 +120,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
-        }
-
-        private bool checkIfRoomExists(int id)
-        {
-            foreach (Room room in RoomController.Instance.GetAllRooms())
-            {
-                if (room.id == id)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

@@ -15,11 +15,10 @@ namespace Repository
         public string FileName = "AddressData.json";
 
         List<Address> addresses = new List<Address>();
-        AddressFileHandler AddressFileHandler;
+        GenericFileHandler<Address> AddressFileHandler;
         private AddressRepository()
         {
-            AddressFileHandler = new AddressFileHandler(FileName);
-            addresses = AddressFileHandler.LoadData();
+            AddressFileHandler = new GenericFileHandler<Address>(FileName);
         }
 
         public static AddressRepository Instance
@@ -33,6 +32,11 @@ namespace Repository
 
                 return instance;
             }
+        }
+
+        public void Load()
+        {
+            addresses = AddressFileHandler.LoadData();
         }
 
         public List<Address> GetAll()

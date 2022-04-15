@@ -21,28 +21,33 @@ namespace Service
                 return instance;
             }
         }
+        public void Load()
+        {
+            RoomRepository.Instance.Load();
+        }
+
         public List<Room> GetAllRooms()
-      {
+        {
             return RoomRepository.Instance.GetAll();
-      }
+        }
       
-      public Room GetRoomByID(int id)
-      {
+        public Room GetRoomByID(int id)
+        {
             return RoomRepository.Instance.GetByID(id);
-      }
+        }
       
-      public void DeleteRoomByID(int id)
-      {
+        public void DeleteRoomByID(int id)
+        {
             RoomRepository.Instance.DeleteByID(id);
         }
       
-      public void CreateRoom(Room roomObj)
-      {
+        public void CreateRoom(Room roomObj)
+        {
             RoomRepository.Instance.Create(roomObj);
-      }
+        }
       
-      public void UpdateRoom(Room roomObj)
-      {
+        public void UpdateRoom(Room roomObj)
+        {
             RoomRepository.Instance.Update(roomObj);
         }
    

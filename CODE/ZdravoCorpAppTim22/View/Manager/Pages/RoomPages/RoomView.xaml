@@ -85,7 +85,7 @@
         <WrapPanel Grid.Row="1"
                    Margin="0 0 0 10">
             <Button x:Name="AddRoom" Style="{StaticResource ButtonStandard}" Click="AddRoom_Click">Add</Button>
-            <Button x:Name="EditRoom" Style="{StaticResource ButtonStandard}" Click="EditRoom_Click">Edit</Button>
+            <Button x:Name="RenovateRoom" Style="{StaticResource ButtonStandard}" Click="RenovateRoom_Click">Renovate</Button>
             <Button x:Name="DeleteRoom" Style="{StaticResource ButtonStandard}" Click="DeleteRoom_Click">Delete</Button>
         </WrapPanel>
         <DataGrid Grid.Row="2"
@@ -98,10 +98,10 @@
                   MaxWidth="1000"
                   HorizontalAlignment="Left">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=name}" Header="Name" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=level}" Header="Level" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Level}" Header="Level" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

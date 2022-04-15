@@ -27,6 +27,11 @@ namespace Service
             }
         }
 
+        public void Load()
+        {
+            SecretaryRepository.Instance.Load();
+        }
+
         public List<SecretaryClass> GetAll()
         {
             return SecretaryRepository.Instance.GetAll();

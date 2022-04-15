@@ -7,10 +7,10 @@ namespace Model
 {
     public class Room
     {
-        public int id { get; set; }
-        public int level { get; set; }
-        public RoomType type { get; set; }
-        public string name { get; set; }
+        public int Id { get; set; }
+        public int Level { get; set; }
+        public RoomType Type { get; set; }
+        public string Name { get; set; }
 
         [JsonIgnore]
         public System.Collections.Generic.List<Equipment> equipment;
@@ -40,10 +40,10 @@ namespace Model
 
         public Room(int id, int level, RoomType type, string name)
         {
-            this.id = id;
-            this.level = level;
-            this.type = type;
-            this.name = name;
+            this.Id = id;
+            this.Level = level;
+            this.Type = type;
+            this.Name = name;
         }
 
         public bool IsAvailable(DateTime start, DateTime end)
