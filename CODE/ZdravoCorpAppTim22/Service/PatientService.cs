@@ -26,6 +26,12 @@ namespace Service
                 return instance;
             }
         }
+
+        public void Load()
+        {
+            PatientRepository.Instance.Load();
+        }
+
         public List<Patient> GetAll()
         {
             return PatientRepository.Instance.GetAll();

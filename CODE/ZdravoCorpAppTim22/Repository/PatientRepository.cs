@@ -6,17 +6,15 @@ namespace Repository
 {
     public class PatientRepository
     {
-        //TO-DO Ispravi nullove 
         private static PatientRepository instance;
 
         public List<Patient> patients = new List<Patient>();
         public string FileName = "PatientData.json";
-        PatientFileHandler patientFileHandler;
+        GenericFileHandler<Patient> patientFileHandler;
 
         private PatientRepository()
         {
-            patientFileHandler = new PatientFileHandler(FileName);
-            patients = patientFileHandler.LoadData();
+            patientFileHandler = new GenericFileHandler<Patient>(FileName);
         }
 
         public static PatientRepository Instance
@@ -32,7 +30,10 @@ namespace Repository
             }
         }
 
-
+        public void Load()
+        {
+            patients = patientFileHandler.LoadData();
+        }
 
         public List<Patient> GetAll()
         {

@@ -13,12 +13,11 @@ namespace Repository
         public string Filename = "DoctorData.json";
         
         List<Doctor> doctors = new List<Doctor>();
-        DoctorFileHandler doctorFileHandler;
+        GenericFileHandler<Doctor> doctorFileHandler;
 
         private DoctorRepository()
         {
-            doctorFileHandler = new DoctorFileHandler(Filename);
-            doctors = doctorFileHandler.LoadData();
+            doctorFileHandler = new GenericFileHandler<Doctor>(Filename);
         }
 
         public static DoctorRepository Instance
@@ -33,6 +32,11 @@ namespace Repository
 
                 return instance;
             }
+        }
+
+        public void Load()
+        {
+            doctors = doctorFileHandler.LoadData();
         }
 
         public List<Doctor> GetAll()

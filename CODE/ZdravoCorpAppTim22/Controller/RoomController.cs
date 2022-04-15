@@ -21,6 +21,10 @@ namespace Controller
                 return instance;
             }
         }
+        public void Load()
+        {
+            RoomService.Instance.Load();
+        }
 
         public List<Room> GetAllRooms()
         {

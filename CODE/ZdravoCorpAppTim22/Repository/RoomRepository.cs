@@ -14,12 +14,11 @@ namespace Repository
         public string FileName = "RoomData.json";
 
         List<Room> Rooms = new List<Room>();
-        RoomFileHandler roomFileHandler;
+        GenericFileHandler<Room> roomFileHandler;
 
         private RoomRepository()
         {
-            roomFileHandler = new RoomFileHandler(FileName);
-            Rooms = roomFileHandler.LoadData();
+            roomFileHandler = new GenericFileHandler<Room>(FileName);
         }
 
         public static RoomRepository Instance
@@ -36,6 +35,11 @@ namespace Repository
             }
         }
 
+        public void Load()
+        {
+            Rooms = roomFileHandler.LoadData();
+        }
+
         public List<Room> GetAll()
         {
             return this.Rooms;
@@ -43,7 +47,7 @@ namespace Repository
       
         public Room GetByID(int id)
         {
-            int index = Rooms.FindIndex(r => r.id == id);
+            int index = Rooms.FindIndex(r => r.Id == id);
             if (index == -1)
             {
                 return null;
@@ -53,7 +57,7 @@ namespace Repository
       
         public void DeleteByID(int id)
         {
-            int index = Rooms.FindIndex(r => r.id == id);
+            int index = Rooms.FindIndex(r => r.Id == id);
             if (index == -1) return;
             Room room = Rooms[index];
             if (room.medicalAppointment != null)
@@ -72,11 +76,11 @@ namespace Repository
         {
             if (Rooms.Count > 0)
             {
-                roomObj.id = Rooms[Rooms.Count - 1].id + 1;
+                roomObj.Id = Rooms[Rooms.Count - 1].Id + 1;
             }
             else
             {
-                roomObj.id = 0;
+                roomObj.Id = 0;
             }
             this.Rooms.Add(roomObj);
             roomFileHandler.SaveData(Rooms);
@@ -84,7 +88,7 @@ namespace Repository
 
         public void Update(Room roomObj)
         {
-            int index = Rooms.FindIndex(r => r.id == roomObj.id);
+            int index = Rooms.FindIndex(r => r.Id == roomObj.Id);
             Rooms[index] = roomObj;
             roomFileHandler.SaveData(Rooms);
         }

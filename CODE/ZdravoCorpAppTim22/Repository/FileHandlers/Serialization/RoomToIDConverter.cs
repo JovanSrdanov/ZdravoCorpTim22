@@ -21,7 +21,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
 
         public override void Write(Utf8JsonWriter writer, Room value, JsonSerializerOptions options)
         {
-            writer.WriteNumberValue(value.id);
+            writer.WriteNumberValue(value.Id);
         }
     }
 }

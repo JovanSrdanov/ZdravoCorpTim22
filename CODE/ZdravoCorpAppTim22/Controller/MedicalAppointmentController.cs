@@ -26,6 +26,11 @@ namespace Controller
             }
         }
 
+        public void Load()
+        {
+            MedicalAppointmentService.Instance.Load();
+        }
+
         public List<MedicalAppointment> getAll()
         {
             return MedicalAppointmentService.Instance.getAll();
@@ -50,7 +55,5 @@ namespace Controller
         {
             MedicalAppointmentService.Instance.Update(medicalAppointment);
         }
-        public String path;
-
     }
 }

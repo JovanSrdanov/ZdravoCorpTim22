@@ -27,6 +27,11 @@ namespace Service
             }
         }
 
+        public void Load()
+        {
+            MedicalAppointmentRepository.Instance.Load();
+        }
+
         public List<MedicalAppointment> getAll()
         {
             return MedicalAppointmentRepository.Instance.getAll();

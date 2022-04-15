@@ -16,6 +16,5 @@
         <Button x:Name="PatientBtn" Content="Pacijent" Grid.Column="1" HorizontalAlignment="Left" Margin="368,155,0,0" VerticalAlignment="Top" Width="75" Click="PatientBtn_Click"/>
         <Button x:Name="ManagerBtn" Content="Upravnik" Grid.Column="1" HorizontalAlignment="Left" Margin="197,220,0,0" VerticalAlignment="Top" Width="75" Click="ManagerBtn_Click"/>
         <Button x:Name="SecretaryBtn" Content="Sekretar" Grid.Column="1" HorizontalAlignment="Left" Margin="368,220,0,0" VerticalAlignment="Top" Width="75" Click="SecretaryBtn_Click" />
-
     </Grid>
 </Window>

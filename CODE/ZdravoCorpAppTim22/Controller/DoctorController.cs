@@ -26,6 +26,11 @@ namespace Controller
             }
         }
 
+        public void Load()
+        {
+            DoctorService.Instance.Load();
+        }
+
         public List<Doctor> GetAll()
         {
             return DoctorService.Instance.GetAll();
@@ -50,9 +55,6 @@ namespace Controller
         {
             DoctorService.Instance.Update(doctor);
         }
-
-        public String path;
-
 
     }
 }

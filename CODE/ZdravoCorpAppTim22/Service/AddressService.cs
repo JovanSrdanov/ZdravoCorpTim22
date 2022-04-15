@@ -30,6 +30,11 @@ namespace Service
             }
         }
 
+        public void Load()
+        {
+            AddressRepository.Instance.Load();
+        }
+
         public List<Address> GetAll()
         {
             return AddressRepository.Instance.GetAll();
@@ -38,7 +43,6 @@ namespace Service
         public Address GetByID(int id)
         {
             return AddressRepository.Instance.GetByID(id);
-
         }
 
         public void DeleteByID(int id)
