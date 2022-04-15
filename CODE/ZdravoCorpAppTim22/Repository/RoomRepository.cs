@@ -27,7 +27,7 @@ namespace Repository
             }
         }
 
-        public new void DeleteByID(int id)
+        public override void DeleteByID(int id)
         {
             int index = List.FindIndex(r => r.Id == id);
             if (index == -1) return;

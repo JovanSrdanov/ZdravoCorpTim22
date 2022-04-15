@@ -16,15 +16,15 @@ namespace ZdravoCorpAppTim22.Repository.Generic
         {
             FileHandler = new GenericFileHandler<T>(fileName);
         }
-        public void Load()
+        public virtual void Load()
         {
             List = FileHandler.LoadData();
         }
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return List;
         }
-        public T GetByID(int id)
+        public virtual T GetByID(int id)
         {
             int index = List.FindIndex(r => r.Id == id);
             if (index == -1)
@@ -33,7 +33,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             }
             return List[index];
         }
-        public void DeleteByID(int id)
+        public virtual void DeleteByID(int id)
         {
             int index = List.FindIndex(r => r.Id == id);
             if (index == -1)
@@ -43,7 +43,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             List.RemoveAt(index);
             FileHandler.SaveData(List);
         }
-        public void Create(T obj)
+        public virtual void Create(T obj)
         {
             if (obj == null)
             {
@@ -60,7 +60,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             List.Add(obj);
             FileHandler.SaveData(List);
         }
-        public void Update(T obj)
+        public virtual void Update(T obj)
         {
             if (obj == null)
             {

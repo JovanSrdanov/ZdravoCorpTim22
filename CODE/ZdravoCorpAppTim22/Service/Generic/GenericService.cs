@@ -14,28 +14,28 @@ namespace ZdravoCorpAppTim22.Service.Generic
         {
             _Repository = repository;
         }
-        public void Load()
+        public virtual void Load()
         {
             _Repository.Load();
         }
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return _Repository.GetAll();
         }
-        public T GetByID(int id)
+        public virtual T GetByID(int id)
         {
             return _Repository.GetByID(id);
 
         }
-        public void DeleteByID(int id)
+        public virtual void DeleteByID(int id)
         {
             _Repository.DeleteByID(id);
         }
-        public void Create(T obj)
+        public virtual void Create(T obj)
         {
             _Repository.Create(obj);
         }
-        public void Update(T obj)
+        public virtual void Update(T obj)
         {
             _Repository.Update(obj);
         }
