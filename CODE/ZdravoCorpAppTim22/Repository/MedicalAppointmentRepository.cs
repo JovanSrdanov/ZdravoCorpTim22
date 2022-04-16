@@ -2,14 +2,15 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ZdravoCorpAppTim22.Repository.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class MedicalAppointmentRepository
+    public class MedicalAppointmentRepository : IRepository<MedicalAppointment>
     {
         public string Filename = "MedicalAppointmentData.json";
-        MedicalAppointmentFileHandler medicalAppointmentFileHandler;
+        GenericFileHandler<MedicalAppointment> medicalAppointmentFileHandler;
 
         List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
 
@@ -19,8 +20,7 @@ namespace Repository
 
         private MedicalAppointmentRepository()
         {
-            medicalAppointmentFileHandler = new MedicalAppointmentFileHandler(Filename);
-            medicalAppointments = medicalAppointmentFileHandler.LoadData();
+            medicalAppointmentFileHandler = new GenericFileHandler<MedicalAppointment>(Filename);
         }
 
         public static MedicalAppointmentRepository Instance
@@ -36,7 +36,12 @@ namespace Repository
             }
         }
 
-        public List<MedicalAppointment> getAll()
+        public void Load()
+        {
+            medicalAppointments = medicalAppointmentFileHandler.LoadData();
+        }
+
+        public List<MedicalAppointment> GetAll()
         {
             return this.medicalAppointments;
         }

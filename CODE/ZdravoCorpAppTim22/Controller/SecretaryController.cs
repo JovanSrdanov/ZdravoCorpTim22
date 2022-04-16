@@ -2,20 +2,14 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
 {
-    public class SecretaryController
+    public class SecretaryController : GenericController<SecretaryService, SecretaryClass>
     {
-
-
         private static SecretaryController instance;
-
-        private SecretaryController()
-        {
-
-        }
-
+        private SecretaryController() : base(SecretaryService.Instance) { }
         public static SecretaryController Instance
         {
             get
@@ -28,33 +22,5 @@ namespace Controller
                 return instance;
             }
         }
-
-        public List<SecretaryClass> GetAll()
-        {
-            return SecretaryService.Instance.GetAll();
-        }
-
-        public Model.SecretaryClass GetByID(int id)
-        {
-            return SecretaryService.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            SecretaryService.Instance.DeleteByID(id);
-        }
-
-        public void Create(SecretaryClass secretary)
-        {
-            SecretaryService.Instance.Create(secretary);
-        }
-
-        public void Update(SecretaryClass secretary)
-        {
-            SecretaryService.Instance.Update(secretary);
-        }
-
-        public String path;
-
     }
 }

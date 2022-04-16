@@ -8,9 +8,6 @@ namespace Model
     {
         [JsonIgnore]
         public MedicalRecord medicalRecord { get; set; }
-        [JsonIgnore]
-        public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
-
 
         public bool IsAvailable(DateTime start, DateTime end)
         {
@@ -86,6 +83,8 @@ namespace Model
         }
 
         [JsonIgnore]
+        public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
+        [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
         {
             get
@@ -105,7 +104,6 @@ namespace Model
             }
         }
 
-
         public void AddMedicalAppointment(MedicalAppointment newMedicalAppointment)
         {
             if (newMedicalAppointment == null)
@@ -119,7 +117,6 @@ namespace Model
             }
         }
 
-
         public void RemoveMedicalAppointment(MedicalAppointment oldMedicalAppointment)
         {
             if (oldMedicalAppointment == null)
@@ -131,7 +128,6 @@ namespace Model
                     oldMedicalAppointment.Patient = null;
                 }
         }
-
 
         public void RemoveAllMedicalAppointment()
         {

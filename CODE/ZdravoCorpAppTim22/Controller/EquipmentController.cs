@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.Service;
 
 namespace ZdravoCorpAppTim22.Controller
 {
-    public class EquipmentController
+    public class EquipmentController : GenericController<EquipmentService, Equipment>
     {
         private static EquipmentController instance;
-        private EquipmentController() { }
+        private EquipmentController() : base(EquipmentService.Instance) { }
         public static EquipmentController Instance
         {
             get
@@ -22,32 +24,5 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
-        public List<Equipment> GetAllEquipment()
-        {
-            return this.equipmentService.GetAllEquipment();
-        }
-
-        public Equipment GetEquipmentByID(int id)
-        {
-            return this.equipmentService.GetEquipmentByID(id);
-        }
-
-        public void DeleteEquipmentByID(int id)
-        {
-            this.equipmentService.DeleteEquipmentByID(id);
-        }
-
-        public void CreateEquipment(Equipment equipment)
-        {
-            this.equipmentService.CreateEquipment(equipment);
-        }
-
-        public void UpdateEquipment(Equipment equipment)
-        {
-            this.equipmentService.UpdateEquipment(equipment);
-        }
-
-        public Service.EquipmentService equipmentService = new Service.EquipmentService();
-
     }
 }

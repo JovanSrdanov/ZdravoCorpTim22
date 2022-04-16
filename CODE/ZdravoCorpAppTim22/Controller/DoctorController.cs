@@ -2,17 +2,14 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
 {
-    public class DoctorController
+    public class DoctorController : GenericController<DoctorService, Doctor>
     {
         private static DoctorController instance;
-
-        private DoctorController()
-        {
-
-        }
+        private DoctorController() : base(DoctorService.Instance) { }
         public static DoctorController Instance
         {
             get
@@ -25,34 +22,5 @@ namespace Controller
                 return instance;
             }
         }
-
-        public List<Doctor> GetAll()
-        {
-            return DoctorService.Instance.GetAll();
-        }
-
-        public Model.Doctor GetByID(int id)
-        {
-            return DoctorService.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            DoctorService.Instance.DeleteByID(id);
-        }
-
-        public void Create(Model.Doctor doctor)
-        {
-            DoctorService.Instance.Create(doctor);
-        }
-
-        public void Update(Model.Doctor doctor)
-        {
-            DoctorService.Instance.Update(doctor);
-        }
-
-        public String path;
-
-
     }
 }

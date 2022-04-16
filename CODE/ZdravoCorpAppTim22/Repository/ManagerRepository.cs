@@ -2,22 +2,21 @@ using Model;
 using System;
 using System.Collections.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
+using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace Repository
 {
-    public class ManagerRepository
+    public class ManagerRepository : IRepository<ManagerClass>
     {
         private static ManagerRepository instance;
 
         public string FileName = "ManagerData.json";
-        ManagerFileHandler managerFileHandler;
+        GenericFileHandler<ManagerClass> managerFileHandler;
         List<ManagerClass> managers = new List<ManagerClass>();
 
         private ManagerRepository()
         {
-            managerFileHandler = new ManagerFileHandler(FileName);
-            managers = managerFileHandler.LoadData();
-
+            managerFileHandler = new GenericFileHandler<ManagerClass>(FileName);
         }
 
         public static ManagerRepository Instance
@@ -33,6 +32,10 @@ namespace Repository
             }
         }
 
+        public void Load()
+        {
+            managers = managerFileHandler.LoadData();
+        }
 
         public List<ManagerClass> GetAll()
         {
@@ -41,13 +44,13 @@ namespace Repository
 
         public ManagerClass GetByID(int id)
         {
-            int index = managers.FindIndex(r => r.ID == id);
+            int index = managers.FindIndex(r => r.Id == id);
             return managers[index];
         }
 
         public void DeleteByID(int id)
         {
-            int index = managers.FindIndex(r => r.ID == id);
+            int index = managers.FindIndex(r => r.Id == id);
             managers.RemoveAt(index);
             managerFileHandler.SaveData(managers);
         }
@@ -56,11 +59,11 @@ namespace Repository
         {
             if (managers.Count > 0)
             {
-                manager.ID = managers[managers.Count - 1].ID + 1;
+                manager.Id = managers[managers.Count - 1].Id + 1;
             }
             else
             {
-                manager.ID = 0;
+                manager.Id = 0;
             }
 
             managers.Add(manager);
@@ -69,7 +72,7 @@ namespace Repository
 
         public void Update(ManagerClass manager)
         {
-            int index = managers.FindIndex(r => r.ID == manager.ID);
+            int index = managers.FindIndex(r => r.Id == manager.Id);
             managers[index] = manager;
             managerFileHandler.SaveData(managers);
         }

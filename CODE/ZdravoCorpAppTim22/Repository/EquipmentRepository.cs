@@ -5,51 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
+using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Repository
 {
-    public class EquipmentRepository
+    public class EquipmentRepository : GenericRepository<Equipment>
     {
-        public string FileName = "EquipmentData.json";
-        EquipmentFileHandler equipmentFileHandler;
-
-        List<Equipment> EquipmentList = new List<Equipment>();
-
-        public EquipmentRepository()
+        public static string FileName = "EquipmentData.json";
+        private static EquipmentRepository instance;
+        private EquipmentRepository() : base(FileName) { }
+        public static EquipmentRepository Instance
         {
-            equipmentFileHandler = new EquipmentFileHandler(FileName);
-            EquipmentList = equipmentFileHandler.LoadData();
-        }
-        public List<Equipment> GetAll()
-        {
-            return this.EquipmentList;
-        }
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EquipmentRepository();
+                }
 
-        public Equipment GetByID(int id)
-        {
-            int index = EquipmentList.FindIndex(r => r.id == id);
-            return EquipmentList[index];
+                return instance;
+            }
         }
-
-        public void DeleteByID(int id)
-        {
-            int index = EquipmentList.FindIndex(r => r.id == id);
-            EquipmentList.RemoveAt(index);
-            equipmentFileHandler.SaveData(EquipmentList);
-        }
-
-        public void Create(Equipment equipment)
-        {
-            this.EquipmentList.Add(equipment);
-            equipmentFileHandler.SaveData(EquipmentList);
-        }
-
-        public void Update(Equipment equipment)
-        {
-            int index = EquipmentList.FindIndex(r => r.id == equipment.id);
-            EquipmentList[index] = equipment;
-            equipmentFileHandler.SaveData(EquipmentList);
-        }
-
     }
 }

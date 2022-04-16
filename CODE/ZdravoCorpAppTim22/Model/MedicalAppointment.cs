@@ -2,25 +2,18 @@
 
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-    public class MedicalAppointment
+    public class MedicalAppointment : IHasID
     {
         public int Id { get; set; }
         public AppointmentType Type { get; set; }
         public DateTime MedicalAppointmentStartDateTime { get; set; }
         public DateTime MedicalAppointmentEndDateTime { get; set; }
 
-        [JsonIgnore]
-        public Room room;
-
-        public int DoctorID { get; set; }
-        public int PatientID { get; set; }
-        public int RoomID { get; set; }
-
-
-        //public MedicalAppointment(int id, AppointmentType type, DateTime date, Room room, Patient patient, Doctor doctor, int duration)
         public MedicalAppointment(int id, AppointmentType type, DateTime medicalAppointmentStartDateTime, DateTime medicalAppointmentEndDateTime, Room room, Patient patient, Doctor doctor)
         {
             Id = id;
@@ -30,13 +23,17 @@ namespace Model
             Room = room;
             Patient = patient;
             Doctor = doctor;
-
-           // DoctorID = doctor.ID;
-            //PatientID = patient.ID;
-           // RoomID = room.id;
         }
-        
-        [JsonIgnore]
+
+        [JsonConstructor]
+        public MedicalAppointment()
+        {
+        }
+
+        [JsonConverter(typeof(RoomToIDConverter))]
+        public Room room;
+
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room Room
         {
             get
@@ -62,11 +59,10 @@ namespace Model
             }
         }
 
-        [JsonIgnore]
+        [JsonConverter(typeof(PatientToIDConverter))]
         public Patient patient;
 
-
-        [JsonIgnore]
+        [JsonConverter(typeof(PatientToIDConverter))]
         public Patient Patient
         {
             get
@@ -92,15 +88,10 @@ namespace Model
             }
         }
 
-        [JsonIgnore]
+        [JsonConverter(typeof(DoctorToIDConverter))]
         public Doctor doctor;
 
-        [JsonConstructor]
-        public MedicalAppointment()
-        {
-        }
-
-        [JsonIgnore]
+        [JsonConverter(typeof(DoctorToIDConverter))]
         public Doctor Doctor
         {
             get

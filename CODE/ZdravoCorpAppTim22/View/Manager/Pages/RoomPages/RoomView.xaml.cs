@@ -33,19 +33,19 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private void AddRoom_Click(object sender, RoutedEventArgs e)
         {
-            EditRoomView addRoom = new EditRoomView();
+            AddRoomView addRoom = new AddRoomView();
             this.NavigationService.Navigate(addRoom);
         }
 
-        private void EditRoom_Click(object sender, RoutedEventArgs e)
+        private void RenovateRoom_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)dataGrid.SelectedItem;
             if(room == null)
             {
                 return;
             }
-            EditRoomView editRoom = new EditRoomView(room);
-            this.NavigationService.Navigate(editRoom);
+            RenovateView renovateRoom = new RenovateView(room);
+            this.NavigationService.Navigate(renovateRoom);
         }
 
         private void DeleteRoom_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 return;
             }
             ViewModel.RoomList.Remove(room);
-            RoomController.Instance.DeleteRoomByID(room.id);
+            RoomController.Instance.DeleteByID(room.Id);
         }
     }
 }

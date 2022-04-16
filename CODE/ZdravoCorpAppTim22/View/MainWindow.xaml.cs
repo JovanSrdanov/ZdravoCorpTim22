@@ -8,29 +8,27 @@ using ZdravoCorpAppTim22.View.Secretary;
 
 namespace ZdravoCorpAppTim22
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public object Doc { get; private set; }
-
         public MainWindow()
         {
-            var ac = AddressController.Instance.GetAll();
-            var rc = RoomController.Instance.GetAllRooms();
-            var sc = SecretaryController.Instance.GetAll();
-            var mc = ManagerController.Instance.GetAll();
-            var pc = PatientController.Instance.GetAll();
-            var doctor = DoctorController.Instance.GetAll();
-            var ec = EquipmentController.Instance.GetAllEquipment();
-            var mm = MedicalAppointmentController.Instance.getAll();
-            var man = ManagerController.Instance.GetAll();
-            var sec = SecretaryController.Instance.GetAll();
-
-
-
+            LoadData();
             InitializeComponent();
+        }
+
+        public void LoadData()
+        {
+            AddressController.Instance.Load();
+            RoomController.Instance.Load();
+            SecretaryController.Instance.Load();
+            ManagerController.Instance.Load();
+            PatientController.Instance.Load();
+            DoctorController.Instance.Load();
+            EquipmentController.Instance.Load();
+            MedicalAppointmentController.Instance.Load();
+            ManagerController.Instance.Load();
+            SecretaryController.Instance.Load();
+            RenovationController.Instance.Load();
         }
 
         private void ManagerBtn_Click(object sender, RoutedEventArgs e)
@@ -39,8 +37,6 @@ namespace ZdravoCorpAppTim22
             managerHome.Show();
             this.Close();
         }
-
-
 
         private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
         {

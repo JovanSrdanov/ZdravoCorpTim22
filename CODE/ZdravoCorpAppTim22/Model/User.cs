@@ -1,9 +1,11 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-    public class User
+    public class User : IHasID
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -13,14 +15,11 @@ namespace Model
         public DateTime Birthday { get; set; }
         public string Phone { get; set; }
         public Gender Gender { get; set; }
+        public int Id { get; set; }
 
-        public int addressID { get; set; }
-
-        public int ID { get; set; }
-
-        [JsonIgnore]
+        [JsonConverter(typeof(AddressToIDConverter))]
         public Address address;
-        [JsonIgnore]
+        [JsonConverter(typeof(AddressToIDConverter))]
         public Address Address
         {
             get
@@ -33,7 +32,7 @@ namespace Model
             }
         }
 
-        public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address)
+        public User(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int id, Address address)
         {
             Name = name;
             Surname = surname;
@@ -43,7 +42,7 @@ namespace Model
             Birthday = birthday;
             Phone = phone;
             Gender = gender;
-            ID = iD;
+            Id = id;
             Address = address;
         }
 

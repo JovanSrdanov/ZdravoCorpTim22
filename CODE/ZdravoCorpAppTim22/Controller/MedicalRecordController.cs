@@ -25,8 +25,5 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public String path;
-
-
     }
 }

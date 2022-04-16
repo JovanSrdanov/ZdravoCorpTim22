@@ -1,17 +1,14 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
+
 namespace Controller
 {
-    public class AddressController
+    public class AddressController : GenericController<AddressService, Address>
     {
-
         private static AddressController instance;
-
-        private AddressController()
-        {
-
-        }
+        private AddressController() : base(AddressService.Instance) { }
         public static AddressController Instance
         {
             get
@@ -24,34 +21,5 @@ namespace Controller
                 return instance;
             }
         }
-
-        public List<Address> GetAll()
-        {
-            return AddressService.Instance.GetAll();
-        }
-
-        public Address GetByID(int id)
-        {
-            return AddressService.Instance.GetByID(id);
-
-        }
-
-        public void DeleteByID(int id)
-        {
-            AddressService.Instance.DeleteByID(id);
-        }
-
-        public void Create(Address addres)
-        {
-            AddressService.Instance.Create(addres);
-        }
-
-        public void Update(Address addres)
-        {
-            AddressService.Instance.Update(addres);
-        }
-
-        public String path;
-
     }
 }

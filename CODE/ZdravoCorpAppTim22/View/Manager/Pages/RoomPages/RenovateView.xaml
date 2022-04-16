@@ -1,4 +1,4 @@
-﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.RoomPages.EditRoomView"
+﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.RoomPages.RenovateView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -55,17 +55,8 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-
-            <!--
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=ID, Mode=TwoWay}" x:Name="IDInput"/>
-            -->
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay}"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay}"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Type: "/>
-            <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay}"/>
+            
+            
 
             <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 30 0 0">
                 <Button x:Name="ButtonConfirm" Style="{StaticResource ButtonStandard}" Margin="0" Click="ButtonConfirm_Click">Confirm</Button>

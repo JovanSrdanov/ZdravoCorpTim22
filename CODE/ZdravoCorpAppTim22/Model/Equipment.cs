@@ -1,17 +1,20 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-   public class Equipment
-   {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int amount { get; set; }
-        public EquipmentType type { get; set; }
-        [JsonIgnore]
+   public class Equipment : IHasID
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Amount { get; set; }
+        public EquipmentType Type { get; set; }
+
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room room;
-        [JsonIgnore]
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room Room
         {
             get
@@ -37,22 +40,20 @@ namespace Model
             }
         }
 
-        public int RoomID { get; set; }
-
         [JsonConstructor]
         public Equipment() { }
 
         public Equipment(int id) 
         {
-            this.id = id;
+            this.Id = id;
         }
 
         public Equipment(int id, string name, int amount, EquipmentType type, Room room) : this(id)
         {
-            this.name = name;
-            this.amount = amount;
-            this.type = type;
-            this.room = room;
+            this.Name = name;
+            this.Amount = amount;
+            this.Type = type;
+            this.Room = room;
         }
     }
 }

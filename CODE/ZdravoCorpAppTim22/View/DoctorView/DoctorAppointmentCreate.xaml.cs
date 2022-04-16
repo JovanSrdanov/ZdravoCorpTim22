@@ -46,7 +46,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             AppointmentTypeCBOX.ItemsSource = Enum.GetValues(typeof(AppointmentType));
 
-            rooms = RoomController.Instance.GetAllRooms();
+            rooms = RoomController.Instance.GetAll();
             RoomList = new ObservableCollection<Room>(rooms);
             AppointmentType_Copy.ItemsSource = RoomList;
 

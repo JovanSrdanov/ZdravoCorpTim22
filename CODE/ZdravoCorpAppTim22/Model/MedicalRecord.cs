@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Generic;
+
 namespace Model
 {
-    public class MedicalRecord
+    public class MedicalRecord : IHasID
     {
         public int Id { get; set; }
         public BloodType BloodType { get; set; }

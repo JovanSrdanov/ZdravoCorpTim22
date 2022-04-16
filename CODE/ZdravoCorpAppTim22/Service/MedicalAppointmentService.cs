@@ -2,18 +2,14 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
 {
-    public class MedicalAppointmentService
+    public class MedicalAppointmentService : GenericService<MedicalAppointmentRepository, MedicalAppointment>
     {
         private static MedicalAppointmentService instance;
-
-        private MedicalAppointmentService()
-        {
-
-        }
-
+        private MedicalAppointmentService() : base(MedicalAppointmentRepository.Instance) { }
         public static MedicalAppointmentService Instance
         {
             get
@@ -26,33 +22,5 @@ namespace Service
                 return instance;
             }
         }
-
-        public List<MedicalAppointment> getAll()
-        {
-            return MedicalAppointmentRepository.Instance.getAll();
-        }
-
-        public MedicalAppointment GetByID(int id)
-        {
-            return MedicalAppointmentRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            MedicalAppointmentRepository.Instance.DeleteByID(id);
-        }
-
-        public void Create(Model.MedicalAppointment medicalAppointment)
-        {
-            MedicalAppointmentRepository.Instance.Create(medicalAppointment);
-        }
-
-        public void Update(Model.MedicalAppointment medicalAppointment)
-        {
-            MedicalAppointmentRepository.Instance.Update(medicalAppointment);
-        }
-
-        public String path;
-
     }
 }

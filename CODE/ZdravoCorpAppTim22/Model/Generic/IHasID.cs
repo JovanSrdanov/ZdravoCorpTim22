@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
+namespace ZdravoCorpAppTim22.Model.Generic
 {
-    internal class PatientFileHandler
+    public interface IHasID
     {
+        int Id { get; set; }
     }
 }

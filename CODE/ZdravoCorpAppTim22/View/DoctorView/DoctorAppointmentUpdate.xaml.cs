@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             this.medAppointment = medicalAppointment;
 
-            rooms = RoomController.Instance.GetAllRooms();
+            rooms = RoomController.Instance.GetAll();
 
 
             RoomList = new ObservableCollection<Room>(rooms);

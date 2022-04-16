@@ -2,17 +2,14 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Service.Generic;
+
 namespace Service
 {
-    public class ManagerService
+    public class ManagerService : GenericService<ManagerRepository, ManagerClass>
     {
         private static ManagerService instance;
-
-        private ManagerService()
-        {
-
-        }
-
+        private ManagerService() : base(ManagerRepository.Instance) { }
         public static ManagerService Instance
         {
             get
@@ -25,33 +22,5 @@ namespace Service
                 return instance;
             }
         }
-
-        public List<ManagerClass> GetAll()
-        {
-            return ManagerRepository.Instance.GetAll();
-        }
-
-        public ManagerClass GetByID(int id)
-        {
-            return ManagerRepository.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            ManagerRepository.Instance.DeleteByID(id);
-        }
-
-        public void Create(ManagerClass manager)
-        {
-            ManagerRepository.Instance.Create(manager);
-        }
-
-        public void Update(ManagerClass manager)
-        {
-            ManagerRepository.Instance.Update(manager);
-        }
-
-        public String path;
-
     }
 }

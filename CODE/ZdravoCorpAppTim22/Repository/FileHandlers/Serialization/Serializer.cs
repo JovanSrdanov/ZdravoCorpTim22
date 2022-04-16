@@ -16,7 +16,6 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
         {
             path = dirPath + fileName;
         }
-
         public void Serialize(T obj)
         {
             if (!Directory.Exists(dirPath))

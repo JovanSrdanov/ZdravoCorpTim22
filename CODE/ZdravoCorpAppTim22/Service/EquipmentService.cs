@@ -4,37 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoCorpAppTim22.Repository;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
 {
-    public class EquipmentService
+    public class EquipmentService : GenericService<EquipmentRepository, Equipment>
     {
-        public List<Equipment> GetAllEquipment()
+        private static EquipmentService instance;
+        private EquipmentService() : base(EquipmentRepository.Instance) { }
+        public static EquipmentService Instance
         {
-            return this.equipmentRepository.GetAll();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EquipmentService();
+                }
+
+                return instance;
+            }
         }
-
-        public Equipment GetEquipmentByID(int id)
-        {
-            return this.equipmentRepository.GetByID(id);
-        }
-
-        public void DeleteEquipmentByID(int id)
-        {
-            this.equipmentRepository.DeleteByID(id);
-        }
-
-        public void CreateEquipment(Equipment equipment)
-        {
-            this.equipmentRepository.Create(equipment);
-        }
-
-        public void UpdateEquipment(Equipment equipment)
-        {
-            this.equipmentRepository.Update(equipment);
-        }
-
-        public Repository.EquipmentRepository equipmentRepository = new Repository.EquipmentRepository();
-
     }
 }

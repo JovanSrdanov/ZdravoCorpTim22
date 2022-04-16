@@ -1,37 +1,25 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
 {
-   public class RoomService
-   {
-      public List<Room> GetAllRooms()
-      {
-            return roomRepository.GetAll();
-      }
-      
-      public Room GetRoomByID(int id)
-      {
-            return roomRepository.GetByID(id);
-      }
-      
-      public void DeleteRoomByID(int id)
-      {
-            roomRepository.DeleteByID(id);
+   public class RoomService : GenericService<RoomRepository, Room>
+    {
+        private static RoomService instance;
+        private RoomService() : base(RoomRepository.Instance) { }
+        public static RoomService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomService();
+                }
+                return instance;
+            }
         }
-      
-      public void CreateRoom(Room roomObj)
-      {
-         roomRepository.Create(roomObj);
-      }
-      
-      public void UpdateRoom(Room roomObj)
-      {
-            roomRepository.Update(roomObj);
-        }
-      
-      public Repository.RoomRepository roomRepository = new Repository.RoomRepository();
-   
    }
 }

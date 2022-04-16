@@ -2,18 +2,14 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
 {
-    public class ManagerController
+    public class ManagerController : GenericController<ManagerService, ManagerClass>
     {
-
         private static ManagerController instance;
-
-        private ManagerController()
-        {
-
-        }
+        private ManagerController() : base(ManagerService.Instance) { }
         public static ManagerController Instance
         {
             get
@@ -26,33 +22,5 @@ namespace Controller
                 return instance;
             }
         }
-
-        public List<ManagerClass> GetAll()
-        {
-            return ManagerService.Instance.GetAll();
-        }
-
-        public Model.ManagerClass GetByID(int id)
-        {
-            return ManagerService.Instance.GetByID(id);
-        }
-
-        public void DeleteByID(int id)
-        {
-            ManagerService.Instance.DeleteByID(id);
-        }
-
-        public void Create(ManagerClass manager)
-        {
-            ManagerService.Instance.Create(manager);
-        }
-
-        public void Update(ManagerClass manager)
-        {
-            ManagerService.Instance.Update(manager);
-        }
-
-        public String path;
-
     }
 }
