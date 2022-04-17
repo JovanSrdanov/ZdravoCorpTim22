@@ -72,11 +72,13 @@
     <Style TargetType="DataGridCell">
         <Setter Property="Padding" Value="10"/>
         <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Width" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridCell">
                     <Border Padding="{TemplateBinding Padding}"
-                                Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}">
+                            Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                            Width="{TemplateBinding Width}">
                         <ContentPresenter/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -88,5 +90,25 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <Style x:Key="StandardTextBlock" TargetType="TextBlock">
+        <Setter Property="Width" Value="120"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+    <Style x:Key="StandardTextBox" TargetType="TextBox">
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Setter Property="MaxLength" Value="50"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+    <Style x:Key="StandardComboBox" TargetType="ComboBox">
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="Padding" Value="5"/>
     </Style>
 </ResourceDictionary>

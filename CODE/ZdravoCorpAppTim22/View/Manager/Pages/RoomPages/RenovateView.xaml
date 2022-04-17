@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Pages.RoomPages"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditRoomView"
@@ -13,26 +14,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="TextBlock">
-                <Setter Property="Width" Value="120"></Setter>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="Width" Value="300"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="MaxLength" Value="50"/>
-                <Setter Property="Margin" Value="0 0 0 20"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
-            <Style TargetType="ComboBox">
-                <Setter Property="Width" Value="300"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="Margin" Value="0 0 0 20"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -46,26 +27,34 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            
-            
-
-            <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 30 0 0">
-                <Button x:Name="ButtonConfirm" Style="{StaticResource ButtonStandard}" Margin="0" Click="ButtonConfirm_Click">Confirm</Button>
+            <Button x:Name="ButtonSelectStartTime" 
+                    Grid.Row="0"
+                    Style="{StaticResource ButtonStandard}" 
+                    Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+            <ContentControl x:Name="SelectStartTimeContent"
+                            Grid.Row="1"/>
+            <!--
+            <WrapPanel Grid.Row="3" 
+                       Grid.Column="0" 
+                       Margin="0 30 0 0">
+                <Button x:Name="ButtonConfirm" 
+                        Style="{StaticResource ButtonStandard}" 
+                        Margin="0" 
+                        Click="ButtonConfirm_Click">Confirm</Button>
+                <Button x:Name="ButtonCancel" 
+                        Style="{StaticResource ButtonStandard}" 
+                        Margin="30 0 0 0" 
+                        Click="ButtonCancel_Click">Cancel</Button>
             </WrapPanel>
-
-            <WrapPanel Grid.Row="4" Grid.Column="1" Margin="0 30 0 0" HorizontalAlignment="Right">
-                <Button x:Name="ButtonCancel" Style="{StaticResource ButtonStandard}" Margin="0" Click="ButtonCancel_Click">Cancel</Button>
-            </WrapPanel>
-
+            -->
         </Grid>
     </Grid>
 </Page>

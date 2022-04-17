@@ -1,23 +1,13 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
@@ -29,14 +19,21 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private int level;
         private string name;
         private string type;
+        
+        public Interval RenovationInterval { get; set; }
+        
+        private Room OldRoom { get; }
 
         public RenovateView(Room room)
         {
             init();
+            OldRoom = room;
             ID = room.Id;
             Level = room.Level;
             RoomName = room.Name;
             type = room.Type.ToString();
+            Debug.WriteLine(RenovationInterval.Start);
+            Debug.WriteLine(RenovationInterval.End);
         }
 
         private void init()
@@ -92,40 +89,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
 
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            return;
-
-            if (type == null)
-            {
-                return;
-            }
-            if (name == null || name.Equals(""))
-            {
-                MessageBox.Show("Name can't be empty");
-                return;
-            }
-            if (level < 0)
-            {
-                MessageBox.Show("Level can't be nagative");
-                return;
-            }
-
-            RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            Room room = new Room(id, level, rt, name);
-
-            RoomController.Instance.Update(room);
-            
-
-            this.NavigationService.GoBack();
-        }
-
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.GoBack();
+            var RenovateStartDateView = new RenovateStartDateView(this, OldRoom);
+            this.NavigationService.Navigate(RenovateStartDateView);
         }
     }
 }
