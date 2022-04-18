@@ -1,49 +1,11 @@
-﻿using Controller;
-using Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for DoctorHome.xaml
-    /// </summary>
     public partial class DoctorHome : Window
     {
-        /*public ObservableCollection<Doctor> DoctorListObservable { get; set; }
-                                                // public static DoctorController doctorController;
-        public List<Doctor> DoctorList;
-        public DoctorHome()
-        {
-            InitializeComponent();
-                                                 //doctorController = new DoctorController();
-           DoctorList = DoctorController.Instance.GetAll();
-           DoctorListObservable = new ObservableCollection<Doctor>(DoctorList);
-           SelectDoctorCBOX.ItemsSource = DoctorListObservable;
-        }
-
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            DoctorAppointments doctorAppointments = new DoctorAppointments();
-            doctorAppointments.Show();
-            this.Close();
-        }*/
-
         public DoctorViewModel DoctorViewModel;
-
-        
 
         public DoctorHome()
         {
@@ -55,11 +17,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            //public static Doctor dr = SelectDoctorCBOX.SelectedItem as Doctor;
             Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
             int selectedDoctorId = doctor.Id;
-            DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId);
+
+            DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId, this);
+            doctorAppointments.Owner = this;
+            doctorAppointments.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             doctorAppointments.Show();
+
+            this.Hide();
+        }
+
+        private void BackBtnClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Show();
+            this.Close();
+        }
+
+        private void DoctorHomeClose(object sender, System.EventArgs e)
+        {
+            Application.Current.MainWindow.Show();
             this.Close();
         }
     }
