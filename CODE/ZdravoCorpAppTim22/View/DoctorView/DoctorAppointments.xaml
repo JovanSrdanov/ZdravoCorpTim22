@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorAppointments" Height="450" Width="800">
+        Title="DoctorAppointments" Height="450" Width="800" Closed="DoctorAppointmentsClose">
     <Grid>
         <DataGrid Name="appointmentListGrid" ItemsSource="{Binding Source=currentDoctorAppointments}"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False" Height="240" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" 
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
-                <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.id}"/>
-                <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}"/>
-                <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor.Name}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" Width="*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Path=MedicalAppointmentStartDateTime}" Width="*"/>
+                <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.Id}" Width="*"/>
+                <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}" Width="*"/>
+                <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor.Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="269,259,0,0" VerticalAlignment="Top" Click="btnCreate_Click"/>
+        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="362,259,0,0" VerticalAlignment="Top" Click="btnCreate_Click"/>
         <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="452,259,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="273,259,0,0" VerticalAlignment="Top" Click="BackBtnClick"/>
     </Grid>
 </Window>
