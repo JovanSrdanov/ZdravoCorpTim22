@@ -1,59 +1,38 @@
 ﻿using Controller;
 using Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for DoctorAppointments.xaml
-    /// </summary>
     public partial class DoctorAppointments : Window
     {
-        //public static DoctorController doctorController;
-        // public static MedicalAppointmentController medicalAppointmentController;
-
-        private List<MedicalAppointment> currentDoctorAppointments = new List<MedicalAppointment>();
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
-
-        //allAppointments.add(MedicalAppointmentController.getById(123));
-
-
-        //foreach (MedicalAppointment temp in medicalAppointmentController.getAll()) {
-        //  }
-        // private Doctor dr = doctorController.GetByID(123);
-        //public List<MedicalAppointment> = dr.MedicalAppointment;
-
         public int selectedDoctorId;
-        
-        public DoctorAppointments(int id)
+        private DoctorHome doctorHome;
+
+        public DoctorAppointments(int id, DoctorHome doctorHome)
         {
             InitializeComponent();
             selectedDoctorId = id;
-            List<Doctor> doctorList = DoctorController.Instance.GetAll();
+
             Doctor doctor = DoctorController.Instance.GetByID(id);
             List<MedicalAppointment> allMedicalAppointment = doctor.MedicalAppointment;
-            currentDoctorAppointments = allMedicalAppointment;
-            CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(currentDoctorAppointments);
+            CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allMedicalAppointment);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
+
+            this.doctorHome = doctorHome;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(selectedDoctorId);
+            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(selectedDoctorId, this);
+            appCreate.Owner = this;
+            appCreate.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             appCreate.Show();
+
+            this.Hide();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -61,12 +40,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicalAppointment medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
             if (medicalAppointment == null)
             {
+                MessageBox.Show("Please select an appointment", "Delete appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             MedicalAppointmentController.Instance.DeleteByID(medicalAppointment.Id);
             CurDocAppointemntsObservable.Remove(medicalAppointment);
-            MessageBox.Show("Apointment sa ID-em" + medicalAppointment.Id + "je obrisan");
+            MessageBox.Show("Apointment with ID " + medicalAppointment.Id + " deleted");
 
+        }
+
+        private void BackBtnClick(object sender, RoutedEventArgs e)
+        {
+            doctorHome.Show();
+            this.Close();
+        }
+
+        private void DoctorAppointmentsClose(object sender, System.EventArgs e)
+        {
+            Application.Current.MainWindow.Show();
+            this.Close();
         }
     }
 }

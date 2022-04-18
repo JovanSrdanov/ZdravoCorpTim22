@@ -49,8 +49,11 @@ namespace ZdravoCorpAppTim22
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
         {
             DoctorHome doctorHome = new DoctorHome();
+            doctorHome.Owner = this;
+            doctorHome.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             doctorHome.Show();
-            this.Close();
+
+            this.Hide();
 
         }
 
