@@ -13,10 +13,45 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 
         public RenovationViewModel(Room room, DateTime date)
         {
-            Appointments = new ObservableCollection<Appointment>(CalculateAppointmentList(room, date));
+            Appointments = new ObservableCollection<Appointment>(CreateFullList(room, date));
         }
 
-        public List<Appointment> CalculateAppointmentList(Room room, DateTime date)
+        public RenovationViewModel(Room room, DateTime date, DateTime startDate)
+        {
+            List<Appointment> list = CreateFullList(room, date);
+            if(DateTime.Compare(date.Date, startDate.Date) > 0)
+            {
+                Appointments = new ObservableCollection<Appointment>(new List<Appointment>
+                {
+                    list[0]
+                });
+            }
+            else
+            {
+                foreach(Appointment app in list)
+                {
+                    if(DateTime.Compare(app.Interval.Start, startDate) <= 0 && DateTime.Compare(app.Interval.End, startDate) > 0)
+                    {
+                        Interval interval = new Interval()
+                        {
+                            Start = startDate,
+                            End = app.Interval.End
+                        };
+                        Appointments = new ObservableCollection<Appointment>(new List<Appointment>
+                        {
+                            new Appointment()
+                            {
+                                Interval = interval,
+                                Type = app.Type,
+                            }
+                        });
+                        break;
+                    }
+                }
+            }
+        }
+
+        public List<Appointment> GetAppointmentsForDay(Room room, DateTime date)
         {
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (MedicalAppointment medApp in room.MedicalAppointment)
@@ -32,7 +67,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     appointmentList.Add(app);
                 }
             }
+
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
+            return appointmentList;
+        }
+        public List<Appointment> CreateFullList(Room room, DateTime date)
+        {
+            List<Appointment> appointmentList = GetAppointmentsForDay(room, date);
 
             if (appointmentList.Count == 0)
             {
@@ -87,7 +128,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     allAppointments.Insert(0, app);
                 }
                 DateTime last = allAppointments[allAppointments.Count - 1].Interval.End;
-                Debug.WriteLine(first.Date.AddHours(23).AddMinutes(59));
                 if (DateTime.Compare(last, last.Date.AddHours(23).AddMinutes(59)) < 0)
                 {
                     Interval interval = new Interval()
@@ -100,6 +140,32 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                 }
             }
             return allAppointments;
+        }
+        public static DateTime GetLatestAvailableTime(Room room, DateTime startDate)
+        {
+            List<Appointment> appointmentList = new List<Appointment>();
+            foreach (MedicalAppointment medApp in room.MedicalAppointment)
+            {
+                if (DateTime.Compare(startDate, medApp.MedicalAppointmentEndDateTime) < 1)
+                {
+                    Interval interval = new Interval()
+                    {
+                        Start = medApp.MedicalAppointmentStartDateTime,
+                        End = medApp.MedicalAppointmentEndDateTime
+                    };
+                    Appointment app = new Appointment(interval, RoomAppointmentType.DoctorAppointment);
+                    appointmentList.Add(app);
+                }
+            }
+            appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
+            if(appointmentList.Count > 0)
+            {
+                return appointmentList[0].Interval.Start;
+            }
+            else
+            {
+                return startDate;
+            }
         }
     }
     

@@ -20,6 +20,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
             DataContext = ViewModel;
         }
 
+        public RenovationList(Room room, DateTime date, DateTime startDate)
+        {
+            InitializeComponent();
+            ViewModel = new RenovationViewModel(room, date, startDate);
+            DataContext = ViewModel;
+        }
+
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedAppointment = (Appointment)DataGrid.SelectedItem;

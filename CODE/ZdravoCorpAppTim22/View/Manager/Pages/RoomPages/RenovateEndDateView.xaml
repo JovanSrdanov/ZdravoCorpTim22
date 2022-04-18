@@ -1,4 +1,4 @@
-﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.RoomPages.RenovateStartDateView"
+﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.RoomPages.RenovateEndDateView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -34,7 +34,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ContentControl x:Name="SelectStartTimeContent"
+            <ContentControl x:Name="SelectEndTimeContent"
                             Grid.Row="1"/>
             <!--
             <WrapPanel x:Name="ButtonPanel" 

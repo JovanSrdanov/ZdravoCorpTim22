@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 using ZdravoCorpAppTim22.View.Manager.Views;
@@ -19,32 +20,67 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private int level;
         private string name;
         private string type;
-        
-        public Interval RenovationInterval { get; set; }
-        
+
         private Room OldRoom { get; }
+
+        private Interval renovationInterval;
 
         public RenovateView(Room room)
         {
-            init();
+            InitializeComponent();
+            DataContext = this;
             OldRoom = room;
             ID = room.Id;
             Level = room.Level;
             RoomName = room.Name;
             type = room.Type.ToString();
-            Debug.WriteLine(RenovationInterval.Start);
-            Debug.WriteLine(RenovationInterval.End);
+
+            TypeComboBox.ItemsSource = Enum.GetValues(typeof(RoomType));
+            EndTimeGroup.Visibility = Visibility.Hidden;
+            RoomEdit.Visibility = Visibility.Hidden;
         }
 
-        private void init()
+        public void StartDateSelected(object sender, EventArgs e)
         {
-            InitializeComponent();
-            DataContext = this;
+            renovationInterval.Start = ((CustomDatePicker)sender).SelectedDate;
+            if (DateTime.Compare(renovationInterval.Start, new DateTime()) > 0)
+            {
+                SelectStartTimeContent.Content = renovationInterval.Start.ToString();
+                EndTimeGroup.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                EndTimeGroup.Visibility = Visibility.Hidden;
+            }
+        }
+
+        public void EndDateSelected(object sender, EventArgs e)
+        {
+            renovationInterval.End = ((CustomDatePicker)sender).SelectedDate;
+            if (DateTime.Compare(renovationInterval.End, new DateTime()) > 0)
+            {
+                SelectEndTimeContent.Content = renovationInterval.End.ToString();
+                RoomEdit.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                RoomEdit.Visibility = Visibility.Hidden;
+            }
         }
 
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public Interval RenovationInterval
+        {
+            get => renovationInterval;
+            set
+            {
+                renovationInterval = value;
+                OnPropertyChanged("RenovationInterval");
+            }
         }
 
         public int ID
@@ -95,7 +131,47 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
             var RenovateStartDateView = new RenovateStartDateView(this, OldRoom);
+            RenovateStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             this.NavigationService.Navigate(RenovateStartDateView);
+        }
+
+        private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
+        {
+            var RenovateEndDateView = new RenovateEndDateView(this, OldRoom, renovationInterval.Start);
+            RenovateEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
+            this.NavigationService.Navigate(RenovateEndDateView);
+        }
+
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (type == null)
+            {
+                return;
+            }
+            if (name == null || name.Equals(""))
+            {
+                MessageBox.Show("Name can't be empty");
+                return;
+            }
+            if (level < 0)
+            {
+                MessageBox.Show("Level can't be nagative");
+                return;
+            }
+
+            RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
+            Room room = new Room(id, level, rt, name);
+            Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
+
+            RenovationController.Instance.Create(renovation);
+            RoomController.Instance.GetByID(OldRoom.Id).Renovations.Add(renovation);
+
+            this.NavigationService.Navigate(new RoomView());
+        }
+
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new RoomView());
         }
     }
 }

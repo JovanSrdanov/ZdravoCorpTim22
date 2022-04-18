@@ -9,17 +9,17 @@ using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
-    public partial class RenovateStartDateView : Page
+    public partial class RenovateEndDateView : Page
     {
         private RenovateView RenovateView { get; set; }
         public CustomDatePicker CustomDatePicker { get; set; }
         
-        public RenovateStartDateView(RenovateView parent, Room room)
+        public RenovateEndDateView(RenovateView parent, Room room, DateTime start)
         {
             InitializeComponent();
             RenovateView = parent;
-            CustomDatePicker = new CustomDatePicker(room);
-            SelectStartTimeContent.Content = CustomDatePicker;
+            CustomDatePicker = new CustomDatePicker(room, start);
+            SelectEndTimeContent.Content = CustomDatePicker;
             CustomDatePicker.DateSelectedEvent += StartDateSelected;
             CustomDatePicker.CancelEvent += DateSelectCancel;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 
 namespace Model
@@ -14,15 +15,15 @@ namespace Model
         public string Name { get; set; }
 
         [JsonIgnore]
-        public System.Collections.Generic.List<Equipment> equipment;
+        public List<Equipment> equipment;
 
         [JsonIgnore]
-        public System.Collections.Generic.List<Equipment> Equipment
+        public List<Equipment> Equipment
         {
             get
             {
                 if (equipment == null)
-                    equipment = new System.Collections.Generic.List<Equipment>();
+                    equipment = new List<Equipment>();
                 return equipment;
             }
             set
@@ -32,6 +33,52 @@ namespace Model
                 {
                     foreach (Equipment oEquipment in value)
                         AddEquipment(oEquipment);
+                }
+            }
+        }
+
+        [JsonIgnore]
+        public List<MedicalAppointment> medicalAppointment;
+
+        [JsonIgnore]
+        public List<MedicalAppointment> MedicalAppointment
+        {
+            get
+            {
+                if (medicalAppointment == null)
+                    medicalAppointment = new System.Collections.Generic.List<MedicalAppointment>();
+                return medicalAppointment;
+            }
+            set
+            {
+                RemoveAllMedicalAppointment();
+                if (value != null)
+                {
+                    foreach (MedicalAppointment oMedicalAppointment in value)
+                        AddMedicalAppointment(oMedicalAppointment);
+                }
+            }
+        }
+        [JsonIgnore]
+        public List<Renovation> renovations;
+        [JsonIgnore]
+        public List<Renovation> Renovations
+        {
+            get
+            {
+                if (renovations == null)
+                {
+                    renovations = new List<Renovation>();
+                }
+                return renovations;
+            }
+            set
+            {
+                RemoveAllRenovations();
+                if (value != null)
+                {
+                    foreach (Renovation oRenovation in value)
+                        AddRenovation(oRenovation);
                 }
             }
         }
@@ -103,28 +150,46 @@ namespace Model
             }
         }
 
-        [JsonIgnore]
-        public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
-
-        [JsonIgnore]
-        public System.Collections.Generic.List<MedicalAppointment> MedicalAppointment
+        public void RemoveRenovation(Renovation oldRenovation)
         {
-            get
-            {
-            if (medicalAppointment == null)
-                medicalAppointment = new System.Collections.Generic.List<MedicalAppointment>();
-            return medicalAppointment;
-            }
-            set
-            {
-                RemoveAllMedicalAppointment();
-                if (value != null)
+            if (oldRenovation == null)
+                return;
+            if (this.renovations != null)
+                if (this.renovations.Contains(oldRenovation))
                 {
-                    foreach (MedicalAppointment oMedicalAppointment in value)
-                        AddMedicalAppointment(oMedicalAppointment);
+                    this.renovations.Remove(oldRenovation);
+                    oldRenovation.Room = null;
                 }
+        }
+
+        public void AddRenovation(Renovation newRenovation)
+        {
+            if (newRenovation == null)
+                return;
+            if (this.renovations == null)
+                this.renovations = new List<Renovation>();
+            if (!this.renovations.Contains(newRenovation))
+            {
+                this.renovations.Add(newRenovation);
+                newRenovation.Room = this;
             }
         }
+
+        public void RemoveAllRenovations()
+        {
+            if (renovations != null)
+            {
+                System.Collections.ArrayList tmpRenovations = new System.Collections.ArrayList();
+                foreach (Renovation oldRenovation in renovations)
+                    tmpRenovations.Add(oldRenovation);
+                renovations.Clear();
+                foreach (Renovation oldRenovation in tmpRenovations)
+                    oldRenovation.Room = null;
+                tmpRenovations.Clear();
+            }
+        }
+
+        
       
         public void AddMedicalAppointment(MedicalAppointment newMedicalAppointment)
         {

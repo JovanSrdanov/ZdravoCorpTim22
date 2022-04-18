@@ -160,6 +160,9 @@
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RenovateEndDateView.xaml.cs">
+      <DependentUpon>RenovateEndDateView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RenovateStartDateView.xaml.cs">
       <DependentUpon>RenovateStartDateView.xaml</DependentUpon>
     </Compile>
@@ -241,6 +244,10 @@
     <Page Include="View\Manager\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RenovateEndDateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Manager\Pages\RoomPages\RenovateStartDateView.xaml">
       <SubType>Designer</SubType>
@@ -413,7 +420,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="View\Manager\Views\RoomAppointmentPicker\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Text.Json.6.0.2\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
