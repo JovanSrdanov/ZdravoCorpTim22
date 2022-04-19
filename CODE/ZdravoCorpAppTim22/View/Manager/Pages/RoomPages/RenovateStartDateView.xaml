@@ -36,21 +36,6 @@
             </Grid.RowDefinitions>
             <ContentControl x:Name="SelectStartTimeContent"
                             Grid.Row="1"/>
-            <!--
-            <WrapPanel x:Name="ButtonPanel" 
-                   Grid.Row="3" 
-                   Grid.Column="0" 
-                   Margin="0 30 0 0">
-                <Button x:Name="ButtonConfirm" 
-                    Style="{StaticResource ButtonStandard}" 
-                    Margin="0"
-                    Click="ButtonConfirm_Click">Confirm</Button>
-                <Button x:Name="ButtonCancel" 
-                    Style="{StaticResource ButtonStandard}" 
-                    Margin="30 0 0 0" 
-                    Click="ButtonCancel_Click">Cancel</Button>
-            </WrapPanel>
-            -->
         </Grid>
     </Grid>
 </Page>

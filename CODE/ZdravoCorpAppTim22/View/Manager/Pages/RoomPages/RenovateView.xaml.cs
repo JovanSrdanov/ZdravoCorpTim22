@@ -1,14 +1,12 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
-using ZdravoCorpAppTim22.View.Manager.Views;
+using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
@@ -47,6 +45,9 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 SelectStartTimeContent.Content = renovationInterval.Start.ToString();
                 EndTimeGroup.Visibility = Visibility.Visible;
+                RoomEdit.Visibility = Visibility.Hidden;
+                renovationInterval.End = new DateTime();
+                SelectEndTimeContent.Content = "";
             }
             else
             {
@@ -161,12 +162,12 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(id, level, rt, name);
-            Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
-
-            RenovationController.Instance.Create(renovation);
-            RoomController.Instance.GetByID(OldRoom.Id).Renovations.Add(renovation);
-
-            this.NavigationService.Navigate(new RoomView());
+            if (room.IsAvailable(RenovationInterval.Start, RenovationInterval.End))
+            {
+                Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
+                RenovationController.Instance.Create(renovation);
+                this.NavigationService.Navigate(new RoomView());
+            }
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)

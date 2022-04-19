@@ -107,6 +107,13 @@ namespace Model
                         return false;
                     }
                 }
+                foreach(Renovation ren in Renovations)
+                {
+                    if(!((ren.Interval.Start >= end) || (ren.Interval.End <= start)))
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         }
@@ -188,8 +195,6 @@ namespace Model
                 tmpRenovations.Clear();
             }
         }
-
-        
       
         public void AddMedicalAppointment(MedicalAppointment newMedicalAppointment)
         {

@@ -1,30 +1,17 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
-namespace ZdravoCorpAppTim22.View.Manager.Views
+namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
 {
     public partial class CustomDatePicker : UserControl
     {
         public Room Room;
         public Appointment Appointment;
-        public RenovationList RenView;
+        public AppointmentGrid AppointmentGrid;
         public CustomTimePicker TimePicker;
 
         public DateTime StartDate;
@@ -45,7 +32,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
             this.Room = room;
             DatePicker.DisplayDateStart = startDate;
             StartDate = startDate;
-            DateTime EndDate = RenovationViewModel.GetLatestAvailableTime(room, startDate);
+            DateTime EndDate = RoomAppointmentViewModel.GetLatestAvailableTime(room, startDate);
             if(DateTime.Compare(EndDate, StartDate) != 0)
             {
                 DatePicker.DisplayDateEnd = EndDate;
@@ -54,7 +41,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
 
         public DateTime GetDateTime()
         {
-            DateTime dt = RenView != null ? RenView.SelectedAppointment.Interval.Start.Date : new DateTime();
+            DateTime dt = AppointmentGrid != null ? AppointmentGrid.SelectedAppointment.Interval.Start.Date : new DateTime();
             if(TimePicker != null)
             {
                 dt += new TimeSpan(TimePicker.Hours, TimePicker.Minutes, 0);
@@ -64,7 +51,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
 
         private void DateSelectionChanged(object sender, EventArgs e)
         {
-            if (RenView.SelectedAppointment.Type == RoomAppointmentType.Free)
+            if (AppointmentGrid.SelectedAppointment.Type == RoomAppointmentType.Free)
             {
                 TimePicker = new CustomTimePicker();
                 TimeContent.Content = TimePicker;
@@ -80,16 +67,16 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
         {
             if (DatePicker.SelectedDate != null)
             {
-                if (DateTime.Compare(new DateTime(), StartDate) == 0)
+                if (new DateTime() == StartDate)
                 {
-                    RenView = new RenovationList(Room, (DateTime)DatePicker.SelectedDate);
+                    AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate);
                 }
                 else
                 {
-                    RenView = new RenovationList(Room, (DateTime)DatePicker.SelectedDate, StartDate);
+                    AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate, StartDate);
                 }
-                RenView.ListSelectionChanged += new EventHandler(DateSelectionChanged);
-                AppointmentContent.Content = RenView;
+                AppointmentGrid.ListSelectionChanged += new EventHandler(DateSelectionChanged);
+                AppointmentContent.Content = AppointmentGrid;
                 TimeContent.Content = null;
             }
         }
@@ -97,10 +84,14 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             DateTime time = GetDateTime();
-            Appointment app = RenView.SelectedAppointment;
+            if(AppointmentGrid == null)
+            {
+                return;
+            } 
+            Appointment app = AppointmentGrid.SelectedAppointment;
             Interval interval = app.Interval;
 
-            if (DateTime.Compare(time, interval.Start) >= 0 && DateTime.Compare(time, interval.End) < 0)
+            if (time >= interval.Start && time <= interval.End)
             {
                 this.SelectedDate = time;
                 this.DateSelectedEvent?.Invoke(this, EventArgs.Empty);

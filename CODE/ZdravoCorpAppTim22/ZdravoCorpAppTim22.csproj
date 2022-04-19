@@ -109,8 +109,10 @@
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
+    <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Model\Renovation.cs" />
+    <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\FileHandlers\GenericFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
@@ -187,20 +189,20 @@
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\ViewModels\RenovationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
-    <Compile Include="View\Manager\Views\CustomDatePicker.xaml.cs">
+    <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Views\CustomListItem.cs" />
-    <Compile Include="View\Manager\Views\CustomTimePicker.xaml.cs">
+    <Compile Include="View\Manager\Views\RoomAppointments\CustomTimePicker.xaml.cs">
       <DependentUpon>CustomTimePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Views\NavMenu.xaml.cs">
       <DependentUpon>NavMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Views\RenovationList.xaml.cs">
-      <DependentUpon>RenovationList.xaml</DependentUpon>
+    <Compile Include="View\Manager\Views\RoomAppointments\AppointmentGrid.xaml.cs">
+      <DependentUpon>AppointmentGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ChoosingAppointment.xaml.cs">
       <DependentUpon>ChoosingAppointment.xaml</DependentUpon>
@@ -312,11 +314,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Views\CustomDatePicker.xaml">
+    <Page Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Views\CustomTimePicker.xaml">
+    <Page Include="View\Manager\Views\RoomAppointments\CustomTimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -324,7 +326,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Views\RenovationList.xaml">
+    <Page Include="View\Manager\Views\RoomAppointments\AppointmentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -420,9 +422,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Manager\Views\RoomAppointmentPicker\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Text.Json.6.0.2\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

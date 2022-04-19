@@ -1,11 +1,8 @@
 ﻿using Model;
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoCorpAppTim22.Model;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
-using ZdravoCorpAppTim22.View.Manager.Views;
+using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {

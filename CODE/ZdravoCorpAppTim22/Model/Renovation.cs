@@ -1,16 +1,12 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace ZdravoCorpAppTim22.Model
 {
-    public class Renovation : IHasID
+    public class Renovation : IHasID, IHasInterval
     {
         public int Id { get; set; }
         public Room NewRoom { get; set; }
@@ -54,11 +50,5 @@ namespace ZdravoCorpAppTim22.Model
             NewRoom = newRoom;
             Interval = interval;
         }
-    }
-
-    public struct Interval
-    {
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
     }
 }

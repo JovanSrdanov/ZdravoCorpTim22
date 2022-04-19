@@ -5,25 +5,25 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
-namespace ZdravoCorpAppTim22.View.Manager.Views
+namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
 {
-    public partial class RenovationList : UserControl
+    public partial class AppointmentGrid : UserControl
     {
-        public RenovationViewModel ViewModel;
+        public RoomAppointmentViewModel ViewModel;
         public Appointment SelectedAppointment;
         public event EventHandler ListSelectionChanged;
 
-        public RenovationList(Room room, DateTime date)
+        public AppointmentGrid(Room room, DateTime date)
         {
             InitializeComponent();
-            ViewModel = new RenovationViewModel(room, date);
+            ViewModel = new RoomAppointmentViewModel(room, date);
             DataContext = ViewModel;
         }
 
-        public RenovationList(Room room, DateTime date, DateTime startDate)
+        public AppointmentGrid(Room room, DateTime date, DateTime startDate)
         {
             InitializeComponent();
-            ViewModel = new RenovationViewModel(room, date, startDate);
+            ViewModel = new RoomAppointmentViewModel(room, date, startDate);
             DataContext = ViewModel;
         }
 
