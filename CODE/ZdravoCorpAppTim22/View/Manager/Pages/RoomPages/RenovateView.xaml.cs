@@ -1,23 +1,12 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
@@ -30,24 +19,69 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         private string name;
         private string type;
 
+        private Room OldRoom { get; }
+
+        private Interval renovationInterval;
+
         public RenovateView(Room room)
         {
-            init();
+            InitializeComponent();
+            DataContext = this;
+            OldRoom = room;
             ID = room.Id;
             Level = room.Level;
             RoomName = room.Name;
             type = room.Type.ToString();
+
+            TypeComboBox.ItemsSource = Enum.GetValues(typeof(RoomType));
+            EndTimeGroup.Visibility = Visibility.Hidden;
+            RoomEdit.Visibility = Visibility.Hidden;
         }
 
-        private void init()
+        public void StartDateSelected(object sender, EventArgs e)
         {
-            InitializeComponent();
-            DataContext = this;
+            renovationInterval.Start = ((CustomDatePicker)sender).SelectedDate;
+            if (DateTime.Compare(renovationInterval.Start, new DateTime()) > 0)
+            {
+                SelectStartTimeContent.Content = renovationInterval.Start.ToString();
+                EndTimeGroup.Visibility = Visibility.Visible;
+                RoomEdit.Visibility = Visibility.Hidden;
+                renovationInterval.End = new DateTime();
+                SelectEndTimeContent.Content = "";
+            }
+            else
+            {
+                EndTimeGroup.Visibility = Visibility.Hidden;
+            }
+        }
+
+        public void EndDateSelected(object sender, EventArgs e)
+        {
+            renovationInterval.End = ((CustomDatePicker)sender).SelectedDate;
+            if (DateTime.Compare(renovationInterval.End, new DateTime()) > 0)
+            {
+                SelectEndTimeContent.Content = renovationInterval.End.ToString();
+                RoomEdit.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                RoomEdit.Visibility = Visibility.Hidden;
+            }
         }
 
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public Interval RenovationInterval
+        {
+            get => renovationInterval;
+            set
+            {
+                renovationInterval = value;
+                OnPropertyChanged("RenovationInterval");
+            }
         }
 
         public int ID
@@ -92,13 +126,25 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
+        }
+
+        private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
+        {
+            var RenovateStartDateView = new RenovateStartDateView(this, OldRoom);
+            RenovateStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
+            this.NavigationService.Navigate(RenovateStartDateView);
+        }
+
+        private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
+        {
+            var RenovateEndDateView = new RenovateEndDateView(this, OldRoom, renovationInterval.Start);
+            RenovateEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
+            this.NavigationService.Navigate(RenovateEndDateView);
         }
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            return;
-
             if (type == null)
             {
                 return;
@@ -116,16 +162,17 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(id, level, rt, name);
-
-            RoomController.Instance.Update(room);
-            
-
-            this.NavigationService.GoBack();
+            if (room.IsAvailable(RenovationInterval.Start, RenovationInterval.End))
+            {
+                Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
+                RenovationController.Instance.Create(renovation);
+                this.NavigationService.Navigate(new RoomView());
+            }
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
     }
 }
