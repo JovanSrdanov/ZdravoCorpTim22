@@ -38,6 +38,56 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             RoomEdit.Visibility = Visibility.Hidden;
         }
 
+        private void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public Interval RenovationInterval
+        {
+            get => renovationInterval;
+            set
+            {
+                renovationInterval = value;
+                OnPropertyChanged("RenovationInterval");
+            }
+        }
+        public int ID
+        {
+            get => id;
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+        public int Level
+        {
+            get => level;
+            set
+            {
+                level = value;
+                OnPropertyChanged("Level");
+            }
+        }
+        public string RoomName
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged("RoomName");
+            }
+        }
+        public string Type
+        {
+            get => type;
+            set
+            {
+                type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+
         public void StartDateSelected(object sender, EventArgs e)
         {
             renovationInterval.Start = ((CustomDatePicker)sender).SelectedDate;
@@ -69,61 +119,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
         }
 
-        private void OnPropertyChanged(string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public Interval RenovationInterval
-        {
-            get => renovationInterval;
-            set
-            {
-                renovationInterval = value;
-                OnPropertyChanged("RenovationInterval");
-            }
-        }
-
-        public int ID
-        {
-            get => id;
-            set
-            {
-                id = value;
-                OnPropertyChanged("ID");
-            }
-        }
-
-        public int Level
-        {
-            get => level;
-            set
-            {
-                level = value;
-                OnPropertyChanged("Level");
-            }
-        }
-
-        public string RoomName
-        {
-            get => name;
-            set
-            {
-                name = value;
-                OnPropertyChanged("RoomName");
-            }
-        }
-
-        public string Type
-        {
-            get => type;
-            set
-            {
-                type = value;
-                OnPropertyChanged("Type");
-            }
-        }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new RoomView());
@@ -131,14 +126,14 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            var RenovateStartDateView = new RenovateStartDateView(this, OldRoom);
+            var RenovateStartDateView = new SelectTimePage(this, OldRoom);
             RenovateStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             this.NavigationService.Navigate(RenovateStartDateView);
         }
 
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
-            var RenovateEndDateView = new RenovateEndDateView(this, OldRoom, renovationInterval.Start);
+            var RenovateEndDateView = new SelectTimePage(this, OldRoom, renovationInterval.Start);
             RenovateEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             this.NavigationService.Navigate(RenovateEndDateView);
         }

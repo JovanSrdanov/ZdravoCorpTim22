@@ -1,58 +1,9 @@
 [
-    {
-        "id": 2,
-        "name": "aa",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 1,
-        "name": "bb",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 4,
-        "name": "cc",
-        "amount": 3,
-        "type": 1,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 5,
-        "name": "cc",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 6
-    },
-    {
-        "id": 4,
-        "name": "dd",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 6
-    },
-    {
-        "id": 5,
-        "name": "cc",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 7
-    },
-    {
-        "id": 4,
-        "name": "dd",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 7
-    }
+  {
+    "Id": 0,
+    "Name": "stolica",
+    "Amount": 100,
+    "Type": 1,
+    "Room": null
+  }
 ]

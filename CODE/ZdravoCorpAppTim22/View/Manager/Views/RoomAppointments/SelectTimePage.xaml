@@ -1,4 +1,4 @@
-﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.RoomPages.RenovateEndDateView"
+﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments.SelectTimePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -34,7 +34,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ContentControl x:Name="SelectEndTimeContent"
+            <ContentControl x:Name="SelectTimeContent"
                             Grid.Row="1"/>
         </Grid>
     </Grid>

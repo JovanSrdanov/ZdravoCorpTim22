@@ -138,7 +138,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (MedicalAppointment medApp in room.MedicalAppointment)
             {
-                if (DateTime.Compare(startDate, medApp.MedicalAppointmentEndDateTime) < 0)
+                if (startDate < medApp.MedicalAppointmentEndDateTime)
                 {
                     Appointment app = new Appointment(medApp.MedicalAppointmentStartDateTime, medApp.MedicalAppointmentEndDateTime, RoomAppointmentType.DoctorAppointment);
                     appointmentList.Add(app);
@@ -146,23 +146,15 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             }
             foreach (Renovation ren in room.Renovations)
             {
-                if (DateTime.Compare(startDate, ren.Interval.End) < 0)
+                if (startDate < ren.Interval.End)
                 {
                     Appointment app = new Appointment(ren.Interval.Start, ren.Interval.End, RoomAppointmentType.RenovationAppointment);
                     appointmentList.Add(app);
                 }
             }
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
-            if(appointmentList.Count > 0)
-            {
-                return appointmentList[0].Interval.Start;
-            }
-            else
-            {
-                return startDate;
-            }
+            return appointmentList.Count > 0 ? appointmentList[0].Interval.Start : startDate;
         }
-        
     }
     
     public struct Appointment : IHasInterval
@@ -173,7 +165,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             Interval = interval;
             Type = type;
         }
-
         public Appointment(DateTime start, DateTime end, RoomAppointmentType type)
         {
             Interval = new Interval()
@@ -184,7 +175,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             Type = type;
         }
     }
-    
     public enum RoomAppointmentType
     {
         DoctorAppointment,

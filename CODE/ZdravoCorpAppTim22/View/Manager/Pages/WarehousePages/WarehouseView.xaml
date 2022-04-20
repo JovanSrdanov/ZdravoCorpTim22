@@ -7,8 +7,39 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WarehouseView">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Global.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Foreground="{StaticResource TextPrimary}" 
+                   Grid.Row="0" 
+                   Margin="0 0 0 30" 
+                   FontSize="{StaticResource HeadingFontSize}">WAREHOUSE OVERVIEW</TextBlock>
+        <WrapPanel Grid.Row="1"
+                   Margin="0 0 0 10">
+            <Button x:Name="AddEquipment" Click="AddEquipment_Click">Add</Button>
+            <Button x:Name="EditEquipment" Click="EditEquipment_Click">Edit</Button>
+            <Button x:Name="DeleteEquipment" Click="DeleteEquipment_Click">Delete</Button>
+        </WrapPanel>
+        <DataGrid Grid.Row="2"
+                  Name="dataGrid"
+                  ItemsSource="{Binding Path=EquipmentCollection}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
