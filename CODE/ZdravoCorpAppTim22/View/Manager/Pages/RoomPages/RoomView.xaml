@@ -14,7 +14,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -29,19 +29,13 @@
                    FontSize="{StaticResource HeadingFontSize}">ROOM OVERVIEW</TextBlock>
         <WrapPanel Grid.Row="1"
                    Margin="0 0 0 10">
-            <Button x:Name="AddRoom" Style="{StaticResource ButtonStandard}" Click="AddRoom_Click">Add</Button>
-            <Button x:Name="RenovateRoom" Style="{StaticResource ButtonStandard}" Click="RenovateRoom_Click">Renovate</Button>
-            <Button x:Name="DeleteRoom" Style="{StaticResource ButtonStandard}" Click="DeleteRoom_Click">Delete</Button>
+            <Button x:Name="AddRoom" Click="AddRoom_Click">Add</Button>
+            <Button x:Name="RenovateRoom" Click="RenovateRoom_Click">Renovate</Button>
+            <Button x:Name="DeleteRoom" Click="DeleteRoom_Click">Delete</Button>
         </WrapPanel>
         <DataGrid Grid.Row="2"
-                  Foreground="{StaticResource TextPrimary}"
-                  FontSize="{StaticResource StandardFontSize}"
                   Name="dataGrid"
-                  ItemsSource="{Binding Path=RoomList}" 
-                  SelectionMode="Single"
-                  IsReadOnly="True"
-                  MaxWidth="1000"
-                  HorizontalAlignment="Left">
+                  ItemsSource="{Binding Path=RoomList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>

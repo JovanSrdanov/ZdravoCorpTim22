@@ -1,35 +1,35 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoCorpAppTim22.Controller;
 
-namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
+namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 {
-    public partial class AddRoomView : Page, INotifyPropertyChanged
+    public partial class AddEquipmentView : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private int level;
+        private int amount;
         private string name;
         private string type;
-        public int Level
+        public int Amount
         {
-            get => level;
+            get => amount;
             set
             {
-                level = value;
-                OnPropertyChanged("Level");
+                amount = value;
+                OnPropertyChanged("Amount");
             }
         }
-        public string RoomName
+
+        public string EquipmentName
         {
             get => name;
             set
             {
                 name = value;
-                OnPropertyChanged("RoomName");
+                OnPropertyChanged("EquipmentName");
             }
         }
         public string Type
@@ -42,25 +42,20 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
         }
 
-        public AddRoomView()
+        public AddEquipmentView()
         {
             InitializeComponent();
             DataContext = this;
-            TypeComboBox.ItemsSource = Enum.GetValues(typeof(RoomType));
+            TypeComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentType));
         }
-
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
         }
-
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             if (type == null)
@@ -72,15 +67,15 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 MessageBox.Show("Name can't be empty");
                 return;
             }
-            if (level < 0)
+            if (Amount < 0)
             {
-                MessageBox.Show("Level can't be nagative");
+                MessageBox.Show("Amount can't be nagative");
                 return;
             }
 
-            RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            Room room = new Room(0, level, rt, name);
-            RoomController.Instance.Create(room);
+            EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
+            Equipment equipment = new Equipment(0, name, amount, et, null);
+            EquipmentController.Instance.Create(equipment);
 
             this.NavigationService.GoBack();
         }

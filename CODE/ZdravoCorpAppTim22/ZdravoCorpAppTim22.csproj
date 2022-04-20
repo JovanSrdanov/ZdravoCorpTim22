@@ -108,6 +108,7 @@
     <Compile Include="Controller\Generic\IController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
@@ -162,12 +163,6 @@
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Pages\RoomPages\RenovateEndDateView.xaml.cs">
-      <DependentUpon>RenovateEndDateView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Manager\Pages\RoomPages\RenovateStartDateView.xaml.cs">
-      <DependentUpon>RenovateStartDateView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RenovateView.xaml.cs">
       <DependentUpon>RenovateView.xaml</DependentUpon>
     </Compile>
@@ -186,11 +181,15 @@
     <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
       <DependentUpon>StaffView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml.cs">
+      <DependentUpon>AddEquipmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\WarehouseViewModel.cs" />
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
@@ -203,6 +202,9 @@
     </Compile>
     <Compile Include="View\Manager\Views\RoomAppointments\AppointmentGrid.xaml.cs">
       <DependentUpon>AppointmentGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Views\RoomAppointments\SelectTimePage.xaml.cs">
+      <DependentUpon>SelectTimePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ChoosingAppointment.xaml.cs">
       <DependentUpon>ChoosingAppointment.xaml</DependentUpon>
@@ -247,14 +249,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Pages\RoomPages\RenovateEndDateView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Manager\Pages\RoomPages\RenovateStartDateView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Manager\Pages\RoomPages\RenovateView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -276,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Pages\StaffPages\StaffView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -329,6 +327,10 @@
     <Page Include="View\Manager\Views\RoomAppointments\AppointmentGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\RoomAppointments\SelectTimePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PatientView\ChoosingAppointment.xaml">
       <SubType>Designer</SubType>

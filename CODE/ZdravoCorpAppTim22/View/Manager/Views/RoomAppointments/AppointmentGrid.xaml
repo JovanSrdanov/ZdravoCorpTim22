@@ -18,15 +18,10 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Foreground="{StaticResource TextPrimary}"
-                      Grid.Row="0"
-                      FontSize="{StaticResource StandardFontSize}"
-                      Name="DataGrid"
-                      ItemsSource="{Binding Path=Appointments}" 
-                      SelectionMode="Single"
-                      IsReadOnly="True"
-                      MaxWidth="1000"
-                      HorizontalAlignment="Left" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid Grid.Row="0"
+                  Name="DataGrid"
+                  ItemsSource="{Binding Path=Appointments}" 
+                  SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Interval.Start.TimeOfDay}" Header="Start Time" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Interval.End.TimeOfDay}" Header="End Time" Width="*"/>
