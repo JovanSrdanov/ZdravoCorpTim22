@@ -1,7 +1,5 @@
 using Model;
 using Service;
-using System;
-using System.Collections.Generic;
 using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
