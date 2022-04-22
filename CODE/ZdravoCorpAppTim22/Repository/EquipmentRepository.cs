@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Collections.Generic;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Repository
@@ -19,6 +20,19 @@ namespace ZdravoCorpAppTim22.Repository
 
                 return instance;
             }
+        }
+
+        public List<Equipment> GetWarehouseEquipment()
+        {
+            List<Equipment> equipmentList = new List<Equipment>();
+            foreach(Equipment eq in List)
+            {
+                if(eq.Room == null)
+                {
+                    equipmentList.Add(eq);
+                }
+            }
+            return equipmentList;
         }
     }
 }

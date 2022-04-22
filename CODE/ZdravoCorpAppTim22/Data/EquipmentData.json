@@ -4,6 +4,15 @@
     "Name": "stolica",
     "Amount": 100,
     "Type": 1,
-    "Room": null
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 1,
+    "Name": "Kreveti",
+    "Amount": 50,
+    "Type": 1,
+    "Room": null,
+    "EquipmentRelocation": null
   }
 ]

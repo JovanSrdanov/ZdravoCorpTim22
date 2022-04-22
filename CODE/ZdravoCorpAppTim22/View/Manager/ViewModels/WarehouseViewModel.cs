@@ -10,7 +10,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
         public ObservableCollection<Equipment> EquipmentCollection { get; set; }
         public WarehouseViewModel()
         {
-            List<Equipment> equipment = EquipmentController.Instance.GetAll();
+            List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);
         }
     }

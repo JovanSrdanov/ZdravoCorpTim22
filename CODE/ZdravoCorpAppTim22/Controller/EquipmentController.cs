@@ -24,5 +24,10 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+
+        public List<Equipment> GetWarehouseEquipment()
+        {
+            return EquipmentService.Instance.GetWarehouseEquipment();
+        }
     }
 }
