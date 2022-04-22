@@ -37,8 +37,38 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            
-            
+
+            <DataGrid Grid.Row="0"
+                      Name="DataGrid"
+                      ItemsSource="{Binding Path=RoomList}"
+                      SelectionChanged="DataGrid_SelectionChanged"
+                      Margin="0 0 0 20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Level}" Header="Level" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <WrapPanel Grid.Row="1"
+                       Margin="0 0 0 20"
+                       x:Name="StartTimeGroup">
+                <Button x:Name="ButtonSelectStartTime" 
+                        Style="{StaticResource ButtonStandard}" Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+                <ContentControl x:Name="SelectStartTimeContent"
+                                Foreground="{StaticResource TextPrimary}"
+                                FontSize="{StaticResource StandardFontSize}"
+                                Margin="20 7 0 0"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="2"
+                       x:Name="EndTimeGroup">
+                <Button x:Name="ButtonSelectEndTime" 
+                        Style="{StaticResource ButtonStandard}" Click="ButtonSelectEndTime_Click">Select End Time</Button>
+                <ContentControl x:Name="SelectEndTimeContent"
+                                Foreground="{StaticResource TextPrimary}"
+                                FontSize="{StaticResource StandardFontSize}"
+                                Margin="20 7 0 0"/>
+            </WrapPanel>
         </Grid>
     </Grid>
 </Page>
