@@ -15,7 +15,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         //private int id;
         private string type;
-        private int selectedDoctorID;
+        //private int selectedDoctorID;
         private DoctorAppointments doctorAppointments;
         private Doctor doctor;
 
@@ -30,17 +30,17 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public ObservableCollection<Patient> PatientList { get; set; }
         public List<Patient> patients;
 
-        public DoctorAppointmentCreate(int selectedDoctorID, DoctorAppointments doctorAppointments)
+        public DoctorAppointmentCreate(DoctorAppointments doctorAppointments)
         {
             InitializeComponent();
             this.DataContext = this;
-            this.selectedDoctorID = selectedDoctorID;
+            //this.selectedDoctorID = selectedDoctorID;
             this.doctorAppointments = doctorAppointments;
 
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
             ObservableCollection<AppointmentType> newAppointmentTypes = new ObservableCollection<AppointmentType>(appointmentTypes);
             newAppointmentTypes.Remove(AppointmentType.operation);
-            doctor = DoctorController.Instance.GetByID(selectedDoctorID);
+            doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
 
             if (doctor.DoctorType == DoctorSpecialisationType.specialist)
             {
