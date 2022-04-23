@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for MedicalRecordView.xaml
-    /// </summary>
     public partial class MedicalRecordView : Window
     {
         private Patient selectedPatient;
@@ -26,7 +23,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public MedicalRecordView(int selectedPatientID, DoctorAppointments doctorAppointments)
         {
             InitializeComponent();
+            
             selectedPatient = PatientController.Instance.GetByID(selectedPatientID);
+
+            //privremeni karton
+            MedicalRecord medRecordTemp = new MedicalRecord(1, BloodType.B_MINUS, selectedPatient);
+            selectedPatient.medicalRecord = medRecordTemp;
+
             this.doctorAppointments = doctorAppointments;
 
             NameSurnameBlock.Text = selectedPatient.Name + " " + selectedPatient.Surname;
@@ -34,6 +37,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DateBirthBlock.Text = selectedPatient.Birthday.Date.ToShortDateString();
             JMBGBlock.Text = selectedPatient.Jmbg;
 
+            ProblemsListBox.ItemsSource = medRecordTemp.ConditionList;
+            AllergiesListBox.ItemsSource = medRecordTemp.AllergiesList;
+            PastReportsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport;
+            //MedicationsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport.
         }
 
         private void MedRecClosed(object sender, EventArgs e)
@@ -46,6 +53,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             doctorAppointments.Show();
             this.Close();
+        }
+
+        private void CreateReportBtnClick(object sender, RoutedEventArgs e)
+        {
+            CreateReport createReport = new CreateReport(this);
+            createReport.Owner = this;
+            createReport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            createReport.Show();
+
+            this.Hide();
         }
     }
 }

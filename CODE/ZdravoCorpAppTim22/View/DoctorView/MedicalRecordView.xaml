@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MedicalRecordView" Height="700" Width="800" Closed="MedRecClosed">
     <Grid>
-        <Label Content="Problems" HorizontalAlignment="Left" Margin="123,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="Conditions" HorizontalAlignment="Left" Margin="123,108,0,0" VerticalAlignment="Top"/>
         <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="78,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Allergies" HorizontalAlignment="Left" Margin="400,103,0,0" VerticalAlignment="Top"/>
         <Label Content="Past reports" HorizontalAlignment="Left" Margin="128,356,0,0" VerticalAlignment="Top"/>
@@ -15,8 +15,8 @@
         <Label Content="Unique Personal Registration Number" HorizontalAlignment="Left" Margin="438,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Gender" HorizontalAlignment="Left" Margin="220,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Date of birth" HorizontalAlignment="Left" Margin="323,24,0,0" VerticalAlignment="Top"/>
-        <Button Content="Create report" HorizontalAlignment="Left" Margin="259,622,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="CreateReportBtn" Content="Create report" HorizontalAlignment="Left" Margin="259,622,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="CreateReportBtnClick"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="424,622,0,0" VerticalAlignment="Top"
                 Foreground="White" Background="MediumPurple" Click="BackBtn"/>
         <TextBlock x:Name="NameSurnameBlock" HorizontalAlignment="Left" Margin="78,50,0,0" TextWrapping="Wrap" 
@@ -27,10 +27,10 @@
                    Text="" VerticalAlignment="Top"  Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
         <TextBlock x:Name="JMBGBlock" HorizontalAlignment="Left" Margin="438,50,0,0" TextWrapping="Wrap" 
                    Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
-        <ListBox x:Name="ProblemsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="123,139,484,356"/>
-        <ListBox x:Name="AllergiesListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="401,139,210,356"/>
-        <ListBox x:Name="PastReportsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="123,391,484,97"/>
-        <ListBox x:Name="MedicationsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="401,391,210,97"/>
+        <ListBox x:Name="ProblemsListBox" Margin="123,139,484,356"/>
+        <ListBox x:Name="AllergiesListBox" Margin="401,139,210,356"/>
+        <ListBox x:Name="PastReportsListBox" Margin="123,391,484,97" DisplayMemberPath="ReportDate"/>
+        <ListBox x:Name="MedicationsListBox" Margin="401,391,210,97"/>
 
     </Grid>
 </Window>

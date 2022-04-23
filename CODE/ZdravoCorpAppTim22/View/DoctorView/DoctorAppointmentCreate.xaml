@@ -28,9 +28,11 @@
         <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="437,238,0,0" VerticalAlignment="Top" Width="120"
                   ItemsSource="{Binding Path=PatientList}" DisplayMemberPath="Name"/>
 
-        <Button Name="confirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="301,377,0,0" VerticalAlignment="Top" Click="confirmButton_Click"/>
+        <Button Name="confirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="301,377,0,0" VerticalAlignment="Top" Click="confirmButton_Click"
+                Foreground="White" Background="MediumPurple"/>
         <Label Content="Create new appointment" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="400,377,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.299,0.271" Height="20" Click="CancelBtnClick"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="400,377,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.299,0.271" Height="20" Click="CancelBtnClick"
+                Foreground="White" Background="MediumPurple"/>
         
 
 

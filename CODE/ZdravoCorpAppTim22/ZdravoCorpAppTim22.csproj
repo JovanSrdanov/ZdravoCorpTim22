@@ -113,6 +113,7 @@
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
+    <Compile Include="Model\MedicalReport.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
@@ -151,6 +152,9 @@
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\CreateReport.xaml.cs">
+      <DependentUpon>CreateReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\DoctorAppointmentCreate.xaml.cs">
       <DependentUpon>DoctorAppointmentCreate.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,10 @@
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\DoctorView\CreateReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView\DoctorAppointmentCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
