@@ -9,12 +9,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     public partial class DoctorAppointments : Window
     {
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
+        public static MedicalAppointment medicalAppointment;
+
         private DoctorHomeScreen doctorHomeScreen;
+        private Doctor doctor;
 
         public DoctorAppointments(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
-            Doctor doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
             List<MedicalAppointment> allMedicalAppointment = doctor.MedicalAppointment;
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allMedicalAppointment);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
@@ -34,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
             if (medicalAppointment == null)
             {
                 MessageBox.Show("Please select an appointment", "Delete appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -49,20 +52,37 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void ViewRecordBtn(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
             if (medicalAppointment == null)
             {
                 MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            MedicalRecordView medicalRecordView = new MedicalRecordView(medicalAppointment.Patient.Id, this);
+            MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalAppointment.Patient.Id, this);
             medicalRecordView.Owner = this;
             medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             medicalRecordView.Show();
 
             this.Hide();
 
+        }
+
+        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            if (medicalAppointment == null)
+            {
+                MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            MedicalRecordView medicalRecordView = new MedicalRecordView(1, medicalAppointment.Patient.Id, this);
+            medicalRecordView.Owner = this;
+            medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            medicalRecordView.Show();
+
+            this.Hide();
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)
@@ -75,6 +95,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             Application.Current.MainWindow.Show();
             this.Close();
-        }
+        }       
     }
 }

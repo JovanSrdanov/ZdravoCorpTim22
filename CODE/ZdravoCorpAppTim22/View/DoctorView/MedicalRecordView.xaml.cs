@@ -20,17 +20,28 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     {
         private Patient selectedPatient;
         private DoctorAppointments doctorAppointments;
-        public MedicalRecordView(int selectedPatientID, DoctorAppointments doctorAppointments)
+        private MedicalRecordsScreen medicalRecordsScreen;
+        private int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
+        public MedicalRecordView(int canCreateReport, int selectedPatientID, DoctorAppointments doctorAppointments = null, 
+            MedicalRecordsScreen medicalRecordsScreen = null)
         {
             InitializeComponent();
             
             selectedPatient = PatientController.Instance.GetByID(selectedPatientID);
+            this.canCreateReport = canCreateReport;
+            if (canCreateReport == -1)                                                
+            {
+                CreateReportBtn.IsEnabled = false;
+                CreateReportBtn.Foreground = new SolidColorBrush(Colors.Black);
+                FinishReportBtn.Visibility = Visibility.Hidden;
+            }
 
             //privremeni karton
             MedicalRecord medRecordTemp = new MedicalRecord(1, BloodType.B_MINUS, selectedPatient);
             selectedPatient.medicalRecord = medRecordTemp;
 
             this.doctorAppointments = doctorAppointments;
+            this.medicalRecordsScreen = medicalRecordsScreen;
 
             NameSurnameBlock.Text = selectedPatient.Name + " " + selectedPatient.Surname;
             GenderBlock.Text = selectedPatient.Gender.ToString();
@@ -51,18 +62,54 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void BackBtn(object sender, RoutedEventArgs e)
         {
-            doctorAppointments.Show();
+            if (doctorAppointments == null)
+            {
+                medicalRecordsScreen.Show();
+            }
+            else
+            {
+                doctorAppointments.Show();
+            }
             this.Close();
         }
 
         private void CreateReportBtnClick(object sender, RoutedEventArgs e)
         {
-            CreateReport createReport = new CreateReport(this);
+            CreateReport createReport = new CreateReport(selectedPatient, this);
             createReport.Owner = this;
             createReport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             createReport.Show();
 
             this.Hide();
+        }
+
+        private void OpenReportBtnClick(object sender, RoutedEventArgs e)
+        {
+            MedicalReport medicalReport = PastReportsListBox.SelectedItem as MedicalReport;
+            if (medicalReport == null)
+            {
+                MessageBox.Show("Please select a report", "Open report", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                OpenReport openReport = new OpenReport(medicalReport, this);
+                openReport.Owner = this;
+                openReport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                openReport.Show();
+
+                this.Hide();
+            }
+        }
+
+        private void FinishReportClick(object sender, RoutedEventArgs e)
+        {
+            DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).AddMedicalRecord(selectedPatient.medicalRecord);
+            MedicalAppointmentController.Instance.DeleteByID(DoctorAppointments.medicalAppointment.Id);
+            DoctorAppointments.CurDocAppointemntsObservable.Remove(DoctorAppointments.medicalAppointment);
+
+            doctorAppointments.Show();
+            this.Close();
         }
     }
 }

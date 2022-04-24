@@ -63,15 +63,6 @@
     "Doctor": 1
   },
   {
-    "Id": 18,
-    "Type": 1,
-    "MedicalAppointmentStartDateTime": "2022-04-20T10:00:00",
-    "MedicalAppointmentEndDateTime": "2022-04-20T10:00:00",
-    "Room": 1,
-    "Patient": 0,
-    "Doctor": 0
-  },
-  {
     "Id": 20,
     "Type": 0,
     "MedicalAppointmentStartDateTime": "2022-04-22T07:00:00",
@@ -79,15 +70,6 @@
     "Room": 12,
     "Patient": 0,
     "Doctor": 1
-  },
-  {
-    "Id": 21,
-    "Type": 2,
-    "MedicalAppointmentStartDateTime": "2022-04-21T07:00:00",
-    "MedicalAppointmentEndDateTime": "2022-04-21T07:15:00",
-    "Room": 1,
-    "Patient": 0,
-    "Doctor": 0
   },
   {
     "Id": 22,
@@ -106,14 +88,5 @@
     "Room": 1,
     "Patient": 0,
     "Doctor": 1
-  },
-  {
-    "Id": 25,
-    "Type": 2,
-    "MedicalAppointmentStartDateTime": "2022-04-20T10:00:00",
-    "MedicalAppointmentEndDateTime": "2022-04-20T10:00:00",
-    "Room": 11,
-    "Patient": 0,
-    "Doctor": 0
   }
 ]

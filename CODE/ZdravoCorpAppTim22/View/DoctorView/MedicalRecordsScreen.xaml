@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordsScreen" Height="450" Width="800">
+        Title="MedicalRecordsScreen" Height="450" Width="800" Closed="MedRecListClose">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,48,0,0" TextWrapping="Wrap" Text="Medical record list" VerticalAlignment="Top" Width="272"
+        <TextBlock HorizontalAlignment="Left" Margin="239,24,0,0" TextWrapping="Wrap" Text="Medical record list" VerticalAlignment="Top" Width="272"
                    Foreground="MediumPurple" FontWeight="Bold" FontSize="30"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="109,138,124,102"/>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="292,370,0,0" VerticalAlignment="Top"
+        <DataGrid x:Name="MedRecGrid" Margin="92,100,142,140" AutoGenerateColumns="false" 
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Patient.Name}" Width="*"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Path=Patient.Surname}" Width="*"/>
+                <DataGridTextColumn Header="Unique Personal Registration Number" Binding="{Binding Path=Patient.Jmbg}" Width="auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="OpenBtn" Content="Open" HorizontalAlignment="Left" Margin="239,365,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="OpenBtnClick"/>
+        <Button Content="Create new record" HorizontalAlignment="Left" Margin="325,365,0,0" VerticalAlignment="Top"
                 Foreground="White" Background="MediumPurple"/>
-        <Button Content="Create new record" HorizontalAlignment="Left" Margin="436,370,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="483,365,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="BackBtnClick" />
 
 
     </Grid>

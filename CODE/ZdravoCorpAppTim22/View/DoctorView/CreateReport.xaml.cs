@@ -29,11 +29,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private ObservableCollection<string> medicineAmountList;
         private ObservableCollection<string> medicineInstructionList;
 
-        public CreateReport(MedicalRecordView medicalRecordView)
+        //konstruktor za kreiranje izvestaja
+        public CreateReport(Patient selectedPatient, MedicalRecordView medicalRecordView)
         {
             InitializeComponent();
             this.medicalRecordView = medicalRecordView;
-            selectedPatient = PatientController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            this.selectedPatient = selectedPatient;
 
             DateBlock.Text = DateTime.Now.ToShortDateString();
             NameBlock.Text = selectedPatient.Name;
@@ -89,7 +90,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicineAmountList.Add("");
             medicineInstructionList.Add("");
 
-            MedicalReport medicalReport = new MedicalReport(1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now);
+            MedicalReport medicalReport = new MedicalReport(1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
+                selectedPatient.medicalRecord);
+            medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
             selectedPatient.medicalRecord.ConditionList.Add(diagnosis);
             selectedPatient.medicalRecord.medicalReport.Add(medicalReport);
 

@@ -9,9 +9,12 @@
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Welcome to Zdravo Corp"
                    Foreground="MediumPurple" FontWeight="Bold" FontSize="30"/>
-        <Button x:Name="SchedulingBtn" Content="Scheduling list" HorizontalAlignment="Left" Margin="127,155,0,0" VerticalAlignment="Top" Click="ScheduleListBtn"/>
-        <Button x:Name="SchedulingBtn_Copy" Content="View medical records" HorizontalAlignment="Left" Margin="548,254,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="LogOut" Content="logout" HorizontalAlignment="Left" Margin="733,41,0,0" VerticalAlignment="Top" Click="LogOutBtn"/>
+        <Button x:Name="SchedulingBtn" Content="Scheduling list" HorizontalAlignment="Left" Margin="127,155,0,0" VerticalAlignment="Top" 
+                Foreground="White" Background="MediumPurple" Click="ScheduleListBtn"/>
+        <Button x:Name="SchedulingBtn_Copy" Content="View medical records" HorizontalAlignment="Left" Margin="548,254,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="ViewMedRecordsClick"/>
+        <Button x:Name="LogOut" Content="logout" HorizontalAlignment="Left" Margin="733,41,0,0" VerticalAlignment="Top" Click="LogOutBtn"
+                Foreground="White" Background="MediumPurple"/>
 
     </Grid>
 </Window>

@@ -177,6 +177,9 @@
     <Compile Include="View\DoctorView\MedicalRecordView.xaml.cs">
       <DependentUpon>MedicalRecordView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\OpenReport.xaml.cs">
+      <DependentUpon>OpenReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\MedicalRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\OpenReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

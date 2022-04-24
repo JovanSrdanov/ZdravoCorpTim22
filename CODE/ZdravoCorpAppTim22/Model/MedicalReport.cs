@@ -8,6 +8,7 @@ namespace Model
     {
         //izvestaj
         public int Id { get; set; }
+        public int DoctorID { get; set;}            //ko je napravio izvestaj
         public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
         public DateTime ReportDate { get; set; }
@@ -19,7 +20,7 @@ namespace Model
 
         public MedicalReport(int id, string anamnesis, string diagnosis,
             ObservableCollection<string> MedicineNameList, ObservableCollection<string> MedicineAmountList,
-            ObservableCollection<string> MedicineInstructionList, DateTime ReportDate)
+            ObservableCollection<string> MedicineInstructionList, DateTime ReportDate, MedicalRecord medicalRecord)
         {
             Id = id;
             Anamnesis = anamnesis;
@@ -28,6 +29,7 @@ namespace Model
             this.MedicineAmountList = MedicineAmountList;
             this.MedicineInstructionList = MedicineInstructionList;
             this.ReportDate = ReportDate;
+            this.medicalRecord = medicalRecord;
         }
 
         //karton

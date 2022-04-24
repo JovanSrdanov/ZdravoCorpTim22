@@ -21,10 +21,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void DoctorHomeScreenClose(object sender, EventArgs e)
+        private void ViewMedRecordsClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
-            this.Close();
+            MedicalRecordsScreen medicalRecordsScreen = new MedicalRecordsScreen(this);
+            medicalRecordsScreen.Owner = this;
+            medicalRecordsScreen.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            medicalRecordsScreen.Show();
+
+            this.Hide();
         }
 
         private void LogOutBtn(object sender, RoutedEventArgs e)
@@ -32,5 +36,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorHome.doctorHome.Show();
             this.Close();
         }
+
+        private void DoctorHomeScreenClose(object sender, EventArgs e)
+        {
+            Application.Current.MainWindow.Show();
+            this.Close();
+        }  
     }
 }
