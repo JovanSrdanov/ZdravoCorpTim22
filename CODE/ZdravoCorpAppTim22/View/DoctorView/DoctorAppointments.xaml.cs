@@ -9,25 +9,25 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     public partial class DoctorAppointments : Window
     {
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
-        public int selectedDoctorId;
-        private DoctorHome doctorHome;
+        public static MedicalAppointment medicalAppointment;
 
-        public DoctorAppointments(int id, DoctorHome doctorHome)
+        private DoctorHomeScreen doctorHomeScreen;
+        private Doctor doctor;
+
+        public DoctorAppointments(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
-            selectedDoctorId = id;
-
-            Doctor doctor = DoctorController.Instance.GetByID(id);
+            doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
             List<MedicalAppointment> allMedicalAppointment = doctor.MedicalAppointment;
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allMedicalAppointment);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
 
-            this.doctorHome = doctorHome;
+            this.doctorHomeScreen = doctorHomeScreen;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(selectedDoctorId, this);
+            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(this);
             appCreate.Owner = this;
             appCreate.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             appCreate.Show();
@@ -37,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
             if (medicalAppointment == null)
             {
                 MessageBox.Show("Please select an appointment", "Delete appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -50,9 +50,44 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
+        private void ViewRecordBtn(object sender, RoutedEventArgs e)
+        {
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            if (medicalAppointment == null)
+            {
+                MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalAppointment.Patient.Id, this);
+            medicalRecordView.Owner = this;
+            medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            medicalRecordView.Show();
+
+            this.Hide();
+
+        }
+
+        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            if (medicalAppointment == null)
+            {
+                MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            MedicalRecordView medicalRecordView = new MedicalRecordView(1, medicalAppointment.Patient.Id, this);
+            medicalRecordView.Owner = this;
+            medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            medicalRecordView.Show();
+
+            this.Hide();
+        }
+
         private void BackBtnClick(object sender, RoutedEventArgs e)
         {
-            doctorHome.Show();
+            doctorHomeScreen.Show();
             this.Close();
         }
 
@@ -60,6 +95,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             Application.Current.MainWindow.Show();
             this.Close();
-        }
+        }       
     }
 }

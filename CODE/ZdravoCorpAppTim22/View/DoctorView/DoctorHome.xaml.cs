@@ -6,6 +6,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     public partial class DoctorHome : Window
     {
         public DoctorViewModel DoctorViewModel;
+        public static int selectedDoctorId;
+        public static DoctorHome doctorHome;
 
         public DoctorHome()
         {
@@ -18,12 +20,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
-            int selectedDoctorId = doctor.Id;
+            selectedDoctorId = doctor.Id;
+            doctorHome = this;
 
-            DoctorAppointments doctorAppointments = new DoctorAppointments(selectedDoctorId, this);
-            doctorAppointments.Owner = this;
-            doctorAppointments.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            doctorAppointments.Show();
+            DoctorHomeScreen doctorHomeScreen = new DoctorHomeScreen();
+            doctorHomeScreen.Owner = this;
+            doctorHomeScreen.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            doctorHomeScreen.Show();
 
             this.Hide();
         }

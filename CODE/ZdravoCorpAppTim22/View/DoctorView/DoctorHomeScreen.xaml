@@ -1,0 +1,20 @@
+﻿<Window x:Class="ZdravoCorpAppTim22.View.DoctorView.DoctorHomeScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
+        mc:Ignorable="d"
+        Title="DoctorHomeScreen" Height="450" Width="800" Closed="DoctorHomeScreenClose">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Welcome to Zdravo Corp"
+                   Foreground="MediumPurple" FontWeight="Bold" FontSize="30"/>
+        <Button x:Name="SchedulingBtn" Content="Scheduling list" HorizontalAlignment="Left" Margin="127,155,0,0" VerticalAlignment="Top" 
+                Foreground="White" Background="MediumPurple" Click="ScheduleListBtn"/>
+        <Button x:Name="SchedulingBtn_Copy" Content="View medical records" HorizontalAlignment="Left" Margin="548,254,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="ViewMedRecordsClick"/>
+        <Button x:Name="LogOut" Content="logout" HorizontalAlignment="Left" Margin="733,41,0,0" VerticalAlignment="Top" Click="LogOutBtn"
+                Foreground="White" Background="MediumPurple"/>
+
+    </Grid>
+</Window>
