@@ -16,6 +16,11 @@
             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}"/>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStandard}"/>
+            <Style x:Key="EquipmentGridHeader" TargetType="DataGridColumnHeader">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Height" Value="0"/>
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -27,18 +32,37 @@
             <Button Click="BackButton_Click" Style="{StaticResource ButtonStandard}">Go Back</Button>
         </WrapPanel>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <DataGrid Grid.Row="0"
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="EquipmentGrid"
+                          ItemsSource="{Binding Path=EquipmentList}"
+                          Margin="0 0 0 20"
+                          ColumnHeaderStyle="{StaticResource EquipmentGridHeader}"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox Name="AmountComboBox" 
+                                              SelectedItem="{Binding Amount}"></ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <DataGrid Grid.Row="1"
                       Name="DataGrid"
                       ItemsSource="{Binding Path=RoomList}"
                       SelectionChanged="DataGrid_SelectionChanged"
@@ -50,24 +74,32 @@
                     <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <WrapPanel Grid.Row="1"
+            <WrapPanel Grid.Row="2"
                        Margin="0 0 0 20"
                        x:Name="StartTimeGroup">
                 <Button x:Name="ButtonSelectStartTime" 
-                        Style="{StaticResource ButtonStandard}" Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+                        Style="{StaticResource ButtonStandard}" 
+                        Click="ButtonSelectStartTime_Click">Select Start Time</Button>
                 <ContentControl x:Name="SelectStartTimeContent"
                                 Foreground="{StaticResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Margin="20 7 0 0"/>
             </WrapPanel>
-            <WrapPanel Grid.Row="2"
+            <WrapPanel Grid.Row="3"
                        x:Name="EndTimeGroup">
                 <Button x:Name="ButtonSelectEndTime" 
-                        Style="{StaticResource ButtonStandard}" Click="ButtonSelectEndTime_Click">Select End Time</Button>
+                        Style="{StaticResource ButtonStandard}" 
+                        Click="ButtonSelectEndTime_Click">Select End Time</Button>
                 <ContentControl x:Name="SelectEndTimeContent"
                                 Foreground="{StaticResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Margin="20 7 0 0"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="4" 
+                       Margin="0 40 0 0">
+                <Button x:Name="ButtonConfirm" 
+                        Content="Confirm" 
+                        Click="ButtonConfirm_Click"/>
             </WrapPanel>
         </Grid>
     </Grid>

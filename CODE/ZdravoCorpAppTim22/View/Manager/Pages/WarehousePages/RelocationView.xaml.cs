@@ -13,14 +13,14 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
     public partial class RelocationView : Page
     {
         readonly WarehouseView ParentPage;
-        public RoomViewModel RoomViewModel;
+        public RelocationViewModel RelocationViewModel;
         public Interval Interval;
         public Room DestinationRoom;
         public RelocationView(WarehouseView parent)
         {
             InitializeComponent();
-            RoomViewModel = new RoomViewModel();
-            DataContext = RoomViewModel;
+            RelocationViewModel = new RelocationViewModel(parent.SelectedEquipment);
+            DataContext = RelocationViewModel;
             ParentPage = parent;
             StartTimeGroup.Visibility = Visibility.Hidden;
             EndTimeGroup.Visibility = Visibility.Hidden;
@@ -89,6 +89,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             var RelocationEndDateView = new SelectTimePage(this, DestinationRoom, Interval.Start);
             RelocationEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             this.NavigationService.Navigate(RelocationEndDateView);
+        }
+
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -6,15 +6,25 @@
              xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Global.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="Margin" Value="0 0 10 0"/>
+                <Setter Property="Width" Value="Auto"/>
+            </Style>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource StandardComboBox}"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <WrapPanel>
-            <TextBlock Text="Hours"
-                       Margin="0 0 6 0"/>
+            <TextBlock Text="Hours"/>
             <ComboBox Name="HourComboBox"
                       Margin="0 0 10 0"
                       SelectedValue="{Binding Path=Hours}"></ComboBox>
-            <TextBlock Text="Minutes" 
-                       Margin="0 0 6 0"/>
+            <TextBlock Text="Minutes"/>
             <ComboBox Name="MinuteComboBox"
                       SelectedValue="{Binding Path=Minutes}"></ComboBox>
         </WrapPanel>
