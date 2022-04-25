@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 0,
+    "Interval": {
+      "Start": "2022-04-26T03:00:00",
+      "End": "2022-04-26T08:00:00"
+    },
+    "SourceRoom": null,
+    "DestinationRoom": 13
+  },
+  {
+    "Id": 1,
+    "Interval": {
+      "Start": "2022-04-26T08:00:00",
+      "End": "2022-04-26T12:00:00"
+    },
+    "SourceRoom": null,
+    "DestinationRoom": 13
+  }
+]

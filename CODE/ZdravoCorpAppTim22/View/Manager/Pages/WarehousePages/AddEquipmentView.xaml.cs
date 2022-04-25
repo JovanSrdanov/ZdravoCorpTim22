@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 {
@@ -74,12 +75,17 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             }
 
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
-            Equipment equipment = new Equipment(0, name, amount, et, null);
+            EquipmentData equipmentData = new EquipmentData(0, name, et);
+            EquipmentDataController.Instance.Create(equipmentData);
+            Equipment equipment = new Equipment
+            {
+                EquipmentData = equipmentData,
+                Amount = amount
+            };
             EquipmentController.Instance.Create(equipment);
 
             NavigationService.Navigate(new WarehouseView());
         }
-
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new WarehouseView());

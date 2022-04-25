@@ -113,11 +113,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
     <Compile Include="Controller\Generic\IController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
+    <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\EquipmentDataRepository.cs" />
     <Compile Include="Repository\FileHandlers\GenericFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\DoctorToIDConverter.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\PatientToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentRelocationToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\EquipmentDataToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\RoomToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EquipmentDataService.cs" />
     <Compile Include="Service\Generic\GenericService.cs" />
     <Compile Include="Service\Generic\IService.cs" />
     <Compile Include="Service\RenovationService.cs" />
@@ -189,6 +194,9 @@
     <Compile Include="View\Manager\Pages\RatingPages\RatingsView.xaml.cs">
       <DependentUpon>RatingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml.cs">
+      <DependentUpon>RoomDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RoomView.xaml.cs">
       <DependentUpon>RoomView.xaml</DependentUpon>
     </Compile>
@@ -204,6 +212,7 @@
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\ViewModels\EquipmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RelocationViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
@@ -280,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Pages\RatingPages\RatingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

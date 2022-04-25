@@ -97,7 +97,7 @@
                           ColumnHeaderStyle="{StaticResource EquipmentGridHeader}"
                           IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Equipment.Name}"
+                        <DataGridTextColumn Binding="{Binding Equipment.EquipmentData.Name}"
                                             MinWidth="200"/>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>

@@ -1,9 +1,13 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.DataModel;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
@@ -104,7 +108,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             {
                 if (!eq.IsAmountValid())
                 {
-                    message += eq.Equipment.Name + "'s amount must be within (0, " + eq.Equipment.Amount + "] interval\n";
+                    message += eq.Equipment.EquipmentData.Name + "'s amount must be within (0, " + eq.Equipment.Amount + "] interval\n";
                     valid = false;
                 }
             }
@@ -114,8 +118,42 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 return;
             }
 
+            List<Equipment> equipment = new List<Equipment>();
+            foreach (EquipmentDataModel eq in RelocationViewModel.EquipmentList)
+            {
+                Equipment temp = new Equipment(eq.Equipment)
+                {
+                    Amount = eq.Amount
+                };
+                
+                eq.Equipment.Amount -= eq.Amount;
+                EquipmentController.Instance.Update(eq.Equipment);
 
-
+                if(temp.EquipmentData.Type == EquipmentType.consumable)
+                {
+                    temp.room = DestinationRoom;
+                    EquipmentController.Instance.Create(temp);
+                }
+                else
+                {
+                    equipment.Add(temp);
+                }
+            }
+            if(equipment.Count > 0)
+            {
+                EquipmentRelocation equipmentRelocation = new EquipmentRelocation
+                {
+                    DestinationRoom = DestinationRoom,
+                    Interval = Interval,
+                    Equipment = equipment
+                };
+                foreach (Equipment eq in equipment)
+                {
+                    EquipmentController.Instance.Create(eq);
+                }
+                EquipmentRelocationController.Instance.Create(equipmentRelocation);
+            }
+            NavigationService.Navigate(new WarehouseView());
         }
     }
 }

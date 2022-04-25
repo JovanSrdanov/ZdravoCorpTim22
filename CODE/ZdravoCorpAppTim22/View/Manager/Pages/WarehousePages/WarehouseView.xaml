@@ -39,9 +39,9 @@
                   SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

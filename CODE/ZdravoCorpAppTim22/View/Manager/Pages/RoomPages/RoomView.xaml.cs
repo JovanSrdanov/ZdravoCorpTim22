@@ -43,5 +43,15 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             ViewModel.RoomList.Remove(room);
             RoomController.Instance.DeleteByID(room.Id);
         }
+
+        private void ButtonDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)dataGrid.SelectedItem;
+            if (room == null)
+            {
+                return;
+            }
+            NavigationService.Navigate(new RoomDetailsView(room));
+        }
     }
 }

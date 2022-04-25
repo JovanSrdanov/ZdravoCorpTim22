@@ -5,12 +5,47 @@ using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-   public class Equipment : IHasID
+    public class Equipment : IHasID
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public int Amount { get; set; }
-        public EquipmentType Type { get; set; }
+
+        [JsonConstructor]
+        public Equipment() { }
+        public Equipment(Equipment eq)
+        {
+            Id = eq.Id;
+            Amount = eq.Amount;
+            equipmentData = new EquipmentData(eq.EquipmentData);
+        }
+
+        [JsonConverter(typeof(EquipmentDataToIDConverter))]
+        public EquipmentData equipmentData;
+        [JsonConverter(typeof(EquipmentDataToIDConverter))]
+        public EquipmentData EquipmentData
+        {
+            get
+            {
+                return equipmentData;
+            }
+            set
+            {
+                if (this.equipmentData == null || !this.equipmentData.Equals(value))
+                {
+                    if (this.equipmentData != null)
+                    {
+                        EquipmentData oldEquipmentData = this.equipmentData;
+                        this.equipmentData = null;
+                        oldEquipmentData.RemoveEquipment(this);
+                    }
+                    if (value != null)
+                    {
+                        this.equipmentData = value;
+                        this.equipmentData.AddEquipment(this);
+                    }
+                }
+            }
+        }
 
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room room;
@@ -65,20 +100,6 @@ namespace Model
                     }
                 }
             }
-        }
-
-        [JsonConstructor]
-        public Equipment() { }
-        public Equipment(int id) 
-        {
-            this.Id = id;
-        }
-        public Equipment(int id, string name, int amount, EquipmentType type, Room room) : this(id)
-        {
-            this.Name = name;
-            this.Amount = amount;
-            this.Type = type;
-            this.Room = room;
         }
     }
 }

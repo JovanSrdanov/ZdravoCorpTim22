@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -50,29 +51,29 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             }
         }
 
-        private List<Appointment> GetAppointmentsForDay<T>(List<T> list, DateTime date) where T : IHasInterval
+        private List<Appointment> GetAppointmentsForDay<T>(List<T> list, DateTime date, RoomAppointmentType appointmentType) where T : IHasInterval
         {
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (T obj in list)
             {
                 if (obj.Interval.Start.Date == date.Date && obj.Interval.End.Date == date.Date)
                 {
-                    Appointment app = new Appointment(obj.Interval.Start, obj.Interval.End, RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(obj.Interval.Start, obj.Interval.End, appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date < date.Date && obj.Interval.End.Date == date.Date)
                 {
-                    Appointment app = new Appointment(date.Date, obj.Interval.End, RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(date.Date, obj.Interval.End, appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date == date.Date && obj.Interval.End.Date > date.Date)
                 {
-                    Appointment app = new Appointment(obj.Interval.Start, date.Date.AddHours(23).AddMinutes(59), RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(obj.Interval.Start, date.Date.AddHours(23).AddMinutes(59), appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date < date.Date && obj.Interval.End.Date > date.Date)
                 {
-                    Appointment app = new Appointment(date.Date, date.Date.AddHours(23).AddMinutes(59), RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(date.Date, date.Date.AddHours(23).AddMinutes(59), appointmentType);
                     appointmentList.Add(app);
                 }
             }
@@ -89,7 +90,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     appointmentList.Add(app);
                 }
             }
-            appointmentList.AddRange(GetAppointmentsForDay(room.Renovations, date));
+            appointmentList.AddRange(GetAppointmentsForDay(room.Renovations, date, RoomAppointmentType.RenovationAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.RelocationSources, date, RoomAppointmentType.EquipmentRelocationAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.RelocationDestinations, date, RoomAppointmentType.EquipmentRelocationAppointment));
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList;
         }
@@ -152,6 +155,22 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     appointmentList.Add(app);
                 }
             }
+            foreach(EquipmentRelocation er in room.RelocationSources)
+            {
+                if (startDate < er.Interval.End)
+                {
+                    Appointment app = new Appointment(er.Interval.Start, er.Interval.End, RoomAppointmentType.EquipmentRelocationAppointment);
+                    appointmentList.Add(app);
+                }
+            }
+            foreach (EquipmentRelocation er in room.RelocationDestinations)
+            {
+                if (startDate < er.Interval.End)
+                {
+                    Appointment app = new Appointment(er.Interval.Start, er.Interval.End, RoomAppointmentType.EquipmentRelocationAppointment);
+                    appointmentList.Add(app);
+                }
+            }
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList.Count > 0 ? appointmentList[0].Interval.Start : startDate;
         }
@@ -179,7 +198,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
     {
         DoctorAppointment,
         RenovationAppointment,
-        EquipmentTransferAppointment,
+        EquipmentRelocationAppointment,
         Free
     }
 }

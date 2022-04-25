@@ -1,9 +1,5 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
 
@@ -29,6 +25,10 @@ namespace ZdravoCorpAppTim22.Service
         public List<Equipment> GetWarehouseEquipment()
         {
             return EquipmentRepository.Instance.GetWarehouseEquipment();
+        }
+        public List<Equipment> GetRoomEquipment(int id)
+        {
+            return EquipmentRepository.Instance.GetRoomEquipment(id);
         }
     }
 }

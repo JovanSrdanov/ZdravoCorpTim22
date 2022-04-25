@@ -25,6 +25,7 @@ namespace ZdravoCorpAppTim22
             ManagerController.Instance.Load();
             PatientController.Instance.Load();
             DoctorController.Instance.Load();
+            EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();
             ManagerController.Instance.Load();
