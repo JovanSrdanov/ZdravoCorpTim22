@@ -1,17 +1,49 @@
 [
   {
     "Id": 0,
-    "Name": "stolica",
-    "Amount": 100,
+    "Name": "21",
+    "Amount": 2151515,
     "Type": 1,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
     "Id": 1,
-    "Name": "Kreveti",
-    "Amount": 50,
+    "Name": "21",
+    "Amount": 0,
+    "Type": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 2,
+    "Name": "51",
+    "Amount": 0,
+    "Type": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 3,
+    "Name": "21321321",
+    "Amount": 0,
+    "Type": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 4,
+    "Name": "213213",
+    "Amount": 241,
     "Type": 1,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 5,
+    "Name": "sadsadsad",
+    "Amount": 2,
+    "Type": 0,
     "Room": null,
     "EquipmentRelocation": null
   }

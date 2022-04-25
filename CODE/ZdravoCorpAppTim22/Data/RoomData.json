@@ -38,25 +38,7 @@
   {
     "Id": 13,
     "Level": 0,
-    "Type": 1,
-    "Name": "ad"
-  },
-  {
-    "Id": 14,
-    "Level": 1,
     "Type": 0,
     "Name": "soba"
-  },
-  {
-    "Id": 15,
-    "Level": 15,
-    "Type": 1,
-    "Name": "sobica"
-  },
-  {
-    "Id": 16,
-    "Level": 1,
-    "Type": 2,
-    "Name": "223213 213"
   }
 ]

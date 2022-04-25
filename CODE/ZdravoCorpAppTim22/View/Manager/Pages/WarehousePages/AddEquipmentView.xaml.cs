@@ -54,7 +54,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            NavigationService.Navigate(new WarehouseView());
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -77,12 +77,12 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             Equipment equipment = new Equipment(0, name, amount, et, null);
             EquipmentController.Instance.Create(equipment);
 
-            this.NavigationService.GoBack();
+            NavigationService.Navigate(new WarehouseView());
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            NavigationService.Navigate(new WarehouseView());
         }
     }
 }

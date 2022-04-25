@@ -173,6 +173,7 @@
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorView\DoctorViewModel.cs" />
+    <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>

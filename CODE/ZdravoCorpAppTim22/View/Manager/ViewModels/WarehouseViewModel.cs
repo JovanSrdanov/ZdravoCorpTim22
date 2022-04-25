@@ -1,6 +1,7 @@
 ﻿using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels

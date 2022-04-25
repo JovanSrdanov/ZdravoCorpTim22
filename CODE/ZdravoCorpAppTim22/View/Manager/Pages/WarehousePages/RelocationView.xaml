@@ -21,6 +21,51 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Height" Value="0"/>
             </Style>
+
+            <Style x:Key="AmountTextBox" TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="MaxLength" Value="6"/>
+            </Style>
+
+            <Style x:Key="AmountDataGridRow" TargetType="DataGridRow">
+                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="AmountDataGridCell" TargetType="DataGridCell">
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Cursor" Value="Arrow"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DataGridCell">
+                            <Border Padding="{TemplateBinding Padding}"
+                            Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                            Width="{TemplateBinding Width}">
+                                <ContentPresenter/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                                    <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -45,17 +90,21 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <DataGrid x:Name="EquipmentGrid"
+                          CellStyle="{StaticResource AmountDataGridCell}"
+                          RowStyle="{StaticResource AmountDataGridRow}"
                           ItemsSource="{Binding Path=EquipmentList}"
                           Margin="0 0 0 20"
                           ColumnHeaderStyle="{StaticResource EquipmentGridHeader}"
                           IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}"/>
+                        <DataGridTextColumn Binding="{Binding Equipment.Name}"
+                                            MinWidth="200"/>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox Name="AmountComboBox" 
-                                              SelectedItem="{Binding Amount}"></ComboBox>
+                                    <TextBox Name="AmountInput" 
+                                             Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Style="{StaticResource AmountTextBox}"></TextBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -95,7 +144,8 @@
                                 FontSize="{StaticResource StandardFontSize}"
                                 Margin="20 7 0 0"/>
             </WrapPanel>
-            <WrapPanel Grid.Row="4" 
+            <WrapPanel x:Name="ButtonPanel" 
+                       Grid.Row="4"
                        Margin="0 40 0 0">
                 <Button x:Name="ButtonConfirm" 
                         Content="Confirm" 

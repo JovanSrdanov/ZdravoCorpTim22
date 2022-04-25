@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.View.Manager.DataModel;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 
@@ -24,6 +25,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             ParentPage = parent;
             StartTimeGroup.Visibility = Visibility.Hidden;
             EndTimeGroup.Visibility = Visibility.Hidden;
+            ButtonPanel.Visibility = Visibility.Hidden;
         }
 
         public void StartDateSelected(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             {
                 SelectStartTimeContent.Content = Interval.Start.ToString();
                 EndTimeGroup.Visibility = Visibility.Visible;
-                //RoomEdit.Visibility = Visibility.Hidden;
+                ButtonPanel.Visibility = Visibility.Hidden;
                 Interval.End = new DateTime();
                 SelectEndTimeContent.Content = "";
             }
@@ -49,11 +51,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             if (DateTime.Compare(Interval.End, new DateTime()) > 0)
             {
                 SelectEndTimeContent.Content = Interval.End.ToString();
-                //RoomEdit.Visibility = Visibility.Visible;
+                ButtonPanel.Visibility = Visibility.Visible;
             }
             else
             {
-                //RoomEdit.Visibility = Visibility.Hidden;
+                ButtonPanel.Visibility = Visibility.Hidden;
             }
         }
 
@@ -65,15 +67,18 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Room room = (Room)DataGrid.SelectedItem;
-            if(room != null)
+
+            SelectEndTimeContent.Content = "";
+            SelectStartTimeContent.Content = "";
+            Interval.End = new DateTime();
+            Interval.Start = new DateTime();
+            StartTimeGroup.Visibility = Visibility.Hidden;
+            EndTimeGroup.Visibility = Visibility.Hidden;
+            ButtonPanel.Visibility = Visibility.Hidden;
+            if (room != null)
             {
                 DestinationRoom = room;
                 StartTimeGroup.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                StartTimeGroup.Visibility = Visibility.Hidden;
-                EndTimeGroup.Visibility = Visibility.Hidden;
             }
         }
 
@@ -93,7 +98,24 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool valid = true;
+            string message = "";
+            foreach (EquipmentDataModel eq in RelocationViewModel.EquipmentList)
+            {
+                if (!eq.IsAmountValid())
+                {
+                    message += eq.Equipment.Name + "'s amount must be within (0, " + eq.Equipment.Amount + "] interval\n";
+                    valid = false;
+                }
+            }
+            if (!valid)
+            {
+                MessageBox.Show(message);
+                return;
+            }
+
+
+
         }
     }
 }
