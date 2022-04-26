@@ -124,6 +124,7 @@
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
+    <Compile Include="Model\MedicalReport.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
@@ -165,6 +166,9 @@
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\CreateReport.xaml.cs">
+      <DependentUpon>CreateReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\DoctorAppointmentCreate.xaml.cs">
       <DependentUpon>DoctorAppointmentCreate.xaml</DependentUpon>
     </Compile>
@@ -177,11 +181,24 @@
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\DoctorHomeScreen.xaml.cs">
+      <DependentUpon>DoctorHomeScreen.xaml</DependentUpon>
+    </Compile>
+    
     <Compile Include="View\DoctorView\DoctorViewModel.cs" />
-    <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
+    <Compile Include="View\DoctorView\MedicalRecordsScreen.xaml.cs">
+      <DependentUpon>MedicalRecordsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\MedicalRecordView.xaml.cs">
+      <DependentUpon>MedicalRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\OpenReport.xaml.cs">
+      <DependentUpon>OpenReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
     <Compile Include="View\Manager\Pages\RoomPages\RenovateView.xaml.cs">
       <DependentUpon>RenovateView.xaml</DependentUpon>
     </Compile>
@@ -260,6 +277,10 @@
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\DoctorView\CreateReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView\DoctorAppointmentCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,6 +290,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\DoctorAppointmentUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\DoctorHomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\MedicalRecordsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\MedicalRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\OpenReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -461,14 +498,5 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\System.Text.Json.6.0.2\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Text.Json.6.0.2\build\System.Text.Json.targets'))" />
-    <Error Condition="!Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.props'))" />
-    <Error Condition="!Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets'))" />
-  </Target>
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />
 </Project>

@@ -19,8 +19,15 @@
                 <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor.Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="362,259,0,0" VerticalAlignment="Top" Click="btnCreate_Click"/>
-        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="452,259,0,0" VerticalAlignment="Top" Click="btnDelete_Click"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="273,259,0,0" VerticalAlignment="Top" Click="BackBtnClick"/>
+        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="157,353,0,0" VerticalAlignment="Top" Click="btnCreate_Click"
+                Foreground="White" Background="MediumPurple"/>
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="224,353,0,0" VerticalAlignment="Top" Click="btnDelete_Click"
+                Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="689,353,0,0" VerticalAlignment="Top" Click="BackBtnClick"
+                Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="ViewMedRecBtn" Content="View record" HorizontalAlignment="Left" Margin="400,353,0,0" VerticalAlignment="Top" Click="ViewRecordBtn"
+                Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="BeginAppointmentBtn" Content="Begin appointment" HorizontalAlignment="Left" Margin="500,353,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="BeginAppointmentClick"/>
     </Grid>
 </Window>

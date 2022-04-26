@@ -11,8 +11,10 @@
                   SelectedIndex="0">
         </ComboBox>
         <Label Content="Select a doctor" HorizontalAlignment="Left" Margin="332,67,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="438,301,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="262,301,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.174,-0.131" Width="55" Click="BackBtnClick"/>
+        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="438,301,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click" Foreground="White" Background="MediumPurple"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="262,301,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="0.174,-0.131" Width="55" Click="BackBtnClick" Foreground="White" Background="MediumPurple"/>
 
     </Grid>
 </Window>
