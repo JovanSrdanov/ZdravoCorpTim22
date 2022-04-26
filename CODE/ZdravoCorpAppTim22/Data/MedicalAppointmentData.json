@@ -27,24 +27,6 @@
     "Doctor": 0
   },
   {
-    "Id": 14,
-    "Type": 1,
-    "MedicalAppointmentStartDateTime": "2022-04-21T00:00:00",
-    "MedicalAppointmentEndDateTime": "2022-04-21T00:00:00",
-    "Room": 3,
-    "Patient": 0,
-    "Doctor": 0
-  },
-  {
-    "Id": 15,
-    "Type": 0,
-    "MedicalAppointmentStartDateTime": "2022-04-13T00:00:00",
-    "MedicalAppointmentEndDateTime": "2022-04-13T00:00:00",
-    "Room": 3,
-    "Patient": 0,
-    "Doctor": 0
-  },
-  {
     "Id": 16,
     "Type": 0,
     "MedicalAppointmentStartDateTime": "2022-04-22T00:00:00",

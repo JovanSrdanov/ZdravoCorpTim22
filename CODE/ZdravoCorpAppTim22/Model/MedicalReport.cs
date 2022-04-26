@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
@@ -18,6 +20,8 @@ namespace Model
         public ObservableCollection<string> MedicineAmountList { get; set; }
         public ObservableCollection<string> MedicineInstructionList { get; set; }
 
+        [JsonConstructor]
+        public MedicalReport() { }
         public MedicalReport(int id, string anamnesis, string diagnosis,
             ObservableCollection<string> MedicineNameList, ObservableCollection<string> MedicineAmountList,
             ObservableCollection<string> MedicineInstructionList, DateTime ReportDate, MedicalRecord medicalRecord)
@@ -33,7 +37,10 @@ namespace Model
         }
 
         //karton
-        private MedicalRecord medicalRecord { get; set; }   
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
+        public MedicalRecord medicalRecord;
+
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord MedicalRecord
         {
             get
@@ -42,7 +49,20 @@ namespace Model
             }
             set
             {
-                this.medicalRecord = value;
+                if (this.medicalRecord == null || !this.medicalRecord.Equals(value))
+                {
+                    if (this.medicalRecord != null)
+                    {
+                        MedicalRecord oldMedicalRecord = this.medicalRecord;
+                        this.medicalRecord = null;
+                        oldMedicalRecord.RemoveMedicalReport(this);
+                    }
+                    if (value != null)
+                    {
+                        this.medicalRecord= value;
+                        this.medicalRecord.AddMedicalReport(this);
+                    }
+                }
             }
         }
 

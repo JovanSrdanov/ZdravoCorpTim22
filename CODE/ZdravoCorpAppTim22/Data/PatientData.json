@@ -1,1 +1,15 @@
-[{"Name":"pac","Surname":"pacprez","Email":"","Jmbg":"123","Password":"123","Birthday":"2022-04-14T00:00:00+02:00","Phone":"","Gender":0,"ID":0,"Address":1}]
+[
+  {
+    "medicalRecord": 0,
+    "Name": "pac",
+    "Surname": "pacprez",
+    "Email": "",
+    "Jmbg": "123",
+    "Password": "123",
+    "Birthday": "2022-04-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 0,
+    "Address": 1
+  }
+]

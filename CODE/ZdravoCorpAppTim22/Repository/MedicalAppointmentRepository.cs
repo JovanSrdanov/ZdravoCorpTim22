@@ -14,7 +14,7 @@ namespace Repository
 
         List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
 
-        public static DoctorRepository doctorRepository;
+        //public static DoctorRepository doctorRepository;
            
         private static MedicalAppointmentRepository instance;
 

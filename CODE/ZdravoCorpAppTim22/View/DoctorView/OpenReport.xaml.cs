@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -95,6 +96,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 selectedMedicalReport.Diagnosis = DiagnosisBox.Text;
             }
+
+            MedicalReportController.Instance.Update(selectedMedicalReport);
 
             medicalRecordView.Show();
             this.Close();

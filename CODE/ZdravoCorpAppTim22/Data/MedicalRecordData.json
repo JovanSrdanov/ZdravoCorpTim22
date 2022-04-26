@@ -1,0 +1,21 @@
+[
+  {
+    "Id": 0,
+    "BloodType": 3,
+    "AllergiesList": [
+      "Peanuts",
+      "Sun",
+      "Milk",
+      "Polen"
+    ],
+    "ConditionList": [
+      "Arthritis",
+      "Asthma",
+      "Glaucoma",
+      "TextBox",
+      "TextBox",
+      "TextBox"
+    ],
+    "Patient": 0
+  }
+]
