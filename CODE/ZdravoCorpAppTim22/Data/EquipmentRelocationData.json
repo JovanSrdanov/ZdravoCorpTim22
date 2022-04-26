@@ -34,5 +34,14 @@
     },
     "SourceRoom": 13,
     "DestinationRoom": 1
+  },
+  {
+    "Id": 4,
+    "Interval": {
+      "Start": "2022-04-27T05:00:00",
+      "End": "2022-04-27T06:00:00"
+    },
+    "SourceRoom": null,
+    "DestinationRoom": 3
   }
 ]
