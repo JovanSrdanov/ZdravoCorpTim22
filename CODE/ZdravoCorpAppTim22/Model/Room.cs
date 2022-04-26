@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Model
 {
@@ -168,6 +169,10 @@ namespace Model
                 }
                 return true;
             }
+        }
+        public bool IsAvailable(Interval interval)
+        {
+            return IsAvailable(interval.Start, interval.End);
         }
         
         public void AddEquipment(Equipment newEquipment)

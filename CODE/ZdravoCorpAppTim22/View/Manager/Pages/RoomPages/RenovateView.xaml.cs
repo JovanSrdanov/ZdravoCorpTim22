@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -104,7 +105,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 EndTimeGroup.Visibility = Visibility.Hidden;
             }
         }
-
         public void EndDateSelected(object sender, EventArgs e)
         {
             renovationInterval.End = ((CustomDatePicker)sender).SelectedDate;
@@ -118,26 +118,22 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 RoomEdit.Visibility = Visibility.Hidden;
             }
         }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new RoomView());
         }
-
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
             var RenovateStartDateView = new SelectTimePage(this, OldRoom);
             RenovateStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             this.NavigationService.Navigate(RenovateStartDateView);
         }
-
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
             var RenovateEndDateView = new SelectTimePage(this, OldRoom, renovationInterval.Start);
             RenovateEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             this.NavigationService.Navigate(RenovateEndDateView);
         }
-
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             if (type == null)
@@ -156,9 +152,17 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            Room room = new Room(id, level, rt, name);
-            if (room.IsAvailable(RenovationInterval.Start, RenovationInterval.End))
+            if (RenovationInterval.End.Date == DateTime.Now.Date)
             {
+                OldRoom.Name = name;
+                OldRoom.Level = level;
+                OldRoom.Type = rt;
+                RoomController.Instance.Update(OldRoom);
+                this.NavigationService.Navigate(new RoomView());
+            }
+            else if (OldRoom.IsAvailable(RenovationInterval))
+            {
+                Room room = new Room(id, level, rt, name);
                 Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
                 RenovationController.Instance.Create(renovation);
                 this.NavigationService.Navigate(new RoomView());
