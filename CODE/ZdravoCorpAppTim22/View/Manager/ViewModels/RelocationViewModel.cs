@@ -38,6 +38,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 
         public void WarehouseToRoom(Room destination, Interval interval)
         {
+            if (!destination.IsAvailable(interval))
+            {
+                return;
+            }
             List<Equipment> equipment = new List<Equipment>();
             foreach (EquipmentDataModel eq in EquipmentList)
             {
@@ -62,6 +66,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
         }
         public void RoomToWarehouse(Room source, Interval interval)
         {
+            if (!source.IsAvailable(interval))
+            {
+                return;
+            }
             List<Equipment> equipment = new List<Equipment>();
             foreach (EquipmentDataModel eq in EquipmentList)
             {
@@ -92,6 +100,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
         }
         public void RoomToRoom(Room source, Room destination, Interval interval)
         {
+            if(!source.IsAvailable(interval) || !destination.IsAvailable(interval))
+            {
+                return;
+            }
             List<Equipment> equipment = new List<Equipment>();
             foreach (EquipmentDataModel eq in EquipmentList)
             {
