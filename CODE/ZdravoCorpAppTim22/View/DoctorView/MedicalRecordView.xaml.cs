@@ -147,9 +147,28 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void FinishReportClick(object sender, RoutedEventArgs e)
         {
-            DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).AddMedicalRecord(selectedPatient.medicalRecord);
+            int isContained = 0;        //da li doktor vec ima karton kod sebe
+            Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+
+            foreach (MedicalRecord temp in selectedDoctor.MedicalRecord)
+            {
+                if (temp.Id == selectedPatient.medicalRecord.Id)
+                {
+                    isContained = 1;
+                    break;
+                }
+            }
+
+            if (isContained == 0)
+            {
+                selectedDoctor.AddMedicalRecord(selectedPatient.medicalRecord);
+            }
+            
             MedicalAppointmentController.Instance.DeleteByID(DoctorAppointments.medicalAppointment.Id);
+            selectedDoctor.MedicalAppointment.Remove(DoctorAppointments.medicalAppointment);
             DoctorAppointments.CurDocAppointemntsObservable.Remove(DoctorAppointments.medicalAppointment);
+
+            DoctorController.Instance.Update(selectedDoctor);
 
             doctorAppointments.Show();
             this.Close();

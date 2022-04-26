@@ -1,20 +1,11 @@
 [
   {
     "Id": 0,
-    "BloodType": 3,
-    "AllergiesList": [
-      "Peanuts",
-      "Sun",
-      "Milk",
-      "Polen"
-    ],
+    "BloodType": 0,
+    "AllergiesList": [],
     "ConditionList": [
-      "Arthritis",
-      "Asthma",
-      "Glaucoma",
-      "stefan promena",
-      "3",
-      "512"
+      "Pacijent pac rep1 izmena 3",
+      "Pacijent pac rep 2 doctor Stefans"
     ],
     "Patient": 0
   },
@@ -23,8 +14,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "2",
-      "1"
+      "Pacijen Stefan rep 1",
+      "Pacijent Stefan rep 2"
     ],
     "Patient": 1
   },
@@ -33,7 +24,7 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "TextBo32"
+      "Pacijent 1 rep 1"
     ],
     "Patient": 2
   }

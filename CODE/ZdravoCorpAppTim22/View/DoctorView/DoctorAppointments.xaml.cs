@@ -45,6 +45,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
 
             MedicalAppointmentController.Instance.DeleteByID(medicalAppointment.Id);
+            doctor.MedicalAppointment.Remove(medicalAppointment);
+            DoctorController.Instance.Update(doctor);
             CurDocAppointemntsObservable.Remove(medicalAppointment);
             MessageBox.Show("Apointment with ID " + medicalAppointment.Id + " deleted");
 
