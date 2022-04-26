@@ -81,6 +81,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             Room room = AppointmentType_Copy.SelectedItem as Room;
             date = datePicker.Text;
             time = TimeComboBox.Text;
+#pragma warning disable CS0168 // Variable is declared but never used
             try
             {
                 dateTime = DateTime.Parse(date + " " + time);
@@ -90,6 +91,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 MessageBox.Show("Please enter the valid time", "Create appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+#pragma warning restore CS0168 // Variable is declared but never used
 
             if (type == null || doctor == null || patient == null || room == null || datePicker.SelectedDate == null || time == "")
             {

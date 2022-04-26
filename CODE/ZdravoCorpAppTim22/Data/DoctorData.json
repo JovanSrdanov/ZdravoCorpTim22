@@ -1,1 +1,69 @@
-[{"DoctorType":0,"Name":"doc","Surname":"docprez","Email":"","Jmbg":"123","Password":"123","Birthday":"2022-04-14T00:00:00+02:00","Phone":"","Gender":0,"Id":0,"Address":0},{"DoctorType":1,"Name":"Stefan","Surname":"Apostolovic","Email":"","Jmbg":"123123213","Password":"123","Birthday":"2022-04-18T00:00:00+02:00","Phone":"","Gender":0,"Id":1,"Address":1}]
+[
+  {
+    "DoctorType": 0,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Pacijent pac rep1 izmena"
+        ],
+        "Patient": 0
+      },
+      {
+        "Id": 1,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Pacijen 1 rep 1"
+        ],
+        "Patient": 1
+      },
+      {
+        "Id": 2,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Pacijent 1 rep 1"
+        ],
+        "Patient": 2
+      }
+    ],
+    "Name": "doc",
+    "Surname": "docprez",
+    "Email": "",
+    "Jmbg": "123",
+    "Password": "123",
+    "Birthday": "2022-04-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 0,
+    "Address": 0
+  },
+  {
+    "DoctorType": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Pacijent pac rep1 izmena 3",
+          "Pacijent pac rep 2 doctor Stefan"
+        ],
+        "Patient": 0
+      }
+    ],
+    "Name": "Stefan",
+    "Surname": "Apostolovic",
+    "Email": "",
+    "Jmbg": "123123213",
+    "Password": "123",
+    "Birthday": "2022-04-18T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 1,
+    "Address": 1
+  }
+]

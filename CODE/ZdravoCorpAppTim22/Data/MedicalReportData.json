@@ -2,9 +2,9 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "Anamneza",
-    "Diagnosis": "512",
-    "ReportDate": "2022-04-25T22:14:14.6272482+02:00",
+    "Anamnesis": "TextBox",
+    "Diagnosis": "Pacijent pac rep1 izmena 3",
+    "ReportDate": "2022-04-26T18:23:12.9393632+02:00",
     "MedicineNameList": [
       ""
     ],
@@ -19,26 +19,9 @@
   {
     "Id": 1,
     "DoctorID": 0,
-    "Anamnesis": "dsa",
-    "Diagnosis": "3",
-    "ReportDate": "2022-04-26T12:36:14.2556879+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 2,
-    "DoctorID": 0,
-    "Anamnesis": "3213",
-    "Diagnosis": "1",
-    "ReportDate": "2022-04-26T13:01:02.0584067+02:00",
+    "Anamnesis": "TextBox",
+    "Diagnosis": "Pacijen Stefan rep 1",
+    "ReportDate": "2022-04-26T18:26:12.9057777+02:00",
     "MedicineNameList": [
       ""
     ],
@@ -51,11 +34,28 @@
     "MedicalRecord": 1
   },
   {
+    "Id": 2,
+    "DoctorID": 0,
+    "Anamnesis": "TextBox",
+    "Diagnosis": "Pacijent 1 rep 1",
+    "ReportDate": "2022-04-26T18:28:19.7238997+02:00",
+    "MedicineNameList": [
+      ""
+    ],
+    "MedicineAmountList": [
+      ""
+    ],
+    "MedicineInstructionList": [
+      ""
+    ],
+    "MedicalRecord": 2
+  },
+  {
     "Id": 3,
     "DoctorID": 0,
-    "Anamnesis": "1",
-    "Diagnosis": "2",
-    "ReportDate": "2022-04-26T13:05:00.1233958+02:00",
+    "Anamnesis": "TextBox",
+    "Diagnosis": "Pacijent Stefan rep 2",
+    "ReportDate": "2022-04-26T18:42:07.5243736+02:00",
     "MedicineNameList": [
       ""
     ],
@@ -70,9 +70,9 @@
   {
     "Id": 4,
     "DoctorID": 1,
-    "Anamnesis": "2",
-    "Diagnosis": "stefan promena",
-    "ReportDate": "2022-04-26T14:16:50.7791845+02:00",
+    "Anamnesis": "a",
+    "Diagnosis": "Pacijent pac rep 2 doctor Stefans",
+    "ReportDate": "2022-04-26T20:18:43.2573593+02:00",
     "MedicineNameList": [
       ""
     ],
@@ -83,22 +83,5 @@
       ""
     ],
     "MedicalRecord": 0
-  },
-  {
-    "Id": 5,
-    "DoctorID": 1,
-    "Anamnesis": "21",
-    "Diagnosis": "TextBo32",
-    "ReportDate": "2022-04-26T14:59:35.6607632+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
-    "MedicalRecord": 2
   }
 ]
