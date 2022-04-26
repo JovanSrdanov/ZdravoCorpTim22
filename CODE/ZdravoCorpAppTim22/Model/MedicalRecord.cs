@@ -14,9 +14,6 @@ namespace Model
         public ObservableCollection<string> AllergiesList { get; set; }
         public ObservableCollection<string> ConditionList { get; set; }
 
-        //dodao
-        //public ObservableCollection<MedicalReport> medicalReportObservable { get; set; }
-
         [JsonIgnore]
         public System.Collections.Generic.List<MedicalReport> medicalReport;
         [JsonIgnore]

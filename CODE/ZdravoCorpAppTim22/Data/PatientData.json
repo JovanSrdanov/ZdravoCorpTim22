@@ -1,6 +1,5 @@
 [
   {
-    "medicalRecord": 0,
     "Name": "pac",
     "Surname": "pacprez",
     "Email": "",
@@ -11,5 +10,29 @@
     "Gender": 0,
     "Id": 0,
     "Address": 1
+  },
+  {
+    "Name": "Stefan",
+    "Surname": "Apostolovic",
+    "Email": "",
+    "Jmbg": "111111111",
+    "Password": "1",
+    "Birthday": "2022-04-26T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 1,
+    "Address": 2
+  },
+  {
+    "Name": "1",
+    "Surname": "2",
+    "Email": "",
+    "Jmbg": "3",
+    "Password": "4",
+    "Birthday": "2022-04-26T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 2,
+    "Address": 3
   }
 ]

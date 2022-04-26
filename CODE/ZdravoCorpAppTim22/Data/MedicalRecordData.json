@@ -12,10 +12,29 @@
       "Arthritis",
       "Asthma",
       "Glaucoma",
-      "TextBox",
-      "TextBox",
-      "TextBox"
+      "stefan promena",
+      "3",
+      "512"
     ],
     "Patient": 0
+  },
+  {
+    "Id": 1,
+    "BloodType": 0,
+    "AllergiesList": [],
+    "ConditionList": [
+      "2",
+      "1"
+    ],
+    "Patient": 1
+  },
+  {
+    "Id": 2,
+    "BloodType": 0,
+    "AllergiesList": [],
+    "ConditionList": [
+      "TextBo32"
+    ],
+    "Patient": 2
   }
 ]

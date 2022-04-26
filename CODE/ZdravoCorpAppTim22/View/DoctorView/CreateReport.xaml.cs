@@ -93,18 +93,18 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id)); 
 
-            MedicalReport medicalReport = new MedicalReport(1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
+            MedicalReport medicalReport = new MedicalReport(-1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
                 medRec);
-            //bilo gore selectedPatient.medicalRecord
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
             MedicalReportController.Instance.Create(medicalReport);
             MedicalRecordView.newlyCreatedReports.Add(medicalReport);
 
             medRec.ConditionList.Add(diagnosis);
+            medRec.MedicalReport.Add(medicalReport);
+            MedicalRecordView.medRepList.Add(medicalReport);
             MedicalRecordController.Instance.Update(medRec);
-            MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
-            medRec.medicalReport.Add(medicalReport);
+            MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
             medicalRecordView.Show();
             this.Close();

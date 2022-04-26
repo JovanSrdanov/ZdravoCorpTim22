@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,15 @@ using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for OpenReport.xaml
-    /// </summary>
     public partial class OpenReport : Window
     {
         private MedicalReport selectedMedicalReport;
         private MedicalRecordView medicalRecordView;
-        public OpenReport(MedicalReport medicalReport, MedicalRecordView medicalRecordView)
+
+        private string oldDiagnosis;
+        private int canCreateRecord;        //ako ne pravim novi izvestaj cuvam promene kod dijagnoze
+
+        public OpenReport(MedicalReport medicalReport, MedicalRecordView medicalRecordView, int canCreateRecord)
         {
             InitializeComponent();
             selectedMedicalReport = medicalReport;
@@ -35,22 +37,19 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DiagnosisBox.Text = selectedMedicalReport.Diagnosis;
             AnamnesisBox.Text = selectedMedicalReport.Anamnesis;
 
+            oldDiagnosis = DiagnosisBox.Text;
+            this.canCreateRecord = canCreateRecord;
+
             if (!isEditable())
             {
                 ChangeReportBtn.IsEnabled = false;
+                ChangeReportBtn.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
 
         private bool isEditable()
         {
-            if (selectedMedicalReport.DoctorID == DoctorHome.selectedDoctorId)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return selectedMedicalReport.DoctorID == DoctorHome.selectedDoctorId;
         }
 
         //mozda mora da se ponovo doda event
@@ -79,6 +78,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             //treba azurirati za serijalizaciju
 
+            MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().
+                FindIndex(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id));
+
             if (AnamnesisBox.Text == null)
             {
                 selectedMedicalReport.Anamnesis = "";
@@ -98,6 +100,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
 
             MedicalReportController.Instance.Update(selectedMedicalReport);
+
+            foreach(string diagnosis in medRec.ConditionList)
+            {
+                if (diagnosis == oldDiagnosis)         //ako kreiram novi izvestaj pritiskom na back sve ponistavam, u suprotnom cuvam
+                {                                                               //promenu dijagnoze
+                    if (canCreateRecord != -1)
+                    {
+                        MedicalRecordView.newlyCreatedDiagnosis[MedicalRecordView.newlyCreatedDiagnosis.IndexOf(diagnosis)] = DiagnosisBox.Text;
+                    }
+                    medRec.ConditionList[medRec.ConditionList.IndexOf(diagnosis)] = DiagnosisBox.Text;
+                    MedicalRecordController.Instance.Update(medRec);
+                    break;
+                }
+            }
 
             medicalRecordView.Show();
             this.Close();

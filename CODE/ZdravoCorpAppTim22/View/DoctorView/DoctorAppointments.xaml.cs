@@ -59,6 +59,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 return;
             }
 
+            if (MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == 
+            medicalAppointment.Patient.Id) == -1)
+            {
+                MessageBox.Show("Selected patient does not have a medical record", "View record", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalAppointment.Patient.Id, this);
             medicalRecordView.Owner = this;
             medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;

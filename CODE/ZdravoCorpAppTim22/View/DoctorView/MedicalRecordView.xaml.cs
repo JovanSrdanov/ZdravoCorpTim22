@@ -11,17 +11,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 {
     public partial class MedicalRecordView : Window
     {
-        private Patient selectedPatient;
+        public static Patient selectedPatient;
         private DoctorAppointments doctorAppointments;
         private MedicalRecordsScreen medicalRecordsScreen;
 
-        private ObservableCollection<string> medRecCondList;
-        private ObservableCollection<string> medRecordAllergyList;
+        public static ObservableCollection<MedicalReport> medRepList { get; set; }
 
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
 
-        private int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
+        public int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
         public MedicalRecordView(int canCreateReport, int selectedPatientID, DoctorAppointments doctorAppointments = null, 
             MedicalRecordsScreen medicalRecordsScreen = null)
         {
@@ -29,6 +28,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             newlyCreatedReports = new List<MedicalReport>();
             newlyCreatedDiagnosis = new List<string>();
+
 
             selectedPatient = PatientController.Instance.GetByID(selectedPatientID);
             this.canCreateReport = canCreateReport;
@@ -39,12 +39,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 FinishReportBtn.Visibility = Visibility.Hidden;
             }
 
-            //privremeni karton
+            int medRecID = MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
+            selectedPatientID);
 
-            /*MedicalRecord medRecordTemp = new MedicalRecord(1, BloodType.B_MINUS, selectedPatient, 
-                new ObservableCollection<String> { "Peanuts", "Sun", "Milk", "Polen"}, 
-                new ObservableCollection<String> { "Arthritis", "Asthma", "Glaucoma"});
-            MedicalRecordController.Instance.Create(medRecordTemp);*/
+            if (medRecID == -1)     //pacijent nema medicinskki karton
+            {
+                MedicalRecord newMedRecord = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
+                    new ObservableCollection<String>(), new ObservableCollection<String>());
+                MedicalRecordController.Instance.Create(newMedRecord);
+            }
 
             selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
             selectedPatientID));
@@ -57,13 +60,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DateBirthBlock.Text = selectedPatient.Birthday.Date.ToShortDateString();
             JMBGBlock.Text = selectedPatient.Jmbg;
 
-            //medRecCondList = new ObservableCollection<string>(selectedPatient.medicalRecord.ConditionList);
             ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
 
-            medRecordAllergyList = new ObservableCollection<string>(selectedPatient.medicalRecord.AllergiesList);
-            AllergiesListBox.ItemsSource = medRecordAllergyList;
+            AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
 
-            PastReportsListBox.ItemsSource = selectedPatient.medicalRecord.MedicalReport;
+            medRepList = new ObservableCollection<MedicalReport>(selectedPatient.medicalRecord.MedicalReport);
+            PastReportsListBox.ItemsSource = medRepList; 
             //MedicationsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport.
         }
 
@@ -134,7 +136,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
             else
             {
-                OpenReport openReport = new OpenReport(medicalReport, this);
+                OpenReport openReport = new OpenReport(medicalReport, this, canCreateReport);
                 openReport.Owner = this;
                 openReport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 openReport.Show();
