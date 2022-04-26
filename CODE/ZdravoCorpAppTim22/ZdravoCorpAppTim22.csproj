@@ -97,6 +97,15 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.5.0.0.2401\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.5.0.0.2401\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.5.0.0.2401\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -104,12 +113,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
     <Compile Include="Controller\Generic\IController.cs" />
     <Compile Include="Controller\MedicalReportController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
+    <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
@@ -118,6 +129,7 @@
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\EquipmentDataRepository.cs" />
     <Compile Include="Repository\FileHandlers\GenericFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\DoctorToIDConverter.cs" />
@@ -127,6 +139,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\MedicalReportToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\PatientToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentRelocationToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\EquipmentDataToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\RoomToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
@@ -144,6 +157,7 @@
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EquipmentDataService.cs" />
     <Compile Include="Service\Generic\GenericService.cs" />
     <Compile Include="Service\Generic\IService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
@@ -188,6 +202,7 @@
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
     <Compile Include="View\Manager\Pages\RoomPages\RenovateView.xaml.cs">
       <DependentUpon>RenovateView.xaml</DependentUpon>
     </Compile>
@@ -200,8 +215,17 @@
     <Compile Include="View\Manager\Pages\RatingPages\RatingsView.xaml.cs">
       <DependentUpon>RatingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml.cs">
+      <DependentUpon>RoomDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomRelocationView.xaml.cs">
+      <DependentUpon>RoomRelocationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RoomView.xaml.cs">
       <DependentUpon>RoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml.cs">
+      <DependentUpon>RoomWarehouseRelocationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
       <DependentUpon>StaffView.xaml</DependentUpon>
@@ -209,10 +233,15 @@
     <Compile Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\WarehousePages\RelocationView.xaml.cs">
+      <DependentUpon>RelocationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\ViewModels\RelocationViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModel.cs" />
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
@@ -310,7 +339,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomRelocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Pages\RoomPages\RoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +360,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\WarehousePages\RelocationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

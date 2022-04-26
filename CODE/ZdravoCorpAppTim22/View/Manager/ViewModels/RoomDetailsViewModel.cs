@@ -1,17 +1,16 @@
 ﻿using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 {
-    public class WarehouseViewModel
+    public class RoomDetailsViewModel
     {
         public ObservableCollection<Equipment> EquipmentCollection { get; set; }
-        public WarehouseViewModel()
+        public RoomDetailsViewModel(Room room)
         {
-            List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
+            List<Equipment> equipment = EquipmentController.Instance.GetRoomEquipment(room.Id);
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);
         }
     }

@@ -1,7 +1,9 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -14,6 +16,11 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
         public RoomAppointmentViewModel(Room room, DateTime date)
         {
             Appointments = new ObservableCollection<Appointment>(CreateFullList(room, date));
+        }
+        public RoomAppointmentViewModel(Room room1, Room room2, DateTime date)
+        {
+            
+            Appointments = new ObservableCollection<Appointment>(CreateMergedList(room1, room2, date));
         }
         public RoomAppointmentViewModel(Room room, DateTime date, DateTime startDate)
         {
@@ -49,30 +56,64 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                 }
             }
         }
+        public RoomAppointmentViewModel(Room room1, Room room2, DateTime date, DateTime startDate)
+        {
+            List<Appointment> list = CreateMergedList(room1, room2, date);
+            if (DateTime.Compare(date.Date, startDate.Date) > 0)
+            {
+                Appointments = new ObservableCollection<Appointment>(new List<Appointment>
+                {
+                    list[0]
+                });
+            }
+            else
+            {
+                foreach (Appointment app in list)
+                {
+                    if (DateTime.Compare(app.Interval.Start, startDate) <= 0 && DateTime.Compare(app.Interval.End, startDate) > 0)
+                    {
+                        Interval interval = new Interval()
+                        {
+                            Start = startDate,
+                            End = app.Interval.End
+                        };
+                        Appointments = new ObservableCollection<Appointment>(new List<Appointment>
+                        {
+                            new Appointment()
+                            {
+                                Interval = interval,
+                                Type = app.Type,
+                            }
+                        });
+                        break;
+                    }
+                }
+            }
+        }
 
-        private List<Appointment> GetAppointmentsForDay<T>(List<T> list, DateTime date) where T : IHasInterval
+        private List<Appointment> GetAppointmentsForDay<T>(List<T> list, DateTime date, RoomAppointmentType appointmentType) where T : IHasInterval
         {
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (T obj in list)
             {
                 if (obj.Interval.Start.Date == date.Date && obj.Interval.End.Date == date.Date)
                 {
-                    Appointment app = new Appointment(obj.Interval.Start, obj.Interval.End, RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(obj.Interval.Start, obj.Interval.End, appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date < date.Date && obj.Interval.End.Date == date.Date)
                 {
-                    Appointment app = new Appointment(date.Date, obj.Interval.End, RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(date.Date, obj.Interval.End, appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date == date.Date && obj.Interval.End.Date > date.Date)
                 {
-                    Appointment app = new Appointment(obj.Interval.Start, date.Date.AddHours(23).AddMinutes(59), RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(obj.Interval.Start, date.Date.AddHours(23).AddMinutes(59), appointmentType);
                     appointmentList.Add(app);
                 }
                 else if (obj.Interval.Start.Date < date.Date && obj.Interval.End.Date > date.Date)
                 {
-                    Appointment app = new Appointment(date.Date, date.Date.AddHours(23).AddMinutes(59), RoomAppointmentType.RenovationAppointment);
+                    Appointment app = new Appointment(date.Date, date.Date.AddHours(23).AddMinutes(59), appointmentType);
                     appointmentList.Add(app);
                 }
             }
@@ -89,7 +130,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     appointmentList.Add(app);
                 }
             }
-            appointmentList.AddRange(GetAppointmentsForDay(room.Renovations, date));
+            appointmentList.AddRange(GetAppointmentsForDay(room.Renovations, date, RoomAppointmentType.RenovationAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.RelocationSources, date, RoomAppointmentType.EquipmentRelocationAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.RelocationDestinations, date, RoomAppointmentType.EquipmentRelocationAppointment));
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList;
         }
@@ -131,8 +174,47 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             }
             return appointmentList;
         }
+        private List<Appointment> CreateMergedList(Room room1, Room room2, DateTime date)
+        {
+            List<Appointment> list1 = CreateFullList(room1, date);
+            List<Appointment> list2 = CreateFullList(room2, date);
+            List<Appointment> list = new List<Appointment>();
+            foreach (Appointment item1 in list1)
+            {
+                if (item1.Type != RoomAppointmentType.Free) continue;
+                foreach (Appointment item2 in list2)
+                {
+                    if (item2.Type != RoomAppointmentType.Free) continue;
+                    Interval i1 = item1.Interval;
+                    Interval i2 = item2.Interval;
 
-
+                    if (i1.Start >= i2.Start && i1.End <= i2.End)
+                    {
+                        list.Add(item1);
+                    }
+                    else if (i2.Start >= i1.Start && i2.End <= i1.End)
+                    {
+                        list.Add(item2);
+                    }
+                    else if (i1.Start >= i2.Start && i1.Start <= i2.End && i2.End <= i1.End)
+                    {
+                        if(room1.IsAvailable(i1.Start, i2.End) && room2.IsAvailable(i1.Start, i2.End))
+                        {
+                            list.Add(new Appointment(i1.Start, i2.End, RoomAppointmentType.Free));
+                        }
+                    }
+                    else if (i2.Start >= i1.Start && i2.Start <= i1.End && i1.End <= i2.End)
+                    {
+                        if (room1.IsAvailable(i2.Start, i1.End) && room2.IsAvailable(i2.Start, i1.End))
+                        {
+                            list.Add(new Appointment(i2.Start, i1.End, RoomAppointmentType.Free));
+                        }
+                    }
+                }
+            }
+            list.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
+            return list;
+        }
         public static DateTime GetLatestAvailableTime(Room room, DateTime startDate)
         {
             List<Appointment> appointmentList = new List<Appointment>();
@@ -152,8 +234,41 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                     appointmentList.Add(app);
                 }
             }
+            foreach(EquipmentRelocation er in room.RelocationSources)
+            {
+                if (startDate < er.Interval.End)
+                {
+                    Appointment app = new Appointment(er.Interval.Start, er.Interval.End, RoomAppointmentType.EquipmentRelocationAppointment);
+                    appointmentList.Add(app);
+                }
+            }
+            foreach (EquipmentRelocation er in room.RelocationDestinations)
+            {
+                if (startDate < er.Interval.End)
+                {
+                    Appointment app = new Appointment(er.Interval.Start, er.Interval.End, RoomAppointmentType.EquipmentRelocationAppointment);
+                    appointmentList.Add(app);
+                }
+            }
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList.Count > 0 ? appointmentList[0].Interval.Start : startDate;
+        }
+        public static DateTime GetLatestAvailableTime(Room room1, Room room2, DateTime startDate)
+        {
+            DateTime time1 = GetLatestAvailableTime(room1, startDate);
+            DateTime time2 = GetLatestAvailableTime(room2, startDate);
+            if (time1 == startDate)
+            {
+                return time2;
+            }
+            else if (time2 == startDate)
+            {
+                return time1;
+            }
+            else
+            {
+                return time1 < time2 ? time1 : time2;
+            }
         }
     }
     
@@ -179,7 +294,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
     {
         DoctorAppointment,
         RenovationAppointment,
-        EquipmentTransferAppointment,
+        EquipmentRelocationAppointment,
         Free
     }
 }

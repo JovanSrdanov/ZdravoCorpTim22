@@ -15,15 +15,32 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             InitializeComponent();
             PageParent = parent;
             CustomDatePicker = new CustomDatePicker(room);
-            SelectTimeContent.Content = CustomDatePicker;
-            CustomDatePicker.DateSelectedEvent += BackButton;
-            CustomDatePicker.CancelEvent += BackButton;
+            Init();
+        }
+        public SelectTimePage(Page parent, Room room, Room secondRoom)
+        {
+            InitializeComponent();
+            PageParent = parent;
+            CustomDatePicker = new CustomDatePicker(room, secondRoom);
+            Init();
         }
         public SelectTimePage(Page parent, Room room, DateTime start)
         {
             InitializeComponent();
             PageParent = parent;
             CustomDatePicker = new CustomDatePicker(room, start);
+            Init();
+        }
+        public SelectTimePage(Page parent, Room room, Room secondRoom, DateTime start)
+        {
+            InitializeComponent();
+            PageParent = parent;
+            CustomDatePicker = new CustomDatePicker(room, secondRoom, start);
+            Init();
+        }
+
+        private void Init()
+        {
             SelectTimeContent.Content = CustomDatePicker;
             CustomDatePicker.DateSelectedEvent += BackButton;
             CustomDatePicker.CancelEvent += BackButton;

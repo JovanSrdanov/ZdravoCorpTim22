@@ -14,7 +14,15 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             List<Room> roomRep = RoomController.Instance.GetAll();
             RoomList = new ObservableCollection<Room>(roomRep);
         }
+        public RoomViewModel(Room room)
+        {
+            if(room != null)
+            {
+                List<Room> list = new List<Room>(RoomController.Instance.GetAll());
+                int index = list.FindIndex(r => r.Id == room.Id);
+                list.RemoveAt(index);
+                RoomList = new ObservableCollection<Room>(list);
+            }
+        }
     }
-
-
 }

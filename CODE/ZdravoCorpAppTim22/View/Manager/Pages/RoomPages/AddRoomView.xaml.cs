@@ -58,7 +58,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
@@ -82,12 +82,12 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             Room room = new Room(0, level, rt, name);
             RoomController.Instance.Create(room);
 
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
     }
 }

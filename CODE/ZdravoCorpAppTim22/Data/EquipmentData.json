@@ -1,9 +1,79 @@
 [
   {
-    "Id": 0,
-    "Name": "stolica",
+    "Id": 3,
+    "Amount": 480,
+    "EquipmentData": 1,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 5,
+    "Amount": 90,
+    "EquipmentData": 2,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 8,
+    "Amount": 20,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": 0
+  },
+  {
+    "Id": 9,
+    "Amount": 20,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": 0
+  },
+  {
+    "Id": 11,
+    "Amount": 10,
+    "EquipmentData": 2,
+    "Room": 6,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 12,
+    "Amount": 70,
+    "EquipmentData": 0,
+    "Room": 6,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 13,
+    "Amount": 0,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 14,
+    "Amount": 550,
+    "EquipmentData": 0,
+    "Room": 13,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 15,
+    "Amount": 200,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": 2
+  },
+  {
+    "Id": 16,
     "Amount": 100,
-    "Type": 1,
-    "Room": null
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": 3
+  },
+  {
+    "Id": 17,
+    "Amount": 150,
+    "EquipmentData": 0,
+    "Room": 1,
+    "EquipmentRelocation": null
   }
 ]

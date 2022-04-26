@@ -19,11 +19,24 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             ViewModel = new RoomAppointmentViewModel(room, date);
             DataContext = ViewModel;
         }
+        public AppointmentGrid(Room room1, Room room2, DateTime date)
+        {
+            InitializeComponent();
+            ViewModel = new RoomAppointmentViewModel(room1, room2, date);
+            DataContext = ViewModel;
+        }
 
         public AppointmentGrid(Room room, DateTime date, DateTime startDate)
         {
             InitializeComponent();
             ViewModel = new RoomAppointmentViewModel(room, date, startDate);
+            DataContext = ViewModel;
+        }
+
+        public AppointmentGrid(Room room1, Room room2, DateTime date, DateTime startDate)
+        {
+            InitializeComponent();
+            ViewModel = new RoomAppointmentViewModel(room1, room2, date, startDate);
             DataContext = ViewModel;
         }
 

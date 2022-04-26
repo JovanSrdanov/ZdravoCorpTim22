@@ -1,9 +1,5 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Service;
 
@@ -23,6 +19,25 @@ namespace ZdravoCorpAppTim22.Controller
                 }
                 return instance;
             }
+        }
+
+        public List<Equipment> GetWarehouseEquipment()
+        {
+            return EquipmentService.Instance.GetWarehouseEquipment();
+        }
+        public List<Equipment> GetRoomEquipment(int id)
+        {
+            return EquipmentService.Instance.GetRoomEquipment(id);
+        }
+
+        public void AddWarehouseEquipment(Equipment eq)
+        {
+            EquipmentService.Instance.AddWarehouseEquipment(eq);
+        }
+
+        public void AddRoomEquipment(Equipment eq)
+        {
+            EquipmentService.Instance.AddRoomEquipment(eq);
         }
     }
 }

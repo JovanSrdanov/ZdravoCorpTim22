@@ -10,6 +10,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
     public partial class CustomDatePicker : UserControl
     {
         public Room Room;
+        public Room SecondRoom;
         public Appointment Appointment;
         public AppointmentGrid AppointmentGrid;
         public CustomTimePicker TimePicker;
@@ -26,6 +27,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             this.Room = room;
         }
 
+        public CustomDatePicker(Room room, Room secondRoom)
+        {
+            InitializeComponent();
+            this.Room = room;
+            this.SecondRoom = secondRoom;
+        }
+
         public CustomDatePicker(Room room, DateTime startDate)
         {
             InitializeComponent();
@@ -34,6 +42,20 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             StartDate = startDate;
             DateTime EndDate = RoomAppointmentViewModel.GetLatestAvailableTime(room, startDate);
             if(DateTime.Compare(EndDate, StartDate) != 0)
+            {
+                DatePicker.DisplayDateEnd = EndDate;
+            }
+        }
+
+        public CustomDatePicker(Room room, Room secondRoom, DateTime startDate)
+        {
+            InitializeComponent();
+            this.Room = room;
+            this.SecondRoom = secondRoom;
+            DatePicker.DisplayDateStart = startDate;
+            StartDate = startDate;
+            DateTime EndDate = RoomAppointmentViewModel.GetLatestAvailableTime(room, secondRoom, startDate);
+            if (DateTime.Compare(EndDate, StartDate) != 0)
             {
                 DatePicker.DisplayDateEnd = EndDate;
             }
@@ -69,11 +91,24 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             {
                 if (new DateTime() == StartDate)
                 {
-                    AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate);
+                    if(SecondRoom == null)
+                    {
+                        AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate);
+                    }else
+                    {
+                        AppointmentGrid = new AppointmentGrid(Room, SecondRoom, (DateTime)DatePicker.SelectedDate);
+                    }
                 }
                 else
                 {
-                    AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate, StartDate);
+                    if(SecondRoom == null)
+                    {
+                        AppointmentGrid = new AppointmentGrid(Room, (DateTime)DatePicker.SelectedDate, StartDate);
+                    }
+                    else
+                    {
+                        AppointmentGrid = new AppointmentGrid(Room, SecondRoom, (DateTime)DatePicker.SelectedDate, StartDate);
+                    }
                 }
                 AppointmentGrid.ListSelectionChanged += new EventHandler(DateSelectionChanged);
                 AppointmentContent.Content = AppointmentGrid;

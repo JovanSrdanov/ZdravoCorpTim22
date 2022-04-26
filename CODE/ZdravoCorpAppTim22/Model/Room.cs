@@ -152,6 +152,20 @@ namespace Model
                         return false;
                     }
                 }
+                foreach(EquipmentRelocation er in relocationSources)
+                {
+                    if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                    {
+                        return false;
+                    }
+                }
+                foreach (EquipmentRelocation er in relocationDestinations)
+                {
+                    if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         }

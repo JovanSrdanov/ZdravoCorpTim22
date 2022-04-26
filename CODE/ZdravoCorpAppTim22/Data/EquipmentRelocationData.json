@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 0,
+    "Interval": {
+      "Start": "2022-04-28T03:00:00",
+      "End": "2022-04-28T05:00:00"
+    },
+    "SourceRoom": null,
+    "DestinationRoom": 1
+  },
+  {
+    "Id": 1,
+    "Interval": {
+      "Start": "2022-04-27T03:00:00",
+      "End": "2022-04-27T05:00:00"
+    },
+    "SourceRoom": 1,
+    "DestinationRoom": null
+  },
+  {
+    "Id": 2,
+    "Interval": {
+      "Start": "2022-04-27T10:00:00",
+      "End": "2022-04-28T02:00:00"
+    },
+    "SourceRoom": 13,
+    "DestinationRoom": 1
+  },
+  {
+    "Id": 3,
+    "Interval": {
+      "Start": "2022-04-27T08:00:00",
+      "End": "2022-04-27T10:00:00"
+    },
+    "SourceRoom": 13,
+    "DestinationRoom": 1
+  }
+]
