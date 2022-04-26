@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
         [JsonIgnore]
+        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord medicalRecord { get; set; }
 
         public bool IsAvailable(DateTime start, DateTime end)
@@ -142,6 +144,11 @@ namespace Model
                 tmpMedicalAppointment.Clear();
             }
         }
+
+        //dodao za serijalizaciju medical rekorda
+        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
+        //public MedicalRecord MedicalRecord { get; set; }
+        //dodao za serijalizaciju medical rekorda
 
     }
 }

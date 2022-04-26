@@ -2,31 +2,34 @@
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
     public partial class MedicalRecordView : Window
     {
-        private Patient selectedPatient;
+        public static Patient selectedPatient;
         private DoctorAppointments doctorAppointments;
         private MedicalRecordsScreen medicalRecordsScreen;
-        private int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
+
+        public static ObservableCollection<MedicalReport> medRepList { get; set; }
+
+        public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
+        public static List<string> newlyCreatedDiagnosis;
+
+        public int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
         public MedicalRecordView(int canCreateReport, int selectedPatientID, DoctorAppointments doctorAppointments = null, 
             MedicalRecordsScreen medicalRecordsScreen = null)
         {
             InitializeComponent();
-            
+
+            newlyCreatedReports = new List<MedicalReport>();
+            newlyCreatedDiagnosis = new List<string>();
+
+
             selectedPatient = PatientController.Instance.GetByID(selectedPatientID);
             this.canCreateReport = canCreateReport;
             if (canCreateReport == -1)                                                
@@ -36,9 +39,18 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 FinishReportBtn.Visibility = Visibility.Hidden;
             }
 
-            //privremeni karton
-            MedicalRecord medRecordTemp = new MedicalRecord(1, BloodType.B_MINUS, selectedPatient);
-            selectedPatient.medicalRecord = medRecordTemp;
+            int medRecID = MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
+            selectedPatientID);
+
+            if (medRecID == -1)     //pacijent nema medicinskki karton
+            {
+                MedicalRecord newMedRecord = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
+                    new ObservableCollection<String>(), new ObservableCollection<String>());
+                MedicalRecordController.Instance.Create(newMedRecord);
+            }
+
+            selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
+            selectedPatientID));
 
             this.doctorAppointments = doctorAppointments;
             this.medicalRecordsScreen = medicalRecordsScreen;
@@ -48,20 +60,51 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DateBirthBlock.Text = selectedPatient.Birthday.Date.ToShortDateString();
             JMBGBlock.Text = selectedPatient.Jmbg;
 
-            ProblemsListBox.ItemsSource = medRecordTemp.ConditionList;
-            AllergiesListBox.ItemsSource = medRecordTemp.AllergiesList;
-            PastReportsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport;
+            ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
+
+            AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
+
+            medRepList = new ObservableCollection<MedicalReport>(selectedPatient.medicalRecord.MedicalReport);
+            PastReportsListBox.ItemsSource = medRepList; 
             //MedicationsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport.
         }
 
         private void MedRecClosed(object sender, EventArgs e)
         {
+            //CancelAndCloseRemove();
             Application.Current.MainWindow.Show();
             this.Close();
         }
 
+        private void CancelAndCloseRemove()
+        {
+            if (newlyCreatedReports.Count > 0)
+            {
+                foreach (MedicalReport medicalReport in newlyCreatedReports)
+                {
+                    MedicalReportController.Instance.DeleteByID(medicalReport.Id);
+                    selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
+                }
+
+                newlyCreatedReports.Clear();
+            }
+
+            if (newlyCreatedDiagnosis.Count > 0)
+            {
+                foreach (string diagnosis in newlyCreatedDiagnosis)
+                {
+                    selectedPatient.medicalRecord.ConditionList.Remove(diagnosis);
+                }
+
+                MedicalRecordController.Instance.Update(selectedPatient.medicalRecord);
+                newlyCreatedDiagnosis.Clear();
+            }
+        }
+
         private void BackBtn(object sender, RoutedEventArgs e)
         {
+            CancelAndCloseRemove();
+
             if (doctorAppointments == null)
             {
                 medicalRecordsScreen.Show();
@@ -93,7 +136,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
             else
             {
-                OpenReport openReport = new OpenReport(medicalReport, this);
+                OpenReport openReport = new OpenReport(medicalReport, this, canCreateReport);
                 openReport.Owner = this;
                 openReport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 openReport.Show();

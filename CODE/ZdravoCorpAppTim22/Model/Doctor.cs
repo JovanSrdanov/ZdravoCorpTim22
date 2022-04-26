@@ -109,7 +109,6 @@ namespace Model
             }
         }
 
-
         //*********************DODAO KARTONE, NE ZABORAVI SERIJALIZACIJU**********************************
         public System.Collections.Generic.List<MedicalRecord> medicalRecord;
 
