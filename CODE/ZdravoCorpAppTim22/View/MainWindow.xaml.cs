@@ -24,6 +24,10 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
             PatientController.Instance.Load();
+            //dodao
+            MedicalRecordController.Instance.Load();
+            MedicalReportController.Instance.Load();
+            //dodao
             DoctorController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();

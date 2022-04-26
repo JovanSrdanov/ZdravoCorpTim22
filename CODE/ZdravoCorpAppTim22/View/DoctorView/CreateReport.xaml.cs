@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -90,11 +91,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicineAmountList.Add("");
             medicineInstructionList.Add("");
 
-            MedicalReport medicalReport = new MedicalReport(1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
-                selectedPatient.medicalRecord);
+            MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id)); 
+
+            MedicalReport medicalReport = new MedicalReport(-1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
+                medRec);
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
-            selectedPatient.medicalRecord.ConditionList.Add(diagnosis);
-            selectedPatient.medicalRecord.medicalReport.Add(medicalReport);
+            MedicalReportController.Instance.Create(medicalReport);
+            MedicalRecordView.newlyCreatedReports.Add(medicalReport);
+
+            medRec.ConditionList.Add(diagnosis);
+            medRec.MedicalReport.Add(medicalReport);
+            MedicalRecordView.medRepList.Add(medicalReport);
+            MedicalRecordController.Instance.Update(medRec);
+
+            MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
             medicalRecordView.Show();
             this.Close();

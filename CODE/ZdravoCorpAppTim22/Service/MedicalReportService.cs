@@ -9,17 +9,17 @@ using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
 {
-    public class MedicalRecordService : GenericService<MedicalRecordRepository, MedicalRecord>
+    public class MedicalReportService : GenericService<MedicalReportRepository, MedicalReport>
     {
-        private static MedicalRecordService instance;
-        private MedicalRecordService() : base(MedicalRecordRepository.Instance) { }
-        public static MedicalRecordService Instance
+        private static MedicalReportService instance;
+        private MedicalReportService() : base(MedicalReportRepository.Instance) { }
+        public static MedicalReportService Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new MedicalRecordService();
+                    instance = new MedicalReportService();
                 }
                 return instance;
             }
