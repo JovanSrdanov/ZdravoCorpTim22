@@ -1,27 +1,26 @@
 ﻿using Model;
-using System;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using System.Windows;
 using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
+using System;
 
-namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
+namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
-    public partial class RelocationView : Page
+    public partial class RoomWarehouseRelocationView : Page
     {
-        readonly WarehouseView ParentPage;
+        readonly RoomDetailsView ParentPage;
         public RelocationViewModel RelocationViewModel;
         public Interval Interval;
-        public Room DestinationRoom;
-        public RelocationView(WarehouseView parent)
+        public Room SourceRoom;
+        public RoomWarehouseRelocationView(Room room, RoomDetailsView parent)
         {
             InitializeComponent();
             RelocationViewModel = new RelocationViewModel(parent.SelectedEquipment);
             DataContext = RelocationViewModel;
             ParentPage = parent;
-            StartTimeGroup.Visibility = Visibility.Hidden;
+            SourceRoom = room;
             EndTimeGroup.Visibility = Visibility.Hidden;
             ButtonPanel.Visibility = Visibility.Hidden;
         }
@@ -59,32 +58,15 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
         {
             NavigationService.Navigate(ParentPage);
         }
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Room room = (Room)DataGrid.SelectedItem;
-
-            SelectEndTimeContent.Content = "";
-            SelectStartTimeContent.Content = "";
-            Interval.End = new DateTime();
-            Interval.Start = new DateTime();
-            StartTimeGroup.Visibility = Visibility.Hidden;
-            EndTimeGroup.Visibility = Visibility.Hidden;
-            ButtonPanel.Visibility = Visibility.Hidden;
-            if (room != null)
-            {
-                DestinationRoom = room;
-                StartTimeGroup.Visibility = Visibility.Visible;
-            }
-        }
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationStartDateView = new SelectTimePage(this, DestinationRoom);
+            var RelocationStartDateView = new SelectTimePage(this, SourceRoom);
             RelocationStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             NavigationService.Navigate(RelocationStartDateView);
         }
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationEndDateView = new SelectTimePage(this, DestinationRoom, Interval.Start);
+            var RelocationEndDateView = new SelectTimePage(this, SourceRoom, Interval.Start);
             RelocationEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             NavigationService.Navigate(RelocationEndDateView);
         }
@@ -96,8 +78,9 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 MessageBox.Show(message);
                 return;
             }
-            RelocationViewModel.WarehouseToRoom(DestinationRoom, Interval);
-            NavigationService.Navigate(new WarehouseView());
+            RelocationViewModel.RoomToWarehouse(SourceRoom, Interval);
+            NavigationService.Navigate(new RoomDetailsView(SourceRoom));
         }
+
     }
 }

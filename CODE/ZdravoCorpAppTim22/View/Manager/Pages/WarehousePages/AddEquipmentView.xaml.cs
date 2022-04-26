@@ -75,14 +75,20 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             }
 
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
-            EquipmentData equipmentData = new EquipmentData(0, name, et);
-            EquipmentDataController.Instance.Create(equipmentData);
+
+            EquipmentData equipmentData = EquipmentDataController.Instance.GetByName(name);
+            if(equipmentData == null)
+            {
+                equipmentData = new EquipmentData(0, name, et);
+                EquipmentDataController.Instance.Create(equipmentData);
+            }
+            
             Equipment equipment = new Equipment
             {
                 EquipmentData = equipmentData,
                 Amount = amount
             };
-            EquipmentController.Instance.Create(equipment);
+            EquipmentController.Instance.AddWarehouseEquipment(equipment);
 
             NavigationService.Navigate(new WarehouseView());
         }

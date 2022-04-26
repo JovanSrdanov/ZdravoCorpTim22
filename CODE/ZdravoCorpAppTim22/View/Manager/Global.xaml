@@ -291,4 +291,52 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="EquipmentGridHeader" TargetType="DataGridColumnHeader">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Height" Value="0"/>
+    </Style>
+    <Style x:Key="AmountTextBox" TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="MaxLength" Value="6"/>
+    </Style>
+
+    <Style x:Key="AmountDataGridRow" TargetType="DataGridRow">
+        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+        <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="AmountDataGridCell" TargetType="DataGridCell">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border Padding="{TemplateBinding Padding}"
+                            Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                            Width="{TemplateBinding Width}">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                            <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

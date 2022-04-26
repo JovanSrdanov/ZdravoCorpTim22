@@ -1,26 +1,27 @@
 ﻿using Model;
-using System;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using System.Windows;
 using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
+using System;
 
-namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
+namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
-    public partial class RelocationView : Page
+    public partial class RoomRelocationView : Page
     {
-        readonly WarehouseView ParentPage;
+        readonly RoomDetailsView ParentPage;
         public RelocationViewModel RelocationViewModel;
         public Interval Interval;
+        public Room SourceRoom;
         public Room DestinationRoom;
-        public RelocationView(WarehouseView parent)
+        public RoomRelocationView(Room sourceRoom, RoomDetailsView parent)
         {
             InitializeComponent();
-            RelocationViewModel = new RelocationViewModel(parent.SelectedEquipment);
+            RelocationViewModel = new RelocationViewModel(parent.SelectedEquipment, sourceRoom);
             DataContext = RelocationViewModel;
             ParentPage = parent;
+            SourceRoom = sourceRoom;
             StartTimeGroup.Visibility = Visibility.Hidden;
             EndTimeGroup.Visibility = Visibility.Hidden;
             ButtonPanel.Visibility = Visibility.Hidden;
@@ -78,13 +79,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
         }
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationStartDateView = new SelectTimePage(this, DestinationRoom);
+            var RelocationStartDateView = new SelectTimePage(this, SourceRoom, DestinationRoom);
             RelocationStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             NavigationService.Navigate(RelocationStartDateView);
         }
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationEndDateView = new SelectTimePage(this, DestinationRoom, Interval.Start);
+            var RelocationEndDateView = new SelectTimePage(this, SourceRoom, DestinationRoom, Interval.Start);
             RelocationEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             NavigationService.Navigate(RelocationEndDateView);
         }
@@ -96,8 +97,8 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 MessageBox.Show(message);
                 return;
             }
-            RelocationViewModel.WarehouseToRoom(DestinationRoom, Interval);
-            NavigationService.Navigate(new WarehouseView());
+            RelocationViewModel.RoomToRoom(SourceRoom, DestinationRoom, Interval);
+            NavigationService.Navigate(new RoomDetailsView(SourceRoom));
         }
     }
 }

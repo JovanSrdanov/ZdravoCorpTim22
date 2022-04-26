@@ -184,7 +184,6 @@
     <Compile Include="View\DoctorView\DoctorHomeScreen.xaml.cs">
       <DependentUpon>DoctorHomeScreen.xaml</DependentUpon>
     </Compile>
-    
     <Compile Include="View\DoctorView\DoctorViewModel.cs" />
     <Compile Include="View\DoctorView\MedicalRecordsScreen.xaml.cs">
       <DependentUpon>MedicalRecordsScreen.xaml</DependentUpon>
@@ -214,8 +213,14 @@
     <Compile Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml.cs">
       <DependentUpon>RoomDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomRelocationView.xaml.cs">
+      <DependentUpon>RoomRelocationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RoomView.xaml.cs">
       <DependentUpon>RoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml.cs">
+      <DependentUpon>RoomWarehouseRelocationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
       <DependentUpon>StaffView.xaml</DependentUpon>
@@ -229,9 +234,9 @@
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\ViewModels\EquipmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RelocationViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModel.cs" />
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
@@ -333,7 +338,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomRelocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Pages\RoomPages\RoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

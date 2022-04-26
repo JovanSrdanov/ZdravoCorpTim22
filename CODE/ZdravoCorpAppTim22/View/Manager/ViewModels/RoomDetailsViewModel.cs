@@ -5,10 +5,10 @@ using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 {
-    public class EquipmentViewModel
+    public class RoomDetailsViewModel
     {
         public ObservableCollection<Equipment> EquipmentCollection { get; set; }
-        public EquipmentViewModel(Room room)
+        public RoomDetailsViewModel(Room room)
         {
             List<Equipment> equipment = EquipmentController.Instance.GetRoomEquipment(room.Id);
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);

@@ -8,5 +8,10 @@
     "Id": 1,
     "Name": "cons",
     "Type": 0
+  },
+  {
+    "Id": 2,
+    "Name": "Kreveti",
+    "Type": 1
   }
 ]
