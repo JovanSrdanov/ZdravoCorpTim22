@@ -25,11 +25,14 @@ namespace ZdravoCorpAppTim22.Repository
         public List<Equipment> GetWarehouseEquipment()
         {
             List<Equipment> equipmentList = new List<Equipment>();
-            foreach(Equipment eq in List)
+            lock (_lock)
             {
-                if(eq.Room == null && eq.EquipmentRelocation == null)
+                foreach (Equipment eq in List)
                 {
-                    equipmentList.Add(eq);
+                    if (eq.Room == null && eq.EquipmentRelocation == null)
+                    {
+                        equipmentList.Add(eq);
+                    }
                 }
             }
             return equipmentList;
@@ -38,11 +41,14 @@ namespace ZdravoCorpAppTim22.Repository
         public List<Equipment> GetRoomEquipment(int id)
         {
             List<Equipment> equipmentList = new List<Equipment>();
-            foreach (Equipment eq in List)
+            lock (_lock)
             {
-                if (eq.Room != null && eq.Room.Id == id)
+                foreach (Equipment eq in List)
                 {
-                    equipmentList.Add(eq);
+                    if (eq.Room != null && eq.Room.Id == id)
+                    {
+                        equipmentList.Add(eq);
+                    }
                 }
             }
             return equipmentList;

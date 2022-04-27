@@ -1,7 +1,6 @@
 using Model;
 using Repository;
 using System;
-using System.Collections.Generic;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
@@ -21,5 +20,5 @@ namespace Service
                 return instance;
             }
         }
-   }
+    }
 }

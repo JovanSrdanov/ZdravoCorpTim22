@@ -1,14 +1,14 @@
 [
   {
     "Id": 3,
-    "Amount": 380,
+    "Amount": 300,
     "EquipmentData": 1,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
     "Id": 5,
-    "Amount": 80,
+    "Amount": 60,
     "EquipmentData": 2,
     "Room": null,
     "EquipmentRelocation": null
@@ -42,13 +42,6 @@
     "EquipmentRelocation": null
   },
   {
-    "Id": 13,
-    "Amount": 0,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
     "Id": 14,
     "Amount": 500,
     "EquipmentData": 0,
@@ -60,7 +53,7 @@
     "Amount": 200,
     "EquipmentData": 0,
     "Room": null,
-    "EquipmentRelocation": 2
+    "EquipmentRelocation": null
   },
   {
     "Id": 16,
@@ -74,13 +67,6 @@
     "Amount": 200,
     "EquipmentData": 0,
     "Room": 1,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 18,
-    "Amount": 100,
-    "EquipmentData": 1,
-    "Room": 3,
     "EquipmentRelocation": null
   },
   {

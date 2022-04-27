@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZdravoCorpAppTim22.Controller.Generic
 {
     public interface IController<T>
     {
+        event EventHandler DataChangedEvent;
         void Load();
         List<T> GetAll();
         T GetByID(int id);

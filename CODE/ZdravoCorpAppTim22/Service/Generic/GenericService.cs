@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Service.Generic
@@ -10,6 +7,11 @@ namespace ZdravoCorpAppTim22.Service.Generic
     public abstract class GenericService<Repository, T> : IService<T> where Repository : IRepository<T>
     {
         private readonly Repository _Repository;
+        public virtual event EventHandler DataChangedEvent
+        {
+            add { _Repository.DataChangedEvent += value; }
+            remove { _Repository.DataChangedEvent -= value; }
+        }
         public GenericService(Repository repository)
         {
             _Repository = repository;

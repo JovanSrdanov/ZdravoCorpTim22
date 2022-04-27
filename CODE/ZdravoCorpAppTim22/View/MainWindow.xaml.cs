@@ -1,4 +1,5 @@
 ﻿using Controller;
+using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.DoctorView;
@@ -35,6 +36,17 @@ namespace ZdravoCorpAppTim22
             ManagerController.Instance.Load();
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
+
+            ThreadPool.QueueUserWorkItem(DaemonThread);
+        }
+
+        public void DaemonThread(object stateInfo)
+        {
+            while (true)
+            {
+                Thread.Sleep(1000);
+                RenovationController.Instance.DaemonMethod();
+            }
         }
 
         private void ManagerBtn_Click(object sender, RoutedEventArgs e)

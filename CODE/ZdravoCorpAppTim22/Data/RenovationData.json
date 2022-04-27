@@ -2,71 +2,29 @@
   {
     "Id": 0,
     "NewRoom": {
-      "Id": 1,
-      "Level": 52,
+      "Id": 14,
+      "Level": 555666,
       "Type": 3,
-      "Name": "52"
+      "Name": "aa"
     },
     "Interval": {
-      "Start": "2022-04-26T12:00:00",
-      "End": "2022-04-26T15:00:00"
+      "Start": "2022-04-28T05:00:00",
+      "End": "2022-04-28T06:00:00"
     },
-    "Room": 1
+    "Room": null
   },
   {
     "Id": 1,
     "NewRoom": {
-      "Id": 13,
-      "Level": 5,
-      "Type": 3,
-      "Name": "soba123"
+      "Id": 14,
+      "Level": 1277,
+      "Type": 2,
+      "Name": "def"
     },
     "Interval": {
-      "Start": "2022-04-26T12:00:00",
-      "End": "2022-04-26T13:00:00"
+      "Start": "2022-04-28T16:00:00",
+      "End": "2022-04-28T20:00:00"
     },
-    "Room": 13
-  },
-  {
-    "Id": 2,
-    "NewRoom": {
-      "Id": 13,
-      "Level": 5,
-      "Type": 1,
-      "Name": "soba"
-    },
-    "Interval": {
-      "Start": "2022-04-27T04:00:00",
-      "End": "2022-04-27T04:30:00"
-    },
-    "Room": 13
-  },
-  {
-    "Id": 3,
-    "NewRoom": {
-      "Id": 13,
-      "Level": 0,
-      "Type": 0,
-      "Name": "soba"
-    },
-    "Interval": {
-      "Start": "2022-04-27T04:40:00",
-      "End": "2022-04-27T07:00:00"
-    },
-    "Room": 13
-  },
-  {
-    "Id": 4,
-    "NewRoom": {
-      "Id": 13,
-      "Level": 0,
-      "Type": 0,
-      "Name": "soba"
-    },
-    "Interval": {
-      "Start": "2022-04-26T10:00:00",
-      "End": "2022-04-26T11:50:00"
-    },
-    "Room": 13
+    "Room": null
   }
 ]
