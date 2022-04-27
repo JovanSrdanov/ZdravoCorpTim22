@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Controller.Generic
@@ -6,6 +7,11 @@ namespace ZdravoCorpAppTim22.Controller.Generic
     public abstract class GenericController<Service, T> : IController<T> where Service : IService<T>
     {
         private readonly Service _Service;
+        public virtual event EventHandler DataChangedEvent
+        {
+            add { _Service.DataChangedEvent += value; }
+            remove { _Service.DataChangedEvent -= value; }
+        }
         public GenericController(Service service)
         {
             _Service = service;

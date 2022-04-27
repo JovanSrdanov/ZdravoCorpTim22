@@ -42,13 +42,6 @@
     "EquipmentRelocation": null
   },
   {
-    "Id": 13,
-    "Amount": 0,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
     "Id": 14,
     "Amount": 500,
     "EquipmentData": 0,
@@ -60,7 +53,7 @@
     "Amount": 200,
     "EquipmentData": 0,
     "Room": null,
-    "EquipmentRelocation": 2
+    "EquipmentRelocation": null
   },
   {
     "Id": 16,

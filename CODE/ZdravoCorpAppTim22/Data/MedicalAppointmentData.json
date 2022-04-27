@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "Id": 0,
+    "Type": 2,
+    "MedicalAppointmentStartDateTime": "2022-04-28T07:00:00",
+    "MedicalAppointmentEndDateTime": "2022-04-28T07:15:00",
+    "Room": 13,
+    "Patient": 0,
+    "Doctor": 0
+  },
+  {
+    "Id": 1,
+    "Type": 1,
+    "MedicalAppointmentStartDateTime": "2022-04-29T10:00:00",
+    "MedicalAppointmentEndDateTime": "2022-04-29T10:00:00",
+    "Room": 1,
+    "Patient": 0,
+    "Doctor": 0
+  }
+]

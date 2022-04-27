@@ -1,20 +1,12 @@
 using Model;
-using System;
-using System.Collections.Generic;
 using ZdravoCorpAppTim22.Repository.Generic;
-using ZdravoCorpAppTim22.Repository.FileHandlers;
 namespace Repository
 {
-    public class SecretaryRepository : IRepository<SecretaryClass>
+    public class SecretaryRepository : GenericRepository<SecretaryClass>
     {
+        public static string FileName = "SecretaryData.json";
         private static SecretaryRepository instance;
-        public string FileName = "SecretaryData.json";
-        GenericFileHandler<SecretaryClass> secretaryFileHandler;
-        List<SecretaryClass> secretaries = new List<SecretaryClass>();
-        private SecretaryRepository()
-        {
-            secretaryFileHandler = new GenericFileHandler<SecretaryClass>(FileName);
-        }
+        private SecretaryRepository() : base(FileName) { }
         public static SecretaryRepository Instance
         {
             get
@@ -26,50 +18,6 @@ namespace Repository
 
                 return instance;
             }
-        }
-
-        public void Load()
-        {
-            secretaries = secretaryFileHandler.LoadData();
-        }
-
-        public List<SecretaryClass> GetAll()
-        {
-            return secretaries;
-        }
-
-        public SecretaryClass GetByID(int id)
-        {
-            int index = secretaries.FindIndex(r => r.Id == id);
-            return secretaries[index];
-        }
-
-        public void DeleteByID(int id)
-        {
-            int index = secretaries.FindIndex(r => r.Id == id);
-            secretaries.RemoveAt(index);
-            secretaryFileHandler.SaveData(secretaries);
-        }
-
-        public void Create(SecretaryClass secretary)
-        {
-            if (secretaries.Count > 0)
-            {
-                secretary.Id = secretaries[secretaries.Count - 1].Id + 1;
-            }
-            else
-            {
-                secretary.Id = 0;
-            }
-            secretaries.Add(secretary);
-            secretaryFileHandler.SaveData(secretaries);
-        }
-
-        public void Update(SecretaryClass secretary)
-        {
-            int index = secretaries.FindIndex(r => r.Id == secretary.Id);
-            secretaries[index] = secretary;
-            secretaryFileHandler.SaveData(secretaries);
         }
     }
 }

@@ -7,12 +7,10 @@ namespace ZdravoCorpAppTim22.Repository.Generic
 {
     public abstract class GenericRepository<T> : IRepository<T> where T : class, IHasID
     {
-        protected static readonly object _lock = new object();
+        protected readonly object _lock = new object();
         public readonly GenericFileHandler<T> FileHandler;
         public List<T> List = new List<T>();
-
         public event EventHandler DataChangedEvent;
-        
         public GenericRepository(string fileName)
         {
             FileHandler = new GenericFileHandler<T>(fileName);

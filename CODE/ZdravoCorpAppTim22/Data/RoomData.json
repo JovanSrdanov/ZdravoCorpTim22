@@ -1,20 +1,20 @@
 [
   {
     "Id": 1,
-    "Level": 52,
-    "Type": 3,
-    "Name": "52"
+    "Level": 5,
+    "Type": 1,
+    "Name": "soba123"
   },
   {
     "Id": 6,
-    "Level": 0,
-    "Type": 0,
-    "Name": "rasrrsa"
+    "Level": 5,
+    "Type": 2,
+    "Name": "sobasoba"
   },
   {
     "Id": 13,
-    "Level": 0,
-    "Type": 0,
-    "Name": "soba"
+    "Level": 2,
+    "Type": 3,
+    "Name": "s45"
   }
 ]

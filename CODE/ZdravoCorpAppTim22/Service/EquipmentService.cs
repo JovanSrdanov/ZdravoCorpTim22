@@ -1,6 +1,5 @@
 ﻿using Model;
 using System.Collections.Generic;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
 

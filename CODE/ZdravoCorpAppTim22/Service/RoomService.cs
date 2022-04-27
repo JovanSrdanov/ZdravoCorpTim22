@@ -20,10 +20,5 @@ namespace Service
                 return instance;
             }
         }
-        public event EventHandler DataChangedEvent
-        {
-            add { RoomRepository.Instance.DataChangedEvent += value; }
-            remove { RoomRepository.Instance.DataChangedEvent -= value; }
-        }
     }
 }
