@@ -1,6 +1,5 @@
 using Model;
 using Service;
-using System;
 using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
@@ -19,11 +18,6 @@ namespace Controller
                 }
                 return instance;
             }
-        }
-        public event EventHandler DataChangedEvent
-        {
-            add { RoomService.Instance.DataChangedEvent += value; }
-            remove { RoomService.Instance.DataChangedEvent -= value; }
         }
     }
 }
