@@ -133,46 +133,43 @@ namespace Model
             this.Name = name;
         }
 
+        public bool IsAvailable(DateTime start, DateTime end)
+        {
+            foreach (MedicalAppointment medicalAppointmentRoom in MedicalAppointment)
+            {
+                if (!((medicalAppointmentRoom.Interval.Start >= end) || (medicalAppointmentRoom.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            foreach (Renovation ren in Renovations)
+            {
+                if (!((ren.Interval.Start >= end) || (ren.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            foreach (EquipmentRelocation er in RelocationSources)
+            {
+                if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            foreach (EquipmentRelocation er in RelocationDestinations)
+            {
+                if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public bool IsAvailable(Interval interval)
         {
-            if (medicalAppointment == null)
-                return true;
-            else
-            {
-                foreach (MedicalAppointment medicalAppointmentRoom in MedicalAppointment)
-                {
-                    if (!((medicalAppointmentRoom.Interval.Start >= interval.End) || (medicalAppointmentRoom.Interval.End <= interval.Start)))
-
-                    {
-                        return false;
-                    }
-                }
-                foreach(Renovation ren in Renovations)
-                {
-                    if(!((ren.Interval.Start >= interval.End) || (ren.Interval.End <= interval.Start)))
-                    {
-                        return false;
-                    }
-                }
-                foreach(EquipmentRelocation er in RelocationSources)
-                {
-                    if (!((er.Interval.Start >= interval.End) || (er.Interval.End <= interval.Start)))
-                    {
-                        return false;
-                    }
-                }
-                foreach (EquipmentRelocation er in RelocationDestinations)
-                {
-                    if (!((er.Interval.Start >= interval.End) || (er.Interval.End <= interval.Start)))
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
+            return IsAvailable(interval.Start, interval.End);
         }
 
-        
         public void AddEquipment(Equipment newEquipment)
         {
             if (newEquipment == null)

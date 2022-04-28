@@ -124,9 +124,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (MedicalAppointment medApp in room.MedicalAppointment)
             {
-                if (date.Date == medApp.MedicalAppointmentStartDateTime.Date)
+                if (date.Date == medApp.Interval.Start.Date)
                 {
-                    Appointment app = new Appointment(medApp.MedicalAppointmentStartDateTime, medApp.MedicalAppointmentEndDateTime, RoomAppointmentType.DoctorAppointment);
+                    Appointment app = new Appointment(medApp.Interval.Start, medApp.Interval.End, RoomAppointmentType.DoctorAppointment);
                     appointmentList.Add(app);
                 }
             }
@@ -220,9 +220,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
             List<Appointment> appointmentList = new List<Appointment>();
             foreach (MedicalAppointment medApp in room.MedicalAppointment)
             {
-                if (startDate < medApp.MedicalAppointmentEndDateTime)
+                if (startDate < medApp.Interval.End)
                 {
-                    Appointment app = new Appointment(medApp.MedicalAppointmentStartDateTime, medApp.MedicalAppointmentEndDateTime, RoomAppointmentType.DoctorAppointment);
+                    Appointment app = new Appointment(medApp.Interval.Start, medApp.Interval.End, RoomAppointmentType.DoctorAppointment);
                     appointmentList.Add(app);
                 }
             }
