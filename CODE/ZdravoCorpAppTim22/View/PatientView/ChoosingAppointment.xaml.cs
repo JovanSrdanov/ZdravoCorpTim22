@@ -68,8 +68,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 durationOfAppointment = 60;
             }
 
-            List<Doctor> suggestedDoctors = DoctorController.Instance.GetAll();
-            List<Room> suggestetRooms = RoomController.Instance.GetAll();
+            List<Doctor> suggestedDoctors = new List<Doctor>(DoctorController.Instance.GetAll());
+            List<Room> suggestetRooms = new List<Room>(RoomController.Instance.GetAll());
 
             if (enteredAppointmentType == AppointmentType.operation)
             {

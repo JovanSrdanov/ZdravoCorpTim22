@@ -51,11 +51,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 AppointmentTypeCBOX.ItemsSource = newAppointmentTypes;
             }
 
-            rooms = RoomController.Instance.GetAll();
+            rooms = new List<Room>(RoomController.Instance.GetAll());
             RoomList = new ObservableCollection<Room>(rooms);
             AppointmentType_Copy.ItemsSource = RoomList;
 
-            patients = PatientController.Instance.GetAll();
+            patients = new List<Patient>(PatientController.Instance.GetAll());
             PatientList = new ObservableCollection<Patient>(patients);
             AppointmentType_Copy1.ItemsSource = PatientList;
         }

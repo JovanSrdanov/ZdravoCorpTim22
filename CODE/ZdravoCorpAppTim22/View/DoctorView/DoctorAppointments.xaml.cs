@@ -2,6 +2,7 @@
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -61,8 +62,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 return;
             }
 
-            if (MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == 
-            medicalAppointment.Patient.Id) == -1)
+            if (MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == 
+            medicalAppointment.Patient.Id).FirstOrDefault() == null)
             {
                 MessageBox.Show("Selected patient does not have a medical record", "View record", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

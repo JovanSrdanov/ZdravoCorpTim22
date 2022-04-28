@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             datePicker.DisplayDateStart = DateTime.Now.Date.AddDays(1);
             datePicker.SelectedDate = DateTime.Now.Date.AddDays(1);
             ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
-            doctors = DoctorController.Instance.GetAll();
+            doctors = new List<Doctor>(DoctorController.Instance.GetAll());
             DoctorList = new ObservableCollection<Doctor>(doctors);
             ChooseDoctor.ItemsSource = DoctorList;
 

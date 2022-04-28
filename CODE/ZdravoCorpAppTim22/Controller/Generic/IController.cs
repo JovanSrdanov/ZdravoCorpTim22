@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ZdravoCorpAppTim22.Controller.Generic
 {
     public interface IController<T>
     {
-        event EventHandler DataChangedEvent;
         void Load();
-        List<T> GetAll();
+        ObservableCollection<T> GetAll();
         T GetByID(int id);
         void DeleteByID(int id);
         void Create(T obj);

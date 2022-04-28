@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
@@ -7,55 +9,35 @@ namespace ZdravoCorpAppTim22.Repository.Generic
 {
     public abstract class GenericRepository<T> : IRepository<T> where T : class, IHasID
     {
-        protected readonly object _lock = new object();
+        public readonly object _lock = new object();
         public readonly GenericFileHandler<T> FileHandler;
-        public List<T> List = new List<T>();
-        public event EventHandler DataChangedEvent;
+        public ObservableCollection<T> List = new ObservableCollection<T>();
         public GenericRepository(string fileName)
         {
             FileHandler = new GenericFileHandler<T>(fileName);
         }
-        public void OnDataChangedEvent()
-        {
-            DataChangedEvent?.Invoke(this, EventArgs.Empty);
-        }
+
         public virtual void Load()
         {
-            lock (_lock)
-            {
-                List = FileHandler.LoadData();
-                OnDataChangedEvent();
-            }
+            List = new ObservableCollection<T>(FileHandler.LoadData()); 
         }
-        public virtual List<T> GetAll()
+        public virtual ObservableCollection<T> GetAll()
         {
             return List;
         }
         public virtual T GetByID(int id)
         {
-            lock (_lock)
-            {
-                int index = List.FindIndex(r => r.Id == id);
-                if (index == -1)
-                {
-                    return null;
-                }
-                return List[index];
-            }
+            return List.Where(r => r.Id == id).FirstOrDefault();
         }
         public virtual void DeleteByID(int id)
         {
-            lock (_lock)
+            T item = List.Where(r => r.Id == id).FirstOrDefault();
+            if(item == null)
             {
-                int index = List.FindIndex(r => r.Id == id);
-                if (index == -1)
-                {
-                    return;
-                }
-                List.RemoveAt(index);
-                FileHandler.SaveData(List);
-                OnDataChangedEvent();
+                return;
             }
+            List.Remove(item);
+            FileHandler.SaveData(new List<T>(List));
         }
         public virtual void Create(T obj)
         {
@@ -63,20 +45,16 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             {
                 return;
             }
-            lock (_lock)
+            if (List.Count > 0)
             {
-                if (List.Count > 0)
-                {
-                    obj.Id = List[List.Count - 1].Id + 1;
-                }
-                else
-                {
-                    obj.Id = 0;
-                }
-                List.Add(obj);
-                FileHandler.SaveData(List);
-                OnDataChangedEvent();
+                obj.Id = List[List.Count - 1].Id + 1;
             }
+            else
+            {
+                obj.Id = 0;
+            }
+            List.Add(obj);
+            FileHandler.SaveData(new List<T>(List));
         }
         public virtual void Update(T obj)
         {
@@ -84,17 +62,15 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             {
                 return;
             }
-            lock (_lock)
+            T item = List.Where(r => r.Id == obj.Id).FirstOrDefault();
+            if (item == null)
             {
-                int index = List.FindIndex(r => r.Id == obj.Id);
-                if (index == -1)
-                {
-                    return;
-                }
-                List[index] = obj;
-                FileHandler.SaveData(List);
-                OnDataChangedEvent();
+                return;
             }
+            int index = List.IndexOf(item);
+            List.Remove(item);
+            List.Insert(index, obj);
+            FileHandler.SaveData(new List<T>(List));
         }
     }
 }
