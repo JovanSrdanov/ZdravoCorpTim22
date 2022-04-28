@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             this.medAppointment = medicalAppointment;
 
-            rooms = RoomController.Instance.GetAll();
+            rooms = new List<Room>(RoomController.Instance.GetAll());
 
 
             RoomList = new ObservableCollection<Room>(rooms);
@@ -57,11 +57,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MessageBox.Show(rooms.Count + "");
             AppointmentType_Copy.ItemsSource = RoomList;
 
-            doctors = DoctorController.Instance.GetAll();
+            doctors = new List<Doctor>(DoctorController.Instance.GetAll());
             DoctorList = new ObservableCollection<Doctor>(doctors);
             AppointmentType_Copy2.ItemsSource = DoctorList;
 
-            patients = PatientController.Instance.GetAll();
+            patients = new List<Patient>(PatientController.Instance.GetAll());
             PatientList = new ObservableCollection<Patient>(patients);
             AppointmentType_Copy1.ItemsSource = PatientList;
         }

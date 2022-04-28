@@ -15,8 +15,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         public DoctorViewModel()
         {
-            List<Doctor> doctorRep = DoctorController.Instance.GetAll();
-            DoctorList = new ObservableCollection<Doctor>(doctorRep);
+            /*List<Doctor> doctorRep = DoctorController.Instance.GetAll();
+            DoctorList = new ObservableCollection<Doctor>(doctorRep);*/
+            DoctorList = DoctorController.Instance.GetAll();
         }
     }
 }

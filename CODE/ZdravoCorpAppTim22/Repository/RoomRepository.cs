@@ -1,5 +1,6 @@
 using Model;
 using System.Collections.Generic;
+using System.Linq;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace Repository
@@ -25,23 +26,21 @@ namespace Repository
 
         public override void DeleteByID(int id)
         {
-            lock (_lock)
+            Room room = List.Where(r => r.Id == id).FirstOrDefault();
+            if (room == null)
             {
-                int index = List.FindIndex(r => r.Id == id);
-                if (index == -1) return;
-                Room room = List[index];
-                if (room.medicalAppointment != null)
-                {
-                    List<MedicalAppointment> l = room.medicalAppointment;
-                    foreach (MedicalAppointment m in l)
-                    {
-                        MedicalAppointmentRepository.Instance.DeleteByID(m.Id);
-                    }
-                }
-                List.RemoveAt(index);
-                FileHandler.SaveData(List);
-                OnDataChangedEvent();
+                return;
             }
+            if (room.medicalAppointment != null)
+            {
+                List<MedicalAppointment> l = room.medicalAppointment;
+                foreach (MedicalAppointment m in l)
+                {
+                    MedicalAppointmentRepository.Instance.DeleteByID(m.Id);
+                }
+            }
+            List.Remove(room);
+            FileHandler.SaveData(new List<Room>(List));
         }
     }
 }

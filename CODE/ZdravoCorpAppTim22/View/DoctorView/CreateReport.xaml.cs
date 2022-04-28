@@ -91,7 +91,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicineAmountList.Add("");
             medicineInstructionList.Add("");
 
-            MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id)); 
+            /////////////////////
+            //MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id));
+            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == selectedPatient.Id).FirstOrDefault();
+            ////////////////////
 
             MedicalReport medicalReport = new MedicalReport(-1, anamnesis, diagnosis, medicineNameList, medicineAmountList, medicineInstructionList, DateTime.Now,
                 medRec);

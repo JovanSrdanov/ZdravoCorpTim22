@@ -19,7 +19,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public PatientSelectionForTemporaryPurpose()
         {
             InitializeComponent();
-            patients = PatientController.Instance.GetAll();
+            patients = new List<Patient>(PatientController.Instance.GetAll());
             PatientList = new ObservableCollection<Patient>(patients);
             SelectPatientCB.ItemsSource = PatientList;
         }

@@ -1,20 +1,26 @@
 [
   {
-    "Id": 1,
-    "Level": 5,
-    "Type": 1,
-    "Name": "soba123"
-  },
-  {
     "Id": 6,
-    "Level": 5,
-    "Type": 2,
-    "Name": "sobasoba"
+    "Level": 1,
+    "Type": 4,
+    "Name": "Sala"
   },
   {
     "Id": 13,
+    "Level": 5,
+    "Type": 4,
+    "Name": "sobaa"
+  },
+  {
+    "Id": 14,
     "Level": 2,
-    "Type": 3,
-    "Name": "s45"
+    "Type": 4,
+    "Name": "SOBA"
+  },
+  {
+    "Id": 15,
+    "Level": 11,
+    "Type": 4,
+    "Name": "ssoba123"
   }
 ]

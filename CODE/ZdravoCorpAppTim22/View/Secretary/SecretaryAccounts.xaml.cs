@@ -59,7 +59,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     AccountsDataGrid.Columns.Add(dataGridColumnSpecialisation);
                 }
 
-                List<Doctor> doktori = DoctorController.Instance.GetAll();
+                List<Doctor> doktori = new List<Doctor>(DoctorController.Instance.GetAll());
 
                 for (int i = 0; i < doktori.Count; i++)
                 {
@@ -79,7 +79,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             if (AccountsDataGrid != null)
             {
                 SetUpAccountsDataGrid();
-                List<ManagerClass> managers = ManagerController.Instance.GetAll();
+                List<ManagerClass> managers = new List<ManagerClass>(ManagerController.Instance.GetAll());
 
                 for (int i = 0; i < managers.Count; i++)
                 {
@@ -96,7 +96,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         public void PatientChecked()
         {
             SetUpAccountsDataGrid();
-            List<Patient> patients = PatientController.Instance.GetAll();
+            List<Patient> patients = new List<Patient>(PatientController.Instance.GetAll());
 
             for (int i = 0; i < patients.Count; i++)
             {
@@ -117,7 +117,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             SetUpAccountsDataGrid();
 
-            List<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+            List<SecretaryClass> secretaries = new List<SecretaryClass>(SecretaryController.Instance.GetAll());
 
             for (int i = 0; i < secretaries.Count; i++)
             {

@@ -29,27 +29,32 @@ namespace ZdravoCorpAppTim22.Service
         public void DaemonMethod()
         {
             List<Renovation> list = new List<Renovation>();
-            foreach (Renovation item in Instance.GetAll())
+            lock (RenovationRepository.Instance._lock) 
             {
-                if (item.Interval.End <= DateTime.Now)
+                foreach (Renovation item in GetAll())
                 {
-                    list.Add(item);
+                    if (item.Interval.End <= DateTime.Now)
+                    {
+                        list.Add(item);
+                    }
                 }
             }
-            if(list.Count > 0)
+            App.Current.Dispatcher.Invoke(delegate
             {
-                Debug.WriteLine("PROMIJENJENO: " + list.Count);
-            }
-            foreach(Renovation item in list)
-            {
-                Room oldRoom = RoomService.Instance.GetByID(item.NewRoom.Id);
-                oldRoom.Name = item.NewRoom.Name;
-                oldRoom.Level = item.NewRoom.Level;
-                oldRoom.Type = item.NewRoom.Type;
-                RoomService.Instance.Update(oldRoom);
-                oldRoom.RemoveRenovation(item);
-                Instance.DeleteByID(item.Id);
-            }
+                foreach (Renovation item in list)
+                {
+                    if (item.NewRoom != null)
+                    {
+                        Room oldRoom = RoomService.Instance.GetByID(item.NewRoom.Id);
+                        oldRoom.Name = item.NewRoom.Name;
+                        oldRoom.Level = item.NewRoom.Level;
+                        oldRoom.Type = item.NewRoom.Type;
+                        RoomService.Instance.Update(oldRoom);
+                        oldRoom.RemoveRenovation(item);
+                    }
+                    Instance.DeleteByID(item.Id);
+                }
+            });
         }
     }
 }

@@ -12,9 +12,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 
         public RoomViewModel()
         {
-            List<Room> roomRep = RoomController.Instance.GetAll();
-            RoomList = new ObservableCollection<Room>(roomRep);
-            RoomController.Instance.DataChangedEvent += RoomListChangedEvent;
+            RoomList = RoomController.Instance.GetAll();
         }
         public RoomViewModel(Room room)
         {
@@ -24,19 +22,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                 int index = list.FindIndex(r => r.Id == room.Id);
                 list.RemoveAt(index);
                 RoomList = new ObservableCollection<Room>(list);
-                RoomController.Instance.DataChangedEvent += RoomListChangedEvent;
             }
-        }
-        private void RoomListChangedEvent(object sender, EventArgs e)
-        {
-            App.Current.Dispatcher.Invoke(delegate
-            {
-                RoomList.Clear();
-                foreach (Room room in RoomController.Instance.GetAll())
-                {
-                    RoomList.Add(room);
-                }
-            });
         }
     }
 }
