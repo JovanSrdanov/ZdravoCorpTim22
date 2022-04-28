@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -120,8 +121,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             Doctor doctor = AppointmentType_Copy2.SelectedItem as Doctor;
             Patient patient = AppointmentType_Copy1.SelectedItem as Patient;
             //DateTime? dt = datePicker.SelectedDate;
+            ////////// JOVAN MENJAO ZA STEFANA, SSMISLI NESTO NOVO ZA DATETIMENOW
+            Interval interval = new Interval();
+            interval.Start = datePicker.SelectedDate.Value;
+            interval.End = DateTime.Now;
 
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(medAppointment.Id, at, datePicker.SelectedDate.Value, DateTime.Now, null, patient, doctor);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(medAppointment.Id, at, interval, null, patient, doctor);
             this.Close();
         }
     }

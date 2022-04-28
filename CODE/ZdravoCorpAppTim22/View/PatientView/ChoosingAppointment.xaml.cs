@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
@@ -97,23 +98,27 @@ namespace ZdravoCorpAppTim22.View.PatientView
             }
 
 
-            List<DateTime> forListStart = new List<DateTime>();
-            List<DateTime> forListEnd = new List<DateTime>();
+            List<Interval> forListInterval = new List<Interval>();
+            
             List<Room> forListRoom = new List<Room>();
             List<Doctor> forListDoctor = new List<Doctor>();
             counterForList = 0;
 
 
+            Interval interval = new Interval();
             for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
             {
                 appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
+                
+                interval.Start = appointmentTimeStart;
+                interval.End = appointmentTimeEnd;
 
-                if (enteredPatient.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                if (enteredPatient.IsAvailable(interval))
                 {
 
                     foreach (Doctor doctor in suggestedDoctors)
                     {
-                        if (doctor.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                        if (doctor.IsAvailable(interval))
                         {
 
 
@@ -121,11 +126,14 @@ namespace ZdravoCorpAppTim22.View.PatientView
                             {
 
 
-                                if (room.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                                if (room.IsAvailable(interval))
                                 {
                                     forListDoctor.Add(doctor);
-                                    forListStart.Add(appointmentTimeStart);
-                                    forListEnd.Add(appointmentTimeEnd);
+                                    Interval forInterval = new Interval();
+                                    forInterval.Start = appointmentTimeStart;
+                                    forInterval.Start = appointmentTimeEnd;
+                                    forListInterval.Add(forInterval);
+                                    
                                     forListRoom.Add(room);
                                     counterForList++;
 
@@ -143,7 +151,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             for (int i = 0; i < counterForList; i++)
             {
-                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListStart[i], forListEnd[i], enteredPatient, forListDoctor[i], forListRoom[i]);
+                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListInterval[i], enteredPatient, forListDoctor[i], forListRoom[i]);
                 availableMedicalAppointments.Add(medicalAppointmentToAdd);
 
             }
@@ -187,7 +195,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
-            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.MedicalAppointmentStartDateTime, medicalAppointmentStruct.MedicalAppointmentEndDateTime, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
+            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type,medicalAppointmentStruct.Interval ,medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
             MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
             PatientHome.MedicalAppointmentList.Add(medicalAppointmentTemp);
 
