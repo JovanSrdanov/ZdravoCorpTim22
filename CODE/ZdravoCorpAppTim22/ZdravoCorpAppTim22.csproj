@@ -266,8 +266,8 @@
     <Compile Include="View\PatientView\MakeAppointment.xaml.cs">
       <DependentUpon>MakeAppointment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientView\PatientHome.xaml.cs">
-      <DependentUpon>PatientHome.xaml</DependentUpon>
+    <Compile Include="View\PatientView\ZdravoCorpTabs.xaml.cs">
+      <DependentUpon>ZdravoCorpTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Secretary\SecretaryAccounts.xaml.cs">
       <DependentUpon>SecretaryAccounts.xaml</DependentUpon>
@@ -430,11 +430,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PatientView\PatientHome.xaml">
+    <Page Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml">
+    <Page Include="View\PatientView\ZdravoCorpTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -515,6 +515,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\PatientResource\MapLocation.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />
 </Project>

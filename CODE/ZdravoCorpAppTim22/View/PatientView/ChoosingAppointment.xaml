@@ -23,11 +23,11 @@
             <DataGrid.Columns>
                
                 <DataGridTextColumn Width="*" Header="Tip termina" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Width="*" Header="Pocetak termina" Binding="{Binding Path=MedicalAppointmentStartDateTime}"/>
-                <DataGridTextColumn Width="*" Header="Kraj termina" Binding="{Binding Path=MedicalAppointmentEndDateTime}"/>
+                <DataGridTextColumn Width="*" Header="Pocetak termina" Binding="{Binding Path=Interval.Start}"/>
+                <DataGridTextColumn Width="*" Header="Kraj termina" Binding="{Binding Path=Interval.End}"/>
                 <DataGridTextColumn Width="*" Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
                 <DataGridTextColumn Width="*" Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
-                <DataGridTextColumn Width="*" Header="Sifra sobe" Binding="{Binding Path=Room.id}"/>
+                <DataGridTextColumn Width="*" Header="Sifra sobe" Binding="{Binding Path=Room.Id}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="ConfirmAppointment" Content="Zakazi ovaj termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="624,361,0,0" Foreground="Black" Background="#FF23B623" Click="ConfirmAppointment_Click"/>

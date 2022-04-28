@@ -1,37 +1,47 @@
 ﻿using Controller;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
     /// <summary>
-    /// Interaction logic for PatientHome.xaml
+    /// Interaction logic for ZdravoCorpTabs.xaml
     /// </summary>
-    public partial class PatientHome : Window
+    public partial class ZdravoCorpTabs : Window
     {
-
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
         public List<MedicalAppointment> medicalAppointments;
-        public PatientHome()
+        public ZdravoCorpTabs()
         {
             InitializeComponent();
+          
 
-            WelcomePatientLabel.Content = "Dobrodosli! Pacijent: " + PatientSelectionForTemporaryPurpose.LoggedPatient.Name;
+ 
 
             medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
 
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             dataGrid.ItemsSource = MedicalAppointmentList;
-
-
         }
 
         private void AddAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
             MakeAppointment makeAppointment = new MakeAppointment();
             makeAppointment.Show();
+
         }
 
         private void RemoveAppointmentPatient_Click(object sender, RoutedEventArgs e)
