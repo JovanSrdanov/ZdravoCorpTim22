@@ -6,31 +6,44 @@
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="ChoosingAppointment" Height="450" Width="800"
+        Title="ChoosingAppointment" Height="450" Width="703.119" Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
         >
     
-    <Grid>
+    <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="SelectedDateLabel" Content="Datum" HorizontalAlignment="Left" Margin="39,23,0,0" VerticalAlignment="Top" Width="213"/>
-        <Label x:Name="SelectedDoctorLabel" Content="Doktor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,54,0,0" Width="249"/>
-        <Label x:Name="SelectedAppointmentType" Content="Vrsta termina" HorizontalAlignment="Left" Margin="293,23,0,0" VerticalAlignment="Top" Width="209" Grid.ColumnSpan="2"/>
-        <Label x:Name="SelectedPriority" Content="Prioritet" HorizontalAlignment="Left" Margin="293,54,0,0" VerticalAlignment="Top" Width="158" Grid.ColumnSpan="2"/>
-        <DataGrid  x:Name="dataGridSuggestedMedicalAppointments"  IsReadOnly="True" VerticalAlignment="Top"
+        <DataGrid  x:Name="dataGridSuggestedMedicalAppointments" 
           ItemsSource="{Binding Source=MedicalAppointmentsList}"
-          AutoGenerateColumns="False" CanUserResizeColumns="True" Height="175" Margin="39,131,46,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
+         SelectionMode="Single"   
+                               AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True" 
+                              HorizontalContentAlignment="Stretch" ColumnWidth="*" 
+                             VerticalAlignment="Top"  VerticalScrollBarVisibility="Visible" Height="227" Margin="42,95,42,0" >
+
             <DataGrid.Columns>
-               
-                <DataGridTextColumn Width="*" Header="Tip termina" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Width="*" Header="Pocetak termina" Binding="{Binding Path=Interval.Start}"/>
-                <DataGridTextColumn Width="*" Header="Kraj termina" Binding="{Binding Path=Interval.End}"/>
-                <DataGridTextColumn Width="*" Header="Ime lekara" Binding="{Binding Path=Doctor.Name}"/>
-                <DataGridTextColumn Width="*" Header="Prezime lekara" Binding="{Binding Path=Doctor.Surname}"/>
-                <DataGridTextColumn Width="*" Header="Sifra sobe" Binding="{Binding Path=Room.Id}"/>
+
+                <DataGridTextColumn  Header="Datum" Binding="{Binding Interval.Start , StringFormat=\{0:dd.MM.yyyy\}}"/>
+                <DataGridTextColumn  Header="Početak termina" Binding="{Binding Interval.Start, StringFormat=\{0:HH:mm\}}"/>
+              
+
+                <DataGridTemplateColumn Header="Lekar" >
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate >
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Doctor.Name}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=Doctor.Surname}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn  Header="Šifra sobe" Binding="{Binding Room.Id}"/>
+
+
+
+
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="ConfirmAppointment" Content="Zakazi ovaj termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="624,361,0,0" Foreground="Black" Background="#FF23B623" Click="ConfirmAppointment_Click"/>
-        <Label x:Name="CurrentPatient" Content="Label" HorizontalAlignment="Left" Margin="581,23,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ConfirmAppointment" Content="Zakazi ovaj termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="516,352,0,0" Foreground="Black" Background="#FF23B623" Click="ConfirmAppointment_Click"/>
     </Grid>
 </Window>

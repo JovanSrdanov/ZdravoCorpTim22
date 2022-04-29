@@ -32,15 +32,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
             enteredDateTime = MakeAppointment.selectedDateTime;
             enteredPriority = MakeAppointment.selectedPriority;
             enteredPatient = PatientSelectionForTemporaryPurpose.LoggedPatient;
-
-            SelectedDateLabel.Content = "Datum: " + enteredDateTime.ToLongDateString();
-            SelectedDoctorLabel.Content = "Pozeljan lekar: " + enteredDoctor.Name + " " + enteredDoctor.Surname;
-            SelectedPriority.Content = "Prioritet je: " + enteredPriority;
-            SelectedAppointmentType.Content = "Vrsta termina: " + enteredAppointmentType;
-            CurrentPatient.Content = "Vi ste:  " + enteredPatient.Name;
-
-
-
             medicalAppointments = GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority);
 
             MedicalAppointmentsList = new ObservableCollection<MedicalAppointmentStruct>(medicalAppointments);
@@ -53,8 +44,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
             List<MedicalAppointmentStruct> availableMedicalAppointments = new List<MedicalAppointmentStruct>();
 
             DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 7, 0, 0);
-            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 10, 0, 0);
-            DateTime appointmentTimeEnd = new DateTime();
+            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 9, 0, 0);
+            
 
             int jumpToNextAppointmetnTime = 15;
             int durationOfAppointment = 15;
@@ -108,8 +99,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
             Interval interval = new Interval();
             for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
             {
-                appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
-                
+                DateTime appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
+
                 interval.Start = appointmentTimeStart;
                 interval.End = appointmentTimeEnd;
 
@@ -129,9 +120,11 @@ namespace ZdravoCorpAppTim22.View.PatientView
                                 if (room.IsAvailable(interval))
                                 {
                                     forListDoctor.Add(doctor);
-                                    Interval forInterval = new Interval();
-                                    forInterval.Start = appointmentTimeStart;
-                                    forInterval.End = appointmentTimeEnd;
+                                    Interval forInterval = new Interval
+                                    {
+                                        Start = appointmentTimeStart,
+                                        End = appointmentTimeEnd
+                                    };
                                     forListInterval.Add(forInterval);
                                     
                                     forListRoom.Add(room);

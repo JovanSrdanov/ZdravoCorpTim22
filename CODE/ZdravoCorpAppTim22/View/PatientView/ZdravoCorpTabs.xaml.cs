@@ -34,27 +34,43 @@ namespace ZdravoCorpAppTim22.View.PatientView
             medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
 
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
-            dataGrid.ItemsSource = MedicalAppointmentList;
+            DataGrid.ItemsSource = MedicalAppointmentList;
+            
         }
 
         private void AddAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
             MakeAppointment makeAppointment = new MakeAppointment();
-            makeAppointment.Show();
+            makeAppointment.ShowDialog();
 
         }
 
         private void RemoveAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)dataGrid.SelectedItem;
+            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)DataGrid.SelectedItem;
             if (medicalAppointmentTemp == null)
             {
                 return;
             }
+            
             MedicalAppointmentController.Instance.DeleteByID(medicalAppointmentTemp.Id);
             MedicalAppointmentList.Remove(medicalAppointmentTemp);
 
 
         }
+
+        private void ChangeAppointmentDateTime_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)DataGrid.SelectedItem;
+            if (medicalAppointmentTemp == null)
+            {
+                return;
+            }
+
+            ChangeAppointment changeAppointment = new ChangeAppointment();
+            changeAppointment.ShowDialog();
+        }
+
+      
     }
 }
