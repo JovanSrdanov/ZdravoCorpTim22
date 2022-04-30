@@ -1,93 +1,86 @@
 [
   {
     "Id": 3,
-    "Amount": 380,
+    "Amount": 290,
     "EquipmentData": 1,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
     "Id": 5,
-    "Amount": 80,
+    "Amount": 240,
     "EquipmentData": 2,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
-    "Id": 8,
-    "Amount": 20,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": 0
-  },
-  {
-    "Id": 9,
-    "Amount": 20,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": 0
-  },
-  {
     "Id": 11,
-    "Amount": 10,
+    "Amount": 100,
     "EquipmentData": 2,
     "Room": 6,
     "EquipmentRelocation": null
   },
   {
     "Id": 12,
-    "Amount": 70,
+    "Amount": 160,
     "EquipmentData": 0,
     "Room": 6,
     "EquipmentRelocation": null
   },
   {
-    "Id": 13,
-    "Amount": 0,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
     "Id": 14,
-    "Amount": 500,
+    "Amount": 585,
     "EquipmentData": 0,
     "Room": 13,
     "EquipmentRelocation": null
   },
   {
-    "Id": 15,
-    "Amount": 200,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": 2
-  },
-  {
-    "Id": 16,
-    "Amount": 100,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": 3
-  },
-  {
-    "Id": 17,
-    "Amount": 200,
-    "EquipmentData": 0,
-    "Room": 1,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 18,
-    "Amount": 100,
-    "EquipmentData": 1,
-    "Room": 3,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 19,
-    "Amount": 10,
+    "Id": 20,
+    "Amount": 130,
     "EquipmentData": 2,
+    "Room": 13,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 22,
+    "Amount": 30,
+    "EquipmentData": 0,
+    "Room": 14,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 23,
+    "Amount": 10,
+    "EquipmentData": 1,
+    "Room": 6,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 24,
+    "Amount": 626,
+    "EquipmentData": 3,
     "Room": null,
-    "EquipmentRelocation": 0
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 25,
+    "Amount": 470,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 27,
+    "Amount": 30,
+    "EquipmentData": 3,
+    "Room": 15,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 29,
+    "Amount": 5,
+    "EquipmentData": 0,
+    "Room": 15,
+    "EquipmentRelocation": null
   }
 ]

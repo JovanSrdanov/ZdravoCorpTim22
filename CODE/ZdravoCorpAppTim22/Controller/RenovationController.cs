@@ -1,10 +1,4 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZdravoCorpAppTim22.Controller.Generic;
+﻿using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
 
@@ -24,6 +18,10 @@ namespace ZdravoCorpAppTim22.Controller
                 }
                 return instance;
             }
+        }
+        public void DaemonMethod()
+        {
+            RenovationService.Instance.DaemonMethod();
         }
     }
 }

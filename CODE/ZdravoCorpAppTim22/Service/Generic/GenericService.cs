@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Service.Generic
@@ -18,7 +16,7 @@ namespace ZdravoCorpAppTim22.Service.Generic
         {
             _Repository.Load();
         }
-        public virtual List<T> GetAll()
+        public virtual ObservableCollection<T> GetAll()
         {
             return _Repository.GetAll();
         }

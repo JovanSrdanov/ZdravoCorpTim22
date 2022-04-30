@@ -1,5 +1,6 @@
 ﻿using Model;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Repository
@@ -25,9 +26,9 @@ namespace ZdravoCorpAppTim22.Repository
         public List<Equipment> GetWarehouseEquipment()
         {
             List<Equipment> equipmentList = new List<Equipment>();
-            foreach(Equipment eq in List)
+            foreach (Equipment eq in List)
             {
-                if(eq.Room == null && eq.EquipmentRelocation == null)
+                if (eq.Room == null && eq.EquipmentRelocation == null)
                 {
                     equipmentList.Add(eq);
                 }
@@ -40,7 +41,7 @@ namespace ZdravoCorpAppTim22.Repository
             List<Equipment> equipmentList = new List<Equipment>();
             foreach (Equipment eq in List)
             {
-                if (eq.Room != null && eq.Room.Id == id)
+                if (eq.Room != null && eq.Room.Id == id && eq.EquipmentRelocation == null)
                 {
                     equipmentList.Add(eq);
                 }

@@ -46,7 +46,12 @@ namespace ZdravoCorpAppTim22.Service
                         return;
                     }
                 }
-                Create(eq);
+                Equipment newEq = new Equipment(eq)
+                {
+                    Room = null,
+                    EquipmentRelocation = null
+                };
+                Create(newEq);
             }
         }
 
@@ -55,6 +60,7 @@ namespace ZdravoCorpAppTim22.Service
             if(eq.Room != null)
             {
                 List<Equipment> roomEq = GetRoomEquipment(eq.Room.Id);
+                
                 foreach (Equipment eqItem in roomEq)
                 {
                     if (eqItem.EquipmentData.Id == eq.EquipmentData.Id)
@@ -64,7 +70,12 @@ namespace ZdravoCorpAppTim22.Service
                         return;
                     }
                 }
-                Create(eq);
+                Equipment newEq = new Equipment(eq)
+                {
+                    Room = eq.Room,
+                    EquipmentRelocation = null
+                };
+                Create(newEq);
             }
         }
     }

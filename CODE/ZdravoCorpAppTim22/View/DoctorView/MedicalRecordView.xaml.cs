@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using ZdravoCorpAppTim22.Controller;
@@ -39,18 +40,19 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 FinishReportBtn.Visibility = Visibility.Hidden;
             }
 
-            int medRecID = MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
-            selectedPatientID);
+            //int medRecID = MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID);
+            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == selectedPatientID).FirstOrDefault();
 
-            if (medRecID == -1)     //pacijent nema medicinskki karton
+            if (medRec == null)     //pacijent nema medicinskki karton
             {
                 MedicalRecord newMedRecord = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
                     new ObservableCollection<String>(), new ObservableCollection<String>());
                 MedicalRecordController.Instance.Create(newMedRecord);
             }
 
-            selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id ==
-            selectedPatientID));
+            //selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID));
+            selectedPatient.medicalRecord = medRec;
+
 
             this.doctorAppointments = doctorAppointments;
             this.medicalRecordsScreen = medicalRecordsScreen;

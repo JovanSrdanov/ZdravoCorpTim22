@@ -40,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 return;
             }
-            ViewModel.RoomList.Remove(room);
+            //ViewModel.RoomList.Remove(room);
             RoomController.Instance.DeleteByID(room.Id);
         }
 

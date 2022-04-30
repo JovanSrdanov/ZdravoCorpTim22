@@ -19,5 +19,9 @@ namespace Controller
                 return instance;
             }
         }
+        public void DaemonMethod()
+        {
+            EquipmentRelocationService.Instance.DaemonMethod();
+        }
    }
 }

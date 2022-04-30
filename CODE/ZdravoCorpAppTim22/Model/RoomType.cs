@@ -7,6 +7,7 @@ namespace Model
       operation,
       waiting,
       reception,
-      resting
+      resting,
+      examination
    }
 }

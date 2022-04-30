@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-    public class MedicalReport
+    public class MedicalReport : IHasID
     {
         //izvestaj
         public int Id { get; set; }

@@ -78,8 +78,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             //treba azurirati za serijalizaciju
 
-            MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().
-                FindIndex(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id));
+            //MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id));
+            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id).FirstOrDefault();
 
             if (AnamnesisBox.Text == null)
             {

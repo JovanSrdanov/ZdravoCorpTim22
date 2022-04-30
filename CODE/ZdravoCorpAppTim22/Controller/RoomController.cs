@@ -19,5 +19,5 @@ namespace Controller
                 return instance;
             }
         }
-   }
+    }
 }

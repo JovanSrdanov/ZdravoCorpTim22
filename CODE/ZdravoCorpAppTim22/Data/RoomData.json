@@ -1,44 +1,26 @@
 [
   {
-    "Id": 1,
-    "Level": 6,
-    "Type": 2,
-    "Name": "sobasobasoba"
-  },
-  {
-    "Id": 3,
-    "Level": 0,
-    "Type": 1,
-    "Name": "241"
-  },
-  {
-    "Id": 4,
-    "Level": 421421,
-    "Type": 0,
-    "Name": "124214"
-  },
-  {
     "Id": 6,
-    "Level": 0,
-    "Type": 0,
-    "Name": "rasrrsa"
-  },
-  {
-    "Id": 11,
-    "Level": 512,
-    "Type": 1,
-    "Name": "214"
-  },
-  {
-    "Id": 12,
-    "Level": 0,
-    "Type": 0,
-    "Name": "214"
+    "Level": 1,
+    "Type": 4,
+    "Name": "Sala"
   },
   {
     "Id": 13,
-    "Level": 0,
-    "Type": 0,
-    "Name": "soba"
+    "Level": 5,
+    "Type": 4,
+    "Name": "sobaa"
+  },
+  {
+    "Id": 14,
+    "Level": 2,
+    "Type": 4,
+    "Name": "SOBA"
+  },
+  {
+    "Id": 15,
+    "Level": 11,
+    "Type": 4,
+    "Name": "ssoba123"
   }
 ]

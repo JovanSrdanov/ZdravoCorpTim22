@@ -152,7 +152,8 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            if (RenovationInterval.End.Date == DateTime.Now.Date)
+            //if (RenovationInterval.End.Date == DateTime.Now.Date)
+            if(RenovationInterval.End <= DateTime.Now)
             {
                 OldRoom.Name = name;
                 OldRoom.Level = level;

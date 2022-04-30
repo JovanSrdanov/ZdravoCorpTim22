@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
+
+
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
@@ -31,15 +34,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
             enteredDateTime = MakeAppointment.selectedDateTime;
             enteredPriority = MakeAppointment.selectedPriority;
             enteredPatient = PatientSelectionForTemporaryPurpose.LoggedPatient;
-
-            SelectedDateLabel.Content = "Datum: " + enteredDateTime.ToLongDateString();
-            SelectedDoctorLabel.Content = "Pozeljan lekar: " + enteredDoctor.Name + " " + enteredDoctor.Surname;
-            SelectedPriority.Content = "Prioritet je: " + enteredPriority;
-            SelectedAppointmentType.Content = "Vrsta termina: " + enteredAppointmentType;
-            CurrentPatient.Content = "Vi ste:  " + enteredPatient.Name;
-
-
-
             medicalAppointments = GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority);
 
             MedicalAppointmentsList = new ObservableCollection<MedicalAppointmentStruct>(medicalAppointments);
@@ -51,9 +45,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
             List<MedicalAppointmentStruct> availableMedicalAppointments = new List<MedicalAppointmentStruct>();
 
-            DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 7, 0, 0);
-            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 10, 0, 0);
-            DateTime appointmentTimeEnd = new DateTime();
+            DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
+            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
+
 
             int jumpToNextAppointmetnTime = 15;
             int durationOfAppointment = 15;
@@ -68,8 +62,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 durationOfAppointment = 60;
             }
 
-            List<Doctor> suggestedDoctors = DoctorController.Instance.GetAll();
-            List<Room> suggestetRooms = RoomController.Instance.GetAll();
+            List<Doctor> suggestedDoctors = new List<Doctor>(DoctorController.Instance.GetAll());
+            List<Room> suggestetRooms = new List<Room>(RoomController.Instance.GetAll());
 
             if (enteredAppointmentType == AppointmentType.operation)
             {
@@ -87,7 +81,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
                 foreach (Room room in suggestetRooms)
                 {
-                    
+
                     if (room.Type == RoomType.operation)
                         temporaryRooms.Add(room);
 
@@ -97,23 +91,27 @@ namespace ZdravoCorpAppTim22.View.PatientView
             }
 
 
-            List<DateTime> forListStart = new List<DateTime>();
-            List<DateTime> forListEnd = new List<DateTime>();
+            List<Interval> forListInterval = new List<Interval>();
+
             List<Room> forListRoom = new List<Room>();
             List<Doctor> forListDoctor = new List<Doctor>();
             counterForList = 0;
 
 
+            Interval interval = new Interval();
             for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
             {
-                appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
+                DateTime appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
 
-                if (enteredPatient.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                interval.Start = appointmentTimeStart;
+                interval.End = appointmentTimeEnd;
+
+                if (enteredPatient.IsAvailable(interval))
                 {
 
                     foreach (Doctor doctor in suggestedDoctors)
                     {
-                        if (doctor.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                        if (doctor.IsAvailable(interval))
                         {
 
 
@@ -121,11 +119,16 @@ namespace ZdravoCorpAppTim22.View.PatientView
                             {
 
 
-                                if (room.IsAvailable(appointmentTimeStart, appointmentTimeEnd))
+                                if (room.IsAvailable(interval))
                                 {
                                     forListDoctor.Add(doctor);
-                                    forListStart.Add(appointmentTimeStart);
-                                    forListEnd.Add(appointmentTimeEnd);
+                                    Interval forInterval = new Interval
+                                    {
+                                        Start = appointmentTimeStart,
+                                        End = appointmentTimeEnd
+                                    };
+                                    forListInterval.Add(forInterval);
+
                                     forListRoom.Add(room);
                                     counterForList++;
 
@@ -143,7 +146,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             for (int i = 0; i < counterForList; i++)
             {
-                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListStart[i], forListEnd[i], enteredPatient, forListDoctor[i], forListRoom[i]);
+                MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(i, enteredAppointmentType, forListInterval[i], enteredPatient, forListDoctor[i], forListRoom[i]);
                 availableMedicalAppointments.Add(medicalAppointmentToAdd);
 
             }
@@ -187,9 +190,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
-            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.MedicalAppointmentStartDateTime, medicalAppointmentStruct.MedicalAppointmentEndDateTime, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
+            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.Interval, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
             MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
-            PatientHome.MedicalAppointmentList.Add(medicalAppointmentTemp);
+            ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp);
 
 
             Close();
