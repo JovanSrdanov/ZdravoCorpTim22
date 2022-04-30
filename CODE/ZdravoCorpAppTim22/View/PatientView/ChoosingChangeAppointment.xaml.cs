@@ -16,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public ObservableCollection<MedicalAppointmentStruct> MedicalAppointmentsList { get; set; }
         public List<MedicalAppointmentStruct> medicalAppointments;
         public Patient enteredPatient;
-        
+
 
         public ChoosingChangeAppointment()
         {
@@ -57,7 +57,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 durationOfAppointment = 60;
 
             }
-           
+
             Interval interval = new Interval();
             for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
             {
@@ -71,8 +71,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
                     {
                         if (room.IsAvailable(interval))
                         {
-                            
-                           
+
+
                             MedicalAppointmentStruct medicalAppointmentStructToAdd = new MedicalAppointmentStruct(1, type, interval, enteredPatient, doctor, room);
                             availableMedicalAppointments.Add(medicalAppointmentStructToAdd);
 
@@ -82,7 +82,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 appointmentTimeStart = appointmentTimeStart.AddMinutes(jumpToNextAppointmetnTime);
             }
 
-      
+
             return availableMedicalAppointments;
         }
 
@@ -101,22 +101,14 @@ namespace ZdravoCorpAppTim22.View.PatientView
             MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(ZdravoCorpTabs.MedicalAppointmentSelected.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.Interval, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
 
             MedicalAppointmentController.Instance.Update(medicalAppointmentTemp);
+            ZdravoCorpTabs.MedicalAppointmentList.Remove(ZdravoCorpTabs.MedicalAppointmentSelected);
 
-            
-            foreach(MedicalAppointment medicalAppointment in ZdravoCorpTabs.MedicalAppointmentList) {
-                
-                if (medicalAppointmentTemp.Id == medicalAppointment.Id) {
-                    MessageBox.Show("aloo");
-                    medicalAppointment.Interval = medicalAppointmentTemp.Interval;
-                    MessageBox.Show("aloo");
-                }
-                
-            }
-            
+            ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp); 
 
 
 
-            Close();
+
+              Close();
         }
     }
 }
