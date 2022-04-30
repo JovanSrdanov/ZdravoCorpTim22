@@ -53,6 +53,17 @@
           "Pacijent pac rep 2 doctor Stefan"
         ],
         "Patient": 0
+      },
+      {
+        "Id": 1,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Pacijen Stefan rep 1 ab",
+          "Pacijent Stefan rep 2 bc",
+          "TextBox Doc Stefan"
+        ],
+        "Patient": 1
       }
     ],
     "Name": "Stefan",

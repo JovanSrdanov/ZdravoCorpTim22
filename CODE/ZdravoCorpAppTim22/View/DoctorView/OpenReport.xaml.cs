@@ -100,21 +100,21 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
 
             MedicalReportController.Instance.Update(selectedMedicalReport);
+            //MedicalRecordController.Instance.Update(medRec);
 
-            foreach(string diagnosis in medRec.ConditionList)
+            foreach (string diagnosis in medRec.ConditionList)
             {
                 if (diagnosis == oldDiagnosis)         //ako kreiram novi izvestaj pritiskom na back sve ponistavam, u suprotnom cuvam
                 {                                                               //promenu dijagnoze
-                    if (canCreateRecord != -1)
+                    /*if (canCreateRecord != -1)
                     {
                         MedicalRecordView.newlyCreatedDiagnosis[MedicalRecordView.newlyCreatedDiagnosis.IndexOf(diagnosis)] = DiagnosisBox.Text;
-                    }
+                    }*/
                     medRec.ConditionList[medRec.ConditionList.IndexOf(diagnosis)] = DiagnosisBox.Text;
                     MedicalRecordController.Instance.Update(medRec);
                     break;
                 }
             }
-
             medicalRecordView.Show();
             this.Close();
         }

@@ -20,7 +20,7 @@
     "Id": 1,
     "DoctorID": 0,
     "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijen Stefan rep 1",
+    "Diagnosis": "Pacijen Stefan rep 1 ab",
     "ReportDate": "2022-04-26T18:26:12.9057777+02:00",
     "MedicineNameList": [
       ""
@@ -54,7 +54,7 @@
     "Id": 3,
     "DoctorID": 0,
     "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijent Stefan rep 2",
+    "Diagnosis": "Pacijent Stefan rep 2 bc",
     "ReportDate": "2022-04-26T18:42:07.5243736+02:00",
     "MedicineNameList": [
       ""
@@ -83,5 +83,22 @@
       ""
     ],
     "MedicalRecord": 0
+  },
+  {
+    "Id": 5,
+    "DoctorID": 1,
+    "Anamnesis": "TextBox Doc Stefan",
+    "Diagnosis": "TextBox Doc Stefan",
+    "ReportDate": "2022-04-30T12:05:33.0267967+02:00",
+    "MedicineNameList": [
+      ""
+    ],
+    "MedicineAmountList": [
+      ""
+    ],
+    "MedicineInstructionList": [
+      ""
+    ],
+    "MedicalRecord": 1
   }
 ]
