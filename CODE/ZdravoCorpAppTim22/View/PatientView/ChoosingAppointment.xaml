@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ChoosingAppointment1"
-    Title="ChoosingAppointment"
+    Title="Biranje termina"
     Width="703.119"
-    Height="450"
+    Height="347"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -20,7 +20,7 @@
         <DataGrid
             x:Name="dataGridSuggestedMedicalAppointments"
             Height="227"
-            Margin="42,95,42,0"
+            Margin="42,10,42,0"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -58,7 +58,7 @@
         <Button
             x:Name="ConfirmAppointment"
             Width="135"
-            Margin="516,352,0,0"
+            Margin="516,262,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF23B623"
