@@ -1,30 +1,99 @@
-﻿<Window x:Class="ZdravoCorpAppTim22.View.PatientView.MakeAppointment"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="MakeAppointment" Height="335.313" Width="227.898">
-    <Grid Margin="0,0,2,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Izabrati lekara" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <ComboBox  SelectedIndex="0"  x:Name="ChooseDoctor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,41,0,0"   DisplayMemberPath="Name"  />
-        <Label Content="Izabrati datum" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,136,0,0" RenderTransformOrigin="0.477,3.922"/>
-        <Button x:Name="NextAppontimentChoosing" Content="Dalje" HorizontalAlignment="Left" Margin="72,266,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.256,0.275" Click="NextAppontimentChoosing_Click"/>
-        <Label Content="Izabrati vrstu termina" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,77,0,0"/>
-        <ComboBox   SelectedIndex="0"  x:Name="ChooseAppointmentType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="12,103,0,0" RenderTransformOrigin="0.5,0.5" />
+﻿<Window
+    x:Class="ZdravoCorpAppTim22.View.PatientView.MakeAppointment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="Zakazivanje termina"
+    Width="304"
+    Height="355"
+    HorizontalContentAlignment="Center"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <StackPanel HorizontalAlignment="Center">
+
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Izabrati lekara"
+            FontSize="18"
+            RenderTransformOrigin="0.477,3.922" />
+        <ComboBox
+            x:Name="ChooseDoctor"
+            Width="120"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Name"
+            FontSize="18"
+            RenderTransformOrigin="-0.067,0.667"
+            SelectedIndex="0" />
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Izabrati datum"
+            FontSize="18"
+            RenderTransformOrigin="0.477,3.922" />
+        <ComboBox
+            x:Name="ChooseAppointmentType"
+            Width="120"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="18"
+            RenderTransformOrigin="0.875,-1"
+            SelectedIndex="0" />
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Izabrati vrstu termina"
+            FontSize="18"
+            RenderTransformOrigin="0.377,0.043" />
 
 
-        <DatePicker DisplayDateStart="{x:Static sys:DateTime.Today}" x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,163,0,0" RenderTransformOrigin="0.5,0.5"/>
+        <DatePicker
+            x:Name="datePicker"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayDateStart="{x:Static sys:DateTime.Today}"
+            FontSize="18"
+            RenderTransformOrigin="0.5,0.5" />
 
-        <RadioButton Content="Lekar" HorizontalAlignment="Left" Margin="144,230,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="TimeRadioButton" IsChecked="True"  Content="Vreme" HorizontalAlignment="Left" Margin="11,230,0,0" VerticalAlignment="Top"/>
-        <Label Content="Izabrati prioritet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,199,0,0" RenderTransformOrigin="0.477,3.922"/>
+        <RadioButton
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Lekar"
+            FontSize="18" />
+        <RadioButton
+            x:Name="TimeRadioButton"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Vreme"
+            FontSize="18"
+            IsChecked="True" />
+        <Label
+            Margin="5,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content="Izabrati prioritet"
+            FontSize="18"
+            RenderTransformOrigin="0.477,3.922" />
+        <Button
+            x:Name="NextAppontimentChoosing"
+            Width="75"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="NextAppontimentChoosing_Click"
+            Content="Dalje"
+            FontSize="18"
+            RenderTransformOrigin="-0.256,0.275" />
 
-    </Grid>
+    </StackPanel>
 </Window>

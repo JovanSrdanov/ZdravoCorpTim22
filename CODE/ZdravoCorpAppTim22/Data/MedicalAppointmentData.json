@@ -42,5 +42,16 @@
     "Room": 6,
     "Patient": 0,
     "Doctor": 0
+  },
+  {
+    "Id": 4,
+    "Type": 2,
+    "Interval": {
+      "Start": "2022-05-19T07:30:00",
+      "End": "2022-05-19T07:45:00"
+    },
+    "Room": 13,
+    "Patient": 0,
+    "Doctor": 0
   }
 ]
