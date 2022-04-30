@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
@@ -47,7 +48,6 @@ namespace Service
                     {
                         foreach (Equipment eq in item.Equipment)
                         {
-                            eq.Room = null;
                             item.SourceRoom = null;
                             EquipmentService.Instance.AddWarehouseEquipment(eq);
                         }
@@ -56,10 +56,9 @@ namespace Service
                     {
                         foreach (Equipment eq in item.Equipment)
                         {
-                            eq.Room = destination;
                             item.DestinationRoom = null;
                             item.SourceRoom = null;
-                            EquipmentService.Instance.AddRoomEquipment(eq);
+                            EquipmentService.Instance.AddRoomEquipment(destination, eq);
                         }
                     }
                     foreach (Equipment eq in item.Equipment)

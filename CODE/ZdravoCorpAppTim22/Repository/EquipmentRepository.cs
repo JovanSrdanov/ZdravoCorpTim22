@@ -35,18 +35,5 @@ namespace ZdravoCorpAppTim22.Repository
             }
             return equipmentList;
         }
-
-        public List<Equipment> GetRoomEquipment(int id)
-        {
-            List<Equipment> equipmentList = new List<Equipment>();
-            foreach (Equipment eq in List)
-            {
-                if (eq.Room != null && eq.Room.Id == id && eq.EquipmentRelocation == null)
-                {
-                    equipmentList.Add(eq);
-                }
-            }
-            return equipmentList;
-        }
     }
 }

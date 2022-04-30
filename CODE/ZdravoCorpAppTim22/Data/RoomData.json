@@ -22,5 +22,11 @@
     "Level": 11,
     "Type": 4,
     "Name": "ssoba123"
+  },
+  {
+    "Id": 16,
+    "Level": 5,
+    "Type": 0,
+    "Name": "room"
   }
 ]
