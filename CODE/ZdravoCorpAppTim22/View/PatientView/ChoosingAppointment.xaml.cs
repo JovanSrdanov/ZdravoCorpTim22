@@ -7,6 +7,8 @@ using System.Windows;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
+
+
 namespace ZdravoCorpAppTim22.View.PatientView
 {
 
@@ -43,9 +45,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
             List<MedicalAppointmentStruct> availableMedicalAppointments = new List<MedicalAppointmentStruct>();
 
-            DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 7, 0, 0);
-            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, 9, 0, 0);
-            
+            DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
+            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
+
 
             int jumpToNextAppointmetnTime = 15;
             int durationOfAppointment = 15;
@@ -79,7 +81,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
                 foreach (Room room in suggestetRooms)
                 {
-                    
+
                     if (room.Type == RoomType.operation)
                         temporaryRooms.Add(room);
 
@@ -90,7 +92,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
 
             List<Interval> forListInterval = new List<Interval>();
-            
+
             List<Room> forListRoom = new List<Room>();
             List<Doctor> forListDoctor = new List<Doctor>();
             counterForList = 0;
@@ -126,7 +128,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                                         End = appointmentTimeEnd
                                     };
                                     forListInterval.Add(forInterval);
-                                    
+
                                     forListRoom.Add(room);
                                     counterForList++;
 
@@ -188,7 +190,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
-            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type,medicalAppointmentStruct.Interval ,medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
+            MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(medicalAppointmentStruct.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.Interval, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
             MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
             ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp);
 

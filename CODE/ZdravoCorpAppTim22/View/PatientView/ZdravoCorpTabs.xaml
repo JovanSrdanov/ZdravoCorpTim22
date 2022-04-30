@@ -19,7 +19,10 @@
             HorizontalContentAlignment="Left"
             FontSize="18"
             TabStripPlacement="Left">
-            <TabItem Header="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"
@@ -28,17 +31,9 @@
                         Content="Informacije o bolnici"
                         FontSize="24"
                         FontWeight="Bold" />
-
-
-                    <Label
-                        Width="226"
-                        Margin="676,117,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Content="Lokacija: &#xA;Frankopanova 34, Novi Sad" />
                     <Button
                         Width="250"
-                        Margin="676,468,0,0"
+                        Margin="408,490,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Background="Green"
@@ -46,24 +41,39 @@
                         Foreground="White" />
                     <TextBlock
                         Width="266"
-                        Height="308"
-                        Margin="152,122,0,0"
+                        Height="337"
+                        Margin="42,122,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        TextWrapping="Wrap"><Run Text="Kontakt:" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni upravnik:  " /><Run Text="Rade Stojanovi" /><Run Text="ć" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": radecar@gmail.com" /><LineBreak /><Run Text="Tel: +381 647055642" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni sekretar: Luka Pikula" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": lukalegenda@gmail.com" /><LineBreak /><Run Text="Tel: +381 640235642" /><LineBreak /><Run /><LineBreak /><Run Text="Radno vreme:" /><LineBreak /><Run Text="Svaki dan od 06:00 do 23:00" /></TextBlock>
+                        TextWrapping="Wrap"><Run Text="Kontakt:" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni upravnik:  " /><Run Text="Rade Stojanovi" /><Run Text="ć" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": radecar@gmail.com" /><LineBreak /><Run Text="Tel: +381 647055642" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni sekretar: Luka Pikula" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": lukalegenda@gmail.com" /><LineBreak /><Run Text="Tel: +381 640235642" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni lekar: Stefan Apostolovi" /><Run Text="ć" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": " /><Run Text="stefankralj" /><Run Text="@gmail.com" /><LineBreak /><Run Text="Tel: +381 64" /><Run Text="25" /><Run Text="356" /><Run Text="34" /></TextBlock>
 
                     <Image
-                        Width="250"
                         Height="250"
-                        Margin="676,195,0,0"
-                        HorizontalAlignment="Left"
+                        Margin="780,209,42,0"
                         VerticalAlignment="Top"
                         RenderTransformOrigin="-0.54,-0.32"
                         Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/MapLocation.jpg" />
+                    <TextBlock
+                        Width="250"
+                        Height="73"
+                        Margin="780,122,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"><Run Text="Lokacija: " /><LineBreak /><Run /><LineBreak /><Run Text="Frankopanova 34, Novi Sad" /></TextBlock>
+                    <TextBlock
+                        Width="266"
+                        Height="245"
+                        Margin="414,122,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"><Run Text="Dobrodošli!" /><LineBreak /><Run /><LineBreak /><Run Text="ZdravoCorp" /><Run Text=" Vam" /><Run Text=" nudi preglede, kontrole i operacije uz pomoć opreme najvećeg kvaliteta i pouzdanog osoblja" /><Run Text=". Vaše zdravlje nam je na prvom mestu!" /><LineBreak /><LineBreak /><Run Text="Radno vreme:" /><LineBreak /><Run Text="Svaki dan od 06:00 do 23:00" /></TextBlock>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"
@@ -74,7 +84,10 @@
                         FontWeight="Bold" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"
@@ -123,7 +136,7 @@
                         CanUserResizeColumns="False"
                         ColumnWidth="*"
                         IsReadOnly="True"
-                        ItemsSource="{Binding Source=MedicalAppointmentList}"
+                        ItemsSource="{Binding Source=MedicalAppointmentsList}"
                         SelectionMode="Single"
                         VerticalScrollBarVisibility="Visible">
                         <DataGrid.Columns>
@@ -153,7 +166,10 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda ">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"
@@ -170,7 +186,10 @@
                         Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/PatientPlaceholder.jpg" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"
@@ -181,7 +200,10 @@
                         FontWeight="Bold" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Elektronska potvrda" ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Elektronska potvrda" ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
+                </TabItem.Header>
                 <Grid Background="White">
                     <Label
                         HorizontalAlignment="Center"

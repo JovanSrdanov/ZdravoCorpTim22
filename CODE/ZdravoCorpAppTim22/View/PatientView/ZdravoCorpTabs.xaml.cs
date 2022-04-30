@@ -3,39 +3,26 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
-    /// <summary>
-    /// Interaction logic for ZdravoCorpTabs.xaml
-    /// </summary>
+   
     public partial class ZdravoCorpTabs : Window
     {
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
+        public static MedicalAppointment MedicalAppointmentSelected { get;  set; }
+
         public List<MedicalAppointment> medicalAppointments;
         public ZdravoCorpTabs()
         {
             InitializeComponent();
-          
-
- 
 
             medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
-
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             DataGrid.ItemsSource = MedicalAppointmentList;
-            
+
         }
 
         private void AddAppointmentPatient_Click(object sender, RoutedEventArgs e)
@@ -47,23 +34,29 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void RemoveAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)DataGrid.SelectedItem;
-            if (medicalAppointmentTemp == null)
+            MedicalAppointmentSelected = (MedicalAppointment)DataGrid.SelectedItem;
+            if (MedicalAppointmentSelected == null)
             {
                 return;
             }
-            
-            MedicalAppointmentController.Instance.DeleteByID(medicalAppointmentTemp.Id);
-            MedicalAppointmentList.Remove(medicalAppointmentTemp);
+
+            MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
+            MedicalAppointmentList.Remove(MedicalAppointmentSelected);
 
 
         }
 
         private void ChangeAppointmentDateTime_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointment medicalAppointmentTemp = (MedicalAppointment)DataGrid.SelectedItem;
-            if (medicalAppointmentTemp == null)
+            MedicalAppointmentSelected = (MedicalAppointment)DataGrid.SelectedItem;
+            if (MedicalAppointmentSelected == null)
             {
+                return;
+            }
+
+            if (MedicalAppointmentSelected.Interval.Start < DateTime.Now.AddDays(1))
+            {
+                MessageBox.Show("Ne moze da se pomeri termin 24h pre termina");
                 return;
             }
 
@@ -71,6 +64,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
             changeAppointment.ShowDialog();
         }
 
-      
+
     }
 }

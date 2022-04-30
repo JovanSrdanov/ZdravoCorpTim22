@@ -112,6 +112,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
@@ -265,6 +266,9 @@
     </Compile>
     <Compile Include="View\PatientView\ChoosingAppointment.xaml.cs">
       <DependentUpon>ChoosingAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ChoosingChangeAppointment.xaml.cs">
+      <DependentUpon>ChoosingChangeAppointment.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\MakeAppointment.xaml.cs">
       <DependentUpon>MakeAppointment.xaml</DependentUpon>
@@ -430,6 +434,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientView\ChoosingAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ChoosingChangeAppointment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
