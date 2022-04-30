@@ -102,11 +102,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalAppointmentController.Instance.Update(medicalAppointmentTemp);
             ZdravoCorpTabs.MedicalAppointmentList.Remove(ZdravoCorpTabs.MedicalAppointmentSelected);
-
             ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp); 
-
-
-
 
               Close();
         }
