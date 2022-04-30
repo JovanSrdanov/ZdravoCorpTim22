@@ -126,14 +126,17 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             Appointment app = AppointmentGrid.SelectedAppointment;
             Interval interval = app.Interval;
 
-            if (time >= interval.Start && time <= interval.End)
+            if(app.Type == RoomAppointmentType.Free)
             {
-                this.SelectedDate = time;
-                this.DateSelectedEvent?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                MessageBox.Show("Start time must be between: " + interval.Start.TimeOfDay + " and " + interval.End.TimeOfDay);
+                if (time >= interval.Start && time <= interval.End)
+                {
+                    this.SelectedDate = time;
+                    this.DateSelectedEvent?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    MessageBox.Show("Start time must be between: " + interval.Start.TimeOfDay + " and " + interval.End.TimeOfDay);
+                }
             }
         }
 

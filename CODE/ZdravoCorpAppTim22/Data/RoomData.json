@@ -1,32 +1,20 @@
 [
   {
-    "Id": 6,
-    "Level": 1,
-    "Type": 4,
-    "Name": "Sala"
-  },
-  {
-    "Id": 13,
+    "Id": 0,
     "Level": 5,
-    "Type": 4,
-    "Name": "sobaa"
+    "Type": 1,
+    "Name": "Sala1"
   },
   {
-    "Id": 14,
-    "Level": 2,
-    "Type": 4,
-    "Name": "SOBA"
+    "Id": 1,
+    "Level": 0,
+    "Type": 1,
+    "Name": "Sala2"
   },
   {
-    "Id": 15,
-    "Level": 11,
+    "Id": 2,
+    "Level": 0,
     "Type": 4,
-    "Name": "ssoba123"
-  },
-  {
-    "Id": 16,
-    "Level": 5,
-    "Type": 0,
-    "Name": "room"
+    "Name": "Sala3"
   }
 ]

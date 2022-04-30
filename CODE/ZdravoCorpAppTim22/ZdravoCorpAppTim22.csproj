@@ -234,6 +234,9 @@
     <Compile Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\WarehousePages\EditEquipmentView.xaml.cs">
+      <DependentUpon>EditEquipmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\RelocationView.xaml.cs">
       <DependentUpon>RelocationView.xaml</DependentUpon>
     </Compile>
@@ -367,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\WarehousePages\EditEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

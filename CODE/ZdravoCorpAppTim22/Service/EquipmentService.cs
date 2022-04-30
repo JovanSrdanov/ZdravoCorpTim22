@@ -27,7 +27,15 @@ namespace ZdravoCorpAppTim22.Service
 
         public List<Equipment> GetWarehouseEquipment()
         {
-            return EquipmentRepository.Instance.GetWarehouseEquipment();
+            List<Equipment> equipmentList = new List<Equipment>();
+            foreach (Equipment eq in GetAll())
+            {
+                if (eq.Room == null && eq.EquipmentRelocation == null)
+                {
+                    equipmentList.Add(eq);
+                }
+            }
+            return equipmentList;
         }
         public void AddWarehouseEquipment(Equipment eq)
         {
@@ -48,7 +56,6 @@ namespace ZdravoCorpAppTim22.Service
             };
             Create(newEq);
         }
-
         public void AddRoomEquipment(Room destination, Equipment eq)
         {
             if(destination != null && eq != null)
