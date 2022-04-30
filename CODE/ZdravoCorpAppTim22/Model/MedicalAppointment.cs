@@ -3,6 +3,7 @@
 using System;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
@@ -11,15 +12,13 @@ namespace Model
     {
         public int Id { get; set; }
         public AppointmentType Type { get; set; }
-        public DateTime MedicalAppointmentStartDateTime { get; set; }
-        public DateTime MedicalAppointmentEndDateTime { get; set; }
+        public Interval Interval { get; set; }
 
-        public MedicalAppointment(int id, AppointmentType type, DateTime medicalAppointmentStartDateTime, DateTime medicalAppointmentEndDateTime, Room room, Patient patient, Doctor doctor)
+        public MedicalAppointment(int id, AppointmentType type, Interval interval, Room room, Patient patient, Doctor doctor)
         {
             Id = id;
             Type = type;
-            MedicalAppointmentStartDateTime = medicalAppointmentStartDateTime;
-            MedicalAppointmentEndDateTime = medicalAppointmentEndDateTime;
+            Interval = interval;
             Room = room;
             Patient = patient;
             Doctor = doctor;

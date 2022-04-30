@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -103,7 +104,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             //datePicker.SelectedDate.Value
             //promeniti konstruktor za medical appointment, ne treba da ide Id vise, automatski se inkrementira za svaki create room, promeniti i kod Jovana
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1,at, dateTime, dateTime, room, patient, doctor);
+
+            Interval interval = new Interval();
+            interval.Start = dateTime;
+            interval.End = dateTime;
+
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1,at, interval, room, patient, doctor);
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
 

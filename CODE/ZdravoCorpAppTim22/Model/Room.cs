@@ -135,46 +135,41 @@ namespace Model
 
         public bool IsAvailable(DateTime start, DateTime end)
         {
-            if (medicalAppointment == null)
-                return true;
-            else
+            foreach (MedicalAppointment medicalAppointmentRoom in MedicalAppointment)
             {
-                foreach (MedicalAppointment medicalAppointmentRoom in medicalAppointment)
+                if (!((medicalAppointmentRoom.Interval.Start >= end) || (medicalAppointmentRoom.Interval.End <= start)))
                 {
-                    if (! ((medicalAppointmentRoom.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentRoom.MedicalAppointmentEndDateTime <= start)) )
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                foreach(Renovation ren in Renovations)
-                {
-                    if(!((ren.Interval.Start >= end) || (ren.Interval.End <= start)))
-                    {
-                        return false;
-                    }
-                }
-                foreach(EquipmentRelocation er in relocationSources)
-                {
-                    if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
-                    {
-                        return false;
-                    }
-                }
-                foreach (EquipmentRelocation er in relocationDestinations)
-                {
-                    if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
-                    {
-                        return false;
-                    }
-                }
-                return true;
             }
+            foreach (Renovation ren in Renovations)
+            {
+                if (!((ren.Interval.Start >= end) || (ren.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            foreach (EquipmentRelocation er in RelocationSources)
+            {
+                if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            foreach (EquipmentRelocation er in RelocationDestinations)
+            {
+                if (!((er.Interval.Start >= end) || (er.Interval.End <= start)))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public bool IsAvailable(Interval interval)
         {
             return IsAvailable(interval.Start, interval.End);
         }
-        
+
         public void AddEquipment(Equipment newEquipment)
         {
             if (newEquipment == null)
