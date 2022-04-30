@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
@@ -10,17 +11,16 @@ namespace Model
         [JsonIgnore]
         //[JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord medicalRecord { get; set; }
-
-        public bool IsAvailable(DateTime start, DateTime end)
+        public bool IsAvailable(Interval interval)
         {
             if (medicalAppointment == null)
                 return true;
             else
             {
 
-                foreach (MedicalAppointment medicalAppointmentPatient in medicalAppointment)
+                foreach (MedicalAppointment medicalAppointmentPatient in MedicalAppointment)
                 {
-                    if (!((medicalAppointmentPatient.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentPatient.MedicalAppointmentEndDateTime <= start)))
+                    if (!((medicalAppointmentPatient.Interval.Start >= interval.End) || (medicalAppointmentPatient.Interval.End <= interval.Start)))
                     {
                         return false;
                     }

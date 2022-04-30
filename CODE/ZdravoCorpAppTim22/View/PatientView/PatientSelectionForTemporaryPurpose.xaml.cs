@@ -27,8 +27,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoggedPatient = (Patient)SelectPatientCB.SelectedItem;
-            PatientHome patientHome = new PatientHome();
-            patientHome.Show();
+            ZdravoCorpTabs zdravoCorpTabs = new ZdravoCorpTabs();
+            zdravoCorpTabs.Show();
             this.Close();
         }
     }

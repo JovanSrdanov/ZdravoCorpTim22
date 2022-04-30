@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Model
 {
@@ -28,16 +29,17 @@ namespace Model
         }
 
 
-        public bool IsAvailable(DateTime start, DateTime end)
+        public bool IsAvailable(Interval interval)
         {
             if (medicalAppointment == null)
                 return true;
             else
             {
 
-                foreach (MedicalAppointment medicalAppointmentDoctor in medicalAppointment)
+                foreach (MedicalAppointment medicalAppointmentDoctor in MedicalAppointment)
                 {
-                    if (!((medicalAppointmentDoctor.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentDoctor.MedicalAppointmentEndDateTime <= start)))
+                    if (!((medicalAppointmentDoctor.Interval.Start >= interval.End) || (medicalAppointmentDoctor.Interval.End <= interval.Start)))
+
                     {
                         return false;
                     }

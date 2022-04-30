@@ -1,0 +1,232 @@
+﻿<Window
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ZdravoCorpTabs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ZdravoCorp Aplikacija"
+    Width="1280"
+    Height="640"
+    Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <TabControl
+            Margin="10"
+            HorizontalContentAlignment="Left"
+            FontSize="18"
+            TabStripPlacement="Left">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Content="Informacije o bolnici"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                    <Button
+                        Width="250"
+                        Margin="408,490,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Green"
+                        Content="Ostavite recenziju bolnice"
+                        Foreground="White" />
+                    <TextBlock
+                        Width="266"
+                        Height="337"
+                        Margin="42,122,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"><Run Text="Kontakt:" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni upravnik:  " /><Run Text="Rade Stojanovi" /><Run Text="ć" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": radecar@gmail.com" /><LineBreak /><Run Text="Tel: +381 647055642" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni sekretar: Luka Pikula" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": lukalegenda@gmail.com" /><LineBreak /><Run Text="Tel: +381 640235642" /><LineBreak /><Run /><LineBreak /><Run Text="Glavni lekar: Stefan Apostolovi" /><Run Text="ć" /><LineBreak /><Run Text="E" /><Run Text="-mail" /><Run Text=": " /><Run Text="stefankralj" /><Run Text="@gmail.com" /><LineBreak /><Run Text="Tel: +381 64" /><Run Text="25" /><Run Text="356" /><Run Text="34" /></TextBlock>
+
+                    <Image
+                        Height="250"
+                        Margin="780,209,42,0"
+                        VerticalAlignment="Top"
+                        RenderTransformOrigin="-0.54,-0.32"
+                        Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/MapLocation.jpg" />
+                    <TextBlock
+                        Width="250"
+                        Height="73"
+                        Margin="780,122,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"><Run Text="Lokacija: " /><LineBreak /><Run /><LineBreak /><Run Text="Frankopanova 34, Novi Sad" /></TextBlock>
+                    <TextBlock
+                        Width="266"
+                        Height="245"
+                        Margin="414,122,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TextWrapping="Wrap"><Run Text="Dobrodošli!" /><LineBreak /><Run /><LineBreak /><Run Text="ZdravoCorp" /><Run Text=" Vam" /><Run Text=" nudi preglede, kontrole i operacije uz pomoć opreme najvećeg kvaliteta i pouzdanog osoblja" /><Run Text=". Vaše zdravlje nam je na prvom mestu!" /><LineBreak /><LineBreak /><Run Text="Radno vreme:" /><LineBreak /><Run Text="Svaki dan od 06:00 do 23:00" /></TextBlock>
+
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Content="Obaveštenja"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Termini"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                    <Button
+                        x:Name="AddAppointmentPatient"
+                        Margin="846,464,42,0"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Background="#FF7EDE51"
+                        Click="AddAppointmentPatient_Click"
+                        Content="Zakažite termin" />
+                    <Button
+                        x:Name="RemoveAppointmentPatient"
+                        Width="182"
+                        Margin="42,464,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Background="#FFDE3232"
+                        Click="RemoveAppointmentPatient_Click"
+                        Content="Otkaži termin"
+                        Foreground="White" />
+
+
+                    <Button
+                        Width="182"
+                        Margin="442,464,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Yellow"
+                        Click="ChangeAppointmentDateTime_Click"
+                        Content="Izmena termina" />
+                    <DataGrid
+                        x:Name="DataGrid"
+                        Height="306"
+                        Margin="42,84,42,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Stretch"
+                        AutoGenerateColumns="False"
+                        CanUserResizeColumns="False"
+                        ColumnWidth="*"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding Source=MedicalAppointmentsList}"
+                        SelectionMode="Single"
+                        VerticalScrollBarVisibility="Visible">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:dd.MM.yyyy\}}" Header="Datum" />
+                            <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:HH:mm\}}" Header="Početak termina" />
+                            <DataGridTextColumn Binding="{Binding Interval.End, StringFormat=\{0:HH:mm\}}" Header="Kraj termina" />
+                            <DataGridTextColumn Binding="{Binding Room.Id}" Header="Šifra sobe" />
+                            <DataGridTextColumn Binding="{Binding Type}" Header="Vrsta termina" />
+
+                            <DataGridTemplateColumn Header="Lekar">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Doctor.Name}" />
+                                            <TextBlock Text=" " />
+                                            <TextBlock Text="{Binding Path=Doctor.Surname}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Content="Pregled kartona"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                    <Image
+                        Width="250"
+                        Margin="34,70,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/PatientPlaceholder.jpg" />
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Content="Podsetnik"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Elektronska potvrda" ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
+                </TabItem.Header>
+                <Grid Background="White">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Center"
+                        Content="Elektronska potvrda"
+                        FontSize="24"
+                        FontWeight="Bold" />
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+        <Button
+            Width="166"
+            Margin="10,540,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="Red"
+            Content="Odjava"
+            FontSize="18"
+            Foreground="White" />
+
+
+    </Grid>
+</Window>
