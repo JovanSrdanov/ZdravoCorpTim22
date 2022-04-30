@@ -25,19 +25,15 @@ namespace ZdravoCorpAppTim22.Controller
         {
             return EquipmentService.Instance.GetWarehouseEquipment();
         }
-        public List<Equipment> GetRoomEquipment(int id)
-        {
-            return EquipmentService.Instance.GetRoomEquipment(id);
-        }
 
         public void AddWarehouseEquipment(Equipment eq)
         {
             EquipmentService.Instance.AddWarehouseEquipment(eq);
         }
 
-        public void AddRoomEquipment(Equipment eq)
+        public void AddRoomEquipment(Room destination, Equipment eq)
         {
-            EquipmentService.Instance.AddRoomEquipment(eq);
+            EquipmentService.Instance.AddRoomEquipment(destination, eq);
         }
     }
 }

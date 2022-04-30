@@ -1,6 +1,8 @@
 ﻿using Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
 
@@ -25,57 +27,56 @@ namespace ZdravoCorpAppTim22.Service
 
         public List<Equipment> GetWarehouseEquipment()
         {
-            return EquipmentRepository.Instance.GetWarehouseEquipment();
+            List<Equipment> equipmentList = new List<Equipment>();
+            foreach (Equipment eq in GetAll())
+            {
+                if (eq.Room == null && eq.EquipmentRelocation == null)
+                {
+                    equipmentList.Add(eq);
+                }
+            }
+            return equipmentList;
         }
-        public List<Equipment> GetRoomEquipment(int id)
-        {
-            return EquipmentRepository.Instance.GetRoomEquipment(id);
-        }
-
         public void AddWarehouseEquipment(Equipment eq)
         {
-            if(eq.Room == null)
+            List<Equipment> warehouseEq = GetWarehouseEquipment();
+            foreach(Equipment eqItem in warehouseEq)
             {
-                List<Equipment> warehouseEq = GetWarehouseEquipment();
-                foreach(Equipment eqItem in warehouseEq)
+                if(eqItem.EquipmentData.Id == eq.EquipmentData.Id)
                 {
-                    if(eqItem.EquipmentData.Id == eq.EquipmentData.Id)
-                    {
-                        eqItem.Amount += eq.Amount;
-                        Update(eqItem);
-                        return;
-                    }
+                    eqItem.Amount += eq.Amount;
+                    Update(eqItem);
+                    return;
                 }
-                Equipment newEq = new Equipment(eq)
-                {
-                    Room = null,
-                    EquipmentRelocation = null
-                };
-                Create(newEq);
             }
-        }
-
-        public void AddRoomEquipment(Equipment eq)
-        {
-            if(eq.Room != null)
+            Equipment newEq = new Equipment(eq)
             {
-                List<Equipment> roomEq = GetRoomEquipment(eq.Room.Id);
-                
-                foreach (Equipment eqItem in roomEq)
+                Room = null,
+                EquipmentRelocation = null
+            };
+            Create(newEq);
+        }
+        public void AddRoomEquipment(Room destination, Equipment eq)
+        {
+            if(destination != null && eq != null)
+            {
+                Equipment roomEq = destination.Equipment.Where(r => r.EquipmentData.Id == eq.EquipmentData.Id).FirstOrDefault();
+                if (roomEq != null)
                 {
-                    if (eqItem.EquipmentData.Id == eq.EquipmentData.Id)
+                    roomEq.Amount += eq.Amount;
+                    int index = destination.Equipment.IndexOf(roomEq);
+                    destination.Equipment.RemoveAt(index);
+                    destination.Equipment.Insert(index, roomEq);
+                    Update(roomEq);
+                }else
+                {
+                    Equipment newEq = new Equipment(eq)
                     {
-                        eqItem.Amount += eq.Amount;
-                        Update(eqItem);
-                        return;
-                    }
+                        Room = destination,
+                        EquipmentRelocation = null
+                    };
+                    Create(newEq);
                 }
-                Equipment newEq = new Equipment(eq)
-                {
-                    Room = eq.Room,
-                    EquipmentRelocation = null
-                };
-                Create(newEq);
             }
         }
     }

@@ -23,24 +23,5 @@ namespace Repository
                 return instance;
             }
         }
-
-        public override void DeleteByID(int id)
-        {
-            Room room = List.Where(r => r.Id == id).FirstOrDefault();
-            if (room == null)
-            {
-                return;
-            }
-            if (room.medicalAppointment != null)
-            {
-                List<MedicalAppointment> l = room.medicalAppointment;
-                foreach (MedicalAppointment m in l)
-                {
-                    MedicalAppointmentRepository.Instance.DeleteByID(m.Id);
-                }
-            }
-            List.Remove(room);
-            FileHandler.SaveData(new List<Room>(List));
-        }
     }
 }

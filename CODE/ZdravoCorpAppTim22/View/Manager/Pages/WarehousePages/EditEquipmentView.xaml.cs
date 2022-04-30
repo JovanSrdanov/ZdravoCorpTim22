@@ -4,12 +4,13 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 {
-    public partial class AddEquipmentView : Page, INotifyPropertyChanged
+    public partial class EditEquipmentView : Page, INotifyPropertyChanged
     {
+        Equipment OldEquipment { get; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private int amount;
         private string name;
@@ -41,17 +42,22 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 OnPropertyChanged("Type");
             }
         }
-
-        public AddEquipmentView()
+        public EditEquipmentView(Equipment equipment)
         {
             InitializeComponent();
             DataContext = this;
             TypeComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentType));
+            OldEquipment = equipment;
+            Amount = equipment.Amount;
+            EquipmentName = equipment.EquipmentData.Name;
+            Type = equipment.EquipmentData.Type.ToString();
         }
+
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new WarehouseView());
@@ -72,22 +78,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 MessageBox.Show("Amount can't be nagative");
                 return;
             }
-
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
 
-            EquipmentData equipmentData = EquipmentDataController.Instance.GetByName(name);
-            if(equipmentData == null)
-            {
-                equipmentData = new EquipmentData(0, name, et);
-                EquipmentDataController.Instance.Create(equipmentData);
-            }
-            
-            Equipment equipment = new Equipment
-            {
-                EquipmentData = equipmentData,
-                Amount = amount
-            };
-            EquipmentController.Instance.AddWarehouseEquipment(equipment);
+            OldEquipment.EquipmentData.Name = name;
+            OldEquipment.EquipmentData.Type = et;
+            OldEquipment.Amount = amount;
+            EquipmentDataController.Instance.Update(OldEquipment.EquipmentData);
+            EquipmentController.Instance.Update(OldEquipment);
 
             NavigationService.Navigate(new WarehouseView());
         }
