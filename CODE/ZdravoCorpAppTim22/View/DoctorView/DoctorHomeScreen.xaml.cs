@@ -8,9 +8,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     /// </summary>
     public partial class DoctorHomeScreen : Window
     {
+        public static DoctorHomeScreen doctorHomeScreen;
         public DoctorHomeScreen()
         {
             InitializeComponent();
+            doctorHomeScreen = this;
         }
         private void ScheduleListBtn(object sender, RoutedEventArgs e)
         {
@@ -41,6 +43,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             Application.Current.MainWindow.Show();
             this.Close();
-        }  
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="CreateReport" Height="768" Width="1024" Closed="CreateReportClose">
+        Title="CreateReport" Height="768" Width="1024" Closed="CreateReportClose" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="ConfirmClick" Content="Confirm" HorizontalAlignment="Left" Margin="512,656,0,0" VerticalAlignment="Top"
                 Foreground="White" Background="MediumPurple" Click="ConfirmBtnClick" FontSize="16"/>

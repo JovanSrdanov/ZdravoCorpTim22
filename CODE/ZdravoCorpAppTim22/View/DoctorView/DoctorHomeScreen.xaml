@@ -5,16 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHomeScreen" Height="768" Width="1024" Closed="DoctorHomeScreenClose">
+        Title="DoctorHomeScreen" Height="768" Width="1024" Closed="DoctorHomeScreenClose" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Welcome to Zdravo Corp"
-                   Foreground="MediumPurple" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.508,0.28"/>
-        <Button x:Name="SchedulingBtn" Content="Scheduling list" HorizontalAlignment="Left" Margin="138,269,0,0" VerticalAlignment="Top" 
-                Foreground="White" Background="MediumPurple" Click="ScheduleListBtn" FontSize="25"/>
-        <Button x:Name="SchedulingBtn_Copy" Content="View medical records" HorizontalAlignment="Left" Margin="602,442,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="ViewMedRecordsClick" FontSize="20"/>
-        <Button x:Name="LogOut" Content="logout" HorizontalAlignment="Left" Margin="933,37,0,0" VerticalAlignment="Top" Click="LogOutBtn"
-                Foreground="White" Background="MediumPurple" FontSize="20"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="262,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Welcome to Zdravo Corp"
+                   Foreground="#FF8C39A5" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.508,0.28"/>
+        <Button x:Name="SchedulingBtn" HorizontalAlignment="Left" Margin="121,181,0,0" VerticalAlignment="Top" 
+                Foreground="White" Background="Transparent" Click="ScheduleListBtn" 
+                BorderBrush="Transparent" FontSize="25" Height="104" Width="99">
+            <Image Source="/Resource/DoctorResource/schedule.png" Height="106" Width="95"/>
+        </Button>
+        <Button x:Name="SchedulingBtn_Copy" HorizontalAlignment="Left" Margin="673,401,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="Transparent" BorderBrush="Transparent"
+                Click="ViewMedRecordsClick" FontSize="20" Height="98" Width="116">
+            <Image Source="/Resource/DoctorResource/document.png" Width="105" Height="93"/>
+        </Button>
+        <Button x:Name="LogOut" HorizontalAlignment="Left" Margin="954,10,0,0" VerticalAlignment="Top" Click="LogOutBtn"
+                Foreground="White" Background="Transparent" BorderBrush="Transparent" 
+                FontSize="20" Height="47" Width="58" Panel.ZIndex="1">
+            <Image Source="/Resource/DoctorResource/signout.png"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="952,520,0,0" VerticalAlignment="Top"
+                Background="Transparent" BorderBrush="Transparent" Height="47" Width="58" Panel.ZIndex="1">
+            <Image Source="/Resource/DoctorResource/home.png"/>
+        </Button>
+        <Label Content="Scheduling list" HorizontalAlignment="Left" Margin="111,285,0,0" 
+               FontWeight="Bold"  VerticalAlignment="Top" FontSize="16" Foreground="#FF8C39A5"/>
+        <Label Content="View medical records" HorizontalAlignment="Left" Margin="642,504,0,0" 
+            FontWeight="Bold"  VerticalAlignment="Top" FontSize="16" Foreground="#FF8C39A5"/>
+        <Rectangle Height="752" Margin="956,0,0,0" Stroke="MediumPurple" 
+                   Fill="MediumPurple" VerticalAlignment="Center"/>
     </Grid>
 </Window>

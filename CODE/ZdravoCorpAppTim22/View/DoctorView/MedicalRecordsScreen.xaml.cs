@@ -31,6 +31,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicalRecordView.Owner = this;
             medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             medicalRecordView.Show();
+            this.Hide();
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)

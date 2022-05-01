@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordView" Height="768" Width="1024" Closed="MedRecClosed">
+        Title="MedicalRecordView" Height="768" Width="1024" Closed="MedRecClosed" ResizeMode="NoResize">
     <Grid>
         <Label Content="Conditions" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="63,24,0,0" VerticalAlignment="Top" FontSize="18"/>
