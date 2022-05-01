@@ -25,7 +25,13 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-
+        public void DeleteMany(List<Renovation> list)
+        {
+            foreach(Renovation renovation in list)
+            {
+                DeleteByID(renovation.Id);
+            }
+        }
         public void DaemonMethod()
         {
             List<Renovation> list = new List<Renovation>();

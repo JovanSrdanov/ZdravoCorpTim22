@@ -1,5 +1,6 @@
 ﻿using Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
@@ -12,14 +13,14 @@ namespace ZdravoCorpAppTim22.Model
         public EquipmentType Type { get; set; }
 
         [JsonIgnore]
-        public List<Equipment> equipment;
+        public ObservableCollection<Equipment> equipment;
         [JsonIgnore]
-        public List<Equipment> Equipment
+        public ObservableCollection<Equipment> Equipment
         {
             get
             {
                 if (equipment == null)
-                    equipment = new List<Equipment>();
+                    equipment = new ObservableCollection<Equipment>();
                 return equipment;
             }
             set
@@ -60,7 +61,7 @@ namespace ZdravoCorpAppTim22.Model
             if (newEquipment == null)
                 return;
             if (this.equipment == null)
-                this.equipment = new System.Collections.Generic.List<Equipment>();
+                this.equipment = new ObservableCollection<Equipment>();
             if (!this.equipment.Contains(newEquipment))
             {
                 this.equipment.Add(newEquipment);

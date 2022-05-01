@@ -1,7 +1,10 @@
 ﻿using Controller;
 using Model;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
@@ -40,7 +43,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 return;
             }
-            //ViewModel.RoomList.Remove(room);
             RoomController.Instance.DeleteByID(room.Id);
         }
 

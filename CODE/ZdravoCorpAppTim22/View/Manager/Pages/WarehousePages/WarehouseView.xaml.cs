@@ -11,7 +11,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 {
     public partial class WarehouseView : Page
     {
-        WarehouseViewModel ViewModel;
+        readonly WarehouseViewModel ViewModel;
         public List<Equipment> SelectedEquipment;
         public WarehouseView()
         {
@@ -29,7 +29,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 
         private void EditEquipment_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not yet implemented");
+            Equipment equipment = (Equipment)DataGrid.SelectedItem;
+            if (equipment == null)
+            {
+                return;
+            }
+            EditEquipmentView editEquipment = new EditEquipmentView(equipment);
+            NavigationService.Navigate(editEquipment);
         }
 
         private void DeleteEquipment_Click(object sender, RoutedEventArgs e)
@@ -40,7 +46,21 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 return;
             }
             ViewModel.EquipmentCollection.Remove(equipment);
-            EquipmentController.Instance.DeleteByID(equipment.Id);
+
+            List<Equipment> eqToRemove = new List<Equipment>();
+            foreach (Equipment eq in EquipmentController.Instance.GetAll())
+            {
+                if(eq.EquipmentData.Id == equipment.EquipmentData.Id)
+                {
+                    eqToRemove.Add(eq);
+                }
+            }
+            foreach(Equipment eq in eqToRemove)
+            {
+                eq.Room = null;
+                EquipmentController.Instance.DeleteByID(eq.Id);
+            }
+            EquipmentDataController.Instance.DeleteByID(equipment.EquipmentData.Id);
         }
         
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

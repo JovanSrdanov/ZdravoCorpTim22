@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
@@ -23,6 +24,27 @@ namespace Service
                     instance = new EquipmentRelocationService();
                 }
                 return instance;
+            }
+        }
+        public override void DeleteByID(int id)
+        {
+            EquipmentRelocation rel = GetByID(id);
+            List<Equipment> eqToMove = new List<Equipment>(rel.Equipment);
+            foreach (Equipment eq in eqToMove)
+            {
+                eq.Room = null;
+                EquipmentService.Instance.DeleteByID(eq.Id);
+                EquipmentService.Instance.AddWarehouseEquipment(eq);
+            }
+            rel.SourceRoom = null;
+            rel.DestinationRoom = null;
+            base.DeleteByID(id);
+        }
+        public void DeleteMany(List<EquipmentRelocation> list)
+        {
+            foreach (EquipmentRelocation rel in list)
+            {
+                DeleteByID(rel.Id);
             }
         }
         public void DaemonMethod()
@@ -47,7 +69,6 @@ namespace Service
                     {
                         foreach (Equipment eq in item.Equipment)
                         {
-                            eq.Room = null;
                             item.SourceRoom = null;
                             EquipmentService.Instance.AddWarehouseEquipment(eq);
                         }
@@ -56,10 +77,9 @@ namespace Service
                     {
                         foreach (Equipment eq in item.Equipment)
                         {
-                            eq.Room = destination;
                             item.DestinationRoom = null;
                             item.SourceRoom = null;
-                            EquipmentService.Instance.AddRoomEquipment(eq);
+                            EquipmentService.Instance.AddRoomEquipment(destination, eq);
                         }
                     }
                     foreach (Equipment eq in item.Equipment)
