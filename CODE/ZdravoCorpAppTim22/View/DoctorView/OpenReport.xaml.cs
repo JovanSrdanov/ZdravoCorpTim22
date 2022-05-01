@@ -1,19 +1,11 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -37,6 +29,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DiagnosisBox.Text = selectedMedicalReport.Diagnosis;
             AnamnesisBox.Text = selectedMedicalReport.Anamnesis;
 
+            MedicationComboBox.ItemsSource = MedicineController.Instance.GetAll();
+            MedicationComboBox.SelectedItem = selectedMedicalReport.MedicalReceipt.Medicine[0];
+            //MedicationComboBox.ItemsSource = selectedMedicalReport.MedicalReceipt.Medicine;
+            //MedicationComboBox.SelectedIndex = 0;
+            EndDateDatePicker.Text = selectedMedicalReport.MedicalReceipt.EndDate.ToString();
+            TimeComboBox.Text = selectedMedicalReport.MedicalReceipt.Time;
+            AdditionalInstructionsTextBox.Text = selectedMedicalReport.MedicalReceipt.AdditionalInstructions;
+
             oldDiagnosis = DiagnosisBox.Text;
             this.canCreateRecord = canCreateRecord;
 
@@ -44,6 +44,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 ChangeReportBtn.IsEnabled = false;
                 ChangeReportBtn.Foreground = new SolidColorBrush(Colors.Black);
+                DiagnosisBox.IsEnabled = false;
+                AnamnesisBox.IsEnabled = false;
+                MedicationComboBox.IsEnabled = false;
+                EndDateDatePicker.IsEnabled = false;
+                TimeComboBox.IsEnabled = false;
+                AdditionalInstructionsTextBox.IsEnabled = false;
             }
         }
 
@@ -52,7 +58,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return selectedMedicalReport.DoctorID == DoctorHome.selectedDoctorId;
         }
 
-        //mozda mora da se ponovo doda event
         private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -99,8 +104,24 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 selectedMedicalReport.Diagnosis = DiagnosisBox.Text;
             }
 
+            //dodao
+            if (AdditionalInstructionsTextBox.Text == null)
+            {
+                selectedMedicalReport.MedicalReceipt.AdditionalInstructions = "";
+            }
+            else
+            {
+                selectedMedicalReport.MedicalReceipt.AdditionalInstructions = AdditionalInstructionsTextBox.Text;
+            }
+
+            selectedMedicalReport.MedicalReceipt.Medicine[0] = MedicationComboBox.SelectedItem as Medicine;
+            selectedMedicalReport.MedicalReceipt.EndDate = (DateTime)EndDateDatePicker.SelectedDate;
+            selectedMedicalReport.MedicalReceipt.Time = TimeComboBox.Text;
+
+            MedicalReceiptController.Instance.Update(selectedMedicalReport.MedicalReceipt);
+            //dodao
+
             MedicalReportController.Instance.Update(selectedMedicalReport);
-            //MedicalRecordController.Instance.Update(medRec);
 
             foreach (string diagnosis in medRec.ConditionList)
             {
@@ -112,6 +133,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                     }*/
                     medRec.ConditionList[medRec.ConditionList.IndexOf(diagnosis)] = DiagnosisBox.Text;
                     MedicalRecordController.Instance.Update(medRec);
+                    //ovde bi update-ovao za pacijenta karton
                     break;
                 }
             }

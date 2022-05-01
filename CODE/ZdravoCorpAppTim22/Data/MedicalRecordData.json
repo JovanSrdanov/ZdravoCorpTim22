@@ -4,8 +4,11 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Pacijent pac rep1 izmena 3",
-      "Pacijent pac rep 2 doctor Stefans"
+      "Doc Pac Lek1",
+      "Doc Pac Lek2",
+      "Doc Pac Lek3",
+      "",
+      "Stefan Pac Lek1"
     ],
     "Patient": 0
   },
@@ -14,9 +17,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Pacijen Stefan rep 1 ab",
-      "Pacijent Stefan rep 2 bc",
-      "TextBox Doc Stefan"
+      "Doc Stefan Lek1",
+      "Stefan Stefan Lek2"
     ],
     "Patient": 1
   },
@@ -25,7 +27,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Pacijent 1 rep 1"
+      "Doc 1 Lek1",
+      "Stefan 1 Lek3"
     ],
     "Patient": 2
   }

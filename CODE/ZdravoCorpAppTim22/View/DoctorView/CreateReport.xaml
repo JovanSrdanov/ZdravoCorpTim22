@@ -5,32 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="CreateReport" Height="600" Width="800" Closed="CreateReportClose">
+        Title="CreateReport" Height="768" Width="1024" Closed="CreateReportClose">
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="34" Margin="36,22,0,0" Stroke="MediumPurple" VerticalAlignment="Top" Width="654" StrokeThickness="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="363,21,0,0" TextWrapping="Wrap" Text="Zdravo Corp" VerticalAlignment="Top"
-                   Foreground="MediumPurple" FontSize="25" Height="36"/>
-        <Label Content="Date" HorizontalAlignment="Left" Margin="33,80,0,0" VerticalAlignment="Top"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="33,145,0,0" VerticalAlignment="Top"/>
-        <Label Content="Surname" HorizontalAlignment="Left" Margin="33,214,0,0" VerticalAlignment="Top"/>
-        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="33,287,0,0" VerticalAlignment="Top"/>
-        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="313,80,0,0" VerticalAlignment="Top"/>
-        <Label Content="Receipt" HorizontalAlignment="Left" Margin="314,313,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,111,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
-                   x:Name="DateBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="15"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,176,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
-                   x:Name="NameBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="15"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,245,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
-                   x:Name="SurnameBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="15"/>
-        <TextBox HorizontalAlignment="Left" Margin="33,317,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="132"
-                 x:Name="DiagnosisBox" Height="22"/>
-        <TextBox HorizontalAlignment="Left" Margin="313,119,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="377" RenderTransformOrigin="-0.194,0.032" Height="158"
-                 x:Name="AnamnesisBox"/>
-        <Button x:Name="ConfirmClick" Content="Confirm" HorizontalAlignment="Left" Margin="279,531,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="ConfirmBtnClick"/>
-        <Button x:Name="CancelClick" Content="Cancel" HorizontalAlignment="Left" Margin="432,531,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="CancelBtnClick"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="314,362,110,91" IsReadOnly="False"/>
+        <Button x:Name="ConfirmClick" Content="Confirm" HorizontalAlignment="Left" Margin="512,656,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="ConfirmBtnClick" FontSize="16"/>
+        <Button x:Name="CancelClick" Content="Cancel" HorizontalAlignment="Left" Margin="673,656,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="CancelBtnClick" FontSize="16" Width="60"/>
+        <Rectangle HorizontalAlignment="Left" Height="58" Margin="36,22,0,0" Stroke="MediumPurple" VerticalAlignment="Top" Width="837" StrokeThickness="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="435,24,0,0" TextWrapping="Wrap" Text="Zdravo Corp" VerticalAlignment="Top"
+            Foreground="MediumPurple" FontSize="35" Height="54" FontWeight="Bold"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="33,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="33,200,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,147,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="DateBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,239,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="NameBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,335,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="SurnameBlock" Foreground="MediumPurple" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="36,396,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="33,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"
+            x:Name="DiagnosisBox" Height="168" FontSize="18" VerticalScrollBarVisibility="Auto"/>
+        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="347,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="347,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="526" RenderTransformOrigin="-0.194,0.032" Height="168"
+            x:Name="AnamnesisBox" VerticalScrollBarVisibility="Auto" FontSize="18"/>
+        <Label Content="Medication" HorizontalAlignment="Left" Margin="347,320,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <ComboBox x:Name="MedicationComboBox" HorizontalAlignment="Left" Margin="347,355,0,0" VerticalAlignment="Top" Width="165" FontSize="18"
+            DisplayMemberPath="Name"/>
+        <TextBox HorizontalAlignment="Left" Margin="347,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="526" RenderTransformOrigin="-0.194,0.032" Height="168"
+            x:Name="AdditionalInstructionsTextBox" VerticalScrollBarVisibility="Auto" FontSize="18"/>
+        <Label Content="Additional instructions" HorizontalAlignment="Left" Margin="347,398,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <Label Content="Time" HorizontalAlignment="Left" Margin="728,320,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <ComboBox x:Name="TimeComboBox" HorizontalAlignment="Left" Margin="728,355,0,0" VerticalAlignment="Top" Width="145" IsEditable="True" FontSize="18">
+            <ComboBoxItem Content="10:00"/>
+            <ComboBoxItem Content="10:30"/>
+            <ComboBoxItem Content="11:00"/>
+            <ComboBoxItem Content="11:30"/>
+        </ComboBox>
+        <Label Content="End date" HorizontalAlignment="Left" Margin="552,320,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <DatePicker x:Name="EndDateDatePicker" HorizontalAlignment="Left" Margin="552,354,0,0" VerticalAlignment="Top"
+            FontSize="18"/>
 
     </Grid>
 </Window>
