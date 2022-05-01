@@ -5,35 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorAppointmentCreate" Height="450" Width="800" Closed="DoctorAppointmentCreateClose">
-    <Grid>
-        <Label Content="AppointmentType:" HorizontalAlignment="Left" Margin="203,99,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="AppointmentTypeCBOX" HorizontalAlignment="Left" Margin="437,99,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.486,5.748"
-                  Text="{Binding Path=Type, Mode=TwoWay}"/>
+        Title="DoctorAppointmentCreate" Height="768" Width="1024" Closed="DoctorAppointmentCreateClose">
+    <Grid Margin="0,3,0,-3">
+        <Label Content="AppointmentType:" HorizontalAlignment="Left" Margin="207,190,0,0" VerticalAlignment="Top"
+               FontSize="20"/>
+        <ComboBox x:Name="AppointmentTypeCBOX" HorizontalAlignment="Left" Margin="543,192,0,0" VerticalAlignment="Top" Width="256" RenderTransformOrigin="0.486,5.748"
+                  Text="{Binding Path=Type, Mode=TwoWay}" FontSize="20"/>
 
-        <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="583,145,0,0" VerticalAlignment="Top"/>
-        <Label Content="Date and time:" HorizontalAlignment="Left" Margin="204,145,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.545,1.671"/>
-        <ComboBox x:Name="TimeComboBox" HorizontalAlignment="Left" Margin="437,146,0,0" VerticalAlignment="Top" Width="120" IsEditable="True">
+        <DatePicker Name="datePicker" HorizontalAlignment="Left" Margin="653,298,0,0" VerticalAlignment="Top" FontSize="20" Width="146"/>
+        <Label Content="Date and time:" HorizontalAlignment="Left" Margin="207,290,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.545,1.671" FontSize="20"/>
+        <ComboBox x:Name="TimeComboBox" HorizontalAlignment="Left" Margin="543,298,0,0" VerticalAlignment="Top" Width="90" IsEditable="True" FontSize="20">
             <ComboBoxItem>10:00</ComboBoxItem>
             <ComboBoxItem>10:30</ComboBoxItem>
             <ComboBoxItem>11:00</ComboBoxItem>
             <ComboBoxItem>11:30</ComboBoxItem>
         </ComboBox>
-        
-        <Label Content="Room:" HorizontalAlignment="Left" Margin="203,191,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="AppointmentType_Copy" HorizontalAlignment="Left" Margin="437,191,0,0" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Path=RoomList}" DisplayMemberPath="Name"/>
 
-        <Label Content="Patient:" HorizontalAlignment="Left" Margin="204,234,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706"/>
-        <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="437,238,0,0" VerticalAlignment="Top" Width="120"
-                  ItemsSource="{Binding Path=PatientList}" DisplayMemberPath="Name"/>
+        <Label Content="Room:" HorizontalAlignment="Left" Margin="210,390,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <ComboBox x:Name="AppointmentType_Copy" HorizontalAlignment="Left" Margin="542,400,0,0" VerticalAlignment="Top" Width="256"
+                  ItemsSource="{Binding Path=RoomList}" DisplayMemberPath="Name" FontSize="20"/>
 
-        <Button Name="confirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="301,377,0,0" VerticalAlignment="Top" Click="confirmButton_Click"
-                Foreground="White" Background="MediumPurple"/>
-        <Label Content="Create new appointment" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="400,377,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.299,0.271" Height="20" Click="CancelBtnClick"
-                Foreground="White" Background="MediumPurple"/>
-        
+        <Label Content="Patient:" HorizontalAlignment="Left" Margin="210,486,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706" FontSize="20"/>
+        <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="542,490,0,0" VerticalAlignment="Top" Width="256"
+                  ItemsSource="{Binding Path=PatientList}" DisplayMemberPath="Name" FontSize="20"/>
+
+        <Button Name="confirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="345,631,0,0" VerticalAlignment="Top" Click="confirmButton_Click"
+                Foreground="White" Background="MediumPurple" FontSize="20" Height="47" Width="88"/>
+        <Label Content="Create new appointment" HorizontalAlignment="Left" Margin="294,78,0,0" VerticalAlignment="Top" 
+               Foreground="MediumPurple" FontWeight="Bold" FontSize="35" RenderTransformOrigin="0.57,1.203"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="542,631,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0.299,0.271" Height="47" Click="CancelBtnClick"
+                Foreground="White" Background="MediumPurple" FontSize="20"/>
+
 
 
     </Grid>

@@ -1,0 +1,152 @@
+[
+  {
+    "Id": 0,
+    "EndDate": "2022-04-24T00:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "Lek1",
+    "Medicine": [
+      {
+        "Id": 0,
+        "Name": "lek1",
+        "Ingredients": "kikiriki"
+      }
+    ]
+  },
+  {
+    "Id": 1,
+    "EndDate": "2022-05-21T00:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "Lek2",
+    "Medicine": [
+      {
+        "Id": 1,
+        "Name": "lek2",
+        "Ingredients": "kokakola"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "EndDate": "2022-06-02T00:00:00",
+    "Time": "11:30",
+    "AdditionalInstructions": "Lek",
+    "Medicine": [
+      {
+        "Id": 2,
+        "Name": "lek3",
+        "Ingredients": "secer"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-05-06T00:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "Lek1",
+    "Medicine": [
+      {
+        "Id": 0,
+        "Name": "lek1",
+        "Ingredients": "kikiriki"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "EndDate": "2022-05-07T00:00:00",
+    "Time": "10:30",
+    "AdditionalInstructions": "Lek1",
+    "Medicine": [
+      {
+        "Id": 0,
+        "Name": "lek1",
+        "Ingredients": "kikiriki"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "EndDate": "2022-05-01T11:23:41.2221361+02:00",
+    "Time": "",
+    "AdditionalInstructions": "",
+    "Medicine": []
+  },
+  {
+    "Id": 6,
+    "EndDate": "2022-05-21T00:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "a",
+    "Medicine": [
+      {
+        "Id": 1,
+        "Name": "lek2",
+        "Ingredients": "kokakola"
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "EndDate": "2022-05-13T00:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "Lek1",
+    "Medicine": [
+      {
+        "Id": 0,
+        "Name": "lek1",
+        "Ingredients": "kikiriki"
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "EndDate": "2022-05-04T00:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "a a",
+    "Medicine": [
+      {
+        "Id": 1,
+        "Name": "lek2",
+        "Ingredients": "kokakola"
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "EndDate": "2022-05-19T00:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "Lek1",
+    "Medicine": [
+      {
+        "Id": 0,
+        "Name": "lek1",
+        "Ingredients": "kikiriki"
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "EndDate": "2022-05-28T00:00:00",
+    "Time": "10:30",
+    "AdditionalInstructions": "Lek2",
+    "Medicine": [
+      {
+        "Id": 1,
+        "Name": "lek2",
+        "Ingredients": "kokakola"
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "EndDate": "2022-05-21T00:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "Lek3",
+    "Medicine": [
+      {
+        "Id": 2,
+        "Name": "lek3",
+        "Ingredients": "secer"
+      }
+    ]
+  }
+]

@@ -2,86 +2,73 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijent pac rep1 izmena 3",
-    "ReportDate": "2022-04-26T18:23:12.9393632+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
+    "Anamnesis": "Lek1",
+    "Diagnosis": "Doc Pac Lek1",
+    "ReportDate": "2022-05-01T11:18:44.5865097+02:00",
+    "MedicalReceipt": 0,
     "MedicalRecord": 0
   },
   {
     "Id": 1,
     "DoctorID": 0,
-    "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijen Stefan rep 1",
-    "ReportDate": "2022-04-26T18:26:12.9057777+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
-    "MedicalRecord": 1
+    "Anamnesis": "Lek2",
+    "Diagnosis": "Doc Pac Lek2",
+    "ReportDate": "2022-05-01T11:18:59.102504+02:00",
+    "MedicalReceipt": 1,
+    "MedicalRecord": 0
   },
   {
     "Id": 2,
     "DoctorID": 0,
-    "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijent 1 rep 1",
-    "ReportDate": "2022-04-26T18:28:19.7238997+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
-    "MedicalRecord": 2
+    "Anamnesis": "Lek3",
+    "Diagnosis": "Doc Pac Lek3",
+    "ReportDate": "2022-05-01T11:19:13.2680983+02:00",
+    "MedicalReceipt": 2,
+    "MedicalRecord": 0
   },
   {
     "Id": 3,
     "DoctorID": 0,
-    "Anamnesis": "TextBox",
-    "Diagnosis": "Pacijent Stefan rep 2",
-    "ReportDate": "2022-04-26T18:42:07.5243736+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
+    "Anamnesis": "Lek1",
+    "Diagnosis": "Doc Stefan Lek1",
+    "ReportDate": "2022-05-01T11:21:24.0922132+02:00",
+    "MedicalReceipt": 3,
     "MedicalRecord": 1
   },
   {
     "Id": 4,
+    "DoctorID": 0,
+    "Anamnesis": "Lek1",
+    "Diagnosis": "Doc 1 Lek1",
+    "ReportDate": "2022-05-01T11:22:24.6767502+02:00",
+    "MedicalReceipt": 4,
+    "MedicalRecord": 2
+  },
+  {
+    "Id": 5,
     "DoctorID": 1,
-    "Anamnesis": "a",
-    "Diagnosis": "Pacijent pac rep 2 doctor Stefans",
-    "ReportDate": "2022-04-26T20:18:43.2573593+02:00",
-    "MedicineNameList": [
-      ""
-    ],
-    "MedicineAmountList": [
-      ""
-    ],
-    "MedicineInstructionList": [
-      ""
-    ],
+    "Anamnesis": "Lek1",
+    "Diagnosis": "Stefan Pac Lek1",
+    "ReportDate": "2022-05-01T11:28:55.0743859+02:00",
+    "MedicalReceipt": 9,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 6,
+    "DoctorID": 1,
+    "Anamnesis": "Lek2",
+    "Diagnosis": "Stefan Stefan Lek2",
+    "ReportDate": "2022-05-01T11:30:19.6434502+02:00",
+    "MedicalReceipt": 10,
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 7,
+    "DoctorID": 1,
+    "Anamnesis": "Lek3",
+    "Diagnosis": "Stefan 1 Lek3",
+    "ReportDate": "2022-05-01T11:30:55.0872995+02:00",
+    "MedicalReceipt": 11,
+    "MedicalRecord": 2
   }
 ]

@@ -15,6 +15,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorViewModel = new DoctorViewModel();
             DataContext = DoctorViewModel;
             SelectDoctorCBOX.ItemsSource = DoctorViewModel.DoctorList;
+            SelectDoctorCBOX.SelectedIndex = 0;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

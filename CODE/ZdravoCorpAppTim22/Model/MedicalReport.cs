@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
@@ -16,22 +17,16 @@ namespace Model
         public DateTime ReportDate { get; set; }
 
         //recept
-        public ObservableCollection<string> MedicineNameList { get; set; }
-        public ObservableCollection<string> MedicineAmountList { get; set; }
-        public ObservableCollection<string> MedicineInstructionList { get; set; }
+        [JsonConverter(typeof(MedicalReceiptToIDConverter))]
+        public MedicalReceipt MedicalReceipt { get; set; }
 
         [JsonConstructor]
         public MedicalReport() { }
-        public MedicalReport(int id, string anamnesis, string diagnosis,
-            ObservableCollection<string> MedicineNameList, ObservableCollection<string> MedicineAmountList,
-            ObservableCollection<string> MedicineInstructionList, DateTime ReportDate, MedicalRecord medicalRecord)
+        public MedicalReport(int id, string anamnesis, string diagnosis, DateTime ReportDate, MedicalRecord medicalRecord)
         {
             Id = id;
             Anamnesis = anamnesis;
             Diagnosis = diagnosis;
-            this.MedicineNameList = MedicineNameList;
-            this.MedicineAmountList = MedicineAmountList;
-            this.MedicineInstructionList = MedicineInstructionList;
             this.ReportDate = ReportDate;
             this.medicalRecord = medicalRecord;
         }

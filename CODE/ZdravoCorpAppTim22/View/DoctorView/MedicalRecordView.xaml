@@ -5,38 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordView" Height="700" Width="800" Closed="MedRecClosed">
+        Title="MedicalRecordView" Height="768" Width="1024" Closed="MedRecClosed">
     <Grid>
-        <Label Content="Conditions" HorizontalAlignment="Left" Margin="123,108,0,0" VerticalAlignment="Top"/>
-        <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="78,24,0,0" VerticalAlignment="Top"/>
-        <Label Content="Allergies" HorizontalAlignment="Left" Margin="400,103,0,0" VerticalAlignment="Top"/>
-        <Label Content="Past reports" HorizontalAlignment="Left" Margin="128,356,0,0" VerticalAlignment="Top"/>
-        <Label Content="Medications" HorizontalAlignment="Left" Margin="401,360,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unique Personal Registration Number" HorizontalAlignment="Left" Margin="438,24,0,0" VerticalAlignment="Top"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Margin="220,24,0,0" VerticalAlignment="Top"/>
-        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="323,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="Conditions" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="63,24,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Allergies" HorizontalAlignment="Left" Margin="548,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Past reports" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Center" FontSize="18"/>
+        <Label Content="Medications" HorizontalAlignment="Left" Margin="548,0,0,0" VerticalAlignment="Center" FontSize="18"/>
+        <Label Content="Unique Personal Registration Number" HorizontalAlignment="Left" Margin="597,24,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="316,24,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="438,24,0,0" VerticalAlignment="Top" FontSize="18"/>
 
-        <Button x:Name="CreateReportBtn" Content="Create report" HorizontalAlignment="Left" Margin="324,622,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="CreateReportBtnClick"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="467,622,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="BackBtn"/>
-        <Button x:Name="OpenReportBtn" Content="Open report" HorizontalAlignment="Left" Margin="200,622,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="OpenReportBtnClick"/>
-        <Button x:Name="FinishReportBtn" Content="Finish report" HorizontalAlignment="Left" Margin="564,622,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="FinishReportClick"/>
+        <Button x:Name="CreateReportBtn" Content="Create report" HorizontalAlignment="Left" Margin="405,649,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="CreateReportBtnClick" Height="30" FontSize="16"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="548,649,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="BackBtn" Height="30" FontSize="16"/>
+        <Button x:Name="OpenReportBtn" Content="Open report" HorizontalAlignment="Left" Margin="281,649,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="OpenReportBtnClick" Height="30" FontSize="16"/>
+        <Button x:Name="FinishReportBtn" Content="Finish report" HorizontalAlignment="Left" Margin="645,649,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="FinishReportClick" Height="30" FontSize="16"/>
 
-        <TextBlock x:Name="NameSurnameBlock" HorizontalAlignment="Left" Margin="78,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
-        <TextBlock x:Name="GenderBlock" HorizontalAlignment="Left" Margin="220,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
-        <TextBlock x:Name="DateBirthBlock" HorizontalAlignment="Left" Margin="323,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top"  Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
-        <TextBlock x:Name="JMBGBlock" HorizontalAlignment="Left" Margin="438,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18"/>
+        <TextBlock x:Name="NameSurnameBlock" HorizontalAlignment="Left" Margin="70,50,0,0" TextWrapping="Wrap" 
+                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="217"/>
+        <TextBlock x:Name="GenderBlock" HorizontalAlignment="Left" Margin="324,50,0,0" TextWrapping="Wrap" 
+                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="130"/>
+        <TextBlock x:Name="DateBirthBlock" HorizontalAlignment="Left" Margin="446,50,0,0" TextWrapping="Wrap" 
+                   Text="" VerticalAlignment="Top"  Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="146"/>
+        <TextBlock x:Name="JMBGBlock" HorizontalAlignment="Left" Margin="605,50,0,0" TextWrapping="Wrap" 
+                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="258"/>
 
-        <ListBox x:Name="ProblemsListBox" Margin="123,139,484,356"/>
-        <ListBox x:Name="AllergiesListBox" Margin="401,139,210,356"/>
-        <ListBox x:Name="PastReportsListBox" Margin="123,391,484,97" DisplayMemberPath="ReportDate"/>
-        <ListBox x:Name="MedicationsListBox" Margin="401,391,210,97"/>
+        <ListBox x:Name="ProblemsListBox" Margin="110,139,605,414" FontSize="15"/>
+        <ListBox x:Name="AllergiesListBox" Margin="548,139,168,414" FontSize="15"/>
+        <ListBox x:Name="PastReportsListBox" Margin="110,398,605,150" DisplayMemberPath="ReportDate" FontSize="15"/>
+        <ListBox x:Name="MedicationsListBox" Margin="548,398,168,150" FontSize="15" DisplayMemberPath="Name"/>
     </Grid>
 </Window>
