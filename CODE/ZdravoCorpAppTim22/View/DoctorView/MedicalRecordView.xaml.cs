@@ -18,7 +18,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordsScreen medicalRecordsScreen;
 
         public static ObservableCollection<MedicalReport> medRepList { get; set; }
-        public ObservableCollection<Medicine> medicineObservableList { get; set; }
+        public static ObservableCollection<Medicine> medicineObservableList { get; set; }
 
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
@@ -68,9 +68,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
 
             //za lekove ne radi
-            if (selectedPatient.medicalRecord.MedicalReport.Count > 0)
+            if (selectedPatient.medicalRecord.MedicalReport.Count > 0)      
             {
-                medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.
+                medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
                 MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
                 MedicationsListBox.ItemsSource = medicineObservableList;
             }

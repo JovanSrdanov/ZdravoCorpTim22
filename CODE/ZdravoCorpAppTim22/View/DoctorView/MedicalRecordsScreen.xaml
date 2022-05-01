@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordsScreen" Height="768" Width="1024" Closed="MedRecListClose">
+        Title="MedicalRecordsScreen" Height="768" Width="1024" Closed="MedRecListClose" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="303,44,0,0" TextWrapping="Wrap" Text="Medical record list" VerticalAlignment="Top" Width="350"
+        <TextBlock HorizontalAlignment="Left" Margin="303,44,0,0" TextWrapping="Wrap" Text="Medical record list" 
+                   VerticalAlignment="Top" Width="350"
                    Foreground="MediumPurple" FontWeight="Bold" FontSize="40"/>
         <DataGrid x:Name="MedRecGrid" Margin="92,148,160,167" AutoGenerateColumns="false" FontSize="25"
-                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
+                  VerticalScrollBarVisibility="Auto" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Patient.Name}" Width="*"/>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Path=Patient.Surname}" Width="*"/>
