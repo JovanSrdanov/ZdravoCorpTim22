@@ -6,17 +6,12 @@
   },
   {
     "Id": 1,
-    "Name": "cons",
-    "Type": 0
-  },
-  {
-    "Id": 2,
     "Name": "Kreveti",
     "Type": 1
   },
   {
-    "Id": 3,
-    "Name": "bb",
-    "Type": 2
+    "Id": 2,
+    "Name": "cons",
+    "Type": 0
   }
 ]

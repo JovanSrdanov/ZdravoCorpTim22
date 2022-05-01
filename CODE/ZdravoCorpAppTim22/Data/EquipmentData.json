@@ -1,86 +1,44 @@
 [
   {
+    "Id": 0,
+    "Amount": 500,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 1,
+    "Amount": 200,
+    "EquipmentData": 1,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 2,
+    "Amount": 400,
+    "EquipmentData": 2,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
     "Id": 3,
-    "Amount": 290,
+    "Amount": 1600,
+    "EquipmentData": 2,
+    "Room": 0,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 6,
+    "Amount": 300,
+    "EquipmentData": 0,
+    "Room": 0,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 7,
+    "Amount": 150,
     "EquipmentData": 1,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 5,
-    "Amount": 240,
-    "EquipmentData": 2,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 11,
-    "Amount": 100,
-    "EquipmentData": 2,
-    "Room": 6,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 12,
-    "Amount": 160,
-    "EquipmentData": 0,
-    "Room": 6,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 14,
-    "Amount": 585,
-    "EquipmentData": 0,
-    "Room": 13,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 20,
-    "Amount": 130,
-    "EquipmentData": 2,
-    "Room": 13,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 22,
-    "Amount": 30,
-    "EquipmentData": 0,
-    "Room": 14,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 23,
-    "Amount": 10,
-    "EquipmentData": 1,
-    "Room": 6,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 24,
-    "Amount": 626,
-    "EquipmentData": 3,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 25,
-    "Amount": 470,
-    "EquipmentData": 0,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 27,
-    "Amount": 30,
-    "EquipmentData": 3,
-    "Room": 15,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 29,
-    "Amount": 5,
-    "EquipmentData": 0,
-    "Room": 15,
+    "Room": 0,
     "EquipmentRelocation": null
   }
 ]

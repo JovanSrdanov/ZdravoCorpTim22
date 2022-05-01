@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -17,6 +18,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordsScreen medicalRecordsScreen;
 
         public static ObservableCollection<MedicalReport> medRepList { get; set; }
+        public ObservableCollection<Medicine> medicineObservableList { get; set; }
 
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
@@ -53,7 +55,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             //selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID));
             selectedPatient.medicalRecord = medRec;
 
-
             this.doctorAppointments = doctorAppointments;
             this.medicalRecordsScreen = medicalRecordsScreen;
 
@@ -65,6 +66,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
 
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
+
+            //za lekove ne radi
+            if (selectedPatient.medicalRecord.MedicalReport.Count > 0)
+            {
+                medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.
+                MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
+                MedicationsListBox.ItemsSource = medicineObservableList;
+            }
+            //za lekove ne radi
 
             medRepList = new ObservableCollection<MedicalReport>(selectedPatient.medicalRecord.MedicalReport);
             PastReportsListBox.ItemsSource = medRepList; 
@@ -171,6 +181,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorAppointments.CurDocAppointemntsObservable.Remove(DoctorAppointments.medicalAppointment);
 
             DoctorController.Instance.Update(selectedDoctor);
+            //PacientController.Instance.Update(selectedPatient);
 
             doctorAppointments.Show();
             this.Close();

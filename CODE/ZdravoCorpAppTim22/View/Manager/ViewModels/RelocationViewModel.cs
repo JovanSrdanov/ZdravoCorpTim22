@@ -54,8 +54,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
 
                 if (interval.End <= DateTime.Now || temp.EquipmentData.Type == EquipmentType.consumable)
                 {
-                    temp.room = destination;
-                    EquipmentController.Instance.AddRoomEquipment(temp);
+                    EquipmentController.Instance.AddRoomEquipment(destination, temp);
                 }
                 else
                 {
@@ -84,6 +83,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                 }
                 else
                 {
+                    eq.Equipment.Room = null;
                     EquipmentController.Instance.DeleteByID(eq.Equipment.Id);
                 }
                 if (interval.End <= DateTime.Now || temp.EquipmentData.Type == EquipmentType.consumable)
@@ -118,13 +118,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels
                 }
                 else
                 {
+                    eq.Equipment.Room = null;
                     EquipmentController.Instance.DeleteByID(eq.Equipment.Id);
                 }
 
                 if (interval.End <= DateTime.Now || temp.EquipmentData.Type == EquipmentType.consumable)
                 {
-                    temp.room = destination;
-                    EquipmentController.Instance.AddRoomEquipment(temp);
+                    EquipmentController.Instance.AddRoomEquipment(destination, temp);
                 }
                 else
                 {
