@@ -40,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
             ObservableCollection<AppointmentType> newAppointmentTypes = new ObservableCollection<AppointmentType>(appointmentTypes);
-            newAppointmentTypes.Remove(AppointmentType.operation);
+            newAppointmentTypes.Remove(AppointmentType.Operation);
             doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
 
             if (doctor.DoctorType == DoctorSpecialisationType.specialist)

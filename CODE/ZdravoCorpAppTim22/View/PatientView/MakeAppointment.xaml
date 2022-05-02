@@ -92,8 +92,7 @@
                         Click="DoctorNext_Click"
                         Content="Dalje"
                         FontSize="18"
-                        Foreground="White"
-                        RenderTransformOrigin="0.788,-0.75" />
+                        Foreground="White" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabDate">
@@ -106,17 +105,15 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Content="Izabrati datum"
-                            FontSize="18"
-                            RenderTransformOrigin="0.477,3.922" />
+                            FontSize="18" />
                         <DatePicker
                             x:Name="datePicker"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             DisplayDateStart="{x:Static sys:DateTime.Today}"
-                            FontSize="18"
-                            RenderTransformOrigin="0.5,0.5" />
+                            FontSize="18" />
                     </StackPanel>
-                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+                    <StackPanel Orientation="Horizontal" />
                     <Button
                         x:Name="DateBack"
                         Margin="0,0,0,15"
@@ -169,7 +166,7 @@
                             Content="Lekar"
                             FontSize="18" />
                     </StackPanel>
-                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+                    <StackPanel Orientation="Horizontal" />
                     <Button
                         x:Name="PriorityBack"
                         Margin="0,0,0,15"

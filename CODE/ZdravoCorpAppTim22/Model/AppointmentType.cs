@@ -2,8 +2,8 @@ namespace Model
 {
     public enum AppointmentType
     {
-        checkup,
-        examination,
-        operation
+        Checkup,
+        Examination,
+        Operation
     }
 }
