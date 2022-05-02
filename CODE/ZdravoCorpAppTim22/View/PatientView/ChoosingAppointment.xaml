@@ -8,19 +8,16 @@
     x:Name="ChoosingAppointment1"
     Title="Biranje termina"
     Width="703.119"
-    Height="347"
+    Height="338"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
-    <Grid Margin="0,0,2,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <StackPanel Margin="21,15,21,0" Orientation="Vertical">
+
         <DataGrid
             x:Name="dataGridSuggestedMedicalAppointments"
-            Height="227"
-            Margin="42,10,42,0"
+            Height="225"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -57,25 +54,24 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button
-            x:Name="ConfirmAppointment"
-            Margin="503,262,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#FF23B623"
-            Click="ConfirmAppointment_Click"
-            Content="Zakazi ovaj termin"
-            FontSize="18"
-            Foreground="Black" />
-        <Button
-            x:Name="Cancle"
-            Width="75"
-            Margin="42,262,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Yellow"
-            Click="Cancle_Click"
-            Content="Obustavi"
-            FontSize="18" />
-    </Grid>
+        <Grid Margin="0,15,0,0">
+            <Button
+                x:Name="ConfirmAppointment"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="#FF23B623"
+                Click="ConfirmAppointment_Click"
+                Content="Zakaži ovaj termin"
+                FontSize="18"
+                Foreground="White" />
+            <Button
+                x:Name="Cancle"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Click="Cancle_Click"
+                Content="Obustavi"
+                FontSize="18" />
+        </Grid>
+    </StackPanel>
 </Window>

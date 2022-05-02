@@ -45,10 +45,10 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void ChooseChangeAppointment_Click(object sender, RoutedEventArgs e)
         {
+            Close();
             selectedDateTime = (DateTime)DatePickerChangeAppoinment.SelectedDate;
             ChoosingChangeAppointment choosingChangeAppointment = new ChoosingChangeAppointment();
             choosingChangeAppointment.ShowDialog();
-            Close();
         }
     }
 }

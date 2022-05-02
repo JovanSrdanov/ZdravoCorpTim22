@@ -7,17 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="Zakazivanje termina"
-    Width="564.666"
-    Height="232"
+    Width="450"
+    Height="250"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <TabControl
             x:Name="TabWizardMakeAppointmet"
-            Height="191"
-            Margin="0,0,2,0"
-            VerticalAlignment="Top"
             HorizontalContentAlignment="Left"
             FontSize="18"
             TabStripPlacement="Left">
@@ -26,7 +23,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Odabir vrste termina" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,42" Background="White">
+                <Grid Margin="42,0,42,0" Background="White">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -42,10 +39,9 @@
                     </StackPanel>
                     <Button
                         x:Name="AppointmentNext"
-                        Width="84"
-                        Margin="194,139,0,-28"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        Margin="0,0,0,15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
                         Background="Green"
                         Click="AppointmentNext_Click"
                         Content="Dalje"
@@ -60,7 +56,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Odabir lekara" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,42" Background="White">
+                <Grid Margin="42,0,42,0" Background="White">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -77,35 +73,34 @@
 
 
                     </StackPanel>
-                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+
                     <Button
                         x:Name="DoctorBack"
-                        Width="84"
-                        Margin="10,139,0,-28"
+                        Margin="0,0,0,15"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Bottom"
                         Background="Yellow"
                         Click="DoctorBack_Click"
                         Content="Nazad"
                         FontSize="18" />
                     <Button
                         x:Name="DoctorNext"
-                        Width="84"
-                        Margin="194,139,0,-28"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        Margin="0,0,0,15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
                         Background="Green"
                         Click="DoctorNext_Click"
                         Content="Dalje"
                         FontSize="18"
-                        Foreground="White" />
+                        Foreground="White"
+                        RenderTransformOrigin="0.788,-0.75" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabDate">
                 <TabItem.Header>
                     <TextBlock Text="Odabir datuma" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,42" Background="White">
+                <Grid Margin="42,0,42,0" Background="White">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -124,20 +119,18 @@
                     <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
                     <Button
                         x:Name="DateBack"
-                        Width="84"
-                        Margin="10,139,0,-28"
+                        Margin="0,0,0,15"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Bottom"
                         Background="Yellow"
                         Click="DateBack_Click"
                         Content="Nazad"
                         FontSize="18" />
                     <Button
                         x:Name="DateNext"
-                        Width="84"
-                        Margin="194,139,0,-28"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        Margin="0,0,0,15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
                         Background="Green"
                         Click="DateNext_Click"
                         Content="Dalje"
@@ -151,7 +144,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Odabri prioriteta" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,42" Background="White">
+                <Grid Margin="42,0,42,0" Background="White">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             Margin="5,0,0,0"
@@ -179,20 +172,18 @@
                     <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
                     <Button
                         x:Name="PriorityBack"
-                        Width="84"
-                        Margin="10,139,0,-28"
+                        Margin="0,0,0,15"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Bottom"
                         Background="Yellow"
                         Click="PriorityBack_Click"
                         Content="Nazad"
                         FontSize="18" />
                     <Button
                         x:Name="PriorityFinish"
-                        Width="84"
-                        Margin="194,139,0,-28"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        Margin="0,0,0,15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
                         Background="Green"
                         Click="PriorityFinish_Click"
                         Content="Dalje"
@@ -206,10 +197,9 @@
 
         <Button
             x:Name="Cancle"
-            Height="29"
-            Margin="44,142,0,0"
+            Margin="45,0,0,15"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Background="Yellow"
             Click="Cancle_Click"
             Content="Obustavi"
