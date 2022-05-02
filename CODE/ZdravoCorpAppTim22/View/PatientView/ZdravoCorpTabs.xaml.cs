@@ -64,6 +64,11 @@ namespace ZdravoCorpAppTim22.View.PatientView
             changeAppointment.ShowDialog();
         }
 
-
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 }

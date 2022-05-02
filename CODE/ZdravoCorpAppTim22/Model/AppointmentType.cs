@@ -1,11 +1,9 @@
-using System;
-
 namespace Model
 {
-   public enum AppointmentType
-   {
-      operation,
-      examination,
-      checkup
-   }
+    public enum AppointmentType
+    {
+        checkup,
+        examination,
+        operation
+    }
 }

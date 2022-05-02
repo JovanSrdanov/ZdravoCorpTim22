@@ -6,43 +6,42 @@
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Odaberite novi termin"
-    Width="401.61"
-    Height="433.703"
+    Width="421.546"
+    Height="460.909"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid Margin="42,0">
+    <StackPanel Margin="21,0">
         <Label
             x:Name="SelectedAppointmentDoctor"
-            Margin="10,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Label"
             FontSize="18" />
         <Label
             x:Name="SelectedAppointmentRoom"
-            Margin="10,44,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Label"
             FontSize="18" />
         <Label
             x:Name="SelectedAppointmentDate"
-            Margin="10,78,0,0"
+            Margin="0,0,0,15"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Label"
             FontSize="18" />
         <DataGrid
             x:Name="NewAppotimentsDataGrid"
-            Height="152"
-            Margin="10,127,10,0"
+            Height="250"
+            Margin="0,0,0,15"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
             CanUserResizeColumns="False"
             ColumnWidth="*"
+            FontSize="18"
             IsReadOnly="True"
             ItemsSource="{Binding Source=MedicalAppointmentsList}"
             SelectionMode="Single"
@@ -58,27 +57,26 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button
-            x:Name="Cancle"
-            Width="75"
-            Margin="10,330,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Yellow"
-            Click="Cancle_Click"
-            Content="Obustavi"
-            FontSize="18" />
-        <Button
-            x:Name="Confirm"
-            Width="75"
-            Margin="227,330,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Green"
-            Click="Confirm_Click"
-            Content="Potvrdi"
-            FontSize="18"
-            Foreground="White" />
+        <Grid>
+            <Button
+                x:Name="Cancle"
+                Width="75"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Click="Cancle_Click"
+                Content="Obustavi"
+                FontSize="18" />
+            <Button
+                x:Name="Confirm"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Green"
+                Click="Confirm_Click"
+                Content="Potvrdi"
+                FontSize="18"
+                Foreground="White" />
+        </Grid>
 
-    </Grid>
+    </StackPanel>
 </Window>
