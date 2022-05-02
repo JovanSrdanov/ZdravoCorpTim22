@@ -61,13 +61,6 @@
             DisplayDateStart="{x:Static sys:DateTime.Today}"
             FontSize="18"
             RenderTransformOrigin="0.5,0.5" />
-
-        <RadioButton
-            Margin="10,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Lekar"
-            FontSize="18" />
         <RadioButton
             x:Name="TimeRadioButton"
             Margin="10,0,0,0"
@@ -76,6 +69,13 @@
             Content="Vreme"
             FontSize="18"
             IsChecked="True" />
+
+        <RadioButton
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Lekar"
+            FontSize="18" />
         <Label
             Margin="5,0,0,0"
             HorizontalAlignment="Left"

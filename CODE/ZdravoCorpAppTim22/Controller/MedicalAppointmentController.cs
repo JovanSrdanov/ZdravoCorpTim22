@@ -1,8 +1,9 @@
 using Model;
 using Service;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.Model;
 
 namespace Controller
 {
@@ -22,5 +23,13 @@ namespace Controller
                 return instance;
             }
         }
+
+        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(Patient enteredPatient, DateTime enteredDateTime, AppointmentType enteredAppointmentType, string enteredPriority, Doctor enteredDoctor)
+        {
+            return MedicalAppointmentService.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
+
+        }
+
+
     }
 }
