@@ -16,5 +16,23 @@
     "Level": 0,
     "Type": 4,
     "Name": "Sala3"
+  },
+  {
+    "Id": 3,
+    "Level": 0,
+    "Type": 0,
+    "Name": "SalaOperacija"
+  },
+  {
+    "Id": 4,
+    "Level": 0,
+    "Type": 4,
+    "Name": "Pregled"
+  },
+  {
+    "Id": 5,
+    "Level": 2,
+    "Type": 0,
+    "Name": "sdadas"
   }
 ]

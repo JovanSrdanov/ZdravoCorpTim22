@@ -26,6 +26,8 @@
             AutoGenerateColumns="False"
             CanUserResizeColumns="False"
             ColumnWidth="*"
+            FontSize="18"
+            HorizontalScrollBarVisibility="Disabled"
             IsReadOnly="True"
             ItemsSource="{Binding Source=MedicalAppointmentsList}"
             SelectionMode="Single"
@@ -57,13 +59,23 @@
         </DataGrid>
         <Button
             x:Name="ConfirmAppointment"
-            Width="135"
-            Margin="516,262,0,0"
+            Margin="503,262,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF23B623"
             Click="ConfirmAppointment_Click"
             Content="Zakazi ovaj termin"
+            FontSize="18"
             Foreground="Black" />
+        <Button
+            x:Name="Cancle"
+            Width="75"
+            Margin="42,262,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="Yellow"
+            Click="Cancle_Click"
+            Content="Obustavi"
+            FontSize="18" />
     </Grid>
 </Window>

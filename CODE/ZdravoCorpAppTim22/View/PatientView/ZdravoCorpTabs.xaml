@@ -21,7 +21,9 @@
             TabStripPlacement="Left">
             <TabItem>
                 <TabItem.Header>
+
                     <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
+
                 </TabItem.Header>
                 <Grid Background="White">
                     <Label
@@ -218,11 +220,13 @@
 
         </TabControl>
         <Button
+            x:Name="LogOutButton"
             Width="166"
             Margin="10,540,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Red"
+            Click="LogOutButton_Click"
             Content="Odjava"
             FontSize="18"
             Foreground="White" />

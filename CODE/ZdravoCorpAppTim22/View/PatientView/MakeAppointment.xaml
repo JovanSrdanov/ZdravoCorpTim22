@@ -7,93 +7,215 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="Zakazivanje termina"
-    Width="304"
-    Height="355"
-    HorizontalContentAlignment="Center"
+    Width="564.666"
+    Height="232"
+    Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <StackPanel HorizontalAlignment="Center">
+    <Grid>
+        <TabControl
+            x:Name="TabWizardMakeAppointmet"
+            Height="191"
+            Margin="0,0,2,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            FontSize="18"
+            TabStripPlacement="Left">
 
-        <Label
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Izabrati lekara"
-            FontSize="18"
-            RenderTransformOrigin="0.477,3.922" />
-        <ComboBox
-            x:Name="ChooseDoctor"
-            Width="120"
-            Margin="5,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            DisplayMemberPath="Name"
-            FontSize="18"
-            RenderTransformOrigin="-0.067,0.667"
-            SelectedIndex="0" />
-        <Label
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Izabrati datum"
-            FontSize="18"
-            RenderTransformOrigin="0.477,3.922" />
-        <ComboBox
-            x:Name="ChooseAppointmentType"
-            Width="120"
-            Margin="5,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            RenderTransformOrigin="0.875,-1"
-            SelectedIndex="0" />
-        <Label
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Izabrati vrstu termina"
-            FontSize="18"
-            RenderTransformOrigin="0.377,0.043" />
+            <TabItem x:Name="TabType">
+                <TabItem.Header>
+                    <TextBlock Text="Odabir vrste termina" />
+                </TabItem.Header>
+                <Grid Margin="42,0,42,42" Background="White">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Izabrati vrstu termina:"
+                            FontSize="18" />
+                        <ComboBox
+                            x:Name="ChooseAppointmentType"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            FontSize="18"
+                            SelectedIndex="0" />
+                    </StackPanel>
+                    <Button
+                        x:Name="AppointmentNext"
+                        Width="84"
+                        Margin="194,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Green"
+                        Click="AppointmentNext_Click"
+                        Content="Dalje"
+                        FontSize="18"
+                        Foreground="White" />
 
 
-        <DatePicker
-            x:Name="datePicker"
-            Margin="5,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            DisplayDateStart="{x:Static sys:DateTime.Today}"
-            FontSize="18"
-            RenderTransformOrigin="0.5,0.5" />
-        <RadioButton
-            x:Name="TimeRadioButton"
-            Margin="10,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Vreme"
-            FontSize="18"
-            IsChecked="True" />
+                </Grid>
 
-        <RadioButton
-            Margin="10,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Lekar"
-            FontSize="18" />
-        <Label
-            Margin="5,0,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Center"
-            Content="Izabrati prioritet"
-            FontSize="18"
-            RenderTransformOrigin="0.477,3.922" />
+            </TabItem>
+            <TabItem x:Name="TabDoctor">
+                <TabItem.Header>
+                    <TextBlock Text="Odabir lekara" />
+                </TabItem.Header>
+                <Grid Margin="42,0,42,42" Background="White">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Izabrati lekara"
+                            FontSize="18" />
+                        <ComboBox
+                            x:Name="ChooseDoctor"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            DisplayMemberPath="Name"
+                            FontSize="18"
+                            SelectedIndex="0" />
+
+
+                    </StackPanel>
+                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+                    <Button
+                        x:Name="DoctorBack"
+                        Width="84"
+                        Margin="10,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Yellow"
+                        Click="DoctorBack_Click"
+                        Content="Nazad"
+                        FontSize="18" />
+                    <Button
+                        x:Name="DoctorNext"
+                        Width="84"
+                        Margin="194,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Green"
+                        Click="DoctorNext_Click"
+                        Content="Dalje"
+                        FontSize="18"
+                        Foreground="White" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabDate">
+                <TabItem.Header>
+                    <TextBlock Text="Odabir datuma" />
+                </TabItem.Header>
+                <Grid Margin="42,0,42,42" Background="White">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Izabrati datum"
+                            FontSize="18"
+                            RenderTransformOrigin="0.477,3.922" />
+                        <DatePicker
+                            x:Name="datePicker"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            DisplayDateStart="{x:Static sys:DateTime.Today}"
+                            FontSize="18"
+                            RenderTransformOrigin="0.5,0.5" />
+                    </StackPanel>
+                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+                    <Button
+                        x:Name="DateBack"
+                        Width="84"
+                        Margin="10,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Yellow"
+                        Click="DateBack_Click"
+                        Content="Nazad"
+                        FontSize="18" />
+                    <Button
+                        x:Name="DateNext"
+                        Width="84"
+                        Margin="194,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Green"
+                        Click="DateNext_Click"
+                        Content="Dalje"
+                        FontSize="18"
+                        Foreground="White" />
+
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="TabPriority">
+                <TabItem.Header>
+                    <TextBlock Text="Odabri prioriteta" />
+                </TabItem.Header>
+                <Grid Margin="42,0,42,42" Background="White">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                        <Label
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="left"
+                            VerticalAlignment="Top"
+                            HorizontalContentAlignment="Center"
+                            Content="Izabrati prioritet"
+                            FontSize="18"
+                            RenderTransformOrigin="0.477,3.922" />
+                        <RadioButton
+                            x:Name="TimeRadioButton"
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="Vreme"
+                            FontSize="18"
+                            IsChecked="True" />
+                        <RadioButton
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Content="Lekar"
+                            FontSize="18" />
+                    </StackPanel>
+                    <StackPanel Margin="0,143,41,10" Orientation="Horizontal" />
+                    <Button
+                        x:Name="PriorityBack"
+                        Width="84"
+                        Margin="10,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Yellow"
+                        Click="PriorityBack_Click"
+                        Content="Nazad"
+                        FontSize="18" />
+                    <Button
+                        x:Name="PriorityFinish"
+                        Width="84"
+                        Margin="194,139,0,-28"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Green"
+                        Click="PriorityFinish_Click"
+                        Content="Dalje"
+                        FontSize="18"
+                        Foreground="White" />
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
         <Button
-            x:Name="NextAppontimentChoosing"
-            Width="75"
-            Margin="10,0,0,0"
+            x:Name="Cancle"
+            Height="29"
+            Margin="44,142,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="NextAppontimentChoosing_Click"
-            Content="Dalje"
-            FontSize="18"
-            RenderTransformOrigin="-0.256,0.275" />
+            Background="Yellow"
+            Click="Cancle_Click"
+            Content="Obustavi"
+            FontSize="18" />
 
-    </StackPanel>
+
+    </Grid>
 </Window>
+

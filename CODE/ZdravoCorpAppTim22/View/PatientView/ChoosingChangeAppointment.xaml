@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Odaberite novi termin"
     Width="401.61"
-    Height="433.703"
+    Height="355.909"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
@@ -37,7 +37,7 @@
         <DataGrid
             x:Name="NewAppotimentsDataGrid"
             Height="152"
-            Margin="10,127,10,0"
+            Margin="0,127,0,0"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -46,7 +46,7 @@
             IsReadOnly="True"
             ItemsSource="{Binding Source=MedicalAppointmentsList}"
             SelectionMode="Single"
-            VerticalScrollBarVisibility="Visible">
+            VerticalScrollBarVisibility="Visible" FontSize="18">
 
             <DataGrid.Columns>
 
@@ -61,7 +61,7 @@
         <Button
             x:Name="Cancle"
             Width="75"
-            Margin="10,330,0,0"
+            Margin="0,284,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Yellow"
@@ -71,7 +71,7 @@
         <Button
             x:Name="Confirm"
             Width="75"
-            Margin="227,330,0,0"
+            Margin="227,284,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Green"

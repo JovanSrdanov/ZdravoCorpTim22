@@ -52,6 +52,11 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             Close();
         }
+
+        private void Cancle_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 
 }

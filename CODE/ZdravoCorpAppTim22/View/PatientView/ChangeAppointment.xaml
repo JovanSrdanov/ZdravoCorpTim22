@@ -60,8 +60,7 @@
                 Background="Yellow"
                 Click="Cancle_Click"
                 Content="Obustavi"
-                FontSize="18"
-                RenderTransformOrigin="1.04,0.55" />
+                FontSize="18" />
             <Button
                 x:Name="ChooseChangeAppointment"
                 Width="75"
