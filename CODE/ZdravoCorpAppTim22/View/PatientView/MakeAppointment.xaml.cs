@@ -33,9 +33,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
 
             ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
-
-            
-
             datePicker.DisplayDateStart = DateTime.Now.Date.AddDays(1);
             datePicker.SelectedDate = DateTime.Now.Date.AddDays(1);
 
@@ -44,10 +41,13 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void AppointmentNext_Click(object sender, RoutedEventArgs e)
         {
-           
-            selectedAppointmentType = (AppointmentType)ChooseAppointmentType.SelectedItem;        
+
+
+
+            selectedAppointmentType = (AppointmentType)ChooseAppointmentType.SelectedItem;
+         
             DoctorList = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
-            if (selectedAppointmentType == AppointmentType.operation)
+            if (selectedAppointmentType == AppointmentType.Operation)
             {
                 ObservableCollection<Doctor> temporaryDoctors = new ObservableCollection<Doctor>();
 
@@ -60,7 +60,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
                 }
                 DoctorList = temporaryDoctors;
             }
-           
+
             ChooseDoctor.ItemsSource = DoctorList;
             ChooseDoctor.SelectedIndex = 0;
             TabDoctor.IsEnabled = true;
@@ -114,7 +114,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             selectedDoctor = (Doctor)ChooseDoctor.SelectedItem;
             selectedDateTime = (DateTime)datePicker.SelectedDate;
-            
+
             selectedPriority = (bool)TimeRadioButton.IsChecked ? "Vreme" : "Lekar";
             ChoosingAppointment choosingAppointment = new ChoosingAppointment();
             choosingAppointment.Show();
