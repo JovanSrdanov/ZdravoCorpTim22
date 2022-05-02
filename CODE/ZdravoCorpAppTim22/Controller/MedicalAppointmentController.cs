@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Controller
 {
@@ -28,6 +29,11 @@ namespace Controller
         {
             return MedicalAppointmentService.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
 
+        }
+
+        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
+        {
+            return MedicalAppointmentService.Instance.GetNewMedicalAppointments(doctor,room,enteredPatient,selectedDateTime,type);
         }
 
 

@@ -28,7 +28,6 @@ namespace Repository
 
             Patient patient = PatientRepository.Instance.GetByID(medicalAppointment.Patient.Id);
             patient.MedicalAppointment.Remove(medicalAppointment);
-
             
             Doctor doctor = DoctorRepository.Instance.GetByID(medicalAppointment.Doctor.Id);
             doctor.MedicalAppointment.Remove(medicalAppointment);

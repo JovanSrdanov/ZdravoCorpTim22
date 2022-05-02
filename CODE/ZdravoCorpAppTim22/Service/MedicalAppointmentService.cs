@@ -170,6 +170,57 @@ namespace Service
             return availableMedicalAppointments;
         }
 
+        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
+        {
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+
+            DateTime appointmentTimeStart = new DateTime(selectedDateTime.Year, selectedDateTime.Month, selectedDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
+            DateTime workDayEndTime = new DateTime(selectedDateTime.Year, selectedDateTime.Month, selectedDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
+
+
+            int jumpToNextAppointmetnTime = 15;
+            int durationOfAppointment = 15;
+
+            if (type == AppointmentType.examination)
+            {
+                durationOfAppointment = 30;
+            }
+
+            if (type == AppointmentType.operation)
+            {
+                durationOfAppointment = 60;
+
+            }
+
+            Interval interval = new Interval();
+            for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
+            {
+                DateTime appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
+                interval.Start = appointmentTimeStart;
+                interval.End = appointmentTimeEnd;
+
+                if (enteredPatient.IsAvailable(interval))
+                {
+                    if (doctor.IsAvailable(interval))
+                    {
+                        if (room.IsAvailable(interval))
+                        {
+
+
+                            MedicalAppointmentStruct medicalAppointmentStructToAdd = new MedicalAppointmentStruct(1, type, interval, enteredPatient, doctor, room);
+                            availableMedicalAppointments.Add(medicalAppointmentStructToAdd);
+
+                        }
+                    }
+                }
+                appointmentTimeStart = appointmentTimeStart.AddMinutes(jumpToNextAppointmetnTime);
+            }
+
+
+            return availableMedicalAppointments;
+        }
+
+
 
     }
 }
