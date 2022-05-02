@@ -28,17 +28,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             NameBlock.Text = selectedPatient.Name;
             SurnameBlock.Text = selectedPatient.Surname;
 
-            //lek
-            /*Medicine medicine1 = new Medicine("lek1", "1mg", "kikiriki");
-            MedicineController.Instance.Create(medicine1);
-            Medicine medicine2 = new Medicine("lek2", "3kg", "kokakola");
-            MedicineController.Instance.Create(medicine2);
-            Medicine medicine3 = new Medicine("lek3", "124mg", "secer");
-            MedicineController.Instance.Create(medicine3);*/
-
             ObservableCollection<Medicine> medicationList = MedicineController.Instance.GetAll();
             MedicationComboBox.ItemsSource = medicationList;
-            //lek
+            MedicationComboBox.SelectedIndex = 0;
         }
 
         private void CreateReportClose(object sender, EventArgs e)
@@ -82,6 +74,29 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 diagnosis = DiagnosisBox.Text;
             }
 
+            string additionalInstructions;
+
+            if (AdditionalInstructionsTextBox.Text == null)
+            {
+                additionalInstructions = "";
+            }
+            else
+            {
+                additionalInstructions = AdditionalInstructionsTextBox.Text;
+            }
+
+            //recept
+            if (MedicationComboBox.SelectedItem == null || EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
+            {
+                MessageBox.Show("Please fill out Medication, End date and Time fields", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            Medicine medicine = MedicationComboBox.SelectedItem as Medicine;
+            DateTime endDate = (DateTime)EndDateDatePicker.SelectedDate;
+            string time = TimeComboBox.Text;
+
             /////////////////////
             //MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id));
             MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == selectedPatient.Id).FirstOrDefault();
@@ -91,27 +106,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec);
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
 
-            //recept
-            Medicine medicine = MedicationComboBox.SelectedItem as Medicine;
-            DateTime endDate = new DateTime();
-            endDate = DateTime.Now;
-
-#pragma warning disable CS0168 // Variable is declared but never used
-            try
-            {
-                endDate = (DateTime)EndDateDatePicker.SelectedDate;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please enter a valid number of days", "Open report", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-#pragma warning restore CS0168 // Variable is declared but never used
-            string time = TimeComboBox.Text;
-            string additionalInstructions = AdditionalInstructionsTextBox.Text;
-
             ObservableCollection<Medicine> medicineList = new ObservableCollection<Medicine>();
             medicineList.Add(medicine);
 
+            //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
+            MedicalRecordView.medicineObservableList.Clear();
+            MedicalRecordView.medicineObservableList.Add(medicine);
+            //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicineList, additionalInstructions);
             MedicalReceiptController.Instance.Create(medicalReceipt);
 
@@ -121,7 +122,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicalReportController.Instance.Create(medicalReport);
             MedicalRecordView.newlyCreatedReports.Add(medicalReport);
 
-            medRec.ConditionList.Add(diagnosis);
+            if (!diagnosis.Equals(""))
+            {
+                medRec.ConditionList.Add(diagnosis);
+            }
             medRec.MedicalReport.Add(medicalReport);
             MedicalRecordView.medRepList.Add(medicalReport);
             MedicalRecordController.Instance.Update(medRec);

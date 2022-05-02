@@ -30,7 +30,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             AnamnesisBox.Text = selectedMedicalReport.Anamnesis;
 
             MedicationComboBox.ItemsSource = MedicineController.Instance.GetAll();
-            MedicationComboBox.SelectedItem = selectedMedicalReport.MedicalReceipt.Medicine[0];
+
+            MedicationComboBox.SelectedValuePath = "Id";
+            MedicationComboBox.SelectedValue = selectedMedicalReport.MedicalReceipt.Medicine[0].Id;
+
+            //MedicationComboBox.SelectedItem = selectedMedicalReport.MedicalReceipt.Medicine[0];
             //MedicationComboBox.ItemsSource = selectedMedicalReport.MedicalReceipt.Medicine;
             //MedicationComboBox.SelectedIndex = 0;
             EndDateDatePicker.Text = selectedMedicalReport.MedicalReceipt.EndDate.ToString();
@@ -114,9 +118,27 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 selectedMedicalReport.MedicalReceipt.AdditionalInstructions = AdditionalInstructionsTextBox.Text;
             }
 
-            selectedMedicalReport.MedicalReceipt.Medicine[0] = MedicationComboBox.SelectedItem as Medicine;
-            selectedMedicalReport.MedicalReceipt.EndDate = (DateTime)EndDateDatePicker.SelectedDate;
-            selectedMedicalReport.MedicalReceipt.Time = TimeComboBox.Text;
+            if (MedicationComboBox.SelectedItem == null ||
+                EndDateDatePicker.SelectedDate == null ||
+                TimeComboBox.Text == null)
+            {
+                MessageBox.Show("Please fill out Medication, End date and Time fields", "Open report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                selectedMedicalReport.MedicalReceipt.Medicine[0] = MedicationComboBox.SelectedItem as Medicine;
+                if (selectedMedicalReport.MedicalRecord.MedicalReport.IndexOf(selectedMedicalReport) ==
+                    selectedMedicalReport.MedicalRecord.MedicalReport.Count - 1)        //ako menjam poslednji izvestaj u kartonu
+                {
+                    MedicalRecordView.medicineObservableList.Clear();
+                    MedicalRecordView.medicineObservableList.Add(MedicationComboBox.SelectedItem as Medicine);
+                }
+                selectedMedicalReport.MedicalReceipt.EndDate = (DateTime)EndDateDatePicker.SelectedDate;
+                selectedMedicalReport.MedicalReceipt.Time = TimeComboBox.Text;
+            }
+            
 
             MedicalReceiptController.Instance.Update(selectedMedicalReport.MedicalReceipt);
             //dodao

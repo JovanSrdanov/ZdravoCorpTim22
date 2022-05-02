@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="OpenReport" Height="768" Width="1024" Closed="OpenReportClosed">
+        Title="OpenReport" Height="768" Width="1024" Closed="OpenReportClosed" ResizeMode="NoResize">
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="58" Margin="36,22,0,0" Stroke="MediumPurple" VerticalAlignment="Top" Width="837" StrokeThickness="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="435,24,0,0" TextWrapping="Wrap" Text="Zdravo Corp" VerticalAlignment="Top"
@@ -47,5 +47,6 @@
         </ComboBox>
         <DatePicker x:Name="EndDateDatePicker" HorizontalAlignment="Left" Margin="552,354,0,0" VerticalAlignment="Top"
                     FontSize="18"/>
+        <WindowsFormsHost HorizontalAlignment="Left" Height="100" Margin="240,200,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHome" Height="768" Width="1024" Closed="DoctorHomeClose">
+        Title="DoctorHome" Height="768" Width="1024" Closed="DoctorHomeClose" ResizeMode="NoResize">
     <Grid>
         <ComboBox x:Name="SelectDoctorCBOX" HorizontalAlignment="Left" Margin="360,244,0,0" VerticalAlignment="Top" Width="249" DisplayMemberPath="Name"
                   SelectedIndex="0" FontSize="35">
