@@ -1,16 +1,12 @@
 [
   {
     "Id": 0,
-    "BloodType": 0,
-    "AllergiesList": [],
-    "ConditionList": [
-      "Doc Pac Lek1",
-      "Doc Pac Lek2",
-      "Doc Pac Lek3",
-      "Stefan Pac Lek1",
-      "Dijagnoza"
+    "BloodType": 5,
+    "AllergiesList": [
+      "Crustaceans"
     ],
-    "Patient": 0
+    "ConditionList": null,
+    "Patient": 2
   },
   {
     "Id": 1,

@@ -9,7 +9,7 @@
     "Phone": "",
     "Gender": 0,
     "Id": 0,
-    "Address": 1
+    "Address": 4
   },
   {
     "Name": "Stefan",
@@ -31,8 +31,20 @@
     "Password": "4",
     "Birthday": "2022-04-26T00:00:00+02:00",
     "Phone": "",
-    "Gender": 0,
+    "Gender": 1,
     "Id": 2,
-    "Address": 3
+    "Address": 5
+  },
+  {
+    "Name": "xdzvfbx",
+    "Surname": null,
+    "Email": null,
+    "Jmbg": null,
+    "Password": null,
+    "Birthday": "0001-01-01T00:00:00",
+    "Phone": null,
+    "Gender": 0,
+    "Id": 3,
+    "Address": null
   }
 ]
