@@ -1,7 +1,5 @@
-
-
-using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
@@ -22,6 +20,16 @@ namespace Model
             Room = room;
             Patient = patient;
             Doctor = doctor;
+        }
+
+        public MedicalAppointment(MedicalAppointmentStruct medicalAppointmentStruct)
+        {
+            Id = medicalAppointmentStruct.Id;
+            Type = medicalAppointmentStruct.Type;
+            Interval = medicalAppointmentStruct.Interval;
+            Room = medicalAppointmentStruct.Room;
+            Patient = medicalAppointmentStruct.Patient;
+            Doctor = medicalAppointmentStruct.Doctor;
         }
 
         [JsonConstructor]

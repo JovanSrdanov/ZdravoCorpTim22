@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Windows;
 
@@ -9,10 +10,15 @@ namespace ZdravoCorpAppTim22.View.Secretary
     /// </summary>
     public partial class SecretarySchedule : Window
     {
-        public SecretarySchedule()
+        private SecretaryHome SecretaryHome;
+        public SecretarySchedule(SecretaryHome secretaryHome)
         {
             InitializeComponent();
+            SecretaryHome = secretaryHome;
             datumPiker.DisplayDateStart = System.DateTime.Today;
+            comboBoxDoctor.ItemsSource = DoctorController.Instance.GetAll();
+            comboBoxPatient.ItemsSource = PatientController.Instance.GetAll();
+            comboBoxAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
@@ -48,7 +54,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            SecretaryHome.Show();
+            this.Close();
+        }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            SecretaryHome.Show();
         }
     }
 }

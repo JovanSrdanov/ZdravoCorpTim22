@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Windows;
 
@@ -29,11 +30,22 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             InitializeComponent();
             this.appointmentPreferences = appointmentPreferences;
+
+            dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(this.appointmentPreferences);
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dataGridSuggestedMedicalAppointments.SelectedItem != null)
+            {
+                MedicalAppointment medicalAppointmentTemp = new MedicalAppointment((Model.MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem);
+                MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Must select appointment from list!");
+            }
         }
     }
 }

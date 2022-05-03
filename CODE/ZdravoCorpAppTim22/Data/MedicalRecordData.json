@@ -1,12 +1,12 @@
 [
   {
     "Id": 0,
-    "BloodType": 5,
+    "BloodType": 1,
     "AllergiesList": [
-      "Crustaceans"
+      "Eggs"
     ],
     "ConditionList": null,
-    "Patient": 2
+    "Patient": 4
   },
   {
     "Id": 1,

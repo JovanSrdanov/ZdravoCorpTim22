@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Utility;
-using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
@@ -150,5 +149,10 @@ namespace Model
         //public MedicalRecord MedicalRecord { get; set; }
         //dodao za serijalizaciju medical rekorda
 
+
+        public override string ToString()
+        {
+            return Name + " " + Surname + " " + Jmbg;
+        }
     }
 }

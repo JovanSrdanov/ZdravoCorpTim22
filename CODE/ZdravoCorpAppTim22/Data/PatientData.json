@@ -33,11 +33,11 @@
     "Phone": "",
     "Gender": 1,
     "Id": 2,
-    "Address": 5
+    "Address": 6
   },
   {
     "Name": "xdzvfbx",
-    "Surname": null,
+    "Surname": "THIS IS EMERGENCY ACCOUNT",
     "Email": null,
     "Jmbg": null,
     "Password": null,
@@ -46,5 +46,17 @@
     "Gender": 0,
     "Id": 3,
     "Address": null
+  },
+  {
+    "Name": "Luka",
+    "Surname": "Pikula",
+    "Email": "lukapikula@gmail.com",
+    "Jmbg": "2401001810024",
+    "Password": "MirkoCemes",
+    "Birthday": "2001-01-01T00:00:00",
+    "Phone": "0631588236",
+    "Gender": 0,
+    "Id": 4,
+    "Address": 8
   }
 ]
