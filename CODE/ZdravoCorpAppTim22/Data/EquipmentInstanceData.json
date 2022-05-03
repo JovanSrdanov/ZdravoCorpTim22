@@ -1,17 +1,17 @@
 [
   {
     "Id": 0,
-    "Name": "Stolice",
-    "Type": 1
-  },
-  {
-    "Id": 1,
-    "Name": "Kreveti",
+    "Name": "stolice",
     "Type": 1
   },
   {
     "Id": 2,
     "Name": "cons",
     "Type": 0
+  },
+  {
+    "Id": 3,
+    "Name": "kreveti",
+    "Type": 1
   }
 ]

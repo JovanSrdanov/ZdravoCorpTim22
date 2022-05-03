@@ -60,7 +60,7 @@ namespace Service
                     }
                 }
             }
-            try
+            if (App.Current != null)
             {
                 App.Current.Dispatcher.Invoke(delegate
                 {
@@ -88,13 +88,10 @@ namespace Service
                         {
                             EquipmentService.Instance.DeleteByID(eq.Id);
                         }
+                        item.RemoveAllEquipment();
                         DeleteByID(item.Id);
                     }
                 });
-            }
-            catch (NullReferenceException e)
-            {
-                Debug.WriteLine("Exception");
             }
         }
     }

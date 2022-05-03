@@ -1,16 +1,5 @@
 [
   {
-    "Id": 1,
-    "Type": 1,
-    "Interval": {
-      "Start": "2022-05-04T08:30:00",
-      "End": "2022-05-04T09:00:00"
-    },
-    "Room": 2,
-    "Patient": 0,
-    "Doctor": 1
-  },
-  {
     "Id": 2,
     "Type": 2,
     "Interval": {
@@ -42,5 +31,16 @@
     "Room": 3,
     "Patient": 2,
     "Doctor": 1
+  },
+  {
+    "Id": 5,
+    "Type": 1,
+    "Interval": {
+      "Start": "2022-05-05T07:00:00",
+      "End": "2022-05-05T07:30:00"
+    },
+    "Room": 4,
+    "Patient": 0,
+    "Doctor": 0
   }
 ]

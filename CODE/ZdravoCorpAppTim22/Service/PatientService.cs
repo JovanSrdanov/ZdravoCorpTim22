@@ -45,7 +45,7 @@ namespace Service
             }
             else
             {
-                try
+                if (App.Current != null)
                 {
                     App.Current.Dispatcher.Invoke(delegate
                     {
@@ -106,10 +106,6 @@ namespace Service
                             }
                         }
                     });
-                }
-                catch (NullReferenceException e)
-                {
-                    Debug.WriteLine("Exception");
                 }
             }
         }

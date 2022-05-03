@@ -45,7 +45,7 @@ namespace ZdravoCorpAppTim22.Service
                     }
                 }
             }
-            try
+            if (App.Current != null)
             {
                 App.Current.Dispatcher.Invoke(delegate
                 {
@@ -63,9 +63,6 @@ namespace ZdravoCorpAppTim22.Service
                         Instance.DeleteByID(item.Id);
                     }
                 });
-            }catch(NullReferenceException e)
-            {
-                Debug.WriteLine("Exception");
             }
         }
     }
