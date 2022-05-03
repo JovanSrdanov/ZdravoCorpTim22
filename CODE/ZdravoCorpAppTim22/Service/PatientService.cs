@@ -1,4 +1,4 @@
-using Model;
+﻿using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -67,12 +67,12 @@ namespace Service
 
                         if (DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-30) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-5))
                         {
-                            string message = "Podsetnik za terapiju:\n\nRazlog terapije: ";
+                            string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
                             message += medicalReceipt.TherapyPurpose;
                             message += "\n\n";
 
-                            message += "Svrha terapije: ";
-                            message += medicalReceipt.TherapyPurpose;
+                            message += "Način upotrebe: ";
+                            message += medicalReceipt.AdditionalInstructions;
                             message += "\n\n";
 
                             message += "Lek: ";
