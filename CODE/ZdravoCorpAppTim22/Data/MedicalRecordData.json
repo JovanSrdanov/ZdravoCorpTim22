@@ -4,10 +4,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "dsad 15123 123",
-      "stefan pac 2",
-      "Stefan Pac",
-      "Doc Pac"
+      "Doc Pac Rep 1",
+      "Stefan Pac Rep 1"
     ],
     "Patient": 0
   },
@@ -16,7 +14,9 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Stefan Stefan"
+      "Doc Stefan Rep 1",
+      "Stefan Stefan Rep 1",
+      "test"
     ],
     "Patient": 1
   },
@@ -25,7 +25,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Stefan 1"
+      "Doc 1 Rep 1",
+      "Stefan 1 Rep 1"
     ],
     "Patient": 2
   }
