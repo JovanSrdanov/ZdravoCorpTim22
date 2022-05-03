@@ -60,6 +60,7 @@
                                 Margin="0,18,0,0"
                                 HorizontalAlignment="Left"
                                 Background="Green"
+                                Click="RateZdravoCorp_Click"
                                 Content="Ostavite recenziju bolnice"
                                 Foreground="White" />
                         </StackPanel>
@@ -96,7 +97,7 @@
                         FontWeight="Bold" />
 
                     <DataGrid
-                        x:Name="DataGrid"
+                        x:Name="DataGridAppointment"
                         Height="300"
                         Margin="42,42,42,42"
                         VerticalAlignment="Top"
@@ -179,15 +180,43 @@
                 <TabItem.Header>
                     <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
                 </TabItem.Header>
-                <Grid Background="White">
+                <StackPanel Background="White" Orientation="Vertical">
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
                         Content="Podsetnik"
                         FontSize="36"
                         FontWeight="Bold" />
-                </Grid>
+
+                    <DataGrid
+                        x:Name="DataGridReciepts"
+                        Height="300"
+                        Margin="42,42,42,42"
+                        VerticalAlignment="Top"
+                        AutoGenerateColumns="False"
+                        CanUserResizeColumns="False"
+                        ColumnWidth="*"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding Source=MedicalAppointmentsList}"
+                        SelectionMode="Single"
+                        VerticalScrollBarVisibility="Visible">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Binding="{Binding TherapyPurpose}" Header="Svrha terapije" />
+                            <DataGridTextColumn Binding="{Binding EndDate, StringFormat=\{0:dd.MM.yyyy\}}" Header="Datum završetka terpaije" />
+                            <DataGridTextColumn Binding="{Binding Time}" Header="Vreme koznumiranja" />
+                            <DataGridTextColumn Binding="{Binding Medicine.Name}" Header="Lek" />
+                            <DataGridTextColumn Binding="{Binding AdditionalInstructions}" Header="Način upotrebe" />
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </StackPanel>
+
             </TabItem>
             <TabItem>
                 <TabItem.Header>

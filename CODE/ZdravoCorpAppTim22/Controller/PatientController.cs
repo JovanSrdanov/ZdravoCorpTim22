@@ -22,5 +22,10 @@ namespace Controller
                 return instance;
             }
         }
+
+        public void DeamonMethod()
+        {
+            PatientService.Instance.DaemonMethod();
+        }
     }
 }

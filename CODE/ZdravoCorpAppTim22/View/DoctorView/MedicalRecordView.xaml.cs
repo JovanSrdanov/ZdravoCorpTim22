@@ -98,6 +98,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (MedicalReport medicalReport in newlyCreatedReports)
                 {
+                    MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
                     MedicalReportController.Instance.DeleteByID(medicalReport.Id);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
                 }

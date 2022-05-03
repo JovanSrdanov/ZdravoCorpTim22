@@ -11,6 +11,7 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public DateTime EndDate { get; set; }
+        public DateTime NotifyNextDateTime { get; set; }
         public string Time { get; set; }
         public string AdditionalInstructions { get; set; }
         public string TherapyPurpose { get; set; }
@@ -45,11 +46,19 @@ namespace ZdravoCorpAppTim22.Model
         {
             EndDate = endDate;
             Time = time;
-            Medicine = medicine;
+            
             AdditionalInstructions = additionalInstructions;
             TherapyPurpose = therapyPurpose;
             MedicalRecord = medicalRecord;
-         }
+
+            var parts = time.Split(':');
+
+            NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(parts[0]),int.Parse(parts[1]),0);
+
+            Medicine = medicine;
+
+
+        }
 
         [JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord medicalRecord;

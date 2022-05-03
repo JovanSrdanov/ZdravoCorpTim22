@@ -49,6 +49,7 @@ namespace ZdravoCorpAppTim22
                 Thread.Sleep(1000);
                 RenovationController.Instance.DaemonMethod();
                 EquipmentRelocationController.Instance.DaemonMethod();
+                PatientController.Instance.DeamonMethod();
             }
         }
 

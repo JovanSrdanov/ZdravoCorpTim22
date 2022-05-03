@@ -2,15 +2,41 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Utility;
-using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
-        [JsonIgnore]
+        
         //[JsonConverter(typeof(MedicalRecordToIDConverter))]
-        public MedicalRecord medicalRecord { get; set; }
+
+        [JsonIgnore]
+        //[JsonIgnore]
+        public MedicalRecord medicalRecord;
+
+        [JsonIgnore]
+        public MedicalRecord MedicalRecord
+        {
+            get
+            {
+                return medicalRecord;
+            }
+            set
+            {
+                if (this.medicalRecord == null || !this.medicalRecord.Equals(value))
+                {
+                    if (this.medicalRecord != null)
+                    {
+                        this.medicalRecord = null;
+                    }
+                    if (value != null)
+                    {
+                        this.medicalRecord = value;
+                        this.medicalRecord.Patient = this;
+                    }
+                }
+            }
+        }
         public bool IsAvailable(Interval interval)
         {
             if (medicalAppointment == null)
