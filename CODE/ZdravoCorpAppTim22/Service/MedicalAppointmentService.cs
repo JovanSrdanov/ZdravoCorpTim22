@@ -35,12 +35,12 @@ namespace Service
             int jumpToNextAppointmetnTime = Constants.Constants.NEXT_TIMESLOT_START_CHECK;
             int durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
 
-            if (enteredAppointmentType == AppointmentType.examination)
+            if (enteredAppointmentType == AppointmentType.Examination)
             {
                 durationOfAppointment = Constants.Constants.DURATION_EXAMINATION;
             }
 
-            if (enteredAppointmentType == AppointmentType.operation)
+            if (enteredAppointmentType == AppointmentType.Operation)
             {
                 durationOfAppointment = Constants.Constants.DURATION_OPERATION;
             }
@@ -48,7 +48,7 @@ namespace Service
             List<Doctor> suggestedDoctors = new List<Doctor>(DoctorService.Instance.GetAll());
             List<Room> suggestetRooms = new List<Room>(RoomService.Instance.GetAll());
 
-            if (enteredAppointmentType == AppointmentType.operation)
+            if (enteredAppointmentType == AppointmentType.Operation)
             {
                 List<Doctor> temporaryDoctors = new List<Doctor>();
 
@@ -169,12 +169,12 @@ namespace Service
             int jumpToNextAppointmetnTime = Constants.Constants.NEXT_TIMESLOT_START_CHECK;
             int durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
 
-            if (type == AppointmentType.examination)
+            if (type == AppointmentType.Examination)
             {
                 durationOfAppointment = Constants.Constants.DURATION_EXAMINATION;
             }
 
-            if (type == AppointmentType.operation)
+            if (type == AppointmentType.Operation)
             {
                 durationOfAppointment = Constants.Constants.DURATION_OPERATION;
             }
