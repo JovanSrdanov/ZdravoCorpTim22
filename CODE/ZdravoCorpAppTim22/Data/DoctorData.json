@@ -7,29 +7,11 @@
         "BloodType": 0,
         "AllergiesList": [],
         "ConditionList": [
-          "Doc Pac Lek1",
-          "Doc Pac Lek2",
-          "Doc Pac Lek3"
+          "dsad 15123 123",
+          "stefan pac 2",
+          "Stefan Pac"
         ],
         "Patient": 0
-      },
-      {
-        "Id": 1,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Stefan Lek1"
-        ],
-        "Patient": 1
-      },
-      {
-        "Id": 2,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc 1 Lek1"
-        ],
-        "Patient": 2
       }
     ],
     "Name": "doc",
@@ -51,11 +33,9 @@
         "BloodType": 0,
         "AllergiesList": [],
         "ConditionList": [
-          "Doc Pac Lek1",
-          "Doc Pac Lek2",
-          "Doc Pac Lek3",
-          "",
-          "Stefan Pac Lek1"
+          "dsad 15123 123",
+          "stefan pac 2",
+          "Stefan Pac"
         ],
         "Patient": 0
       },
@@ -64,8 +44,7 @@
         "BloodType": 0,
         "AllergiesList": [],
         "ConditionList": [
-          "Doc Stefan Lek1",
-          "Stefan Stefan Lek2"
+          "Stefan Stefan"
         ],
         "Patient": 1
       },
@@ -74,8 +53,7 @@
         "BloodType": 0,
         "AllergiesList": [],
         "ConditionList": [
-          "Doc 1 Lek1",
-          "Stefan 1 Lek3"
+          "Stefan 1"
         ],
         "Patient": 2
       }

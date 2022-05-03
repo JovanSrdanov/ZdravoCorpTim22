@@ -85,6 +85,17 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 additionalInstructions = AdditionalInstructionsTextBox.Text;
             }
 
+            string therapyPurpose;
+
+            if (PurposeComboBox.Text == null)
+            {
+                therapyPurpose = "";
+            }
+            else
+            {
+                therapyPurpose = PurposeComboBox.Text;
+            }
+
             //recept
             if (MedicationComboBox.SelectedItem == null || EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
             {
@@ -110,10 +121,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicineList.Add(medicine);
 
             //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
-            MedicalRecordView.medicineObservableList.Clear();
+            if (MedicalRecordView.medicineObservableList.Count() > 0)
+            {
+                MedicalRecordView.medicineObservableList.Clear();
+            }
             MedicalRecordView.medicineObservableList.Add(medicine);
             //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
-            MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicineList, additionalInstructions);
+            MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
             MedicalReceiptController.Instance.Create(medicalReceipt);
 
             medicalReport.MedicalReceipt = medicalReceipt;
@@ -129,6 +143,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medRec.MedicalReport.Add(medicalReport);
             MedicalRecordView.medRepList.Add(medicalReport);
             MedicalRecordController.Instance.Update(medRec);
+
+            medicalReceipt.MedicalRecord = medRec;
+            MedicalReceiptController.Instance.Update(medicalReceipt);
 
             MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
