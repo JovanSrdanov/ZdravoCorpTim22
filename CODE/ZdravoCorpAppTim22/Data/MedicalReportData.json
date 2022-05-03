@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 0,
+    "DoctorID": 0,
+    "Anamnesis": "dasdas",
+    "Diagnosis": "adsas",
+    "ReportDate": "2022-05-03T18:05:24.2643904+02:00",
+    "MedicalReceipt": 0,
+    "MedicalRecord": 0
+  }
+]

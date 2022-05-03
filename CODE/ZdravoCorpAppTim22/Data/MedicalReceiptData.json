@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 0,
+    "EndDate": "2022-05-05T00:00:00",
+    "NotifyNextDateTime": "2022-03-06T18:37:00",
+    "Time": "18:37",
+    "AdditionalInstructions": "necu",
+    "TherapyPurpose": "da ga pije",
+    "Medicine": {
+      "Id": 1,
+      "Name": "lek2",
+      "Ingredients": "kokakola"
+    },
+    "MedicalRecord": 0
+  }
+]

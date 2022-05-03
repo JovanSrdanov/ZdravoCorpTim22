@@ -1,6 +1,15 @@
 [
   {
     "DoctorType": 0,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": ["adsas"],
+        "Patient": 0
+      }
+    ],
     "Name": "doc",
     "Surname": "docprez",
     "Email": "",
@@ -14,6 +23,7 @@
   },
   {
     "DoctorType": 1,
+    "MedicalRecord": [],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",

@@ -11,7 +11,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
     /// </summary>
     public partial class PatientSelectionForTemporaryPurpose : Window
     {
-        public static Patient LoggedPatient { get; set; }
+        public static Patient LoggedPatient { get; set; } = null;
         public ObservableCollection<Patient> PatientList { get; set; }
         public static PatientController patientController;
         public List<Patient> patients;
@@ -21,7 +21,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             InitializeComponent();
             patients = new List<Patient>(PatientController.Instance.GetAll());
             PatientList = new ObservableCollection<Patient>(patients);
-            SelectPatientCB.ItemsSource = PatientList;
+            SelectPatientCB.ItemsSource = PatientList;         
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

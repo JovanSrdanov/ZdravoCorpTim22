@@ -15,6 +15,7 @@ namespace Model
         public ObservableCollection<string> AllergiesList { get; set; }
         public ObservableCollection<string> ConditionList { get; set; }
 
+
         [JsonIgnore]
         public System.Collections.Generic.List<MedicalReceipt> medicalReceipt;
         [JsonIgnore]

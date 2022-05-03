@@ -30,5 +30,12 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             mainWindow.Show();
         }
+
+        private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryScheduleOptions secretarySchedule = new SecretaryScheduleOptions(this);
+            secretarySchedule.Show();
+            this.Hide();
+        }
     }
 }
