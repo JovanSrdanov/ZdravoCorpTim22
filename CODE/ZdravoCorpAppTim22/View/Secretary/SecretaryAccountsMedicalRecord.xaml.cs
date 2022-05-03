@@ -1,5 +1,4 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -83,7 +82,6 @@ namespace ZdravoCorpAppTim22.View.Secretary
             {
                 case MessageBoxResult.Yes:
                     SaveMedicalRecord();
-                    MedicalRecordController.Instance.Update(MedicalRecord);
                     this.Close();
                     break;
                 case MessageBoxResult.No:

@@ -20,5 +20,10 @@ namespace Service
                 return instance;
             }
         }
+
+        public Patient GetPatient(Patient patient)
+        {
+            return PatientRepository.Instance.GetPatient(patient);
+        }
     }
 }

@@ -167,7 +167,9 @@ namespace Service
             int hour = Constants.Constants.WORK_DAY_START_TIME;
             int min = 0;
             //Time fixing
+            if (appointmentPreferences.enteredDateTime.Date == DateTime.Today.Date)
             {
+                Console.WriteLine("app " + appointmentPreferences.enteredDateTime.Date + "  today " + DateTime.Today.Date);
                 if (hour <= DateTime.Now.Hour)
                 {
                     hour = DateTime.Now.Hour;

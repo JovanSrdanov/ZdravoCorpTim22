@@ -12,6 +12,11 @@ namespace Model
         public MedicalRecord medicalRecord { get; set; }
         public bool IsAvailable(Interval interval)
         {
+            if (Password == null)
+            {
+                return true;
+            }
+
             if (medicalAppointment == null)
                 return true;
             else

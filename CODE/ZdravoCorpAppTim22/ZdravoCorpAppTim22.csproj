@@ -306,6 +306,9 @@
     <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
       <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryChangeSchedule.xaml.cs">
+      <DependentUpon>SecretaryChangeSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryChooseAppointment.xaml.cs">
       <DependentUpon>SecretaryChooseAppointment.xaml</DependentUpon>
     </Compile>
@@ -317,6 +320,9 @@
     </Compile>
     <Compile Include="View\Secretary\SecretarySchedule.xaml.cs">
       <DependentUpon>SecretarySchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryScheduleOptions.xaml.cs">
+      <DependentUpon>SecretaryScheduleOptions.xaml</DependentUpon>
     </Compile>
     <Page Include="View\DoctorView\CreateReport.xaml">
       <SubType>Designer</SubType>
@@ -497,6 +503,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Secretary\SecretaryChangeSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Secretary\SecretaryChooseAppointment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -510,6 +520,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Secretary\SecretarySchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryScheduleOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,7 +33,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
         {
-            SecretarySchedule secretarySchedule = new SecretarySchedule(this);
+            SecretaryScheduleOptions secretarySchedule = new SecretaryScheduleOptions(this);
             secretarySchedule.Show();
             this.Hide();
         }

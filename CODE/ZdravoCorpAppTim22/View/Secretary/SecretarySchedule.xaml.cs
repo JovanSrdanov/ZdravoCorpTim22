@@ -10,11 +10,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
     /// </summary>
     public partial class SecretarySchedule : Window
     {
-        private SecretaryHome SecretaryHome;
-        public SecretarySchedule(SecretaryHome secretaryHome)
+        private SecretaryScheduleOptions secretaryScheduleOptions;
+        public SecretarySchedule(SecretaryScheduleOptions secretaryScheduleOptions)
         {
             InitializeComponent();
-            SecretaryHome = secretaryHome;
+            this.secretaryScheduleOptions = secretaryScheduleOptions;
             datumPiker.DisplayDateStart = System.DateTime.Today;
             comboBoxDoctor.ItemsSource = DoctorController.Instance.GetAll();
             comboBoxPatient.ItemsSource = PatientController.Instance.GetAll();
@@ -54,13 +54,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryHome.Show();
+            secretaryScheduleOptions.Show();
             this.Close();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            SecretaryHome.Show();
+            secretaryScheduleOptions.Show();
         }
     }
 }

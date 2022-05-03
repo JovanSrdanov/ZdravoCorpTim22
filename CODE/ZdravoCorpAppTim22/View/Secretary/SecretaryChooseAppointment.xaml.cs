@@ -36,11 +36,21 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
+
+
             if (dataGridSuggestedMedicalAppointments.SelectedItem != null)
             {
-                MedicalAppointment medicalAppointmentTemp = new MedicalAppointment((Model.MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem);
-                MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
-                this.Close();
+                MessageBoxResult result = MessageBox.Show("Are you sure?", "Edit this appointment", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        MedicalAppointment medicalAppointmentTemp = new MedicalAppointment((Model.MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem);
+                        MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
+                        this.Close();
+                        break;
+                    case MessageBoxResult.No:
+                        return;
+                }
             }
             else
             {
