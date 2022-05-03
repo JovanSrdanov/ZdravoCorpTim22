@@ -25,5 +25,10 @@ namespace Controller
         {
             return PatientService.Instance.GetPatient(patient);
         }
+        
+        public void DeamonMethod()
+        {
+            PatientService.Instance.DaemonMethod();
+        }
     }
 }

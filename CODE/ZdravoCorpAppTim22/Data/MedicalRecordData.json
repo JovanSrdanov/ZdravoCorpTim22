@@ -1,35 +1,11 @@
 [
   {
     "Id": 0,
-    "BloodType": 1,
-    "AllergiesList": [
-      "Eggs"
-    ],
-    "ConditionList": null,
-    "Patient": 4
-  },
-  {
-    "Id": 1,
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "Doc Stefan Lek1",
-      "Stefan Stefan Lek2 dsadsadsad",
-      "dsad"
+      "adsas"
     ],
-    "Patient": 1
-  },
-  {
-    "Id": 2,
-    "BloodType": 0,
-    "AllergiesList": [],
-    "ConditionList": [
-      "Doc 1 Lek1",
-      "Stefan 1 Lek3",
-      "dsad",
-      "Stefan 1 dsadsa \u0060",
-      "Stefan 1 \u0060  sad"
-    ],
-    "Patient": 2
+    "Patient": 0
   }
 ]

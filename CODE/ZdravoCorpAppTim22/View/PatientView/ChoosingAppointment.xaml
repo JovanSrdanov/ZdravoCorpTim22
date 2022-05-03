@@ -7,9 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ChoosingAppointment1"
     Title="Biranje termina"
-    Width="703.119"
-    Height="338"
+    Width="700"
+    Height="350"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
+    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
@@ -17,7 +18,7 @@
 
         <DataGrid
             x:Name="dataGridSuggestedMedicalAppointments"
-            Height="225"
+            Height="250"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"

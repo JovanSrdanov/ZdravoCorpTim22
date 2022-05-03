@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
@@ -13,6 +14,68 @@ namespace Model
         //dodao
         public ObservableCollection<string> AllergiesList { get; set; }
         public ObservableCollection<string> ConditionList { get; set; }
+
+
+        [JsonIgnore]
+        public System.Collections.Generic.List<MedicalReceipt> medicalReceipt;
+        [JsonIgnore]
+        public System.Collections.Generic.List<MedicalReceipt> MedicalReceipt
+        {
+            get
+            {
+                if (medicalReceipt == null)
+                    medicalReceipt = new System.Collections.Generic.List<MedicalReceipt>();
+                return medicalReceipt;
+            }
+            set
+            {
+                RemoveAllMedicalReceipt();
+                if (value != null)
+                {
+                    foreach (MedicalReceipt oMedicalReceipt in value)
+                        AddMedicalReceipt(oMedicalReceipt);
+                }
+            }
+        }
+
+        public void AddMedicalReceipt(MedicalReceipt newMedicalReceipt)
+        {
+            if (newMedicalReceipt == null)
+                return;
+            if (this.medicalReceipt == null)
+                this.medicalReceipt = new System.Collections.Generic.List<MedicalReceipt>();
+            if (!this.medicalReceipt.Contains(newMedicalReceipt))
+            {
+                this.medicalReceipt.Add(newMedicalReceipt);
+                newMedicalReceipt.MedicalRecord = this;
+            }
+        }
+
+        public void RemoveMedicalReceipt(MedicalReceipt oldMedicalReceipt)
+        {
+            if (oldMedicalReceipt == null)
+                return;
+            if (this.medicalReceipt != null)
+                if (this.medicalReceipt.Contains(oldMedicalReceipt))
+                {
+                    this.medicalReceipt.Remove(oldMedicalReceipt);
+                    oldMedicalReceipt.MedicalRecord = null;
+                }
+        }
+
+        public void RemoveAllMedicalReceipt()
+        {
+            if (medicalReceipt != null)
+            {
+                System.Collections.ArrayList tmpMedicalReceipt = new System.Collections.ArrayList();
+                foreach (MedicalReceipt oldMedicalReceipt in medicalReceipt)
+                    tmpMedicalReceipt.Add(oldMedicalReceipt);
+                medicalReceipt.Clear();
+                foreach (MedicalReceipt oldMedicalReceipt in tmpMedicalReceipt)
+                    oldMedicalReceipt.MedicalRecord = null;
+                tmpMedicalReceipt.Clear();
+            }
+        }
 
         [JsonIgnore]
         public System.Collections.Generic.List<MedicalReport> medicalReport;

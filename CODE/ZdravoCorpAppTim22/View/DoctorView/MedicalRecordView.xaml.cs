@@ -47,9 +47,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             if (medRec == null)     //pacijent nema medicinskki karton
             {
-                MedicalRecord newMedRecord = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
+                medRec = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
                     new ObservableCollection<String>(), new ObservableCollection<String>());
-                MedicalRecordController.Instance.Create(newMedRecord);
+                MedicalRecordController.Instance.Create(medRec);
             }
 
             //selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID));
@@ -66,11 +66,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
 
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
+            medicineObservableList = new ObservableCollection<Medicine>();
 
             //za lekove ne radi
             if (selectedPatient.medicalRecord.MedicalReport.Count > 0)      
             {
-                medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
+                /*medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
+                MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
+                MedicationsListBox.ItemsSource = medicineObservableList;*/ 
+                medicineObservableList.Add(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
                 MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
                 MedicationsListBox.ItemsSource = medicineObservableList;
             }
@@ -94,6 +98,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (MedicalReport medicalReport in newlyCreatedReports)
                 {
+                    MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
                     MedicalReportController.Instance.DeleteByID(medicalReport.Id);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
                 }

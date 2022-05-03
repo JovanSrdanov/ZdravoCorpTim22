@@ -1,18 +1,24 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace ZdravoCorpAppTim22.Model
 {
     public class MedicalReceipt : IHasID
     {
         public int Id { get; set; }
-        public DateTime EndDate { get; set; }   
-        public string Time { get; set; } 
+        public DateTime EndDate { get; set; }
+        public DateTime NotifyNextDateTime { get; set; }
+        public string Time { get; set; }
         public string AdditionalInstructions { get; set; }
+        public string TherapyPurpose { get; set; }
 
-        public ObservableCollection<Medicine> medicine;
+        public Medicine Medicine {get ; set;}
+
+        /*public ObservableCollection<Medicine> medicine;
         public ObservableCollection<Medicine> Medicine
         {
             get
@@ -30,20 +36,60 @@ namespace ZdravoCorpAppTim22.Model
                         AddMedicine(oMedicine);
                 }
             }
-        }
+        }*/
 
         [JsonConstructor]
         public MedicalReceipt() { }
 
-        public MedicalReceipt(DateTime endDate, string time, ObservableCollection<Medicine> medicine, string additionalInstructions)
+        public MedicalReceipt(DateTime endDate, string time, Medicine medicine, string additionalInstructions, string therapyPurpose, 
+            MedicalRecord medicalRecord)
         {
             EndDate = endDate;
             Time = time;
-            Medicine = medicine;
+            
             AdditionalInstructions = additionalInstructions;
-         }
+            TherapyPurpose = therapyPurpose;
+            MedicalRecord = medicalRecord;
 
-        public void AddMedicine(Medicine newMedicine)
+            var parts = time.Split(':');
+
+            NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(parts[0]),int.Parse(parts[1]),0);
+
+            Medicine = medicine;
+
+
+        }
+
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
+        public MedicalRecord medicalRecord;
+
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
+        public MedicalRecord MedicalRecord
+        {
+            get
+            {
+                return medicalRecord;
+            }
+            set
+            {
+                if (this.medicalRecord == null || !this.medicalRecord.Equals(value))
+                {
+                    if (this.medicalRecord != null)
+                    {
+                        MedicalRecord oldMedicalRecord = this.medicalRecord;
+                        this.medicalRecord = null;
+                        oldMedicalRecord.RemoveMedicalReceipt(this);
+                    }
+                    if (value != null)
+                    {
+                        this.medicalRecord = value;
+                        this.medicalRecord.AddMedicalReceipt(this);
+                    }
+                }
+            }
+        }
+
+        /*public void AddMedicine(Medicine newMedicine)
         {
             if (newMedicine == null)
                 return;
@@ -65,6 +111,6 @@ namespace ZdravoCorpAppTim22.Model
         {
             if (medicine != null)
                 medicine.Clear();
-        }
+        }*/
     }
 }

@@ -7,29 +7,9 @@
         "BloodType": 0,
         "AllergiesList": [],
         "ConditionList": [
-          "Doc Pac Lek1",
-          "Doc Pac Lek2",
-          "Doc Pac Lek3"
+          "adsas"
         ],
         "Patient": 0
-      },
-      {
-        "Id": 1,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Stefan Lek1"
-        ],
-        "Patient": 1
-      },
-      {
-        "Id": 2,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc 1 Lek1"
-        ],
-        "Patient": 2
       }
     ],
     "Name": "doc",
@@ -45,41 +25,7 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [
-      {
-        "Id": 0,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Pac Lek1",
-          "Doc Pac Lek2",
-          "Doc Pac Lek3",
-          "",
-          "Stefan Pac Lek1"
-        ],
-        "Patient": 0
-      },
-      {
-        "Id": 1,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Stefan Lek1",
-          "Stefan Stefan Lek2"
-        ],
-        "Patient": 1
-      },
-      {
-        "Id": 2,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc 1 Lek1",
-          "Stefan 1 Lek3"
-        ],
-        "Patient": 2
-      }
-    ],
+    "MedicalRecord": [],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
