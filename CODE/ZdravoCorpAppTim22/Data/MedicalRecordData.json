@@ -4,29 +4,8 @@
     "BloodType": 0,
     "AllergiesList": [],
     "ConditionList": [
-      "dsad 15123 123",
-      "stefan pac 2",
-      "Stefan Pac",
-      "Doc Pac"
+      "adsas"
     ],
     "Patient": 0
-  },
-  {
-    "Id": 1,
-    "BloodType": 0,
-    "AllergiesList": [],
-    "ConditionList": [
-      "Stefan Stefan"
-    ],
-    "Patient": 1
-  },
-  {
-    "Id": 2,
-    "BloodType": 0,
-    "AllergiesList": [],
-    "ConditionList": [
-      "Stefan 1"
-    ],
-    "Patient": 2
   }
 ]

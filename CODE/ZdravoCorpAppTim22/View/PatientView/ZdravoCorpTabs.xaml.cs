@@ -3,8 +3,10 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
@@ -13,6 +15,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
     {
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
         public static MedicalAppointment MedicalAppointmentSelected { get;  set; }
+        public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get;  set; }
 
         public List<MedicalAppointment> medicalAppointments;
         public ZdravoCorpTabs()
@@ -21,7 +24,22 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
-            DataGrid.ItemsSource = MedicalAppointmentList;
+            DataGridAppointment.ItemsSource = MedicalAppointmentList;
+
+
+            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == PatientSelectionForTemporaryPurpose.LoggedPatient.Id).FirstOrDefault();
+            if (medRec == null)
+            {              
+                MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();
+            }
+            else
+            {
+            List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
+            MedicalReceiptsList = new ObservableCollection<MedicalReceipt>(MedicalReceipts);
+
+            }
+
+            DataGridReciepts.ItemsSource = MedicalReceiptsList;
 
         }
 
@@ -34,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void RemoveAppointmentPatient_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentSelected = (MedicalAppointment)DataGrid.SelectedItem;
+            MedicalAppointmentSelected = (MedicalAppointment)DataGridAppointment.SelectedItem;
             if (MedicalAppointmentSelected == null)
             {
                 return;
@@ -48,7 +66,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void ChangeAppointmentDateTime_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentSelected = (MedicalAppointment)DataGrid.SelectedItem;
+            MedicalAppointmentSelected = (MedicalAppointment)DataGridAppointment.SelectedItem;
             if (MedicalAppointmentSelected == null)
             {
                 return;
