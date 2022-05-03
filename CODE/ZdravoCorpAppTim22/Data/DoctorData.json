@@ -6,9 +6,7 @@
         "Id": 0,
         "BloodType": 0,
         "AllergiesList": [],
-        "ConditionList": [
-          "adsas"
-        ],
+        "ConditionList": ["adsas"],
         "Patient": 0
       }
     ],
