@@ -1,4 +1,5 @@
 using Model;
+using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace Repository
@@ -19,6 +20,20 @@ namespace Repository
 
                 return instance;
             }
+        }
+
+        public Patient GetPatient(Patient patient)
+        {
+            ObservableCollection<Patient> observableCollection = instance.GetAll();
+            for (int i = 0; i < observableCollection.Count; i++)
+            {
+                if (observableCollection[i] == patient)
+                {
+                    return observableCollection[i];
+                }
+            }
+
+            return null;
         }
     }
 }

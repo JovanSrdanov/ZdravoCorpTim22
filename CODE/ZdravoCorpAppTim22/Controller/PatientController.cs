@@ -1,7 +1,5 @@
 using Model;
 using Service;
-using System;
-using System.Collections.Generic;
 using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
@@ -23,6 +21,11 @@ namespace Controller
             }
         }
 
+        public Patient GetPatient(Patient patient)
+        {
+            return PatientService.Instance.GetPatient(patient);
+        }
+        
         public void DeamonMethod()
         {
             PatientService.Instance.DaemonMethod();

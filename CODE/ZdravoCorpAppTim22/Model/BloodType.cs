@@ -2,6 +2,7 @@ namespace Model
 {
     public enum BloodType
     {
+        UNKNOWN,
         A_PLUS,
         A_MINUS,
 

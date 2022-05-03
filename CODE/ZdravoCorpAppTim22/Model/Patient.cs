@@ -39,6 +39,11 @@ namespace Model
         }
         public bool IsAvailable(Interval interval)
         {
+            if (Password == null)
+            {
+                return true;
+            }
+
             if (medicalAppointment == null)
                 return true;
             else
@@ -176,5 +181,10 @@ namespace Model
         //public MedicalRecord MedicalRecord { get; set; }
         //dodao za serijalizaciju medical rekorda
 
+
+        public override string ToString()
+        {
+            return Name + " " + Surname + " " + Jmbg;
+        }
     }
 }
