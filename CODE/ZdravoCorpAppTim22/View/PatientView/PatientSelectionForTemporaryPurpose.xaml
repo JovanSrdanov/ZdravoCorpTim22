@@ -6,8 +6,9 @@
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="PatientSelectionForTemporaryPurpose"
-    Width="194.307"
-    Height="149.771"
+    Width="200"
+    Height="150"
+    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>

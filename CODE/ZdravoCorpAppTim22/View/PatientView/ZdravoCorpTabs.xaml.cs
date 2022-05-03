@@ -69,6 +69,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+            PatientSelectionForTemporaryPurpose.LoggedPatient = null;
         }
     }
 }
