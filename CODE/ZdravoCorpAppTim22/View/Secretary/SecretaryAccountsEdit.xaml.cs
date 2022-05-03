@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -487,11 +488,23 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void MedicalRecordBtn_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<MedicalRecord> medicalRecords = MedicalRecordController.Instance.GetAll();
+            for (int i = 0; i < medicalRecords.Count; i++)
+            {
+                if (medicalRecords[i].Patient == Patient)
+                {
+                    Patient.medicalRecord = medicalRecords[i];
+                    break;
+                }
+            }
+
             if (Patient.medicalRecord == null)
             {
                 Patient.medicalRecord = new MedicalRecord();
                 Patient.medicalRecord.Patient = Patient;
+                PatientController.Instance.Update(Patient);
             }
+
             SecretaryAccountsMedicalRecord secretaryAccountsMedicalRecord = new SecretaryAccountsMedicalRecord(Patient.medicalRecord);
             secretaryAccountsMedicalRecord.ShowDialog();
         }
