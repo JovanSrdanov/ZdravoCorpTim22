@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -66,6 +67,14 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
         }
 
+        public void SetMedicalReportButton(Visibility visible)
+        {
+            if (MedicalRecordBtn != null)
+            {
+                MedicalRecordBtn.Visibility = visible;
+            }
+        }
+
         public void FillData()
         {
             while (!this._contentLoaded)
@@ -101,6 +110,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                             break;
                     }
                     SetSpecialisationComboBox(Visibility.Hidden);
+                    SetMedicalReportButton(Visibility.Visible);
                     break;
                 //Manager
                 case 1:
@@ -128,6 +138,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                             break;
                     }
                     SetSpecialisationComboBox(Visibility.Hidden);
+                    SetMedicalReportButton(Visibility.Hidden);
                     break;
                 //Secretary
                 case 2:
@@ -155,6 +166,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                             break;
                     }
                     SetSpecialisationComboBox(Visibility.Hidden);
+                    SetMedicalReportButton(Visibility.Hidden);
                     break;
                 //Doctor
                 case 3:
@@ -182,6 +194,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                             break;
                     }
                     SetSpecialisationComboBox(Visibility.Visible);
+                    SetMedicalReportButton(Visibility.Hidden);
                     SpecialisationComboBox.SelectedItem = Doctor.DoctorType;
                     break;
 
@@ -471,6 +484,29 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 case MessageBoxResult.No:
                     return;
             }
+        }
+
+        private void MedicalRecordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<MedicalRecord> medicalRecords = MedicalRecordController.Instance.GetAll();
+            for (int i = 0; i < medicalRecords.Count; i++)
+            {
+                if (medicalRecords[i].Patient == Patient)
+                {
+                    Patient.medicalRecord = medicalRecords[i];
+                    break;
+                }
+            }
+
+            if (Patient.medicalRecord == null)
+            {
+                Patient.medicalRecord = new MedicalRecord();
+                Patient.medicalRecord.Patient = Patient;
+                PatientController.Instance.Update(Patient);
+            }
+
+            SecretaryAccountsMedicalRecord secretaryAccountsMedicalRecord = new SecretaryAccountsMedicalRecord(Patient.medicalRecord);
+            secretaryAccountsMedicalRecord.ShowDialog();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
     public partial class SecretaryAccountsNew : Window
     {
         private SecretaryAccounts callerScreen;
+        private MedicalRecord medicalRecordTemp;
         public SecretaryAccountsNew(SecretaryAccounts callerScreen)
         {
             InitializeComponent();
@@ -141,7 +142,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     case MessageBoxResult.Yes:
                         MessageBox.Show("New Account created!");
+                        patient.medicalRecord = medicalRecordTemp;
                         PatientController.Instance.Create(patient);
+                        PatientController.Instance.GetPatient(patient).medicalRecord.Patient = PatientController.Instance.GetPatient(patient);
+                        PatientController.Instance.Update(PatientController.Instance.GetPatient(patient));
                         break;
                     case MessageBoxResult.No:
                         return;
@@ -210,28 +214,48 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 SpecialisationLbl.Visibility = visible;
             }
         }
-
+        public void SetMedicalReportButton(Visibility visible)
+        {
+            if (MedicalRecordBtn != null)
+            {
+                MedicalRecordBtn.Visibility = visible;
+            }
+        }
         private void DoctorRB_Checked(object sender, RoutedEventArgs e)
         {
             SetSpecialisationComboBox(Visibility.Visible);
+            SetMedicalReportButton(Visibility.Hidden);
         }
 
         private void PatientRB_Checked(object sender, RoutedEventArgs e)
         {
             SetSpecialisationComboBox(Visibility.Hidden);
+            SetMedicalReportButton(Visibility.Visible);
 
         }
 
         private void SecretaryRB_Checked(object sender, RoutedEventArgs e)
         {
             SetSpecialisationComboBox(Visibility.Hidden);
+            SetMedicalReportButton(Visibility.Hidden);
 
         }
 
         private void ManagerRB_Checked(object sender, RoutedEventArgs e)
         {
             SetSpecialisationComboBox(Visibility.Hidden);
+            SetMedicalReportButton(Visibility.Hidden);
 
+        }
+
+        private void MedicalRecordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (medicalRecordTemp == null)
+            {
+                medicalRecordTemp = new MedicalRecord();
+            }
+            SecretaryAccountsMedicalRecord secretaryAccountsMedicalRecord = new SecretaryAccountsMedicalRecord(medicalRecordTemp);
+            secretaryAccountsMedicalRecord.ShowDialog();
         }
     }
 }

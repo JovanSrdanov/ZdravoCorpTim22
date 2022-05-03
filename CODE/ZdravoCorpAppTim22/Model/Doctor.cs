@@ -110,7 +110,10 @@ namespace Model
                 tmpMedicalAppointment.Clear();
             }
         }
-
+        public override string ToString()
+        {
+            return Name + " " + Surname + " " + Jmbg;
+        }
         //*********************DODAO KARTONE, NE ZABORAVI SERIJALIZACIJU**********************************
         public System.Collections.Generic.List<MedicalRecord> medicalRecord;
 

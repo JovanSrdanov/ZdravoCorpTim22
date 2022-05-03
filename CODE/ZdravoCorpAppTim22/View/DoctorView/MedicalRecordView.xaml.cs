@@ -1,4 +1,4 @@
-﻿using Controller;
+using Controller;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -68,17 +68,23 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
             medicineObservableList = new ObservableCollection<Medicine>();
 
-            //za lekove ne radi
-            if (selectedPatient.medicalRecord.MedicalReport.Count > 0)      
+            foreach (MedicalReceipt medicalReceipt in selectedPatient.medicalRecord.MedicalReceipt)
             {
+                medicineObservableList.Add(medicalReceipt.Medicine);
+            }
+
+            MedicationsListBox.ItemsSource = medicineObservableList;
+
+
+            //if (selectedPatient.medicalRecord.MedicalReport.Count > 0)      
+            //{
                 /*medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
                 MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
                 MedicationsListBox.ItemsSource = medicineObservableList;*/ 
-                medicineObservableList.Add(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
-                MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
-                MedicationsListBox.ItemsSource = medicineObservableList;
-            }
-            //za lekove ne radi
+                //medicineObservableList.Add(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
+                //MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
+                //MedicationsListBox.ItemsSource = medicineObservableList;
+            //}
 
             medRepList = new ObservableCollection<MedicalReport>(selectedPatient.medicalRecord.MedicalReport);
             PastReportsListBox.ItemsSource = medRepList; 
@@ -98,8 +104,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (MedicalReport medicalReport in newlyCreatedReports)
                 {
-                    MedicalReportController.Instance.DeleteByID(medicalReport.Id);
+                    medicineObservableList.Remove(medicalReport.MedicalReceipt.Medicine);
+                    selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
+                    MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
+                    MedicalReportController.Instance.DeleteByID(medicalReport.Id);     
                 }
 
                 newlyCreatedReports.Clear();
