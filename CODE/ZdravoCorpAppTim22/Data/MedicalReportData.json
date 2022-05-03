@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 0,
+    "DoctorID": 0,
+    "Anamnesis": "sdadsa 321 321 31",
+    "Diagnosis": "dsad 15123 123",
+    "ReportDate": "2022-05-03T12:20:56.6416552+02:00",
+    "MedicalReceipt": 0,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 1,
+    "DoctorID": 1,
+    "Anamnesis": " 34213 ",
+    "Diagnosis": "Stefan Pac",
+    "ReportDate": "2022-05-03T12:24:28.6287535+02:00",
+    "MedicalReceipt": 2,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 2,
+    "DoctorID": 0,
+    "Anamnesis": "dsadsa",
+    "Diagnosis": "Doc Pac",
+    "ReportDate": "2022-05-03T12:27:39.1809753+02:00",
+    "MedicalReceipt": 3,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "DoctorID": 1,
+    "Anamnesis": "2",
+    "Diagnosis": "Stefan Stefan",
+    "ReportDate": "2022-05-03T12:32:44.2216573+02:00",
+    "MedicalReceipt": 4,
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 4,
+    "DoctorID": 1,
+    "Anamnesis": " 23131",
+    "Diagnosis": "Stefan 1",
+    "ReportDate": "2022-05-03T12:34:20.1776758+02:00",
+    "MedicalReceipt": 5,
+    "MedicalRecord": 2
+  }
+]

@@ -1,28 +1,13 @@
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository.Generic;
-using ZdravoCorpAppTim22.Repository.FileHandlers;
 
 namespace Repository
 {
-    public class MedicalAppointmentRepository : IRepository<MedicalAppointment>
+    public class MedicalAppointmentRepository : GenericRepository<MedicalAppointment>
     {
-        public string Filename = "MedicalAppointmentData.json";
-        GenericFileHandler<MedicalAppointment> medicalAppointmentFileHandler;
-
-        List<MedicalAppointment> medicalAppointments = new List<MedicalAppointment>();
-
-        public static DoctorRepository doctorRepository;
-           
+        public static string FileName = "MedicalAppointmentData.json";
         private static MedicalAppointmentRepository instance;
-
-        private MedicalAppointmentRepository()
-        {
-            medicalAppointmentFileHandler = new GenericFileHandler<MedicalAppointment>(Filename);
-        }
-
+        private MedicalAppointmentRepository() : base(FileName) { }
         public static MedicalAppointmentRepository Instance
         {
             get
@@ -36,49 +21,21 @@ namespace Repository
             }
         }
 
-        public void Load()
+        public override void DeleteByID(int id)
         {
-            medicalAppointments = medicalAppointmentFileHandler.LoadData();
-        }
 
-        public List<MedicalAppointment> GetAll()
-        {
-            return this.medicalAppointments;
-        }
+            MedicalAppointment medicalAppointment = Instance.GetByID(id);
 
-        public Model.MedicalAppointment GetByID(int id)
-        {
-            int index = medicalAppointments.FindIndex(r => r.Id == id);
-            return medicalAppointments[index];
-        }
+            Patient patient = PatientRepository.Instance.GetByID(medicalAppointment.Patient.Id);
+            patient.MedicalAppointment.Remove(medicalAppointment);
+            
+            Doctor doctor = DoctorRepository.Instance.GetByID(medicalAppointment.Doctor.Id);
+            doctor.MedicalAppointment.Remove(medicalAppointment);
 
-        public void DeleteByID(int id)
-        {
-            int index = medicalAppointments.FindIndex(r => r.Id == id);
-            medicalAppointments.RemoveAt(index);
-            medicalAppointmentFileHandler.SaveData(medicalAppointments);
-        }
+            Room room = RoomRepository.Instance.GetByID(medicalAppointment.Room.Id);
+            room.MedicalAppointment.Remove(medicalAppointment);
 
-        public void Create(Model.MedicalAppointment medicalAppointment)
-        {
-            if (medicalAppointments.Count > 0)
-            {
-                medicalAppointment.Id = medicalAppointments[medicalAppointments.Count - 1].Id + 1;
-            }
-            else
-            {
-                medicalAppointment.Id = 0;
-            }
-            this.medicalAppointments.Add(medicalAppointment);
-            medicalAppointmentFileHandler.SaveData(medicalAppointments);
+            base.DeleteByID(id);
         }
-
-        public void Update(Model.MedicalAppointment medicalAppointment)
-        {
-            int index = medicalAppointments.FindIndex(r => r.Id == medicalAppointment.Id);
-            medicalAppointments[index] = medicalAppointment;
-            medicalAppointmentFileHandler.SaveData(medicalAppointments);
-        }
-
     }
 }

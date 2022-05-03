@@ -1,0 +1,29 @@
+﻿<Window x:Class="ZdravoCorpAppTim22.View.DoctorView.MedicalRecordsScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
+        mc:Ignorable="d"
+        Title="MedicalRecordsScreen" Height="768" Width="1024" Closed="MedRecListClose" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="303,44,0,0" TextWrapping="Wrap" Text="Medical record list" 
+                   VerticalAlignment="Top" Width="350"
+                   Foreground="MediumPurple" FontWeight="Bold" FontSize="40"/>
+        <DataGrid x:Name="MedRecGrid" Margin="92,148,160,167" AutoGenerateColumns="false" FontSize="25"
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
+                  VerticalScrollBarVisibility="Auto" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Patient.Name}" Width="*"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Path=Patient.Surname}" Width="*"/>
+                <DataGridTextColumn Header="Unique Personal Registration Number" Binding="{Binding Path=Patient.Jmbg}" Width="auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="OpenBtn" Content="Open" HorizontalAlignment="Left" Margin="332,664,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="OpenBtnClick" FontSize="20" Width="69"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="527,664,0,0" VerticalAlignment="Top"
+                Foreground="White" Background="MediumPurple" Click="BackBtnClick" FontSize="20" Width="63"/>
+
+
+    </Grid>
+</Window>

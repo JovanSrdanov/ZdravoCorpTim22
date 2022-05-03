@@ -1,4 +1,5 @@
 ﻿using Controller;
+using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.DoctorView;
@@ -20,15 +21,35 @@ namespace ZdravoCorpAppTim22
         {
             AddressController.Instance.Load();
             RoomController.Instance.Load();
+            EquipmentRelocationController.Instance.Load();
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
             PatientController.Instance.Load();
+            //dodao
+            MedicalRecordController.Instance.Load();
+            MedicineController.Instance.Load();
+            MedicalReceiptController.Instance.Load();
+            MedicalReportController.Instance.Load();
+            //dodao
             DoctorController.Instance.Load();
+            EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();
             ManagerController.Instance.Load();
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
+
+            ThreadPool.QueueUserWorkItem(DaemonThread);
+        }
+
+        public void DaemonThread(object stateInfo)
+        {
+            while (true)
+            {
+                Thread.Sleep(1000);
+                RenovationController.Instance.DaemonMethod();
+                EquipmentRelocationController.Instance.DaemonMethod();
+            }
         }
 
         private void ManagerBtn_Click(object sender, RoutedEventArgs e)
@@ -49,8 +70,11 @@ namespace ZdravoCorpAppTim22
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
         {
             DoctorHome doctorHome = new DoctorHome();
+            doctorHome.Owner = this;
+            doctorHome.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             doctorHome.Show();
-            this.Close();
+
+            this.Hide();
 
         }
 

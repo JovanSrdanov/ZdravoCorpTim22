@@ -1,22 +1,10 @@
 ﻿using Controller;
 using Model;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
@@ -55,8 +43,17 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             {
                 return;
             }
-            ViewModel.RoomList.Remove(room);
             RoomController.Instance.DeleteByID(room.Id);
+        }
+
+        private void ButtonDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)dataGrid.SelectedItem;
+            if (room == null)
+            {
+                return;
+            }
+            NavigationService.Navigate(new RoomDetailsView(room));
         }
     }
 }

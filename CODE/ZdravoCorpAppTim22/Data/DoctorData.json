@@ -1,1 +1,72 @@
-[{"DoctorType":0,"Name":"doc","Surname":"docprez","Email":"","Jmbg":"123","Password":"123","Birthday":"2022-04-14T00:00:00+02:00","Phone":"","Gender":0,"ID":0,"Address":0}]
+[
+  {
+    "DoctorType": 0,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsad 15123 123",
+          "stefan pac 2",
+          "Stefan Pac"
+        ],
+        "Patient": 0
+      }
+    ],
+    "Name": "doc",
+    "Surname": "docprez",
+    "Email": "",
+    "Jmbg": "123",
+    "Password": "123",
+    "Birthday": "2022-04-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 0,
+    "Address": 0
+  },
+  {
+    "DoctorType": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsad 15123 123",
+          "stefan pac 2",
+          "Stefan Pac"
+        ],
+        "Patient": 0
+      },
+      {
+        "Id": 1,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Stefan Stefan"
+        ],
+        "Patient": 1
+      },
+      {
+        "Id": 2,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "Stefan 1"
+        ],
+        "Patient": 2
+      }
+    ],
+    "Name": "Stefan",
+    "Surname": "Apostolovic",
+    "Email": "",
+    "Jmbg": "123123213",
+    "Password": "123",
+    "Birthday": "2022-04-18T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 1,
+    "Address": 1
+  }
+]

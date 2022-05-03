@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Model
 {
@@ -28,16 +29,17 @@ namespace Model
         }
 
 
-        public bool IsAvailable(DateTime start, DateTime end)
+        public bool IsAvailable(Interval interval)
         {
             if (medicalAppointment == null)
                 return true;
             else
             {
 
-                foreach (MedicalAppointment medicalAppointmentDoctor in medicalAppointment)
+                foreach (MedicalAppointment medicalAppointmentDoctor in MedicalAppointment)
                 {
-                    if (!((medicalAppointmentDoctor.MedicalAppointmentStartDateTime >= end) || (medicalAppointmentDoctor.MedicalAppointmentEndDateTime <= start)))
+                    if (!((medicalAppointmentDoctor.Interval.Start >= interval.End) || (medicalAppointmentDoctor.Interval.End <= interval.Start)))
+
                     {
                         return false;
                     }
@@ -108,6 +110,54 @@ namespace Model
                 tmpMedicalAppointment.Clear();
             }
         }
+
+        //*********************DODAO KARTONE, NE ZABORAVI SERIJALIZACIJU**********************************
+        public System.Collections.Generic.List<MedicalRecord> medicalRecord;
+
+        public System.Collections.Generic.List<MedicalRecord> MedicalRecord
+        {
+            get
+            {
+                if (medicalRecord == null)
+                    medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
+                return medicalRecord;
+            }
+            set
+            {
+                RemoveAllMedicalRecord();
+                if (value != null)
+                {
+                    foreach (MedicalRecord oMedicalRecord in value)
+                        AddMedicalRecord(oMedicalRecord);
+                }
+            }
+        }
+
+        public void AddMedicalRecord(MedicalRecord newMedicalRecord)
+        {
+            if (newMedicalRecord == null)
+                return;
+            if (this.medicalRecord == null)
+                this.medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
+            if (!this.medicalRecord.Contains(newMedicalRecord))
+                this.medicalRecord.Add(newMedicalRecord);
+        }
+
+        public void RemoveMedicalRecord(MedicalRecord oldMedicalRecord)
+        {
+            if (oldMedicalRecord == null)
+                return;
+            if (this.medicalRecord != null)
+                if (this.medicalRecord.Contains(oldMedicalRecord))
+                    this.medicalRecord.Remove(oldMedicalRecord);
+        }
+
+        public void RemoveAllMedicalRecord()
+        {
+            if (medicalRecord != null)
+                medicalRecord.Clear();
+        }
+
 
     }
 }

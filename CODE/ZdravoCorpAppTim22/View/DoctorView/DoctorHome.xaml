@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHome" Height="450" Width="800">
+        Title="DoctorHome" Height="768" Width="1024" Closed="DoctorHomeClose" ResizeMode="NoResize">
     <Grid>
-        <ComboBox x:Name="SelectDoctorCBOX" HorizontalAlignment="Left" Margin="317,122,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=DoctorListObservable}" DisplayMemberPath="Name"
-                  SelectedIndex="0">
+        <ComboBox x:Name="SelectDoctorCBOX" HorizontalAlignment="Left" Margin="360,244,0,0" VerticalAlignment="Top" Width="249" DisplayMemberPath="Name"
+                  SelectedIndex="0" FontSize="35">
         </ComboBox>
-        <Label Content="Select a doctor" HorizontalAlignment="Left" Margin="332,67,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="348,297,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click"/>
+        <Label Content="Select a doctor" HorizontalAlignment="Left" Margin="381,120,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="620,561,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click" Foreground="White" Background="MediumPurple" FontSize="25"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="271,561,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="0.174,-0.131" Width="120" Click="BackBtnClick" Foreground="White" Background="MediumPurple" FontSize="25"/>
 
     </Grid>
 </Window>

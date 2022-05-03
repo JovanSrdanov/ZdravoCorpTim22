@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
 
 namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
@@ -26,7 +21,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
             {
                 File.Delete(path);
             }
-            string jsonString = JsonSerializer.Serialize(obj);
+            string jsonString = JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = true});
             File.WriteAllText(path, jsonString);
         }
 

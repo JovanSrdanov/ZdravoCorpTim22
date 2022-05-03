@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Pages.RoomPages"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditRoomView"
@@ -13,26 +14,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="TextBlock">
-                <Setter Property="Width" Value="120"></Setter>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="Width" Value="300"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="MaxLength" Value="50"/>
-                <Setter Property="Margin" Value="0 0 0 20"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
-            <Style TargetType="ComboBox">
-                <Setter Property="Width" Value="300"/>
-                <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-                <Setter Property="Margin" Value="0 0 0 20"/>
-                <Setter Property="Padding" Value="5"/>
-            </Style>
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}"/>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -53,19 +37,63 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            
-            
-
-            <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 30 0 0">
-                <Button x:Name="ButtonConfirm" Style="{StaticResource ButtonStandard}" Margin="0" Click="ButtonConfirm_Click">Confirm</Button>
+            <WrapPanel Grid.Row="0"
+                       Margin="0 0 0 20">
+                <Button x:Name="ButtonSelectStartTime" 
+                    Style="{StaticResource ButtonStandard}" 
+                    Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+                <ContentControl x:Name="SelectStartTimeContent"
+                            Foreground="{StaticResource TextPrimary}"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Margin="20 7 0 0"/>
             </WrapPanel>
-
-            <WrapPanel Grid.Row="4" Grid.Column="1" Margin="0 30 0 0" HorizontalAlignment="Right">
-                <Button x:Name="ButtonCancel" Style="{StaticResource ButtonStandard}" Margin="0" Click="ButtonCancel_Click">Cancel</Button>
+            <WrapPanel Grid.Row="1"
+                       x:Name="EndTimeGroup">
+                <Button x:Name="ButtonSelectEndTime" 
+                    Style="{StaticResource ButtonStandard}" 
+                    Click="ButtonSelectEndTime_Click">Select End Time</Button>
+                <ContentControl x:Name="SelectEndTimeContent"
+                            Foreground="{StaticResource TextPrimary}"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Margin="20 7 0 0"/>
             </WrapPanel>
+            <WrapPanel Grid.Row="2" 
+                       Margin="0 30 0 30"
+                       x:Name="RoomEdit">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Type: "/>
+                    <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay}"/>
 
+                    <WrapPanel Grid.Row="4" 
+                       Grid.ColumnSpan="2"
+                       Margin="0 30 0 0">
+                        <Button x:Name="ButtonConfirm" 
+                        Style="{StaticResource ButtonStandard}" 
+                        Margin="0" 
+                        Click="ButtonConfirm_Click">Confirm</Button>
+                        <Button x:Name="ButtonCancel" 
+                        Style="{StaticResource ButtonStandard}" 
+                        Margin="30 0 0 0" 
+                        Click="ButtonCancel_Click">Cancel</Button>
+                    </WrapPanel>
+                </Grid>
+            </WrapPanel>
         </Grid>
     </Grid>
 </Page>

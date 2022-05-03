@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
 
@@ -10,38 +9,35 @@ namespace ZdravoCorpAppTim22.Repository.Generic
 {
     public abstract class GenericRepository<T> : IRepository<T> where T : class, IHasID
     {
+        public readonly object _lock = new object();
         public readonly GenericFileHandler<T> FileHandler;
-        public List<T> List = new List<T>();
+        public ObservableCollection<T> List = new ObservableCollection<T>();
         public GenericRepository(string fileName)
         {
             FileHandler = new GenericFileHandler<T>(fileName);
         }
+
         public virtual void Load()
         {
-            List = FileHandler.LoadData();
+            List = new ObservableCollection<T>(FileHandler.LoadData()); 
         }
-        public virtual List<T> GetAll()
+        public virtual ObservableCollection<T> GetAll()
         {
             return List;
         }
         public virtual T GetByID(int id)
         {
-            int index = List.FindIndex(r => r.Id == id);
-            if (index == -1)
-            {
-                return null;
-            }
-            return List[index];
+            return List.Where(r => r.Id == id).FirstOrDefault();
         }
         public virtual void DeleteByID(int id)
         {
-            int index = List.FindIndex(r => r.Id == id);
-            if (index == -1)
+            T item = List.Where(r => r.Id == id).FirstOrDefault();
+            if(item == null)
             {
                 return;
             }
-            List.RemoveAt(index);
-            FileHandler.SaveData(List);
+            List.Remove(item);
+            FileHandler.SaveData(new List<T>(List));
         }
         public virtual void Create(T obj)
         {
@@ -58,7 +54,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
                 obj.Id = 0;
             }
             List.Add(obj);
-            FileHandler.SaveData(List);
+            FileHandler.SaveData(new List<T>(List));
         }
         public virtual void Update(T obj)
         {
@@ -66,13 +62,15 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             {
                 return;
             }
-            int index = List.FindIndex(r => r.Id == obj.Id);
-            if (index == -1)
+            T item = List.Where(r => r.Id == obj.Id).FirstOrDefault();
+            if (item == null)
             {
                 return;
             }
-            List[index] = obj;
-            FileHandler.SaveData(List);
+            int index = List.IndexOf(item);
+            List.Remove(item);
+            List.Insert(index, obj);
+            FileHandler.SaveData(new List<T>(List));
         }
     }
 }

@@ -1,23 +1,9 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
@@ -25,18 +11,38 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private int id;
         private int level;
         private string name;
         private string type;
-
-        public AddRoomView()
+        public int Level
         {
-            Init();
-            id = 0;
+            get => level;
+            set
+            {
+                level = value;
+                OnPropertyChanged("Level");
+            }
+        }
+        public string RoomName
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged("RoomName");
+            }
+        }
+        public string Type
+        {
+            get => type;
+            set
+            {
+                type = value;
+                OnPropertyChanged("Type");
+            }
         }
 
-        private void Init()
+        public AddRoomView()
         {
             InitializeComponent();
             DataContext = this;
@@ -48,49 +54,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public int ID
-        {
-            get => id;
-            set
-            {
-                id = value;
-                OnPropertyChanged("ID");
-            }
-        }
-
-        public int Level
-        {
-            get => level;
-            set
-            {
-                level = value;
-                OnPropertyChanged("Level");
-            }
-        }
-
-        public string RoomName
-        {
-            get => name;
-            set
-            {
-                name = value;
-                OnPropertyChanged("RoomName");
-            }
-        }
-
-        public string Type
-        {
-            get => type;
-            set
-            {
-                type = value;
-                OnPropertyChanged("Type");
-            }
-        }
+        
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
@@ -111,15 +79,15 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
 
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            Room room = new Room(id, level, rt, name);
+            Room room = new Room(0, level, rt, name);
             RoomController.Instance.Create(room);
 
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new RoomView());
         }
     }
 }

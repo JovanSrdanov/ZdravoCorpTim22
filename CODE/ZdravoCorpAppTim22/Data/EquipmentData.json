@@ -1,58 +1,44 @@
 [
-    {
-        "id": 2,
-        "name": "aa",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 1,
-        "name": "bb",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 4,
-        "name": "cc",
-        "amount": 3,
-        "type": 1,
-        "str": "rade",
-        "Room": 5
-    },
-    {
-        "id": 5,
-        "name": "cc",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 6
-    },
-    {
-        "id": 4,
-        "name": "dd",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 6
-    },
-    {
-        "id": 5,
-        "name": "cc",
-        "amount": 2,
-        "type": 0,
-        "str": "rade",
-        "Room": 7
-    },
-    {
-        "id": 4,
-        "name": "dd",
-        "amount": 4,
-        "type": 1,
-        "str": "rade",
-        "Room": 7
-    }
+  {
+    "Id": 0,
+    "Amount": 500,
+    "EquipmentData": 0,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 1,
+    "Amount": 200,
+    "EquipmentData": 1,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 2,
+    "Amount": 400,
+    "EquipmentData": 2,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 3,
+    "Amount": 1600,
+    "EquipmentData": 2,
+    "Room": 0,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 6,
+    "Amount": 300,
+    "EquipmentData": 0,
+    "Room": 0,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 7,
+    "Amount": 150,
+    "EquipmentData": 1,
+    "Room": 0,
+    "EquipmentRelocation": null
+  }
 ]

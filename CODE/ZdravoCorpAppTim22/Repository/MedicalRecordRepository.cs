@@ -1,31 +1,24 @@
 using Model;
-using System;
+using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace Repository
 {
-   public class MedicalRecordRepository
-   {
-      public MedicalRecord GetByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void DeleteByID(int id)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Create(Model.MedicalRecord medicalRecord)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Update(Model.MedicalRecord medicalRecord)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public String path;
-   
+   public class MedicalRecordRepository : GenericRepository<MedicalRecord>
+    {
+        public static string FileName = "MedicalRecordData.json";
+        private static MedicalRecordRepository instance;
+        private MedicalRecordRepository() : base(FileName) { }
+        public static MedicalRecordRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalRecordRepository();
+                }
+
+                return instance;
+            }
+        }
    }
 }
