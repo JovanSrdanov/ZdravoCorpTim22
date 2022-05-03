@@ -45,22 +45,28 @@ namespace ZdravoCorpAppTim22.Service
                     }
                 }
             }
-            App.Current.Dispatcher.Invoke(delegate
+            try
             {
-                foreach (Renovation item in list)
+                App.Current.Dispatcher.Invoke(delegate
                 {
-                    if (item.NewRoom != null)
+                    foreach (Renovation item in list)
                     {
-                        Room oldRoom = RoomService.Instance.GetByID(item.NewRoom.Id);
-                        oldRoom.Name = item.NewRoom.Name;
-                        oldRoom.Level = item.NewRoom.Level;
-                        oldRoom.Type = item.NewRoom.Type;
-                        RoomService.Instance.Update(oldRoom);
-                        oldRoom.RemoveRenovation(item);
+                        if (item.NewRoom != null)
+                        {
+                            Room oldRoom = RoomService.Instance.GetByID(item.NewRoom.Id);
+                            oldRoom.Name = item.NewRoom.Name;
+                            oldRoom.Level = item.NewRoom.Level;
+                            oldRoom.Type = item.NewRoom.Type;
+                            RoomService.Instance.Update(oldRoom);
+                            oldRoom.RemoveRenovation(item);
+                        }
+                        Instance.DeleteByID(item.Id);
                     }
-                    Instance.DeleteByID(item.Id);
-                }
-            });
+                });
+            }catch(NullReferenceException e)
+            {
+                Debug.WriteLine("Exception");
+            }
         }
     }
 }

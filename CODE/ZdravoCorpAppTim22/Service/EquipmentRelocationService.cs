@@ -60,35 +60,42 @@ namespace Service
                     }
                 }
             }
-            App.Current.Dispatcher.Invoke(delegate
+            try
             {
-                foreach (var item in list)
+                App.Current.Dispatcher.Invoke(delegate
                 {
-                    Room destination = item.DestinationRoom;
-                    if(destination == null)
+                    foreach (var item in list)
                     {
+                        Room destination = item.DestinationRoom;
+                        if (destination == null)
+                        {
+                            foreach (Equipment eq in item.Equipment)
+                            {
+                                item.SourceRoom = null;
+                                EquipmentService.Instance.AddWarehouseEquipment(eq);
+                            }
+                        }
+                        else
+                        {
+                            foreach (Equipment eq in item.Equipment)
+                            {
+                                item.DestinationRoom = null;
+                                item.SourceRoom = null;
+                                EquipmentService.Instance.AddRoomEquipment(destination, eq);
+                            }
+                        }
                         foreach (Equipment eq in item.Equipment)
                         {
-                            item.SourceRoom = null;
-                            EquipmentService.Instance.AddWarehouseEquipment(eq);
+                            EquipmentService.Instance.DeleteByID(eq.Id);
                         }
+                        DeleteByID(item.Id);
                     }
-                    else
-                    {
-                        foreach (Equipment eq in item.Equipment)
-                        {
-                            item.DestinationRoom = null;
-                            item.SourceRoom = null;
-                            EquipmentService.Instance.AddRoomEquipment(destination, eq);
-                        }
-                    }
-                    foreach (Equipment eq in item.Equipment)
-                    {
-                        EquipmentService.Instance.DeleteByID(eq.Id);
-                    }
-                    DeleteByID(item.Id);
-                }
-            });
+                });
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.WriteLine("Exception");
+            }
         }
     }
 }
