@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ZdravoCorpAppTim22.View.Manager
@@ -19,10 +20,8 @@ namespace ZdravoCorpAppTim22.View.Manager
             e.Handled = true;
         }
 
-        private void ButtonLogout_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            MainWindow.Show();
-        }
+        private void Window_Closing(object sender, CancelEventArgs e) => MainWindow.Show();
+
+        private void ButtonLogout_Click(object sender, RoutedEventArgs e) => Close();
     }
 }

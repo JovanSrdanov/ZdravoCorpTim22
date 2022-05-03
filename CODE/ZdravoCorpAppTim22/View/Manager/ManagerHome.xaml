@@ -7,7 +7,8 @@
         xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
         mc:Ignorable="d"
         Title="ManagerHome" Height="720" Width="1270"
-        Background="#292c35">
+        Background="#292c35"
+        Closing="Window_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
