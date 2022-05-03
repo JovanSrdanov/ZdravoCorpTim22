@@ -61,7 +61,7 @@
                                 HorizontalAlignment="Left"
                                 Background="Green"
                                 Content="Ostavite recenziju bolnice"
-                                Foreground="White" />
+                                Foreground="White" Click="RateZdravoCorp_Click" />
                         </StackPanel>
                     </StackPanel>
 

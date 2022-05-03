@@ -71,5 +71,10 @@ namespace ZdravoCorpAppTim22.View.PatientView
             Close();
             PatientSelectionForTemporaryPurpose.LoggedPatient = null;
         }
+
+        private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
+        {
+        
+        }
     }
 }
