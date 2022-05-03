@@ -36,8 +36,6 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (dataGridSuggestedMedicalAppointments.SelectedItem != null)
             {
                 MessageBoxResult result = MessageBox.Show("Are you sure?", "Edit this appointment", MessageBoxButton.YesNo);
