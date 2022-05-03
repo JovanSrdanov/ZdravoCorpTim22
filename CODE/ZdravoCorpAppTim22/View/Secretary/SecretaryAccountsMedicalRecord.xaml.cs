@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -68,7 +69,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
 
             MedicalRecord.BloodType = (BloodType)comboBoxBloodType.SelectedItem;
-
+            MedicalRecordController.Instance.Update(MedicalRecord);
         }
 
         private void comboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
