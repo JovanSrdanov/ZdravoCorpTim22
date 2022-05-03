@@ -121,10 +121,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicineList.Add(medicine);
 
             //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
-            if (MedicalRecordView.medicineObservableList.Count() > 0)
+            /*if (MedicalRecordView.medicineObservableList.Count() > 0)
             {
                 MedicalRecordView.medicineObservableList.Clear();
-            }
+            }*/
             MedicalRecordView.medicineObservableList.Add(medicine);
             //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);

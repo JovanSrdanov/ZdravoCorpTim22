@@ -15,6 +15,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordView medicalRecordView;
 
         private string oldDiagnosis;
+        private Medicine oldMedicine;
         private int canCreateRecord;        //ako ne pravim novi izvestaj cuvam promene kod dijagnoze
 
         public OpenReport(MedicalReport medicalReport, MedicalRecordView medicalRecordView, int canCreateRecord)
@@ -43,6 +44,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             PurposeComboBox.Text = selectedMedicalReport.MedicalReceipt.TherapyPurpose;
 
             oldDiagnosis = DiagnosisBox.Text;
+            oldMedicine = MedicationComboBox.SelectedItem as Medicine;
             this.canCreateRecord = canCreateRecord;
 
             if (!isEditable())
@@ -136,12 +138,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             else
             {
                 selectedMedicalReport.MedicalReceipt.Medicine = MedicationComboBox.SelectedItem as Medicine;
-                if (selectedMedicalReport.MedicalRecord.MedicalReport.IndexOf(selectedMedicalReport) ==
+                /*if (selectedMedicalReport.MedicalRecord.MedicalReport.IndexOf(selectedMedicalReport) ==
                     selectedMedicalReport.MedicalRecord.MedicalReport.Count - 1)        //ako menjam poslednji izvestaj u kartonu
                 {
                     MedicalRecordView.medicineObservableList.Clear();
                     MedicalRecordView.medicineObservableList.Add(MedicationComboBox.SelectedItem as Medicine);
-                }
+                }*/
                 selectedMedicalReport.MedicalReceipt.EndDate = (DateTime)EndDateDatePicker.SelectedDate;
                 selectedMedicalReport.MedicalReceipt.Time = TimeComboBox.Text;
                 selectedMedicalReport.MedicalReceipt.TherapyPurpose = PurposeComboBox.Text;
@@ -167,6 +169,22 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                     break;
                 }
             }
+
+            MedicalRecordView.medicineObservableList[MedicalRecordView.medRepList.IndexOf(selectedMedicalReport)] = 
+                MedicationComboBox.SelectedItem as Medicine;
+
+            /*foreach (Medicine medicine in MedicalRecordView.medicineObservableList)
+            {
+                if (medicine.Id == oldMedicine.Id)
+                {
+                    int idx = MedicalRecordView.medicineObservableList.IndexOf(medicine);
+                    MedicalRecordView.medicineObservableList[idx] =
+                        MedicationComboBox.SelectedItem as Medicine;
+                    medRec.MedicalReceipt[medRec.MedicalReceipt.IndexOf(selectedMedicalReport.MedicalReceipt)].Medicine = 
+                        MedicationComboBox.SelectedItem as Medicine;
+                    break;
+                }
+            }*/
             medicalRecordView.Show();
             this.Close();
         }

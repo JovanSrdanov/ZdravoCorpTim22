@@ -1,38 +1,6 @@
 [
   {
     "DoctorType": 0,
-    "MedicalRecord": [
-      {
-        "Id": 0,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Pac Rep 1",
-          "Stefan Pac Rep 1"
-        ],
-        "Patient": 0
-      },
-      {
-        "Id": 1,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Stefan Rep 1",
-          "Stefan Stefan Rep 1"
-        ],
-        "Patient": 1
-      },
-      {
-        "Id": 2,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc 1 Rep 1",
-          "Stefan 1 Rep 1"
-        ],
-        "Patient": 2
-      }
-    ],
     "Name": "doc",
     "Surname": "docprez",
     "Email": "",
@@ -46,38 +14,6 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [
-      {
-        "Id": 0,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Pac Rep 1",
-          "Stefan Pac Rep 1"
-        ],
-        "Patient": 0
-      },
-      {
-        "Id": 1,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc Stefan Rep 1",
-          "Stefan Stefan Rep 1"
-        ],
-        "Patient": 1
-      },
-      {
-        "Id": 2,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "Doc 1 Rep 1",
-          "Stefan 1 Rep 1"
-        ],
-        "Patient": 2
-      }
-    ],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
