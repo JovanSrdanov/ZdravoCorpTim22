@@ -6,7 +6,9 @@
         "Id": 0,
         "BloodType": 0,
         "AllergiesList": [],
-        "ConditionList": ["adsas"],
+        "ConditionList": [
+          "adsas"
+        ],
         "Patient": 0
       }
     ],
@@ -23,7 +25,18 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 0,
+        "AllergiesList": [],
+        "ConditionList": [
+          "adsas",
+          "dsfsdfsd"
+        ],
+        "Patient": 0
+      }
+    ],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
