@@ -26,11 +26,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             SelectedEquipment = DataGrid.SelectedItems.Cast<Equipment>().ToList();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new RoomView());
-        }
-
         private void ButtonRoomRelocate_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedEquipment.Count > 0)

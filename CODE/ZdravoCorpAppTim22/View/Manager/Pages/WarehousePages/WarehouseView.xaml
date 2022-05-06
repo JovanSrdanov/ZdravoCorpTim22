@@ -12,6 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
         </ResourceDictionary>
     </Page.Resources>
@@ -25,17 +26,28 @@
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
                    FontSize="{StaticResource HeadingFontSize}">WAREHOUSE OVERVIEW</TextBlock>
-        <WrapPanel Grid.Row="1"
-                   Margin="0 0 0 10">
-            <Button x:Name="AddEquipment" Click="AddEquipment_Click">Add</Button>
-            <Button x:Name="EditEquipment" Click="EditEquipment_Click">Edit</Button>
-            <Button x:Name="RelocateEquipment" Click="RelocateEquipment_Click">Relocate</Button>
-            <Button x:Name="DeleteEquipment" Click="DeleteEquipment_Click">Delete</Button>
-        </WrapPanel>
+        <Grid Grid.Row="1"
+              Margin="0 0 0 10"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel HorizontalAlignment="Left">
+                <Button x:Name="AddEquipment" Click="AddEquipment_Click">Add</Button>
+                <Button x:Name="EditEquipment" Click="EditEquipment_Click">Edit</Button>
+                <Button x:Name="RelocateEquipment" Click="RelocateEquipment_Click">Relocate</Button>
+                <Button x:Name="DeleteEquipment" Click="DeleteEquipment_Click">Delete</Button>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right">
+                <TextBox x:Name="SearchTextBox" Width="260" Margin="0 0 1 0"/>
+                <Button x:Name="SearchButton" Margin="0" Click="SearchButton_Click">Search</Button>
+            </WrapPanel>
+        </Grid>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"
                   SelectionMode="Extended"
-                  ItemsSource="{Binding Path=EquipmentCollection}"
+                  ItemsSource="{Binding Path=FilteredEquipment}"
                   SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=EquipmentData.Id}" Header="ID" Width="*"/>

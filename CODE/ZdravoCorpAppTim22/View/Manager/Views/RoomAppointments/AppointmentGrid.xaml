@@ -15,13 +15,17 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid Grid.Row="0"
+                  Grid.Column="0"
                   Name="DataGrid"
                   ItemsSource="{Binding Path=Appointments}" 
-                  SelectionChanged="DataGrid_SelectionChanged">
+                  SelectionChanged="DataGrid_SelectionChanged"
+                  MaxWidth="700">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Interval.Start.TimeOfDay}" Header="Start Time" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Interval.End.TimeOfDay}" Header="End Time" Width="*"/>

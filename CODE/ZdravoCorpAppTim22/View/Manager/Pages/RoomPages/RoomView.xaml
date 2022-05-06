@@ -36,7 +36,8 @@
         </WrapPanel>
         <DataGrid Grid.Row="2"
                   Name="dataGrid"
-                  ItemsSource="{Binding Path=RoomList}">
+                  ItemsSource="{Binding Path=RoomList}"
+                  SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>

@@ -11,11 +11,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             DataContext = this;
             for (int i = 0; i < 24; i++)
             {
-                HourComboBox.Items.Add(i.ToString());
+                HourComboBox.Items.Add(i);
             }
             for (int i = 0; i < 60; i++)
             {
-                MinuteComboBox.Items.Add(i.ToString());
+                MinuteComboBox.Items.Add(i);
             }
         }
 

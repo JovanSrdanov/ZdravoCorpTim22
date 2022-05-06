@@ -1,9 +1,9 @@
 [
   {
     "Id": 1,
-    "Level": 0,
+    "Level": 2,
     "Type": 1,
-    "Name": "Sala2"
+    "Name": "Sala123"
   },
   {
     "Id": 2,
@@ -28,5 +28,11 @@
     "Level": 2,
     "Type": 0,
     "Name": "sdadas"
+  },
+  {
+    "Id": 6,
+    "Level": 3,
+    "Type": 4,
+    "Name": "novasoba"
   }
 ]

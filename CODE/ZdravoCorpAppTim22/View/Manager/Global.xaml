@@ -42,7 +42,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="MaxWidth" Value="1000"/>
+        
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>

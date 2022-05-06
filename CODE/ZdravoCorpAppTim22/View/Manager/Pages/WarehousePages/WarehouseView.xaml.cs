@@ -74,5 +74,10 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
                 NavigationService.Navigate(new RelocationView(this));
             }
         }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SearchText = SearchTextBox.Text;
+        }
     }
 }

@@ -212,6 +212,7 @@
     <Compile Include="View\DoctorView\OpenReport.xaml.cs">
       <DependentUpon>OpenReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -259,6 +260,8 @@
     <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RenovationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAddViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModel.cs" />
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
