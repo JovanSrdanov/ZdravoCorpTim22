@@ -1,86 +1,79 @@
 ﻿using Model;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Model.Utility;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
 using System.Windows;
 using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 using System;
+using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
+using System.Collections.Generic;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
     public partial class RoomWarehouseRelocationView : Page
     {
-        readonly RoomDetailsView ParentPage;
-        public RelocationViewModel RelocationViewModel;
-        public Interval Interval;
-        public Room SourceRoom;
-        public RoomWarehouseRelocationView(Room room, RoomDetailsView parent)
+        public RoomWarehouseRelocationViewModel ViewModel;
+        
+        public RoomWarehouseRelocationView(Room room, List<Equipment> selectedEquipment)
         {
             InitializeComponent();
-            RelocationViewModel = new RelocationViewModel(parent.SelectedEquipment);
-            DataContext = RelocationViewModel;
-            ParentPage = parent;
-            SourceRoom = room;
-            EndTimeGroup.Visibility = Visibility.Hidden;
-            ButtonPanel.Visibility = Visibility.Hidden;
+            ViewModel = new RoomWarehouseRelocationViewModel(selectedEquipment, room);
+            DataContext = ViewModel;
+            EndTimeGroup.IsEnabled = false;
+            ButtonPanel.IsEnabled = false;
         }
 
         public void StartDateSelected(object sender, EventArgs e)
         {
-            Interval.Start = ((CustomDatePicker)sender).SelectedDate;
-            if (DateTime.Compare(Interval.Start, new DateTime()) > 0)
+            ViewModel.Interval = new Interval
             {
-                SelectStartTimeContent.Content = Interval.Start.ToString();
-                EndTimeGroup.Visibility = Visibility.Visible;
-                ButtonPanel.Visibility = Visibility.Hidden;
-                Interval.End = new DateTime();
+                Start = ((CustomDatePicker)sender).SelectedDate,
+                End = ViewModel.Interval.End
+            };
+            if (DateTime.Compare(ViewModel.Interval.Start, new DateTime()) > 0)
+            {
+                SelectStartTimeContent.Content = ViewModel.Interval.Start.ToString();
+                EndTimeGroup.IsEnabled = true;
+                ButtonPanel.IsEnabled = false;
+                ViewModel.Interval = new Interval
+                {
+                    Start = ViewModel.Interval.Start,
+                    End = new DateTime()
+                };
                 SelectEndTimeContent.Content = "";
             }
             else
             {
-                EndTimeGroup.Visibility = Visibility.Hidden;
+                EndTimeGroup.IsEnabled = false;
             }
         }
         public void EndDateSelected(object sender, EventArgs e)
         {
-            Interval.End = ((CustomDatePicker)sender).SelectedDate;
-            if (DateTime.Compare(Interval.End, new DateTime()) > 0)
+            ViewModel.Interval = new Interval
             {
-                SelectEndTimeContent.Content = Interval.End.ToString();
-                ButtonPanel.Visibility = Visibility.Visible;
+                Start = ViewModel.Interval.Start,
+                End = ((CustomDatePicker)sender).SelectedDate
+            };
+            if (DateTime.Compare(ViewModel.Interval.End, new DateTime()) > 0)
+            {
+                SelectEndTimeContent.Content = ViewModel.Interval.End.ToString();
+                ButtonPanel.IsEnabled = true;
             }
             else
             {
-                ButtonPanel.Visibility = Visibility.Hidden;
+                ButtonPanel.IsEnabled = false;
             }
-        }
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(ParentPage);
         }
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationStartDateView = new SelectTimePage(this, SourceRoom);
+            var RelocationStartDateView = new SelectTimePage(this, ViewModel.SourceRoom);
             RelocationStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             NavigationService.Navigate(RelocationStartDateView);
         }
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationEndDateView = new SelectTimePage(this, SourceRoom, Interval.Start);
+            var RelocationEndDateView = new SelectTimePage(this, ViewModel.SourceRoom, ViewModel.Interval.Start);
             RelocationEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             NavigationService.Navigate(RelocationEndDateView);
         }
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            string message = RelocationViewModel.GetEquipmentErrors();
-            if (message != null)
-            {
-                MessageBox.Show(message);
-                return;
-            }
-            RelocationViewModel.RoomToWarehouse(SourceRoom, Interval);
-            NavigationService.Navigate(new RoomDetailsView(SourceRoom));
-        }
-
     }
 }

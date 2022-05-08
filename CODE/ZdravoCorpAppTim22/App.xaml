@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ZdravoCorpAppTim22"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Icons">pack://application:,,,/View/Fonts/#Segoe Fluent Icons</FontFamily>
     </Application.Resources>
 </Application>

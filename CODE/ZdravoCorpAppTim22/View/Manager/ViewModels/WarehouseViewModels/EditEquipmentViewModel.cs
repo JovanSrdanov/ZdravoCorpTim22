@@ -1,0 +1,93 @@
+﻿using Model;
+using System;
+using System.ComponentModel;
+using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.View.Manager.Commands;
+using ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages;
+
+namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
+{
+    public class EditEquipmentViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public RelayCommand EditEquipmentCommand { get; private set; }
+        public RelayCommand NavigateBackCommand { get; private set; }
+
+        Equipment OldEquipment { get; }
+        private int amount;
+        private string name;
+        private string type;
+        public int Amount
+        {
+            get => amount;
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount");
+            }
+        }
+        public string EquipmentName
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged("EquipmentName");
+            }
+        }
+        public string Type
+        {
+            get => type;
+            set
+            {
+                type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+        public EditEquipmentViewModel(Equipment oldEquipment)
+        {
+            EditEquipmentCommand = new RelayCommand(EditEquipment, CanEditEquipment);
+            NavigateBackCommand = new RelayCommand(NavigateBack, null);
+            OldEquipment = oldEquipment;
+            Amount = oldEquipment.Amount;
+            EquipmentName = oldEquipment.EquipmentData.Name;
+            Type = oldEquipment.EquipmentData.Type.ToString();
+        }
+        private void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void EditEquipment(object obj)
+        {
+            EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
+            OldEquipment.EquipmentData.Name = name;
+            OldEquipment.EquipmentData.Type = et;
+            OldEquipment.Amount = amount;
+            EquipmentDataController.Instance.Update(OldEquipment.EquipmentData);
+            EquipmentController.Instance.Update(OldEquipment);
+
+            ManagerHome.NavigationService.Navigate(new WarehouseView());
+        }
+        public bool CanEditEquipment(object obj)
+        {
+            if (type == null)
+            {
+                return false;
+            }
+            if (name == null || name.Equals(""))
+            {
+                return false;
+            }
+            if (Amount < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public void NavigateBack(object obj)
+        {
+            ManagerHome.NavigationService.Navigate(new WarehouseView());
+        }
+    }
+}

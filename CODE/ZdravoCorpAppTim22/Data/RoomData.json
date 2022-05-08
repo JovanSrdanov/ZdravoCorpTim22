@@ -1,27 +1,9 @@
 [
   {
-    "Id": 1,
-    "Level": 2,
-    "Type": 1,
-    "Name": "Sala123"
-  },
-  {
-    "Id": 2,
-    "Level": 0,
-    "Type": 4,
-    "Name": "Sala3"
-  },
-  {
     "Id": 3,
     "Level": 0,
     "Type": 0,
     "Name": "SalaOperacija"
-  },
-  {
-    "Id": 4,
-    "Level": 3,
-    "Type": 4,
-    "Name": "Pregled"
   },
   {
     "Id": 5,
@@ -31,8 +13,8 @@
   },
   {
     "Id": 6,
-    "Level": 3,
-    "Type": 4,
+    "Level": 5,
+    "Type": 3,
     "Name": "novasoba"
   }
 ]

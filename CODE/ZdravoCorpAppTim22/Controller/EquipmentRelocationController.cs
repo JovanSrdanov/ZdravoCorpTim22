@@ -1,6 +1,9 @@
+using Model;
 using Service;
+using System.Collections.Generic;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Controller
 {
@@ -18,6 +21,10 @@ namespace Controller
                 }
                 return instance;
             }
+        }
+        public void Create(Room source, Room destination, Interval interval, List<Equipment> equipment)
+        {
+            EquipmentRelocationService.Instance.Create(source, destination, interval, equipment);
         }
         public void DaemonMethod()
         {

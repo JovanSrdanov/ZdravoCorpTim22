@@ -1,18 +1,13 @@
 [
   {
     "Id": 0,
-    "Name": "stolice",
+    "Name": "Stolice",
     "Type": 1
   },
   {
     "Id": 2,
     "Name": "cons",
     "Type": 0
-  },
-  {
-    "Id": 3,
-    "Name": "kreveti",
-    "Type": 1
   },
   {
     "Id": 4,

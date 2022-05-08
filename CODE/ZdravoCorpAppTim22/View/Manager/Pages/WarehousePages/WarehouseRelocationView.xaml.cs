@@ -1,22 +1,22 @@
 ﻿using Model;
-using System.Windows.Controls;
-using ZdravoCorpAppTim22.Model.Utility;
-using System.Windows;
-using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 using System;
-using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels;
+using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
 
-namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
+namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
 {
-    public partial class RoomRelocationView : Page
+    public partial class WarehouseRelocationView : Page
     {
-        public RoomRelocationViewModel ViewModel;
-        
-        public RoomRelocationView(Room sourceRoom, List<Equipment> selectedEquipment)
+        public WarehouseRelocationViewModel ViewModel;
+        public WarehouseRelocationView(List<Equipment> selectedEquipment)
         {
             InitializeComponent();
-            ViewModel = new RoomRelocationViewModel(selectedEquipment, sourceRoom);
+            ViewModel = new WarehouseRelocationViewModel(selectedEquipment);
             DataContext = ViewModel;
             StartTimeGroup.IsEnabled = false;
             EndTimeGroup.IsEnabled = false;
@@ -35,7 +35,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 SelectStartTimeContent.Content = ViewModel.Interval.Start.ToString();
                 EndTimeGroup.IsEnabled = true;
                 ButtonPanel.IsEnabled = false;
-
                 ViewModel.Interval = new Interval
                 {
                     Start = ViewModel.Interval.Start,
@@ -87,13 +86,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
         }
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationStartDateView = new SelectTimePage(this, ViewModel.SourceRoom, ViewModel.DestinationRoom);
+            var RelocationStartDateView = new SelectTimePage(this, ViewModel.DestinationRoom);
             RelocationStartDateView.CustomDatePicker.DateSelectedEvent += StartDateSelected;
             NavigationService.Navigate(RelocationStartDateView);
         }
         private void ButtonSelectEndTime_Click(object sender, RoutedEventArgs e)
         {
-            var RelocationEndDateView = new SelectTimePage(this, ViewModel.SourceRoom, ViewModel.DestinationRoom, ViewModel.Interval.Start);
+            var RelocationEndDateView = new SelectTimePage(this, ViewModel.DestinationRoom, ViewModel.Interval.Start);
             RelocationEndDateView.CustomDatePicker.DateSelectedEvent += EndDateSelected;
             NavigationService.Navigate(RelocationEndDateView);
         }

@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "Id": 0,
+    "Interval": {
+      "Start": "2022-05-19T08:00:00",
+      "End": "2022-05-19T09:00:00"
+    },
+    "SourceRoom": 3,
+    "DestinationRoom": null
+  }
+]

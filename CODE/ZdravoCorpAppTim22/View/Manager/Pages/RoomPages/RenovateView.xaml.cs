@@ -1,11 +1,7 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
 using ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments;
@@ -22,8 +18,8 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             DataContext = ViewModel;
             
             TypeComboBox.ItemsSource = Enum.GetValues(typeof(RoomType));
-            EndTimeGroup.Visibility = Visibility.Hidden;
-            RoomEdit.Visibility = Visibility.Hidden;
+            ButtonSelectEndTime.IsEnabled = false;
+            RoomEdit.IsEnabled = false;
         }
 
         public void StartDateSelected(object sender, EventArgs e)
@@ -37,8 +33,8 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             if (DateTime.Compare(ViewModel.RenovationInterval.Start, new DateTime()) > 0)
             {
                 SelectStartTimeContent.Content = ViewModel.RenovationInterval.Start.ToString();
-                EndTimeGroup.Visibility = Visibility.Visible;
-                RoomEdit.Visibility = Visibility.Hidden;
+                ButtonSelectEndTime.IsEnabled = true;
+                RoomEdit.IsEnabled = false;
                 ViewModel.RenovationInterval = new Interval
                 {
                     Start = ViewModel.RenovationInterval.Start,
@@ -48,7 +44,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             }
             else
             {
-                EndTimeGroup.Visibility = Visibility.Hidden;
+                ButtonSelectEndTime.IsEnabled = false;
             }
         }
         public void EndDateSelected(object sender, EventArgs e)
@@ -62,11 +58,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             if (DateTime.Compare(ViewModel.RenovationInterval.End, new DateTime()) > 0)
             {
                 SelectEndTimeContent.Content = ViewModel.RenovationInterval.End.ToString();
-                RoomEdit.Visibility = Visibility.Visible;
+                RoomEdit.IsEnabled = true;
             }
             else
             {
-                RoomEdit.Visibility = Visibility.Hidden;
+                RoomEdit.IsEnabled = false;
             }
         }
         private void ButtonSelectStartTime_Click(object sender, RoutedEventArgs e)

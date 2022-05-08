@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Model.Utility;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
 {
@@ -19,17 +19,18 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
         public DateTime SelectedDate;
         
         public event EventHandler DateSelectedEvent;
-        public event EventHandler CancelEvent;
 
         public CustomDatePicker(Room room)
         {
             InitializeComponent();
+            Init();
             this.Room = room;
         }
 
         public CustomDatePicker(Room room, Room secondRoom)
         {
             InitializeComponent();
+            Init();
             this.Room = room;
             this.SecondRoom = secondRoom;
         }
@@ -37,6 +38,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
         public CustomDatePicker(Room room, DateTime startDate)
         {
             InitializeComponent();
+            Init();
             this.Room = room;
             DatePicker.DisplayDateStart = startDate;
             StartDate = startDate;
@@ -50,6 +52,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
         public CustomDatePicker(Room room, Room secondRoom, DateTime startDate)
         {
             InitializeComponent();
+            Init();
             this.Room = room;
             this.SecondRoom = secondRoom;
             DatePicker.DisplayDateStart = startDate;
@@ -59,6 +62,15 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             {
                 DatePicker.DisplayDateEnd = EndDate;
             }
+        }
+
+        private void Init()
+        {
+            TimePicker = new CustomTimePicker();
+            TimeContent.Content = TimePicker;
+            TimePicker.PropertyChanged += TimeChanged;
+            TimeContent.IsEnabled = false;
+            ButtonPanel.IsEnabled = false;
         }
 
         public DateTime GetDateTime()
@@ -75,13 +87,13 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
         {
             if (AppointmentGrid.SelectedAppointment.Type == RoomAppointmentType.Free)
             {
-                TimePicker = new CustomTimePicker();
-                TimeContent.Content = TimePicker;
+                TimeContent.IsEnabled = true;
+                TimeChanged(null, null);
             }
             else
             {
-                TimePicker = null;
-                TimeContent.Content = null;
+                TimeContent.IsEnabled = false;
+                ButtonPanel.IsEnabled = false;
             }
         }
 
@@ -112,7 +124,37 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
                 }
                 AppointmentGrid.ListSelectionChanged += new EventHandler(DateSelectionChanged);
                 AppointmentContent.Content = AppointmentGrid;
-                TimeContent.Content = null;
+
+                DateTime time = GetDateTime();
+                if (AppointmentGrid == null) return;
+                Appointment app = AppointmentGrid.SelectedAppointment;
+                Interval interval = app.Interval;
+                if (app.Type == RoomAppointmentType.Free && time >= interval.Start && time <= interval.End)
+                {
+                    TimeContent.IsEnabled = true;
+                    ButtonPanel.IsEnabled = false;
+                }
+                else
+                {
+                    TimeContent.IsEnabled = false;
+                    ButtonPanel.IsEnabled = false;
+                }
+            }
+        }
+
+        private void TimeChanged(object sender, EventArgs e)
+        {
+            DateTime time = GetDateTime();
+            if (AppointmentGrid == null) return;
+            Appointment app = AppointmentGrid.SelectedAppointment;
+            Interval interval = app.Interval;
+            if (app.Type == RoomAppointmentType.Free && time >= interval.Start && time <= interval.End)
+            {
+                ButtonPanel.IsEnabled = true;
+            }
+            else
+            {
+                ButtonPanel.IsEnabled = false;
             }
         }
 
@@ -138,11 +180,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
                     MessageBox.Show("Start time must be between: " + interval.Start.TimeOfDay + " and " + interval.End.TimeOfDay);
                 }
             }
-        }
-
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.CancelEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

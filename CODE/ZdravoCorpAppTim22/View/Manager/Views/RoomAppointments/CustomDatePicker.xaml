@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="CustomCalendarStyle" TargetType="{x:Type Calendar}">
                 <Setter Property="Template">
@@ -196,25 +196,21 @@
                     SelectedDateChanged="Start_SelectedDateChanged"
                     DisplayDateStart="{x:Static sys:DateTime.Today}"/>
         <ContentControl x:Name="AppointmentContent" 
-                            Grid.Row="1" 
-                            Grid.ColumnSpan="2"
-                            Margin="0 20 0 30"/>
+                        Grid.Row="1" 
+                        Grid.ColumnSpan="2"
+                        Margin="0 20 0 30"/>
         <ContentControl Grid.Row="2" 
-                            Foreground="{StaticResource TextPrimary}"
-                            FontSize="{StaticResource StandardFontSize}"
-                            x:Name="TimeContent"/>
+                        Foreground="{StaticResource TextPrimary}"
+                        FontSize="{StaticResource StandardFontSize}"
+                        x:Name="TimeContent"/>
         <WrapPanel x:Name="ButtonPanel" 
                    Grid.Row="3" 
                    Grid.Column="0" 
-                   Margin="0 30 0 0">
+                   Margin="0 60 0 0">
             <Button x:Name="ButtonConfirm" 
-                    Style="{StaticResource ButtonStandard}" 
+                    Style="{StaticResource ConfirmButtonStyle}"
                     Margin="0"
-                    Click="ButtonConfirm_Click">Confirm</Button>
-            <Button x:Name="ButtonCancel" 
-                    Style="{StaticResource ButtonStandard}" 
-                    Margin="30 0 0 0" 
-                    Click="ButtonCancel_Click">Cancel</Button>
+                    Click="ButtonConfirm_Click"/>
         </WrapPanel>
     </Grid>
 </UserControl>

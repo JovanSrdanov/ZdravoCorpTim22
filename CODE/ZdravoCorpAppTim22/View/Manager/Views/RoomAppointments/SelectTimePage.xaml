@@ -11,7 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -21,7 +21,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="0 0 0 30">
-            <Button Click="BackButton_Click" Style="{StaticResource ButtonStandard}">Go Back</Button>
+            <Button Click="BackButton_Click" 
+                    Style="{StaticResource BackButtonStyle}"/>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

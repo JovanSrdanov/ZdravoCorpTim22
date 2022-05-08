@@ -1,14 +1,12 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
 
-namespace ZdravoCorpAppTim22.View.Manager.ViewModels
+namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
     public class RoomAppointmentViewModel
     {
