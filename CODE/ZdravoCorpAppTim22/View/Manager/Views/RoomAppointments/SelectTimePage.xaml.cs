@@ -43,7 +43,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
         {
             SelectTimeContent.Content = CustomDatePicker;
             CustomDatePicker.DateSelectedEvent += BackButton;
-            CustomDatePicker.CancelEvent += BackButton;
         }
 
         public void BackButton(object sender, EventArgs e)

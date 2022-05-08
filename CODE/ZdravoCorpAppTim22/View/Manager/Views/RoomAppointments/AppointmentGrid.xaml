@@ -9,23 +9,27 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid Grid.Row="0"
+                  Grid.Column="0"
                   Name="DataGrid"
                   ItemsSource="{Binding Path=Appointments}" 
-                  SelectionChanged="DataGrid_SelectionChanged">
+                  SelectionChanged="DataGrid_SelectionChanged"
+                  MaxWidth="600">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Interval.Start.TimeOfDay}" Header="Start Time" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Interval.End.TimeOfDay}" Header="End Time" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

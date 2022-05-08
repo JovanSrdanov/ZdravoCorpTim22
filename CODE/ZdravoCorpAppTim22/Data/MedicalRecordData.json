@@ -1,0 +1,15 @@
+[
+  {
+    "Id": 0,
+    "BloodType": 5,
+    "AllergiesList": [
+      "Fish",
+      "Molluscs"
+    ],
+    "ConditionList": [
+      "dfsfdsfdsfsdf",
+      "dsadasdasdadsa"
+    ],
+    "Patient": 0
+  }
+]

@@ -10,8 +10,9 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
         </ResourceDictionary>
     </Page.Resources>
@@ -25,18 +26,33 @@
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
                    FontSize="{StaticResource HeadingFontSize}">WAREHOUSE OVERVIEW</TextBlock>
-        <WrapPanel Grid.Row="1"
-                   Margin="0 0 0 10">
-            <Button x:Name="AddEquipment" Click="AddEquipment_Click">Add</Button>
-            <Button x:Name="EditEquipment" Click="EditEquipment_Click">Edit</Button>
-            <Button x:Name="RelocateEquipment" Click="RelocateEquipment_Click">Relocate</Button>
-            <Button x:Name="DeleteEquipment" Click="DeleteEquipment_Click">Delete</Button>
-        </WrapPanel>
+        <Grid Grid.Row="1"
+              Margin="0 0 0 10"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel HorizontalAlignment="Left"
+                       Grid.Column="0">
+                <Button x:Name="AddEquipment" Style="{StaticResource AddButtonStyle}" Command="{Binding OpenAddCommand}"/>
+                <Button x:Name="DeleteEquipment" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteEquipmentCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
+                <Button x:Name="EditEquipment" Style="{StaticResource EditButtonStyle}" Command="{Binding OpenEditCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
+                <Button x:Name="RelocateEquipment" Style="{StaticResource MoveToRoomButtonStyle}" Command="{Binding OpenRelocationCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right"
+                       Grid.Column="1">
+                <TextBox x:Name="SearchTextBox" Width="260" Margin="0 0 1 0" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button x:Name="SearchButton" 
+                        Style="{StaticResource SearchButtonStyle}"
+                        Margin="0" 
+                        IsHitTestVisible="False"/>
+            </WrapPanel>
+        </Grid>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"
                   SelectionMode="Extended"
-                  ItemsSource="{Binding Path=EquipmentCollection}"
-                  SelectionChanged="DataGrid_SelectionChanged">
+                  ItemsSource="{Binding Path=FilteredEquipment}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=EquipmentData.Id}" Header="ID" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>

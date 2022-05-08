@@ -1,7 +1,7 @@
 [
   {
     "Id": 0,
-    "Name": "stolice",
+    "Name": "Stolice",
     "Type": 1
   },
   {
@@ -10,8 +10,8 @@
     "Type": 0
   },
   {
-    "Id": 3,
-    "Name": "kreveti",
+    "Id": 4,
+    "Name": "sto",
     "Type": 1
   }
 ]

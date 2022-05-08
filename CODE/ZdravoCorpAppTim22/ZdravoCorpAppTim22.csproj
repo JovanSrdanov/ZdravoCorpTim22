@@ -212,6 +212,7 @@
     <Compile Include="View\DoctorView\OpenReport.xaml.cs">
       <DependentUpon>OpenReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -249,17 +250,23 @@
     <Compile Include="View\Manager\Pages\WarehousePages\EditEquipmentView.xaml.cs">
       <DependentUpon>EditEquipmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Pages\WarehousePages\RelocationView.xaml.cs">
-      <DependentUpon>RelocationView.xaml</DependentUpon>
+    <Compile Include="View\Manager\Pages\WarehousePages\WarehouseRelocationView.xaml.cs">
+      <DependentUpon>WarehouseRelocationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\ViewModels\RelocationViewModel.cs" />
-    <Compile Include="View\Manager\ViewModels\RoomAppointmentViewModel.cs" />
-    <Compile Include="View\Manager\ViewModels\RoomDetailsViewModel.cs" />
-    <Compile Include="View\Manager\ViewModels\RoomViewModel.cs" />
-    <Compile Include="View\Manager\ViewModels\WarehouseViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAppointmentViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDetailsViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RenovationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAddViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomRelocationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomWarehouseRelocationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\WarehouseViewModels\AddEquipmentViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\WarehouseViewModels\EditEquipmentViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\WarehouseViewModels\WarehouseViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\WarehouseViewModels\WarehouseRelocationViewModel.cs" />
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
@@ -356,7 +363,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Global.xaml">
+    <Page Include="View\Manager\Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Styles\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -404,17 +415,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Pages\WarehousePages\RelocationView.xaml">
+    <Page Include="View\Manager\Pages\WarehousePages\WarehouseRelocationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Manager\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -440,6 +447,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\ManagerHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -567,6 +578,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="View\Fonts\Segoe Fluent Icons.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

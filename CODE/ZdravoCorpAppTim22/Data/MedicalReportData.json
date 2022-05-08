@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 0,
+    "DoctorID": 0,
+    "Anamnesis": "dfsds",
+    "Diagnosis": "dfsfdsfdsfsdf",
+    "ReportDate": "2022-05-04T09:28:33.0608995+02:00",
+    "MedicalReceipt": 0,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 1,
+    "DoctorID": 0,
+    "Anamnesis": "dsadad",
+    "Diagnosis": "dsadasdasdadsa",
+    "ReportDate": "2022-05-04T09:43:41.6111934+02:00",
+    "MedicalReceipt": 1,
+    "MedicalRecord": 0
+  }
+]

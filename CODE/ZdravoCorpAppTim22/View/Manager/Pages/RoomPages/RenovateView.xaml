@@ -12,7 +12,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
@@ -25,7 +25,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="0 0 0 30">
-            <Button Click="BackButton_Click" Style="{StaticResource ButtonStandard}">Go Back</Button>
+            <Button Command="{Binding NavigateBackCommand}" 
+                    Style="{StaticResource BackButtonStyle}"/>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -39,20 +40,21 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="0"
+                       Grid.ColumnSpan="2"
                        Margin="0 0 0 20">
                 <Button x:Name="ButtonSelectStartTime" 
-                    Style="{StaticResource ButtonStandard}" 
-                    Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+                        Style="{StaticResource StartTimeButtonStyle}" 
+                        Click="ButtonSelectStartTime_Click"/>
                 <ContentControl x:Name="SelectStartTimeContent"
-                            Foreground="{StaticResource TextPrimary}"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Margin="20 7 0 0"/>
+                                Foreground="{StaticResource TextPrimary}"
+                                FontSize="{StaticResource StandardFontSize}"
+                                Margin="20 7 0 0"/>
             </WrapPanel>
             <WrapPanel Grid.Row="1"
                        x:Name="EndTimeGroup">
                 <Button x:Name="ButtonSelectEndTime" 
-                    Style="{StaticResource ButtonStandard}" 
-                    Click="ButtonSelectEndTime_Click">Select End Time</Button>
+                        Style="{StaticResource EndTimeButtonStyle}" 
+                        Click="ButtonSelectEndTime_Click"/>
                 <ContentControl x:Name="SelectEndTimeContent"
                             Foreground="{StaticResource TextPrimary}"
                             FontSize="{StaticResource StandardFontSize}"
@@ -74,23 +76,19 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Type: "/>
-                    <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay}"/>
+                    <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <WrapPanel Grid.Row="4" 
-                       Grid.ColumnSpan="2"
-                       Margin="0 30 0 0">
+                               Grid.ColumnSpan="2"
+                               Margin="0 30 0 0">
                         <Button x:Name="ButtonConfirm" 
-                        Style="{StaticResource ButtonStandard}" 
-                        Margin="0" 
-                        Click="ButtonConfirm_Click">Confirm</Button>
-                        <Button x:Name="ButtonCancel" 
-                        Style="{StaticResource ButtonStandard}" 
-                        Margin="30 0 0 0" 
-                        Click="ButtonCancel_Click">Cancel</Button>
+                                Style="{StaticResource ConfirmButtonStyle}"
+                                Margin="0" 
+                                Command="{Binding AddRenovationCommand}"/>
                     </WrapPanel>
                 </Grid>
             </WrapPanel>

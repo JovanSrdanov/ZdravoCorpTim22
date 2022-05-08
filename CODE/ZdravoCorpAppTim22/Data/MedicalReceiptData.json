@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 0,
+    "EndDate": "2022-05-05T00:00:00",
+    "NotifyNextDateTime": "2022-04-06T09:59:00",
+    "Time": "09:59",
+    "AdditionalInstructions": "Dve tablete",
+    "TherapyPurpose": "Za glavu",
+    "Medicine": {
+      "Id": 2,
+      "Name": "lek3",
+      "Ingredients": "secer"
+    },
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 1,
+    "EndDate": "2022-05-27T00:00:00",
+    "NotifyNextDateTime": "2022-05-04T16:12:00",
+    "Time": "16:12",
+    "AdditionalInstructions": "dhajsdas",
+    "TherapyPurpose": "dsadas",
+    "Medicine": {
+      "Id": 0,
+      "Name": "lek1",
+      "Ingredients": "kikiriki"
+    },
+    "MedicalRecord": 0
+  }
+]

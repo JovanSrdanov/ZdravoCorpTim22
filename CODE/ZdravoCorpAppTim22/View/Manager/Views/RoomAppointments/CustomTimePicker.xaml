@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock" BasedOn="{StaticResource StandardTextBlock}">
                 <Setter Property="Margin" Value="0 0 10 0"/>
@@ -23,10 +23,10 @@
             <TextBlock Text="Hours"/>
             <ComboBox Name="HourComboBox"
                       Margin="0 0 10 0"
-                      SelectedValue="{Binding Path=Hours}"></ComboBox>
+                      SelectedItem="{Binding Path=Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
             <TextBlock Text="Minutes"/>
             <ComboBox Name="MinuteComboBox"
-                      SelectedValue="{Binding Path=Minutes}"></ComboBox>
+                      SelectedItem="{Binding Path=Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
         </WrapPanel>
     </Grid>
 </UserControl>

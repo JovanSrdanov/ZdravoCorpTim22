@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Service;
 using ZdravoCorpAppTim22.Service.Generic;
 
@@ -45,6 +46,24 @@ namespace Service
             foreach (EquipmentRelocation rel in list)
             {
                 DeleteByID(rel.Id);
+            }
+        }
+        public void Create(Room source, Room destination, Interval interval, List<Equipment> equipment)
+        {
+            if (equipment.Count > 0)
+            {
+                EquipmentRelocation equipmentRelocation = new EquipmentRelocation
+                {
+                    SourceRoom = source,
+                    DestinationRoom = destination,
+                    Interval = interval,
+                    Equipment = equipment
+                };
+                foreach (Equipment eq in equipment)
+                {
+                    EquipmentService.Instance.Create(eq);
+                }
+                Create(equipmentRelocation);
             }
         }
         public void DaemonMethod()

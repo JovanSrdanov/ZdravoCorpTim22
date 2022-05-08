@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Global.xaml" />
+                <ResourceDictionary Source="../Styles/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
             
             <Style x:Key="MenuListBoxStyle">

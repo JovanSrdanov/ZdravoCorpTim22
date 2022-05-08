@@ -16,7 +16,7 @@ namespace Model
         {
             Id = eq.Id;
             Amount = eq.Amount;
-            equipmentData = new EquipmentData(eq.EquipmentData);
+            EquipmentData = new EquipmentData(eq.EquipmentData);
         }
 
         [JsonConverter(typeof(EquipmentDataToIDConverter))]

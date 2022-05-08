@@ -8,13 +8,14 @@
         mc:Ignorable="d"
         Title="ManagerHome" Height="720" Width="1270"
         Background="#292c35"
+        WindowStartupLocation="CenterScreen"
         Closing="Window_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Global.xaml" />
+                <ResourceDictionary Source="Styles/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -47,9 +48,14 @@
                         <ComboBoxItem Content="Dark Theme"/>
                         <ComboBoxItem Content="Light Theme"/>
                     </ComboBox>
-                    <Button x:Name="ButtonLogout"
-                            Style="{StaticResource ButtonStandard}"
-                            Margin="20 0 0 0" Click="ButtonLogout_Click">Log Out</Button>
+                    <Button Style="{DynamicResource ButtonStandard}" x:Name="ButtonLogout"
+                            
+                            Margin="20 0 0 0" 
+                            Click="ButtonLogout_Click"
+                            FontFamily="Segoe MDL2 Assets"
+                            Content="&#xE7E8;"
+                            FontSize="23"
+                            Padding="20 10"/>
                 </WrapPanel>
             </Border>
             
