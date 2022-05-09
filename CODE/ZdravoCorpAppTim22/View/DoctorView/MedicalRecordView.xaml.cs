@@ -66,13 +66,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
 
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
-            medicineObservableList = new ObservableCollection<Medicine>();
+
+            List<Medicine> medicines = new List<Medicine>();
 
             foreach (MedicalReceipt medicalReceipt in selectedPatient.medicalRecord.MedicalReceipt)
             {
-                medicineObservableList.Add(medicalReceipt.Medicine);
+                medicines.AddRange(medicalReceipt.Medicine);
             }
-
+            medicineObservableList = new ObservableCollection<Medicine>(medicines);
             MedicationsListBox.ItemsSource = medicineObservableList;
 
 
@@ -104,7 +105,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (MedicalReport medicalReport in newlyCreatedReports)
                 {
-                    medicineObservableList.Remove(medicalReport.MedicalReceipt.Medicine);
+                    foreach(Medicine medicine in medicalReport.MedicalReceipt.Medicine)
+                    {
+                        medicineObservableList.Remove(medicine);
+                    }
                     selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
                     MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);

@@ -121,6 +121,7 @@
     <Compile Include="Controller\Generic\IController.cs" />
     <Compile Include="Controller\MedicalReceiptController.cs" />
     <Compile Include="Controller\MedicalReportController.cs" />
+    <Compile Include="Controller\MedicineDataController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Model\MedicalReceipt.cs" />
     <Compile Include="Model\MedicalReport.cs" />
     <Compile Include="Model\Medicine.cs" />
+    <Compile Include="Model\MedicineData.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\MedicalReceiptToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\MedicalRecordToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\MedicalReportToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\MedicineDataToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\MedicineToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\PatientToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentRelocationToIDConverter.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="Repository\MedicalReceiptRepository.cs" />
     <Compile Include="Repository\MedicalRecordRepository.cs" />
     <Compile Include="Repository\MedicalReportRepository.cs" />
+    <Compile Include="Repository\MedicineDataRepository.cs" />
     <Compile Include="Repository\MedicineRepository.cs" />
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Service\MedicalReceiptService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicalReportService.cs" />
+    <Compile Include="Service\MedicineDataService.cs" />
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\RenovationService.cs" />
     <Compile Include="Service\EquipmentService.cs" />

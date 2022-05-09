@@ -4,17 +4,17 @@ using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
 {
-    public class MedicineService : GenericService<MedicineRepository, Medicine>
+    public class MedicineDataService : GenericService<MedicineDataRepository, MedicineData>
     {
-        private static MedicineService instance;
-        private MedicineService() : base(MedicineRepository.Instance) { }
-        public static MedicineService Instance
+        private static MedicineDataService instance;
+        private MedicineDataService() : base(MedicineDataRepository.Instance) { }
+        public static MedicineDataService Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new MedicineService();
+                    instance = new MedicineDataService();
                 }
                 return instance;
             }
