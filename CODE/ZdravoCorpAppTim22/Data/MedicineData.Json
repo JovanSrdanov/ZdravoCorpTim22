@@ -1,3 +1,26 @@
 [
-  
+  {
+    "Id": 0,
+    "Amount": 5,
+    "MedicineData": 0,
+    "MedicalReceipt": null
+  },
+  {
+    "Id": 1,
+    "Amount": 0,
+    "MedicineData": 1,
+    "MedicalReceipt": null
+  },
+  {
+    "Id": 2,
+    "Amount": 0,
+    "MedicineData": 2,
+    "MedicalReceipt": null
+  },
+  {
+    "Id": 3,
+    "Amount": 0,
+    "MedicineData": 3,
+    "MedicalReceipt": null
+  }
 ]

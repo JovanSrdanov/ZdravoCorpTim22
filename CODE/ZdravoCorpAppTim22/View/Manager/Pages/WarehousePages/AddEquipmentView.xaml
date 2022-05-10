@@ -40,11 +40,11 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=EquipmentName, Mode=TwoWay}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=EquipmentName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Amount: "/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Amount, Mode=TwoWay}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Type: "/>
-            <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay}"/>
+            <ComboBox x:Name="TypeComboBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 30 0 0">
                 <Button x:Name="ButtonConfirm" Style="{StaticResource ConfirmButtonStyle}" Margin="0" Command="{Binding AddEquipmentCommand}"/>

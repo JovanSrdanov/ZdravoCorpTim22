@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
@@ -18,6 +19,7 @@ namespace ZdravoCorpAppTim22.Model
                 Id = m.Id;
                 Amount = m.Amount;
                 MedicineData = new MedicineData(m.MedicineData);
+                Ingredient = m.Ingredient;
             }
         }
 
@@ -52,6 +54,28 @@ namespace ZdravoCorpAppTim22.Model
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
         private MedicalReceipt medicalReceipt;
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
+
+        [JsonIgnore]
+        private ObservableCollection<Ingredient> ingredient;
+        [JsonIgnore]
+        public ObservableCollection<Ingredient> Ingredient
+        {
+            get
+            {
+                if (ingredient == null)
+                    ingredient = new ObservableCollection<Ingredient>();
+                return ingredient;
+            }
+            set
+            {
+                RemoveAllIngredient();
+                if (value != null)
+                {
+                    foreach (Ingredient oIngredient in value)
+                        AddIngredient(oIngredient);
+                }
+            }
+        }
         public MedicalReceipt MedicalReceipt
         {
             get
@@ -74,6 +98,43 @@ namespace ZdravoCorpAppTim22.Model
                         this.medicalReceipt.AddMedicine(this);
                     }
                 }
+            }
+        }
+
+        public void AddIngredient(Ingredient newIngredient)
+        {
+            if (newIngredient == null)
+                return;
+            if (this.ingredient == null)
+                this.ingredient = new ObservableCollection<Ingredient>();
+            if (!this.ingredient.Contains(newIngredient))
+            {
+                this.ingredient.Add(newIngredient);
+                newIngredient.Medicine = this;
+            }
+        }
+        public void RemoveIngredient(Ingredient oldIngredient)
+        {
+            if (oldIngredient == null)
+                return;
+            if (this.ingredient != null)
+                if (this.ingredient.Contains(oldIngredient))
+                {
+                    this.ingredient.Remove(oldIngredient);
+                    oldIngredient.Medicine = null;
+                }
+        }
+        public void RemoveAllIngredient()
+        {
+            if (ingredient != null)
+            {
+                System.Collections.ArrayList tmpIngredient = new System.Collections.ArrayList();
+                foreach (Ingredient oldIngredient in ingredient)
+                    tmpIngredient.Add(oldIngredient);
+                ingredient.Clear();
+                foreach (Ingredient oldIngredient in tmpIngredient)
+                    oldIngredient.Medicine = null;
+                tmpIngredient.Clear();
             }
         }
     }

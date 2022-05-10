@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 0,
+    "Amount": 1,
+    "IngredientData": 0,
+    "Medicine": 0
+  },
+  {
+    "Id": 1,
+    "Amount": 1,
+    "IngredientData": 5,
+    "Medicine": 0
+  },
+  {
+    "Id": 2,
+    "Amount": 1,
+    "IngredientData": 1,
+    "Medicine": 3
+  },
+  {
+    "Id": 3,
+    "Amount": 1,
+    "IngredientData": 4,
+    "Medicine": 3
+  }
+]

@@ -19,5 +19,9 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+        public MedicineData GetByName(string name)
+        {
+            return MedicineDataService.Instance.GetByName(name);
+        }
     }
 }

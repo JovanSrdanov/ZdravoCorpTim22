@@ -119,6 +119,8 @@
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
     <Compile Include="Controller\Generic\IController.cs" />
+    <Compile Include="Controller\IngredientController.cs" />
+    <Compile Include="Controller\IngredientDataController.cs" />
     <Compile Include="Controller\MedicalReceiptController.cs" />
     <Compile Include="Controller\MedicalReportController.cs" />
     <Compile Include="Controller\MedicineDataController.cs" />
@@ -130,6 +132,8 @@
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
+    <Compile Include="Model\Ingredient.cs" />
+    <Compile Include="Model\IngredientData.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
     <Compile Include="Model\MedicalReceipt.cs" />
     <Compile Include="Model\MedicalReport.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\DoctorToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\IngredientDataToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ISerializer.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\MedicalReceiptToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\MedicalRecordToIDConverter.cs" />
@@ -158,6 +163,8 @@
     <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\Generic\GenericRepository.cs" />
     <Compile Include="Repository\Generic\IRepository.cs" />
+    <Compile Include="Repository\IngredientDataRepository.cs" />
+    <Compile Include="Repository\IngredientRepository.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
     <Compile Include="Repository\MedicalAppointmentRepository.cs" />
     <Compile Include="Repository\MedicalReceiptRepository.cs" />
@@ -175,6 +182,8 @@
     <Compile Include="Service\EquipmentDataService.cs" />
     <Compile Include="Service\Generic\GenericService.cs" />
     <Compile Include="Service\Generic\IService.cs" />
+    <Compile Include="Service\IngredientDataService.cs" />
+    <Compile Include="Service\IngredientService.cs" />
     <Compile Include="Service\MedicalReceiptService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicalReportService.cs" />
@@ -222,6 +231,12 @@
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
+    <Compile Include="View\Manager\Pages\MedicinePages\AddMedicineView.xaml.cs">
+      <DependentUpon>AddMedicineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Pages\MedicinePages\EditMedicineView.xaml.cs">
+      <DependentUpon>EditMedicineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RenovateView.xaml.cs">
       <DependentUpon>RenovateView.xaml</DependentUpon>
     </Compile>
@@ -261,6 +276,9 @@
     <Compile Include="View\Manager\Pages\WarehousePages\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\ViewModels\MedicineViewModels\AddMedicineViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\MedicineViewModels\EditMedicineViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomViewModel.cs" />
@@ -365,6 +383,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\OpenReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\MedicinePages\AddMedicineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\MedicinePages\EditMedicineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

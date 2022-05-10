@@ -64,7 +64,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             EquipmentData equipmentData = EquipmentDataController.Instance.GetByName(name);
             if (equipmentData == null)
             {
-                equipmentData = new EquipmentData(0, name, et);
+                equipmentData = new EquipmentData(-1, name, et);
                 EquipmentDataController.Instance.Create(equipmentData);
             }
 
@@ -77,7 +77,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 
             ManagerHome.NavigationService.Navigate(new WarehouseView());
         }
-        public bool CanAddEquipment(object obj)
+
+        public void NavigateBack(object obj)
+        {
+            ManagerHome.NavigationService.Navigate(new WarehouseView());
+        }
+        private bool CanAddEquipment(object obj)
         {
             if (type == null)
             {
@@ -92,10 +97,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
                 return false;
             }
             return true;
-        }
-        public void NavigateBack(object obj)
-        {
-            ManagerHome.NavigationService.Navigate(new WarehouseView());
         }
     }
 }

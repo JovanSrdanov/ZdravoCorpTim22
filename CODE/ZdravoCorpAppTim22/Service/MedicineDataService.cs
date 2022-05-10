@@ -19,5 +19,17 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
+
+        public MedicineData GetByName(string name)
+        {
+            foreach(MedicineData item in MedicineDataRepository.Instance.GetAll())
+            {
+                if (item.Name.Equals(name))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public Doctor ApprovedBy { get; set; }
-        public ObservableCollection<string> Ingredients { get; set; }
+
         [JsonIgnore]
         private ObservableCollection<Medicine> medicine;
         [JsonIgnore]
@@ -49,10 +49,9 @@ namespace ZdravoCorpAppTim22.Model
             {
                 Id = md.Id;
                 Name = md.Name;
-                Ingredients = new ObservableCollection<string>(md.Ingredients);
             }
         }
-        
+
         public void AddMedicine(Medicine newMedicine)
         {
             if (newMedicine == null)
@@ -89,5 +88,7 @@ namespace ZdravoCorpAppTim22.Model
                 tmpMedicine.Clear();
             }
         }
+
+        
     }
 }
