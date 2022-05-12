@@ -64,12 +64,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             AllergiesListBox.ItemsSource = selectedPatient.MedicalRecord.AllergiesList;
             medicineObservableList = new ObservableCollection<Medicine>();
+            AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
+
+            List<Medicine> medicines = new List<Medicine>();
 
             foreach (MedicalReceipt medicalReceipt in selectedPatient.MedicalRecord.MedicalReceipt)
             {
-                medicineObservableList.Add(medicalReceipt.Medicine);
+                medicines.AddRange(medicalReceipt.Medicine);
             }
-
+            medicineObservableList = new ObservableCollection<Medicine>(medicines);
             MedicationsListBox.ItemsSource = medicineObservableList;
 
             medRepList = new ObservableCollection<MedicalReport>(selectedPatient.MedicalRecord.MedicalReport);
@@ -82,9 +85,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (MedicalReport medicalReport in newlyCreatedReports)
                 {
-                    medicineObservableList.Remove(medicalReport.MedicalReceipt.Medicine);
-                    selectedPatient.MedicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
-                    selectedPatient.MedicalRecord.RemoveMedicalReport(medicalReport);
+                    foreach(Medicine medicine in medicalReport.MedicalReceipt.Medicine)
+                    {
+                        medicineObservableList.Remove(medicine);
+                    }
+                    selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
+                    selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
                     MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
                     MedicalReportController.Instance.DeleteByID(medicalReport.Id);     
                 }

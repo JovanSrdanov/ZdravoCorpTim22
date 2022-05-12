@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 9,
+    "Amount": 1,
+    "IngredientData": 1,
+    "MedicineData": 6
+  },
+  {
+    "Id": 10,
+    "Amount": 1,
+    "IngredientData": 3,
+    "MedicineData": 6
+  },
+  {
+    "Id": 11,
+    "Amount": 1,
+    "IngredientData": 4,
+    "MedicineData": 6
+  },
+  {
+    "Id": 12,
+    "Amount": 1,
+    "IngredientData": 3,
+    "MedicineData": 8
+  },
+  {
+    "Id": 13,
+    "Amount": 1,
+    "IngredientData": 2,
+    "MedicineData": 9
+  },
+  {
+    "Id": 14,
+    "Amount": 1,
+    "IngredientData": 4,
+    "MedicineData": 9
+  }
+]

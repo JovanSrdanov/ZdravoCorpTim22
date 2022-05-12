@@ -171,6 +171,7 @@ namespace Model
             return IsAvailable(interval.Start, interval.End);
         }
 
+        #region boilerplate
         public void AddEquipment(Equipment newEquipment)
         {
             if (newEquipment == null)
@@ -355,5 +356,6 @@ namespace Model
                 tmpEquipmentRelocation.Clear();
             }
         }
+        #endregion
     }
 }

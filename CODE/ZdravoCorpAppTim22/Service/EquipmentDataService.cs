@@ -23,7 +23,7 @@ namespace ZdravoCorpAppTim22.Service
 
         public EquipmentData GetByName(string name)
         {
-            foreach (EquipmentData item in EquipmentDataRepository.Instance.GetAll())
+            foreach (EquipmentData item in GetAll())
             {
                 if(item.Name.Equals(name))
                 {

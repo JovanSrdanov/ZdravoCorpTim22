@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -88,6 +89,11 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddRenovation(object obj)
         {
+            if (!OldRoom.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
+            {
+                MessageBox.Show("Room with that name already exists");
+                return;
+            }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             if (RenovationInterval.End <= DateTime.Now)
             {
