@@ -1,10 +1,5 @@
 [
   {
-    "Id": 0,
-    "Name": "Stolice",
-    "Type": 1
-  },
-  {
     "Id": 2,
     "Name": "cons",
     "Type": 0
@@ -13,5 +8,15 @@
     "Id": 4,
     "Name": "sto",
     "Type": 1
+  },
+  {
+    "Id": 5,
+    "Name": "oprema_1",
+    "Type": 1
+  },
+  {
+    "Id": 6,
+    "Name": "oprema_2",
+    "Type": 2
   }
 ]

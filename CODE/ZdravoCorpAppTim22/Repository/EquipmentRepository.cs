@@ -1,6 +1,4 @@
 ﻿using Model;
-using System.Collections.Generic;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Repository.Generic;
 
 namespace ZdravoCorpAppTim22.Repository

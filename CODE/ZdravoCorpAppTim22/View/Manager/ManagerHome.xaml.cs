@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace ZdravoCorpAppTim22.View.Manager
@@ -14,6 +15,20 @@ namespace ZdravoCorpAppTim22.View.Manager
             InitializeComponent();
             MainWindow = mainWindow;
             NavigationService = ContentFrame.NavigationService;
+        }
+
+        public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
         }
 
         private void Content_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)

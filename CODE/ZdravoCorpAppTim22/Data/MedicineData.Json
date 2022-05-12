@@ -1,17 +1,26 @@
 [
   {
-    "Id": 0,
-    "Name": "lek1",
-    "Ingredients": "kikiriki"
+    "Id": 6,
+    "Amount": 0,
+    "MedicineData": 6,
+    "MedicalReceipt": null
   },
   {
-    "Id": 1,
-    "Name": "lek2",
-    "Ingredients": "kokakola"
+    "Id": 8,
+    "Amount": 0,
+    "MedicineData": 8,
+    "MedicalReceipt": null
   },
   {
-    "Id": 2,
-    "Name": "lek3",
-    "Ingredients": "secer"
+    "Id": 9,
+    "Amount": 0,
+    "MedicineData": 9,
+    "MedicalReceipt": null
+  },
+  {
+    "Id": 10,
+    "Amount": 0,
+    "MedicineData": 10,
+    "MedicalReceipt": null
   }
 ]

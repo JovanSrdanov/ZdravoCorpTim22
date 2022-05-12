@@ -77,9 +77,12 @@ namespace Service
                                     message += medicalReceipt.AdditionalInstructions;
                                     message += "\n\n";
 
-                                    message += "Lek: ";
-                                    message += medicalReceipt.Medicine.Name;
-                                    message += "\n\n";
+                                    message += "Lekovi: ";
+                                    foreach(Medicine m in medicalReceipt.Medicine)
+                                    {
+                                        message += m.MedicineData.Name;
+                                        message += "\n\n";
+                                    }
 
                                     message += "Uzeti u: ";
                                     message += medicalReceipt.Time;

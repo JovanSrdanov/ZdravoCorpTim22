@@ -33,7 +33,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicationComboBox.ItemsSource = MedicineController.Instance.GetAll();
 
             MedicationComboBox.SelectedValuePath = "Id";
-            MedicationComboBox.SelectedValue = selectedMedicalReport.MedicalReceipt.Medicine.Id;
+
+            //MedicationComboBox.SelectedValue = selectedMedicalReport.MedicalReceipt.Medicine.Id;
+            if(selectedMedicalReport.MedicalReceipt.Medicine.Count > 0)
+            {
+                MedicationComboBox.SelectedValue = selectedMedicalReport.MedicalReceipt.Medicine[0].Id;
+            }
+            
 
             //MedicationComboBox.SelectedItem = selectedMedicalReport.MedicalReceipt.Medicine[0];
             //MedicationComboBox.ItemsSource = selectedMedicalReport.MedicalReceipt.Medicine;
@@ -137,7 +143,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
             else
             {
-                selectedMedicalReport.MedicalReceipt.Medicine = MedicationComboBox.SelectedItem as Medicine;
+                //selectedMedicalReport.MedicalReceipt.Medicine = MedicationComboBox.SelectedItem as Medicine;
+                selectedMedicalReport.MedicalReceipt.Medicine.Add(MedicationComboBox.SelectedItem as Medicine);
+
                 /*if (selectedMedicalReport.MedicalRecord.MedicalReport.IndexOf(selectedMedicalReport) ==
                     selectedMedicalReport.MedicalRecord.MedicalReport.Count - 1)        //ako menjam poslednji izvestaj u kartonu
                 {
