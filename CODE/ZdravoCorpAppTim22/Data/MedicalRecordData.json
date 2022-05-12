@@ -1,15 +1,29 @@
 [
   {
     "Id": 0,
-    "BloodType": 5,
-    "AllergiesList": [
-      "Fish",
-      "Molluscs"
-    ],
+    "BloodType": 1,
+    "AllergiesList": [],
     "ConditionList": [
-      "dfsfdsfdsfsdf",
-      "dsadasdasdadsa"
-    ],
-    "Patient": 0
+      "dsa",
+      "dsad",
+      "sada"
+    ]
+  },
+  {
+    "Id": 1,
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": [
+      "dsad"
+    ]
+  },
+  {
+    "Id": 2,
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": [
+      "dsa",
+      "dsa"
+    ]
   }
 ]

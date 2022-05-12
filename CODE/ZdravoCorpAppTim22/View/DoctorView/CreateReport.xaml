@@ -8,213 +8,70 @@
     Title="CreateReport"
     Width="1024"
     Height="768"
-    Closed="CreateReportClose"
+    WindowStyle="None"
     ResizeMode="NoResize"
     mc:Ignorable="d">
     <Grid>
-        <Button
-            x:Name="ConfirmClick"
-            Margin="512,656,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="MediumPurple"
-            Click="ConfirmBtnClick"
-            Content="Confirm"
-            FontSize="16"
-            Foreground="White" />
-        <Button
-            x:Name="CancelClick"
-            Width="60"
-            Margin="673,656,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="MediumPurple"
-            Click="CancelBtnClick"
-            Content="Cancel"
-            FontSize="16"
-            Foreground="White" />
-        <Rectangle
-            Width="837"
-            Height="58"
-            Margin="36,22,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Stroke="MediumPurple"
-            StrokeThickness="2" />
-        <TextBlock
-            Height="54"
-            Margin="435,24,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="35"
-            FontWeight="Bold"
-            Foreground="MediumPurple"
-            Text="Zdravo Corp"
-            TextWrapping="Wrap" />
-        <Label
-            Margin="33,108,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Date"
-            FontSize="18" />
-        <Label
-            Margin="33,200,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Name"
-            FontSize="18" />
-        <Label
-            Margin="33,296,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Surname"
-            FontSize="18" />
-        <TextBlock
-            x:Name="DateBlock"
-            Margin="33,147,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="MediumPurple"
-            Text="TextBlock"
-            TextWrapping="Wrap" />
-        <TextBlock
-            x:Name="NameBlock"
-            Margin="33,239,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="MediumPurple"
-            Text="TextBlock"
-            TextWrapping="Wrap" />
-        <TextBlock
-            x:Name="SurnameBlock"
-            Margin="33,335,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="MediumPurple"
-            Text="TextBlock"
-            TextWrapping="Wrap" />
-        <Label
-            Margin="36,396,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Diagnosis"
-            FontSize="18" />
-        <TextBox
-            x:Name="DiagnosisBox"
-            Width="184"
-            Height="168"
-            Margin="33,428,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" />
-        <Label
-            Margin="347,108,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Anamnesis"
-            FontSize="18" />
-        <TextBox
-            x:Name="AnamnesisBox"
-            Width="526"
-            Height="168"
-            Margin="347,145,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            RenderTransformOrigin="-0.194,0.032"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" />
-        <TextBox
-            x:Name="AdditionalInstructionsTextBox"
-            Width="526"
-            Height="168"
-            Margin="347,428,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            RenderTransformOrigin="-0.194,0.032"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" />
-        <Label
-            Margin="347,398,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Additional instructions"
-            FontSize="18"
-            RenderTransformOrigin="7.416,5.086" />
-        <Label
-            Width="107"
-            Margin="347,320,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Medication"
-            FontSize="18"
-            RenderTransformOrigin="7.416,5.086" />
-        <ComboBox
-            x:Name="MedicationComboBox"
-            Width="107"
-            Margin="347,355,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            DisplayMemberPath="Name"
-            FontSize="18" />
-        <TextBox
-            x:Name="PurposeComboBox"
-            Width="120"
-            Height="31"
-            Margin="477,355,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18" />
-        <Label
-            Margin="610,321,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="End date"
-            FontSize="18"
-            RenderTransformOrigin="7.416,5.086" />
-        <Label
-            Margin="788,321,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Time"
-            FontSize="18"
-            RenderTransformOrigin="7.416,5.086" />
-        <ComboBox
-            x:Name="TimeComboBox"
-            Width="85"
-            Margin="788,355,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18"
-            IsEditable="True">
-            <ComboBoxItem Content="15:59" />
-            <ComboBoxItem Content="16:05" />
-            <ComboBoxItem Content="16:12" />
-            <ComboBoxItem Content="16:30" />
+        <Button x:Name="ConfirmClick" Content="Confirm" Margin="637,649,0,0" Click="ConfirmBtnClick" 
+                FontSize="16" Style="{StaticResource normalButton}" Height="40" Width="80"/>
+        <Button x:Name="CancelClick" Content="Cancel" Margin="798,649,0,0" Click="CancelBtnClick" 
+                FontSize="16" Width="79" Style="{StaticResource normalButton}" Height="40"/>
+        <Rectangle HorizontalAlignment="Left" Height="58" Margin="36,22,0,0" Stroke="#FF8C39A5" 
+                   VerticalAlignment="Top" Width="837" StrokeThickness="2"/>
+        <TextBlock Margin="435,24,0,0" Text="Zdravo Corp" Style="{StaticResource h1}"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="33,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="33,200,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="33,296,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,147,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="DateBlock" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,239,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="NameBlock" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,335,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
+            x:Name="SurnameBlock" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="36,396,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="33,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"
+            x:Name="DiagnosisBox" Height="168" FontSize="18" VerticalScrollBarVisibility="Auto"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="347,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="347,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="526" RenderTransformOrigin="-0.194,0.032" Height="168"
+            x:Name="AnamnesisBox" VerticalScrollBarVisibility="Auto" FontSize="18"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="347,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="526" RenderTransformOrigin="-0.194,0.032" Height="168"
+            x:Name="AdditionalInstructionsTextBox" VerticalScrollBarVisibility="Auto" FontSize="18"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Label Content="Additional instructions" HorizontalAlignment="Left" Margin="347,398,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <Label Content="Medication" HorizontalAlignment="Left" Margin="347,320,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <ComboBox x:Name="MedicationComboBox" HorizontalAlignment="Left" Margin="347,355,0,0" VerticalAlignment="Top" Width="107" FontSize="18"
+            DisplayMemberPath="Name" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <TextBox x:Name="PurposeComboBox" HorizontalAlignment="Left" Margin="477,355,0,0" VerticalAlignment="Top" 
+            Width="120" Height="31" FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Label Content="End date" HorizontalAlignment="Left" Margin="610,321,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <Label Content="Time" HorizontalAlignment="Left" Margin="788,321,0,0" VerticalAlignment="Top" 
+            RenderTransformOrigin="7.416,5.086" FontSize="18"/>
+        <ComboBox x:Name="TimeComboBox" HorizontalAlignment="Left" Margin="788,353,0,0" VerticalAlignment="Top" Width="85" 
+            IsEditable="True" FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2" Height="34">
+            <ComboBoxItem Content="10:00"/>
+            <ComboBoxItem Content="10:30"/>
+            <ComboBoxItem Content="11:00"/>
+            <ComboBoxItem Content="11:30"/>
         </ComboBox>
-        <DatePicker
-            x:Name="EndDateDatePicker"
-            Margin="610,353,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="18" />
-        <Label
-            Width="94"
-            Margin="477,320,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Purpose"
-            FontSize="18"
-            RenderTransformOrigin="7.416,5.086" />
+        <DatePicker x:Name="EndDateDatePicker" HorizontalAlignment="Left" Margin="610,353,0,0" VerticalAlignment="Top"
+            FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Label Content="Purpose" HorizontalAlignment="Left" Margin="477,320,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18" Width="94"/>
+        <Image Source="/Resource/DoctorResource/hospital.png" Margin="13,27,903,693"/>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
 
     </Grid>
 </Window>

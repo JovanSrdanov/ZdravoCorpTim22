@@ -7,9 +7,26 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "dfsfdsfdsfsdf"
-        ],
-        "Patient": 0
+          "dsa",
+          "dsad"
+        ]
+      },
+      {
+        "Id": 1,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsad"
+        ]
+      },
+      {
+        "Id": 2,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsa",
+          "dsa"
+        ]
       }
     ],
     "Name": "doc",
@@ -25,7 +42,33 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 2,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsa"
+        ]
+      },
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsa",
+          "dsad"
+        ]
+      },
+      {
+        "Id": 1,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "dsad"
+        ]
+      }
+    ],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordView" Height="768" Width="1024" Closed="MedRecClosed" ResizeMode="NoResize">
+        Title="MedicalRecordView" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <Label Content="Conditions" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="63,24,0,0" VerticalAlignment="Top" FontSize="18"/>
@@ -16,27 +16,46 @@
         <Label Content="Gender" HorizontalAlignment="Left" Margin="316,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Date of birth" HorizontalAlignment="Left" Margin="438,24,0,0" VerticalAlignment="Top" FontSize="18"/>
 
-        <Button x:Name="CreateReportBtn" Content="Create report" HorizontalAlignment="Left" Margin="405,649,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="CreateReportBtnClick" Height="30" FontSize="16"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="548,649,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="BackBtn" Height="30" FontSize="16"/>
-        <Button x:Name="OpenReportBtn" Content="Open report" HorizontalAlignment="Left" Margin="281,649,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="OpenReportBtnClick" Height="30" FontSize="16"/>
-        <Button x:Name="FinishReportBtn" Content="Finish report" HorizontalAlignment="Left" Margin="645,649,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="FinishReportClick" Height="30" FontSize="16"/>
+        <Button x:Name="CreateReportBtn" Content="Create report" Margin="624,647,0,0" Click="CreateReportBtnClick" 
+                Height="30" FontSize="16"
+                Style="{StaticResource normalButton}"/>
+        <Button Content="Back" Margin="870,694,0,0" Click="BackBtn" Height="30" FontSize="16"
+                Style="{StaticResource normalButton}"/>
+        <Button x:Name="OpenReportBtn" Content="Open report" Margin="501,647,0,0" Click="OpenReportBtnClick" 
+                Height="30" FontSize="16"
+                Style="{StaticResource normalButton}"/>
+        <Button x:Name="FinishReportBtn" Content="Finish report" Margin="757,647,0,0" 
+                Click="FinishReportClick" Height="30" FontSize="16"
+                Style="{StaticResource normalButton}"/>
 
         <TextBlock x:Name="NameSurnameBlock" HorizontalAlignment="Left" Margin="70,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="217"/>
+                   Text="" VerticalAlignment="Top" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="18" Width="217"/>
         <TextBlock x:Name="GenderBlock" HorizontalAlignment="Left" Margin="324,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="130"/>
+                   Text="" VerticalAlignment="Top" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="18" Width="130"/>
         <TextBlock x:Name="DateBirthBlock" HorizontalAlignment="Left" Margin="446,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top"  Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="146"/>
+                   Text="" VerticalAlignment="Top"  Foreground="#FF8C39A5" FontWeight="Bold" FontSize="18" Width="146"/>
         <TextBlock x:Name="JMBGBlock" HorizontalAlignment="Left" Margin="605,50,0,0" TextWrapping="Wrap" 
-                   Text="" VerticalAlignment="Top" Foreground="MediumPurple" FontWeight="Bold" FontSize="18" Width="258"/>
+                   Text="" VerticalAlignment="Top" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="18" Width="258"/>
 
-        <ListBox x:Name="ProblemsListBox" Margin="110,139,605,414" FontSize="15"/>
-        <ListBox x:Name="AllergiesListBox" Margin="548,139,168,414" FontSize="15"/>
-        <ListBox x:Name="PastReportsListBox" Margin="110,398,605,150" DisplayMemberPath="ReportDate" FontSize="15"/>
-        <ListBox x:Name="MedicationsListBox" Margin="548,398,168,150" FontSize="15" DisplayMemberPath="Name"/>
+        <ListBox x:Name="ProblemsListBox" Margin="110,139,605,414" FontSize="15"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <ListBox x:Name="AllergiesListBox" Margin="548,139,168,414" FontSize="15"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <ListBox x:Name="PastReportsListBox" Margin="110,398,605,150" DisplayMemberPath="ReportDate" FontSize="15"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <ListBox x:Name="MedicationsListBox" Margin="548,398,168,150" FontSize="15" DisplayMemberPath="Name"
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
     </Grid>
 </Window>

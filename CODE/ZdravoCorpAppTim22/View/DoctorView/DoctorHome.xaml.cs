@@ -17,7 +17,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             SelectDoctorCBOX.ItemsSource = DoctorViewModel.DoctorList;
             SelectDoctorCBOX.SelectedValuePath = "Id";
             SelectDoctorCBOX.SelectedValue = 0;
-            //SelectDoctorCBOX.SelectedIndex = 0;
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -35,12 +34,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.MainWindow.Show();
-            this.Close();
-        }
-
-        private void DoctorHomeClose(object sender, System.EventArgs e)
         {
             Application.Current.MainWindow.Show();
             this.Close();

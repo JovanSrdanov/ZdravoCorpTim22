@@ -2,19 +2,55 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "dfsds",
-    "Diagnosis": "dfsfdsfdsfsdf",
-    "ReportDate": "2022-05-04T09:28:33.0608995+02:00",
+    "Anamnesis": "dasda",
+    "Diagnosis": "dsa",
+    "ReportDate": "2022-05-12T18:12:02.4937804+02:00",
     "MedicalReceipt": 0,
     "MedicalRecord": 0
   },
   {
     "Id": 1,
     "DoctorID": 0,
-    "Anamnesis": "dsadad",
-    "Diagnosis": "dsadasdasdadsa",
-    "ReportDate": "2022-05-04T09:43:41.6111934+02:00",
+    "Anamnesis": "sadsa",
+    "Diagnosis": "dsad",
+    "ReportDate": "2022-05-12T18:12:08.9394557+02:00",
     "MedicalReceipt": 1,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 2,
+    "DoctorID": 0,
+    "Anamnesis": "sadas",
+    "Diagnosis": "dsad",
+    "ReportDate": "2022-05-12T18:12:40.4741892+02:00",
+    "MedicalReceipt": 2,
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 3,
+    "DoctorID": 1,
+    "Anamnesis": "dsa",
+    "Diagnosis": "dsa",
+    "ReportDate": "2022-05-12T18:13:23.0434044+02:00",
+    "MedicalReceipt": 3,
+    "MedicalRecord": 2
+  },
+  {
+    "Id": 4,
+    "DoctorID": 0,
+    "Anamnesis": "sa",
+    "Diagnosis": "sada",
+    "ReportDate": "2022-05-12T18:42:56.3843845+02:00",
+    "MedicalReceipt": 4,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 5,
+    "DoctorID": 0,
+    "Anamnesis": "dsa",
+    "Diagnosis": "dsa",
+    "ReportDate": "2022-05-12T19:44:28.4340371+02:00",
+    "MedicalReceipt": 5,
+    "MedicalRecord": 2
   }
 ]

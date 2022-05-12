@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordsScreen" Height="768" Width="1024" Closed="MedRecListClose" ResizeMode="NoResize">
+        Title="MedicalRecordsScreen" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="303,44,0,0" TextWrapping="Wrap" Text="Medical record list" 
-                   VerticalAlignment="Top" Width="350"
-                   Foreground="MediumPurple" FontWeight="Bold" FontSize="40"/>
+        <TextBlock Margin="303,44,0,0" Text="Medical record list" Style="{StaticResource h1}"/>
         <DataGrid x:Name="MedRecGrid" Margin="92,148,160,167" AutoGenerateColumns="false" FontSize="25"
                   Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
                   VerticalScrollBarVisibility="Auto" SelectionMode="Single">
@@ -19,11 +17,21 @@
                 <DataGridTextColumn Header="Unique Personal Registration Number" Binding="{Binding Path=Patient.Jmbg}" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="OpenBtn" Content="Open" HorizontalAlignment="Left" Margin="332,664,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="OpenBtnClick" FontSize="20" Width="69"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="527,664,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="BackBtnClick" FontSize="20" Width="63"/>
-
-
+        <Button x:Name="OpenBtn" Content="Open" Margin="677,616,0,0" Click="OpenBtnClick" 
+                FontSize="20" Width="68" Style="{StaticResource normalButton}"/>
+        <Button x:Name="BackBtn" Content="Back" Margin="828,677,0,0" Click="BackBtnClick" 
+                FontSize="20" Width="63" Style="{StaticResource normalButton}"/>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
     </Grid>
 </Window>

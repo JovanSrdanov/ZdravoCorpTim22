@@ -81,18 +81,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void OpenReportClosed(object sender, EventArgs e)
-        {
-            Application.Current.MainWindow.Show();
-            this.Close();
-        }
-
         private void ChangeReportClick(object sender, RoutedEventArgs e)
         {
             //treba azurirati za serijalizaciju
 
             //MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id));
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id).FirstOrDefault();
+            //MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == MedicalRecordView.selectedPatient.Id).FirstOrDefault();
+            MedicalRecord medRec = MedicalRecordView.selectedPatient.MedicalRecord;
 
             if (AnamnesisBox.Text == null)
             {
@@ -138,12 +133,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             else
             {
                 selectedMedicalReport.MedicalReceipt.Medicine = MedicationComboBox.SelectedItem as Medicine;
-                /*if (selectedMedicalReport.MedicalRecord.MedicalReport.IndexOf(selectedMedicalReport) ==
-                    selectedMedicalReport.MedicalRecord.MedicalReport.Count - 1)        //ako menjam poslednji izvestaj u kartonu
-                {
-                    MedicalRecordView.medicineObservableList.Clear();
-                    MedicalRecordView.medicineObservableList.Add(MedicationComboBox.SelectedItem as Medicine);
-                }*/
                 selectedMedicalReport.MedicalReceipt.EndDate = (DateTime)EndDateDatePicker.SelectedDate;
                 selectedMedicalReport.MedicalReceipt.Time = TimeComboBox.Text;
                 selectedMedicalReport.MedicalReceipt.TherapyPurpose = PurposeComboBox.Text;
@@ -159,10 +148,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 if (diagnosis == oldDiagnosis)         //ako kreiram novi izvestaj pritiskom na back sve ponistavam, u suprotnom cuvam
                 {                                                               //promenu dijagnoze
-                    /*if (canCreateRecord != -1)
-                    {
-                        MedicalRecordView.newlyCreatedDiagnosis[MedicalRecordView.newlyCreatedDiagnosis.IndexOf(diagnosis)] = DiagnosisBox.Text;
-                    }*/
                     medRec.ConditionList[medRec.ConditionList.IndexOf(diagnosis)] = DiagnosisBox.Text;
                     MedicalRecordController.Instance.Update(medRec);
                     //ovde bi update-ovao za pacijenta karton
@@ -172,20 +157,19 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             MedicalRecordView.medicineObservableList[MedicalRecordView.medRepList.IndexOf(selectedMedicalReport)] = 
                 MedicationComboBox.SelectedItem as Medicine;
-
-            /*foreach (Medicine medicine in MedicalRecordView.medicineObservableList)
-            {
-                if (medicine.Id == oldMedicine.Id)
-                {
-                    int idx = MedicalRecordView.medicineObservableList.IndexOf(medicine);
-                    MedicalRecordView.medicineObservableList[idx] =
-                        MedicationComboBox.SelectedItem as Medicine;
-                    medRec.MedicalReceipt[medRec.MedicalReceipt.IndexOf(selectedMedicalReport.MedicalReceipt)].Medicine = 
-                        MedicationComboBox.SelectedItem as Medicine;
-                    break;
-                }
-            }*/
             medicalRecordView.Show();
+            this.Close();
+        }
+
+        private void LogOutBtn(object sender, RoutedEventArgs e)
+        {
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }

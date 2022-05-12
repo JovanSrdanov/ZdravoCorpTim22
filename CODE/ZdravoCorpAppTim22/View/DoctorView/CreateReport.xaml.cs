@@ -33,12 +33,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicationComboBox.SelectedIndex = 0;
         }
 
-        private void CreateReportClose(object sender, EventArgs e)
-        {
-            Application.Current.MainWindow.Show();
-            this.Close();
-        }
-
         private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -107,11 +101,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             Medicine medicine = MedicationComboBox.SelectedItem as Medicine;
             DateTime endDate = (DateTime)EndDateDatePicker.SelectedDate;
             string time = TimeComboBox.Text;
-
-            /////////////////////
-            //MedicalRecord medRec = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Id == selectedPatient.Id));
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == selectedPatient.Id).FirstOrDefault();
-            ////////////////////
+            MedicalRecord medRec = selectedPatient.MedicalRecord;
 
             MedicalReport medicalReport = new MedicalReport(-1, anamnesis, diagnosis, DateTime.Now,
                 medRec);
@@ -120,18 +110,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ObservableCollection<Medicine> medicineList = new ObservableCollection<Medicine>();
             medicineList.Add(medicine);
 
-            //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
-            /*if (MedicalRecordView.medicineObservableList.Count() > 0)
-            {
-                MedicalRecordView.medicineObservableList.Clear();
-            }*/
             MedicalRecordView.medicineObservableList.Add(medicine);
-            //ZA PRIKAZ POSLEDNJEG LEKA, IZMENI AKO ZELIS LISTU LEKOVA
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
             MedicalReceiptController.Instance.Create(medicalReceipt);
 
             medicalReport.MedicalReceipt = medicalReceipt;
-            //recept
 
             MedicalReportController.Instance.Create(medicalReport);
             MedicalRecordView.newlyCreatedReports.Add(medicalReport);
@@ -150,6 +133,18 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
             medicalRecordView.Show();
+            this.Close();
+        }
+
+        private void LogOutBtn(object sender, RoutedEventArgs e)
+        {
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }
