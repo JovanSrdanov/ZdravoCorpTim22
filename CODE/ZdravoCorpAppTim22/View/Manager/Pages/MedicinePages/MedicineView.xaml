@@ -52,7 +52,7 @@
         </Grid>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"
-                  SelectionMode="Extended"
+                  SelectionMode="Single"
                   ItemsSource="{Binding Path=MedicineCollection}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=MedicineData.Id}" Header="ID" Width="*"/>

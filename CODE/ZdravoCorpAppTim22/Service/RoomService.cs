@@ -52,5 +52,17 @@ namespace Service
             }
             base.DeleteByID(id);
         }
+
+        public Room GetByName(string name)
+        {
+            foreach (Room item in GetAll())
+            {
+                if (item.Name.Equals(name))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -1,26 +1,38 @@
 [
   {
-    "Id": 0,
-    "Amount": 1,
-    "IngredientData": 0,
-    "Medicine": 0
-  },
-  {
-    "Id": 1,
-    "Amount": 1,
-    "IngredientData": 5,
-    "Medicine": 0
-  },
-  {
-    "Id": 2,
+    "Id": 9,
     "Amount": 1,
     "IngredientData": 1,
-    "Medicine": 3
+    "MedicineData": 6
   },
   {
-    "Id": 3,
+    "Id": 10,
+    "Amount": 1,
+    "IngredientData": 3,
+    "MedicineData": 6
+  },
+  {
+    "Id": 11,
     "Amount": 1,
     "IngredientData": 4,
-    "Medicine": 3
+    "MedicineData": 6
+  },
+  {
+    "Id": 12,
+    "Amount": 1,
+    "IngredientData": 3,
+    "MedicineData": 8
+  },
+  {
+    "Id": 13,
+    "Amount": 1,
+    "IngredientData": 2,
+    "MedicineData": 9
+  },
+  {
+    "Id": 14,
+    "Amount": 1,
+    "IngredientData": 4,
+    "MedicineData": 9
   }
 ]

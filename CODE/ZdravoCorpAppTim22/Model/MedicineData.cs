@@ -33,6 +33,49 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
+        [JsonIgnore]
+        private ObservableCollection<Ingredient> ingredient;
+        [JsonIgnore]
+        public ObservableCollection<Ingredient> Ingredient
+        {
+            get
+            {
+                if (ingredient == null)
+                    ingredient = new ObservableCollection<Ingredient>();
+                return ingredient;
+            }
+            set
+            {
+                RemoveAllIngredient();
+                if (value != null)
+                {
+                    foreach (Ingredient oIngredient in value)
+                        AddIngredient(oIngredient);
+                }
+            }
+        }
+        [JsonIgnore]
+        private ObservableCollection<MedicineData> replacements;
+        [JsonIgnore]
+        public ObservableCollection<MedicineData> Replacements
+        {
+            get
+            {
+                if (replacements == null)
+                    replacements = new ObservableCollection<MedicineData>();
+                return replacements;
+            }
+            set
+            {
+                RemoveAllReplacements();
+                if (value != null)
+                {
+                    foreach (MedicineData oReplacement in value)
+                        AddReplacement(oReplacement);
+                }
+            }
+        }
+
         [JsonConstructor]
         public MedicineData() { }
         public MedicineData(int id)
@@ -49,6 +92,7 @@ namespace ZdravoCorpAppTim22.Model
             {
                 Id = md.Id;
                 Name = md.Name;
+                Ingredient = md.Ingredient;
             }
         }
 
@@ -89,6 +133,71 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
-        
+        public void AddIngredient(Ingredient newIngredient)
+        {
+            if (newIngredient == null)
+                return;
+            if (this.ingredient == null)
+                this.ingredient = new ObservableCollection<Ingredient>();
+            if (!this.ingredient.Contains(newIngredient))
+            {
+                this.ingredient.Add(newIngredient);
+                newIngredient.MedicineData = this;
+            }
+        }
+        public void RemoveIngredient(Ingredient oldIngredient)
+        {
+            if (oldIngredient == null)
+                return;
+            if (this.ingredient != null)
+                if (this.ingredient.Contains(oldIngredient))
+                {
+                    this.ingredient.Remove(oldIngredient);
+                    oldIngredient.MedicineData = null;
+                }
+        }
+        public void RemoveAllIngredient()
+        {
+            if (ingredient != null)
+            {
+                System.Collections.ArrayList tmpIngredient = new System.Collections.ArrayList();
+                foreach (Ingredient oldIngredient in ingredient)
+                    tmpIngredient.Add(oldIngredient);
+                ingredient.Clear();
+                foreach (Ingredient oldIngredient in tmpIngredient)
+                    oldIngredient.MedicineData = null;
+                tmpIngredient.Clear();
+            }
+        }
+
+        public void AddReplacement(MedicineData newReplacement)
+        {
+            if (newReplacement == null)
+                return;
+            if (this.replacements == null)
+                this.replacements = new ObservableCollection<MedicineData>();
+            if (!this.replacements.Contains(newReplacement))
+            {
+                this.replacements.Add(newReplacement);
+            }
+        }
+        public void RemoveReplacement(MedicineData oldReplacement)
+        {
+            if (oldReplacement == null)
+                return;
+            if (this.replacements != null)
+                if (this.replacements.Contains(oldReplacement))
+                {
+                    this.replacements.Remove(oldReplacement);
+                }
+        }
+        public void RemoveAllReplacements()
+        {
+            if (replacements != null)
+            {
+                replacements.Clear();
+            }
+        }
+
     }
 }

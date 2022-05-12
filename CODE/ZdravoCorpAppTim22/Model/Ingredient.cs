@@ -37,29 +37,29 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-        [JsonConverter(typeof(MedicineToIDConverter))]
-        private Medicine medicine;
-        [JsonConverter(typeof(MedicineToIDConverter))]
-        public Medicine Medicine
+        [JsonConverter(typeof(MedicineDataToIDConverter))]
+        private MedicineData medicineData;
+        [JsonConverter(typeof(MedicineDataToIDConverter))]
+        public MedicineData MedicineData
         {
             get
             {
-                return medicine;
+                return medicineData;
             }
             set
             {
-                if (this.medicine == null || !this.medicine.Equals(value))
+                if (this.medicineData == null || !this.medicineData.Equals(value))
                 {
-                    if (this.medicine != null)
+                    if (this.medicineData != null)
                     {
-                        Medicine oldMedicine = this.medicine;
-                        this.medicine = null;
-                        oldMedicine.RemoveIngredient(this);
+                        MedicineData oldMedicineData = this.medicineData;
+                        this.medicineData = null;
+                        oldMedicineData.RemoveIngredient(this);
                     }
                     if (value != null)
                     {
-                        this.medicine = value;
-                        this.medicine.AddIngredient(this);
+                        this.medicineData = value;
+                        this.medicineData.AddIngredient(this);
                     }
                 }
             }

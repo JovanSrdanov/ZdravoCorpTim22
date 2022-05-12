@@ -1,4 +1,5 @@
-﻿using ZdravoCorpAppTim22.Model;
+﻿using System.Linq;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
 
@@ -22,7 +23,7 @@ namespace ZdravoCorpAppTim22.Service
 
         public MedicineData GetByName(string name)
         {
-            foreach(MedicineData item in MedicineDataRepository.Instance.GetAll())
+            foreach(MedicineData item in GetAll())
             {
                 if (item.Name.Equals(name))
                 {
@@ -30,6 +31,20 @@ namespace ZdravoCorpAppTim22.Service
                 }
             }
             return null;
+        }
+
+        public override void DeleteByID(int id)
+        {
+            foreach(MedicineData medicineData in GetAll())
+            {
+                MedicineData temp = medicineData.Replacements.Where(x => x.Id == id).FirstOrDefault();
+                if(temp != null)
+                {
+                    medicineData.RemoveReplacement(temp);
+                }
+            }
+            ReplacementService.Instance.DeleteByMedicineData(MedicineDataRepository.Instance.GetByID(id));
+            base.DeleteByID(id);
         }
     }
 }

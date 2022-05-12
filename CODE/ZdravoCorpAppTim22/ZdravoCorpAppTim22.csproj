@@ -128,6 +128,7 @@
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
+    <Compile Include="Controller\ReplacementController.cs" />
     <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\MedicineData.cs" />
     <Compile Include="Model\Renovation.cs" />
+    <Compile Include="Model\Replacement.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\EquipmentDataRepository.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\EquipmentRelocationRepository.cs" />
+    <Compile Include="Repository\ReplacementRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
@@ -195,6 +198,7 @@
     <Compile Include="Service\MedicalAppointmentService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\EquipmentRelocationService.cs" />
+    <Compile Include="Service\ReplacementService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />

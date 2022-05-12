@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -37,6 +38,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
         public ObservableCollection<Ingredient> SelectedIngredients { get; set; }
         public ObservableCollection<Ingredient> AllIngredients { get; set; }
 
+        public ObservableCollection<MedicineData> SelectedMedicines { get; set; }
+        public ObservableCollection<MedicineData> AllMedicines { get; set; }
+
         public Medicine OldMedicine { get; private set; }
 
         public EditMedicineViewModel(Medicine medicine)
@@ -49,7 +53,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             OldMedicine = medicine;
 
             AllIngredients = new ObservableCollection<Ingredient>();
-            SelectedIngredients = new ObservableCollection<Ingredient>(medicine.Ingredient);
+            SelectedIngredients = new ObservableCollection<Ingredient>(medicine.MedicineData.Ingredient);
 
             foreach(IngredientData ingredientData in IngredientDataController.Instance.GetAll())
             {
@@ -57,6 +61,18 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
                 if(temp == null)
                 {
                     AllIngredients.Add(new Ingredient(ingredientData));
+                }
+            }
+
+            AllMedicines = new ObservableCollection<MedicineData>();
+            SelectedMedicines = new ObservableCollection<MedicineData>(medicine.MedicineData.Replacements);
+            foreach(MedicineData medicineData in MedicineDataController.Instance.GetAll())
+            {
+                if (medicineData.Id == OldMedicine.MedicineData.Id) continue;
+                MedicineData temp = SelectedMedicines.Where(x => x.Id == medicineData.Id).FirstOrDefault();
+                if(temp == null)
+                {
+                    AllMedicines.Add(medicineData);
                 }
             }
         }
@@ -68,7 +84,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
         public void EditMedicine(object obj)
         {
-            /*
+            if (!OldMedicine.MedicineData.Name.Equals(name) && MedicineDataController.Instance.GetByName(name) != null)
+            {
+                MessageBox.Show("Medicine with that name already exists");
+                return;
+            }
+
             OldMedicine.MedicineData.Name = MedicineName;
             OldMedicine.Amount = Amount;
 
@@ -77,8 +98,18 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
             foreach (Ingredient ingredient in SelectedIngredients)
             {
-                Ingredient temp = OldMedicine.Ingredient.Where(x => x.IngredientData.Id == ingredient.IngredientData.Id).FirstOrDefault();
+                Ingredient temp = OldMedicine.MedicineData.Ingredient.Where(x => x.IngredientData.Id == ingredient.IngredientData.Id).FirstOrDefault();
                 if (temp == null)
+                {
+                    ingredientsToAdd.Add(ingredient);
+
+                }
+            }
+
+            foreach (Ingredient ingredient in OldMedicine.MedicineData.Ingredient)
+            {
+                Ingredient temp = SelectedIngredients.Where(x => x.IngredientData.Id == ingredient.IngredientData.Id).FirstOrDefault();
+                if(temp == null)
                 {
                     ingredientsToRemove.Add(ingredient);
                 }
@@ -86,14 +117,34 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
             foreach (Ingredient ingredient in ingredientsToRemove)
             {
-                OldMedicine.RemoveIngredient(ingredient);
+                OldMedicine.MedicineData.RemoveIngredient(ingredient);
                 IngredientController.Instance.DeleteByID(ingredient.Id);
             }
 
-            
+            foreach(Ingredient ingredient in ingredientsToAdd)
+            {
+                OldMedicine.MedicineData.AddIngredient(ingredient);
+                IngredientController.Instance.Create(ingredient);
+            }
+
+            ReplacementController.Instance.DeleteByReplacementTarget(OldMedicine.MedicineData);
+            OldMedicine.MedicineData.RemoveAllReplacements();
+
+            foreach (MedicineData m in SelectedMedicines)
+            {
+                OldMedicine.MedicineData.AddReplacement(m);
+                Replacement replacement = new Replacement
+                {
+                    ReplacementToMedicine = OldMedicine.MedicineData,
+                    ReplacingMedicine = m
+                };
+                ReplacementController.Instance.Create(replacement);
+            }
+
             MedicineDataController.Instance.Update(OldMedicine.MedicineData);
             MedicineController.Instance.Update(OldMedicine);
-            */
+
+            ManagerHome.NavigationService.Navigate(new MedicineView());
         }
         public void NavigateBack(object obj)
         {

@@ -39,6 +39,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=MedicineName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -57,12 +58,12 @@
                           ItemsSource="{Binding Path=AllIngredients}"
                           PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
                           CanUserReorderColumns="False"
-                          MouseMove="MouseMoveHandler"
-                          DragOver="DragOverHandler"
+                          MouseMove="IngredientMouseMoveHandler"
+                          DragOver="IngredientDragOverHandler"
                           Drop="DataGridAllIngredients_Drop"
                           AllowDrop="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Ingredient" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Possible Ingredients" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid Grid.Column="2"
@@ -71,19 +72,56 @@
                           CanUserReorderColumns="False"
                           ItemsSource="{Binding Path=SelectedIngredients}"
                           AllowDrop="True"
-                          DragOver="DragOverHandler"
+                          DragOver="IngredientDragOverHandler"
                           Drop="DataGridSelectedIngredients_Drop"
                           PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
-                          MouseMove="MouseMoveHandler">
+                          MouseMove="IngredientMouseMoveHandler">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Ingredient" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Selected Ingredients" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 50 0 0">
+
+            <Grid Grid.Row="4" Grid.ColumnSpan="3" Margin="0 15 0 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MaxWidth="437"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition MaxWidth="437"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="0"
+                          Name="DataGridAllMedicines"
+                          SelectionMode="Single"
+                          ItemsSource="{Binding Path=AllMedicines}"
+                          PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
+                          CanUserReorderColumns="False"
+                          MouseMove="MedicineMouseMoveHandler"
+                          DragOver="MedicineDragOverHandler"
+                          Drop="DataGridAllMedicines_Drop"
+                          AllowDrop="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Possible Replacements" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid Grid.Column="2"
+                          Name="DataGridSelectedMedicines"
+                          SelectionMode="Single"
+                          CanUserReorderColumns="False"
+                          ItemsSource="{Binding Path=SelectedMedicines}"
+                          AllowDrop="True"
+                          DragOver="MedicineDragOverHandler"
+                          Drop="DataGridSelectedMedicines_Drop"
+                          PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
+                          MouseMove="MedicineMouseMoveHandler">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Selected Replacements" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <WrapPanel Grid.Row="5" Grid.Column="0" Margin="0 50 0 0">
                 <Button x:Name="ButtonConfirm" Style="{StaticResource ConfirmButtonStyle}" Margin="0" Command="{Binding AddMedicineCommand}"/>
             </WrapPanel>
-            <WrapPanel Grid.Row="4" Grid.Column="1" Margin="0 50 0 0" HorizontalAlignment="Right">
+            <WrapPanel Grid.Row="5" Grid.Column="1" Margin="0 50 0 0" HorizontalAlignment="Right">
                 <Button x:Name="ButtonCancel" Style="{StaticResource CancelButtonStyle}" Margin="0" Command="{Binding NavigateBackCommand}"/>
             </WrapPanel>
         </Grid>

@@ -34,6 +34,8 @@ namespace ZdravoCorpAppTim22
             MedicineController.Instance.Load();
             IngredientController.Instance.Load();
 
+            ReplacementController.Instance.Load();
+
             MedicalReportController.Instance.Load();
             //dodao
             DoctorController.Instance.Load();

@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
 
@@ -57,6 +58,11 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddRoom(object obj)
         {
+            if(RoomController.Instance.GetByName(name) != null)
+            {
+                MessageBox.Show("Room with that name already exists");
+                return;
+            }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(0, level, rt, name);
             RoomController.Instance.Create(room);

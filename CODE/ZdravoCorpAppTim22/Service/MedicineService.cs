@@ -1,4 +1,5 @@
-﻿using ZdravoCorpAppTim22.Model;
+﻿using System.Collections.Generic;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
 
@@ -18,6 +19,44 @@ namespace ZdravoCorpAppTim22.Service
                 }
                 return instance;
             }
+        }
+
+        public List<Medicine> GetAllFree()
+        {
+            List<Medicine> list = new List<Medicine>();
+            foreach (Medicine m in GetAll())
+            {
+                if (m.MedicalReceipt == null)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
+        }
+
+        public List<Medicine> GetAllApproved()
+        {
+            List<Medicine> list = new List<Medicine>();
+            foreach (Medicine m in GetAllFree())
+            {
+                if(m.MedicineData.ApprovedBy != null)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
+        }
+        public List<Medicine> GetAllUnapproved()
+        {
+            List<Medicine> list = new List<Medicine>();
+            foreach (Medicine m in GetAllFree())
+            {
+                if (m.MedicineData.ApprovedBy == null)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
         }
     }
 }

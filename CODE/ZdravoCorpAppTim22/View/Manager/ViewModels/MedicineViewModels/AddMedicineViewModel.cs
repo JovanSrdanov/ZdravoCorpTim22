@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -38,6 +39,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
         public ObservableCollection<Ingredient> SelectedIngredients { get; set; }
         public ObservableCollection<Ingredient> AllIngredients { get; set; }
 
+        public ObservableCollection<MedicineData> SelectedMedicines { get; set; }
+        public ObservableCollection<MedicineData> AllMedicines { get; set; }
+
         public AddMedicineViewModel()
         {
             AddMedicineCommand = new RelayCommand(AddMedicine, CanAddMedicine);
@@ -49,6 +53,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             {
                 AllIngredients.Add(new Ingredient(ingredientData));
             }
+
+            SelectedMedicines = new ObservableCollection<MedicineData>();
+            AllMedicines = new ObservableCollection<MedicineData>(MedicineDataController.Instance.GetAll());
         }
 
         private void OnPropertyChanged(string propertyName = "")
@@ -64,21 +71,38 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
                 medicineData = new MedicineData(-1, name);
                 MedicineDataController.Instance.Create(medicineData);
             }
+            else
+            {
+                MessageBox.Show("Medicine with that name already exists");
+                return;
+            }
+            
+            foreach (Ingredient ingredient in SelectedIngredients)
+            {
+                ingredient.MedicineData = medicineData;
+                IngredientController.Instance.Create(ingredient);
+            }
+
+            foreach(MedicineData m in SelectedMedicines)
+            {
+                medicineData.AddReplacement(m);
+                Replacement replacement = new Replacement
+                {
+                    ReplacementToMedicine = medicineData,
+                    ReplacingMedicine = m
+                };
+                ReplacementController.Instance.Create(replacement);
+            }
+
             Medicine medicine = new Medicine
             {
                 MedicineData = medicineData,
                 Amount = amount
             };
 
+            MedicineDataController.Instance.Update(medicineData);
             MedicineController.Instance.Create(medicine);
-
-            foreach (Ingredient ingredient in SelectedIngredients)
-            {
-                ingredient.Medicine = medicine;
-                IngredientController.Instance.Create(ingredient);
-            }
-
-            MedicineController.Instance.Update(medicine);
+            
             ManagerHome.NavigationService.Navigate(new MedicineView());
         }
         public void NavigateBack(object obj)

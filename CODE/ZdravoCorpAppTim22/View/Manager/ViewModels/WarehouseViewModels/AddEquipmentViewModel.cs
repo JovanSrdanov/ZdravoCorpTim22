@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -66,6 +67,11 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             {
                 equipmentData = new EquipmentData(-1, name, et);
                 EquipmentDataController.Instance.Create(equipmentData);
+            }
+            else
+            {
+                MessageBox.Show("Equipment with that name already exists");
+                return;
             }
 
             Equipment equipment = new Equipment
