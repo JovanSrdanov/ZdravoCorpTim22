@@ -32,6 +32,7 @@
             <Button x:Name="DeleteRoom" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteRoomCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
             <Button x:Name="ButtonDetails" Style="{StaticResource DetailsButtonStyle}" Command="{Binding OpenDetailsCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
             <Button x:Name="RenovateRoom" Style="{StaticResource RenovateButtonStyle}" Command="{Binding OpenRenovateCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
+            <Button x:Name="MergeRooms" Style="{StaticResource MergeButtonStyle}" Command="{Binding OpenMergeCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
         </WrapPanel>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"

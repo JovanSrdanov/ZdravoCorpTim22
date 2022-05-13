@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -62,6 +63,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         {
             if (!destination.IsAvailable(interval))
             {
+                MessageBox.Show("Room isn't available");
                 return;
             }
             List<Equipment> equipment = new List<Equipment>();

@@ -46,6 +46,7 @@ namespace ZdravoCorpAppTim22
             ManagerController.Instance.Load();
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
+            RoomMergeController.Instance.Load();
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }
@@ -55,9 +56,10 @@ namespace ZdravoCorpAppTim22
             while (true)
             {
                 Thread.Sleep(1000);
-                RenovationController.Instance.DaemonMethod();
-                EquipmentRelocationController.Instance.DaemonMethod();
+                RenovationController.Instance.BackgroundTask();
+                EquipmentRelocationController.Instance.BackgroundTask();
                 PatientController.Instance.DeamonMethod();
+                RoomMergeController.Instance.BackgroundTask();
             }
         }
 

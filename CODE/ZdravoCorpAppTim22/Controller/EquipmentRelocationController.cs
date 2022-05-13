@@ -41,9 +41,9 @@ namespace Controller
                 Create(equipmentRelocation);
             }
         }
-        public void DaemonMethod()
+        public void BackgroundTask()
         {
-            EquipmentRelocationService.Instance.DaemonMethod();
+            EquipmentRelocationService.Instance.BackgroundTask();
         }
    }
 }

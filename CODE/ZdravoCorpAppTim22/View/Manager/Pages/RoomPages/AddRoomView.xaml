@@ -39,21 +39,24 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Type: "/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Surface: "/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Surface, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=500}"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Type: "/>
             <ComboBox x:Name="TypeComboBox" 
-                      Grid.Row="3" 
+                      Grid.Row="4" 
                       Grid.Column="1"
                       Text="{Binding Path=Type, Mode=TwoWay}"/>
-            <WrapPanel Grid.Row="4" Grid.Column="0" Margin="0 30 0 0">
+            <WrapPanel Grid.Row="5" Grid.Column="0" Margin="0 30 0 0">
                 <Button x:Name="ButtonConfirm" Style="{StaticResource ConfirmButtonStyle}" Margin="0" Command="{Binding AddRoomCommand}"/>
             </WrapPanel>
 
-            <WrapPanel Grid.Row="4" Grid.Column="1" Margin="0 30 0 0" HorizontalAlignment="Right">
+            <WrapPanel Grid.Row="5" Grid.Column="1" Margin="0 30 0 0" HorizontalAlignment="Right">
                 <Button x:Name="ButtonCancel" Style="{StaticResource CancelButtonStyle}" Margin="0" Command="{Binding NavigateBackCommand}"/>
             </WrapPanel>
         </Grid>

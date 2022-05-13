@@ -17,6 +17,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         private int level;
         private string name;
         private string type;
+        private double surface;
         public int Level
         {
             get => level;
@@ -44,6 +45,18 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 OnPropertyChanged("Type");
             }
         }
+        public double Surface
+        {
+            get => surface;
+            set
+            {
+                if (surface != value)
+                {
+                    surface = value;
+                    OnPropertyChanged("Surface");
+                }
+            }
+        }
 
         public RoomAddViewModel()
         {
@@ -64,7 +77,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            Room room = new Room(0, level, rt, name);
+            Room room = new Room(0, level, rt, name, surface);
             RoomController.Instance.Create(room);
             ManagerHome.NavigationService.Navigate(new RoomView());
         }
@@ -79,6 +92,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 return false;
             }
             if (level < 0)
+            {
+                return false;
+            }
+            if (surface < 0)
             {
                 return false;
             }
