@@ -493,19 +493,19 @@ namespace ZdravoCorpAppTim22.View.Secretary
             {
                 if (medicalRecords[i].Patient == Patient)
                 {
-                    Patient.medicalRecord = medicalRecords[i];
+                    Patient.MedicalRecord = medicalRecords[i];
                     break;
                 }
             }
 
-            if (Patient.medicalRecord == null)
+            if (Patient.MedicalRecord == null)
             {
-                Patient.medicalRecord = new MedicalRecord();
-                Patient.medicalRecord.Patient = Patient;
+                Patient.MedicalRecord = new MedicalRecord();
+                Patient.MedicalRecord.Patient = Patient;
                 PatientController.Instance.Update(Patient);
             }
 
-            SecretaryAccountsMedicalRecord secretaryAccountsMedicalRecord = new SecretaryAccountsMedicalRecord(Patient.medicalRecord);
+            SecretaryAccountsMedicalRecord secretaryAccountsMedicalRecord = new SecretaryAccountsMedicalRecord(Patient.MedicalRecord);
             secretaryAccountsMedicalRecord.ShowDialog();
         }
     }

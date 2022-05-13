@@ -62,8 +62,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 return;
             }
 
-            if (MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == 
-            medicalAppointment.Patient.Id).FirstOrDefault() == null)
+            //DODAO
+            Patient selectedPatient = PatientController.Instance.GetByID(medicalAppointment.Patient.Id);
+            if (selectedPatient.MedicalRecord == null)
             {
                 MessageBox.Show("Selected patient does not have a medical record", "View record", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -101,10 +102,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void DoctorAppointmentsClose(object sender, System.EventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
+            DoctorHome.doctorHome.Show();
             this.Close();
-        }       
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
+            this.Close();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace ZdravoCorpAppTim22
             EquipmentRelocationController.Instance.Load();
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
-            PatientController.Instance.Load();
+            
             //dodao
             MedicalRecordController.Instance.Load();
             MedicalReceiptController.Instance.Load();
@@ -37,7 +37,8 @@ namespace ZdravoCorpAppTim22
             ReplacementController.Instance.Load();
 
             MedicalReportController.Instance.Load();
-            //dodao
+            PatientController.Instance.Load();
+
             DoctorController.Instance.Load();
             EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();

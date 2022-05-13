@@ -142,9 +142,9 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     case MessageBoxResult.Yes:
                         MessageBox.Show("New Account created!");
-                        patient.medicalRecord = medicalRecordTemp;
+                        patient.MedicalRecord = medicalRecordTemp;
                         PatientController.Instance.Create(patient);
-                        PatientController.Instance.GetPatient(patient).medicalRecord.Patient = PatientController.Instance.GetPatient(patient);
+                        PatientController.Instance.GetPatient(patient).MedicalRecord.Patient = PatientController.Instance.GetPatient(patient);
                         PatientController.Instance.Update(PatientController.Instance.GetPatient(patient));
                         break;
                     case MessageBoxResult.No:

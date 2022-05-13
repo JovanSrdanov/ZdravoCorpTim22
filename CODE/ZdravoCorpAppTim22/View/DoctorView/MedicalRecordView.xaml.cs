@@ -18,7 +18,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordsScreen medicalRecordsScreen;
 
         public static ObservableCollection<MedicalReport> medRepList { get; set; }
-        public static ObservableCollection<Medicine> medicineObservableList { get; set; }
+        public static ObservableCollection<MedicineData> medicineDataObservableList { get; set; }       //sad prikzujem to umesto medicine
 
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
@@ -42,18 +42,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 FinishReportBtn.Visibility = Visibility.Hidden;
             }
 
-            //int medRecID = MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID);
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == selectedPatientID).FirstOrDefault();
+            MedicalRecord medRec = selectedPatient.MedicalRecord;
 
             if (medRec == null)     //pacijent nema medicinskki karton
             {
                 medRec = new MedicalRecord(-1, BloodType.A_PLUS, selectedPatient,
                     new ObservableCollection<String>(), new ObservableCollection<String>());
                 MedicalRecordController.Instance.Create(medRec);
+                selectedPatient.MedicalRecord = medRec;
             }
-
-            //selectedPatient.medicalRecord = MedicalRecordController.Instance.GetByID(MedicalRecordController.Instance.GetAll().FindIndex(r => r.Patient.Id == selectedPatientID));
-            selectedPatient.medicalRecord = medRec;
 
             this.doctorAppointments = doctorAppointments;
             this.medicalRecordsScreen = medicalRecordsScreen;
@@ -63,40 +60,28 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DateBirthBlock.Text = selectedPatient.Birthday.Date.ToShortDateString();
             JMBGBlock.Text = selectedPatient.Jmbg;
 
-            ProblemsListBox.ItemsSource = selectedPatient.medicalRecord.ConditionList;
+            ProblemsListBox.ItemsSource = selectedPatient.MedicalRecord.ConditionList;
 
+            AllergiesListBox.ItemsSource = selectedPatient.MedicalRecord.AllergiesList;
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
 
             List<Medicine> medicines = new List<Medicine>();
 
-            foreach (MedicalReceipt medicalReceipt in selectedPatient.medicalRecord.MedicalReceipt)
+            foreach (MedicalReceipt medicalReceipt in selectedPatient.MedicalRecord.MedicalReceipt)
             {
                 medicines.AddRange(medicalReceipt.Medicine);
             }
-            medicineObservableList = new ObservableCollection<Medicine>(medicines);
-            MedicationsListBox.ItemsSource = medicineObservableList;
 
+            medicineDataObservableList = new ObservableCollection<MedicineData>();
+            foreach (Medicine medicine in medicines)
+            {
+                medicineDataObservableList.Add(medicine.MedicineData);
+            }
 
-            //if (selectedPatient.medicalRecord.MedicalReport.Count > 0)      
-            //{
-                /*medicineObservableList = new ObservableCollection<Medicine>(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
-                MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
-                MedicationsListBox.ItemsSource = medicineObservableList;*/ 
-                //medicineObservableList.Add(selectedPatient.medicalRecord.  //uzima lek iz poslednjeg izvestaja    
-                //MedicalReport[selectedPatient.medicalRecord.MedicalReport.Count - 1].MedicalReceipt.Medicine);
-                //MedicationsListBox.ItemsSource = medicineObservableList;
-            //}
+            MedicationsListBox.ItemsSource = medicineDataObservableList;
 
-            medRepList = new ObservableCollection<MedicalReport>(selectedPatient.medicalRecord.MedicalReport);
+            medRepList = new ObservableCollection<MedicalReport>(selectedPatient.MedicalRecord.MedicalReport);
             PastReportsListBox.ItemsSource = medRepList; 
-            //MedicationsListBox.ItemsSource = selectedPatient.medicalRecord.medicalReport.
-        }
-
-        private void MedRecClosed(object sender, EventArgs e)
-        {
-            //CancelAndCloseRemove();
-            Application.Current.MainWindow.Show();
-            this.Close();
         }
 
         private void CancelAndCloseRemove()
@@ -107,7 +92,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 {
                     foreach(Medicine medicine in medicalReport.MedicalReceipt.Medicine)
                     {
-                        medicineObservableList.Remove(medicine);
+                        medicineDataObservableList.Remove(medicine.MedicineData);
+                        MedicineController.Instance.DeleteByID(medicine.Id);
                     }
                     selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
@@ -122,10 +108,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 foreach (string diagnosis in newlyCreatedDiagnosis)
                 {
-                    selectedPatient.medicalRecord.ConditionList.Remove(diagnosis);
+                    selectedPatient.MedicalRecord.ConditionList.Remove(diagnosis);
                 }
 
-                MedicalRecordController.Instance.Update(selectedPatient.medicalRecord);
+                MedicalRecordController.Instance.Update(selectedPatient.MedicalRecord);
                 newlyCreatedDiagnosis.Clear();
             }
         }
@@ -176,12 +162,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void FinishReportClick(object sender, RoutedEventArgs e)
         {
+            PatientController.Instance.Update(selectedPatient);
             int isContained = 0;        //da li doktor vec ima karton kod sebe
             Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
 
             foreach (MedicalRecord temp in selectedDoctor.MedicalRecord)
             {
-                if (temp.Id == selectedPatient.medicalRecord.Id)
+                if (temp.Id == selectedPatient.MedicalRecord.Id)
                 {
                     isContained = 1;
                     break;
@@ -190,7 +177,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             if (isContained == 0)
             {
-                selectedDoctor.AddMedicalRecord(selectedPatient.medicalRecord);
+                selectedDoctor.AddMedicalRecord(selectedPatient.MedicalRecord);
             }
             
             MedicalAppointmentController.Instance.DeleteByID(DoctorAppointments.medicalAppointment.Id);
@@ -198,9 +185,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorAppointments.CurDocAppointemntsObservable.Remove(DoctorAppointments.medicalAppointment);
 
             DoctorController.Instance.Update(selectedDoctor);
-            //PacientController.Instance.Update(selectedPatient);
-
+         
             doctorAppointments.Show();
+            this.Close();
+        }
+
+        private void LogOutBtn(object sender, RoutedEventArgs e)
+        {
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }
