@@ -47,7 +47,7 @@ namespace Service
         }
 
         //Method that's being run every second from background thread
-        public void DaemonMethod()
+        public void BackgroundTask()
         {
             DoExpiredRelocations();
         }

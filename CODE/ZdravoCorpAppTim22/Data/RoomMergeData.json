@@ -1,18 +1,1 @@
-[
-  {
-    "Id": 0,
-    "NewRoom": {
-      "Id": 0,
-      "Level": 2,
-      "Type": 0,
-      "Name": "novasoba2",
-      "Surface": 72
-    },
-    "Interval": {
-      "Start": "2022-05-20T02:00:00",
-      "End": "2022-05-20T13:00:00"
-    },
-    "FirstRoom": 7,
-    "SecondRoom": 8
-  }
-]
+[]

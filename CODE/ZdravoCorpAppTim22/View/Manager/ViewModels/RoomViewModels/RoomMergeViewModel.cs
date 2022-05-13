@@ -84,7 +84,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddMerge(object obj)
         {
-            if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval))
+            if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval) || !Room_1.CanMergeOrDiverge() || !Room_2.CanMergeOrDiverge())
             {
                 MessageBox.Show("Rooms aren't available");
                 return;

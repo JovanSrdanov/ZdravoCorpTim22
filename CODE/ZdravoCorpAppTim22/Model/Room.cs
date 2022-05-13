@@ -221,6 +221,14 @@ namespace Model
         {
             return IsAvailable(interval.Start, interval.End);
         }
+        public bool CanMergeOrDiverge()
+        {
+            if(Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
 
         #region boilerplate
         public void AddEquipment(Equipment newEquipment)

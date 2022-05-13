@@ -21,9 +21,13 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+        public void BackgroundTask()
+        {
+            RoomMergeService.Instance.BackgroundTask();
+        }
 
         public void MergeInstant(Room room_1, Room room_2, Room newRoom)
-        { 
+        {
             RoomMergeService.Instance.MergeInstant(room_1, room_2, newRoom);
         }
 
