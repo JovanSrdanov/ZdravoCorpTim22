@@ -4,51 +4,44 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
-    public class RenovationViewModel : INotifyPropertyChanged
+    public class RoomMergeViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public RelayCommand AddRenovationCommand { get; private set; }
+        public RelayCommand AddMergeCommand { get; private set; }
         public RelayCommand NavigateBackCommand { get; private set; }
 
         private int level;
         private string name;
         private string type;
         private double surface;
-        public Room OldRoom { get; }
 
-        private Interval renovationInterval;
-
-        public RenovationViewModel(Room room)
+        public Room Room_1 { get; private set; }
+        public Room Room_2 { get; private set; }
+        public Interval Interval { get; set; }
+        public RoomMergeViewModel(Room room_1, Room room_2)
         {
-            OldRoom = room;
-            Level = room.Level;
-            RoomName = room.Name;
-            Surface = room.Surface;
-            Type = room.Type.ToString();
+            Room_1 = room_1;
+            Room_2 = room_2;
 
-            AddRenovationCommand = new RelayCommand(AddRenovation, CanAddRenovation);
+            Level = room_1.Level;
+            RoomName = room_1.Name;
+            Surface = room_1.Surface + room_2.Surface;
+            Type = room_1.Type.ToString();
+
+            AddMergeCommand = new RelayCommand(AddMerge, CanAddMerge);
             NavigateBackCommand = new RelayCommand(NavigateBack, null);
         }
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Interval RenovationInterval
-        {
-            get => renovationInterval;
-            set
-            {
-                renovationInterval = value;
-                OnPropertyChanged("RenovationInterval");
-            }
-        }
+
         public int Level
         {
             get => level;
@@ -81,7 +74,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             get => surface;
             set
             {
-                if(surface != value)
+                if (surface != value)
                 {
                     surface = value;
                     OnPropertyChanged("Surface");
@@ -89,37 +82,34 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             }
         }
 
-        public void AddRenovation(object obj)
+        public void AddMerge(object obj)
         {
-            if (!OldRoom.IsAvailable(RenovationInterval))
+            if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval))
             {
-                MessageBox.Show("Room isn't available");
+                MessageBox.Show("Rooms aren't available");
                 return;
             }
-            if (!OldRoom.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
+            if (!Room_1.Name.Equals(name) && !Room_2.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
             {
                 MessageBox.Show("Room with that name already exists");
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            if (RenovationInterval.End <= DateTime.Now)
+            Room newRoom = new Room(0, level, rt, name, surface);
+
+            if (Interval.End <= DateTime.Now)
             {
-                OldRoom.Name = name;
-                OldRoom.Level = level;
-                OldRoom.Type = rt;
-                OldRoom.Surface = surface;
-                RoomController.Instance.Update(OldRoom);
+                RoomMergeController.Instance.MergeInstant(Room_1, Room_2, newRoom);
                 ManagerHome.NavigationService.Navigate(new RoomView());
             }
             else
             {
-                Room room = new Room(0, level, rt, name, surface);
-                Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
-                RenovationController.Instance.Create(renovation);
+                RoomMergeController.Instance.Create(Room_1, Room_2, newRoom, Interval);
                 ManagerHome.NavigationService.Navigate(new RoomView());
             }
         }
-        public bool CanAddRenovation(object obj)
+
+        public bool CanAddMerge(object obj)
         {
             if (type == null)
             {
@@ -130,10 +120,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 return false;
             }
             if (level < 0)
-            {
-                return false;
-            }
-            if (surface < 0)
             {
                 return false;
             }

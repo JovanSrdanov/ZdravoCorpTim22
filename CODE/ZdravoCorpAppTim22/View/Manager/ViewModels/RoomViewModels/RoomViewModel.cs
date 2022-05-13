@@ -1,7 +1,9 @@
 ﻿using Controller;
 using Model;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
 
@@ -15,6 +17,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         public RelayCommand OpenRenovateCommand { get; private set; }
         public RelayCommand DeleteRoomCommand { get; private set; }
         public RelayCommand OpenDetailsCommand { get; private set; }
+        public RelayCommand OpenMergeCommand { get; private set; }
         
         public RoomViewModel()
         {
@@ -22,6 +25,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             OpenRenovateCommand = new RelayCommand(OpenRenovate, IsSelected);
             DeleteRoomCommand = new RelayCommand(DeleteRoom, IsSelected);
             OpenDetailsCommand = new RelayCommand(OpenDetails, IsSelected);
+            OpenMergeCommand = new RelayCommand(OpenMerge, CanMerge);
             RoomList = RoomController.Instance.GetAll();
         }
         public RoomViewModel(Room room)
@@ -58,6 +62,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             ManagerHome.NavigationService.Navigate(new RoomDetailsView(room));
         }
 
+        public void OpenMerge(object obj)
+        {
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            ManagerHome.NavigationService.Navigate(new RoomMergeView(selectedRooms[0], selectedRooms[1]));
+        }
+
         private bool IsSelected(object obj)
         {
             if ((Room)obj == null)
@@ -65,6 +75,19 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 return false;
             }
             return true;
+        }
+        private bool CanMerge(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            if (selectedRooms.Count == 2)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

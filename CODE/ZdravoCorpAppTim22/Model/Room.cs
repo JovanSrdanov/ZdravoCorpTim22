@@ -14,9 +14,24 @@ namespace Model
         public int Level { get; set; }
         public RoomType Type { get; set; }
         public string Name { get; set; }
+        public double Surface { get; set; }
 
         [JsonIgnore]
-        public ObservableCollection<Equipment> equipment;
+        private ObservableCollection<Equipment> equipment;
+        [JsonIgnore]
+        private List<MedicalAppointment> medicalAppointment;
+        [JsonIgnore]
+        private List<Renovation> renovations;
+        [JsonIgnore]
+        private List<EquipmentRelocation> relocationSources;
+        [JsonIgnore]
+        private List<EquipmentRelocation> relocationDestinations;
+        [JsonIgnore]
+        private List<RoomMerge> mergesWhereFirst;
+        [JsonIgnore]
+        private List<RoomMerge> mergesWhereSecond;
+
+
         [JsonIgnore]
         public ObservableCollection<Equipment> Equipment
         {
@@ -37,8 +52,6 @@ namespace Model
             }
         }
         [JsonIgnore]
-        public List<MedicalAppointment> medicalAppointment;
-        [JsonIgnore]
         public List<MedicalAppointment> MedicalAppointment
         {
             get
@@ -57,8 +70,6 @@ namespace Model
                 }
             }
         }
-        [JsonIgnore]
-        public List<Renovation> renovations;
         [JsonIgnore]
         public List<Renovation> Renovations
         {
@@ -81,8 +92,6 @@ namespace Model
             }
         }
         [JsonIgnore]
-        public List<EquipmentRelocation> relocationSources;
-        [JsonIgnore]
         public List<EquipmentRelocation> RelocationSources
         {
             get
@@ -102,8 +111,6 @@ namespace Model
             }
         }
         [JsonIgnore]
-        public List<EquipmentRelocation> relocationDestinations;
-        [JsonIgnore]
         public List<EquipmentRelocation> RelocationDestinations
         {
             get
@@ -122,20 +129,64 @@ namespace Model
                 }
             }
         }
+        [JsonIgnore]
+        public List<RoomMerge> MergesWhereFirst
+        {
+            get
+            {
+                if (mergesWhereFirst == null)
+                {
+                    mergesWhereFirst = new List<RoomMerge>();
+                }
+                return mergesWhereFirst;
+            }
+            set
+            {
+                RemoveAllMergesWhereFirst();
+                if (value != null)
+                {
+                    foreach (RoomMerge oMerge in value)
+                        AddMergeWhereFirst(oMerge);
+                }
+            }
+        }
+        [JsonIgnore]
+        public List<RoomMerge> MergesWhereSecond
+        {
+            get
+            {
+                if (mergesWhereSecond == null)
+                {
+                    mergesWhereSecond = new List<RoomMerge>();
+                }
+                return mergesWhereSecond;
+            }
+            set
+            {
+                RemoveAllMergesWhereSecond();
+                if (value != null)
+                {
+                    foreach (RoomMerge oMerge in value)
+                        AddMergeWhereSecond(oMerge);
+                }
+            }
+        }
 
         [JsonConstructor]
         public Room() { }
 
-        public Room(int id, int level, RoomType type, string name)
+        public Room(int id, int level, RoomType type, string name, double surface)
         {
             this.Id = id;
             this.Level = level;
             this.Type = type;
             this.Name = name;
+            this.Surface = surface;
         }
 
         public bool IsAvailable(DateTime start, DateTime end)
         {
+            if (MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0) return false;
             foreach (MedicalAppointment medicalAppointmentRoom in MedicalAppointment)
             {
                 if (!((medicalAppointmentRoom.Interval.Start >= end) || (medicalAppointmentRoom.Interval.End <= start)))
@@ -354,6 +405,80 @@ namespace Model
                 foreach (EquipmentRelocation oldEquipmentRelocation in tmpEquipmentRelocation)
                     oldEquipmentRelocation.DestinationRoom = null;
                 tmpEquipmentRelocation.Clear();
+            }
+        }
+
+        public void RemoveMergeWhereFirst(RoomMerge oldMerge)
+        {
+            if (oldMerge == null)
+                return;
+            if (this.mergesWhereFirst != null)
+                if (this.mergesWhereFirst.Contains(oldMerge))
+                {
+                    this.mergesWhereFirst.Remove(oldMerge);
+                    oldMerge.FirstRoom = null;
+                }
+        }
+        public void AddMergeWhereFirst(RoomMerge newMerge)
+        {
+            if (newMerge == null)
+                return;
+            if (this.mergesWhereFirst == null)
+                this.mergesWhereFirst = new List<RoomMerge>();
+            if (!this.mergesWhereFirst.Contains(newMerge))
+            {
+                this.mergesWhereFirst.Add(newMerge);
+                newMerge.FirstRoom = this;
+            }
+        }
+        public void RemoveAllMergesWhereFirst()
+        {
+            if (renovations != null)
+            {
+                System.Collections.ArrayList tmpMerges = new System.Collections.ArrayList();
+                foreach (RoomMerge oldMerge in mergesWhereFirst)
+                    tmpMerges.Add(oldMerge);
+                mergesWhereFirst.Clear();
+                foreach (RoomMerge oldMerge in tmpMerges)
+                    oldMerge.FirstRoom = null;
+                tmpMerges.Clear();
+            }
+        }
+
+        public void RemoveMergeWhereSecond(RoomMerge oldMerge)
+        {
+            if (oldMerge == null)
+                return;
+            if (this.mergesWhereSecond != null)
+                if (this.mergesWhereSecond.Contains(oldMerge))
+                {
+                    this.mergesWhereSecond.Remove(oldMerge);
+                    oldMerge.SecondRoom = null;
+                }
+        }
+        public void AddMergeWhereSecond(RoomMerge newMerge)
+        {
+            if (newMerge == null)
+                return;
+            if (this.mergesWhereSecond == null)
+                this.mergesWhereSecond = new List<RoomMerge>();
+            if (!this.mergesWhereSecond.Contains(newMerge))
+            {
+                this.mergesWhereSecond.Add(newMerge);
+                newMerge.SecondRoom = this;
+            }
+        }
+        public void RemoveAllMergesWhereSecond()
+        {
+            if (renovations != null)
+            {
+                System.Collections.ArrayList tmpMerges = new System.Collections.ArrayList();
+                foreach (RoomMerge oldMerge in mergesWhereSecond)
+                    tmpMerges.Add(oldMerge);
+                mergesWhereSecond.Clear();
+                foreach (RoomMerge oldMerge in tmpMerges)
+                    oldMerge.SecondRoom = null;
+                tmpMerges.Clear();
             }
         }
         #endregion

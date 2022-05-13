@@ -131,6 +131,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             appointmentList.AddRange(GetAppointmentsForDay(room.Renovations, date, RoomAppointmentType.RenovationAppointment));
             appointmentList.AddRange(GetAppointmentsForDay(room.RelocationSources, date, RoomAppointmentType.EquipmentRelocationAppointment));
             appointmentList.AddRange(GetAppointmentsForDay(room.RelocationDestinations, date, RoomAppointmentType.EquipmentRelocationAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.MergesWhereFirst, date, RoomAppointmentType.RoomMergeAppointment));
+            appointmentList.AddRange(GetAppointmentsForDay(room.MergesWhereSecond, date, RoomAppointmentType.RoomMergeAppointment));
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList;
         }
@@ -248,6 +250,22 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                     appointmentList.Add(app);
                 }
             }
+            foreach(RoomMerge rm in room.MergesWhereFirst)
+            {
+                if(startDate < rm.Interval.End)
+                {
+                    Appointment app = new Appointment(rm.Interval.Start, rm.Interval.End, RoomAppointmentType.RoomMergeAppointment);
+                    appointmentList.Add(app);
+                }
+            }
+            foreach (RoomMerge rm in room.MergesWhereSecond)
+            {
+                if (startDate < rm.Interval.End)
+                {
+                    Appointment app = new Appointment(rm.Interval.Start, rm.Interval.End, RoomAppointmentType.RoomMergeAppointment);
+                    appointmentList.Add(app);
+                }
+            }
             appointmentList.Sort((x, y) => DateTime.Compare(x.Interval.Start, y.Interval.Start));
             return appointmentList.Count > 0 ? appointmentList[0].Interval.Start : startDate;
         }
@@ -293,6 +311,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         DoctorAppointment,
         RenovationAppointment,
         EquipmentRelocationAppointment,
+        RoomMergeAppointment,
         Free
     }
 }
