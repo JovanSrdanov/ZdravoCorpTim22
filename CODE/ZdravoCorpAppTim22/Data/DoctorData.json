@@ -7,8 +7,9 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "dsa",
-          "dsad"
+          "1",
+          "2",
+          "3"
         ]
       },
       {
@@ -16,16 +17,10 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "dsad"
-        ]
-      },
-      {
-        "Id": 2,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
-          "dsa",
-          "dsa"
+          "1",
+          "2",
+          "3",
+          "4"
         ]
       }
     ],
@@ -44,20 +39,15 @@
     "DoctorType": 1,
     "MedicalRecord": [
       {
-        "Id": 2,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
-          "dsa"
-        ]
-      },
-      {
         "Id": 0,
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "dsa",
-          "dsad"
+          "2",
+          "3",
+          "1",
+          "11",
+          "22"
         ]
       },
       {
@@ -65,7 +55,20 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "dsad"
+          "1",
+          "2",
+          "3",
+          "4",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "Id": 2,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "2"
         ]
       }
     ],

@@ -4,9 +4,12 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "dsa",
-      "dsad",
-      "sada"
+      "2",
+      "3",
+      "11",
+      "22",
+      "1",
+      "16341613"
     ]
   },
   {
@@ -14,7 +17,12 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "dsad"
+      "1",
+      "2",
+      "3",
+      "4",
+      "3",
+      "4"
     ]
   },
   {
@@ -22,8 +30,7 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "dsa",
-      "dsa"
+      "2"
     ]
   }
 ]

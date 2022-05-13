@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -16,8 +17,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private string diagnosis;
         private string anamnesis;
-
-        //konstruktor za kreiranje izvestaja
         public CreateReport(Patient selectedPatient, MedicalRecordView medicalRecordView)
         {
             InitializeComponent();
@@ -28,8 +27,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             NameBlock.Text = selectedPatient.Name;
             SurnameBlock.Text = selectedPatient.Surname;
 
-            ObservableCollection<Medicine> medicationList = MedicineController.Instance.GetAll();
-            MedicationComboBox.ItemsSource = medicationList;
+            List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
+            ObservableCollection<Medicine> medicineObservableList = new ObservableCollection<Medicine>(medicineList);
+            ObservableCollection<MedicineData> medicineDataList = MedicineDataController.Instance.GetAll();
+
+            MedicationComboBox.ItemsSource = medicineObservableList;
             MedicationComboBox.SelectedIndex = 0;
         }
 
@@ -90,6 +92,17 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 therapyPurpose = PurposeComboBox.Text;
             }
 
+            string amount;
+
+            if (AmountComboBox.Text == null)
+            {
+                amount = "";
+            }
+            else
+            {
+                amount = AmountComboBox.Text;
+            }
+
             //recept
             if (MedicationComboBox.SelectedItem == null || EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
             {
@@ -98,7 +111,23 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 return;
             }
 
-            Medicine medicine = MedicationComboBox.SelectedItem as Medicine;
+            Medicine selectedMedicine = MedicationComboBox.SelectedItem as Medicine;
+            //Medicine medicine = new Medicine(selectedMedicine);
+            Medicine medicine = new Medicine();
+            medicine.MedicineData = selectedMedicine.MedicineData;
+#pragma warning disable CS0168 // Variable is declared but never used
+            try
+            {
+                medicine.Amount = Int32.Parse(amount);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The field 'Amount' not filled in correctly!", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+#pragma warning restore CS0168 // Variable is declared but never used
+
             DateTime endDate = (DateTime)EndDateDatePicker.SelectedDate;
             string time = TimeComboBox.Text;
             MedicalRecord medRec = selectedPatient.MedicalRecord;
@@ -107,15 +136,25 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec);
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
 
-            ObservableCollection<Medicine> medicineList = new ObservableCollection<Medicine>();
-            medicineList.Add(medicine);
-
-            MedicalRecordView.medicineObservableList.Add(medicine);
+            MedicalRecordView.medicineDataObservableList.Add(medicine.MedicineData);
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
+            medicine.MedicalReceipt = medicalReceipt;
+
+            MedicineController.Instance.Create(medicine);
+            if (selectedMedicine.Amount - medicine.Amount < 0)
+            {
+                MessageBox.Show("Selected amount excedes the amount located in the werehouse", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                selectedMedicine.Amount -= medicine.Amount;
+            }
+            MedicineController.Instance.Update(selectedMedicine);
             MedicalReceiptController.Instance.Create(medicalReceipt);
 
             medicalReport.MedicalReceipt = medicalReceipt;
-
             MedicalReportController.Instance.Create(medicalReport);
             MedicalRecordView.newlyCreatedReports.Add(medicalReport);
 

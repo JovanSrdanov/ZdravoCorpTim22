@@ -18,7 +18,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordsScreen medicalRecordsScreen;
 
         public static ObservableCollection<MedicalReport> medRepList { get; set; }
-        public static ObservableCollection<Medicine> medicineObservableList { get; set; }
+        public static ObservableCollection<MedicineData> medicineDataObservableList { get; set; }       //sad prikzujem to umesto medicine
 
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
@@ -63,7 +63,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ProblemsListBox.ItemsSource = selectedPatient.MedicalRecord.ConditionList;
 
             AllergiesListBox.ItemsSource = selectedPatient.MedicalRecord.AllergiesList;
-            medicineObservableList = new ObservableCollection<Medicine>();
             AllergiesListBox.ItemsSource = selectedPatient.medicalRecord.AllergiesList;
 
             List<Medicine> medicines = new List<Medicine>();
@@ -72,8 +71,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 medicines.AddRange(medicalReceipt.Medicine);
             }
-            medicineObservableList = new ObservableCollection<Medicine>(medicines);
-            MedicationsListBox.ItemsSource = medicineObservableList;
+
+            medicineDataObservableList = new ObservableCollection<MedicineData>();
+            foreach (Medicine medicine in medicines)
+            {
+                medicineDataObservableList.Add(medicine.MedicineData);
+            }
+
+            MedicationsListBox.ItemsSource = medicineDataObservableList;
 
             medRepList = new ObservableCollection<MedicalReport>(selectedPatient.MedicalRecord.MedicalReport);
             PastReportsListBox.ItemsSource = medRepList; 
@@ -87,7 +92,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 {
                     foreach(Medicine medicine in medicalReport.MedicalReceipt.Medicine)
                     {
-                        medicineObservableList.Remove(medicine);
+                        medicineDataObservableList.Remove(medicine.MedicineData);
+                        MedicineController.Instance.DeleteByID(medicine.Id);
                     }
                     selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
                     selectedPatient.medicalRecord.RemoveMedicalReport(medicalReport);
