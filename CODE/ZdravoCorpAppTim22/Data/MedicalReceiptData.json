@@ -1,30 +1,119 @@
 [
   {
     "Id": 0,
-    "EndDate": "2022-05-05T00:00:00",
-    "NotifyNextDateTime": "2022-04-06T09:59:00",
-    "Time": "09:59",
-    "AdditionalInstructions": "Dve tablete",
-    "TherapyPurpose": "Za glavu",
-    "Medicine": {
-      "Id": 2,
-      "Name": "lek3",
-      "Ingredients": "secer"
-    },
+    "EndDate": "2022-06-02T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
     "MedicalRecord": 0
   },
   {
     "Id": 1,
-    "EndDate": "2022-05-27T00:00:00",
-    "NotifyNextDateTime": "2022-05-04T16:12:00",
-    "Time": "16:12",
-    "AdditionalInstructions": "dhajsdas",
-    "TherapyPurpose": "dsadas",
-    "Medicine": {
-      "Id": 0,
-      "Name": "lek1",
-      "Ingredients": "kikiriki"
-    },
+    "EndDate": "2022-06-04T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 2,
+    "EndDate": "2022-05-23T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T11:30:00",
+    "Time": "11:30",
+    "AdditionalInstructions": "3",
+    "TherapyPurpose": "3",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-05-18T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 4,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 5,
+    "EndDate": "2022-06-01T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "3",
+    "TherapyPurpose": "3",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 6,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "4",
+    "TherapyPurpose": "4",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 7,
+    "EndDate": "2022-05-17T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "11",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 8,
+    "EndDate": "2022-06-01T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 9,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "3",
+    "TherapyPurpose": "3",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 10,
+    "EndDate": "2022-05-25T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "4",
+    "TherapyPurpose": "4",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 11,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T11:30:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": 2
+  },
+  {
+    "Id": 12,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "316136136",
+    "TherapyPurpose": "1613",
     "MedicalRecord": 0
   }
 ]

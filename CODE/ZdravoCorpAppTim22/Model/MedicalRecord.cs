@@ -11,7 +11,6 @@ namespace Model
         public int Id { get; set; }
         public BloodType BloodType { get; set; }
 
-        //dodao
         public ObservableCollection<string> AllergiesList { get; set; }
         public ObservableCollection<string> ConditionList { get; set; }
 
@@ -139,7 +138,33 @@ namespace Model
         }
         //dodao
 
-        [JsonConverter(typeof(PatientToIDConverter))]
+        /*[JsonIgnore]
+        public Patient patient;
+        [JsonIgnore]
+        public Patient Patient
+        {
+            get
+            {
+                return patient;
+            }
+            set
+            {
+                if (this.patient == null || !this.patient.Equals(value))
+                {
+                    if (this.patient != null)
+                    {
+                        this.patient = null;
+                    }
+                    if (value != null)
+                    {
+                        this.patient = value;
+                        this.patient.MedicalRecord = this;
+                    }
+                }
+            }
+        }*/
+
+        [JsonIgnore]
         public Patient Patient { get; set; }
 
         [JsonConstructor]

@@ -14,9 +14,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //private int id;
         private string type;
-        //private int selectedDoctorID;
         private DoctorAppointments doctorAppointments;
         private Doctor doctor;
 
@@ -35,7 +33,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             InitializeComponent();
             this.DataContext = this;
-            //this.selectedDoctorID = selectedDoctorID;
             this.doctorAppointments = doctorAppointments;
 
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
@@ -102,9 +99,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             AppointmentType at = (AppointmentType)Enum.Parse(typeof(AppointmentType), type);
 
-            //datePicker.SelectedDate.Value
-            //promeniti konstruktor za medical appointment, ne treba da ide Id vise, automatski se inkrementira za svaki create room, promeniti i kod Jovana
-
             Interval interval = new Interval();
             interval.Start = dateTime;
             interval.End = dateTime;
@@ -138,9 +132,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void DoctorAppointmentCreateClose(object sender, EventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }

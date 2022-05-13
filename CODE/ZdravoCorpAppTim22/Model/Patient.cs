@@ -2,19 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
         
-        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
 
-        [JsonIgnore]
-        //[JsonIgnore]
         public MedicalRecord medicalRecord;
-
-        [JsonIgnore]
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord MedicalRecord
         {
             get
@@ -37,6 +35,7 @@ namespace Model
                 }
             }
         }
+
         public bool IsAvailable(Interval interval)
         {
             if (Password == null)
@@ -72,11 +71,11 @@ namespace Model
         {
             if (medicalRecord == null)
             {
-                this.medicalRecord = new MedicalRecord();
+                this.MedicalRecord = new MedicalRecord();
             }
             else
             {
-                this.medicalRecord = medicalRecord;
+                this.MedicalRecord = medicalRecord;
             }
 
 
@@ -96,11 +95,11 @@ namespace Model
         {
             if (medicalRecord == null)
             {
-                this.medicalRecord = new MedicalRecord();
+                this.MedicalRecord = new MedicalRecord();
             }
             else
             {
-                this.medicalRecord = medicalRecord;
+                this.MedicalRecord = medicalRecord;
             }
 
 
@@ -175,12 +174,6 @@ namespace Model
                 tmpMedicalAppointment.Clear();
             }
         }
-
-        //dodao za serijalizaciju medical rekorda
-        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
-        //public MedicalRecord MedicalRecord { get; set; }
-        //dodao za serijalizaciju medical rekorda
-
 
         public override string ToString()
         {

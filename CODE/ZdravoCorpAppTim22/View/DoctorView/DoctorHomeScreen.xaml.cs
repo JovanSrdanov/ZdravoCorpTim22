@@ -38,11 +38,5 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorHome.doctorHome.Show();
             this.Close();
         }
-
-        private void DoctorHomeScreenClose(object sender, EventArgs e)
-        {
-            Application.Current.MainWindow.Show();
-            this.Close();
-        }
     }
 }
