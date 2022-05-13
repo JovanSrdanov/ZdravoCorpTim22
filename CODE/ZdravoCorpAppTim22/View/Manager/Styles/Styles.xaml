@@ -2,11 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views">
-    <SolidColorBrush x:Key="DarkSecondary" Color="#292c35"/>
-    <SolidColorBrush x:Key="DarkPrimary" Color="#20242b"/>
-    <SolidColorBrush x:Key="ActivePrimary" Color="#7f00ff"/>
-    <SolidColorBrush x:Key="TextPrimary" Color="#ccc"/>
-    <SolidColorBrush x:Key="DisabledColor" Color="#363a42"/>
+    <Color x:Key="DarkSecondaryColor">#292c35</Color>
+    <Color x:Key="DarkPrimaryColor">#20242b</Color>
+    <Color x:Key="ActivePrimaryColor">#7f00ff</Color>
+    <Color x:Key="TextPrimaryColor">#ccc</Color>
+    <Color x:Key="DisabledPrimaryColor">#363a42</Color>
+    <Color x:Key="ActiveSecondaryColor">#000</Color>
+    <SolidColorBrush x:Key="DarkSecondary" Color="{DynamicResource DarkSecondaryColor}"/>
+    <SolidColorBrush x:Key="DarkPrimary" Color="{DynamicResource DarkPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActivePrimary" Color="{DynamicResource ActivePrimaryColor}"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="{DynamicResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="DisabledPrimary" Color="{DynamicResource DisabledPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActiveSecondary" Color="{DynamicResource ActiveSecondaryColor}"/>
 
     <sys:Double x:Key="HeadingFontSize">20</sys:Double>
     <sys:Double x:Key="MenuFontSize">18</sys:Double>
@@ -33,7 +40,7 @@
                             <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
 
@@ -53,6 +60,11 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style TargetType="DataGridRow">
         <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
@@ -63,6 +75,9 @@
                 <Setter Property="Background" Value="#000"/>
                 <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -75,6 +90,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#000"/>
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -143,7 +161,7 @@
                             <Setter TargetName="PART_ContentHost" Property="BorderBrush" Value="#000"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -171,8 +189,8 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledColor}"/>
-                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledColor}"/>
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledPrimary}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -291,7 +309,7 @@
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>

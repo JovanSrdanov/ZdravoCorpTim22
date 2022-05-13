@@ -119,7 +119,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             {
                 return false;
             }
-            if (level < 0)
+            if (level < 0 || surface < 0)
             {
                 return false;
             }

@@ -29,10 +29,11 @@
         <WrapPanel Grid.Row="1"
                    Margin="0 0 0 10">
             <Button x:Name="AddRoom" Style="{StaticResource AddButtonStyle}" Command="{Binding OpenAddCommand}"/>
-            <Button x:Name="DeleteRoom" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteRoomCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
-            <Button x:Name="ButtonDetails" Style="{StaticResource DetailsButtonStyle}" Command="{Binding OpenDetailsCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
-            <Button x:Name="RenovateRoom" Style="{StaticResource RenovateButtonStyle}" Command="{Binding OpenRenovateCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
+            <Button x:Name="DeleteRoom" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteRoomCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+            <Button x:Name="ButtonDetails" Style="{StaticResource DetailsButtonStyle}" Command="{Binding OpenDetailsCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+            <Button x:Name="RenovateRoom" Style="{StaticResource RenovateButtonStyle}" Command="{Binding OpenRenovateCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
             <Button x:Name="MergeRooms" Style="{StaticResource MergeButtonStyle}" Command="{Binding OpenMergeCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+            <Button x:Name="DivergeRooms" Style="{StaticResource DivergeButtonStyle}" Command="{Binding OpenDivergeCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
         </WrapPanel>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"

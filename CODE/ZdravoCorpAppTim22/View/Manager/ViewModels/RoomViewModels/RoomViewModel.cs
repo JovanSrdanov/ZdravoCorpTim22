@@ -18,7 +18,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         public RelayCommand DeleteRoomCommand { get; private set; }
         public RelayCommand OpenDetailsCommand { get; private set; }
         public RelayCommand OpenMergeCommand { get; private set; }
-        
+        public RelayCommand OpenDivergeCommand { get; private set; }
+
         public RoomViewModel()
         {
             OpenAddCommand = new RelayCommand(OpenAdd, null);
@@ -26,6 +27,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             DeleteRoomCommand = new RelayCommand(DeleteRoom, IsSelected);
             OpenDetailsCommand = new RelayCommand(OpenDetails, IsSelected);
             OpenMergeCommand = new RelayCommand(OpenMerge, CanMerge);
+            OpenDivergeCommand = new RelayCommand(OpenDiverge, IsSelected);
+
             RoomList = RoomController.Instance.GetAll();
         }
         public RoomViewModel(Room room)
@@ -46,19 +49,22 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void OpenRenovate(object obj)
         {
-            Room room = (Room)obj;
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            Room room = selectedRooms[0];
             ManagerHome.NavigationService.Navigate(new RenovateView(room));
         }
 
         public void DeleteRoom(object obj)
         {
-            Room room = (Room)obj;
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            Room room = selectedRooms[0];
             RoomController.Instance.DeleteByID(room.Id);
         }
 
         public void OpenDetails(object obj)
         {
-            Room room = (Room)obj;
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            Room room = selectedRooms[0];
             ManagerHome.NavigationService.Navigate(new RoomDetailsView(room));
         }
 
@@ -68,13 +74,25 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             ManagerHome.NavigationService.Navigate(new RoomMergeView(selectedRooms[0], selectedRooms[1]));
         }
 
+        public void OpenDiverge(object obj)
+        {
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            Room room = selectedRooms[0];
+            ManagerHome.NavigationService.Navigate(new RoomDivergeView(room));
+        }
+
         private bool IsSelected(object obj)
         {
-            if ((Room)obj == null)
+            if (obj == null)
             {
                 return false;
             }
-            return true;
+            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+            if (selectedRooms.Count == 1)
+            {
+                return true;
+            }
+            return false;
         }
         private bool CanMerge(object obj)
         {
