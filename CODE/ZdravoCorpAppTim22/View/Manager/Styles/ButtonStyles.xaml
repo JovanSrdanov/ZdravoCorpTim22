@@ -129,4 +129,14 @@
         <Setter Property="Content" Value="&#xe721;"/>
         <Setter Property="FontSize" Value="25"/>
     </Style>
+    <Style x:Key="LogoutButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStandard}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <WrapPanel>
+                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="20" Text="&#xe7e8;"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Logout"/>
+                </WrapPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
