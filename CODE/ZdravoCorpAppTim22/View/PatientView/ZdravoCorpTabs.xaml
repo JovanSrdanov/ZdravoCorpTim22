@@ -325,7 +325,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="14"
-                                    TextWrapping="Wrap"><Run Text="Označite podsetnik za koji želite da vidite listu lekova i pritistite dugme &quot;Vidi lekove &quot;." /></TextBlock>
+                                    TextWrapping="Wrap"><Run Text="Označite podsetnik za koji želite da vidite listu lekova i pritistite dugme &quot;Vidi lekove&quot;." /></TextBlock>
                                 <Image
                                     Width="50"
                                     Height="50"
