@@ -26,6 +26,13 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
+        public void DeleteMany(List<RoomDiverge> list)
+        {
+            foreach (RoomDiverge roomDiverge in list)
+            {
+                DeleteByID(roomDiverge.Id);
+            }
+        }
 
         public void BackgroundTask()
         {

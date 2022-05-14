@@ -27,6 +27,13 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
+        public void DeleteMany(List<RoomMerge> list)
+        {
+            foreach(RoomMerge roomMerge in list)
+            {
+                DeleteByID(roomMerge.Id);
+            }
+        }
         public void BackgroundTask()
         {
             DoExpiredMerges();

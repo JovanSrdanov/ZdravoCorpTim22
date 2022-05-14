@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -64,6 +65,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         
         private void RoomToRoom(Room source, Room destination, Interval interval)
         {
+            if (RoomController.Instance.GetByID(source.Id) == null || RoomController.Instance.GetByID(destination.Id) == null)
+            {
+                MessageBox.Show("One of the rooms was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
             if (!source.IsAvailable(interval) || !destination.IsAvailable(interval))
             {
                 MessageBox.Show("Rooms aren't available");

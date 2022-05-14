@@ -42,27 +42,6 @@
     "EquipmentRelocation": null
   },
   {
-    "Id": 57,
-    "Amount": 50,
-    "EquipmentData": 5,
-    "Room": 11,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 58,
-    "Amount": 143,
-    "EquipmentData": 2,
-    "Room": 11,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 59,
-    "Amount": 14,
-    "EquipmentData": 4,
-    "Room": 11,
-    "EquipmentRelocation": null
-  },
-  {
     "Id": 60,
     "Amount": 50,
     "EquipmentData": 5,
@@ -74,6 +53,41 @@
     "Amount": 57,
     "EquipmentData": 2,
     "Room": 12,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 65,
+    "Amount": 20,
+    "EquipmentData": 5,
+    "Room": 14,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 66,
+    "Amount": 89,
+    "EquipmentData": 2,
+    "Room": 14,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 67,
+    "Amount": 54,
+    "EquipmentData": 2,
+    "Room": 15,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 68,
+    "Amount": 14,
+    "EquipmentData": 4,
+    "Room": 15,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 72,
+    "Amount": 30,
+    "EquipmentData": 5,
+    "Room": 19,
     "EquipmentRelocation": null
   }
 ]
