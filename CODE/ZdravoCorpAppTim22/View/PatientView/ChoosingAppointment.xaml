@@ -8,13 +8,20 @@
     x:Name="ChoosingAppointment1"
     Title="Biranje termina"
     Width="700"
-    Height="350"
+    Height="401"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <StackPanel Margin="21,15,21,0" Orientation="Vertical">
+        <Label
+            Margin="0,0,0,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Ponuđeni termini:"
+            FontSize="18"
+            FontWeight="Bold" />
 
         <DataGrid
             x:Name="dataGridSuggestedMedicalAppointments"

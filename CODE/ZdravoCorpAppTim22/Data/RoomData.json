@@ -12,5 +12,12 @@
     "Type": 0,
     "Name": "soba_2",
     "Surface": 132
+  },
+  {
+    "Id": 15,
+    "Level": 0,
+    "Type": 4,
+    "Name": "sova",
+    "Surface": 0
   }
 ]

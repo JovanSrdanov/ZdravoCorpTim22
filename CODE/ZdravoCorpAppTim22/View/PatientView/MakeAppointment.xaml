@@ -2,6 +2,7 @@
     x:Class="ZdravoCorpAppTim22.View.PatientView.MakeAppointment"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cvt="clr-namespace:ZdravoCorpAppTim22.View.PatientView.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,6 +14,9 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Resources>
+        <cvt:ConverterToSerbian x:Key="cts" />
+    </Window.Resources>
     <Grid>
         <TabControl
             x:Name="TabWizardMakeAppointmet"
@@ -36,7 +40,13 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             FontSize="18"
-                            SelectedIndex="0" />
+                            SelectedIndex="0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter Content="{Binding Converter={StaticResource cts}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                     <Button
                         x:Name="AppointmentNext"

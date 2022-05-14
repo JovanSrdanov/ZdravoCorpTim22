@@ -2,9 +2,9 @@
     x:Class="ZdravoCorpAppTim22.View.PatientView.ZdravoCorpTabs"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
+    xmlns:cvt="clr-namespace:ZdravoCorpAppTim22.View.PatientView.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="ZdravoCorp Aplikacija"
     Width="1280"
@@ -13,6 +13,10 @@
     ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+
+    <Window.Resources>
+        <cvt:ConverterToSerbian x:Key="cts" />
+    </Window.Resources>
     <Grid>
         <TabControl
             HorizontalContentAlignment="Left"
@@ -114,7 +118,7 @@
                             <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:HH:mm\}}" Header="Početak termina" />
                             <DataGridTextColumn Binding="{Binding Interval.End, StringFormat=\{0:HH:mm\}}" Header="Kraj termina" />
                             <DataGridTextColumn Binding="{Binding Room.Id}" Header="Šifra sobe" />
-                            <DataGridTextColumn Binding="{Binding Type}" Header="Vrsta termina" />
+                            <DataGridTextColumn Binding="{Binding Type, Converter={StaticResource cts}}" Header="Vrsta termina" />
 
                             <DataGridTemplateColumn Header="Lekar">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -234,19 +238,43 @@
             </TabItem>
 
         </TabControl>
-        <Button
-            x:Name="LogOutButton"
-            Margin="52,0,0,52"
+
+
+
+
+        <StackPanel
+            Margin="42,0,0,42"
             HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Background="#FFDE3232"
-            Click="LogOutButton_Click"
-            Content="Odjava"
-            FontSize="18"
-            Foreground="White" />
+            VerticalAlignment="Bottom">
 
+            <mah:ToggleSwitch
+                Margin="0,0,0,10"
+                HorizontalAlignment="Center"
+                Content=" Pomoć"
+                FontSize="18">
 
+                <mah:ToggleSwitch.Resources>
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.StrokeOff" Color="Black" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOff" Color="Black" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.FillOff" Color="Gray" />
 
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.StrokeOn" Color="DeepSkyBlue" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOn" Color="white" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.FillOn" Color="Cyan" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOnPointerOver" Color="Black" />
+                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOffPointerOver" Color="DeepSkyBlue" />
+
+                </mah:ToggleSwitch.Resources>
+            </mah:ToggleSwitch>
+            <Button
+                x:Name="LogOutButton"
+                HorizontalAlignment="Center"
+                Background="#FFDE3232"
+                Click="LogOutButton_Click"
+                Content="Odjava"
+                FontSize="18"
+                Foreground="White" />
+        </StackPanel>
 
     </Grid>
 </Window>
