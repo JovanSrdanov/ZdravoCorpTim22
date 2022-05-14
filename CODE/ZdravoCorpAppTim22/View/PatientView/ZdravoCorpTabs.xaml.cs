@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
@@ -91,10 +92,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             PatientSelectionForTemporaryPurpose.LoggedPatient = null;
         }
 
-        private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
-        {
-        
-        }
+       
 
     }
 }

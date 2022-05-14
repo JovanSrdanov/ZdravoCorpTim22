@@ -8,7 +8,8 @@
 		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../ClassDiagram/ObjectOrientedModel_1.oom"/>
 		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="file:///D|/Diagrams/poslednjiPreStefana/ClassDiagram/ObjectOrientedModel_1.oom"/>
 		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../ClassDiagram/ObjectOrientedModel_1.oom"/>
-		<Model ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Name="ObjectOrientedModel_1" Selected="Yes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../ClassDiagram/ObjectOrientedModel_1.oom"/>
+		<Model ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../ClassDiagram/ObjectOrientedModel_1.oom"/>
+		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../ClassDiagram/ObjectOrientedModel_1.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

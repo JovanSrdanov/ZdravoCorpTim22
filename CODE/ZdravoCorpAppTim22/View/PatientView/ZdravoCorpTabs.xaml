@@ -70,7 +70,6 @@
                                     Padding="10,1"
                                     HorizontalAlignment="Left"
                                     Background="Green"
-                                    Click="RateZdravoCorp_Click"
                                     Content="Ostavite recenziju bolnice"
                                     Foreground="White" />
                             </StackPanel>
@@ -255,12 +254,6 @@
                         Content="Pregled kartona"
                         FontSize="36"
                         FontWeight="Bold" />
-                    <Image
-                        Width="250"
-                        Margin="34,70,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/PatientPlaceholder.jpg" />
                 </Grid>
             </TabItem>
             <TabItem>
@@ -299,6 +292,15 @@
 
                             </DataGrid.Columns>
                         </DataGrid>
+                        <Grid Margin="42,0,42,0">
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Background="Yellow"
+                                Content="Vidi lekove" />
+
+                        </Grid>
 
 
                     </StackPanel>

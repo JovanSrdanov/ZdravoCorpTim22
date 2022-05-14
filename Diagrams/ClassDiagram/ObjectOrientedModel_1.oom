@@ -4680,7 +4680,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o28">
 <a:ModificationDate>1652130834</a:ModificationDate>
 <a:DestinationTextOffset>(113, -714)</a:DestinationTextOffset>
-<a:Rect>((-16899,16568), (-10939,18869))</a:Rect>
+<a:Rect>((-16899,16414), (-10939,18869))</a:Rect>
 <a:ListOfPoints>((-16499,18119),(-14077,18119),(-14077,18044),(-11339,18044))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3584</a:ArrowStyle>
@@ -4722,7 +4722,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o35">
 <a:ModificationDate>1652130839</a:ModificationDate>
-<a:Rect>((-14827,21196), (-10195,53421))</a:Rect>
+<a:Rect>((-14827,21013), (-10195,53421))</a:Rect>
 <a:ListOfPoints>((-14077,53021),(-14077,22641),(-10595,22641))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3584</a:ArrowStyle>
@@ -4911,7 +4911,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o58">
 <a:ModificationDate>1652130850</a:ModificationDate>
 <a:SourceTextOffset>(1012, 936)</a:SourceTextOffset>
-<a:Rect>((-8851,29996), (15482,32326))</a:Rect>
+<a:Rect>((-8851,29838), (15482,32168))</a:Rect>
 <a:ListOfPoints>((-8451,31329),(4853,31329),(4853,31395),(15082,31395))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3584</a:ArrowStyle>
@@ -4932,7 +4932,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o61">
 <a:ModificationDate>1651605264</a:ModificationDate>
-<a:Rect>((-75099,26372), (-57499,30975))</a:Rect>
+<a:Rect>((-75099,26204), (-57499,30975))</a:Rect>
 <a:ListOfPoints>((-57899,27764),(-62719,27764),(-62719,30275),(-74699,30275))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3336</a:ArrowStyle>
@@ -4994,7 +4994,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o70">
 <a:ModificationDate>1652130859</a:ModificationDate>
-<a:Rect>((-25822,8562), (14022,16194))</a:Rect>
+<a:Rect>((-25822,8413), (14022,16194))</a:Rect>
 <a:ListOfPoints>((-25122,15794),(-25122,9758),(13622,9758))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
@@ -5015,7 +5015,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 </o:AssociationSymbol>
 <o:AssociationSymbol Id="o72">
 <a:ModificationDate>1652546516</a:ModificationDate>
-<a:Rect>((-56729,54565), (-53142,64180))</a:Rect>
+<a:Rect>((-56729,54468), (-53142,64180))</a:Rect>
 <a:ListOfPoints>((-53542,55561),(-55995,55561),(-55995,63780))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3592</a:ArrowStyle>
@@ -5078,7 +5078,7 @@ LABL 0 Arial,8,N</a:FontList>
 </o:GeneralizationSymbol>
 <o:AssociationSymbol Id="o78">
 <a:ModificationDate>1652130853</a:ModificationDate>
-<a:Rect>((1453,36225), (13382,38241))</a:Rect>
+<a:Rect>((1453,36099), (13382,38241))</a:Rect>
 <a:ListOfPoints>((1853,37491),(12982,37491))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>3584</a:ArrowStyle>
@@ -7514,11 +7514,11 @@ using System.Threading.Tasks;
 </o:Class>
 <o:Class Id="o121">
 <a:ObjectID>3E1CC4E6-F5B5-4346-A65A-AE15D0D22485</a:ObjectID>
-<a:Name>HospitalRating</a:Name>
-<a:Code>HospitalRating</a:Code>
+<a:Name>HospitalReview</a:Name>
+<a:Code>HospitalReview</a:Code>
 <a:CreationDate>1651607582</a:CreationDate>
 <a:Creator>Jana Jovan</a:Creator>
-<a:ModificationDate>1652547738</a:ModificationDate>
+<a:ModificationDate>1652550719</a:ModificationDate>
 <a:Modifier>Jana Jovan</a:Modifier>
 <a:UseParentNamespace>0</a:UseParentNamespace>
 <c:Attributes>
@@ -16054,7 +16054,7 @@ using System;
 <a:Code>ObjectOrientedModel_1</a:Code>
 <a:CreationDate>1649420407</a:CreationDate>
 <a:Creator>rade-</a:Creator>
-<a:ModificationDate>1652546516</a:ModificationDate>
+<a:ModificationDate>1652547866</a:ModificationDate>
 <a:Modifier>Jana Jovan</a:Modifier>
 <a:TargetModelURL>file:///.</a:TargetModelURL>
 <a:TargetModelID>883AE398-4358-4F6D-8DFB-8143B0F490CA</a:TargetModelID>
