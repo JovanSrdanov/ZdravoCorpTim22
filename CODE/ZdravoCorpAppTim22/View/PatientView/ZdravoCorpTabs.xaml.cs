@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
@@ -94,5 +95,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
         
         }
+
     }
 }

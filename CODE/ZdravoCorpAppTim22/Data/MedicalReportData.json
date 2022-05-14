@@ -115,5 +115,14 @@
     "ReportDate": "2022-05-13T14:23:15.381094+02:00",
     "MedicalReceipt": 12,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 13,
+    "DoctorID": 0,
+    "Anamnesis": "rewrew",
+    "Diagnosis": "ewrwerwer",
+    "ReportDate": "2022-05-14T14:57:09.7177334+02:00",
+    "MedicalReceipt": 13,
+    "MedicalRecord": 0
   }
 ]

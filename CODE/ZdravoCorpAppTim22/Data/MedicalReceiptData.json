@@ -2,7 +2,7 @@
   {
     "Id": 0,
     "EndDate": "2022-06-02T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
@@ -11,7 +11,7 @@
   {
     "Id": 1,
     "EndDate": "2022-06-04T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "2",
     "TherapyPurpose": "2",
@@ -20,7 +20,7 @@
   {
     "Id": 2,
     "EndDate": "2022-05-23T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T11:30:00",
+    "NotifyNextDateTime": "2022-05-15T11:30:00",
     "Time": "11:30",
     "AdditionalInstructions": "3",
     "TherapyPurpose": "3",
@@ -65,7 +65,7 @@
   {
     "Id": 7,
     "EndDate": "2022-05-17T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "11",
@@ -74,7 +74,7 @@
   {
     "Id": 8,
     "EndDate": "2022-06-01T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "2",
     "TherapyPurpose": "2",
@@ -110,10 +110,19 @@
   {
     "Id": 12,
     "EndDate": "2022-05-26T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "316136136",
     "TherapyPurpose": "1613",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 13,
+    "EndDate": "2022-05-15T00:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:30:00",
+    "Time": "10:30",
+    "AdditionalInstructions": "1sdasdasdas",
+    "TherapyPurpose": "werwerwe",
     "MedicalRecord": 0
   }
 ]

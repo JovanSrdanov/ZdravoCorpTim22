@@ -51,6 +51,7 @@
                     <Button
                         x:Name="AppointmentNext"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="Green"
@@ -88,6 +89,7 @@
                     <Button
                         x:Name="DoctorBack"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
                         Background="Yellow"
@@ -97,6 +99,7 @@
                     <Button
                         x:Name="DoctorNext"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="Green"
@@ -128,6 +131,7 @@
                     <Button
                         x:Name="DateBack"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
                         Background="Yellow"
@@ -137,6 +141,7 @@
                     <Button
                         x:Name="DateNext"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="Green"
@@ -181,6 +186,7 @@
                     <Button
                         x:Name="PriorityBack"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
                         Background="Yellow"
@@ -190,6 +196,7 @@
                     <Button
                         x:Name="PriorityFinish"
                         Margin="0,0,0,15"
+                        Padding="10,1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="Green"
@@ -206,6 +213,7 @@
         <Button
             x:Name="Cancle"
             Margin="45,0,0,15"
+            Padding="10,1"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Background="Yellow"

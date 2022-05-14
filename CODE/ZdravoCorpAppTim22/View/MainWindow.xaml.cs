@@ -58,7 +58,7 @@ namespace ZdravoCorpAppTim22
                 Thread.Sleep(1000);
                 RenovationController.Instance.BackgroundTask();
                 EquipmentRelocationController.Instance.BackgroundTask();
-                //PatientController.Instance.DeamonMethod();
+                PatientController.Instance.DeamonMethod();
                 RoomMergeController.Instance.BackgroundTask();
             }
         }

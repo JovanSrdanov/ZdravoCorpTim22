@@ -70,6 +70,7 @@
             <Grid>
                 <Button
                     x:Name="Cancle"
+                    Padding="10,1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="Yellow"
@@ -78,6 +79,7 @@
                     FontSize="18" />
                 <Button
                     x:Name="ChooseChangeAppointment"
+                    Padding="10,1"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Background="Green"
