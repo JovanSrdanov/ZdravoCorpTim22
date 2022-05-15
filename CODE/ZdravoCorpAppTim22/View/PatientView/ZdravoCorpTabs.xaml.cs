@@ -89,10 +89,11 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            
             Close();
             AuthenticationController.Instance.Logout();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
