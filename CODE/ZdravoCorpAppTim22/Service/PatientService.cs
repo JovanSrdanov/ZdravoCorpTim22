@@ -41,7 +41,7 @@ namespace Service
         public void DaemonMethod()
         {
         
-            if (PatientSelectionForTemporaryPurpose.LoggedPatient == null)
+            if (ZdravoCorpTabs.LoggedPatient == null)
             {
                 return;
             }
@@ -52,7 +52,7 @@ namespace Service
                 {
                     App.Current.Dispatcher.Invoke(delegate
                     {
-                        MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
+                        MedicalRecord medRec = ZdravoCorpTabs.LoggedPatient.medicalRecord;
 
 
                         if (medRec == null)

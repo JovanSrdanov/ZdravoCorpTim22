@@ -101,7 +101,14 @@ namespace ZdravoCorpAppTim22
             }
             else if(user.GetType() == typeof(Patient))
             {
-                window = new PatientSelectionForTemporaryPurpose((Patient)user);
+                Patient patientCheck = (Patient)user;
+                if (patientCheck.Blocked == true)
+                {
+                    ErrorTextBlock.Text = "Korisnik je blokiran";
+                    return;
+                }
+
+                window = new ZdravoCorpTabs((Patient)user);
             }
 
             if (window != null)

@@ -20,16 +20,19 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get;  set; }
 
         public List<MedicalAppointment> medicalAppointments;
-        public ZdravoCorpTabs()
+
+        public static Patient LoggedPatient { get; set; }
+
+        public ZdravoCorpTabs(Patient patient)
         {
             InitializeComponent();
-
-            medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
+            LoggedPatient = patient;
+            medicalAppointments = PatientController.Instance.GetByID(patient.Id).MedicalAppointment;
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             DataGridAppointment.ItemsSource = MedicalAppointmentList;
 
 
-            MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
+            MedicalRecord medRec = patient.medicalRecord;
             if (medRec == null)
             {              
                 MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();
@@ -62,7 +65,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
             MedicalAppointmentList.Remove(MedicalAppointmentSelected);
-            PatientController.Instance.AntiTroll(PatientSelectionForTemporaryPurpose.LoggedPatient, DateTime.Now);
+            PatientController.Instance.AntiTroll(LoggedPatient, DateTime.Now);
 
         }
 
@@ -89,7 +92,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
-            PatientSelectionForTemporaryPurpose.LoggedPatient = null;
+            AuthenticationController.Instance.Logout();
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)

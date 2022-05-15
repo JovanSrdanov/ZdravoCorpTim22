@@ -394,9 +394,6 @@
     <Compile Include="View\Secretary\SecretaryAccountsNew.xaml.cs">
       <DependentUpon>SecretaryAccountsNew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml.cs">
-      <DependentUpon>PatientSelectionForTemporaryPurpose.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Secretary\SecretaryChangeSchedule.xaml.cs">
       <DependentUpon>SecretaryChangeSchedule.xaml</DependentUpon>
     </Compile>
@@ -603,10 +600,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientView\MakeAppointment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PatientView\PatientSelectionForTemporaryPurpose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
