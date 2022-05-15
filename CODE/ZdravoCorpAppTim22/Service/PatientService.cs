@@ -50,8 +50,8 @@ namespace Service
                 {
                     App.Current.Dispatcher.Invoke(delegate
                     {
-                        MedicalRecord medRec = MedicalRecordService.Instance.GetAll().FirstOrDefault(r => r.Patient.Id == PatientSelectionForTemporaryPurpose.LoggedPatient.Id);
-                  
+                        MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
+
 
                         if (medRec == null)
                         {

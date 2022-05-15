@@ -7,7 +7,7 @@
   },
   {
     "Id": 8,
-    "Amount": 685,
+    "Amount": 683,
     "MedicineData": 8,
     "MedicalReceipt": null
   },
@@ -86,6 +86,12 @@
   {
     "Id": 27,
     "Amount": 123,
+    "MedicineData": 8,
+    "MedicalReceipt": 0
+  },
+  {
+    "Id": 28,
+    "Amount": 2,
     "MedicineData": 8,
     "MedicalReceipt": 0
   }

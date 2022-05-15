@@ -105,7 +105,7 @@
     "Time": "10:00",
     "AdditionalInstructions": "2",
     "TherapyPurpose": "2",
-    "MedicalRecord": 2
+    "MedicalRecord": null
   },
   {
     "Id": 12,
@@ -124,5 +124,14 @@
     "AdditionalInstructions": "1sdasdasdas",
     "TherapyPurpose": "werwerwe",
     "MedicalRecord": 0
+  },
+  {
+    "Id": 14,
+    "EndDate": "2022-05-16T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "Joj",
+    "TherapyPurpose": "glava",
+    "MedicalRecord": 2
   }
 ]

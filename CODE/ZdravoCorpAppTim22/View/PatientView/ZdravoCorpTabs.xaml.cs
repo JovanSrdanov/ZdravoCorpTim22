@@ -29,7 +29,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             DataGridAppointment.ItemsSource = MedicalAppointmentList;
 
 
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == PatientSelectionForTemporaryPurpose.LoggedPatient.Id).FirstOrDefault();
+            MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
             if (medRec == null)
             {              
                 MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();

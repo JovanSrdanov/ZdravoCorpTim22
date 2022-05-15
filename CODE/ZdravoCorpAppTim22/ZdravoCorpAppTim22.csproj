@@ -224,6 +224,7 @@
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="View\BindableBase.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
     <Compile Include="View\DoctorView\CreateReport.xaml.cs">
       <DependentUpon>CreateReport.xaml</DependentUpon>
@@ -340,6 +341,7 @@
     <Compile Include="View\Manager\Views\RoomAppointments\SelectTimePage.xaml.cs">
       <DependentUpon>SelectTimePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MyICommand.cs" />
     <Compile Include="View\PatientView\ChangeAppointment.xaml.cs">
       <DependentUpon>ChangeAppointment.xaml</DependentUpon>
     </Compile>

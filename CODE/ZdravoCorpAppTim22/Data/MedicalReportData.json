@@ -43,5 +43,14 @@
     "ReportDate": "2022-05-14T14:57:09.7177334+02:00",
     "MedicalReceipt": 13,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 14,
+    "DoctorID": 0,
+    "Anamnesis": "sadasd",
+    "Diagnosis": "sadasdasdasdas",
+    "ReportDate": "2022-05-15T11:58:28.0434678+02:00",
+    "MedicalReceipt": 14,
+    "MedicalRecord": 2
   }
 ]
