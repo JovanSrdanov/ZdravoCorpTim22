@@ -8,19 +8,9 @@
         "AllergiesList": [],
         "ConditionList": [
           "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "Id": 1,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
+          "dasd",
           "1",
-          "2",
-          "3",
-          "4"
+          "32131"
         ]
       }
     ],
@@ -43,32 +33,10 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "2",
-          "3",
           "1",
-          "11",
-          "22"
-        ]
-      },
-      {
-        "Id": 1,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
+          "dasd",
           "1",
-          "2",
-          "3",
-          "4",
-          "3",
-          "4"
-        ]
-      },
-      {
-        "Id": 2,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
-          "2"
+          "32131"
         ]
       }
     ],
@@ -82,5 +50,45 @@
     "Gender": 0,
     "Id": 1,
     "Address": 1
+  },
+  {
+    "DoctorType": 0,
+    "MedicalRecord": [],
+    "Name": "OpstaPraksa1",
+    "Surname": "Opsta",
+    "Email": "",
+    "Jmbg": "1231241",
+    "Password": "123",
+    "Birthday": "2022-05-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 2,
+    "Address": 15
+  },
+  {
+    "DoctorType": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "dasd",
+          "1",
+          "32131"
+        ]
+      }
+    ],
+    "Name": "Specijalista",
+    "Surname": "Specijalista1",
+    "Email": "",
+    "Jmbg": "213",
+    "Password": "123",
+    "Birthday": "2022-05-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 3,
+    "Address": 16
   }
 ]

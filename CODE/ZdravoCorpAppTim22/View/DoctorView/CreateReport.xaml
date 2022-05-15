@@ -76,6 +76,8 @@
             x:Name="NameBlock" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" Margin="33,357,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"
             x:Name="SurnameBlock" Foreground="#FF8C39A5" FontWeight="Bold" FontSize="20"/>
+        <Button x:Name="ReferToSpecialistBtn" Content="Refer to a specialist" Margin="33,409,0,0"
+            Style="{StaticResource normalButton}" Width="164" Height="29" FontSize="16" Click="ReferToSpecialistBtnClick"/>
 
     </Grid>
 </Window>
