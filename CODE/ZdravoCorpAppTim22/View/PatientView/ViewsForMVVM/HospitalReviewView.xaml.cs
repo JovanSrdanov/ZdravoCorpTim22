@@ -24,5 +24,8 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM
         {
             InitializeComponent();
         }
+
+
+      
     }
 }

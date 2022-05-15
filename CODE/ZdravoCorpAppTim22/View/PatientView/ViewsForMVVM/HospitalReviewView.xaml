@@ -31,26 +31,31 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup" />
+                GroupName="StaffHospitalityGroup"
+                IsChecked="{Binding Path=StaffHospitalityGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup" />
+                GroupName="StaffHospitalityGroup"
+                IsChecked="{Binding Path=StaffHospitalityGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup" />
+                GroupName="StaffHospitalityGroup"
+                IsChecked="{Binding Path=StaffHospitalityGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup" />
+                GroupName="StaffHospitalityGroup"
+                IsChecked="{Binding Path=StaffHospitalityGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup" />
+                GroupName="StaffHospitalityGroup"
+                IsChecked="{Binding Path=StaffHospitalityGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <Label
@@ -65,20 +70,27 @@
             <RadioButton
                 Margin="0,0,10,0"
                 Content="1"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AccessibilityGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AccessibilityGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AccessibilityGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
-                FontSize="18" />
-            <RadioButton Content="5" FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AccessibilityGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Content="5"
+                FontSize="18"
+                IsChecked="{Binding Path=AccessibilityGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
@@ -92,20 +104,27 @@
             <RadioButton
                 Margin="0,0,10,0"
                 Content="1"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=HygieneGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=HygieneGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=HygieneGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
-                FontSize="18" />
-            <RadioButton Content="5" FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=HygieneGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Content="5"
+                FontSize="18"
+                IsChecked="{Binding Path=HygieneGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
@@ -119,20 +138,27 @@
             <RadioButton
                 Margin="0,0,10,0"
                 Content="1"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AppearanceGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AppearanceGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AppearanceGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
-                FontSize="18" />
-            <RadioButton Content="5" FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=AppearanceGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Content="5"
+                FontSize="18"
+                IsChecked="{Binding Path=AppearanceGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
@@ -146,20 +172,27 @@
             <RadioButton
                 Margin="0,0,10,0"
                 Content="1"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=ApplicationGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=ApplicationGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
-                FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=ApplicationGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
-                FontSize="18" />
-            <RadioButton Content="5" FontSize="18" />
+                FontSize="18"
+                IsChecked="{Binding Path=ApplicationGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Content="5"
+                FontSize="18"
+                IsChecked="{Binding Path=ApplicationGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Grid>
 
