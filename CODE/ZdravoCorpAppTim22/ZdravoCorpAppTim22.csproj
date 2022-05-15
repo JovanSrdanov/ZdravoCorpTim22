@@ -63,6 +63,7 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -144,6 +145,7 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
     <Compile Include="Controller\ReplacementController.cs" />
+    <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
     <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="Model\MedicineData.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Replacement.cs" />
+    <Compile Include="Model\RoomDiverge.cs" />
     <Compile Include="Model\RoomMerge.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\EquipmentRelocationRepository.cs" />
     <Compile Include="Repository\ReplacementRepository.cs" />
+    <Compile Include="Repository\RoomDivergeRepository.cs" />
     <Compile Include="Repository\RoomMergeRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SecretaryRepository.cs" />
@@ -221,6 +225,7 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\EquipmentRelocationService.cs" />
     <Compile Include="Service\ReplacementService.cs" />
+    <Compile Include="Service\RoomDivergeService.cs" />
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
@@ -283,6 +288,9 @@
     <Compile Include="View\Manager\Pages\RoomPages\RoomDetailsView.xaml.cs">
       <DependentUpon>RoomDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Pages\RoomPages\RoomDivergeView.xaml.cs">
+      <DependentUpon>RoomDivergeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\RoomPages\RoomMergeView.xaml.cs">
       <DependentUpon>RoomMergeView.xaml</DependentUpon>
     </Compile>
@@ -315,6 +323,7 @@
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDetailsViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDivergeViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomMergeViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RenovationViewModel.cs" />
@@ -325,6 +334,12 @@
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\EditEquipmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\WarehouseViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\WarehouseRelocationViewModel.cs" />
+    <Compile Include="View\Manager\Views\AmountModal.xaml.cs">
+      <DependentUpon>AmountModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Views\InfoModal.xaml.cs">
+      <DependentUpon>InfoModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
@@ -442,6 +457,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Manager\Pages\RoomPages\RoomDivergeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Pages\RoomPages\RoomMergeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -533,7 +552,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Manager\Styles\ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\AmountModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\InfoModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

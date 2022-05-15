@@ -9,12 +9,14 @@ namespace ZdravoCorpAppTim22.View.Manager
     public partial class ManagerHome : Window
     {
         internal static MainWindow MainWindow;
+        public static ManagerHome Instance { get; private set; }
         public static NavigationService NavigationService { get; private set; }
         public ManagerHome(MainWindow mainWindow)
         {
             InitializeComponent();
             MainWindow = mainWindow;
             NavigationService = ContentFrame.NavigationService;
+            Instance = this;
         }
 
         public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
@@ -41,5 +43,29 @@ namespace ZdravoCorpAppTim22.View.Manager
         private void Window_Closing(object sender, CancelEventArgs e) => MainWindow.Show();
 
         private void ButtonLogout_Click(object sender, RoutedEventArgs e) => Close();
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            window.WindowState = System.Windows.WindowState.Minimized;
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            if (window.WindowState == System.Windows.WindowState.Normal)
+            {
+                window.WindowState = System.Windows.WindowState.Maximized;
+            }
+            else
+            {
+                window.WindowState = System.Windows.WindowState.Normal;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            window.Close();
+        }
     }
 }

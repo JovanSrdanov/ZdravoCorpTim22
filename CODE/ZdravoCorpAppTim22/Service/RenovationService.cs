@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.Service
                     {
                         if (item.NewRoom != null)
                         {
-                            Room oldRoom = RoomService.Instance.GetByID(item.NewRoom.Id);
+                            Room oldRoom = RoomService.Instance.GetByID(item.Room.Id);
                             oldRoom.Name = item.NewRoom.Name;
                             oldRoom.Level = item.NewRoom.Level;
                             oldRoom.Type = item.NewRoom.Type;

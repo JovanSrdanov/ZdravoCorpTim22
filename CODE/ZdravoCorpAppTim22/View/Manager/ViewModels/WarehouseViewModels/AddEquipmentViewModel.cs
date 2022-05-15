@@ -6,6 +6,7 @@ using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 {
@@ -70,7 +71,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             }
             else
             {
-                MessageBox.Show("Equipment with that name already exists");
+                InfoModal.Show("Equipment with that name already exists");
                 return;
             }
 

@@ -8,6 +8,7 @@ using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
@@ -91,14 +92,20 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddRenovation(object obj)
         {
+            if (RoomController.Instance.GetByID(OldRoom.Id) == null)
+            {
+                InfoModal.Show("Room was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
             if (!OldRoom.IsAvailable(RenovationInterval))
             {
-                MessageBox.Show("Room isn't available");
+                InfoModal.Show("Room isn't available");
                 return;
             }
             if (!OldRoom.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
             {
-                MessageBox.Show("Room with that name already exists");
+                InfoModal.Show("Room with that name already exists");
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);

@@ -7,6 +7,7 @@ using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.MedicinePages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 {
@@ -86,7 +87,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
         {
             if (!OldMedicine.MedicineData.Name.Equals(name) && MedicineDataController.Instance.GetByName(name) != null)
             {
-                MessageBox.Show("Medicine with that name already exists");
+                InfoModal.Show("Medicine with that name already exists");
                 return;
             }
 

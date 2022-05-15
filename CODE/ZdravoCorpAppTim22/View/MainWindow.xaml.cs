@@ -26,7 +26,6 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
             
-            //dodao
             MedicalRecordController.Instance.Load();
             MedicalReceiptController.Instance.Load();
 
@@ -62,6 +61,7 @@ namespace ZdravoCorpAppTim22
                 EquipmentRelocationController.Instance.BackgroundTask();
                 PatientController.Instance.DeamonMethod();
                 RoomMergeController.Instance.BackgroundTask();
+                RoomDivergeController.Instance.BackgroundTask();
             }
         }
 
