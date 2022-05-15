@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -6,10 +7,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
     {
         private MainWindow mainWindow;
 
-        public SecretaryHome(MainWindow mainWindow)
+        public SecretaryHome(SecretaryClass secretary)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
+            this.mainWindow = (MainWindow)Application.Current.MainWindow;
         }
 
         private void AccountsBtn_Click(object sender, RoutedEventArgs e)

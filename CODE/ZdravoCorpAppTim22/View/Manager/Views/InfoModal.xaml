@@ -51,12 +51,12 @@
                                 </Grid.Background>
                                 <StackPanel Grid.ColumnSpan="2">
                                     <WrapPanel HorizontalAlignment="Left">
-                                        <TextBlock Margin="6 6 4 6"
+                                        <TextBlock Margin="6 6 4 4"
                                                    FontSize="25"
                                                    Foreground="{StaticResource ActivePrimary}"
                                                    FontFamily="{StaticResource Icons}"
                                                    Text="&#xe946;"/>
-                                        <TextBlock Margin="0 1 0 5"
+                                        <TextBlock Margin="0 2 0 4"
                                                    FontSize="22"
                                                    Foreground="{StaticResource ActivePrimary}"
                                                    Text="{TemplateBinding Title}"/>
