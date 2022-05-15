@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
@@ -8,7 +9,24 @@ namespace Model
 {
     public class Patient : User
     {
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
+
+        public HospitalReview hospitalReview;
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
         
+            public HospitalReview HospitalReview
+            {
+                get
+                {
+                    return hospitalReview;
+                }
+                set
+                {
+                    this.hospitalReview = value;
+                }
+            }
+    
+
         [JsonConverter(typeof(MedicalRecordToIDConverter))]
 
         public MedicalRecord medicalRecord;
@@ -36,7 +54,7 @@ namespace Model
             }
         }
 
-        public bool IsAvailable(Interval interval)
+public bool IsAvailable(Interval interval)
         {
             if (Password == null)
             {
@@ -179,5 +197,9 @@ namespace Model
         {
             return Name + " " + Surname + " " + Jmbg;
         }
+
+       
+
+
     }
 }

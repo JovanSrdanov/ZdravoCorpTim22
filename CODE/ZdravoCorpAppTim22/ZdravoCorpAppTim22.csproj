@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.UI.Xaml.2.7.1\build\Microsoft.UI.Xaml.props" Condition="Exists('packages\Microsoft.UI.Xaml.2.7.1\build\Microsoft.UI.Xaml.props')" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.props" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -53,14 +54,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -85,6 +97,8 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -120,6 +134,7 @@
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
     <Compile Include="Controller\Generic\IController.cs" />
+    <Compile Include="Controller\HospitalReviewController.cs" />
     <Compile Include="Controller\IngredientController.cs" />
     <Compile Include="Controller\IngredientDataController.cs" />
     <Compile Include="Controller\MedicalReceiptController.cs" />
@@ -136,6 +151,9 @@
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
+    <Compile Include="Model\HospitalReview.cs" />
+    <Compile Include="Repository\HospitalReviewRepository.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\HospitalReviewToIDConverter.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\IngredientData.cs" />
     <Compile Include="Model\MedicalAppointmentStruct.cs" />
@@ -192,6 +210,7 @@
     <Compile Include="Service\EquipmentDataService.cs" />
     <Compile Include="Service\Generic\GenericService.cs" />
     <Compile Include="Service\Generic\IService.cs" />
+    <Compile Include="Service\HospitalReviewService.cs" />
     <Compile Include="Service\IngredientDataService.cs" />
     <Compile Include="Service\IngredientService.cs" />
     <Compile Include="Service\MedicalReceiptService.cs" />
@@ -210,6 +229,7 @@
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="View\BindableBase.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
     <Compile Include="View\DoctorView\CreateReport.xaml.cs">
       <DependentUpon>CreateReport.xaml</DependentUpon>
@@ -333,6 +353,7 @@
     <Compile Include="View\Manager\Views\RoomAppointments\SelectTimePage.xaml.cs">
       <DependentUpon>SelectTimePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MyICommand.cs" />
     <Compile Include="View\PatientView\ChangeAppointment.xaml.cs">
       <DependentUpon>ChangeAppointment.xaml</DependentUpon>
     </Compile>
@@ -342,6 +363,7 @@
     <Compile Include="View\PatientView\ChoosingChangeAppointment.xaml.cs">
       <DependentUpon>ChoosingChangeAppointment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\Converter\ConverterToSerbian.cs" />
     <Compile Include="View\PatientView\MakeAppointment.xaml.cs">
       <DependentUpon>MakeAppointment.xaml</DependentUpon>
     </Compile>
@@ -697,6 +719,15 @@
   <ItemGroup>
     <Resource Include="Resource\DoctorResource\hospital.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\PatientResource\info.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.UI.Xaml.2.7.1\build\Microsoft.UI.Xaml.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.UI.Xaml.2.7.1\build\Microsoft.UI.Xaml.props'))" />
+  </Target>
 </Project>

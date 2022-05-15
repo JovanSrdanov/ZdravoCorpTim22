@@ -10,21 +10,14 @@
     "Id": 21,
     "Level": 5,
     "Type": 0,
-    "Name": "soba_10",
-    "Surface": 38
+    "Name": "soba_2",
+    "Surface": 132
   },
   {
-    "Id": 33,
-    "Level": 5,
-    "Type": 1,
-    "Name": "soba5",
-    "Surface": 70
-  },
-  {
-    "Id": 35,
-    "Level": 5,
+    "Id": 15,
+    "Level": 0,
     "Type": 4,
-    "Name": "soba_1",
-    "Surface": 15.5
+    "Name": "sova",
+    "Surface": 0
   }
 ]
