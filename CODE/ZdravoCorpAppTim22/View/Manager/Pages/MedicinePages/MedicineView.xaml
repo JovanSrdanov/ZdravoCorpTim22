@@ -56,9 +56,9 @@
                   ItemsSource="{Binding Path=MedicineCollection}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=MedicineData.Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Name}" Header="Name" Width="2*"/>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.ApprovedBy}" Header="Approved By" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.ApprovedBy}" Header="Approved By" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

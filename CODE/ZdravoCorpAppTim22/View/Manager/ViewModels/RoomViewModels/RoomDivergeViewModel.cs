@@ -28,6 +28,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         private string type_2;
         private double surface_2;
 
+        public readonly double SurfaceMax;
+
         public ObservableCollection<Equipment> Equipment_1 { get; set; }
         public ObservableCollection<Equipment> Equipment_2 { get; set; }
 
@@ -35,6 +37,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         public Interval Interval { get; set; }
         public RoomDivergeViewModel(Room room)
         {
+            SurfaceMax = room.Surface;
+
             Room = room;
             Level_1 = room.Level;
             RoomName_1 = room.Name;
@@ -93,8 +97,24 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             {
                 if (surface_1 != value)
                 {
-                    surface_1 = value;
-                    OnPropertyChanged("Surface_1");
+                    if(value < 0)
+                    {
+                        surface_1 = 0;
+                        Surface_2 = SurfaceMax;
+                        OnPropertyChanged("Surface_1");
+                    }
+                    else if (value > SurfaceMax)
+                    {
+                        surface_1 = SurfaceMax;
+                        Surface_2 = 0;
+                        OnPropertyChanged("Surface_1");
+                    }
+                    else
+                    {
+                        surface_1 = value;
+                        Surface_2 = SurfaceMax - value;
+                        OnPropertyChanged("Surface_1");
+                    }
                 }
             }
         }
@@ -132,8 +152,24 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             {
                 if (surface_2 != value)
                 {
-                    surface_2 = value;
-                    OnPropertyChanged("Surface_2");
+                    if (value < 0)
+                    {
+                        surface_2 = 0;
+                        Surface_1 = SurfaceMax;
+                        OnPropertyChanged("Surface_2");
+                    }
+                    else if (value > SurfaceMax)
+                    {
+                        surface_2 = SurfaceMax;
+                        Surface_1 = 0;
+                        OnPropertyChanged("Surface_2");
+                    }
+                    else
+                    {
+                        surface_2 = value;
+                        Surface_1 = SurfaceMax - value;
+                        OnPropertyChanged("Surface_2");
+                    }
                 }
             }
         }
@@ -185,6 +221,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddDiverge(object obj)
         {
+            if (RoomController.Instance.GetByID(Room.Id) == null)
+            {
+                MessageBox.Show("Room was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
             if (!Room.IsAvailable(Interval) || !Room.CanMergeOrDiverge())
             {
                 MessageBox.Show("Rooms aren't available");

@@ -91,6 +91,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddRenovation(object obj)
         {
+            if (RoomController.Instance.GetByID(OldRoom.Id) == null)
+            {
+                MessageBox.Show("Room was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
             if (!OldRoom.IsAvailable(RenovationInterval))
             {
                 MessageBox.Show("Room isn't available");

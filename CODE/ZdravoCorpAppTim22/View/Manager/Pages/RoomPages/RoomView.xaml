@@ -41,9 +41,10 @@
                   SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="2*"/>
                 <DataGridTextColumn Binding="{Binding Path=Level}" Header="Level" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Surface}" Header="Surface Area" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
