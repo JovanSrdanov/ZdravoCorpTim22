@@ -1,10 +1,8 @@
 ﻿using Controller;
 using Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.DataModel;
@@ -38,14 +36,25 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 
         public void Relocate(object obj)
         {
-            WarehouseToRoom(DestinationRoom, Interval);
+            if (RoomController.Instance.GetByID(DestinationRoom.Id) == null)
+            {
+                MessageBox.Show("Room was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
+            if (!DestinationRoom.IsAvailable(Interval))
+            {
+                MessageBox.Show("Room isn't available");
+                return;
+            }
+            EquipmentRelocationController.Instance.MoveWarehouseToRoom(DestinationRoom, new List<EquipmentDataModel>(EquipmentList), Interval);
+
             ManagerHome.NavigationService.Navigate(new WarehouseView());
         }
         public void NavigateBack(object obj)
         {
             ManagerHome.NavigationService.Navigate(new WarehouseView());
         }
-
         private bool CanRelocate(object obj)
         {
             bool valid = true;
@@ -57,35 +66,6 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
                 }
             }
             return valid;
-        }
-
-        private void WarehouseToRoom(Room destination, Interval interval)
-        {
-            if (!destination.IsAvailable(interval))
-            {
-                MessageBox.Show("Room isn't available");
-                return;
-            }
-            List<Equipment> equipment = new List<Equipment>();
-            foreach (EquipmentDataModel eq in EquipmentList)
-            {
-                Equipment temp = new Equipment(eq.Equipment)
-                {
-                    Amount = eq.Amount
-                };
-                eq.Equipment.Amount -= temp.Amount;
-                EquipmentController.Instance.Update(eq.Equipment);
-
-                if (interval.End <= DateTime.Now || temp.EquipmentData.Type == EquipmentType.consumable)
-                {
-                    EquipmentController.Instance.AddRoomEquipment(destination, temp);
-                }
-                else
-                {
-                    equipment.Add(temp);
-                }
-            }
-            EquipmentRelocationController.Instance.Create(null, destination, interval, equipment);
         }
     }
 }

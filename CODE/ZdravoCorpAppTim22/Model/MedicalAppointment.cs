@@ -6,7 +6,7 @@ using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
-    public class MedicalAppointment : IHasID
+    public class MedicalAppointment : IHasID, IHasInterval
     {
         public int Id { get; set; }
         public AppointmentType Type { get; set; }

@@ -84,6 +84,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void AddMerge(object obj)
         {
+            if (RoomController.Instance.GetByID(Room_1.Id) == null || RoomController.Instance.GetByID(Room_2.Id) == null)
+            {
+                MessageBox.Show("One of the rooms was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
             if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval) || !Room_1.CanMergeOrDiverge() || !Room_2.CanMergeOrDiverge())
             {
                 MessageBox.Show("Rooms aren't available");
@@ -119,7 +125,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             {
                 return false;
             }
-            if (level < 0)
+            if (level < 0 || surface < 0)
             {
                 return false;
             }

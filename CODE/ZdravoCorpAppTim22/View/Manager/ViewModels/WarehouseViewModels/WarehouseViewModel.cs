@@ -77,13 +77,15 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         }
         public void OpenEdit(object obj)
         {
-            Equipment equipment = (Equipment)obj;
+            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+            Equipment equipment = selectedEquipment[0];
             EditEquipmentView editEquipment = new EditEquipmentView(equipment);
             ManagerHome.NavigationService.Navigate(editEquipment);
         }
         public void DeleteEquipment(object obj)
         {
-            Equipment equipment = (Equipment)obj;
+            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+            Equipment equipment = selectedEquipment[0];
             EquipmentCollection.Remove(equipment);
 
             List<Equipment> eqToRemove = new List<Equipment>();
@@ -122,11 +124,16 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         }
         private bool IsSelected(object obj)
         {
-            if ((Equipment)obj == null)
+            if (obj == null)
             {
                 return false;
             }
-            return true;
+            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+            if (selectedEquipment.Count == 1)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

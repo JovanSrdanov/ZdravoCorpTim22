@@ -32,6 +32,10 @@ namespace Service
             RenovationService.Instance.DeleteMany(new List<Renovation>(room.Renovations));
             EquipmentRelocationService.Instance.DeleteMany(new List<EquipmentRelocation>(room.RelocationDestinations));
             EquipmentRelocationService.Instance.DeleteMany(new List<EquipmentRelocation>(room.RelocationSources));
+            RoomMergeService.Instance.DeleteMany(new List<RoomMerge>(room.MergesWhereFirst));
+            RoomMergeService.Instance.DeleteMany(new List<RoomMerge>(room.MergesWhereSecond));
+            RoomDivergeService.Instance.DeleteMany(new List<RoomDiverge>(room.Diverges));
+
             List<Equipment> eqToMove = new List<Equipment>(room.Equipment);
             foreach (Equipment eq in eqToMove)
             {
@@ -43,6 +47,9 @@ namespace Service
             room.RemoveAllRenovations();
             room.RemoveAllRelocationSources();
             room.RemoveAllRelocationDestinations();
+            room.RemoveAllMergesWhereFirst();
+            room.RemoveAllMergesWhereSecond();
+            room.RemoveAllDiverges();
 
             List<MedicalAppointment> l = new List<MedicalAppointment>(room.MedicalAppointment);
             foreach (MedicalAppointment m in l)

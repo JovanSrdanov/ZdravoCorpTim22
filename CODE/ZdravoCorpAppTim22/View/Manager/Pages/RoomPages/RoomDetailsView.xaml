@@ -56,9 +56,9 @@
                   ItemsSource="{Binding Path=FilteredEquipment}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="2*"/>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

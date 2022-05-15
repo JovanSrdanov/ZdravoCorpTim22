@@ -2,11 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views">
-    <SolidColorBrush x:Key="DarkSecondary" Color="#292c35"/>
-    <SolidColorBrush x:Key="DarkPrimary" Color="#20242b"/>
-    <SolidColorBrush x:Key="ActivePrimary" Color="#7f00ff"/>
-    <SolidColorBrush x:Key="TextPrimary" Color="#ccc"/>
-    <SolidColorBrush x:Key="DisabledColor" Color="#363a42"/>
+    <Color x:Key="DarkSecondaryColor">#292c35</Color>
+    <Color x:Key="DarkPrimaryColor">#20242b</Color>
+    <Color x:Key="ActivePrimaryColor">#4287f5</Color>
+    <!--<Color x:Key="ActivePrimaryColor">#7f00ff</Color>-->
+    <Color x:Key="TextPrimaryColor">#ccc</Color>
+    <Color x:Key="DisabledPrimaryColor">#363a42</Color>
+    <Color x:Key="ActiveSecondaryColor">#000</Color>
+    <Color x:Key="DarkTernaryColor">#111</Color>
+    <SolidColorBrush x:Key="DarkSecondary" Color="{StaticResource DarkSecondaryColor}"/>
+    <SolidColorBrush x:Key="DarkPrimary" Color="{StaticResource DarkPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActivePrimary" Color="{StaticResource ActivePrimaryColor}"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="{StaticResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="DisabledPrimary" Color="{StaticResource DisabledPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActiveSecondary" Color="{StaticResource ActiveSecondaryColor}"/>
+    <SolidColorBrush x:Key="DarkTernary" Color="{StaticResource DarkTernaryColor}"/>
 
     <sys:Double x:Key="HeadingFontSize">20</sys:Double>
     <sys:Double x:Key="MenuFontSize">18</sys:Double>
@@ -33,7 +43,7 @@
                             <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
 
@@ -53,6 +63,11 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style TargetType="DataGridRow">
         <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
@@ -63,6 +78,9 @@
                 <Setter Property="Background" Value="#000"/>
                 <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -75,6 +93,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#000"/>
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -143,7 +164,7 @@
                             <Setter TargetName="PART_ContentHost" Property="BorderBrush" Value="#000"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -164,15 +185,16 @@
                     BorderThickness="0"/>
             <Path x:Name="Arrow"
                   Grid.Column="1"
-                  Fill="White"
+                  Fill="{StaticResource ActivePrimary}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledColor}"/>
-                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledColor}"/>
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledPrimary}"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource TextPrimary}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -291,7 +313,7 @@
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledColor}"/>
+                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -372,4 +394,58 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <ControlTemplate TargetType="{x:Type ScrollViewer}" x:Key="ScrollViewTemplate">
+        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalAlignment}">
+            <Grid Background="{TemplateBinding Background}"
+                  HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                  VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ScrollContentPresenter Grid.Column="0" Grid.ColumnSpan="2"
+                                        Grid.Row="0" Grid.RowSpan="2"
+                                        KeyboardNavigation.DirectionalNavigation="Local"
+                                        CanContentScroll="True"
+                                        CanHorizontallyScroll="True"
+                                        CanVerticallyScroll="True"
+                                        />
+
+                <ScrollBar Name="PART_VerticalScrollBar"
+                           Grid.Column="1" Grid.Row="0"
+                           Padding="0,0,0,3"
+                           Value="{TemplateBinding VerticalOffset}"
+                           Maximum="{TemplateBinding ScrollableHeight}"
+                           ViewportSize="{TemplateBinding ViewportHeight}"
+                           Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                           Background="{StaticResource DarkPrimary}"/>
+
+                <ScrollBar Name="PART_HorizontalScrollBar"
+                            Grid.Column="0" Grid.Row="1"
+                            Orientation="Horizontal"
+                            Padding="0,0,6,0"
+                            Value="{TemplateBinding HorizontalOffset}"
+                            Maximum="{TemplateBinding ScrollableWidth}"
+                            ViewportSize="{TemplateBinding ViewportWidth}"
+                            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+
+                <DockPanel Grid.Column="1" Grid.Row="1"
+                           LastChildFill="false"
+                           Background="{StaticResource DarkSecondary}"/>
+
+                <ResizeGrip HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                            Grid.Column="1" Grid.Row="1"
+                            Background="{StaticResource DarkSecondary}"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
 </ResourceDictionary>
