@@ -13,8 +13,8 @@
     "EndDate": "2022-06-04T00:00:00",
     "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
-    "AdditionalInstructions": "2",
-    "TherapyPurpose": "2",
+    "AdditionalInstructions": "cxzcz",
+    "TherapyPurpose": "dsa",
     "MedicalRecord": 0
   },
   {
@@ -28,10 +28,10 @@
   },
   {
     "Id": 3,
-    "EndDate": "2022-05-18T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "EndDate": "2022-05-30T00:00:00",
+    "NotifyNextDateTime": "2022-05-15T10:00:00",
     "Time": "10:00",
-    "AdditionalInstructions": "1",
+    "AdditionalInstructions": "1231",
     "TherapyPurpose": "1",
     "MedicalRecord": 1
   },

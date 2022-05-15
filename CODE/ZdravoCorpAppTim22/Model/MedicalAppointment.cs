@@ -12,6 +12,8 @@ namespace Model
         public AppointmentType Type { get; set; }
         public Interval Interval { get; set; }
 
+        public bool isUrgent { get; set; }
+
         public MedicalAppointment(int id, AppointmentType type, Interval interval, Room room, Patient patient, Doctor doctor)
         {
             Id = id;
@@ -20,6 +22,7 @@ namespace Model
             Room = room;
             Patient = patient;
             Doctor = doctor;
+            isUrgent = false;
         }
 
         public MedicalAppointment(MedicalAppointmentStruct medicalAppointmentStruct)
@@ -30,6 +33,7 @@ namespace Model
             Room = medicalAppointmentStruct.Room;
             Patient = medicalAppointmentStruct.Patient;
             Doctor = medicalAppointmentStruct.Doctor;
+            isUrgent = false;
         }
 
         [JsonConstructor]

@@ -23,6 +23,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public static List<MedicalReport> newlyCreatedReports;                //ako idem na back svi kreirani izvestaji i dijagnoze se brisu
         public static List<string> newlyCreatedDiagnosis;
 
+        //DODAO//////////////////
+        public static List<MedicalAppointment> newlyCreatedAppointments;
+        //DODAO//////////////////
+
         public int canCreateReport;        //ako doktor iz rasporeda gleda karton prosledjuje -1, u ostalim slucajevima moze proslediti bilo koji drugi broj
         public MedicalRecordView(int canCreateReport, int selectedPatientID, DoctorAppointments doctorAppointments = null, 
             MedicalRecordsScreen medicalRecordsScreen = null)
@@ -31,6 +35,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             newlyCreatedReports = new List<MedicalReport>();
             newlyCreatedDiagnosis = new List<string>();
+            newlyCreatedAppointments = new List<MedicalAppointment>();
 
 
             selectedPatient = PatientController.Instance.GetByID(selectedPatientID);
@@ -100,8 +105,18 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                     MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
                     MedicalReportController.Instance.DeleteByID(medicalReport.Id);     
                 }
-
                 newlyCreatedReports.Clear();
+            }
+
+            if (newlyCreatedAppointments.Count > 0)
+            {
+                foreach (MedicalAppointment medApp in newlyCreatedAppointments)
+                {
+                    MedicalAppointmentController.Instance.DeleteByID(medApp.Id);
+                    medApp.Doctor.MedicalAppointment.Remove(medApp);
+                    DoctorController.Instance.Update(medApp.Doctor);
+                }
+                newlyCreatedAppointments.Clear();
             }
 
             if (newlyCreatedDiagnosis.Count > 0)

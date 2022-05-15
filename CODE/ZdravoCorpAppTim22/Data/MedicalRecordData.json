@@ -4,10 +4,6 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "2",
-      "3",
-      "11",
-      "22",
       "1",
       "16341613",
       "ewrwerwer"
@@ -19,19 +15,7 @@
     "AllergiesList": [],
     "ConditionList": [
       "1",
-      "2",
-      "3",
-      "4",
-      "3",
-      "4"
-    ]
-  },
-  {
-    "Id": 2,
-    "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": [
-      "2"
+      "32131"
     ]
   }
 ]

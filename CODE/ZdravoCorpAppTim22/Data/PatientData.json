@@ -1,6 +1,6 @@
 [
   {
-    "MedicalRecord": 0,
+    "MedicalRecord": null,
     "Name": "pac",
     "Surname": "pacprez",
     "Email": "",
@@ -13,7 +13,7 @@
     "Address": 14
   },
   {
-    "MedicalRecord": 1,
+    "MedicalRecord": 0,
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
@@ -26,7 +26,7 @@
     "Address": 2
   },
   {
-    "MedicalRecord": 2,
+    "MedicalRecord": null,
     "Name": "1",
     "Surname": "2",
     "Email": "",
