@@ -372,6 +372,13 @@
     <Compile Include="View\PatientView\MakeAppointment.xaml.cs">
       <DependentUpon>MakeAppointment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReviewTheHospital.xaml.cs">
+      <DependentUpon>ReviewTheHospital.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ViewModelForMVVM\HospitalReviewViewModel.cs" />
+    <Compile Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml.cs">
+      <DependentUpon>HospitalReviewView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ZdravoCorpTabs.xaml.cs">
       <DependentUpon>ZdravoCorpTabs.xaml</DependentUpon>
     </Compile>
@@ -603,6 +610,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReviewTheHospital.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ZdravoCorpTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -730,6 +745,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\PatientResource\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\PatientResource\ZdravoCorpBigLogo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\background.jpg" />

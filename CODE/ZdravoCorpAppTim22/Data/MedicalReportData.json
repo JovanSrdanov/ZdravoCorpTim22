@@ -52,5 +52,41 @@
     "ReportDate": "2022-05-15T11:58:28.0434678+02:00",
     "MedicalReceipt": 14,
     "MedicalRecord": 2
+  },
+  {
+    "Id": 15,
+    "DoctorID": 0,
+    "Anamnesis": "",
+    "Diagnosis": "sdasdas",
+    "ReportDate": "2022-05-15T12:18:41.5796946+02:00",
+    "MedicalReceipt": 15,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 16,
+    "DoctorID": 0,
+    "Anamnesis": "sdasdadsa",
+    "Diagnosis": "dasdasdas",
+    "ReportDate": "2022-05-15T12:22:12.4825777+02:00",
+    "MedicalReceipt": 16,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 17,
+    "DoctorID": 0,
+    "Anamnesis": "asdsad",
+    "Diagnosis": "sadasdasdasda",
+    "ReportDate": "2022-05-15T16:05:21.9375916+02:00",
+    "MedicalReceipt": 17,
+    "MedicalRecord": 3
+  },
+  {
+    "Id": 18,
+    "DoctorID": 0,
+    "Anamnesis": "nest",
+    "Diagnosis": "nesto",
+    "ReportDate": "2022-05-15T16:08:53.8885069+02:00",
+    "MedicalReceipt": 18,
+    "MedicalRecord": 3
   }
 ]

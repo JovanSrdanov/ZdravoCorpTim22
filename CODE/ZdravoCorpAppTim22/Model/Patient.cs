@@ -9,6 +9,11 @@ namespace Model
 {
     public class Patient : User
     {
+
+        public bool Blocked { get; set; }
+        public List<DateTime> SuspiciousActivity { get; set; } 
+
+
         [JsonConverter(typeof(HospitalReviewToIDConverter))]
 
         public HospitalReview hospitalReview;
@@ -56,6 +61,12 @@ namespace Model
 
 public bool IsAvailable(Interval interval)
         {
+
+            if (Blocked )
+            {
+                return false;
+            }
+
             if (Password == null)
             {
                 return true;
@@ -106,6 +117,9 @@ public bool IsAvailable(Interval interval)
                 this.medicalAppointment = medicalAppointment;
             }
 
+            Blocked = false;
+
+            SuspiciousActivity = new List<DateTime>();
 
         }
 
@@ -129,6 +143,8 @@ public bool IsAvailable(Interval interval)
             {
                 this.medicalAppointment = medicalAppointment;
             }
+            Blocked = false;
+            SuspiciousActivity = new List<DateTime>();
 
         }
 

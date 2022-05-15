@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms.VisualStyles;
+using System.Windows.Navigation;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -116,6 +118,30 @@ namespace Service
                         }
                     });
                 }
+            }
+        }
+
+        public void AntiTroll(Patient patient,DateTime activity)
+        {
+
+            foreach (var dateTime in patient.SuspiciousActivity.ToList().Where(dateTime => dateTime < DateTime.Now.AddDays(-30)))
+            {
+                patient.SuspiciousActivity.Remove(dateTime);
+            }
+            
+            patient.SuspiciousActivity.Add(activity);
+            Instance.Update(patient);
+
+            if (patient.SuspiciousActivity.Count >= 3)
+            {
+                
+                patient.Blocked = true;
+                Instance.Update(patient);
+
+                MessageBox.Show("Pacijent je blokiran!");
+                System.Windows.Forms.Application.Restart();
+                System.Windows.Application.Current.Shutdown();
+                
             }
         }
     }
