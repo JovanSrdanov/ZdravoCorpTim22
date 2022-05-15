@@ -2,118 +2,37 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "1",
+    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n2",
     "Diagnosis": "1",
-    "ReportDate": "2022-05-13T13:50:31.3197358+02:00",
+    "ReportDate": "2022-05-15T09:30:30.579816+02:00",
     "MedicalReceipt": 0,
     "MedicalRecord": 0
   },
   {
     "Id": 1,
-    "DoctorID": 0,
-    "Anamnesis": "2",
-    "Diagnosis": "2",
-    "ReportDate": "2022-05-13T13:50:42.2913221+02:00",
+    "DoctorID": 1,
+    "Anamnesis": "sda",
+    "Diagnosis": "dasd",
+    "ReportDate": "2022-05-15T09:31:32.8108765+02:00",
     "MedicalReceipt": 1,
     "MedicalRecord": 0
   },
   {
     "Id": 2,
-    "DoctorID": 0,
-    "Anamnesis": "3",
-    "Diagnosis": "3",
-    "ReportDate": "2022-05-13T13:50:55.213252+02:00",
+    "DoctorID": 1,
+    "Anamnesis": "1\n\nReffered to: Specijalista Specijalista1\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-05-15T09:34:36.2099432+02:00",
     "MedicalReceipt": 2,
     "MedicalRecord": 0
   },
   {
     "Id": 3,
-    "DoctorID": 0,
-    "Anamnesis": "1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-13T13:52:03.0643497+02:00",
+    "DoctorID": 3,
+    "Anamnesis": "23131\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/3/2022 11:00:00 AM\nComment for the specialist:\n1",
+    "Diagnosis": "32131",
+    "ReportDate": "2022-05-15T09:35:45.7097065+02:00",
     "MedicalReceipt": 3,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 4,
-    "DoctorID": 0,
-    "Anamnesis": "2",
-    "Diagnosis": "2",
-    "ReportDate": "2022-05-13T13:52:31.3802643+02:00",
-    "MedicalReceipt": 4,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 5,
-    "DoctorID": 0,
-    "Anamnesis": "3",
-    "Diagnosis": "3",
-    "ReportDate": "2022-05-13T13:52:50.2444279+02:00",
-    "MedicalReceipt": 5,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 6,
-    "DoctorID": 0,
-    "Anamnesis": "4",
-    "Diagnosis": "4",
-    "ReportDate": "2022-05-13T13:53:08.0922643+02:00",
-    "MedicalReceipt": 6,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 7,
-    "DoctorID": 1,
-    "Anamnesis": "1",
-    "Diagnosis": "11",
-    "ReportDate": "2022-05-13T13:55:17.7361269+02:00",
-    "MedicalReceipt": 7,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 8,
-    "DoctorID": 1,
-    "Anamnesis": "2",
-    "Diagnosis": "22",
-    "ReportDate": "2022-05-13T13:55:27.0666887+02:00",
-    "MedicalReceipt": 8,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 9,
-    "DoctorID": 1,
-    "Anamnesis": "3",
-    "Diagnosis": "3",
-    "ReportDate": "2022-05-13T13:55:41.70239+02:00",
-    "MedicalReceipt": 9,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 10,
-    "DoctorID": 1,
-    "Anamnesis": "4",
-    "Diagnosis": "4",
-    "ReportDate": "2022-05-13T13:55:50.8768614+02:00",
-    "MedicalReceipt": 10,
-    "MedicalRecord": 1
-  },
-  {
-    "Id": 11,
-    "DoctorID": 1,
-    "Anamnesis": "2",
-    "Diagnosis": "2",
-    "ReportDate": "2022-05-13T13:58:02.9493953+02:00",
-    "MedicalReceipt": 11,
-    "MedicalRecord": 2
-  },
-  {
-    "Id": 12,
-    "DoctorID": 0,
-    "Anamnesis": "6316136",
-    "Diagnosis": "16341613",
-    "ReportDate": "2022-05-13T14:23:15.381094+02:00",
-    "MedicalReceipt": 12,
     "MedicalRecord": 0
   }
 ]

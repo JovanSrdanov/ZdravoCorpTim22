@@ -234,6 +234,9 @@
     <Compile Include="View\DoctorView\OpenReport.xaml.cs">
       <DependentUpon>OpenReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\ReferToDoctorView.xaml.cs">
+      <DependentUpon>ReferToDoctorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
@@ -395,6 +398,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\OpenReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\ReferToDoctorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
