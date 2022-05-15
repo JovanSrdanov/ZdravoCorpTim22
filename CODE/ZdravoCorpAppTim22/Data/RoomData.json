@@ -15,9 +15,9 @@
   },
   {
     "Id": 15,
-    "Level": 0,
+    "Level": 2,
     "Type": 4,
     "Name": "sova",
-    "Surface": 0
+    "Surface": 30
   }
 ]
