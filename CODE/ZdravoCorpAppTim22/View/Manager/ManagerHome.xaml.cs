@@ -9,12 +9,14 @@ namespace ZdravoCorpAppTim22.View.Manager
     public partial class ManagerHome : Window
     {
         internal static MainWindow MainWindow;
+        public static ManagerHome Instance { get; private set; }
         public static NavigationService NavigationService { get; private set; }
         public ManagerHome(MainWindow mainWindow)
         {
             InitializeComponent();
             MainWindow = mainWindow;
             NavigationService = ContentFrame.NavigationService;
+            Instance = this;
         }
 
         public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Windows;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
@@ -73,7 +74,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if(RoomController.Instance.GetByName(name) != null)
             {
-                MessageBox.Show("Room with that name already exists");
+                InfoModal.Show("Room with that name already exists");
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
