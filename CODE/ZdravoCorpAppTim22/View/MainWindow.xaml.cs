@@ -1,4 +1,6 @@
 ﻿using Controller;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
@@ -65,37 +67,70 @@ namespace ZdravoCorpAppTim22
             }
         }
 
+        
+
         private void ManagerBtn_Click(object sender, RoutedEventArgs e)
         {
-            ManagerHome managerHome = new ManagerHome(this);
+            ManagerHome managerHome = new ManagerHome();
             managerHome.Show();
-            this.Hide();
+            Hide();
         }
 
         private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            SecretaryHome secretaryHome = new SecretaryHome(this);
+            SecretaryHome secretaryHome = new SecretaryHome();
             secretaryHome.Show();
-            this.Hide();
+            Hide();
         }
 
         private void DoctorBtn_Click(object sender, RoutedEventArgs e)
         {
             DoctorHome doctorHome = new DoctorHome();
-            doctorHome.Owner = this;
-            doctorHome.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             doctorHome.Show();
-
-            this.Hide();
-
+            Hide();
         }
 
         private void PatientBtn_Click(object sender, RoutedEventArgs e)
         {
             PatientSelectionForTemporaryPurpose patientSelectionForTemporaryPurpose = new PatientSelectionForTemporaryPurpose();
             patientSelectionForTemporaryPurpose.Show();
-            this.Close();
+            Close();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = null;
+            string email = EmailInput.Text;
+            string password = PasswordInput.Password;
+
+
+
+            switch (email)
+            {
+                case "m":
+                    window = new ManagerHome();
+                    break;
+                case "p": 
+                    window = new PatientSelectionForTemporaryPurpose();
+                    break;
+                case "d":
+                    window = new DoctorHome();
+                    break;
+                case "s":
+                    window = new SecretaryHome();
+                    break;
+            }
+            if(window != null)
+            {
+                window.Show();
+                Hide();
+            }
         }
     }
 }

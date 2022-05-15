@@ -6,10 +6,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
     {
         private MainWindow mainWindow;
 
-        public SecretaryHome(MainWindow mainWindow)
+        public SecretaryHome()
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
+            this.mainWindow = (MainWindow)Application.Current.MainWindow;
         }
 
         private void AccountsBtn_Click(object sender, RoutedEventArgs e)
