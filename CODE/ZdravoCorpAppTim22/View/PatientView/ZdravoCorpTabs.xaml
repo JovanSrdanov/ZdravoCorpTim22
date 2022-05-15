@@ -70,6 +70,7 @@
                                     Padding="10,1"
                                     HorizontalAlignment="Left"
                                     Background="Green"
+                                    Click="RateZdravoCorp_Click"
                                     Content="Ostavite recenziju bolnice"
                                     Foreground="White" />
                             </StackPanel>
