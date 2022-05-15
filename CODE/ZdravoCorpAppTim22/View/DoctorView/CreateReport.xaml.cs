@@ -16,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private MedicalRecordView medicalRecordView;
 
         private string diagnosis;
-        private string anamnesis;
+        public static string anamnesis;
         public CreateReport(Patient selectedPatient, MedicalRecordView medicalRecordView)
         {
             InitializeComponent();
@@ -185,6 +185,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
+        }
+
+        private void ReferToSpecialistBtnClick(object sender, RoutedEventArgs e)
+        {
+            ReferToDoctorView referToDoctorView = new ReferToDoctorView(this, selectedPatient);
+            referToDoctorView.Owner = this;
+            referToDoctorView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            referToDoctorView.Show();
+
+            this.Hide();
         }
     }
 }
