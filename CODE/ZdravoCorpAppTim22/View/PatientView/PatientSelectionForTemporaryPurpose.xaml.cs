@@ -16,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public static PatientController patientController;
         public List<Patient> patients;
 
-        public PatientSelectionForTemporaryPurpose()
+        public PatientSelectionForTemporaryPurpose(Patient patient)
         {
             InitializeComponent();
             patients = new List<Patient>(PatientController.Instance.GetAll());

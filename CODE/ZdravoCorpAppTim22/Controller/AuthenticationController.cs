@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
+using ZdravoCorpAppTim22.Service;
 
 namespace ZdravoCorpAppTim22.Controller
 {
@@ -23,6 +20,23 @@ namespace ZdravoCorpAppTim22.Controller
             }
         }
 
+        public void Load()
+        {
+            AuthenticationService.Instance.Load();
+        }
 
+        public User Login(string email, string password)
+        {
+            return AuthenticationService.Instance.Login(email, password);
+        }
+        public void Logout()
+        {
+            AuthenticationService.Instance.Logout();
+        }
+
+        public User GetLoggedUser()
+        {
+            return AuthenticationService.Instance.LoggedUser;
+        }
     }
 }

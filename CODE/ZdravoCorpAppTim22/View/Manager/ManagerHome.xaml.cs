@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using Model;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.Manager
 {
@@ -10,7 +12,7 @@ namespace ZdravoCorpAppTim22.View.Manager
     {
         public static ManagerHome Instance { get; private set; }
         public static NavigationService NavigationService { get; private set; }
-        public ManagerHome()
+        public ManagerHome(ManagerClass manager)
         {
             InitializeComponent();
             NavigationService = ContentFrame.NavigationService;
@@ -38,9 +40,13 @@ namespace ZdravoCorpAppTim22.View.Manager
             e.Handled = true;
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e) => Application.Current.MainWindow.Show();
-
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            AuthenticationController.Instance.Logout();
+            Application.Current.MainWindow.Show();
+        }
         private void ButtonLogout_Click(object sender, RoutedEventArgs e) => Close();
+
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
             var window = (Window)((FrameworkElement)sender).TemplatedParent;

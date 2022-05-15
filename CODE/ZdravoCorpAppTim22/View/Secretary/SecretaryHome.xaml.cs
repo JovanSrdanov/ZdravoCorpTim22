@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -6,7 +7,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
     {
         private MainWindow mainWindow;
 
-        public SecretaryHome()
+        public SecretaryHome(SecretaryClass secretary)
         {
             InitializeComponent();
             this.mainWindow = (MainWindow)Application.Current.MainWindow;

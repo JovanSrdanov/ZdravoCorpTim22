@@ -1,6 +1,5 @@
 ﻿using Controller;
-using System.ComponentModel;
-using System.Diagnostics;
+using Model;
 using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
@@ -49,7 +48,8 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
             RoomMergeController.Instance.Load();
-           
+            
+            AuthenticationController.Instance.Load();
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }
@@ -67,40 +67,11 @@ namespace ZdravoCorpAppTim22
             }
         }
 
-        
-
-        private void ManagerBtn_Click(object sender, RoutedEventArgs e)
+        private void Clear()
         {
-            ManagerHome managerHome = new ManagerHome();
-            managerHome.Show();
-            Hide();
-        }
-
-        private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-            SecretaryHome secretaryHome = new SecretaryHome();
-            secretaryHome.Show();
-            Hide();
-        }
-
-        private void DoctorBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DoctorHome doctorHome = new DoctorHome();
-            doctorHome.Show();
-            Hide();
-        }
-
-        private void PatientBtn_Click(object sender, RoutedEventArgs e)
-        {
-            PatientSelectionForTemporaryPurpose patientSelectionForTemporaryPurpose = new PatientSelectionForTemporaryPurpose();
-            patientSelectionForTemporaryPurpose.Show();
-            Close();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            EmailInput.Text = "";
+            PasswordInput.Password = "";
+            ErrorTextBlock.Text = "";
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -109,28 +80,55 @@ namespace ZdravoCorpAppTim22
             string email = EmailInput.Text;
             string password = PasswordInput.Password;
 
-
-
-            switch (email)
+            User user = AuthenticationController.Instance.Login(email, password);
+            if (user == null)
             {
-                case "m":
-                    window = new ManagerHome();
-                    break;
-                case "p": 
-                    window = new PatientSelectionForTemporaryPurpose();
-                    break;
-                case "d":
-                    window = new DoctorHome();
-                    break;
-                case "s":
-                    window = new SecretaryHome();
-                    break;
+                ErrorTextBlock.Text = "Login failed";
+                return;
             }
-            if(window != null)
+
+            if(user.GetType() == typeof(ManagerClass))
+            {
+                window = new ManagerHome((ManagerClass)user);
+            }
+            else if (user.GetType() == typeof(SecretaryClass))
+            {
+                window = new SecretaryHome((SecretaryClass)user);
+            }
+            else if(user.GetType() == typeof(Doctor))
+            {
+                window = new DoctorHome((Doctor)user);
+            }
+            else if(user.GetType() == typeof(Patient))
+            {
+                window = new PatientSelectionForTemporaryPurpose((Patient)user);
+            }
+
+            if (window != null)
             {
                 window.Show();
                 Hide();
+                Clear();
             }
+            else
+            {
+                ErrorTextBlock.Text = "Login failed";
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void EmailInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            ErrorTextBlock.Text = "";
+        }
+
+        private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ErrorTextBlock.Text = "";
         }
     }
 }

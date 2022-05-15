@@ -9,7 +9,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public static int selectedDoctorId;
         public static DoctorHome doctorHome;
 
-        public DoctorHome()
+        public DoctorHome(Doctor doctor)
         {
             InitializeComponent();
             DoctorViewModel = new DoctorViewModel();
