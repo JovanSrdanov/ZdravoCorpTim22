@@ -47,6 +47,7 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
             RoomMergeController.Instance.Load();
+            HospitalReviewController.Instance.Load();
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }

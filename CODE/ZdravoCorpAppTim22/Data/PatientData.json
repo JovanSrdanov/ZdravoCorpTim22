@@ -1,6 +1,7 @@
 [
   {
-    "MedicalRecord": null,
+    "HospitalReview": null,
+    "MedicalRecord": 2,
     "Name": "pac",
     "Surname": "pacprez",
     "Email": "",
@@ -13,6 +14,7 @@
     "Address": 14
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": 0,
     "Name": "Stefan",
     "Surname": "Apostolovic",
@@ -26,6 +28,7 @@
     "Address": 2
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "1",
     "Surname": "2",
@@ -39,6 +42,7 @@
     "Address": 6
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "Luka",
     "Surname": "Pikula",
@@ -52,6 +56,7 @@
     "Address": 8
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "dr",
     "Surname": "pi",
@@ -65,6 +70,7 @@
     "Address": 9
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "1",
     "Surname": "1",
@@ -78,6 +84,7 @@
     "Address": 11
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "3213",
     "Surname": "21313123",
@@ -91,6 +98,7 @@
     "Address": 12
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "ffffffffffffffff",
     "Surname": "THIS IS EMERGENCY ACCOUNT",
@@ -104,6 +112,7 @@
     "Address": null
   },
   {
+    "HospitalReview": null,
     "MedicalRecord": null,
     "Name": "dgfgdgfgfd",
     "Surname": "THIS IS EMERGENCY ACCOUNT",

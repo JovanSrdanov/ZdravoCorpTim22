@@ -12,6 +12,14 @@
           "1",
           "32131"
         ]
+      },
+      {
+        "Id": 2,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "sadasdasdasdas"
+        ]
       }
     ],
     "Name": "doc",
