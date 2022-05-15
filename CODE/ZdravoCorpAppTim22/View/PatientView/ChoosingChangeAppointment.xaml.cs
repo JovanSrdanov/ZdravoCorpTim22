@@ -51,9 +51,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalAppointmentController.Instance.Update(medicalAppointmentTemp);
             ZdravoCorpTabs.MedicalAppointmentList.Remove(ZdravoCorpTabs.MedicalAppointmentSelected);
-            ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp); 
-
-              Close();
+            ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp);
+            PatientController.Instance.AntiTroll(PatientSelectionForTemporaryPurpose.LoggedPatient, DateTime.Now);
+            Close();
         }
     }
 }

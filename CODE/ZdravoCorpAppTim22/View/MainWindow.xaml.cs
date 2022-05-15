@@ -19,6 +19,7 @@ namespace ZdravoCorpAppTim22
 
         public void LoadData()
         {
+            HospitalReviewController.Instance.Load();
             AddressController.Instance.Load();
             RoomController.Instance.Load();
             EquipmentRelocationController.Instance.Load();
@@ -46,8 +47,7 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
             RoomMergeController.Instance.Load();
-            RoomDivergeController.Instance.Load();
-            HospitalReviewController.Instance.Load();
+           
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }

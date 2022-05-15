@@ -1,5 +1,6 @@
 using Model;
 using Service;
+using System;
 using ZdravoCorpAppTim22.Controller.Generic;
 
 namespace Controller
@@ -29,6 +30,13 @@ namespace Controller
         public void DeamonMethod()
         {
             PatientService.Instance.DaemonMethod();
+        }
+
+        public void AntiTroll(Patient patient, DateTime activity)
+        {
+
+            PatientService.Instance.AntiTroll(patient,activity);
+
         }
     }
 }
