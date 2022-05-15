@@ -5,6 +5,7 @@ using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 {
@@ -63,7 +64,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         {
             if (!OldEquipment.EquipmentData.Name.Equals(name) && EquipmentDataController.Instance.GetByName(name) != null)
             {
-                MessageBox.Show("Equipment with that name already exists");
+                InfoModal.Show("Equipment with that name already exists");
                 return;
             }
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);

@@ -8,7 +8,7 @@
         d:Height="200"
         SizeToContent="WidthAndHeight"
         Title="AmountModal"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         WindowStyle="None"
         BorderThickness="0">
@@ -278,7 +278,6 @@
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStandard}"/>
             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
-            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="{StaticResource DarkSecondary}">

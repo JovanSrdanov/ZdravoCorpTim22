@@ -130,6 +130,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 if (ViewModel.Equipment_1.Where(x => x == equipment).FirstOrDefault() == null)
                 {
                     AmountModal amountModal = new AmountModal(0, equipment.Amount);
+                    amountModal.Owner = ManagerHome.Instance;
                     amountModal.ShowDialog();
                     if(amountModal.IsCanceled == false && amountModal.Amount > 0)
                     {
@@ -147,6 +148,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
                 if (ViewModel.Equipment_2.Where(x => x == equipment).FirstOrDefault() == null)
                 {
                     AmountModal amountModal = new AmountModal(0, equipment.Amount);
+                    amountModal.Owner = ManagerHome.Instance;
                     amountModal.ShowDialog();
                     if (amountModal.IsCanceled == false && amountModal.Amount > 0)
                     {

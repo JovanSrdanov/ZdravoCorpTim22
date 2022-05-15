@@ -9,6 +9,7 @@ using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.DataModel;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
@@ -41,13 +42,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if (RoomController.Instance.GetByID(SourceRoom.Id) == null)
             {
-                MessageBox.Show("Room was deleted in the meantime");
+                InfoModal.Show("Room was deleted in the meantime");
                 ManagerHome.NavigationService.Navigate(new RoomView());
                 return;
             }
             if (!SourceRoom.IsAvailable(Interval))
             {
-                MessageBox.Show("Room isn't available");
+                InfoModal.Show("Room isn't available");
                 return;
             }
             EquipmentRelocationController.Instance.MoveRoomToWarehouse(SourceRoom, new List<EquipmentDataModel>(EquipmentList), Interval);
