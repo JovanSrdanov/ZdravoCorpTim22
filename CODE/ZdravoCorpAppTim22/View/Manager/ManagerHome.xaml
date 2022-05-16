@@ -150,13 +150,11 @@
                             FontSize="{StaticResource StandardFontSize}"/>
                 </WrapPanel>
             </Border>
-            <ScrollViewer 
-                          Grid.Row="1" 
+            <ScrollViewer Grid.Row="1" 
                           PreviewMouseWheel="Content_PreviewMouseWheel" 
-                          Background="{StaticResource DarkSecondary}"
-                            >
+                          Background="{StaticResource DarkSecondary}">
                 <Frame x:Name="ContentFrame" 
-                       Source="Pages/RoomPages/RoomView.xaml" 
+                       Source="Pages/WarehousePages/WarehouseView.xaml" 
                        NavigationUIVisibility="Hidden"
                        Margin="15 15 15 100"/>
             </ScrollViewer>
