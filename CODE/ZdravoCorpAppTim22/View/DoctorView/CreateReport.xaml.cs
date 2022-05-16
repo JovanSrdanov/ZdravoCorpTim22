@@ -27,7 +27,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             NameBlock.Text = selectedPatient.Name;
             SurnameBlock.Text = selectedPatient.Surname;
 
-            List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
+            //List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
+            List<Medicine> medicineList = MedicineController.Instance.GetAllApproved();
             ObservableCollection<Medicine> medicineObservableList = new ObservableCollection<Medicine>(medicineList);
             ObservableCollection<MedicineData> medicineDataList = MedicineDataController.Instance.GetAll();
 

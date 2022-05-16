@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
-namespace Model
+namespace ZdravoCorpAppTim22.Model
 {
     public class ReportReview : IHasID
     {

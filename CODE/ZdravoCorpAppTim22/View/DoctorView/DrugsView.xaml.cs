@@ -18,18 +18,36 @@ using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for DrugsView.xaml
-    /// </summary>
     public partial class DrugsView : Window
     {
-        public ObservableCollection<Medicine> allMedicineInStorageObservale;
+        public static ObservableCollection<Medicine> allMedicineInStorageObservable;
         public DrugsView()
         {
             InitializeComponent();
             List<Medicine> allMedicineInStorage = MedicineController.Instance.GetAllFree();
-            allMedicineInStorageObservale = new ObservableCollection<Medicine>(allMedicineInStorage);
-            MedicineDataGrid.ItemsSource = allMedicineInStorageObservale;
+            allMedicineInStorageObservable = new ObservableCollection<Medicine>(allMedicineInStorage);
+            foreach (Medicine item in allMedicineInStorage)
+            {
+                if (item.MedicineData.Approval.Doctor != null && item.MedicineData.Approval.IsApproved == false)
+                    allMedicineInStorageObservable.Remove(item);
+            }
+            MedicineDataGrid.ItemsSource = allMedicineInStorageObservable;
+        }
+
+        //selection changed event handlers
+        private void MedicineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Medicine selectedMedicine = MedicineDataGrid.SelectedItem as Medicine;
+            if (selectedMedicine == null || selectedMedicine.MedicineData.Approval.IsApproved)
+            {
+                ApproveBtn.IsEnabled = false;
+                RejectBtn.IsEnabled = false;
+            }
+            else
+            {
+                ApproveBtn.IsEnabled = true;
+                RejectBtn.IsEnabled = true;
+            }
         }
 
         //Button event handlers
@@ -39,9 +57,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             selected.MedicineData.Approval.IsApproved = true;
             selected.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
             selected.MedicineData.Approval.Message = "";
+            
             ApprovalController.Instance.Update(selected.MedicineData.Approval);
             MedicineDataController.Instance.Update(selected.MedicineData);
             MedicineController.Instance.Update(selected);
+
+            allMedicineInStorageObservable[MedicineDataGrid.SelectedIndex] = selected;
         }
 
         private void RejectBtnClick(object sender, RoutedEventArgs e)
