@@ -1,38 +1,11 @@
 [
   {
     "Id": 0,
-    "EndDate": "2022-05-25T00:00:00",
-    "NotifyNextDateTime": "2022-05-15T10:00:00",
-    "Time": "10:00",
-    "AdditionalInstructions": "1",
-    "TherapyPurpose": "1",
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 1,
-    "EndDate": "2022-05-25T00:00:00",
-    "NotifyNextDateTime": "2022-05-15T10:00:00",
-    "Time": "10:00",
-    "AdditionalInstructions": "cxzcz",
-    "TherapyPurpose": "dsa",
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 2,
-    "EndDate": "2022-05-18T00:00:00",
-    "NotifyNextDateTime": "2022-05-15T10:00:00",
-    "Time": "10:00",
-    "AdditionalInstructions": "",
-    "TherapyPurpose": "1",
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 3,
-    "EndDate": "2022-05-30T00:00:00",
-    "NotifyNextDateTime": "2022-05-15T10:00:00",
-    "Time": "10:00",
-    "AdditionalInstructions": "1231",
-    "TherapyPurpose": "1",
+    "EndDate": "2022-05-19T00:00:00",
+    "NotifyNextDateTime": "2022-05-15T11:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "11",
+    "TherapyPurpose": "1125",
     "MedicalRecord": 0
   }
 ]

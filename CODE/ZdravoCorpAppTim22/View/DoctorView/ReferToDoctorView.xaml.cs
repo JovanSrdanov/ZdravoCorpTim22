@@ -24,7 +24,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private List<AppointmentType> allNonSpecialistAppointmentTypes;
         private Patient forwardedPatient;
         private CreateReport parentWindow;
-        //string currentAnamnesis;
         public ReferToDoctorView(CreateReport parentWindow, Patient forwardedPatient)
         {
             InitializeComponent();
@@ -71,7 +70,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         bool validateInputData()
         {
-#pragma warning disable CS0168 // Variable is declared but never used
+#pragma warning disable CS0168
             try
             {
                 DateTime.Parse(AppointmentDatePicker.Text + " " + TimeComboBox.Text);
@@ -81,11 +80,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 MessageBox.Show("Please enter the valid date and time", "Refer to a doctor", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            //if (CommentTextBox.Text == null)
-                //CommentTextBox.Text = "No comment";
             return true;
 
-#pragma warning restore CS0168 // Variable is declared but never used
+#pragma warning restore CS0168 
         }
 
         void updateAnamnesis()
@@ -112,7 +109,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         void createForwardedAppointment()
         {
-            //DateTime forwardedDate = getForwardedAppointmentDate();
             MedicalAppointment forwardedAppointment =
                 new MedicalAppointment(-1, (AppointmentType)AppointmentTypeComboBox.SelectedItem, getInterval(getForwardedAppointmentDate()), null,
                 forwardedPatient, (DoctorComboBox.SelectedItem as Doctor));

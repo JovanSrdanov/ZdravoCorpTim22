@@ -33,6 +33,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
+        private void RequestForAbsenceBtnClick(object sender, RoutedEventArgs e)
+        {
+            RequestForLeaveView requestForLeaveView = new RequestForLeaveView();
+            requestForLeaveView.Owner = this;
+            requestForLeaveView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            requestForLeaveView.Show();
+            this.Hide();
+        }
+
         private void LogOutBtn(object sender, RoutedEventArgs e)
         {
             DoctorHome.doctorHome.Show();

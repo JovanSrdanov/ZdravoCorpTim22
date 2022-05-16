@@ -1,7 +1,10 @@
 ﻿using Controller;
+using Model;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.DoctorView;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.PatientView;
@@ -38,8 +41,11 @@ namespace ZdravoCorpAppTim22
 
             MedicalReportController.Instance.Load();
             PatientController.Instance.Load();
-
+            //dodao
+            DoctorSpecializationController.Instance.Load();
             DoctorController.Instance.Load();
+            RequestForAbsenceController.Instance.Load();
+            //dodao
             EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();
