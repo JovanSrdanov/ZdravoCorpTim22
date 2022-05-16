@@ -31,7 +31,7 @@
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome ResizeBorderThickness="0"
-                                      CaptionHeight="21"/>
+                                  CaptionHeight="21"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -100,7 +100,7 @@
         
         <Style TargetType="TextBlock">
             <Setter Property="Width" Value="Auto"></Setter>
-            <Setter Property="Foreground" Value="#444"/>
+            <Setter Property="Foreground" Value="#666"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="0 15 0 10"/>
         </Style>
@@ -130,8 +130,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 SnapsToDevicePixels="True"
                                 Padding="7"
-                                MaxWidth="200"
-                                MinWidth="200"
+                                MaxWidth="230"
+                                MinWidth="230"
                                 CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="1" Opacity="0.2" Color="#000"/>
@@ -184,8 +184,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 SnapsToDevicePixels="True"
                                 Padding="7"
-                                MaxWidth="200"
-                                MinWidth="200"
+                                MaxWidth="230"
+                                MinWidth="230"
                                 CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="1" Opacity="0.2" Color="#000"/>

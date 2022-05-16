@@ -10,125 +10,55 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         BorderThickness="0"
-        Style="{DynamicResource InfoModalStyle}"
+        Style="{DynamicResource StandardModalStyle}"
         AllowsTransparency="True">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="WindowButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStandard}">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="FontFamily" Value="{StaticResource Icons}"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="Content" Value="&#xe738;"/>
-                <Setter Property="FontSize" Value="20"/>
-            </Style>
-
-            <Style x:Key="InfoModalStyle" TargetType="{x:Type Window}">
-                <Setter Property="WindowStyle" Value="None"/>
-                <Setter Property="SnapsToDevicePixels" Value="true"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="WindowChrome.WindowChrome">
-                    <Setter.Value>
-                        <WindowChrome ResizeBorderThickness="0"
-                                      CaptionHeight="43"/>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Window}">
-                            <Border>
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" BlurRadius="7" RenderingBias="Quality"  Opacity="1" Color="#000" />
-                                </Border.Effect>
-                                <Grid Margin="7">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.Background>
-                                        <SolidColorBrush Color="{StaticResource DarkPrimaryColor}"/>
-                                    </Grid.Background>
-                                    <StackPanel Grid.ColumnSpan="2">
-                                        <WrapPanel HorizontalAlignment="Left">
-                                            <TextBlock Margin="6 6 4 4"
-                                                       FontSize="25"
-                                                       Foreground="{StaticResource ActivePrimary}"
-                                                       FontFamily="{StaticResource Icons}"
-                                                       Text="&#xe946;"/>
-                                            <TextBlock Margin="0 2 0 4"
-                                                       FontSize="22"
-                                                       Foreground="{StaticResource ActivePrimary}"
-                                                       Text="{TemplateBinding Title}"/>
-                                        </WrapPanel>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="0" 
-                                                Grid.Column="1"
-                                                Orientation="Horizontal"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Center"
-                                                Margin="0">
-                                        <Button Style="{StaticResource WindowButton}"
-                                                x:Name="CloseButton"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Content="&#xe8bb;" 
-                                                Click="CancelEvent"/>
-                                    </StackPanel>
-                                    <AdornerDecorator Grid.Row="2" Grid.ColumnSpan="2">
-                                        <ContentPresenter/>
-                                    </AdornerDecorator>
-                                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" VerticalAlignment="Bottom" Visibility="Collapsed"/>
-                                </Grid>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
-                                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid Background="{StaticResource DarkSecondary}">
-        <StackPanel Margin="30 25 30 30">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource StandardTextBlock}" 
-                           Grid.Row="0"
-                           Grid.ColumnSpan="2"
-                           Text="{Binding InfoText}"
-                           Margin="0 0 0 25"
-                           TextAlignment="Center"/>
-                <WrapPanel Grid.Column="0"
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="7" RenderingBias="Quality"  Opacity="1" Color="#000" />
+        </Border.Effect>
+        <Grid Margin="7" Background="{StaticResource DarkSecondary}">
+            <StackPanel Margin="30 25 30 30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource StandardTextBlock}" 
+                               FontSize="{StaticResource MenuFontSize}"
+                               Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               Text="{Binding InfoText}"
+                               Margin="0 0 0 25"
+                               TextAlignment="Center"/>
+                    <WrapPanel Grid.Column="0"
                            Grid.Row="1">
-                    <Button x:Name="ConfirmButton" 
+                        <Button x:Name="ConfirmButton" 
                             Style="{StaticResource ConfirmButtonStyle}" 
                             Click="ConfirmEvent"/>
-                </WrapPanel>
-                <WrapPanel Grid.Column="1"
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="1"
                            Grid.Row="1"
                            HorizontalAlignment="Right">
-                    <Button x:Name="CancelButton" 
+                        <Button x:Name="CancelButton" 
                             Style="{StaticResource CancelButtonStyle}" 
                             Click="CancelEvent"
                             Margin="0"/>
-                </WrapPanel>
-            </Grid>
-        </StackPanel>
-    </Grid>
+                    </WrapPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+   
 </Window>

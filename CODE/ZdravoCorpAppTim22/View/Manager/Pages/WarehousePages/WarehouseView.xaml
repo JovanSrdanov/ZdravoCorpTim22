@@ -50,7 +50,11 @@
                     <ComboBoxItem>static</ComboBoxItem>
                     <ComboBoxItem>dynamic</ComboBoxItem>
                 </ComboBox>
-                <TextBox x:Name="SearchTextBox" Width="180" Margin="0 0 1 0" MaxLength="14" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="SearchTextBox" 
+                         Width="170" 
+                         Margin="0 0 1 0" 
+                         MaxLength="14" 
+                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button x:Name="SearchButton" 
                         Style="{StaticResource SearchButtonStyle}"
                         Margin="0" 

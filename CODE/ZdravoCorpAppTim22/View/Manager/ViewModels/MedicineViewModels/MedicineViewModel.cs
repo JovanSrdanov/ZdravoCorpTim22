@@ -14,6 +14,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
         public RelayCommand OpenAddCommand { get; private set; }
         public RelayCommand OpenEditCommand { get; private set; }
         public RelayCommand DeleteMedicineCommand { get; private set; }
+        public RelayCommand OpenDetailsCommand { get; private set; }
 
         public ObservableCollection<Medicine> MedicineCollection { get; set; }
 
@@ -22,6 +23,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             OpenAddCommand = new RelayCommand(OpenAdd);
             OpenEditCommand = new RelayCommand(OpenEdit, IsSelected);
             DeleteMedicineCommand = new RelayCommand(DeleteMedicine, IsSelected);
+            OpenDetailsCommand = new RelayCommand(OpenDetails, CanOpenDetails);
 
             MedicineCollection = new ObservableCollection<Medicine>(MedicineController.Instance.GetAllFree());
         }
@@ -78,9 +80,25 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             }
         }
 
+        public void OpenDetails(object obj)
+        {
+            MedicineDetailsModal.Show((Medicine)obj);
+        }
+
+        private bool CanOpenDetails(object obj)
+        {
+            Medicine medicine = (Medicine)obj;
+            if (medicine == null || medicine.MedicineData == null || medicine.MedicineData.Approval == null || medicine.MedicineData.Approval.Doctor == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private bool IsSelected(object obj)
         {
-            if ((Medicine)obj == null)
+            Medicine medicine = (Medicine)obj;
+            if (medicine == null || medicine.MedicineData == null)
             {
                 return false;
             }
