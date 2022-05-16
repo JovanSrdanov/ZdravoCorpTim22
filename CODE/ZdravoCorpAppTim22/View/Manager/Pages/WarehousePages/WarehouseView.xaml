@@ -14,6 +14,7 @@
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource StandardComboBox}"/>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -42,7 +43,14 @@
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Right"
                        Grid.Column="1">
-                <TextBox x:Name="SearchTextBox" Width="260" Margin="0 0 1 0" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox Margin="0 0 10 0"
+                          MinWidth="120"
+                          SelectedIndex="{Binding Path=Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem>all</ComboBoxItem>
+                    <ComboBoxItem>static</ComboBoxItem>
+                    <ComboBoxItem>dynamic</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="SearchTextBox" Width="180" Margin="0 0 1 0" MaxLength="14" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button x:Name="SearchButton" 
                         Style="{StaticResource SearchButtonStyle}"
                         Margin="0" 

@@ -25,8 +25,32 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         {
             get
             {
-                if (SearchText == null || SearchText == "") return EquipmentCollection;
-                IEnumerable<Equipment> result = EquipmentCollection.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper()));
+                List<Equipment> temp = new List<Equipment>();
+                if (Filter != 0)
+                {
+                    if(Filter == 2)
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type == EquipmentType.consumable));
+                    }else
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type != EquipmentType.consumable));
+                    }
+                }
+                else
+                {
+                    temp = new List<Equipment>(EquipmentCollection);
+                }
+
+                List<Equipment> result = new List<Equipment>();
+                if (SearchText != null && SearchText != "")
+                {
+                    
+                    result.AddRange(temp.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper())));
+                }
+                else
+                {
+                    result = temp;
+                }
                 return new ObservableCollection<Equipment>(result);
             }
         }
@@ -37,9 +61,27 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             get { return searchText; }
             set
             {
-                searchText = value;
-                OnPropertyChanged("SearchText");
-                OnPropertyChanged("FilteredEquipment");
+                if(searchText != value)
+                {
+                    searchText = value;
+                    OnPropertyChanged("SearchText");
+                    OnPropertyChanged("FilteredEquipment");
+                }
+            }
+        }
+
+        private int filter;
+        public int Filter
+        {
+            get { return filter; }
+            set
+            {
+                if(filter != value)
+                {
+                    filter = value;
+                    OnPropertyChanged("Filter");
+                    OnPropertyChanged("FilteredEquipment");
+                }
             }
         }
 
@@ -49,6 +91,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             OpenEditCommand = new RelayCommand(OpenEdit, IsSelected);
             DeleteEquipmentCommand = new RelayCommand(DeleteEquipment, IsSelected);
             OpenRelocationCommand = new RelayCommand(OpenRelocation, CanRelocate);
+
+            Filter = 0;
 
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);

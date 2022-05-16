@@ -225,7 +225,7 @@
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 SnapsToDevicePixels="true"
-                                Padding="2"
+                                Padding="5"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Left"/>
                         </Border>
@@ -272,7 +272,7 @@
                                           Content="{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          Margin="0,0,23,0"
+                                          Margin="10,0,23,0"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"/>
                         <TextBox x:Name="PART_EditableTextBox"
