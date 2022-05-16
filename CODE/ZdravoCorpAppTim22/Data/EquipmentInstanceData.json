@@ -13,5 +13,20 @@
     "Id": 5,
     "Name": "oprema_1",
     "Type": 1
+  },
+  {
+    "Id": 6,
+    "Name": "Flaster",
+    "Type": 0
+  },
+  {
+    "Id": 7,
+    "Name": "Stapic",
+    "Type": 0
+  },
+  {
+    "Id": 8,
+    "Name": "Kutik",
+    "Type": 0
   }
 ]

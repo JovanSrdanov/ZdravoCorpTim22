@@ -91,5 +91,10 @@ namespace ZdravoCorpAppTim22.Model
                 tmpEquipment.Clear();
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

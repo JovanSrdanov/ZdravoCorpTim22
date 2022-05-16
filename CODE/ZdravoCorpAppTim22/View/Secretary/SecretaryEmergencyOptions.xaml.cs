@@ -25,5 +25,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
             secretaryEmergency.Show();
             this.Hide();
         }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            SecretaryHome.Show();
+        }
     }
 }
