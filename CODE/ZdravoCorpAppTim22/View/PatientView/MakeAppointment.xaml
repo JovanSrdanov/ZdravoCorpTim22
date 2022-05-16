@@ -18,17 +18,38 @@
         <cvt:ConverterToSerbian x:Key="cts" />
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="1" Color="#FF00D2FF" />
+                <GradientStop Color="#FF00D2FF" />
+                <GradientStop Offset="0.539" Color="White" />
+            </LinearGradientBrush>
+        </Grid.Background>
         <TabControl
             x:Name="TabWizardMakeAppointmet"
             HorizontalContentAlignment="Left"
             FontSize="18"
             TabStripPlacement="Left">
+            <TabControl.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="1" Color="#FF00D2FF" />
+                    <GradientStop Offset="0.5" Color="White" />
+                </LinearGradientBrush>
+            </TabControl.Background>
+
 
             <TabItem x:Name="TabType">
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Odabir vrste termina" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,0" Background="White">
+                <Grid Margin="42,0,42,0" Background="Transparent">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -65,10 +86,16 @@
 
             </TabItem>
             <TabItem x:Name="TabDoctor">
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <TextBlock Text="Odabir lekara" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,0" Background="White">
+                <Grid Margin="42,0,42,0" Background="Transparent">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -120,10 +147,16 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabDate">
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <TextBlock Text="Odabir datuma" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,0" Background="White">
+                <Grid Margin="42,0,42,0" Background="Transparent">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -164,10 +197,16 @@
 
             </TabItem>
             <TabItem x:Name="TabPriority">
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <TextBlock Text="Odabri prioriteta" />
                 </TabItem.Header>
-                <Grid Margin="42,0,42,0" Background="White">
+                <Grid Margin="42,0,42,0" Background="Transparent">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                         <Label
                             Margin="5,0,0,0"

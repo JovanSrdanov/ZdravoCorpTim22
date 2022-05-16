@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
    
     public partial class ZdravoCorpTabs : Window
     {
+
+        
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
         public static MedicalAppointment MedicalAppointmentSelected { get;  set; }
         public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get;  set; }
@@ -27,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
             InitializeComponent();
             LoggedPatient = patient;
-            medicalAppointments = PatientController.Instance.GetByID(patient.Id).MedicalAppointment;
+            medicalAppointments = PatientController.Instance.GetByID(LoggedPatient.Id).MedicalAppointment;
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             DataGridAppointment.ItemsSource = MedicalAppointmentList;
 
@@ -45,6 +48,38 @@ namespace ZdravoCorpAppTim22.View.PatientView
             }
 
             DataGridReciepts.ItemsSource = MedicalReceiptsList;
+
+            GeneralInfoForPatientMedicalRecord();
+
+        }
+
+        private void GeneralInfoForPatientMedicalRecord()
+        {
+            GridPatientName.Content = LoggedPatient.Name;
+            GridPatientSurname.Content = LoggedPatient.Surname;
+            GridPatientEmail.Content = LoggedPatient.Email;
+            GridPatientJmbg.Content = LoggedPatient.Jmbg;
+            GridPatientDateOfBirth.Content = LoggedPatient.Birthday.ToString("dd/MM/yyyy");
+            GridPatientPhone.Content = LoggedPatient.Phone;
+            GridPatientAdress.Content = LoggedPatient.Address.ToString();
+
+
+            switch (LoggedPatient.Gender)
+            {
+                case Gender.male:
+                    GridPatientGender.Content = "Muški";
+                    break;
+                case Gender.female:
+                    GridPatientGender.Content = "Ženski";
+                    break;
+                case Gender.other:
+                    GridPatientGender.Content = "Nepoznat";
+                    break;
+                default:
+                    GridPatientGender.Content = "Nepoznat";
+                    break;
+            }
+
 
         }
 
@@ -103,6 +138,13 @@ namespace ZdravoCorpAppTim22.View.PatientView
             reviewTheHospital.ShowDialog();
         }
 
-     
+
+        private void ZdravoCorpTabs_OnClosing(object sender, CancelEventArgs e)
+        {
+           
+            LoggedPatient = null;
+            AuthenticationController.Instance.Logout();
+            App.Current.MainWindow.Show();
+        }
     }
 }

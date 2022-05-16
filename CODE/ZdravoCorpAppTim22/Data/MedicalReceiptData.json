@@ -155,7 +155,7 @@
   {
     "Id": 17,
     "EndDate": "2022-05-16T00:00:00",
-    "NotifyNextDateTime": "2022-05-16T16:37:00",
+    "NotifyNextDateTime": "2022-05-17T16:37:00",
     "Time": "16:37",
     "AdditionalInstructions": "Bez alkohola",
     "TherapyPurpose": "za glavu",
@@ -164,7 +164,7 @@
   {
     "Id": 18,
     "EndDate": "2022-05-22T00:00:00",
-    "NotifyNextDateTime": "2022-05-16T16:40:00",
+    "NotifyNextDateTime": "2022-05-17T16:40:00",
     "Time": "16:40",
     "AdditionalInstructions": "uga",
     "TherapyPurpose": "joj",
