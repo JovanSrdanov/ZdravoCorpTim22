@@ -22,6 +22,7 @@ namespace ZdravoCorpAppTim22
 
         public void LoadData()
         {
+            ReportReviewController.Instance.Load();
             HospitalReviewController.Instance.Load();
             AddressController.Instance.Load();
             RoomController.Instance.Load();
@@ -67,7 +68,7 @@ namespace ZdravoCorpAppTim22
                 Thread.Sleep(1000);
                 RenovationController.Instance.BackgroundTask();
                 EquipmentRelocationController.Instance.BackgroundTask();
-                PatientController.Instance.DeamonMethod();
+                PatientController.Instance.TherapyNotification();
                 RoomMergeController.Instance.BackgroundTask();
                 RoomDivergeController.Instance.BackgroundTask();
             }
@@ -107,7 +108,14 @@ namespace ZdravoCorpAppTim22
             }
             else if(user.GetType() == typeof(Patient))
             {
-                window = new PatientSelectionForTemporaryPurpose((Patient)user);
+                Patient patientCheck = (Patient)user;
+                if (patientCheck.Blocked)
+                {
+                    ErrorTextBlock.Text = "Korisnik je blokiran";
+                    return;
+                }
+
+                window = new ZdravoCorpTabs((Patient)user);
             }
 
             if (window != null)

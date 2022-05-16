@@ -9,6 +9,7 @@
     Title="ZdravoCorp Aplikacija"
     Width="1280"
     Height="720"
+    Closing="ZdravoCorpTabs_OnClosing"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
@@ -18,19 +19,42 @@
         <cvt:ConverterToSerbian x:Key="cts" />
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="1" Color="#FF00D2FF" />
+                <GradientStop Offset="0.399" Color="#FF00D2FF" />
+                <GradientStop Color="#FF00D2FF" />
+                <GradientStop Offset="0.203" Color="White" />
+                <GradientStop Offset="0.551" Color="White" />
+                <GradientStop Offset="0.694" Color="White" />
+            </LinearGradientBrush>
+        </Grid.Background>
         <TabControl
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Top"
             FontSize="18"
             TabStripPlacement="Left">
+            <TabControl.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="1" Color="#FF00D2FF" />
+                    <GradientStop Offset="0.5" Color="White" />
+                </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel
                         VerticalAlignment="Top"
-                        Background="White"
+                        Background="Transparent"
                         Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -40,7 +64,7 @@
                             FontSize="36"
                             FontWeight="Bold" />
                         <StackPanel
-                            Margin="42,42,42,0"
+                            Margin="42,21,42,0"
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                             <TextBlock
@@ -48,7 +72,7 @@
                                 Margin="0,0,42,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
-                                TextWrapping="Wrap"><Run Text="Dobrodošli!" /><LineBreak /><Run /><LineBreak /><Run Text="ZdravoCorp" /><Run Text=" Vam" /><Run Text=" nudi preglede, kontrole i operacije uz pomoć opreme najvećeg kvaliteta i pouzdanog osoblja" /><Run Text=". Vaše zdravlje nam je na prvom mestu!" /><LineBreak /><LineBreak /><Run Text="Radno vreme:" /><LineBreak /><Run Text="Svaki dan od 06:00 do 23:00" /></TextBlock>
+                                TextWrapping="Wrap"><Run Text="Dobrodošli!" /><LineBreak /><Run /><LineBreak /><Run Text="ZdravoCorp" /><Run Text=" Vam" /><Run Text=" nudi preglede, kontrole i operacije uz pomoć opreme najvećeg kvaliteta i pouzdanog osoblja" /><Run Text=". Vaše zdravlje nam je na prvom mestu!" /><LineBreak /><LineBreak /><Run Text="Radno vreme:" /><LineBreak /><Run Text="Svaki dan od 07:00 do 23:00" /></TextBlock>
 
                             <TextBlock
                                 Width="300"
@@ -93,10 +117,13 @@
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Style>
-                        <Border
-                            Background="DeepSkyBlue"
-                            BorderBrush="Black"
-                            BorderThickness="2">
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
                             <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
                                 <TextBlock
                                     Margin="0,0,10,0"
@@ -118,10 +145,18 @@
 
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
+
                 <TabItem.Header>
                     <TextBlock Text="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
                 </TabItem.Header>
-                <Grid Background="White">
+                <Grid Background="Transparent">
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
@@ -131,12 +166,21 @@
                         FontWeight="Bold" />
                 </Grid>
             </TabItem>
+
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
+
                 <TabItem.Header>
                     <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih" />
                 </TabItem.Header>
                 <Grid>
-                    <StackPanel Background="White" Orientation="Vertical">
+                    <StackPanel Background="Transparent" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -149,7 +193,7 @@
                         <DataGrid
                             x:Name="DataGridAppointment"
                             Height="300"
-                            Margin="42,42,42,42"
+                            Margin="42,21,42,42"
                             VerticalAlignment="Top"
                             AutoGenerateColumns="False"
                             CanUserResizeColumns="False"
@@ -221,10 +265,13 @@
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Style>
-                        <Border
-                            Background="DeepSkyBlue"
-                            BorderBrush="Black"
-                            BorderThickness="2">
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
                             <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
                                 <TextBlock
                                     Margin="0,0,10,0"
@@ -244,25 +291,213 @@
                 </Grid>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
                 </TabItem.Header>
-                <Grid Background="White">
-                    <Label
+                <Grid>
+                    <StackPanel Margin="42,0,42,0" Background="Transparent">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            Content="Pregled kartona"
+                            FontSize="36"
+                            FontWeight="Bold" />
+                        <StackPanel Margin="0,21,0,0" Orientation="Horizontal">
+                            <Image
+                                Width="272"
+                                Height="272"
+                                Margin="0,0,84,0"
+                                Source="../../Resource/PatientResource/patient.jpg" />
+                            <Grid HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Ime:" />
+                                <Label
+                                    x:Name="GridPatientName"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Prezime:" />
+                                <Label
+                                    x:Name="GridPatientSurname"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="E-mail:" />
+                                <Label
+                                    x:Name="GridPatientEmail"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="JMBG:" />
+                                <Label
+                                    x:Name="GridPatientJmbg"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Datum rođenja:   " />
+                                <Label
+                                    x:Name="GridPatientDateOfBirth"
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Telefon:" />
+                                <Label
+                                    x:Name="GridPatientPhone"
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+
+                                <Label
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Pol:" />
+                                <Label
+                                    x:Name="GridPatientGender"
+                                    Grid.Row="6"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+                                <Label
+                                    Grid.Row="7"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Content="Adresa:" />
+                                <Label
+                                    x:Name="GridPatientAdress"
+                                    Grid.Row="7"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left" />
+                            </Grid>
+                        </StackPanel>
+                        <Grid Margin="0,21,0,0">
+
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="Yellow"
+                                Content="Medicinski karton" />
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Background="Yellow"
+                                Content="Medicinski izveštaji" />
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Background="#FFDE3232"
+                                Content="Obriši nalog"
+                                FontSize="18"
+                                Foreground="White" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,0,0,42"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        VerticalContentAlignment="Center"
-                        Content="Pregled kartona"
-                        FontSize="36"
-                        FontWeight="Bold" />
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                    TextWrapping="Wrap" />
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
+
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
                 </TabItem.Header>
                 <Grid>
-                    <StackPanel Background="White" Orientation="Vertical">
+                    <StackPanel Background="Transparent" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -318,10 +553,13 @@
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Style>
-                        <Border
-                            Background="DeepSkyBlue"
-                            BorderBrush="Black"
-                            BorderThickness="2">
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
                             <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
                                 <TextBlock
                                     Margin="0,0,10,0"
@@ -342,10 +580,21 @@
 
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
-                    <TextBlock Text="Elektronska potvrda" ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
+                    <TextBlock
+                        Background="#00000000"
+                        Text="Elektronska potvrda"
+                        ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
                 </TabItem.Header>
-                <Grid Background="White">
+
+                <Grid>
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
@@ -359,13 +608,16 @@
         </TabControl>
 
         <StackPanel
-            Margin="10,0,0,150"
+            Margin="15,0,0,150"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom">
-            <Border
-                Background="DeepSkyBlue"
-                BorderBrush="Black"
-                BorderThickness="2">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="White" />
+                        <GradientStop Offset="1" Color="DeepSkyBlue" />
+                    </LinearGradientBrush>
+                </Border.Background>
                 <StackPanel Margin="10,10,10,10">
                     <TextBlock
                         Margin="0,0,0,10"
