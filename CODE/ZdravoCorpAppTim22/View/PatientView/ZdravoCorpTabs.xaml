@@ -19,19 +19,42 @@
         <cvt:ConverterToSerbian x:Key="cts" />
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="1" Color="#FF00D2FF" />
+                <GradientStop Offset="0.399" Color="#FF00D2FF" />
+                <GradientStop Color="#FF00D2FF" />
+                <GradientStop Offset="0.203" Color="White" />
+                <GradientStop Offset="0.551" Color="White" />
+                <GradientStop Offset="0.694" Color="White" />
+            </LinearGradientBrush>
+        </Grid.Background>
         <TabControl
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Top"
             FontSize="18"
             TabStripPlacement="Left">
+            <TabControl.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="1" Color="#FF00D2FF" />
+                    <GradientStop Offset="0.5" Color="White" />
+                </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel
                         VerticalAlignment="Top"
-                        Background="White"
+                        Background="Transparent"
                         Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
@@ -119,10 +142,18 @@
 
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
+
                 <TabItem.Header>
                     <TextBlock Text="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
                 </TabItem.Header>
-                <Grid Background="White">
+                <Grid Background="Transparent">
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
@@ -132,12 +163,21 @@
                         FontWeight="Bold" />
                 </Grid>
             </TabItem>
+
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
+
                 <TabItem.Header>
                     <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih" />
                 </TabItem.Header>
                 <Grid>
-                    <StackPanel Background="White" Orientation="Vertical">
+                    <StackPanel Background="Transparent" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -245,25 +285,75 @@
                 </Grid>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
                 </TabItem.Header>
-                <Grid Background="White">
-                    <Label
+                <Grid>
+                    <StackPanel Background="Transparent">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            Content="Pregled kartona"
+                            FontSize="36"
+                            FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,0,0,42"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        VerticalContentAlignment="Center"
-                        Content="Pregled kartona"
-                        FontSize="36"
-                        FontWeight="Bold" />
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border
+                            Background="DeepSkyBlue"
+                            BorderBrush="Black"
+                            BorderThickness="2">
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"><Run Text="Označite izveštaj za koji želite da vidite ili ocenite i onda stisnite dugme &quot;Pregled izveštaja&quot;." /></TextBlock>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
+
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
                     <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
                 </TabItem.Header>
                 <Grid>
-                    <StackPanel Background="White" Orientation="Vertical">
+                    <StackPanel Background="Transparent" Orientation="Vertical">
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -300,7 +390,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Background="Yellow"
-                                Content="Vidi lekove" Click="Button_Click" />
+                                Content="Vidi lekove" />
 
                         </Grid>
 
@@ -343,10 +433,21 @@
 
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
+                        <GradientStop Offset="0.147" Color="White" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
                 <TabItem.Header>
-                    <TextBlock Text="Elektronska potvrda" ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
+                    <TextBlock
+                        Background="#00000000"
+                        Text="Elektronska potvrda"
+                        ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
                 </TabItem.Header>
-                <Grid Background="White">
+
+                <Grid>
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
@@ -360,7 +461,7 @@
         </TabControl>
 
         <StackPanel
-            Margin="10,0,0,150"
+            Margin="15,0,0,150"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom">
             <Border

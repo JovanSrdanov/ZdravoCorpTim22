@@ -103,10 +103,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
             reviewTheHospital.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ReportReview reportReview = new ReportReview(1, 2, 3, 4, 5, 6);
-            ReportReviewController.Instance.Create(reportReview);
-        }
+     
     }
 }

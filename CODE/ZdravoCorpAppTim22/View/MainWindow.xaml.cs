@@ -20,6 +20,7 @@ namespace ZdravoCorpAppTim22
 
         public void LoadData()
         {
+            ReportReviewController.Instance.Load();
             HospitalReviewController.Instance.Load();
             AddressController.Instance.Load();
             RoomController.Instance.Load();
