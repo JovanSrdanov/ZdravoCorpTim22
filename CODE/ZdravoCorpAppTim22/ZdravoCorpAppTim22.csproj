@@ -360,6 +360,9 @@
     <Compile Include="View\Manager\Views\AmountModal.xaml.cs">
       <DependentUpon>AmountModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager\Views\ConfirmModal.xaml.cs">
+      <DependentUpon>ConfirmModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Views\InfoModal.xaml.cs">
       <DependentUpon>InfoModal.xaml</DependentUpon>
     </Compile>
@@ -588,6 +591,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Views\AmountModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\ConfirmModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
