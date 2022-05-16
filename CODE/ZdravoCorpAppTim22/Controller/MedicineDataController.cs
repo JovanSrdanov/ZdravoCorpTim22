@@ -1,4 +1,5 @@
-﻿using ZdravoCorpAppTim22.Controller.Generic;
+﻿using System.Collections.Generic;
+using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
 
@@ -23,5 +24,16 @@ namespace ZdravoCorpAppTim22.Controller
         {
             return MedicineDataService.Instance.GetByName(name);
         }
+
+        public List<MedicineData> GetAllApproved()
+        {
+            return MedicineDataService.Instance.GetAllApproved();
+        }
+        public List<MedicineData> GetAllUnapproved()
+        {
+            return MedicineDataService.Instance.GetAllUnapproved();
+        }
     }
+
+    
 }
