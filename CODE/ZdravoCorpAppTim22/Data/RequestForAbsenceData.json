@@ -4,10 +4,10 @@
     "Reason": "",
     "Urgent": false,
     "AbsenceInterval": {
-      "Start": "2022-05-20T00:00:00",
-      "End": "2022-05-21T00:00:00"
+      "Start": "2022-05-21T00:00:00",
+      "End": "2022-05-22T00:00:00"
     },
-    "RequestState": 2,
+    "RequestState": 0,
     "Doctor": 0
   },
   {
@@ -15,10 +15,43 @@
     "Reason": "",
     "Urgent": false,
     "AbsenceInterval": {
-      "Start": "2022-05-20T00:00:00",
-      "End": "2022-05-21T00:00:00"
+      "Start": "2022-05-19T00:00:00",
+      "End": "2022-05-23T00:00:00"
     },
     "RequestState": 0,
-    "Doctor": 0
+    "Doctor": 2
+  },
+  {
+    "Id": 2,
+    "Reason": "",
+    "Urgent": true,
+    "AbsenceInterval": {
+      "Start": "2022-05-20T00:00:00",
+      "End": "2022-05-24T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 4
+  },
+  {
+    "Id": 3,
+    "Reason": "",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-05-20T00:00:00",
+      "End": "2022-05-25T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 1
+  },
+  {
+    "Id": 4,
+    "Reason": "",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-05-19T00:00:00",
+      "End": "2022-05-19T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 4
   }
 ]
