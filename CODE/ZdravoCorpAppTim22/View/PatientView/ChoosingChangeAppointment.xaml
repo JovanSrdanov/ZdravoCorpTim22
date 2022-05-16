@@ -12,6 +12,12 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="1" Color="#FF00D2FF" />
+            <GradientStop Offset="0.5" Color="White" />
+        </LinearGradientBrush>
+    </Window.Background>
     <StackPanel Margin="21,0">
         <Label
             Margin="0,0,0,5"
