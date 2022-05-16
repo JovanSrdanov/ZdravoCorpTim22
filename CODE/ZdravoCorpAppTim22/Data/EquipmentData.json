@@ -1,7 +1,7 @@
 [
   {
     "Id": 0,
-    "Amount": 1115,
+    "Amount": 1000,
     "EquipmentData": 2,
     "Room": null,
     "EquipmentRelocation": null
@@ -43,22 +43,8 @@
   },
   {
     "Id": 6,
-    "Amount": 2,
+    "Amount": 1000,
     "EquipmentData": 6,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 7,
-    "Amount": 0,
-    "EquipmentData": 7,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 8,
-    "Amount": 0,
-    "EquipmentData": 8,
     "Room": null,
     "EquipmentRelocation": null
   }

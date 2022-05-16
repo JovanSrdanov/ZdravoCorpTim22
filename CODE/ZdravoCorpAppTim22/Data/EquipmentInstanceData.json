@@ -2,31 +2,25 @@
   {
     "Id": 2,
     "Name": "cons",
-    "Type": 0
+    "Type": 0,
+    "Price": 0
   },
   {
     "Id": 4,
     "Name": "sto",
-    "Type": 1
+    "Type": 1,
+    "Price": 0
   },
   {
     "Id": 5,
     "Name": "oprema_1",
-    "Type": 1
+    "Type": 1,
+    "Price": 0
   },
   {
     "Id": 6,
-    "Name": "Flaster",
-    "Type": 0
-  },
-  {
-    "Id": 7,
-    "Name": "Stapic",
-    "Type": 0
-  },
-  {
-    "Id": 8,
-    "Name": "Kutik",
-    "Type": 0
+    "Name": "oprema_2",
+    "Type": 2,
+    "Price": 0
   }
 ]

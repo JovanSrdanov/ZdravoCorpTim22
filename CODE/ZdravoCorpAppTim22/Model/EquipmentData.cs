@@ -10,6 +10,7 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public EquipmentType Type { get; set; }
+        public double Price { get; set; }
 
         [JsonIgnore]
         public ObservableCollection<Equipment> equipment;

@@ -3,5 +3,6 @@
         <ResourceDictionary Source="Styles.xaml"/>
         <ResourceDictionary Source="ButtonStyles.xaml"/>
         <ResourceDictionary Source="ScrollBarStyle.xaml"/>
+        <ResourceDictionary Source="ModalStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

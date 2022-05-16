@@ -8,6 +8,7 @@ using System.Linq;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 {
@@ -25,8 +26,32 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         {
             get
             {
-                if (SearchText == null || SearchText == "") return EquipmentCollection;
-                IEnumerable<Equipment> result = EquipmentCollection.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper()));
+                List<Equipment> temp = new List<Equipment>();
+                if (Filter != 0)
+                {
+                    if(Filter == 2)
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type == EquipmentType.consumable));
+                    }else
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type != EquipmentType.consumable));
+                    }
+                }
+                else
+                {
+                    temp = new List<Equipment>(EquipmentCollection);
+                }
+
+                List<Equipment> result = new List<Equipment>();
+                if (SearchText != null && SearchText != "")
+                {
+                    
+                    result.AddRange(temp.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper())));
+                }
+                else
+                {
+                    result = temp;
+                }
                 return new ObservableCollection<Equipment>(result);
             }
         }
@@ -37,9 +62,27 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             get { return searchText; }
             set
             {
-                searchText = value;
-                OnPropertyChanged("SearchText");
-                OnPropertyChanged("FilteredEquipment");
+                if(searchText != value)
+                {
+                    searchText = value;
+                    OnPropertyChanged("SearchText");
+                    OnPropertyChanged("FilteredEquipment");
+                }
+            }
+        }
+
+        private int filter;
+        public int Filter
+        {
+            get { return filter; }
+            set
+            {
+                if(filter != value)
+                {
+                    filter = value;
+                    OnPropertyChanged("Filter");
+                    OnPropertyChanged("FilteredEquipment");
+                }
             }
         }
 
@@ -49,6 +92,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             OpenEditCommand = new RelayCommand(OpenEdit, IsSelected);
             DeleteEquipmentCommand = new RelayCommand(DeleteEquipment, IsSelected);
             OpenRelocationCommand = new RelayCommand(OpenRelocation, CanRelocate);
+
+            Filter = 0;
 
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);
@@ -84,24 +129,27 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         }
         public void DeleteEquipment(object obj)
         {
-            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
-            Equipment equipment = selectedEquipment[0];
-            EquipmentCollection.Remove(equipment);
+            if (ConfirmModal.Show("Are you sure?"))
+            {
+                List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+                Equipment equipment = selectedEquipment[0];
+                EquipmentCollection.Remove(equipment);
 
-            List<Equipment> eqToRemove = new List<Equipment>();
-            foreach (Equipment eq in EquipmentController.Instance.GetAll())
-            {
-                if (eq.EquipmentData.Id == equipment.EquipmentData.Id)
+                List<Equipment> eqToRemove = new List<Equipment>();
+                foreach (Equipment eq in EquipmentController.Instance.GetAll())
                 {
-                    eqToRemove.Add(eq);
+                    if (eq.EquipmentData.Id == equipment.EquipmentData.Id)
+                    {
+                        eqToRemove.Add(eq);
+                    }
                 }
+                foreach (Equipment eq in eqToRemove)
+                {
+                    eq.Room = null;
+                    EquipmentController.Instance.DeleteByID(eq.Id);
+                }
+                EquipmentDataController.Instance.DeleteByID(equipment.EquipmentData.Id);
             }
-            foreach (Equipment eq in eqToRemove)
-            {
-                eq.Room = null;
-                EquipmentController.Instance.DeleteByID(eq.Id);
-            }
-            EquipmentDataController.Instance.DeleteByID(equipment.EquipmentData.Id);
         }
         public void OpenRelocation(object obj)
         {

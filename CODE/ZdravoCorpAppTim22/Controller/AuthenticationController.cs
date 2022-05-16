@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using ZdravoCorpAppTim22.Service;
 
 namespace ZdravoCorpAppTim22.Controller
@@ -20,6 +21,8 @@ namespace ZdravoCorpAppTim22.Controller
             }
         }
 
+        public event EventHandler LoggedOutEvent;
+
         public void Load()
         {
             AuthenticationService.Instance.Load();
@@ -32,6 +35,7 @@ namespace ZdravoCorpAppTim22.Controller
         public void Logout()
         {
             AuthenticationService.Instance.Logout();
+            LoggedOutEvent?.Invoke(this, new EventArgs());
         }
 
         public User GetLoggedUser()
