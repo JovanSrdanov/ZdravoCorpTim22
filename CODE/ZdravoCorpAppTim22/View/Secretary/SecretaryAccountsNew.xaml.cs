@@ -2,6 +2,9 @@
 using Model;
 using System.Text.RegularExpressions;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
+
 namespace ZdravoCorpAppTim22.View.Secretary
 {
     public partial class SecretaryAccountsNew : Window
@@ -13,6 +16,8 @@ namespace ZdravoCorpAppTim22.View.Secretary
             InitializeComponent();
             this.callerScreen = callerScreen;
             this.Show();
+            SetSpecialisationComboBox(Visibility.Visible);
+            SetMedicalReportButton(Visibility.Hidden);
         }
 
         private void Window_Closed(object sender, System.EventArgs e)
@@ -117,8 +122,16 @@ namespace ZdravoCorpAppTim22.View.Secretary
             //Doctor account
             if ((bool)DoctorRB.IsChecked)
             {
-                DoctorSpecialisationType doctorSpecialisationType = (DoctorSpecialisationType)SpecialisationComboBox.SelectedItem;
-
+                DoctorSpecialization doctorSpecialisationType;
+                if (SpecialisationComboBox.SelectedItem != null)
+                {
+                    doctorSpecialisationType = (DoctorSpecialization)SpecialisationComboBox.SelectedItem;
+                }
+                else
+                {
+                    MessageBox.Show("Must choose specialisation");
+                    return;
+                }
                 Doctor doctor = new Doctor(NameTextBox.Text, SurnameTextBox.Text, EMailTextBox.Text, JMBGTextBox.Text, PasswordTextBox.Password, BirthDayPicker.DisplayDate, PhoneTextBox.Text, genderTemp, addressTemp, doctorSpecialisationType, null);
 
                 MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirm new account", MessageBoxButton.YesNo);
@@ -210,6 +223,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (SpecialisationComboBox != null && SpecialisationLbl != null)
             {
+                if (visible == Visibility.Visible)
+                {
+                    SpecialisationComboBox.ItemsSource = DoctorSpecializationController.Instance.GetAll();
+                }
                 SpecialisationComboBox.Visibility = visible;
                 SpecialisationLbl.Visibility = visible;
             }

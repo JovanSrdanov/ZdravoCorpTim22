@@ -4,16 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -38,8 +31,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             DoctorComboBox.SelectedIndex = 0;
             setAppropriateAppointmentTypes();
             AppointmentTypeComboBox.SelectedIndex = 0;
-            TimeComboBox.SelectedIndex = 0;     
-    }
+            TimeComboBox.SelectedIndex = 0;
+        }
 
         ObservableCollection<Doctor> getAvailableDoctorsForRefferal()
         {
@@ -50,13 +43,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         }
 
         void setAppropriateAppointmentTypes()
-        {     
-            if ((DoctorComboBox.SelectedItem as Doctor).DoctorType == DoctorSpecialisationType.specialist)
+        {
+            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+            if ((DoctorComboBox.SelectedItem as Doctor).DoctorSpecialization.Name != doctorSpecializationTemp.Name)
                 AppointmentTypeComboBox.ItemsSource = new ObservableCollection<AppointmentType>(allAppointmentTypes);
             else
                 AppointmentTypeComboBox.ItemsSource = new ObservableCollection<AppointmentType>(allNonSpecialistAppointmentTypes);
         }
-        
+
         void setChecBoxVisibility()
         {
             if (AppointmentTypeComboBox.SelectedItem == null || (AppointmentType)(AppointmentTypeComboBox.SelectedItem) != AppointmentType.Operation)
@@ -88,8 +82,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         void updateAnamnesis()
         {
 
-            Doctor refferedDoctor =  DoctorComboBox.SelectedItem as Doctor;
-            string referralComment = "\n\nReffered to: " + refferedDoctor.Name + " " + refferedDoctor.Surname + 
+            Doctor refferedDoctor = DoctorComboBox.SelectedItem as Doctor;
+            string referralComment = "\n\nReffered to: " + refferedDoctor.Name + " " + refferedDoctor.Surname +
                 "\nAppointment date: " + getForwardedAppointmentDate() + "\nComment for the specialist:\n" + CommentTextBox.Text;
             parentWindow.AnamnesisBox.Text += referralComment;
         }

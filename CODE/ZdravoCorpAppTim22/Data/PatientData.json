@@ -19,5 +19,53 @@
     "Gender": 0,
     "Id": 0,
     "Address": 20
+  },
+  {
+    "Blocked": false,
+    "SuspiciousActivity": null,
+    "HospitalReview": null,
+    "MedicalRecord": null,
+    "Name": "Zonjo",
+    "Surname": null,
+    "Email": null,
+    "Jmbg": null,
+    "Password": null,
+    "Birthday": "0001-01-01T00:00:00",
+    "Phone": null,
+    "Gender": 0,
+    "Id": 1,
+    "Address": null
+  },
+  {
+    "Blocked": false,
+    "SuspiciousActivity": null,
+    "HospitalReview": null,
+    "MedicalRecord": null,
+    "Name": "Popaj",
+    "Surname": null,
+    "Email": null,
+    "Jmbg": null,
+    "Password": null,
+    "Birthday": "0001-01-01T00:00:00",
+    "Phone": null,
+    "Gender": 1,
+    "Id": 2,
+    "Address": null
+  },
+  {
+    "Blocked": false,
+    "SuspiciousActivity": null,
+    "HospitalReview": null,
+    "MedicalRecord": null,
+    "Name": "Vojko",
+    "Surname": null,
+    "Email": null,
+    "Jmbg": null,
+    "Password": null,
+    "Birthday": "0001-01-01T00:00:00",
+    "Phone": null,
+    "Gender": 0,
+    "Id": 3,
+    "Address": null
   }
 ]

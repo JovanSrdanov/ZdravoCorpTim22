@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Service.Generic;
@@ -46,7 +45,7 @@ namespace Service
                 durationOfAppointment = Constants.Constants.DURATION_OPERATION;
             }
 
-           
+
             List<Doctor> suggestedDoctors = new List<Doctor>(DoctorService.Instance.GetAll());
             List<Room> suggestetRooms = new List<Room>(RoomService.Instance.GetAll());
 
@@ -56,7 +55,8 @@ namespace Service
 
                 foreach (Doctor doctor in suggestedDoctors)
                 {
-                    if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+                    if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
                     {
                         temporaryDoctors.Add(doctor);
                     }
@@ -223,7 +223,8 @@ namespace Service
 
                 foreach (Doctor doctor in suggestedDoctors)
                 {
-                    if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+                    if (doctor.DoctorSpecialization == doctor.DoctorSpecialization)
                     {
                         temporaryDoctors.Add(doctor);
                     }
@@ -334,7 +335,6 @@ namespace Service
             }
             return availableMedicalAppointments;
         }
-
         public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
         {
             ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();

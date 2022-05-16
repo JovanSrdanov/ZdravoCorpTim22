@@ -1,6 +1,5 @@
 [
   {
-    "DoctorType": 0,
     "MedicalRecord": [
       {
         "Id": 0,
@@ -24,7 +23,6 @@
     "Address": 0
   },
   {
-    "DoctorType": 1,
     "MedicalRecord": [],
     "DoctorSpecialization": 1,
     "Name": "Stefan",
@@ -39,7 +37,6 @@
     "Address": 1
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "OpstaPraksa1",
@@ -54,7 +51,6 @@
     "Address": 15
   },
   {
-    "DoctorType": 1,
     "MedicalRecord": [],
     "DoctorSpecialization": 3,
     "Name": "Specijalista",
@@ -69,7 +65,6 @@
     "Address": 16
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "Regularni",
@@ -82,5 +77,19 @@
     "Gender": 0,
     "Id": 4,
     "Address": 17
+  },
+  {
+    "MedicalRecord": [],
+    "DoctorSpecialization": 2,
+    "Name": "Euro",
+    "Surname": "Neuro",
+    "Email": "",
+    "Jmbg": "213321233123123123",
+    "Password": "12121212",
+    "Birthday": "2022-05-16T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 5,
+    "Address": 21
   }
 ]

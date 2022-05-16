@@ -2,6 +2,8 @@
 using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
+
 namespace ZdravoCorpAppTim22.View.Secretary
 {
     public partial class SecretaryAccountsEdit : Window
@@ -62,8 +64,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (SpecialisationComboBox != null && SpecialisationLbl != null)
             {
+                if (visible == Visibility.Visible)
+                {
+                    SpecialisationComboBox.ItemsSource = DoctorSpecializationController.Instance.GetAll();
+                }
                 SpecialisationComboBox.Visibility = visible;
                 SpecialisationLbl.Visibility = visible;
+
             }
         }
 
@@ -195,7 +202,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     }
                     SetSpecialisationComboBox(Visibility.Visible);
                     SetMedicalReportButton(Visibility.Hidden);
-                    SpecialisationComboBox.SelectedItem = Doctor.DoctorType;
+                    SpecialisationComboBox.SelectedItem = Doctor.DoctorSpecialization;
                     break;
 
 
@@ -396,6 +403,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         {
                             Doctor.Address = addressTemp;
                         }
+                        Doctor.DoctorSpecialization = (Model.DoctorSpecialization)SpecialisationComboBox.SelectedItem;
                         Doctor.Phone = PhoneTextBox.Text;
                         Doctor.Birthday = (System.DateTime)BirthDayPicker.SelectedDate;
                         Doctor.Jmbg = JMBGTextBox.Text;

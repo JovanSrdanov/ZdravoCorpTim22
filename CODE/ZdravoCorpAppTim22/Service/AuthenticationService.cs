@@ -8,11 +8,11 @@ namespace ZdravoCorpAppTim22.Service
     public class AuthenticationService
     {
         private static AuthenticationService instance;
-        
+
         private List<User> Users { get; set; }
         public User LoggedUser { get; private set; }
 
-        private AuthenticationService() 
+        private AuthenticationService()
         {
             Users = new List<User>();
         }
@@ -39,8 +39,12 @@ namespace ZdravoCorpAppTim22.Service
 
         public User Login(string email, string password)
         {
-            foreach(User user in Users)
+            foreach (User user in Users)
             {
+                if (user.Email == null)
+                {
+                    break;
+                }
                 if (user.Email.Equals(email) && user.Password.Equals(password))
                 {
                     LoggedUser = user;

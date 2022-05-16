@@ -1,6 +1,9 @@
 ﻿using Controller;
 using Model;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -16,41 +19,28 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             InitializeComponent();
             SecretaryHome = secretaryHome;
-            AppointmentPreferences appointmentPreferences = new AppointmentPreferences();
-            appointmentPreferences.enteredAppointmentType = AppointmentType.Examination;
-            appointmentPreferences.enteredDateTime = System.DateTime.Now;
-            Doctor doctorTemp = new Doctor();
-            Patient patientTemp = new Patient();
-            appointmentPreferences.enteredDoctor = doctorTemp;
-            appointmentPreferences.enteredPatient = patientTemp;
-            appointmentPreferences.enteredPriority = AppointemntPriorityEnum.Time;
-            dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);
+
+            comboBoxDoctorSpecialisation.ItemsSource = DoctorSpecializationController.Instance.GetAll();
+            comboBoxExaminationType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentStruct medicalAppointmentStruct = null;
             if (NameTextBox.Text == "")
             {
                 MessageBox.Show("Must enter name!");
                 return;
             }
 
-            if (dataGridSuggestedMedicalAppointments.SelectedItem != null)
+            if (comboBoxDoctorSpecialisation.SelectedItem == null)
             {
-                try
-                {
-                    medicalAppointmentStruct = (MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem;
-                }
-                catch
-                {
-                    MessageBox.Show("Select appointment for emergencyy");
-                    return;
-                }
+                MessageBox.Show("Must enter doctor specialisation!");
+                return;
             }
-            else
+
+            if (comboBoxExaminationType.SelectedItem == null)
             {
-                MessageBox.Show("Select appointment for emergency");
+                MessageBox.Show("Must enter examination type!");
                 return;
             }
 
@@ -77,6 +67,37 @@ namespace ZdravoCorpAppTim22.View.Secretary
             else
             {
                 patient.Gender = Gender.other;
+            }
+
+            AppointmentPreferences appointmentPreferences = new AppointmentPreferences();
+            Doctor doctorTemp = new Doctor();
+            doctorTemp.DoctorSpecialization = (DoctorSpecialization)comboBoxDoctorSpecialisation.SelectedItem;
+            Patient patientTemp = new Patient();
+            appointmentPreferences.enteredDoctor = doctorTemp;
+            appointmentPreferences.enteredPatient = patientTemp;
+            appointmentPreferences.enteredPriority = AppointemntPriorityEnum.Time;
+            appointmentPreferences.enteredAppointmentType = (AppointmentType)comboBoxExaminationType.SelectedItem;
+            appointmentPreferences.enteredDateTime = System.DateTime.Now;
+            MedicalAppointmentStruct medicalAppointmentStruct = null;
+            ObservableCollection<MedicalAppointmentStruct> tempAppointments = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);
+            for (int i = 0; i < tempAppointments.Count; i++)
+            {
+                if (tempAppointments[i].Interval.Start <= System.DateTime.Now.AddHours(1) && tempAppointments[i].Doctor.DoctorSpecialization == appointmentPreferences.enteredDoctor.DoctorSpecialization)
+                {
+
+                    medicalAppointmentStruct = tempAppointments[i];
+                    break;
+                }
+            }
+
+            if (medicalAppointmentStruct == null)
+            {
+                MessageBox.Show("NO APPOINTMENTS");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Start: " + medicalAppointmentStruct.Interval.Start + "\n Doctor: " + medicalAppointmentStruct.Doctor.Name + "\n Room: " + medicalAppointmentStruct.Room.Name);
             }
 
             MedicalAppointment medicalAppointment = new MedicalAppointment(medicalAppointmentStruct);
