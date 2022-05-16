@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
@@ -8,7 +9,29 @@ namespace Model
 {
     public class Patient : User
     {
+
+        public bool Blocked { get; set; }
+        public List<DateTime> SuspiciousActivity { get; set; } 
+
+
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
+
+        public HospitalReview hospitalReview;
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
         
+            public HospitalReview HospitalReview
+            {
+                get
+                {
+                    return hospitalReview;
+                }
+                set
+                {
+                    this.hospitalReview = value;
+                }
+            }
+    
+
         [JsonConverter(typeof(MedicalRecordToIDConverter))]
 
         public MedicalRecord medicalRecord;
@@ -36,8 +59,14 @@ namespace Model
             }
         }
 
-        public bool IsAvailable(Interval interval)
+public bool IsAvailable(Interval interval)
         {
+
+            if (Blocked )
+            {
+                return false;
+            }
+
             if (Password == null)
             {
                 return true;
@@ -88,6 +117,9 @@ namespace Model
                 this.medicalAppointment = medicalAppointment;
             }
 
+            Blocked = false;
+
+            SuspiciousActivity = new List<DateTime>();
 
         }
 
@@ -111,6 +143,8 @@ namespace Model
             {
                 this.medicalAppointment = medicalAppointment;
             }
+            Blocked = false;
+            SuspiciousActivity = new List<DateTime>();
 
         }
 
@@ -179,5 +213,9 @@ namespace Model
         {
             return Name + " " + Surname + " " + Jmbg;
         }
+
+       
+
+
     }
 }

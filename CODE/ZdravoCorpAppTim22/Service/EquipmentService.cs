@@ -1,7 +1,5 @@
 ﻿using Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
@@ -78,6 +76,31 @@ namespace ZdravoCorpAppTim22.Service
                     Create(newEq);
                 }
             }
+        }
+        public Equipment GetEquipmentAndUpdateSource(Equipment source, int amount, bool deleteIfEmpty)
+        {
+            Equipment temp = new Equipment(source)
+            {
+                Amount = amount
+            };
+            source.Amount -= amount;
+            if (deleteIfEmpty)
+            {
+                if (source.Amount > 0)
+                {
+                    Update(source);
+                }
+                else
+                {
+                    source.Room = null;
+                    DeleteByID(source.Id);
+                }
+            }
+            else
+            {
+                Update(source);
+            }
+            return temp;
         }
     }
 }

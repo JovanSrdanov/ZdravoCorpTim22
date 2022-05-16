@@ -1,0 +1,23 @@
+[
+  {
+    "Blocked": true,
+    "SuspiciousActivity": [
+      "2022-05-15T13:16:46.5586179+02:00",
+      "2022-05-15T13:16:50.6187438+02:00",
+      "2022-05-15T13:18:21.710249+02:00",
+      "2022-05-15T13:18:45.4279654+02:00"
+    ],
+    "HospitalReview": 0,
+    "MedicalRecord": 3,
+    "Name": "Joja",
+    "Surname": "Srdanov",
+    "Email": "123",
+    "Jmbg": "123",
+    "Password": "joja",
+    "Birthday": "2022-04-01T00:00:00",
+    "Phone": "123",
+    "Gender": 0,
+    "Id": 0,
+    "Address": 20
+  }
+]

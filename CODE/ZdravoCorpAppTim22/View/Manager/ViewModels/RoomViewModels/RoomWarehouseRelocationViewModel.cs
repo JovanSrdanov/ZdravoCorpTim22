@@ -9,6 +9,7 @@ using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.DataModel;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
@@ -39,7 +40,19 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void Relocate(object obj)
         {
-            RoomToWarehouse(SourceRoom, Interval);
+            if (RoomController.Instance.GetByID(SourceRoom.Id) == null)
+            {
+                InfoModal.Show("Room was deleted in the meantime");
+                ManagerHome.NavigationService.Navigate(new RoomView());
+                return;
+            }
+            if (!SourceRoom.IsAvailable(Interval))
+            {
+                InfoModal.Show("Room isn't available");
+                return;
+            }
+            EquipmentRelocationController.Instance.MoveRoomToWarehouse(SourceRoom, new List<EquipmentDataModel>(EquipmentList), Interval);
+
             ManagerHome.NavigationService.Navigate(new RoomDetailsView(SourceRoom));
         }
         public void NavigateBack(object obj)
@@ -59,43 +72,5 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             }
             return valid;
         }
-
-        public void RoomToWarehouse(Room source, Interval interval)
-        {
-            if (!source.IsAvailable(interval))
-            {
-                MessageBox.Show("Room isn't available");
-                return;
-            }
-            List<Equipment> equipment = new List<Equipment>();
-            foreach (EquipmentDataModel eq in EquipmentList)
-            {
-                Equipment temp = new Equipment(eq.Equipment)
-                {
-                    Amount = eq.Amount
-                };
-                eq.Equipment.Amount -= eq.Amount;
-                if (eq.Equipment.Amount > 0)
-                {
-                    EquipmentController.Instance.Update(eq.Equipment);
-                }
-                else
-                {
-                    eq.Equipment.Room = null;
-                    EquipmentController.Instance.DeleteByID(eq.Equipment.Id);
-                }
-                if (interval.End <= DateTime.Now || temp.EquipmentData.Type == EquipmentType.consumable)
-                {
-                    temp.room = null;
-                    EquipmentController.Instance.AddWarehouseEquipment(temp);
-                }
-                else
-                {
-                    equipment.Add(temp);
-                }
-            }
-            EquipmentRelocationController.Instance.Create(source, null, interval, equipment);
-        }
-
     }
 }

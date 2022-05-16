@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
@@ -27,7 +29,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             DataGridAppointment.ItemsSource = MedicalAppointmentList;
 
 
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == PatientSelectionForTemporaryPurpose.LoggedPatient.Id).FirstOrDefault();
+            MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
             if (medRec == null)
             {              
                 MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();
@@ -60,7 +62,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
             MedicalAppointmentList.Remove(MedicalAppointmentSelected);
-
+            PatientController.Instance.AntiTroll(PatientSelectionForTemporaryPurpose.LoggedPatient, DateTime.Now);
 
         }
 
@@ -92,7 +94,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
         {
-        
+            ReviewTheHospital reviewTheHospital = new ReviewTheHospital();
+            reviewTheHospital.ShowDialog();
         }
     }
 }

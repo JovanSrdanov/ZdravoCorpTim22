@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Service.Generic;
@@ -45,6 +46,7 @@ namespace Service
                 durationOfAppointment = Constants.Constants.DURATION_OPERATION;
             }
 
+           
             List<Doctor> suggestedDoctors = new List<Doctor>(DoctorService.Instance.GetAll());
             List<Room> suggestetRooms = new List<Room>(RoomService.Instance.GetAll());
 

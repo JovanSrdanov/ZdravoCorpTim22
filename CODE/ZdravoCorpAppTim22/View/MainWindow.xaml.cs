@@ -22,13 +22,13 @@ namespace ZdravoCorpAppTim22
 
         public void LoadData()
         {
+            HospitalReviewController.Instance.Load();
             AddressController.Instance.Load();
             RoomController.Instance.Load();
             EquipmentRelocationController.Instance.Load();
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
             
-            //dodao
             MedicalRecordController.Instance.Load();
             MedicalReceiptController.Instance.Load();
 
@@ -53,6 +53,8 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
             RoomMergeController.Instance.Load();
+            
+            AuthenticationController.Instance.Load();
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }
@@ -66,40 +68,72 @@ namespace ZdravoCorpAppTim22
                 EquipmentRelocationController.Instance.BackgroundTask();
                 PatientController.Instance.DeamonMethod();
                 RoomMergeController.Instance.BackgroundTask();
+                RoomDivergeController.Instance.BackgroundTask();
             }
         }
 
-        private void ManagerBtn_Click(object sender, RoutedEventArgs e)
+        private void Clear()
         {
-            ManagerHome managerHome = new ManagerHome(this);
-            managerHome.Show();
-            this.Hide();
+            EmailInput.Text = "";
+            PasswordInput.Password = "";
+            ErrorTextBlock.Text = "";
         }
 
-        private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            Window window = null;
+            string email = EmailInput.Text;
+            string password = PasswordInput.Password;
 
-            SecretaryHome secretaryHome = new SecretaryHome(this);
-            secretaryHome.Show();
-            this.Hide();
+            User user = AuthenticationController.Instance.Login(email, password);
+            if (user == null)
+            {
+                ErrorTextBlock.Text = "Login failed";
+                return;
+            }
+
+            if(user.GetType() == typeof(ManagerClass))
+            {
+                window = new ManagerHome((ManagerClass)user);
+            }
+            else if (user.GetType() == typeof(SecretaryClass))
+            {
+                window = new SecretaryHome((SecretaryClass)user);
+            }
+            else if(user.GetType() == typeof(Doctor))
+            {
+                window = new DoctorHome((Doctor)user);
+            }
+            else if(user.GetType() == typeof(Patient))
+            {
+                window = new PatientSelectionForTemporaryPurpose((Patient)user);
+            }
+
+            if (window != null)
+            {
+                window.Show();
+                Hide();
+                Clear();
+            }
+            else
+            {
+                ErrorTextBlock.Text = "Login failed";
+            }
         }
 
-        private void DoctorBtn_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorHome doctorHome = new DoctorHome();
-            doctorHome.Owner = this;
-            doctorHome.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            doctorHome.Show();
-
-            this.Hide();
-
+            Close();
         }
 
-        private void PatientBtn_Click(object sender, RoutedEventArgs e)
+        private void EmailInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            PatientSelectionForTemporaryPurpose patientSelectionForTemporaryPurpose = new PatientSelectionForTemporaryPurpose();
-            patientSelectionForTemporaryPurpose.Show();
-            this.Close();
+            ErrorTextBlock.Text = "";
+        }
+
+        private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ErrorTextBlock.Text = "";
         }
     }
 }

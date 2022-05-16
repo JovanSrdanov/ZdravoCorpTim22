@@ -6,16 +6,96 @@
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
         mc:Ignorable="d"
-        Title="ManagerHome" Height="720" Width="1270"
+        WindowStyle="None"
+        Title="Manager" 
+        Height="720" 
+        Width="1280"
         Background="#292c35"
+        BorderThickness="0"
         WindowStartupLocation="CenterScreen"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Style="{DynamicResource StandardWindowStyle}"
+        AllowsTransparency="True">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
+            <Style x:Key="WindowButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStandard}">
+                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                <Setter Property="FontFamily" Value="{StaticResource Icons}"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Content" Value="&#xe738;"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style x:Key="StandardWindowStyle" TargetType="{x:Type Window}">
+                <Setter Property="WindowStyle" Value="None"/>
+                <Setter Property="SnapsToDevicePixels" Value="true"/>
+                <Setter Property="WindowChrome.WindowChrome">
+                    <Setter.Value>
+                        <WindowChrome ResizeBorderThickness="4"
+                                      CaptionHeight="33"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Window}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{StaticResource DarkPrimaryColor}"/>
+                                </Grid.Background>
+                                <StackPanel Grid.ColumnSpan="2">
+                                    <TextBlock TextAlignment="Center"
+                                                   Margin="0 1 0 5"
+                                                   FontSize="22"
+                                                   Foreground="{StaticResource ActivePrimary}"
+                                                   Text="{TemplateBinding Title}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="0" 
+                                                Grid.Column="1"
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center"
+                                                Margin="0">
+                                    <Button Style="{StaticResource WindowButton}"
+                                                x:Name="MinimizeButton"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                Content="&#xe921;" Click="MinimizeButton_Click"/>
+                                    <Button Style="{StaticResource WindowButton}"
+                                                x:Name="RestoreButton"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                Content="&#xe740;" Click="RestoreButton_Click"/>
+                                    <Button Style="{StaticResource WindowButton}"
+                                                x:Name="CloseButton"
+                                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                                Content="&#xe8bb;" Click="CloseButton_Click"/>
+                                </StackPanel>
+                                <AdornerDecorator Grid.Row="2" Grid.ColumnSpan="2">
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
+                                <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -23,16 +103,19 @@
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="{StaticResource DarkPrimary}" 
-              Width="250">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <views:NavMenu Grid.Row="1" 
-                            NavigationServiceProp="{Binding NavigationService, ElementName=ContentFrame}"/>
+        <Border Grid.Column="0" 
+                BorderBrush="{StaticResource DarkSecondary}"
+                BorderThickness="0 2 0 0">
+            <Grid Background="{StaticResource DarkPrimary}" 
+                  Width="250">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <views:NavMenu Grid.Row="1" 
+                               NavigationServiceProp="{Binding NavigationService, ElementName=ContentFrame}"/>
         </Grid>
+        </Border>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -40,7 +123,7 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0"
                     Background="{StaticResource DarkPrimary}"
-                    BorderThickness="5 0 18 0"
+                    BorderThickness="2 2 0 0"
                     BorderBrush="{StaticResource DarkSecondary}">
                 <WrapPanel HorizontalAlignment="Right">
                     <ComboBox Style="{StaticResource StandardComboBox}"
@@ -48,18 +131,19 @@
                         <ComboBoxItem Content="Dark Theme"/>
                         <ComboBoxItem Content="Light Theme"/>
                     </ComboBox>
-                    <Button Style="{DynamicResource ButtonStandard}" x:Name="ButtonLogout"
-                            
+                    <Button Style="{DynamicResource LogoutButtonStyle}"
+                            x:Name="ButtonLogout"
                             Margin="20 0 0 0" 
                             Click="ButtonLogout_Click"
-                            FontFamily="Segoe MDL2 Assets"
-                            Content="&#xE7E8;"
-                            FontSize="23"
-                            Padding="20 10"/>
+                            Padding="20 10"
+                            FontSize="{StaticResource StandardFontSize}"/>
                 </WrapPanel>
             </Border>
-            
-            <ScrollViewer Grid.Row="1" PreviewMouseWheel="Content_PreviewMouseWheel">
+            <ScrollViewer 
+                          Grid.Row="1" 
+                          PreviewMouseWheel="Content_PreviewMouseWheel" 
+                          Background="{StaticResource DarkSecondary}"
+                            >
                 <Frame x:Name="ContentFrame" 
                        Source="Pages/RoomPages/RoomView.xaml" 
                        NavigationUIVisibility="Hidden"

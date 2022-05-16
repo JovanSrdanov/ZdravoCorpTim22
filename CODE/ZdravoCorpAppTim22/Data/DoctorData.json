@@ -6,10 +6,30 @@
         "Id": 0,
         "BloodType": 1,
         "AllergiesList": [],
-        "ConditionList": ["dsad"]
+        "ConditionList": [
+          "1",
+          "dasd",
+          "1",
+          "32131"
+        ]
+      },
+      {
+        "Id": 2,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "sadasdasdasdas"
+        ]
+      },
+      {
+        "Id": 3,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "sadasdasdasda"
+        ]
       }
     ],
-    "DoctorSpecialization": 0,
     "Name": "doc",
     "Surname": "docprez",
     "Email": "",
@@ -23,8 +43,19 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
-    "DoctorSpecialization": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "dasd",
+          "1",
+          "32131"
+        ]
+      }
+    ],
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
@@ -39,7 +70,6 @@
   {
     "DoctorType": 0,
     "MedicalRecord": [],
-    "DoctorSpecialization": 0,
     "Name": "OpstaPraksa1",
     "Surname": "Opsta",
     "Email": "",
@@ -53,8 +83,19 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
-    "DoctorSpecialization": 3,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "dasd",
+          "1",
+          "32131"
+        ]
+      }
+    ],
     "Name": "Specijalista",
     "Surname": "Specijalista1",
     "Email": "",
@@ -65,20 +106,5 @@
     "Gender": 0,
     "Id": 3,
     "Address": 16
-  },
-  {
-    "DoctorType": 0,
-    "MedicalRecord": [],
-    "DoctorSpecialization": 0,
-    "Name": "Regularni",
-    "Surname": "Doktor",
-    "Email": "",
-    "Jmbg": "123123123123",
-    "Password": "123",
-    "Birthday": "2022-05-15T00:00:00+02:00",
-    "Phone": "",
-    "Gender": 0,
-    "Id": 4,
-    "Address": 17
   }
 ]

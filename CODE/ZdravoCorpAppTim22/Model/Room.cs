@@ -30,7 +30,8 @@ namespace Model
         private List<RoomMerge> mergesWhereFirst;
         [JsonIgnore]
         private List<RoomMerge> mergesWhereSecond;
-
+        [JsonIgnore]
+        private List<RoomDiverge> diverges;
 
         [JsonIgnore]
         public ObservableCollection<Equipment> Equipment
@@ -171,6 +172,27 @@ namespace Model
                 }
             }
         }
+        [JsonIgnore]
+        public List<RoomDiverge> Diverges
+        {
+            get
+            {
+                if (diverges == null)
+                {
+                    diverges = new List<RoomDiverge>();
+                }
+                return diverges;
+            }
+            set
+            {
+                RemoveAllDiverges();
+                if (value != null)
+                {
+                    foreach (RoomDiverge oDiverge in value)
+                        AddDiverge(oDiverge);
+                }
+            }
+        }
 
         [JsonConstructor]
         public Room() { }
@@ -186,7 +208,7 @@ namespace Model
 
         public bool IsAvailable(DateTime start, DateTime end)
         {
-            if (MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0) return false;
+            if (MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0) return false;
             foreach (MedicalAppointment medicalAppointmentRoom in MedicalAppointment)
             {
                 if (!((medicalAppointmentRoom.Interval.Start >= end) || (medicalAppointmentRoom.Interval.End <= start)))
@@ -223,7 +245,7 @@ namespace Model
         }
         public bool CanMergeOrDiverge()
         {
-            if(Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0)
+            if(Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0)
             {
                 return false;
             }
@@ -441,7 +463,7 @@ namespace Model
         }
         public void RemoveAllMergesWhereFirst()
         {
-            if (renovations != null)
+            if (mergesWhereFirst != null)
             {
                 System.Collections.ArrayList tmpMerges = new System.Collections.ArrayList();
                 foreach (RoomMerge oldMerge in mergesWhereFirst)
@@ -478,7 +500,7 @@ namespace Model
         }
         public void RemoveAllMergesWhereSecond()
         {
-            if (renovations != null)
+            if (mergesWhereSecond != null)
             {
                 System.Collections.ArrayList tmpMerges = new System.Collections.ArrayList();
                 foreach (RoomMerge oldMerge in mergesWhereSecond)
@@ -487,6 +509,43 @@ namespace Model
                 foreach (RoomMerge oldMerge in tmpMerges)
                     oldMerge.SecondRoom = null;
                 tmpMerges.Clear();
+            }
+        }
+
+        public void RemoveDiverge(RoomDiverge oldDiverge)
+        {
+            if (oldDiverge == null)
+                return;
+            if (this.diverges != null)
+                if (this.diverges.Contains(oldDiverge))
+                {
+                    this.diverges.Remove(oldDiverge);
+                    oldDiverge.SourceRoom = null;
+                }
+        }
+        public void AddDiverge(RoomDiverge newDiverge)
+        {
+            if (newDiverge == null)
+                return;
+            if (this.diverges == null)
+                this.diverges = new List<RoomDiverge>();
+            if (!this.diverges.Contains(newDiverge))
+            {
+                this.diverges.Add(newDiverge);
+                newDiverge.SourceRoom = this;
+            }
+        }
+        public void RemoveAllDiverges()
+        {
+            if (diverges != null)
+            {
+                System.Collections.ArrayList tmpDiverges = new System.Collections.ArrayList();
+                foreach (RoomDiverge oldDiverge in diverges)
+                    tmpDiverges.Add(oldDiverge);
+                diverges.Clear();
+                foreach (RoomDiverge oldDiverge in tmpDiverges)
+                    oldDiverge.SourceRoom = null;
+                tmpDiverges.Clear();
             }
         }
         #endregion

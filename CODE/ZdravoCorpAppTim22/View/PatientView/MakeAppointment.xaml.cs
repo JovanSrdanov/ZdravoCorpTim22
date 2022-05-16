@@ -31,8 +31,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
             TabDate.IsEnabled = false;
             TabPriority.IsEnabled = false;
 
-
-            ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
+            var AppointmentTypes = Enum.GetValues(typeof(AppointmentType));
+            ChooseAppointmentType.ItemsSource = AppointmentTypes;
             datePicker.DisplayDateStart = DateTime.Now.Date.AddDays(1);
             datePicker.SelectedDate = DateTime.Now.Date.AddDays(1);
 
