@@ -2,10 +2,10 @@
   {
     "Blocked": false,
     "SuspiciousActivity": [
-      "2022-05-16T14:21:35.7911795+02:00"
+     
     ],
     "HospitalReview": 0,
-    "MedicalRecord": 3,
+    "MedicalRecord": null,
     "Name": "Jovan",
     "Surname": "Srdanov",
     "Email": "j",
