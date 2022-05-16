@@ -1,17 +1,1 @@
-[
-  {
-    "Id": 0,
-    "ReplacingMedicine": 6,
-    "ReplacementToMedicine": 8
-  },
-  {
-    "Id": 1,
-    "ReplacingMedicine": 8,
-    "ReplacementToMedicine": 9
-  },
-  {
-    "Id": 2,
-    "ReplacingMedicine": 8,
-    "ReplacementToMedicine": 10
-  }
-]
+[]

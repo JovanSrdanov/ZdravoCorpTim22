@@ -53,6 +53,7 @@ namespace ZdravoCorpAppTim22
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
             RoomMergeController.Instance.Load();
+            ApprovalController.Instance.Load();
             
             AuthenticationController.Instance.Load();
 

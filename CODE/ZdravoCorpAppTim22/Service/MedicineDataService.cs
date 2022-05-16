@@ -53,7 +53,7 @@ namespace ZdravoCorpAppTim22.Service
             List<MedicineData> list = new List<MedicineData>();
             foreach (MedicineData m in GetAll())
             {
-                if (m.ApprovedBy != null)
+                if (m.Approval != null && m.Approval.IsApproved == true)
                 {
                     list.Add(m);
                 }
@@ -65,7 +65,7 @@ namespace ZdravoCorpAppTim22.Service
             List<MedicineData> list = new List<MedicineData>();
             foreach (MedicineData m in GetAll())
             {
-                if (m.ApprovedBy == null)
+                if (m.Approval == null || m.Approval.IsApproved == false)
                 {
                     list.Add(m);
                 }
