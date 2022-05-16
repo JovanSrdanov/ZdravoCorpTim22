@@ -65,7 +65,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
             MedicalAppointmentList.Remove(MedicalAppointmentSelected);
-            PatientController.Instance.AntiTroll(LoggedPatient, DateTime.Now);
+            PatientController.Instance.AntiTroll(LoggedPatient);
 
         }
 
@@ -91,15 +91,22 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
             
             Close();
+            LoggedPatient = null;
             AuthenticationController.Instance.Logout();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            App.Current.MainWindow.Show();
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
         {
+           
             ReviewTheHospital reviewTheHospital = new ReviewTheHospital();
             reviewTheHospital.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ReportReview reportReview = new ReportReview(1, 2, 3, 4, 5, 6);
+            ReportReviewController.Instance.Create(reportReview);
         }
     }
 }

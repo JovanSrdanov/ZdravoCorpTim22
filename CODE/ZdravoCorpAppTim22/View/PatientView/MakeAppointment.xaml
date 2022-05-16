@@ -79,10 +79,20 @@
                             x:Name="ChooseDoctor"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
-                            DisplayMemberPath="Name"
                             FontSize="18"
-                            SelectedIndex="0" />
-
+                            SelectedIndex="0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Path=Name}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Path=Surname}" />
+                                        <TextBlock Text=" - " />
+                                        <TextBlock Text="{Binding Path=DoctorType}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
                     </StackPanel>
 

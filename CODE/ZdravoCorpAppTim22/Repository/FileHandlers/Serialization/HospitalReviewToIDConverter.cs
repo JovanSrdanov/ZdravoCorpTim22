@@ -5,7 +5,7 @@ using ZdravoCorpAppTim22.Model;
 
 namespace Model
 {
-    internal class HospitalReviewToIDConverter: JsonConverter<HospitalReview>
+    public class HospitalReviewToIDConverter: JsonConverter<HospitalReview>
     {
         public override HospitalReview Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

@@ -146,6 +146,7 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
     <Compile Include="Controller\ReplacementController.cs" />
+    <Compile Include="Controller\ReportReviewController.cs" />
     <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
     <Compile Include="Model\EquipmentData.cs" />
@@ -153,6 +154,8 @@
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\HospitalReview.cs" />
+    <Compile Include="Model\ReportReview.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\ReportReviewToIDConverter.cs" />
     <Compile Include="Repository\HospitalReviewRepository.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\HospitalReviewToIDConverter.cs" />
     <Compile Include="Model\Ingredient.cs" />
@@ -202,6 +205,7 @@
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\EquipmentRelocationRepository.cs" />
     <Compile Include="Repository\ReplacementRepository.cs" />
+    <Compile Include="Repository\ReportReviewRepository.cs" />
     <Compile Include="Repository\RoomDivergeRepository.cs" />
     <Compile Include="Repository\RoomMergeRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
@@ -227,6 +231,7 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\EquipmentRelocationService.cs" />
     <Compile Include="Service\ReplacementService.cs" />
+    <Compile Include="Service\ReportReviewService.cs" />
     <Compile Include="Service\RoomDivergeService.cs" />
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />

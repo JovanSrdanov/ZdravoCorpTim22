@@ -2,17 +2,17 @@
   {
     "Blocked": false,
     "SuspiciousActivity": [
-      
+     
     ],
     "HospitalReview": 0,
     "MedicalRecord": 3,
-    "Name": "Joja",
+    "Name": "Jovan",
     "Surname": "Srdanov",
-    "Email": "joja",
-    "Jmbg": "123",
-    "Password": "joja",
-    "Birthday": "2022-04-01T00:00:00",
-    "Phone": "123",
+    "Email": "j",
+    "Jmbg": "123456789101",
+    "Password": "j",
+    "Birthday": "2000-11-01T00:00:00",
+    "Phone": "0647057575",
     "Gender": 0,
     "Id": 0,
     "Address": 20

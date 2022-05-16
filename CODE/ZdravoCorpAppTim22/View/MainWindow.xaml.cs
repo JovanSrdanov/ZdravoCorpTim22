@@ -61,7 +61,7 @@ namespace ZdravoCorpAppTim22
                 Thread.Sleep(1000);
                 RenovationController.Instance.BackgroundTask();
                 EquipmentRelocationController.Instance.BackgroundTask();
-                PatientController.Instance.DeamonMethod();
+                PatientController.Instance.TherapyNotification();
                 RoomMergeController.Instance.BackgroundTask();
                 RoomDivergeController.Instance.BackgroundTask();
             }
@@ -102,7 +102,7 @@ namespace ZdravoCorpAppTim22
             else if(user.GetType() == typeof(Patient))
             {
                 Patient patientCheck = (Patient)user;
-                if (patientCheck.Blocked == true)
+                if (patientCheck.Blocked)
                 {
                     ErrorTextBlock.Text = "Korisnik je blokiran";
                     return;
