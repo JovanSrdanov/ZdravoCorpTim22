@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
@@ -45,6 +46,31 @@ namespace ZdravoCorpAppTim22.Service
             }
             ReplacementService.Instance.DeleteByMedicineData(MedicineDataRepository.Instance.GetByID(id));
             base.DeleteByID(id);
+        }
+
+        public List<MedicineData> GetAllApproved()
+        {
+            List<MedicineData> list = new List<MedicineData>();
+            foreach (MedicineData m in GetAll())
+            {
+                if (m.ApprovedBy != null)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
+        }
+        public List<MedicineData> GetAllUnapproved()
+        {
+            List<MedicineData> list = new List<MedicineData>();
+            foreach (MedicineData m in GetAll())
+            {
+                if (m.ApprovedBy == null)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
         }
     }
 }
