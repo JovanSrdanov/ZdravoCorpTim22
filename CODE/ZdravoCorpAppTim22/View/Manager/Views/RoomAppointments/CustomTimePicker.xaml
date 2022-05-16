@@ -16,6 +16,42 @@
                 <Setter Property="Width" Value="Auto"/>
             </Style>
             <Style TargetType="ComboBox" BasedOn="{StaticResource StandardComboBox}"/>
+            <Style x:Key="TimeComboBoxItem" TargetType="{x:Type ComboBoxItem}">
+                <Setter Property="SnapsToDevicePixels" Value="true"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="Background" Value="{StaticResource DarkSecondary}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Name="Border"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        SnapsToDevicePixels="true"
+                                        Padding="0"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Left"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsHighlighted" Value="true">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ActivePrimary}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Foreground" Value="{StaticResource ActivePrimary}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -23,9 +59,11 @@
             <TextBlock Text="Hours"/>
             <ComboBox Name="HourComboBox"
                       Margin="0 0 10 0"
+                      ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
             <TextBlock Text="Minutes"/>
             <ComboBox Name="MinuteComboBox"
+                      ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
         </WrapPanel>
     </Grid>

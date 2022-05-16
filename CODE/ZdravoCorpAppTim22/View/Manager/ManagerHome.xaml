@@ -35,8 +35,8 @@
                 <Setter Property="SnapsToDevicePixels" Value="true"/>
                 <Setter Property="WindowChrome.WindowChrome">
                     <Setter.Value>
-                        <WindowChrome ResizeBorderThickness="4"
-                                      CaptionHeight="33"/>
+                        <WindowChrome ResizeBorderThickness="10"
+                                      CaptionHeight="34"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Template">
@@ -44,9 +44,9 @@
                         <ControlTemplate TargetType="{x:Type Window}">
                             <Border>
                                 <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" RenderingBias="Quality"  Opacity="1" Color="#000" />
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="7" RenderingBias="Quality"  Opacity="1" Color="#000" />
                                 </Border.Effect>
-                                <Grid Margin="10">
+                                <Grid Margin="7">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition/>
@@ -136,21 +136,25 @@
                         <ComboBoxItem Content="Dark Theme"/>
                         <ComboBoxItem Content="Light Theme"/>
                     </ComboBox>
+                    <Button Style="{DynamicResource SettingsButtonStyle}"
+                            x:Name="ButtonSettings"
+                            Margin="0" 
+                            Click="ButtonSettings_Click"
+                            Padding="20 10"
+                            FontSize="{StaticResource StandardFontSize}"/>
                     <Button Style="{DynamicResource LogoutButtonStyle}"
                             x:Name="ButtonLogout"
-                            Margin="20 0 0 0" 
+                            Margin="0" 
                             Click="ButtonLogout_Click"
                             Padding="20 10"
                             FontSize="{StaticResource StandardFontSize}"/>
                 </WrapPanel>
             </Border>
-            <ScrollViewer 
-                          Grid.Row="1" 
+            <ScrollViewer Grid.Row="1" 
                           PreviewMouseWheel="Content_PreviewMouseWheel" 
-                          Background="{StaticResource DarkSecondary}"
-                            >
+                          Background="{StaticResource DarkSecondary}">
                 <Frame x:Name="ContentFrame" 
-                       Source="Pages/RoomPages/RoomView.xaml" 
+                       Source="Pages/WarehousePages/WarehouseView.xaml" 
                        NavigationUIVisibility="Hidden"
                        Margin="15 15 15 100"/>
             </ScrollViewer>

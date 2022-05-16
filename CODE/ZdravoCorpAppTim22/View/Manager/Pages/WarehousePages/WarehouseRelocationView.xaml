@@ -55,7 +55,7 @@
                                 <DataTemplate>
                                     <TextBox Name="AmountInput" 
                                              Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                             Style="{StaticResource AmountTextBox}"></TextBox>
+                                             Style="{StaticResource AmountTextBox}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

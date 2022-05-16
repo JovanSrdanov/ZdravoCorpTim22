@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager
 {
@@ -70,6 +71,11 @@ namespace ZdravoCorpAppTim22.View.Manager
         {
             var window = (Window)((FrameworkElement)sender).TemplatedParent;
             window.Close();
+        }
+
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e)
+        {
+            InfoModal.Show("Work in progress!");
         }
     }
 }

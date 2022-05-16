@@ -23,8 +23,33 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             get
             {
-                if (SearchText == null || SearchText == "") return EquipmentCollection;
-                IEnumerable<Equipment> result = EquipmentCollection.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper()));
+                List<Equipment> temp = new List<Equipment>();
+                if (Filter != 0)
+                {
+                    if (Filter == 2)
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type == EquipmentType.consumable));
+                    }
+                    else
+                    {
+                        temp.AddRange(EquipmentCollection.Where(x => x.EquipmentData.Type != EquipmentType.consumable));
+                    }
+                }
+                else
+                {
+                    temp = new List<Equipment>(EquipmentCollection);
+                }
+
+                List<Equipment> result = new List<Equipment>();
+                if (SearchText != null && SearchText != "")
+                {
+
+                    result.AddRange(temp.Where(x => x.EquipmentData.Name.ToUpper().StartsWith(SearchText.ToUpper())));
+                }
+                else
+                {
+                    result = temp;
+                }
                 return new ObservableCollection<Equipment>(result);
             }
         }
@@ -41,11 +66,28 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             }
         }
 
+        private int filter;
+        public int Filter
+        {
+            get { return filter; }
+            set
+            {
+                if (filter != value)
+                {
+                    filter = value;
+                    OnPropertyChanged("Filter");
+                    OnPropertyChanged("FilteredEquipment");
+                }
+            }
+        }
+
         public RoomDetailsViewModel(Room room)
         {
             OpenRoomRelocationCommand = new RelayCommand(OpenRoomRelocation, CanRelocate);
             OpenWarehouseRelocationCommand = new RelayCommand(OpenWarehouseRelocation, CanRelocate);
             NavigateBackCommand = new RelayCommand(NavigateBack, null);
+
+            Filter = 0;
 
             SourceRoom = room;
             EquipmentCollection = room.Equipment;
