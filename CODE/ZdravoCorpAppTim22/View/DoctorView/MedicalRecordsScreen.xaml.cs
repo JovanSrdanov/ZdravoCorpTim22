@@ -15,7 +15,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             InitializeComponent();
             this.doctorHomeScreen = doctorHomeScreen;
             MedRecList = new ObservableCollection<MedicalRecord>(DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).MedicalRecord);
-            //OVO NE TREBA OVAKO
+
             foreach (MedicalRecord medRec in MedRecList)
             {
                 MedicalRecord medRecTemp = MedicalRecordController.Instance.GetByID(medRec.Id);

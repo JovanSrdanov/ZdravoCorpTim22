@@ -12,7 +12,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         BorderThickness="0"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        Background="Transparent">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -281,21 +282,26 @@
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="{StaticResource DarkSecondary}">
-        <StackPanel Margin="30 20 30 30">
-            <TextBlock FontSize="{StaticResource HeadingFontSize}" Text="Select Amount" Margin="0 0 0 20" TextAlignment="Center"/>
-            <WrapPanel>
-                <Slider x:Name="Slider" Style="{StaticResource StandardSlider}" Width="300" Value="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Margin="5 0 0 0" Width="Auto" MinWidth="60" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
-            <Grid Margin="0 30 0 0">
-                <WrapPanel HorizontalAlignment="Left">
-                    <Button x:Name="ButtonConfirm" Style="{StaticResource ConfirmButtonStyle}" Click="ButtonConfirm_Click"/>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="10" RenderingBias="Quality"  Opacity="1" Color="#000" />
+        </Border.Effect>
+        <Grid Margin="10" Background="{StaticResource DarkSecondary}">
+            <StackPanel Margin="30 20 30 30">
+                <TextBlock FontSize="{StaticResource HeadingFontSize}" Text="Select Amount" Margin="0 0 0 20" TextAlignment="Center"/>
+                <WrapPanel>
+                    <Slider x:Name="Slider" Style="{StaticResource StandardSlider}" Width="300" Value="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Margin="5 0 0 0" Width="Auto" MinWidth="60" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right">
-                    <Button x:Name="ButtonCancel" Style="{StaticResource CancelButtonStyle}" Margin="0" Click="ButtonCancel_Click"/>
-                </WrapPanel>
-            </Grid>
-        </StackPanel>
-    </Grid>
+                <Grid Margin="0 30 0 0">
+                    <WrapPanel HorizontalAlignment="Left">
+                        <Button x:Name="ButtonConfirm" Style="{StaticResource ConfirmButtonStyle}" Click="ButtonConfirm_Click"/>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Right">
+                        <Button x:Name="ButtonCancel" Style="{StaticResource CancelButtonStyle}" Margin="0" Click="ButtonCancel_Click"/>
+                    </WrapPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

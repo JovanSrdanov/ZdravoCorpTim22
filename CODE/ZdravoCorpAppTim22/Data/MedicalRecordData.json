@@ -1,36 +1,13 @@
 [
   {
     "Id": 0,
-    "BloodType": 2,
-    "AllergiesList": [
-      "Celery"
-    ],
-    "ConditionList": null
-  },
-  {
-    "Id": 1,
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
+      "1634643",
       "1",
-      "32131"
-    ]
-  },
-  {
-    "Id": 2,
-    "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": [
-      "sadasdasdasdas"
-    ]
-  },
-  {
-    "Id": 3,
-    "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": [
-      "sadasdasdasda",
-      "nesto"
+      "2",
+      "1"
     ]
   }
 ]

@@ -42,49 +42,54 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Window}">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.Background>
-                                    <SolidColorBrush Color="{StaticResource DarkPrimaryColor}"/>
-                                </Grid.Background>
-                                <StackPanel Grid.ColumnSpan="2">
-                                    <TextBlock TextAlignment="Center"
-                                                   Margin="0 1 0 5"
-                                                   FontSize="22"
-                                                   Foreground="{StaticResource ActivePrimary}"
-                                                   Text="{TemplateBinding Title}"/>
-                                </StackPanel>
-                                <StackPanel Grid.Row="0" 
-                                                Grid.Column="1"
-                                                Orientation="Horizontal"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Center"
-                                                Margin="0">
-                                    <Button Style="{StaticResource WindowButton}"
-                                                x:Name="MinimizeButton"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Content="&#xe921;" Click="MinimizeButton_Click"/>
-                                    <Button Style="{StaticResource WindowButton}"
-                                                x:Name="RestoreButton"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Content="&#xe740;" Click="RestoreButton_Click"/>
-                                    <Button Style="{StaticResource WindowButton}"
-                                                x:Name="CloseButton"
-                                                WindowChrome.IsHitTestVisibleInChrome="True"
-                                                Content="&#xe8bb;" Click="CloseButton_Click"/>
-                                </StackPanel>
-                                <AdornerDecorator Grid.Row="2" Grid.ColumnSpan="2">
-                                    <ContentPresenter/>
-                                </AdornerDecorator>
-                                <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" VerticalAlignment="Bottom" Visibility="Collapsed"/>
-                            </Grid>
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" RenderingBias="Quality"  Opacity="1" Color="#000" />
+                                </Border.Effect>
+                                <Grid Margin="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{StaticResource DarkPrimaryColor}"/>
+                                    </Grid.Background>
+                                    <StackPanel Grid.ColumnSpan="2">
+                                        <TextBlock TextAlignment="Center"
+                                                       Margin="0 1 0 5"
+                                                       FontSize="22"
+                                                       Foreground="{StaticResource ActivePrimary}"
+                                                       Text="{TemplateBinding Title}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="0" 
+                                                    Grid.Column="1"
+                                                    Orientation="Horizontal"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Center"
+                                                    Margin="0">
+                                        <Button Style="{StaticResource WindowButton}"
+                                                    x:Name="MinimizeButton"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    Content="&#xe921;" Click="MinimizeButton_Click"/>
+                                        <Button Style="{StaticResource WindowButton}"
+                                                    x:Name="RestoreButton"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    Content="&#xe740;" Click="RestoreButton_Click"/>
+                                        <Button Style="{StaticResource WindowButton}"
+                                                    x:Name="CloseButton"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                                    Content="&#xe8bb;" Click="CloseButton_Click"/>
+                                    </StackPanel>
+                                    <AdornerDecorator Grid.Row="2" Grid.ColumnSpan="2">
+                                        <ContentPresenter/>
+                                    </AdornerDecorator>
+                                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                                </Grid>
+                            </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
                                     <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>

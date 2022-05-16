@@ -1,22 +1,22 @@
 [
   {
-    "Id": 6,
-    "Name": "lijek_1",
-    "ApprovedBy": null
+    "Id": 0,
+    "Name": "Lek1"
   },
   {
-    "Id": 8,
-    "Name": "lijek_2",
-    "ApprovedBy": null
+    "Id": 1,
+    "Name": "Lek2"
   },
   {
-    "Id": 9,
-    "Name": "lijek_3",
-    "ApprovedBy": null
+    "Id": 2,
+    "Name": "Lek3"
   },
   {
-    "Id": 10,
-    "Name": "lijek_4",
-    "ApprovedBy": null
+    "Id": 3,
+    "Name": "Lek4"
+  },
+  {
+    "Id": 4,
+    "Name": "5"
   }
 ]

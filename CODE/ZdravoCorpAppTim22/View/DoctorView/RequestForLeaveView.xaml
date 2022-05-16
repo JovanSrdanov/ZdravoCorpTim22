@@ -1,0 +1,42 @@
+﻿<Window x:Class="ZdravoCorpAppTim22.View.DoctorView.RequestForLeaveView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
+        mc:Ignorable="d"
+        Title="RequestForLeaveView" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock Style="{StaticResource h1}" Text="Request for absence" Margin="273,56,0,0"/>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Label Content="Reason for absence" HorizontalAlignment="Left" Margin="283,168,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Absence start date" HorizontalAlignment="Left" Margin="283,419,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="ReasonForAbsenceTextBox" HorizontalAlignment="Left" Margin="283,226,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="369" Height="166"
+                 VerticalScrollBarVisibility="Auto" FontSize="18" 
+                 BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <DatePicker x:Name="AbsenceStartDatePicker" HorizontalAlignment="Left" Margin="283,464,0,0" VerticalAlignment="Top"
+                    BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"/>
+        <CheckBox x:Name="UrgentCheckBox" Content="Urgent" HorizontalAlignment="Left" Margin="429,530,0,0" VerticalAlignment="Top"
+                  FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Button x:Name="SendBtn" Content="Send" Margin="356,600,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="SendBtnClick"/>
+        <Button x:Name="CancelBtn" Content="Cancel" Margin="524,600,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="CancelBtnClick"/>
+        <Label Content="Absence end date" HorizontalAlignment="Left" Margin="488,419,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <DatePicker x:Name="AbsenceEndDatePicker" HorizontalAlignment="Left" Margin="494,464,0,0" VerticalAlignment="Top"
+            BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"/>
+
+    </Grid>
+</Window>

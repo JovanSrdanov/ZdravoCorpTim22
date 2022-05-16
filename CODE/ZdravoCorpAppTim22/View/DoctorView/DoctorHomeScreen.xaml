@@ -9,13 +9,13 @@
     <Grid>
         <TextBlock Margin="240,73,0,0" Text="Welcome to Zdravo Corp"
                    Style="{StaticResource ResourceKey=h1}"/>
-        <Button x:Name="SchedulingBtn" Margin="289,318,0,0" Click="ScheduleListBtn" 
+        <Button x:Name="SchedulingBtn" Margin="290,271,0,0" Click="ScheduleListBtn" 
                 Style="{StaticResource ResourceKey=homeScreenButton}">
             <Button.Background>
                 <ImageBrush ImageSource="/Resource/DoctorResource/schedule.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SchedulingBtn_Copy" Margin="528,319,0,0" Click="ViewMedRecordsClick" 
+        <Button x:Name="SchedulingBtn_Copy" Margin="530,272,0,0" Click="ViewMedRecordsClick" 
                 Style="{StaticResource ResourceKey=homeScreenButton}">
             <Button.Background>
                 <ImageBrush ImageSource="/Resource/DoctorResource/document.png"/>
@@ -32,10 +32,22 @@
                 <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Scheduling list" Margin="279,422,0,0" FontSize="16" 
+        <Label Content="Scheduling list" Margin="280,375,0,0" FontSize="16" 
                Style="{StaticResource ResourceKey=normalLabels}"/>
-        <Label Content="View medical records" Margin="497,422,0,0" FontSize="16" 
+        <Label Content="View medical records" Margin="498,375,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button x:Name="RequestForAbsenceBtn" Margin="290,427,0,0" Click="RequestForAbsenceBtnClick" 
+            Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/arrow.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Request for absence" Margin="260,532,0,0" FontSize="16" 
             Style="{StaticResource ResourceKey=normalLabels}"/>
         <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button x:Name="DrugsBtn" Content="Button" HorizontalAlignment="Left" Margin="512,446,0,0" VerticalAlignment="Top" 
+                Height="68" Width="136" Click="DrugsBtnClick"/>
+        <Label Content="Drugs" Margin="553,532,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
     </Grid>
 </Window>
