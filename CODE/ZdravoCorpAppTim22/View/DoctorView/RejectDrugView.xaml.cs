@@ -1,6 +1,7 @@
 ﻿using Controller;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,6 @@ using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for RejectDrugView.xaml
-    /// </summary>
     public partial class RejectDrugView : Window
     {
         private Medicine rejectedMedicine;
@@ -35,6 +33,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             rejectedMedicine.MedicineData.Approval.IsApproved = false;
             rejectedMedicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
             rejectedMedicine.MedicineData.Approval.Message = ReasonTextBox.Text;
+
+            DrugsView.allMedicineInStorageObservable.Remove(rejectedMedicine);
+
             ApprovalController.Instance.Update(rejectedMedicine.MedicineData.Approval);
             MedicineDataController.Instance.Update(rejectedMedicine.MedicineData);
             MedicineController.Instance.Update(rejectedMedicine);

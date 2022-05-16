@@ -7,7 +7,8 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "1634643"
+          "1",
+          "2"
         ]
       }
     ],
@@ -25,7 +26,24 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
     "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",
@@ -55,7 +73,23 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "1",
+          "6",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ],
     "DoctorSpecialization": 3,
     "Name": "Specijalista",
     "Surname": "Specijalista1",
@@ -70,7 +104,24 @@
   },
   {
     "DoctorType": 0,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
     "DoctorSpecialization": 0,
     "Name": "Regularni",
     "Surname": "Doktor",

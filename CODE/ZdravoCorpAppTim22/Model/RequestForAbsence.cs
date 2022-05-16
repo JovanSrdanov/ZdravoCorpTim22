@@ -60,5 +60,15 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        ///DODAO////////////
+        public override bool Equals(object obj)
+        {
+            return this.Doctor.Id == ((RequestForAbsence)obj).Doctor.Id;
+        }
+        public override int GetHashCode()
+        {
+            //Get the ID hash code value
+            return this.Doctor.Id.GetHashCode(); ;
+        }
     }
 }
