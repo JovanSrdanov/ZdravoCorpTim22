@@ -133,6 +133,7 @@
     </ApplicationDefinition>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\ApprovalController.cs" />
     <Compile Include="Controller\DoctorSpeccializationService.cs" />
     <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
@@ -153,12 +154,14 @@
     <Compile Include="Controller\RequestForAbsenceController.cs" />
     <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
+    <Compile Include="Model\Approval.cs" />
     <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
     <Compile Include="Model\Generic\IHasInterval.cs" />
     <Compile Include="Model\HospitalReview.cs" />
+    <Compile Include="Repository\ApprovalRepository.cs" />
     <Compile Include="Repository\HospitalReviewRepository.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\HospitalReviewToIDConverter.cs" />
     <Compile Include="Model\Ingredient.cs" />
@@ -219,6 +222,7 @@
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SecretaryRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
+    <Compile Include="Service\ApprovalService.cs" />
     <Compile Include="Service\AuthenticationService.cs" />
     <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\DoctorSpecializationService.cs" />

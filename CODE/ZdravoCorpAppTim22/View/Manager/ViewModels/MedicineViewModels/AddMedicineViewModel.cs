@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -70,7 +69,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             if(medicineData == null)
             {
                 medicineData = new MedicineData(-1, name);
+                Approval approval = new Approval
+                {
+                    IsApproved = false
+                };
+                medicineData.Approval = approval;
                 MedicineDataController.Instance.Create(medicineData);
+                ApprovalController.Instance.Create(approval);
             }
             else
             {

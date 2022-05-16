@@ -9,7 +9,22 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Doctor ApprovedBy { get; set; }
+
+        [JsonIgnore]
+        private Approval approval;
+        [JsonIgnore]
+        public Approval Approval
+        {
+            get => approval;
+            set
+            {
+                if(value != approval)
+                {
+                    approval = value;
+                    approval.MedicineData = this;
+                }
+            }
+        }
 
         [JsonIgnore]
         private ObservableCollection<Medicine> medicine;
@@ -92,6 +107,7 @@ namespace ZdravoCorpAppTim22.Model
             {
                 Id = md.Id;
                 Name = md.Name;
+                Approval = md.Approval;
                 Ingredient = md.Ingredient;
             }
         }
