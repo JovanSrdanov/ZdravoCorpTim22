@@ -28,6 +28,54 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             requestingDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
         }
 
+        private bool validateDate(Interval absenceInterval)
+        {
+            bool returnValue = true;
+            if (!RequestForAbsenceController.Instance.validateDate(absenceInterval))
+            {
+                MessageBox.Show("Invalid date input", "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue =  false;
+            }
+            return returnValue;
+        }
+
+        private bool hasAlreadyRequestedAbsenceInSelectedPeriod(Interval absenceInterval, Doctor requestingDoctor)
+        {
+            bool returnValue = false;
+            if (RequestForAbsenceController.Instance.hasAlreadyRequestedAbsenceInSelectedPeriod(absenceInterval, requestingDoctor))
+            {
+                MessageBox.Show("You have already requested for absence in the selected time period",
+                    "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = true;
+            }
+            return returnValue;
+        }
+
+        private bool alreadyHasAnAppointment(Interval absenceInterval, Doctor requestingDoctor) 
+        {
+            bool returnValue = false;
+            if (RequestForAbsenceController.Instance.alreadyHasAnAppointment(absenceInterval, requestingDoctor))
+            {
+                MessageBox.Show("You have an appointment at that time", "Request for absence",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = true;
+            }
+            return returnValue;
+        }
+
+        private bool areMultipleDoctorsOfSameTypeOnLeave(bool isUrgent, Interval absenceInterval)
+        {
+            bool returnValue = false;
+            if (isUrgent == false && RequestForAbsenceController.Instance.
+                areMultipleDoctorsOfSameTypeOnLeave(requestingDoctor.DoctorSpecialization.Name, absenceInterval))
+            {
+                MessageBox.Show("There are already multiple doctors of the same specialization on leave for that time period",
+                    "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = true;
+            }
+            return returnValue;
+        }
+
         private void SendBtnClick(object sender, RoutedEventArgs e)
         {
             string reasonForAbsence = ReasonForAbsenceTextBox.Text;
@@ -36,50 +84,28 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             absenceInterval.End = (DateTime)AbsenceEndDatePicker.SelectedDate;
             bool isUrgent = (bool)UrgentCheckBox.IsChecked;
 
-            if (!RequestForAbsenceController.Instance.validateDate(absenceInterval))
-            {
-                MessageBox.Show("Invalid date input", "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            else if (RequestForAbsenceController.Instance.hasAlreadyRequestedAbsenceInSelectedPeriod(absenceInterval, requestingDoctor))
-            {
-                MessageBox.Show("You already requested absence in selected time period",
-                    "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            else if (RequestForAbsenceController.Instance.alreadyHasAnAppointment(absenceInterval, requestingDoctor))
-            {
-                MessageBox.Show("You have an appointment at that time", "Request for absence",
-                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                return;
-            }
-            else if (isUrgent == false && RequestForAbsenceController.Instance.
-                areMultipleDoctorsOfSameTypeOnLeave(requestingDoctor.DoctorSpecialization.Name, absenceInterval))
-            {
-                MessageBox.Show("There are already multiple doctors of the same specialization on leave for that time period",
-                    "Request for absence", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            else
-            {
-                RequestForAbsence newRequest = new RequestForAbsence(reasonForAbsence, isUrgent, absenceInterval, requestingDoctor);
-                RequestForAbsenceController.Instance.Create(newRequest);
-                this.Owner.Show();
-                this.Close();
-            }
+            if (!validateDate(absenceInterval)) return;
+            if (hasAlreadyRequestedAbsenceInSelectedPeriod(absenceInterval, requestingDoctor)) return;
+            if (alreadyHasAnAppointment(absenceInterval, requestingDoctor)) return;
+            if (areMultipleDoctorsOfSameTypeOnLeave(isUrgent, absenceInterval)) return;
+
+            RequestForAbsence newRequest = new RequestForAbsence(reasonForAbsence, isUrgent, absenceInterval, requestingDoctor);
+            RequestForAbsenceController.Instance.Create(newRequest);
+
+            this.Owner.Show();
+            this.Close();
         }
 
         private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Request for absence", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            switch (result)
+            MessageBoxResult cancleAnswer = MessageBox.Show("Close window without saving?", "Request for absence", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            switch (cancleAnswer)
             {
                 case MessageBoxResult.Yes:
                     this.Owner.Show();
                     this.Close();
                     break;
                 case MessageBoxResult.No:
-
                     break;
             }
         }

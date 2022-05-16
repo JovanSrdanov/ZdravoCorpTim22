@@ -6,7 +6,9 @@
         "Id": 0,
         "BloodType": 1,
         "AllergiesList": [],
-        "ConditionList": ["1634643"]
+        "ConditionList": [
+          "1634643"
+        ]
       }
     ],
     "DoctorSpecialization": 0,
