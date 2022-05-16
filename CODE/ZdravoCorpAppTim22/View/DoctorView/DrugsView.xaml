@@ -7,15 +7,16 @@
         mc:Ignorable="d"
         Title="DrugsView" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="MedicineDataGrid" Margin="176,194,236,280"
+        <DataGrid x:Name="MedicineDataGrid" Margin="102,199,147,275"
                   AutoGenerateColumns="false" FontSize="25"
                   Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
                   VerticalScrollBarVisibility="Auto" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" Width="*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=MedicineData.Name}" Width="*"/>
                 <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" Width="*"/>
-                <DataGridTextColumn Header="Approved by" Binding="{Binding Path=MedicineData.ApprovedBy}" Width="*"/>
+                <DataGridTextColumn Header="Approved" Binding="{Binding Path=MedicineData.Approval.IsApproved}" Width="*"/>
+                <DataGridTextColumn Header="Reviewed by" Binding="{Binding Path=MedicineData.Approval.Doctor.Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Style="{StaticResource h1}" Text="Drugs" Margin="407,56,0,0"/>

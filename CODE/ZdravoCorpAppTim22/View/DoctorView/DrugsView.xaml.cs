@@ -36,14 +36,21 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void ApproveBtnClick(object sender, RoutedEventArgs e)
         {
             Medicine selected = MedicineDataGrid.SelectedItem as Medicine;
-            selected.MedicineData.ApprovedBy = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-            MedicineController.Instance.Update(selected);
+            selected.MedicineData.Approval.IsApproved = true;
+            selected.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            selected.MedicineData.Approval.Message = "";
+            ApprovalController.Instance.Update(selected.MedicineData.Approval);
             MedicineDataController.Instance.Update(selected.MedicineData);
+            MedicineController.Instance.Update(selected);
         }
 
         private void RejectBtnClick(object sender, RoutedEventArgs e)
         {
-
+            RejectDrugView rejectDrugView = new RejectDrugView(MedicineDataGrid.SelectedItem as Medicine);
+            rejectDrugView.Owner = this;
+            rejectDrugView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            rejectDrugView.Show();
+            this.Hide();
         }
 
         private void LogOutBtn(object sender, RoutedEventArgs e)

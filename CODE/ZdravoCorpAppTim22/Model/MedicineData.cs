@@ -10,8 +10,6 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        [JsonConverter(typeof(DoctorToIDConverter))]
-        public Doctor ApprovedBy { get; set; }
 
         [JsonIgnore]
         private Approval approval;

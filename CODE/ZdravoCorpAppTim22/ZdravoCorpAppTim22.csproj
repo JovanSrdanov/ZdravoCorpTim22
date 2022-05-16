@@ -286,6 +286,9 @@
     <Compile Include="View\DoctorView\ReferToDoctorView.xaml.cs">
       <DependentUpon>ReferToDoctorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\RejectDrugView.xaml.cs">
+      <DependentUpon>RejectDrugView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\RequestForLeaveView.xaml.cs">
       <DependentUpon>RequestForLeaveView.xaml</DependentUpon>
     </Compile>
@@ -477,6 +480,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\ReferToDoctorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\RejectDrugView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
