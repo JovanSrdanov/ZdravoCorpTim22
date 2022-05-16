@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "Id": 0,
+    "ReplacingMedicine": 0,
+    "ReplacementToMedicine": 1
+  },
+  {
+    "Id": 1,
+    "ReplacingMedicine": 1,
+    "ReplacementToMedicine": 2
+  },
+  {
+    "Id": 2,
+    "ReplacingMedicine": 2,
+    "ReplacementToMedicine": 3
+  },
+  {
+    "Id": 3,
+    "ReplacingMedicine": 3,
+    "ReplacementToMedicine": 4
+  }
+]
