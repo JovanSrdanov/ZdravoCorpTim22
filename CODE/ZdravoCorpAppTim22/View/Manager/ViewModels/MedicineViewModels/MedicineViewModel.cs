@@ -67,6 +67,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
                 MedicineController.Instance.DeleteByID(m.Id);
             }
             medicine.MedicineData.RemoveAllIngredient();
+            if(medicine.MedicineData.Approval != null)
+            {
+                ApprovalController.Instance.DeleteByID(medicine.MedicineData.Approval.Id);
+            }
             MedicineDataController.Instance.DeleteByID(medicine.MedicineData.Id);
         }
 
