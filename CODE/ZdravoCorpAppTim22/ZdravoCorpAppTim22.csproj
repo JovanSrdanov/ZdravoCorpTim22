@@ -134,7 +134,6 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\ApprovalController.cs" />
-    <Compile Include="Controller\DoctorSpeccializationService.cs" />
     <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
@@ -355,6 +354,7 @@
     </Compile>
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\AddMedicineViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\EditMedicineViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDetailsViewModel.cs" />
@@ -377,6 +377,9 @@
     </Compile>
     <Compile Include="View\Manager\Views\InfoModal.xaml.cs">
       <DependentUpon>InfoModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Views\MedicineDetailsModal.xaml.cs">
+      <DependentUpon>MedicineDetailsModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Views\RoomAppointments\CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
@@ -599,6 +602,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Manager\Styles\ModalStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Manager\Styles\ScrollBarStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -616,6 +623,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Views\InfoModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\MedicineDetailsModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

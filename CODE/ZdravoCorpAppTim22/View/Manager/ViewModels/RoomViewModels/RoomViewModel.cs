@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 {
@@ -56,9 +57,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void DeleteRoom(object obj)
         {
-            List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
-            Room room = selectedRooms[0];
-            RoomController.Instance.DeleteByID(room.Id);
+            if (ConfirmModal.Show("Are you sure?"))
+            {
+                List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
+                Room room = selectedRooms[0];
+                RoomController.Instance.DeleteByID(room.Id);
+            }
         }
 
         public void OpenDetails(object obj)
