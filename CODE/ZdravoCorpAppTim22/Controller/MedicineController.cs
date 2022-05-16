@@ -24,13 +24,6 @@ namespace ZdravoCorpAppTim22.Controller
         {
             return MedicineService.Instance.GetAllFree();
         }
-        public List<Medicine> GetAllApproved()
-        {
-            return MedicineService.Instance.GetAllApproved();
-        }
-        public List<Medicine> GetAllUnapproved()
-        {
-            return MedicineService.Instance.GetAllUnapproved();
-        }
+        
     }
 }
