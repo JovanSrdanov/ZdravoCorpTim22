@@ -302,7 +302,7 @@
                     <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
                 </TabItem.Header>
                 <Grid>
-                    <StackPanel Background="Transparent">
+                    <StackPanel Margin="42,0,42,0" Background="Transparent">
                         <Label
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -310,11 +310,11 @@
                             Content="Pregled kartona"
                             FontSize="36"
                             FontWeight="Bold" />
-                        <StackPanel Margin="42,21,0,0" Orientation="Horizontal">
+                        <StackPanel Margin="0,21,0,0" Orientation="Horizontal">
                             <Image
                                 Width="272"
                                 Height="272"
-                                Margin="0,0,21,0"
+                                Margin="0,0,84,0"
                                 Source="../../Resource/PatientResource/patient.jpg" />
                             <Grid HorizontalAlignment="Left">
                                 <Grid.ColumnDefinitions>
@@ -421,7 +421,29 @@
                                     HorizontalAlignment="Left" />
                             </Grid>
                         </StackPanel>
+                        <Grid Margin="0,21,0,0">
 
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="Yellow"
+                                Content="Medicinski karton" />
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Background="Yellow"
+                                Content="Medicinski izveštaji" />
+                            <Button
+                                Padding="10,1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Background="#FFDE3232"
+                                Content="Obriši nalog"
+                                FontSize="18"
+                                Foreground="White" />
+                        </Grid>
                     </StackPanel>
                     <StackPanel
                         Margin="0,0,0,42"
@@ -449,7 +471,8 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="14"
-                                    TextWrapping="Wrap"><Run Text="Označite izveštaj za koji želite da vidite ili ocenite i onda stisnite dugme &quot;Pregled izveštaja&quot;." /></TextBlock>
+                                    Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                    TextWrapping="Wrap" />
                                 <Image
                                     Width="50"
                                     Height="50"
