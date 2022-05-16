@@ -34,6 +34,17 @@ namespace ZdravoCorpAppTim22.Service
             return list;
         }
 
-        
+        public List<Medicine> GetAllApproved()
+        {
+            List<Medicine> list = new List<Medicine>();
+            foreach (Medicine m in GetAllFree())
+            {
+                if (m.MedicineData.Approval.IsApproved)
+                {
+                    list.Add(m);
+                }
+            }
+            return list;
+        }
     }
 }

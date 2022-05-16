@@ -37,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             selectedMedicine = selectedMedicalReceipt.Medicine[0];
             AmountComboBox.Text = selectedMedicine.Amount.ToString();
 
-            MedicationComboBox.ItemsSource = MedicineDataController.Instance.GetAll();
+            MedicationComboBox.ItemsSource = MedicineDataController.Instance.GetAllApproved();
             MedicationComboBox.SelectedValuePath = "Id";
             if(selectedMedicalReport.MedicalReceipt.Medicine.Count > 0)
             {

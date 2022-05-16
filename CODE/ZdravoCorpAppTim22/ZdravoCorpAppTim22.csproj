@@ -134,7 +134,6 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controller\AddressController.cs" />
     <Compile Include="Controller\ApprovalController.cs" />
-    <Compile Include="Controller\DoctorSpeccializationService.cs" />
     <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
