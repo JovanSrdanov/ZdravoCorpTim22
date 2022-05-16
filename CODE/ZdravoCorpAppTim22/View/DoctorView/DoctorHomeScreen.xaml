@@ -45,5 +45,9 @@
         <Label Content="Request for absence" Margin="260,532,0,0" FontSize="16" 
             Style="{StaticResource ResourceKey=normalLabels}"/>
         <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button x:Name="DrugsBtn" Content="Button" HorizontalAlignment="Left" Margin="512,446,0,0" VerticalAlignment="Top" 
+                Height="68" Width="136" Click="DrugsBtnClick"/>
+        <Label Content="Drugs" Margin="553,532,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
     </Grid>
 </Window>

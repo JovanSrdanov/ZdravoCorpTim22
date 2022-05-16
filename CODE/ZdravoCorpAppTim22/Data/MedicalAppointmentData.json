@@ -10,17 +10,5 @@
     "Room": null,
     "Patient": 0,
     "Doctor": 1
-  },
-  {
-    "Id": 2,
-    "Type": 0,
-    "Interval": {
-      "Start": "2022-05-20T10:30:00",
-      "End": "2022-05-20T10:30:00"
-    },
-    "isUrgent": false,
-    "Room": 1,
-    "Patient": 0,
-    "Doctor": 0
   }
 ]

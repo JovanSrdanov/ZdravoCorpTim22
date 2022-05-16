@@ -25,5 +25,14 @@
     "AdditionalInstructions": "2",
     "TherapyPurpose": "2",
     "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T11:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": 0
   }
 ]
