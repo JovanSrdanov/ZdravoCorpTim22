@@ -42,12 +42,18 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
+            PatientController.Instance.AntiTroll(ZdravoCorpTabs.LoggedPatient);
+            if (ZdravoCorpTabs.LoggedPatient == null)
+            {
+                Close();
+                return;
+            }
+            
             MedicalAppointment medicalAppointmentTemp = new MedicalAppointment(ZdravoCorpTabs.MedicalAppointmentSelected.Id, medicalAppointmentStruct.Type, medicalAppointmentStruct.Interval, medicalAppointmentStruct.Room, medicalAppointmentStruct.Patient, medicalAppointmentStruct.Doctor);
 
             MedicalAppointmentController.Instance.Update(medicalAppointmentTemp);
             ZdravoCorpTabs.MedicalAppointmentList.Remove(ZdravoCorpTabs.MedicalAppointmentSelected);
             ZdravoCorpTabs.MedicalAppointmentList.Add(medicalAppointmentTemp);
-            PatientController.Instance.AntiTroll(ZdravoCorpTabs.LoggedPatient);
             Close();
         }
     }

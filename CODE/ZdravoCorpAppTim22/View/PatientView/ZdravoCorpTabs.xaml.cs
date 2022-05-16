@@ -97,10 +97,15 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
+            PatientController.Instance.AntiTroll(LoggedPatient);
+            if (LoggedPatient == null)
+            {
+                Close();
+                return;
+            }
 
             MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
             MedicalAppointmentList.Remove(MedicalAppointmentSelected);
-            PatientController.Instance.AntiTroll(LoggedPatient);
 
         }
 
@@ -126,9 +131,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
         {
             
             Close();
-            LoggedPatient = null;
-            AuthenticationController.Instance.Logout();
-            App.Current.MainWindow.Show();
+           
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
@@ -141,10 +144,11 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void ZdravoCorpTabs_OnClosing(object sender, CancelEventArgs e)
         {
-           
+            
             LoggedPatient = null;
             AuthenticationController.Instance.Logout();
-            App.Current.MainWindow.Show();
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

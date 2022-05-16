@@ -127,13 +127,15 @@ namespace Service
             RemovingOutdatedSuspiciousActivity(patient);
             patient.SuspiciousActivity.Add(DateTime.Now);
             Instance.Update(patient);
-            if (CheckIfTroll(patient)) return;
-            SanctioningTroll(patient);
+            if (CheckIfTroll(patient))
+            {
+                SanctioningTroll(patient);
+            }
         }
 
         private static bool CheckIfTroll(Patient patient)
         {
-            return patient.SuspiciousActivity.Count < Constants.Constants.SUSPICIOUS_ACTIVITY_COUNT;
+            return patient.SuspiciousActivity.Count >= Constants.Constants.MAX_SUSPICIOUS_ACTIVITY_COUNT;
         }
 
         private static void SanctioningTroll(Patient patient)
@@ -152,10 +154,11 @@ namespace Service
 
         private static void TrollLogOut()
         {
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
             AuthenticationController.Instance.Logout();
-            App.Current.MainWindow.Show();
+           System.Windows.Forms.Application.Restart();
+           System.Windows.Application.Current.Shutdown();
+            
+
         }
 
         private static void RemovingOutdatedSuspiciousActivity(Patient patient)
