@@ -30,7 +30,7 @@
                 <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BackBtn" Content="Back" Margin="617,600,0,0" Click="BackBtnClick" 
+        <Button x:Name="BackBtn" Content="Back" Margin="605,600,0,0" Click="BackBtnClick" 
                 FontSize="16" Height="40" Width="80" Style="{StaticResource normalButton}"/>
         <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
         <Button x:Name="ApproveBtn" Content="Approve" Margin="271,600,0,0"

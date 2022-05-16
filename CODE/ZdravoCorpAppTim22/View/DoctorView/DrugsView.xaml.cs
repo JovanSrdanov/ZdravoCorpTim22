@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -34,7 +35,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         //Button event handlers
         private void ApproveBtnClick(object sender, RoutedEventArgs e)
         {
-
+            Medicine selected = MedicineDataGrid.SelectedItem as Medicine;
+            selected.MedicineData.ApprovedBy = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            MedicineController.Instance.Update(selected);
+            MedicineDataController.Instance.Update(selected.MedicineData);
         }
 
         private void RejectBtnClick(object sender, RoutedEventArgs e)
