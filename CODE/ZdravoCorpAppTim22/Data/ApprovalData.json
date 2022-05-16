@@ -8,10 +8,10 @@
   },
   {
     "Id": 1,
-    "IsApproved": false,
+    "IsApproved": true,
     "Doctor": 0,
     "MedicineData": 1,
-    "Message": "sads"
+    "Message": ""
   },
   {
     "Id": 2,
@@ -22,16 +22,30 @@
   },
   {
     "Id": 3,
-    "IsApproved": false,
+    "IsApproved": true,
     "Doctor": 0,
     "MedicineData": 3,
-    "Message": "sdada"
+    "Message": ""
   },
   {
     "Id": 4,
-    "IsApproved": false,
-    "Doctor": 1,
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 4,
-    "Message": "sad"
+    "Message": ""
+  },
+  {
+    "Id": 5,
+    "IsApproved": false,
+    "Doctor": 0,
+    "MedicineData": 5,
+    "Message": "55515151"
+  },
+  {
+    "Id": 6,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 6,
+    "Message": null
   }
 ]

@@ -1,13 +1,13 @@
 [
   {
-    "Id": 1,
+    "Id": 0,
     "Type": 2,
     "Interval": {
-      "Start": "2022-05-26T11:30:00",
-      "End": "2022-05-26T11:30:00"
+      "Start": "2022-05-28T08:00:00",
+      "End": "2022-05-28T09:00:00"
     },
-    "isUrgent": true,
-    "Room": null,
+    "isUrgent": false,
+    "Room": 1,
     "Patient": 0,
     "Doctor": 1
   },
@@ -15,8 +15,8 @@
     "Id": 2,
     "Type": 0,
     "Interval": {
-      "Start": "2022-06-02T11:00:00",
-      "End": "2022-06-02T11:00:00"
+      "Start": "2022-06-12T08:15:00",
+      "End": "2022-06-12T08:30:00"
     },
     "isUrgent": false,
     "Room": 3,

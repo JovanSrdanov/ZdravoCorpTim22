@@ -1,12 +1,14 @@
 [
   {
+    "DoctorType": 0,
     "MedicalRecord": [
       {
         "Id": 0,
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "1634643"
+          "1",
+          "2"
         ]
       }
     ],
@@ -23,7 +25,25 @@
     "Address": 0
   },
   {
-    "MedicalRecord": [],
+    "DoctorType": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
     "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",
@@ -37,6 +57,7 @@
     "Address": 1
   },
   {
+    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "OpstaPraksa1",
@@ -51,7 +72,24 @@
     "Address": 15
   },
   {
-    "MedicalRecord": [],
+    "DoctorType": 1,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "1",
+          "6",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ],
     "DoctorSpecialization": 3,
     "Name": "Specijalista",
     "Surname": "Specijalista1",
@@ -65,7 +103,25 @@
     "Address": 16
   },
   {
-    "MedicalRecord": [],
+    "DoctorType": 0,
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
     "DoctorSpecialization": 0,
     "Name": "Regularni",
     "Surname": "Doktor",
@@ -77,19 +133,5 @@
     "Gender": 0,
     "Id": 4,
     "Address": 17
-  },
-  {
-    "MedicalRecord": [],
-    "DoctorSpecialization": 2,
-    "Name": "Euro",
-    "Surname": "Neuro",
-    "Email": "",
-    "Jmbg": "213321233123123123",
-    "Password": "12121212",
-    "Birthday": "2022-05-16T00:00:00+02:00",
-    "Phone": "",
-    "Gender": 0,
-    "Id": 5,
-    "Address": 21
   }
 ]

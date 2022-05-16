@@ -20,6 +20,26 @@ namespace Model
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
         public MedicalReceipt MedicalReceipt { get; set; }
 
+
+
+        [JsonConverter(typeof(ReportReviewToIDConverter))]
+
+        public ReportReview reportReview;
+        [JsonConverter(typeof(ReportReviewToIDConverter))]
+
+        public ReportReview ReportReview
+        {
+            get
+            {
+                return reportReview;
+            }
+            set
+            {
+                this.reportReview = value;
+            }
+        }
+
+
         [JsonConstructor]
         public MedicalReport() { }
         public MedicalReport(int id, string anamnesis, string diagnosis, DateTime ReportDate, MedicalRecord medicalRecord)
