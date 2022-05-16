@@ -2,9 +2,9 @@
   {
     "Id": 0,
     "StaffHospitality": 4,
-    "Accessibility": 3,
-    "Hygiene": 2,
-    "Appearance": 5,
-    "Application": 1
+    "Accessibility": 4,
+    "Hygiene": 4,
+    "Appearance": 4,
+    "Application": 4
   }
 ]

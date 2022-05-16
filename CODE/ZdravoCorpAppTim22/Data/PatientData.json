@@ -1,21 +1,18 @@
 [
   {
-    "Blocked": true,
+    "Blocked": false,
     "SuspiciousActivity": [
-      "2022-05-15T13:16:46.5586179+02:00",
-      "2022-05-15T13:16:50.6187438+02:00",
-      "2022-05-15T13:18:21.710249+02:00",
-      "2022-05-15T13:18:45.4279654+02:00"
+      "2022-05-16T14:21:35.7911795+02:00"
     ],
     "HospitalReview": 0,
-    "MedicalRecord": 0,
-    "Name": "Joja",
+    "MedicalRecord": 3,
+    "Name": "Jovan",
     "Surname": "Srdanov",
-    "Email": "123",
-    "Jmbg": "123",
-    "Password": "joja",
-    "Birthday": "2022-04-01T00:00:00",
-    "Phone": "123",
+    "Email": "j",
+    "Jmbg": "123456789101",
+    "Password": "j",
+    "Birthday": "2000-11-01T00:00:00",
+    "Phone": "0647057575",
     "Gender": 0,
     "Id": 0,
     "Address": 20

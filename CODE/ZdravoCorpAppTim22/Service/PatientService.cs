@@ -38,10 +38,10 @@ namespace Service
             return PatientRepository.Instance.GetPatient(patient);
         }
         
-        public void DaemonMethod()
+        public void TherapyNotification()
         {
         
-            if (PatientSelectionForTemporaryPurpose.LoggedPatient == null)
+            if (ZdravoCorpTabs.LoggedPatient == null)
             {
                 return;
             }
@@ -52,7 +52,7 @@ namespace Service
                 {
                     App.Current.Dispatcher.Invoke(delegate
                     {
-                        MedicalRecord medRec = PatientSelectionForTemporaryPurpose.LoggedPatient.medicalRecord;
+                        MedicalRecord medRec = ZdravoCorpTabs.LoggedPatient.medicalRecord;
 
 
                         if (medRec == null)
@@ -121,27 +121,49 @@ namespace Service
             }
         }
 
-        public void AntiTroll(Patient patient,DateTime activity)
+        public void AntiTroll(Patient patient)
         {
 
-            foreach (var dateTime in patient.SuspiciousActivity.ToList().Where(dateTime => dateTime < DateTime.Now.AddDays(-30)))
+            RemovingOutdatedSuspiciousActivity(patient);
+            patient.SuspiciousActivity.Add(DateTime.Now);
+            Instance.Update(patient);
+            if (CheckIfTroll(patient)) return;
+            SanctioningTroll(patient);
+        }
+
+        private static bool CheckIfTroll(Patient patient)
+        {
+            return patient.SuspiciousActivity.Count < Constants.Constants.SUSPICIOUS_ACTIVITY_COUNT;
+        }
+
+        private static void SanctioningTroll(Patient patient)
+        {
+            Blocking(patient);
+            TrollLogOut();
+        }
+
+        private static void Blocking(Patient patient)
+        {
+            patient.Blocked = true;
+            Instance.Update(patient);
+            ZdravoCorpTabs.LoggedPatient = null;
+            MessageBox.Show("Pacijent je blokiran!");
+        }
+
+        private static void TrollLogOut()
+        {
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
+            AuthenticationController.Instance.Logout();
+            App.Current.MainWindow.Show();
+        }
+
+        private static void RemovingOutdatedSuspiciousActivity(Patient patient)
+        {
+            foreach (var dateTime in patient.SuspiciousActivity.ToList()
+                         .Where(dateTime => dateTime < DateTime.Now.AddDays(-Constants.Constants.SUSPICIOUS_ACTIVITY_DAYS_RANGE)))
             {
                 patient.SuspiciousActivity.Remove(dateTime);
-            }
-            
-            patient.SuspiciousActivity.Add(activity);
-            Instance.Update(patient);
-
-            if (patient.SuspiciousActivity.Count >= 3)
-            {
-                
-                patient.Blocked = true;
-                Instance.Update(patient);
-
-                MessageBox.Show("Pacijent je blokiran!");
-                System.Windows.Forms.Application.Restart();
-                System.Windows.Application.Current.Shutdown();
-                
             }
         }
     }

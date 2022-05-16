@@ -369,18 +369,18 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         {
             SubmitReviewCommand = new MyICommand(SubmitReview);
 
-            if (PatientSelectionForTemporaryPurpose.LoggedPatient.HospitalReview == null)
+            if (ZdravoCorpTabs.LoggedPatient.HospitalReview == null)
             {
                 SelectedHospitalReview = new HospitalReview();
-                PatientSelectionForTemporaryPurpose.LoggedPatient.HospitalReview = SelectedHospitalReview;
+                ZdravoCorpTabs.LoggedPatient.HospitalReview = SelectedHospitalReview;
                 HospitalReviewController.Instance.Create(SelectedHospitalReview);
-                PatientController.Instance.Update(PatientSelectionForTemporaryPurpose.LoggedPatient);
+                PatientController.Instance.Update(ZdravoCorpTabs.LoggedPatient);
 
             }
 
             else
             {
-                SelectedHospitalReview = PatientSelectionForTemporaryPurpose.LoggedPatient.HospitalReview;
+                SelectedHospitalReview = ZdravoCorpTabs.LoggedPatient.HospitalReview;
             }
 
             SetAll();
@@ -395,9 +395,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
             SelectedHospitalReview.Appearance = AppearanceCheck();
             SelectedHospitalReview.Application = ApplicationCheck();
 
-            PatientSelectionForTemporaryPurpose.LoggedPatient.hospitalReview = SelectedHospitalReview;
+            ZdravoCorpTabs.LoggedPatient.hospitalReview = SelectedHospitalReview;
             HospitalReviewController.Instance.Update(SelectedHospitalReview);
-            PatientController.Instance.Update(PatientSelectionForTemporaryPurpose.LoggedPatient);
+            PatientController.Instance.Update(ZdravoCorpTabs.LoggedPatient);
             MessageBox.Show("Bolnica uspešno ocenjena!");
 
 

@@ -8,5 +8,7 @@
         public const int DURATION_CHECKUP = 15;
         public const int DURATION_EXAMINATION = 30;
         public const int DURATION_OPERATION = 60;
+        public const int SUSPICIOUS_ACTIVITY_COUNT = 3;
+        public const int SUSPICIOUS_ACTIVITY_DAYS_RANGE = 30;
     }
 }
