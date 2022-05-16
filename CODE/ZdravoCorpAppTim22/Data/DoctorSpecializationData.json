@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 0,
+    "Name": "Regular"
+  },
+  {
+    "Id": 1,
+    "Name": "Surgeon"
+  },
+  {
+    "Id": 2,
+    "Name": "Neurologist"
+  },
+  {
+    "Id": 3,
+    "Name": "Dermatologist"
+  }
+]

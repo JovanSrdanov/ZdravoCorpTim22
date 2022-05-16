@@ -112,7 +112,9 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Xamarin.Forms.5.0.0.2401\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
@@ -131,6 +133,8 @@
     </ApplicationDefinition>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Controller\AddressController.cs" />
+    <Compile Include="Controller\DoctorSpeccializationService.cs" />
+    <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
@@ -146,8 +150,10 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentRelocationController.cs" />
     <Compile Include="Controller\ReplacementController.cs" />
+    <Compile Include="Controller\RequestForAbsenceController.cs" />
     <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
+    <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="Model\EquipmentData.cs" />
     <Compile Include="Model\EquipmentRelocation.cs" />
     <Compile Include="Model\Generic\IHasID.cs" />
@@ -164,13 +170,17 @@
     <Compile Include="Model\MedicineData.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\Replacement.cs" />
+    <Compile Include="Model\RequestForAbsence.cs" />
+    <Compile Include="Model\RequestState.cs" />
     <Compile Include="Model\RoomDiverge.cs" />
     <Compile Include="Model\RoomMerge.cs" />
     <Compile Include="Model\Utility\Interval.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\DoctorSpecializationRepository.cs" />
     <Compile Include="Repository\EquipmentDataRepository.cs" />
     <Compile Include="Repository\FileHandlers\GenericFileHandler.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\AddressToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\DoctorSerializationToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\DoctorToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\IngredientDataToIDConverter.cs" />
@@ -183,6 +193,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\PatientToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentRelocationToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\EquipmentDataToIDConverter.cs" />
+    <Compile Include="Repository\FileHandlers\Serialization\RequestForAbsenceToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\RoomToIDConverter.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\Serializer.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
@@ -202,6 +213,7 @@
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\EquipmentRelocationRepository.cs" />
     <Compile Include="Repository\ReplacementRepository.cs" />
+    <Compile Include="Repository\RequestForAbsenceRepository.cs" />
     <Compile Include="Repository\RoomDivergeRepository.cs" />
     <Compile Include="Repository\RoomMergeRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
@@ -209,6 +221,7 @@
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\AuthenticationService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\DoctorSpecializationService.cs" />
     <Compile Include="Service\EquipmentDataService.cs" />
     <Compile Include="Service\Generic\GenericService.cs" />
     <Compile Include="Service\Generic\IService.cs" />
@@ -227,6 +240,7 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\EquipmentRelocationService.cs" />
     <Compile Include="Service\ReplacementService.cs" />
+    <Compile Include="Service\RequestForAbsenceService.cs" />
     <Compile Include="Service\RoomDivergeService.cs" />
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />
@@ -263,6 +277,9 @@
     </Compile>
     <Compile Include="View\DoctorView\ReferToDoctorView.xaml.cs">
       <DependentUpon>ReferToDoctorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\RequestForLeaveView.xaml.cs">
+      <DependentUpon>RequestForLeaveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
@@ -448,6 +465,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\ReferToDoctorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\RequestForLeaveView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -744,6 +765,7 @@
     <Resource Include="Resource\DoctorResource\hospital.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\DoctorResource\arrow.png" />
     <Resource Include="Resource\PatientResource\info.png" />
   </ItemGroup>
   <ItemGroup>

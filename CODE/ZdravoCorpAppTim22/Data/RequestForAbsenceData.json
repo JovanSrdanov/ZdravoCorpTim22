@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 0,
+    "Reason": "",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-05-20T00:00:00",
+      "End": "2022-05-21T00:00:00"
+    },
+    "RequestState": 2,
+    "Doctor": 0
+  },
+  {
+    "Id": 1,
+    "Reason": "",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-05-20T00:00:00",
+      "End": "2022-05-21T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
+  }
+]
