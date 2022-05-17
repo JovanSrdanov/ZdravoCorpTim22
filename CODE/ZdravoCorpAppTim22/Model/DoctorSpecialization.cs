@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
 namespace ZdravoCorpAppTim22.Model
@@ -19,6 +14,11 @@ namespace ZdravoCorpAppTim22.Model
         public DoctorSpecialization(string name)
         {
             Name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

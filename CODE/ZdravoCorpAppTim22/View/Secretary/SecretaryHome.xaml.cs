@@ -22,8 +22,8 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void EmergencyBtn_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(this);
-            secretaryEmergency.Show();
+            SecretaryEmergencyOptions secretaryEmergencyOptions = new SecretaryEmergencyOptions(this);
+            secretaryEmergencyOptions.Show();
             this.Hide();
         }
 
@@ -35,6 +35,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
         {
             SecretaryScheduleOptions secretarySchedule = new SecretaryScheduleOptions(this);
+            secretarySchedule.Show();
+            this.Hide();
+        }
+
+        private void MedicalOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMedicalOrder secretarySchedule = new SecretaryMedicalOrder(this);
             secretarySchedule.Show();
             this.Hide();
         }

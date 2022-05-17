@@ -39,6 +39,11 @@ namespace Controller
             return MedicalAppointmentService.Instance.GetNewMedicalAppointments(doctor, room, enteredPatient, selectedDateTime, type);
         }
 
+        public ObservableCollection<MedicalAppointment> GetUnavailableMedicalAppointmentsInNextHour(AppointmentPreferences appointmentPreferences)
+        {
+            return MedicalAppointmentService.Instance.GetUnavailableMedicalAppointmentsInNextHour(appointmentPreferences);
+        }
+
 
     }
 }

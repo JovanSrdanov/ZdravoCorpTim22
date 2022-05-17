@@ -15,5 +15,10 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.WarehousePages
             DataContext = ViewModel;
             TypeComboBox.ItemsSource = Enum.GetValues(typeof(EquipmentType));
         }
+
+        private void ButtonConfirm_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ZdravoCorpAppTim22.Model
                 Id = m.Id;
                 Amount = m.Amount;
                 MedicineData = new MedicineData(m.MedicineData);
-                
+
             }
         }
 
@@ -78,6 +78,11 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
-        
+        public override string ToString()
+        {
+            return MedicineData.Name;
+        }
+
+
     }
 }

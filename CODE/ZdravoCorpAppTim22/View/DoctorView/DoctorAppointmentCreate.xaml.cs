@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -39,8 +40,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             ObservableCollection<AppointmentType> newAppointmentTypes = new ObservableCollection<AppointmentType>(appointmentTypes);
             newAppointmentTypes.Remove(AppointmentType.Operation);
             doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-
-            if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+            if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
             {
                 AppointmentTypeCBOX.ItemsSource = Enum.GetValues(typeof(AppointmentType));
             }
@@ -103,7 +104,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             interval.Start = dateTime;
             interval.End = dateTime;
 
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1,at, interval, room, patient, doctor);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1, at, interval, room, patient, doctor);
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
 

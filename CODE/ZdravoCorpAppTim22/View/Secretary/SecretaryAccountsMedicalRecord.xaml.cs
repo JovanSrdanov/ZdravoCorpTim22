@@ -2,6 +2,8 @@
 using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
+
 namespace ZdravoCorpAppTim22.View.Secretary
 {
     /// <summary>
@@ -15,6 +17,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             InitializeComponent();
             MedicalRecord = medicalRecord;
+            comboBoxAllergies.ItemsSource = MedicineController.Instance.GetAll();
             if (MedicalRecord.AllergiesList != null)
             {
                 for (int i = 0; i < MedicalRecord.AllergiesList.Count; i++)

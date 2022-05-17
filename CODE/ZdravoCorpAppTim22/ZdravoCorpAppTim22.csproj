@@ -456,8 +456,23 @@
     <Compile Include="View\Secretary\SecretaryEmergency.xaml.cs">
       <DependentUpon>SecretaryEmergency.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergencyAvailableAppointments.xaml.cs">
+      <DependentUpon>SecretaryEmergencyAvailableAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergencyChangeSchedule.xaml.cs">
+      <DependentUpon>SecretaryEmergencyChangeSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergencyOptions.xaml.cs">
+      <DependentUpon>SecretaryEmergencyOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryHome.xaml.cs">
       <DependentUpon>SecretaryHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryMedicalOrder.xaml.cs">
+      <DependentUpon>SecretaryMedicalOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryNewEquipement.xaml.cs">
+      <DependentUpon>SecretaryNewEquipement.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Secretary\SecretarySchedule.xaml.cs">
       <DependentUpon>SecretarySchedule.xaml</DependentUpon>
@@ -736,7 +751,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Secretary\SecretaryEmergencyAvailableAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryEmergencyChangeSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryEmergencyOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Secretary\SecretaryHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMedicalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryNewEquipement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -754,7 +789,6 @@
     <Compile Include="Model\AppointmentType.cs" />
     <Compile Include="Model\BloodType.cs" />
     <Compile Include="Model\Doctor.cs" />
-    <Compile Include="Model\DoctorSpecialisationType.cs" />
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentType.cs" />
     <Compile Include="Model\Gender.cs" />
