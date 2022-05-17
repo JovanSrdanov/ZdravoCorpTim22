@@ -44,7 +44,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             {
                 CreateReportBtn.IsEnabled = false;
                 CreateReportBtn.Foreground = new SolidColorBrush(Colors.Black);
-                FinishReportBtn.Visibility = Visibility.Hidden;
+                FinishReportBtn.IsEnabled = false;
             }
 
             MedicalRecord medRec = selectedPatient.MedicalRecord;

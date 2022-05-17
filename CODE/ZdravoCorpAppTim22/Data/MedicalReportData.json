@@ -4,71 +4,19 @@
     "DoctorID": 0,
     "Anamnesis": "1",
     "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:18:27.8971764+02:00",
+    "ReportDate": "2022-05-17T10:06:41.6415636+02:00",
     "MedicalReceipt": 0,
+    "ReportReview": null,
     "MedicalRecord": 0
   },
   {
     "Id": 1,
     "DoctorID": 0,
-    "Anamnesis": "2",
-    "Diagnosis": "2",
-    "ReportDate": "2022-05-16T21:18:36.925244+02:00",
+    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/28/2022 10:00:00 AM\nComment for the specialist:\n1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-05-17T10:07:18.274463+02:00",
     "MedicalReceipt": 1,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 2,
-    "DoctorID": 0,
-    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/20/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:19:01.2028067+02:00",
-    "MedicalReceipt": 2,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 3,
-    "DoctorID": 0,
-    "Anamnesis": "6\n\nReffered to: Specijalista Specijalista1\nAppointment date: 5/27/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "6",
-    "ReportDate": "2022-05-16T21:19:23.9117536+02:00",
-    "MedicalReceipt": 3,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 4,
-    "DoctorID": 1,
-    "Anamnesis": "1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:20:23.5674095+02:00",
-    "MedicalReceipt": 4,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 5,
-    "DoctorID": 1,
-    "Anamnesis": "1\n\nReffered to: doc docprez\nAppointment date: 5/28/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:20:50.4520945+02:00",
-    "MedicalReceipt": 5,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 6,
-    "DoctorID": 0,
-    "Anamnesis": "1\n\nReffered to: Specijalista Specijalista1\nAppointment date: 5/20/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:21:41.9009523+02:00",
-    "MedicalReceipt": 6,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 7,
-    "DoctorID": 3,
-    "Anamnesis": "1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-16T21:22:02.8038928+02:00",
-    "MedicalReceipt": 7,
+    "ReportReview": null,
     "MedicalRecord": 0
   }
 ]

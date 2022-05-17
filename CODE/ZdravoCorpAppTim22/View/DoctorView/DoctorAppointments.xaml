@@ -12,35 +12,49 @@
                   Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
                   Margin="51,160,104,0" FontSize="25" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" Width="*"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Path=Interval.Start}" Width="auto"/>
+                <DataGridTextColumn Header="Date and Time" Binding="{Binding Path=Interval.Start.Date}" Width="auto"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.Id}" Width="*"/>
+                <DataGridTextColumn Header="Appointment type" Binding="{Binding Path=Type}" Width="auto"/>
                 <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}" Width="*"/>
-                <DataGridTextColumn Header="Doctor" Binding="{Binding Path=Doctor.Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="btnCreate" Content="Create appointment" Margin="347,616,0,0" Style="{StaticResource normalButton}" 
-                Click="btnCreate_Click" FontSize="20"/>
-        <Button Name="btnDelete" Content="Cancel appointment" Margin="535,616,0,0" Click="btnDelete_Click"
-                FontSize="20" Style="{StaticResource normalButton}"/>
-        <Button x:Name="BackBtn" Content="Back" Margin="861,683,0,0" Click="BackBtnClick"
-                FontSize="20" Style="{StaticResource normalButton}"/>
-        <Button x:Name="ViewMedRecBtn" Content="View record" Margin="791,124,0,0" 
+        <Button Name="btnCreate" Content="Create appointment" Margin="56,608,0,0" Style="{StaticResource normalButton}" 
+                Click="btnCreate_Click" FontSize="20" Height="40"/>
+        <Button Name="btnDelete" Content="Cancel appointment" Margin="541,608,0,0" Click="btnDelete_Click"
+                FontSize="20" Style="{StaticResource normalButton}" Height="40"/>
+        <Button x:Name="BackBtn" Content="Back" Margin="796,608,0,0" Click="BackBtnClick"
+                FontSize="20" Style="{StaticResource normalButton}" Height="40" Width="102"/>
+        <Button x:Name="ViewMedRecBtn" Content="View record" Margin="791,114,0,0" Height="40" 
                 Click="ViewRecordBtn" FontSize="20" Style="{StaticResource normalButton}"/>
-        <Button x:Name="BeginAppointmentBtn" Content="Begin appointment" Margin="724,616,0,0" 
+        <Button x:Name="BeginAppointmentBtn" Content="Begin appointment" Margin="303,608,0,0" Height="40" 
                 Click="BeginAppointmentClick" FontSize="20" Style="{StaticResource normalButton}"/>
         <TextBlock Style="{StaticResource h1}" Text="Schedule" Margin="381,56,0,0"/>
+        <Button Margin="973,348,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
         <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
             Style="{StaticResource ResourceKey=statusBarButtonStyle}">
             <Button.Background>
                 <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
             </Button.Background>
         </Button>
-        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
             </Button.Background>
         </Button>
-        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
