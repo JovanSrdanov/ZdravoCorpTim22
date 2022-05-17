@@ -147,5 +147,12 @@ namespace ZdravoCorpAppTim22.View.PatientView
             AuthenticationController.Instance.Logout();
             App.Current.MainWindow.Show();
         }
+
+        private void MedicalReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalReportsWindow medicalReportsWindow = new MedicalReportsWindow(LoggedPatient);
+            medicalReportsWindow.ShowDialog();
+
+        }
     }
 }

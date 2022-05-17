@@ -35,7 +35,7 @@ namespace ZdravoCorpAppTim22.Controller
         public void Logout()
         {
             AuthenticationService.Instance.Logout();
-            LoggedOutEvent.Invoke(this, new EventArgs());
+            LoggedOutEvent?.Invoke(this, new EventArgs());
         }
 
         public User GetLoggedUser()

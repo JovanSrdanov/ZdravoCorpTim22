@@ -6,7 +6,7 @@ namespace ZdravoCorpAppTim22.Model
     public class ReportReview : IHasID
     {
         public int Id { get; set; }
-        public bool ReportReviewed { get; set; }
+      
 
         public int Diagnosis { get; set; }
         public int RecommendedTherapy { get; set; }
@@ -32,7 +32,7 @@ namespace ZdravoCorpAppTim22.Model
             DoctorKindness = doctorKindness;
             DoctorExpertise = doctorExpertise;
             DoctorDiscretion = doctorDiscretion;
-            ReportReviewed = false;
+            
         }
     }
 }

@@ -431,11 +431,12 @@
                                 Background="Yellow"
                                 Content="Medicinski karton" />
                             <Button
+                                x:Name="MedicalReportsButton"
                                 Padding="10,1"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
                                 Background="Yellow"
-                                Content="Medicinski izveštaji" />
+                                Content="Medicinski izveštaji" Click="MedicalReportsButton_Click" />
                             <Button
                                 Padding="10,1"
                                 HorizontalAlignment="Right"

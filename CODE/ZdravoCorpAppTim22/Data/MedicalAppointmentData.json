@@ -12,14 +12,14 @@
     "Doctor": 1
   },
   {
-    "Id": 2,
+    "Id": 4,
     "Type": 0,
     "Interval": {
-      "Start": "2022-06-14T08:00:00",
-      "End": "2022-06-14T08:15:00"
+      "Start": "2022-04-28T10:00:00",
+      "End": "2022-04-28T10:00:00"
     },
     "isUrgent": false,
-    "Room": 3,
+    "Room": 1,
     "Patient": 0,
     "Doctor": 0
   }

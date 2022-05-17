@@ -64,7 +64,7 @@ namespace Service
 
                             if (DateTime.Now.Date > medicalReceipt.EndDate.Date)
                             {
-                                MessageBox.Show("Terapija je zavrsena!");
+                               
                                 return;
                             }
 
