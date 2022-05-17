@@ -150,7 +150,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void MedicalReportsButton_Click(object sender, RoutedEventArgs e)
         {
-            MedicalReportsWindow medicalReportsWindow = new MedicalReportsWindow(LoggedPatient);
+            MedicalReportsWindow medicalReportsWindow = new MedicalReportsWindow();
             medicalReportsWindow.ShowDialog();
 
         }

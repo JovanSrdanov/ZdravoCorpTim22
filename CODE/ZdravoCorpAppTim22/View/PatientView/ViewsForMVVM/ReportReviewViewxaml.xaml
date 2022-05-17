@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM.HospitalReviewView"
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM.ReportReviewViewxaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,9 +11,8 @@
     HorizontalContentAlignment="Center"
     VerticalContentAlignment="Center"
     mc:Ignorable="d">
-
     <UserControl.DataContext>
-        <viewModel:HospitalReviewViewModel />
+        <viewModel:ReportReviewViewModel />
     </UserControl.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
@@ -23,7 +22,12 @@
             Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpBigLogo.jpg" />
         <Label
             HorizontalAlignment="Center"
-            Content="1. Kako ocenjujete ljubaznost osoblja?"
+            Content="Pregled"
+            FontSize="18"
+            FontWeight="Bold" />
+        <Label
+            HorizontalAlignment="Center"
+            Content="1. Koliko ste zadovoljni dijagnozom?"
             FontSize="18" />
         <StackPanel
             Margin="0,0,0,10"
@@ -34,36 +38,36 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup"
-                IsChecked="{Binding Path=StaffHospitalityGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                GroupName="DiagnosisGroup"
+                IsChecked="{Binding Path=DiagnosisGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup"
-                IsChecked="{Binding Path=StaffHospitalityGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                GroupName="DiagnosisGroup"
+                IsChecked="{Binding Path=DiagnosisGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup"
-                IsChecked="{Binding Path=StaffHospitalityGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                GroupName="DiagnosisGroup"
+                IsChecked="{Binding Path=DiagnosisGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup"
-                IsChecked="{Binding Path=StaffHospitalityGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                GroupName="DiagnosisGroup"
+                IsChecked="{Binding Path=DiagnosisGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                GroupName="StaffHospitalityGroup"
-                IsChecked="{Binding Path=StaffHospitalityGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                GroupName="DiagnosisGroup"
+                IsChecked="{Binding Path=DiagnosisGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <Label
             HorizontalAlignment="Center"
-            Content="2. Kako ocenjujete ažurnost i pristupačnost bolnice?"
+            Content="2. Koliko ste zadovoljni prepoučenom terapijom?"
             FontSize="18" />
         <StackPanel
             Margin="0,0,0,10"
@@ -74,30 +78,30 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                IsChecked="{Binding Path=AccessibilityGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=RecommendedTherapyGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                IsChecked="{Binding Path=AccessibilityGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=RecommendedTherapyGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                IsChecked="{Binding Path=AccessibilityGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=RecommendedTherapyGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                IsChecked="{Binding Path=AccessibilityGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=RecommendedTherapyGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                IsChecked="{Binding Path=AccessibilityGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=RecommendedTherapyGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
-            Content="3. Kako ocenjujete higijenu i čistoću bolnice?"
+            Content="3. Koliko ste zadovoljni dužinom trajanja termina?"
             FontSize="18" />
         <StackPanel
             Margin="0,0,0,10"
@@ -108,30 +112,35 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                IsChecked="{Binding Path=HygieneGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=AppointmentDurationGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                IsChecked="{Binding Path=HygieneGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=AppointmentDurationGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                IsChecked="{Binding Path=HygieneGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=AppointmentDurationGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                IsChecked="{Binding Path=HygieneGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=AppointmentDurationGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                IsChecked="{Binding Path=HygieneGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=AppointmentDurationGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
-            Content="4. Kako ocenjujete izgled bolnice?"
+            Content="Lekar"
+            FontSize="18"
+            FontWeight="Bold" />
+        <Label
+            HorizontalAlignment="Center"
+            Content="1. Koliko ste zadovoljni ljubažnoću lekara? "
             FontSize="18" />
         <StackPanel
             Margin="0,0,0,10"
@@ -142,30 +151,30 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                IsChecked="{Binding Path=AppearanceGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorKindnessGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                IsChecked="{Binding Path=AppearanceGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorKindnessGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                IsChecked="{Binding Path=AppearanceGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorKindnessGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                IsChecked="{Binding Path=AppearanceGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorKindnessGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                IsChecked="{Binding Path=AppearanceGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorKindnessGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Label
             HorizontalAlignment="Center"
-            Content="5. Kako ocenjujete našu aplikaciju &quot;ZdravoCorp?&quot;"
+            Content="2. Koliko ste zadovoljni stručnošću lekara?"
             FontSize="18" />
         <StackPanel
             Margin="0,0,0,10"
@@ -176,26 +185,60 @@
                 Margin="0,0,10,0"
                 Content="1"
                 FontSize="18"
-                IsChecked="{Binding Path=ApplicationGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorExpertiseGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="2"
                 FontSize="18"
-                IsChecked="{Binding Path=ApplicationGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorExpertiseGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="3"
                 FontSize="18"
-                IsChecked="{Binding Path=ApplicationGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorExpertiseGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="4"
                 FontSize="18"
-                IsChecked="{Binding Path=ApplicationGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorExpertiseGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <RadioButton
                 Content="5"
                 FontSize="18"
-                IsChecked="{Binding Path=ApplicationGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                IsChecked="{Binding Path=DoctorExpertiseGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <Label
+            HorizontalAlignment="Center"
+            Content="3. Koliko ste zadovoljni diskretnošću lekara po pitanju Vaših privatih informacija?"
+            FontSize="18" />
+        <StackPanel
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="1"
+                FontSize="18"
+                IsChecked="{Binding Path=DoctorDiscretionGroup1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="2"
+                FontSize="18"
+                IsChecked="{Binding Path=DoctorDiscretionGroup2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="3"
+                FontSize="18"
+                IsChecked="{Binding Path=DoctorDiscretionGroup3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="4"
+                FontSize="18"
+                IsChecked="{Binding Path=DoctorDiscretionGroup4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <RadioButton
+                Content="5"
+                FontSize="18"
+                IsChecked="{Binding Path=DoctorDiscretionGroup5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Grid>
 
@@ -210,8 +253,8 @@
             <Button
                 Padding="10,1"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
                 Background="Green"
+                Click="Button_Click"
                 Command="{Binding SubmitReviewCommand}"
                 Content="Oceni"
                 FontSize="18"
@@ -220,4 +263,5 @@
 
 
     </StackPanel>
+
 </UserControl>

@@ -64,10 +64,11 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Background="Green"
+                Click="Button_Click"
                 Command="{Binding OpenReportReviewingCommand}"
                 Content="Oceni"
                 FontSize="18"
-                Foreground="White" Click="Button_Click" />
+                Foreground="White" />
         </Grid>
 
     </StackPanel>

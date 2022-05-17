@@ -11,19 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
     /// <summary>
-    /// Interaction logic for MedicalReportsWindow.xaml
+    /// Interaction logic for ReviewTheReport.xaml
     /// </summary>
-    public partial class MedicalReportsWindow : Window
+    public partial class ReviewTheReport : Window
     {
-        public MedicalReportsWindow()
+        public ReviewTheReport()
         {
             InitializeComponent();
-            
         }
     }
 }

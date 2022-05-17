@@ -13,7 +13,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         public Patient Patient { get; set; }
         public ObservableCollection<MedicalReport> PatientMedicalReports { get; set; }
 
-        private static MedicalReport selectedMedicalReport;
+        public static MedicalReport selectedMedicalReport;
 
         public MedicalReport SelectedMedicalReport {
             get

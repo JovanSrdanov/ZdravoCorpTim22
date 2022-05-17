@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -17,21 +16,19 @@ using System.Windows.Shapes;
 namespace ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM
 {
     /// <summary>
-    /// Interaction logic for MedicalReportsView.xaml
+    /// Interaction logic for ReportReviewViewxaml.xaml
     /// </summary>
-    public partial class MedicalReportsView : UserControl
+    public partial class ReportReviewViewxaml : UserControl
     {
-        public MedicalReportsView()
+        public ReportReviewViewxaml()
         {
             InitializeComponent();
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
-            ReviewTheReport reviewTheReport = new ReviewTheReport();
-            reviewTheReport.ShowDialog();
+          
 
         }
     }

@@ -95,7 +95,7 @@
     "ReportDate": "2022-05-17T09:06:28.0593938+02:00",
     "ReportReviewed": false,
     "MedicalReceipt": 20,
-    "ReportReview": null,
+    "ReportReview": 0,
     "MedicalRecord": 0
   },
   {
@@ -104,9 +104,9 @@
     "Anamnesis": "123123",
     "Diagnosis": "12321",
     "ReportDate": "2022-05-17T09:29:13.0326511+02:00",
-    "ReportReviewed": true,
+    "ReportReviewed": false,
     "MedicalReceipt": 21,
-    "ReportReview": null,
+    "ReportReview": 1,
     "MedicalRecord": 0
   }
 ]
