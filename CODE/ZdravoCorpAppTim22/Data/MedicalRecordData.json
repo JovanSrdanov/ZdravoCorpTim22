@@ -2,31 +2,7 @@
   {
     "Id": 0,
     "BloodType": 1,
-    "AllergiesList": [
-      "4",
-      "lijek_5251"
-    ],
-    "ConditionList": [
-      "1",
-      "2",
-      "1",
-      "6",
-      "1",
-      "1",
-      "1",
-      "1"
-    ]
-  },
-  {
-    "Id": 1,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
-  },
-  {
-    "Id": 2,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
+    "AllergiesList": [],
+    "ConditionList": ["nekaDijagnoza", "12321"]
   }
 ]
