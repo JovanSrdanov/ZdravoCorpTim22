@@ -2,15 +2,11 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using System.Windows.Forms.VisualStyles;
-using System.Windows.Navigation;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
-using ZdravoCorpAppTim22.Service;
 using ZdravoCorpAppTim22.Service.Generic;
 using ZdravoCorpAppTim22.View.PatientView;
 
@@ -37,17 +33,17 @@ namespace Service
         {
             return PatientRepository.Instance.GetPatient(patient);
         }
-        
+
         public void TherapyNotification()
         {
-        
+
             if (ZdravoCorpTabs.LoggedPatient == null)
             {
                 return;
             }
             else
             {
-                
+
                 if (App.Current != null)
                 {
                     App.Current.Dispatcher.Invoke(delegate
@@ -61,22 +57,22 @@ namespace Service
                         }
                         List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
 
-                    
+
                         foreach (MedicalReceipt medicalReceipt in MedicalReceipts)
                         {
 
-                           
+
                             if (DateTime.Now.Date > medicalReceipt.EndDate.Date)
                             {
-                                MessageBox.Show("Terapija je zavrsena!");
+                               
                                 return;
                             }
 
-                            
+
                             if (DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-30) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-5))
                             {
 
-                                    
+
                                 string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
                                 message += medicalReceipt.TherapyPurpose;
                                 message += "\n\n";
@@ -85,9 +81,9 @@ namespace Service
                                 message += "Način upotrebe: ";
                                 message += medicalReceipt.AdditionalInstructions;
                                 message += "\n\n";
-                                  
+
                                 message += "Lekovi: ";
-                                foreach(Medicine m in medicalReceipt.Medicine)
+                                foreach (Medicine m in medicalReceipt.Medicine)
                                 {
                                     message += m.MedicineData.Name;
                                     message += "\n\n";
@@ -95,9 +91,9 @@ namespace Service
 
                                 message += "Uzeti u: ";
                                 message += medicalReceipt.Time;
-                                  
 
-                               
+
+
                                 MessageBox.Show(message);
 
                                 int hour = medicalReceipt.NotifyNextDateTime.Hour;
@@ -155,9 +151,12 @@ namespace Service
         private static void TrollLogOut()
         {
             AuthenticationController.Instance.Logout();
-           System.Windows.Forms.Application.Restart();
-           System.Windows.Application.Current.Shutdown();
-            
+            List<Window> windows = Application.Current.Windows.Cast<Window>().Where(window => window.Visibility != Visibility.Hidden).ToList();
+            foreach (Window window in windows)
+            {
+                window.Close();
+            }
+
 
         }
 

@@ -10,6 +10,14 @@
           "1",
           "1"
         ]
+      },
+      {
+        "Id": 1,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "neka dijagnoza"
+        ]
       }
     ],
     "DoctorSpecialization": 0,

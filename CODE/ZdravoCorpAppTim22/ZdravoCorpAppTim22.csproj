@@ -407,15 +407,30 @@
       <DependentUpon>ChoosingChangeAppointment.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\Converter\ConverterToSerbian.cs" />
+    <Compile Include="View\PatientView\Converter\ConvertReportReviewed.cs" />
     <Compile Include="View\PatientView\MakeAppointment.xaml.cs">
       <DependentUpon>MakeAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\MedicalReportsWindow.xaml.cs">
+      <DependentUpon>MedicalReportsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ReviewTheHospital.xaml.cs">
       <DependentUpon>ReviewTheHospital.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReviewTheReport.xaml.cs">
+      <DependentUpon>ReviewTheReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ViewModelForMVVM\HospitalReviewViewModel.cs" />
+    <Compile Include="View\PatientView\ViewModelForMVVM\MedicalReportsViewModel.cs" />
+    <Compile Include="View\PatientView\ViewModelForMVVM\ReportReviewViewModel.cs" />
     <Compile Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml.cs">
       <DependentUpon>HospitalReviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ViewsForMVVM\MedicalReportsView.xaml.cs">
+      <DependentUpon>MedicalReportsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ViewsForMVVM\ReportReviewViewxaml.xaml.cs">
+      <DependentUpon>ReportReviewViewxaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ZdravoCorpTabs.xaml.cs">
       <DependentUpon>ZdravoCorpTabs.xaml</DependentUpon>
@@ -665,11 +680,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\MedicalReportsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ReviewTheHospital.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReviewTheReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ViewsForMVVM\MedicalReportsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ViewsForMVVM\ReportReviewViewxaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

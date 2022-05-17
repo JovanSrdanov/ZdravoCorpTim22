@@ -57,6 +57,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     StaffHospitalityGroup5 = true;
                     break;
                 default:
+                    StaffHospitalityGroup1 = true;
                     break;
             }
         }
@@ -375,7 +376,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                 ZdravoCorpTabs.LoggedPatient.HospitalReview = SelectedHospitalReview;
                 HospitalReviewController.Instance.Create(SelectedHospitalReview);
                 PatientController.Instance.Update(ZdravoCorpTabs.LoggedPatient);
-
             }
 
             else
