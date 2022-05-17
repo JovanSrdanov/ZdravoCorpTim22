@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
+using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
 {

@@ -1,17 +1,32 @@
 [
   {
-    "Id": 0,
-    "Name": "stolice",
-    "Type": 1
-  },
-  {
     "Id": 2,
     "Name": "cons",
-    "Type": 0
+    "Type": 0,
+    "Price": 0
   },
   {
-    "Id": 3,
-    "Name": "kreveti",
-    "Type": 1
+    "Id": 4,
+    "Name": "sto",
+    "Type": 1,
+    "Price": 0
+  },
+  {
+    "Id": 5,
+    "Name": "oprema_1",
+    "Type": 1,
+    "Price": 0
+  },
+  {
+    "Id": 6,
+    "Name": "oprema_2",
+    "Type": 2,
+    "Price": 0
+  },
+  {
+    "Id": 7,
+    "Name": "novi",
+    "Type": 0,
+    "Price": 0
   }
 ]

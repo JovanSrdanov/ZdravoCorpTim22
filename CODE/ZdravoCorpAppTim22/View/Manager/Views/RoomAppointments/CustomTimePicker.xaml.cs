@@ -5,19 +5,7 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
 {
     public partial class CustomTimePicker : UserControl, INotifyPropertyChanged
     {
-        public CustomTimePicker()
-        {
-            InitializeComponent();
-            DataContext = this;
-            for (int i = 0; i < 24; i++)
-            {
-                HourComboBox.Items.Add(i.ToString());
-            }
-            for (int i = 0; i < 60; i++)
-            {
-                MinuteComboBox.Items.Add(i.ToString());
-            }
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public int hours;
         public int Hours
@@ -28,7 +16,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
                 OnPropertyChanged("Hours");
             }
         }
-
         public int minutes;
         public int Minutes
         {
@@ -40,12 +27,23 @@ namespace ZdravoCorpAppTim22.View.Manager.Views.RoomAppointments
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public CustomTimePicker()
+        {
+            InitializeComponent();
+            DataContext = this;
+            for (int i = 0; i < 24; i++)
+            {
+                HourComboBox.Items.Add(i);
+            }
+            for (int i = 0; i < 60; i++)
+            {
+                MinuteComboBox.Items.Add(i);
+            }
+        }
+
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
     }
 }

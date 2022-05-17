@@ -1,11 +1,5 @@
-﻿using Controller;
-using Model;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.Model;
-using ZdravoCorpAppTim22.View.Manager.ViewModels;
+﻿using System.Windows.Controls;
+using ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
 {
@@ -17,43 +11,6 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RoomPages
             InitializeComponent();
             ViewModel = new RoomViewModel();
             DataContext = ViewModel;
-        }
-
-        private void AddRoom_Click(object sender, RoutedEventArgs e)
-        {
-            AddRoomView addRoom = new AddRoomView();
-            this.NavigationService.Navigate(addRoom);
-        }
-
-        private void RenovateRoom_Click(object sender, RoutedEventArgs e)
-        {
-            Room room = (Room)dataGrid.SelectedItem;
-            if(room == null)
-            {
-                return;
-            }
-            RenovateView renovateRoom = new RenovateView(room);
-            this.NavigationService.Navigate(renovateRoom);
-        }
-
-        private void DeleteRoom_Click(object sender, RoutedEventArgs e)
-        {
-            Room room = (Room)dataGrid.SelectedItem;
-            if (room == null)
-            {
-                return;
-            }
-            RoomController.Instance.DeleteByID(room.Id);
-        }
-
-        private void ButtonDetails_Click(object sender, RoutedEventArgs e)
-        {
-            Room room = (Room)dataGrid.SelectedItem;
-            if (room == null)
-            {
-                return;
-            }
-            NavigationService.Navigate(new RoomDetailsView(room));
         }
     }
 }

@@ -1,20 +1,41 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
     public class Patient : User
     {
+
+        public bool Blocked { get; set; }
+        public List<DateTime> SuspiciousActivity { get; set; } 
+
+
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
+
+        public HospitalReview hospitalReview;
+        [JsonConverter(typeof(HospitalReviewToIDConverter))]
         
-        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
+            public HospitalReview HospitalReview
+            {
+                get
+                {
+                    return hospitalReview;
+                }
+                set
+                {
+                    this.hospitalReview = value;
+                }
+            }
+    
 
-        [JsonIgnore]
-        //[JsonIgnore]
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
+
         public MedicalRecord medicalRecord;
-
-        [JsonIgnore]
+        [JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord MedicalRecord
         {
             get
@@ -37,8 +58,15 @@ namespace Model
                 }
             }
         }
-        public bool IsAvailable(Interval interval)
+
+public bool IsAvailable(Interval interval)
         {
+
+            if (Blocked )
+            {
+                return false;
+            }
+
             if (Password == null)
             {
                 return true;
@@ -72,11 +100,11 @@ namespace Model
         {
             if (medicalRecord == null)
             {
-                this.medicalRecord = new MedicalRecord();
+                this.MedicalRecord = new MedicalRecord();
             }
             else
             {
-                this.medicalRecord = medicalRecord;
+                this.MedicalRecord = medicalRecord;
             }
 
 
@@ -89,6 +117,9 @@ namespace Model
                 this.medicalAppointment = medicalAppointment;
             }
 
+            Blocked = false;
+
+            SuspiciousActivity = new List<DateTime>();
 
         }
 
@@ -96,11 +127,11 @@ namespace Model
         {
             if (medicalRecord == null)
             {
-                this.medicalRecord = new MedicalRecord();
+                this.MedicalRecord = new MedicalRecord();
             }
             else
             {
-                this.medicalRecord = medicalRecord;
+                this.MedicalRecord = medicalRecord;
             }
 
 
@@ -112,6 +143,8 @@ namespace Model
             {
                 this.medicalAppointment = medicalAppointment;
             }
+            Blocked = false;
+            SuspiciousActivity = new List<DateTime>();
 
         }
 
@@ -176,15 +209,13 @@ namespace Model
             }
         }
 
-        //dodao za serijalizaciju medical rekorda
-        //[JsonConverter(typeof(MedicalRecordToIDConverter))]
-        //public MedicalRecord MedicalRecord { get; set; }
-        //dodao za serijalizaciju medical rekorda
-
-
         public override string ToString()
         {
             return Name + " " + Surname + " " + Jmbg;
         }
+
+       
+
+
     }
 }

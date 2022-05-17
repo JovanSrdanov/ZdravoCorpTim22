@@ -1,7 +1,10 @@
 ﻿using Controller;
+using Model;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.DoctorView;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.PatientView;
@@ -19,25 +22,41 @@ namespace ZdravoCorpAppTim22
 
         public void LoadData()
         {
+            ReportReviewController.Instance.Load();
+            HospitalReviewController.Instance.Load();
             AddressController.Instance.Load();
             RoomController.Instance.Load();
             EquipmentRelocationController.Instance.Load();
             SecretaryController.Instance.Load();
             ManagerController.Instance.Load();
+            
+            MedicalRecordController.Instance.Load();
+            MedicalReceiptController.Instance.Load();
+
+            IngredientDataController.Instance.Load();
+            MedicineDataController.Instance.Load();
+            MedicineController.Instance.Load();
+            IngredientController.Instance.Load();
+
+            ReplacementController.Instance.Load();
+
+            MedicalReportController.Instance.Load();
             PatientController.Instance.Load();
             //dodao
-            MedicalRecordController.Instance.Load();
-            MedicineController.Instance.Load();
-            MedicalReceiptController.Instance.Load();
-            MedicalReportController.Instance.Load();
-            //dodao
+            DoctorSpecializationController.Instance.Load();
             DoctorController.Instance.Load();
+            RequestForAbsenceController.Instance.Load();
+            //dodao
             EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();
             ManagerController.Instance.Load();
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
+            RoomMergeController.Instance.Load();
+            ApprovalController.Instance.Load();
+            
+            AuthenticationController.Instance.Load();
 
             ThreadPool.QueueUserWorkItem(DaemonThread);
         }
@@ -47,43 +66,83 @@ namespace ZdravoCorpAppTim22
             while (true)
             {
                 Thread.Sleep(1000);
-                RenovationController.Instance.DaemonMethod();
-                EquipmentRelocationController.Instance.DaemonMethod();
-                PatientController.Instance.DeamonMethod();
+                RenovationController.Instance.BackgroundTask();
+                EquipmentRelocationController.Instance.BackgroundTask();
+                PatientController.Instance.TherapyNotification();
+                RoomMergeController.Instance.BackgroundTask();
+                RoomDivergeController.Instance.BackgroundTask();
             }
         }
 
-        private void ManagerBtn_Click(object sender, RoutedEventArgs e)
+        private void Clear()
         {
-            ManagerHome managerHome = new ManagerHome(this);
-            managerHome.Show();
-            this.Hide();
+            EmailInput.Text = "";
+            PasswordInput.Password = "";
+            ErrorTextBlock.Text = "";
         }
 
-        private void SecretaryBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            Window window = null;
+            string email = EmailInput.Text;
+            string password = PasswordInput.Password;
 
-            SecretaryHome secretaryHome = new SecretaryHome(this);
-            secretaryHome.Show();
-            this.Hide();
+            User user = AuthenticationController.Instance.Login(email, password);
+            if (user == null)
+            {
+                ErrorTextBlock.Text = "Login failed";
+                return;
+            }
+
+            if(user.GetType() == typeof(ManagerClass))
+            {
+                window = new ManagerHome((ManagerClass)user);
+            }
+            else if (user.GetType() == typeof(SecretaryClass))
+            {
+                window = new SecretaryHome((SecretaryClass)user);
+            }
+            else if(user.GetType() == typeof(Doctor))
+            {
+                window = new DoctorHome((Doctor)user);
+            }
+            else if(user.GetType() == typeof(Patient))
+            {
+                Patient patientCheck = (Patient)user;
+                if (patientCheck.Blocked)
+                {
+                    ErrorTextBlock.Text = "Korisnik je blokiran";
+                    return;
+                }
+
+                window = new ZdravoCorpTabs((Patient)user);
+            }
+
+            if (window != null)
+            {
+                window.Show();
+                Hide();
+                Clear();
+            }
+            else
+            {
+                ErrorTextBlock.Text = "Login failed";
+            }
         }
 
-        private void DoctorBtn_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            DoctorHome doctorHome = new DoctorHome();
-            doctorHome.Owner = this;
-            doctorHome.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            doctorHome.Show();
-
-            this.Hide();
-
+            Close();
         }
 
-        private void PatientBtn_Click(object sender, RoutedEventArgs e)
+        private void EmailInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            PatientSelectionForTemporaryPurpose patientSelectionForTemporaryPurpose = new PatientSelectionForTemporaryPurpose();
-            patientSelectionForTemporaryPurpose.Show();
-            this.Close();
+            ErrorTextBlock.Text = "";
+        }
+
+        private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ErrorTextBlock.Text = "";
         }
     }
 }

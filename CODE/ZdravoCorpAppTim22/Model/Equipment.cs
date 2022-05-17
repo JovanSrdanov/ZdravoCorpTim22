@@ -16,7 +16,7 @@ namespace Model
         {
             Id = eq.Id;
             Amount = eq.Amount;
-            equipmentData = new EquipmentData(eq.EquipmentData);
+            EquipmentData = new EquipmentData(eq.EquipmentData);
         }
 
         [JsonConverter(typeof(EquipmentDataToIDConverter))]
@@ -100,6 +100,16 @@ namespace Model
                     }
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            if (EquipmentData != null)
+            {
+                return EquipmentData.Name;
+            }
+
+            return "";
         }
     }
 }

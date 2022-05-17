@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -6,10 +7,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
     {
         private MainWindow mainWindow;
 
-        public SecretaryHome(MainWindow mainWindow)
+        public SecretaryHome(SecretaryClass secretary)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
+            this.mainWindow = (MainWindow)Application.Current.MainWindow;
         }
 
         private void AccountsBtn_Click(object sender, RoutedEventArgs e)
@@ -21,8 +22,8 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void EmergencyBtn_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(this);
-            secretaryEmergency.Show();
+            SecretaryEmergencyOptions secretaryEmergencyOptions = new SecretaryEmergencyOptions(this);
+            secretaryEmergencyOptions.Show();
             this.Hide();
         }
 
@@ -34,6 +35,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
         {
             SecretaryScheduleOptions secretarySchedule = new SecretaryScheduleOptions(this);
+            secretarySchedule.Show();
+            this.Hide();
+        }
+
+        private void MedicalOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMedicalOrder secretarySchedule = new SecretaryMedicalOrder(this);
             secretarySchedule.Show();
             this.Hide();
         }

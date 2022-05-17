@@ -2,8 +2,6 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
@@ -47,19 +45,16 @@ namespace Service
                 DeleteByID(rel.Id);
             }
         }
-        public void DaemonMethod()
+
+        //Method that's being run every second from background thread
+        public void BackgroundTask()
         {
-            List<EquipmentRelocation> list = new List<EquipmentRelocation>();
-            lock (EquipmentRelocationRepository.Instance._lock)
-            {
-                foreach (var item in GetAll())
-                {
-                    if (item.Interval.End <= DateTime.Now)
-                    {
-                        list.Add(item);
-                    }
-                }
-            }
+            DoExpiredRelocations();
+        }
+
+        private void DoExpiredRelocations()
+        {
+            List<EquipmentRelocation> list = GetAllExpired();
             if (App.Current != null)
             {
                 App.Current.Dispatcher.Invoke(delegate
@@ -84,15 +79,34 @@ namespace Service
                                 EquipmentService.Instance.AddRoomEquipment(destination, eq);
                             }
                         }
-                        foreach (Equipment eq in item.Equipment)
-                        {
-                            EquipmentService.Instance.DeleteByID(eq.Id);
-                        }
-                        item.RemoveAllEquipment();
-                        DeleteByID(item.Id);
+                        DeleteExpired(item);
                     }
                 });
             }
+        }
+        private List<EquipmentRelocation> GetAllExpired()
+        {
+            List<EquipmentRelocation> list = new List<EquipmentRelocation>();
+            lock (EquipmentRelocationRepository.Instance._lock)
+            {
+                foreach (var item in GetAll())
+                {
+                    if (item.Interval.End <= DateTime.Now)
+                    {
+                        list.Add(item);
+                    }
+                }
+            }
+            return list;
+        }
+        private void DeleteExpired(EquipmentRelocation relocation)
+        {
+            foreach (Equipment eq in relocation.Equipment)
+            {
+                EquipmentService.Instance.DeleteByID(eq.Id);
+            }
+            relocation.RemoveAllEquipment();
+            DeleteByID(relocation.Id);
         }
     }
 }

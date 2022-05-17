@@ -19,9 +19,9 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
-        public void DaemonMethod()
+        public void BackgroundTask()
         {
-            RenovationService.Instance.DaemonMethod();
+            RenovationService.Instance.BackgroundTask();
         }
     }
 }

@@ -9,9 +9,9 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Global.xaml" />
+                <ResourceDictionary Source="../Styles/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
             <Style x:Key="MenuListBoxStyle">
                 <Setter Property="ListBox.Background" Value="{StaticResource DarkPrimary}"></Setter>
                 <Setter Property="ListBox.FontSize" Value="{StaticResource MenuFontSize}"></Setter>
@@ -38,7 +38,7 @@
                                     <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{StaticResource ActivePrimary}"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ItemBorder" Property="ListBoxItem.Background" Value="#000"></Setter>
+                                    <Setter TargetName="ItemBorder" Property="ListBoxItem.Background" Value="{StaticResource ActiveSecondary}"></Setter>
                                     <Setter Property="Cursor" Value="Hand"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -47,8 +47,6 @@
                 </Setter>
             </Style>
         </ResourceDictionary>
-        
-        
     </UserControl.Resources>
     <Grid>
         <ListBox Grid.Row="1"
@@ -56,14 +54,12 @@
                  Style="{StaticResource MenuListBoxStyle}"
                  ItemContainerStyle="{StaticResource MenuListBoxItemStyle}"
                  SelectionChanged="NavigationMenuListBox_SelectionChanged"
-                 SelectedIndex="1">
-            
+                 SelectedIndex="0">
             <local:CustomListItem NavigateUri="/View/Manager/Pages/WarehousePages/WarehouseView.xaml">Warehouse Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/RoomPages/RoomView.xaml">Room Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/MedicinePages/MedicineView.xaml">Medicine Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/StaffPages/StaffView.xaml">Staff Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/RatingPages/RatingsView.xaml">Ratings</local:CustomListItem>
-            
         </ListBox>
     </Grid>
 </UserControl>

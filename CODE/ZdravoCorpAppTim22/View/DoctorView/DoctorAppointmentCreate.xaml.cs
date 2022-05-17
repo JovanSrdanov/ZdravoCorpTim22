@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -14,9 +15,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //private int id;
         private string type;
-        //private int selectedDoctorID;
         private DoctorAppointments doctorAppointments;
         private Doctor doctor;
 
@@ -35,15 +34,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             InitializeComponent();
             this.DataContext = this;
-            //this.selectedDoctorID = selectedDoctorID;
             this.doctorAppointments = doctorAppointments;
 
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
             ObservableCollection<AppointmentType> newAppointmentTypes = new ObservableCollection<AppointmentType>(appointmentTypes);
             newAppointmentTypes.Remove(AppointmentType.Operation);
             doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-
-            if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+            if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
             {
                 AppointmentTypeCBOX.ItemsSource = Enum.GetValues(typeof(AppointmentType));
             }
@@ -102,14 +100,11 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             AppointmentType at = (AppointmentType)Enum.Parse(typeof(AppointmentType), type);
 
-            //datePicker.SelectedDate.Value
-            //promeniti konstruktor za medical appointment, ne treba da ide Id vise, automatski se inkrementira za svaki create room, promeniti i kod Jovana
-
             Interval interval = new Interval();
             interval.Start = dateTime;
             interval.End = dateTime;
 
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1,at, interval, room, patient, doctor);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1, at, interval, room, patient, doctor);
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
 
@@ -138,9 +133,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void DoctorAppointmentCreateClose(object sender, EventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }

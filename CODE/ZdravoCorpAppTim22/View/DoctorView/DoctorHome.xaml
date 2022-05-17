@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHome" Height="768" Width="1024" Closed="DoctorHomeClose" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen"
+        Title="DoctorHome" Height="768" Width="1024" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <ComboBox x:Name="SelectDoctorCBOX" HorizontalAlignment="Left" Margin="360,244,0,0" VerticalAlignment="Top" Width="249" DisplayMemberPath="Name"
-                  SelectedIndex="0" FontSize="35">
+                  FontSize="35" BorderBrush="#FF8C39A5" BorderThickness="2">
         </ComboBox>
-        <Label Content="Select a doctor" HorizontalAlignment="Left" Margin="381,120,0,0" VerticalAlignment="Top" FontSize="30"/>
-        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="620,561,0,0" VerticalAlignment="Top" 
-                RenderTransformOrigin="-0.553,0.607" Width="58" Click="NextButton_Click" Foreground="White" Background="MediumPurple" FontSize="25"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="271,561,0,0" VerticalAlignment="Top" 
-                RenderTransformOrigin="0.174,-0.131" Width="120" Click="BackBtnClick" Foreground="White" Background="MediumPurple" FontSize="25"/>
-
+        <TextBlock Text="Select a doctor" Style="{StaticResource h1}" Margin="345,118,0,0"/>
+        <Button x:Name="NextButton" Content="Next" Margin="356,561,0,0" Width="80" Height="40" 
+                Click="NextButton_Click" FontSize="25" Style="{StaticResource normalButton}"/>
+        <Button x:Name="BackBtn" Content="Back" Margin="529,561,0,0" Width="80" Height="40" 
+                Click="BackBtnClick" FontSize="25" Style="{StaticResource normalButton}"/>
     </Grid>
 </Window>

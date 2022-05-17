@@ -1,0 +1,173 @@
+[
+  {
+    "Id": 0,
+    "EndDate": "2022-06-02T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 1,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T11:30:00",
+    "Time": "11:30",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 2,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T11:30:00",
+    "Time": "11:30",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-05-28T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T11:30:00",
+    "Time": "11:30",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 4,
+    "EndDate": "2022-06-02T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T11:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 8,
+    "EndDate": "2022-06-01T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 9,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "3",
+    "TherapyPurpose": "3",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 10,
+    "EndDate": "2022-05-25T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "4",
+    "TherapyPurpose": "4",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 11,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-13T11:30:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "2",
+    "TherapyPurpose": "2",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 12,
+    "EndDate": "2022-05-26T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "316136136",
+    "TherapyPurpose": "1613",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 13,
+    "EndDate": "2022-05-15T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T10:30:00",
+    "Time": "10:30",
+    "AdditionalInstructions": "1sdasdasdas",
+    "TherapyPurpose": "werwerwe",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 14,
+    "EndDate": "2022-05-16T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "Joj",
+    "TherapyPurpose": "glava",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 15,
+    "EndDate": "2022-05-15T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T12:50:00",
+    "Time": "12:50",
+    "AdditionalInstructions": "Zabranjen alkohol",
+    "TherapyPurpose": "Za glavu",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 16,
+    "EndDate": "2022-05-16T00:00:00",
+    "NotifyNextDateTime": "2022-05-16T12:53:00",
+    "Time": "12:53",
+    "AdditionalInstructions": "ddd",
+    "TherapyPurpose": "dd",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 17,
+    "EndDate": "2022-05-16T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T16:37:00",
+    "Time": "16:37",
+    "AdditionalInstructions": "Bez alkohola",
+    "TherapyPurpose": "za glavu",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 18,
+    "EndDate": "2022-05-22T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T16:40:00",
+    "Time": "16:40",
+    "AdditionalInstructions": "uga",
+    "TherapyPurpose": "joj",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 19,
+    "EndDate": "2022-04-30T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "vau",
+    "TherapyPurpose": "da",
+    "MedicalRecord": null
+  },
+  {
+    "Id": 20,
+    "EndDate": "2022-05-29T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T23:00:00",
+    "Time": "23:00",
+    "AdditionalInstructions": "uf",
+    "TherapyPurpose": "zat",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 21,
+    "EndDate": "2022-05-29T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T23:30:00",
+    "Time": "23:30",
+    "AdditionalInstructions": "12312312",
+    "TherapyPurpose": "123",
+    "MedicalRecord": 0
+  }
+]

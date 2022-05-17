@@ -15,6 +15,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             InitializeComponent();
             this.doctorHomeScreen = doctorHomeScreen;
             MedRecList = new ObservableCollection<MedicalRecord>(DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).MedicalRecord);
+
+            foreach (MedicalRecord medRec in MedRecList)
+            {
+                MedicalRecord medRecTemp = MedicalRecordController.Instance.GetByID(medRec.Id);
+                medRec.Patient = medRecTemp.Patient;
+            }
             MedRecGrid.ItemsSource = MedRecList;
         }
 
@@ -26,6 +32,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 MessageBox.Show("Please select a medical record", "Medical record list", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
+            MedicalRecord medRecTemp = MedicalRecordController.Instance.GetByID(medicalRecord.Id);
+            medicalRecord.Patient = medRecTemp.Patient;
 
             MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalRecord.Patient.Id, null, this);
             medicalRecordView.Owner = this;
@@ -39,10 +48,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             doctorHomeScreen.Show();
             this.Close();
         }
-        
-        private void MedRecListClose(object sender, EventArgs e)
+ 
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
+            DoctorHome.doctorHome.Show();
+            this.Close();
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
     }

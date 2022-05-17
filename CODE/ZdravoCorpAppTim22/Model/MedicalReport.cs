@@ -15,10 +15,31 @@ namespace Model
         public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
         public DateTime ReportDate { get; set; }
+        public bool ReportReviewed { get; set; }
 
         //recept
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
         public MedicalReceipt MedicalReceipt { get; set; }
+
+
+
+        [JsonConverter(typeof(ReportReviewToIDConverter))]
+
+        public ReportReview reportReview;
+        [JsonConverter(typeof(ReportReviewToIDConverter))]
+
+        public ReportReview ReportReview
+        {
+            get
+            {
+                return reportReview;
+            }
+            set
+            {
+                this.reportReview = value;
+            }
+        }
+
 
         [JsonConstructor]
         public MedicalReport() { }
@@ -29,6 +50,7 @@ namespace Model
             Diagnosis = diagnosis;
             this.ReportDate = ReportDate;
             this.medicalRecord = medicalRecord;
+            ReportReviewed = false;
         }
 
         //karton

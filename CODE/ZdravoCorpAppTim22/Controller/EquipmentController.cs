@@ -35,5 +35,10 @@ namespace ZdravoCorpAppTim22.Controller
         {
             EquipmentService.Instance.AddRoomEquipment(destination, eq);
         }
+
+        public Equipment GetEquipmentAndUpdateSource(Equipment source, int amount, bool deleteIfEmpty)
+        {
+            return EquipmentService.Instance.GetEquipmentAndUpdateSource(source, amount, deleteIfEmpty);
+        }
     }
 }

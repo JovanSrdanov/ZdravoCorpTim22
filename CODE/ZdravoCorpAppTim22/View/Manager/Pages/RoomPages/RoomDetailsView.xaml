@@ -11,7 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
@@ -23,39 +23,55 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="0 0 0 30">
-            <Button Click="BackButton_Click">Go Back</Button>
+            <Button Command="{Binding NavigateBackCommand}"
+                    Style="{StaticResource BackButtonStyle}">
+            </Button>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <WrapPanel Grid.Row="1"
-                   Margin="0 0 0 10">
-                <Button x:Name="ButtonRoomRelocate" Click="ButtonRoomRelocate_Click">Relocate to Room</Button>
-                <Button x:Name="ButtonWarehouseRelocate" Click="ButtonWarehouseRelocate_Click">Relocate to Warehouse</Button>
+            <WrapPanel HorizontalAlignment="Left"
+                       Grid.Column="0"
+                       Margin="0 0 0 10">
+                <Button x:Name="ButtonRoomRelocate" Style="{StaticResource MoveToRoomButtonStyle}" Command="{Binding OpenRoomRelocationCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+                <Button x:Name="ButtonWarehouseRelocate" Style="{StaticResource MoveToWarehouseButtonStyle}" Command="{Binding OpenWarehouseRelocationCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
             </WrapPanel>
-            <DataGrid Grid.Row="2"
+            <WrapPanel HorizontalAlignment="Right"
+                       Grid.Column="1">
+                <ComboBox Margin="0 0 10 0"
+                          MinWidth="120"
+                          Padding="13 0 23 0"
+                          SelectedIndex="{Binding Path=Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem>all</ComboBoxItem>
+                    <ComboBoxItem>static</ComboBoxItem>
+                    <ComboBoxItem>dynamic</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="SearchTextBox" 
+                         Width="170" 
+                         Margin="0 0 1 0" 
+                         MaxLength="14" 
+                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button x:Name="SearchButton" 
+                        Style="{StaticResource SearchButtonStyle}"
+                        Margin="0" 
+                        IsHitTestVisible="False"/>
+            </WrapPanel>
+        </Grid>
+        <DataGrid Grid.Row="2"
                   Name="DataGrid"
                   SelectionMode="Extended"
-                  ItemsSource="{Binding Path=EquipmentCollection}"
-                  SelectionChanged="DataGrid_SelectionChanged">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+                  ItemsSource="{Binding Path=FilteredEquipment}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

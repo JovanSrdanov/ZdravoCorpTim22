@@ -1,5 +1,4 @@
 ﻿using Model;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
@@ -11,6 +10,7 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public EquipmentType Type { get; set; }
+        public double Price { get; set; }
 
         [JsonIgnore]
         public ObservableCollection<Equipment> equipment;
@@ -91,6 +91,11 @@ namespace ZdravoCorpAppTim22.Model
                     oldEquipment.EquipmentData = null;
                 tmpEquipment.Clear();
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

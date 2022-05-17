@@ -1,0 +1,8 @@
+[
+  {
+    "Id": 0,
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": ["nekaDijagnoza", "12321"]
+  }
+]

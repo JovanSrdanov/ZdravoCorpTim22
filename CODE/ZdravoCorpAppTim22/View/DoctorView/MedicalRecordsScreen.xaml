@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="MedicalRecordsScreen" Height="768" Width="1024" Closed="MedRecListClose" ResizeMode="NoResize">
+        Title="MedicalRecordsScreen" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="303,44,0,0" TextWrapping="Wrap" Text="Medical record list" 
-                   VerticalAlignment="Top" Width="350"
-                   Foreground="MediumPurple" FontWeight="Bold" FontSize="40"/>
+        <TextBlock Margin="303,44,0,0" Text="Medical record list" Style="{StaticResource h1}"/>
         <DataGrid x:Name="MedRecGrid" Margin="92,148,160,167" AutoGenerateColumns="false" FontSize="25"
                   Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
                   VerticalScrollBarVisibility="Auto" SelectionMode="Single">
@@ -19,11 +17,55 @@
                 <DataGridTextColumn Header="Unique Personal Registration Number" Binding="{Binding Path=Patient.Jmbg}" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="OpenBtn" Content="Open" HorizontalAlignment="Left" Margin="332,664,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="OpenBtnClick" FontSize="20" Width="69"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="527,664,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="MediumPurple" Click="BackBtnClick" FontSize="20" Width="63"/>
-
-
+        <Button x:Name="OpenBtn" Content="Open" Margin="336,607,0,0" Click="OpenBtnClick" 
+                Height="40" FontSize="20" Width="80" Style="{StaticResource normalButton}"/>
+        <Button x:Name="BackBtn" Content="Back" Margin="568,606,0,0" Click="BackBtnClick" 
+                FontSize="20" Width="80" Height="40" Style="{StaticResource normalButton}"/>
+        <Button Margin="973,348,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Margin="699,103,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="165" Height="31" BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="15"
+                 AcceptsReturn="False" VerticalScrollBarVisibility="Auto" MaxHeight="31"
+                 VerticalContentAlignment="Center">
+        </TextBox>
+        <TextBlock x:Name="searchTextBlock" IsHitTestVisible="False" Text="search" HorizontalAlignment="Left" Margin="709,110,0,0"
+                   VerticalAlignment="Top" Width="165" Height="31" Foreground="DarkGray">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=searchTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Window>

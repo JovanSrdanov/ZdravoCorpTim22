@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
@@ -31,8 +32,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
             TabDate.IsEnabled = false;
             TabPriority.IsEnabled = false;
 
-
-            ChooseAppointmentType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
+            var AppointmentTypes = Enum.GetValues(typeof(AppointmentType));
+            ChooseAppointmentType.ItemsSource = AppointmentTypes;
             datePicker.DisplayDateStart = DateTime.Now.Date.AddDays(1);
             datePicker.SelectedDate = DateTime.Now.Date.AddDays(1);
 
@@ -41,11 +42,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void AppointmentNext_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             selectedAppointmentType = (AppointmentType)ChooseAppointmentType.SelectedItem;
-         
+
             DoctorList = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
             if (selectedAppointmentType == AppointmentType.Operation)
             {
@@ -53,7 +51,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
                 foreach (Doctor doctor in DoctorList)
                 {
-                    if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+                    if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
                     {
                         temporaryDoctors.Add(doctor);
                     }

@@ -5,34 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHomeScreen" Height="768" Width="1024" Closed="DoctorHomeScreenClose" ResizeMode="NoResize">
+        Title="DoctorHomeScreen" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="262,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Welcome to Zdravo Corp"
-                   Foreground="#FF8C39A5" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.508,0.28"/>
-        <Button x:Name="SchedulingBtn" HorizontalAlignment="Left" Margin="121,181,0,0" VerticalAlignment="Top" 
-                Foreground="White" Background="Transparent" Click="ScheduleListBtn" 
-                BorderBrush="Transparent" FontSize="25" Height="104" Width="99">
-            <Image Source="/Resource/DoctorResource/schedule.png" Height="106" Width="95"/>
+        <TextBlock Margin="256,53,0,0" Text="Welcome to Zdravo Corp"
+                   Style="{StaticResource ResourceKey=h1}"/>
+        <Button x:Name="SchedulingBtn" Margin="173,167,0,0" Click="ScheduleListBtn" 
+                Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/schedule.png"/>
+            </Button.Background>
         </Button>
-        <Button x:Name="SchedulingBtn_Copy" HorizontalAlignment="Left" Margin="673,401,0,0" VerticalAlignment="Top"
-                Foreground="White" Background="Transparent" BorderBrush="Transparent"
-                Click="ViewMedRecordsClick" FontSize="20" Height="98" Width="116">
-            <Image Source="/Resource/DoctorResource/document.png" Width="105" Height="93"/>
+        <Button x:Name="SchedulingBtn_Copy" Margin="688,341,0,0" Click="ViewMedRecordsClick" 
+                Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/book.png"/>
+            </Button.Background>
         </Button>
-        <Button x:Name="LogOut" HorizontalAlignment="Left" Margin="954,10,0,0" VerticalAlignment="Top" Click="LogOutBtn"
-                Foreground="White" Background="Transparent" BorderBrush="Transparent" 
-                FontSize="20" Height="47" Width="58" Panel.ZIndex="1">
-            <Image Source="/Resource/DoctorResource/signout.png"/>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+                Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="952,520,0,0" VerticalAlignment="Top"
-                Background="Transparent" BorderBrush="Transparent" Height="47" Width="58" Panel.ZIndex="1">
-            <Image Source="/Resource/DoctorResource/home.png"/>
+        <Button Margin="973,348,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
         </Button>
-        <Label Content="Scheduling list" HorizontalAlignment="Left" Margin="111,285,0,0" 
-               FontWeight="Bold"  VerticalAlignment="Top" FontSize="16" Foreground="#FF8C39A5"/>
-        <Label Content="View medical records" HorizontalAlignment="Left" Margin="642,504,0,0" 
-            FontWeight="Bold"  VerticalAlignment="Top" FontSize="16" Foreground="#FF8C39A5"/>
-        <Rectangle Height="752" Margin="956,0,0,0" Stroke="MediumPurple" 
-                   Fill="MediumPurple" VerticalAlignment="Center"/>
+        <Label Content="Scheduling list" Margin="163,271,0,0" FontSize="16" 
+               Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="View medical records" Margin="656,444,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button x:Name="RequestForAbsenceBtn" Margin="172,534,0,0" Click="RequestForAbsenceBtnClick" 
+            Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/arrow.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Request for absence" Margin="142,640,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button x:Name="DrugsBtn" Margin="704,166,0,0" Style="{StaticResource ResourceKey=homeScreenButton}"   
+                Click="DrugsBtnClick">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/syringe.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Drug requests" Margin="688,271,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button Margin="440,170,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/document.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="173,355,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/gear.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="441,343,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/stethoscope.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Create certificate" Margin="421,280,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="Request consumable" Margin="408,460,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="Report malfunction" Margin="144,460,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

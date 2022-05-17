@@ -10,7 +10,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}"/>
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StandardTextBox}"/>
@@ -24,7 +24,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="0 0 0 30">
-            <Button Click="BackButton_Click" Style="{StaticResource ButtonStandard}">Go Back</Button>
+            <Button Command="{Binding NavigateBackCommand}" 
+                    Style="{StaticResource BackButtonStyle}"/>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -65,8 +66,8 @@
                        Margin="0 0 0 20"
                        x:Name="StartTimeGroup">
                 <Button x:Name="ButtonSelectStartTime" 
-                        Style="{StaticResource ButtonStandard}" 
-                        Click="ButtonSelectStartTime_Click">Select Start Time</Button>
+                        Style="{StaticResource StartTimeButtonStyle}" 
+                        Click="ButtonSelectStartTime_Click"/>
                 <ContentControl x:Name="SelectStartTimeContent"
                                 Foreground="{StaticResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
@@ -75,8 +76,8 @@
             <WrapPanel Grid.Row="2"
                        x:Name="EndTimeGroup">
                 <Button x:Name="ButtonSelectEndTime" 
-                        Style="{StaticResource ButtonStandard}" 
-                        Click="ButtonSelectEndTime_Click">Select End Time</Button>
+                        Style="{StaticResource EndTimeButtonStyle}" 
+                        Click="ButtonSelectEndTime_Click"/>
                 <ContentControl x:Name="SelectEndTimeContent"
                                 Foreground="{StaticResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
@@ -86,8 +87,8 @@
                        Grid.Row="3"
                        Margin="0 40 0 0">
                 <Button x:Name="ButtonConfirm" 
-                        Content="Confirm" 
-                        Click="ButtonConfirm_Click"/>
+                        Style="{StaticResource ConfirmButtonStyle}"
+                        Command="{Binding RelocateCommand}"/>
             </WrapPanel>
         </Grid>
     </Grid>

@@ -19,5 +19,9 @@ namespace Controller
                 return instance;
             }
         }
+        public Room GetByName(string name)
+        {
+            return RoomService.Instance.GetByName(name);
+        }
     }
 }

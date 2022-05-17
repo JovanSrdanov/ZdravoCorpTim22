@@ -1,12 +1,13 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
+using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace Model
 {
     public class Doctor : User
     {
-        public DoctorSpecialisationType DoctorType { get; set; }
 
         [JsonIgnore]
         public System.Collections.Generic.List<MedicalAppointment> medicalAppointment;
@@ -16,15 +17,15 @@ namespace Model
         {
         }
 
-        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address, DoctorSpecialisationType doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, iD, address)
+        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, int iD, Address address, DoctorSpecialization doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, iD, address)
         {
-            DoctorType = doctorType;
+            DoctorSpecialization = doctorType;
             this.medicalAppointment = medicalAppointment;
         }
 
-        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, DoctorSpecialisationType doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
+        public Doctor(string name, string surname, string email, string jmbg, string password, DateTime birthday, string phone, Gender gender, Address address, DoctorSpecialization doctorType, System.Collections.Generic.List<MedicalAppointment> medicalAppointment) : base(name, surname, email, jmbg, password, birthday, phone, gender, address)
         {
-            DoctorType = doctorType;
+            DoctorSpecialization = doctorType;
             this.medicalAppointment = medicalAppointment;
         }
 
@@ -161,6 +162,71 @@ namespace Model
                 medicalRecord.Clear();
         }
 
+        ///////////////////////////ZAHTEVI ZA ODSUSTVO////////////////////////////////
+        [JsonIgnore]
+        public System.Collections.Generic.List<RequestForAbsence> requestForAbsence;
 
+        [JsonIgnore]
+        public System.Collections.Generic.List<RequestForAbsence> RequestForAbsence
+        {
+            get
+            {
+                if (requestForAbsence == null)
+                    requestForAbsence = new System.Collections.Generic.List<RequestForAbsence>();
+                return requestForAbsence;
+            }
+            set
+            {
+                RemoveAllRequestForAbsence();
+                if (value != null)
+                {
+                    foreach (RequestForAbsence oRequestForAbsence in value)
+                        AddRequestForAbsence(oRequestForAbsence);
+                }
+            }
+        }
+
+        public void AddRequestForAbsence(RequestForAbsence newRequestForAbsence)
+        {
+            if (newRequestForAbsence == null)
+                return;
+            if (this.requestForAbsence == null)
+                this.requestForAbsence = new System.Collections.Generic.List<RequestForAbsence>();
+            if (!this.requestForAbsence.Contains(newRequestForAbsence))
+            {
+                this.requestForAbsence.Add(newRequestForAbsence);
+                newRequestForAbsence.Doctor = this;
+            }
+        }
+
+        public void RemoveRequestForAbsence(RequestForAbsence oldRequestForAbsence)
+        {
+            if (oldRequestForAbsence == null)
+                return;
+            if (this.requestForAbsence != null)
+                if (this.requestForAbsence.Contains(oldRequestForAbsence))
+                {
+                    this.requestForAbsence.Remove(oldRequestForAbsence);
+                    oldRequestForAbsence.Doctor = null;
+                }
+        }
+
+        public void RemoveAllRequestForAbsence()
+        {
+            if (requestForAbsence != null)
+            {
+                System.Collections.ArrayList tmpRequestForAbsence = new System.Collections.ArrayList();
+                foreach (RequestForAbsence oldRequestForAbsence in requestForAbsence)
+                    tmpRequestForAbsence.Add(oldRequestForAbsence);
+                requestForAbsence.Clear();
+                foreach (RequestForAbsence oldRequestForAbsence in tmpRequestForAbsence)
+                    oldRequestForAbsence.Doctor = null;
+                tmpRequestForAbsence.Clear();
+            }
+        }
+
+        //////////SPECIJALZIACIJA///////////
+        [JsonConverter(typeof(DoctorSerializationToIDConverter))]
+        public DoctorSpecialization DoctorSpecialization { get; set; }
     }
 }

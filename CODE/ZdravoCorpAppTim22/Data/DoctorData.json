@@ -4,14 +4,23 @@
     "MedicalRecord": [
       {
         "Id": 0,
-        "BloodType": 0,
+        "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "adsas"
-        ],
-        "Patient": 0
+          "1",
+          "1"
+        ]
+      },
+      {
+        "Id": 1,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "neka dijagnoza"
+        ]
       }
     ],
+    "DoctorSpecialization": 0,
     "Name": "doc",
     "Surname": "docprez",
     "Email": "",
@@ -25,18 +34,8 @@
   },
   {
     "DoctorType": 1,
-    "MedicalRecord": [
-      {
-        "Id": 0,
-        "BloodType": 0,
-        "AllergiesList": [],
-        "ConditionList": [
-          "adsas",
-          "dsfsdfsd"
-        ],
-        "Patient": 0
-      }
-    ],
+    "MedicalRecord": [],
+    "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",
     "Email": "",
@@ -47,5 +46,50 @@
     "Gender": 0,
     "Id": 1,
     "Address": 1
+  },
+  {
+    "DoctorType": 0,
+    "MedicalRecord": [],
+    "DoctorSpecialization": 0,
+    "Name": "OpstaPraksa1",
+    "Surname": "Opsta",
+    "Email": "",
+    "Jmbg": "1231241",
+    "Password": "123",
+    "Birthday": "2022-05-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 2,
+    "Address": 15
+  },
+  {
+    "DoctorType": 1,
+    "MedicalRecord": [],
+    "DoctorSpecialization": 3,
+    "Name": "Specijalista",
+    "Surname": "Specijalista1",
+    "Email": "",
+    "Jmbg": "213",
+    "Password": "123",
+    "Birthday": "2022-05-14T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 3,
+    "Address": 16
+  },
+  {
+    "DoctorType": 0,
+    "MedicalRecord": [],
+    "DoctorSpecialization": 0,
+    "Name": "Regularni",
+    "Surname": "Doktor",
+    "Email": "",
+    "Jmbg": "123123123123",
+    "Password": "123",
+    "Birthday": "2022-05-15T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 4,
+    "Address": 17
   }
 ]

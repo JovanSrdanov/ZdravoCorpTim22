@@ -3,43 +3,80 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
-   
+
     public partial class ZdravoCorpTabs : Window
     {
+
+
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
-        public static MedicalAppointment MedicalAppointmentSelected { get;  set; }
-        public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get;  set; }
+        public static MedicalAppointment MedicalAppointmentSelected { get; set; }
+        public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get; set; }
 
         public List<MedicalAppointment> medicalAppointments;
-        public ZdravoCorpTabs()
+
+        public static Patient LoggedPatient { get; set; }
+
+        public ZdravoCorpTabs(Patient patient)
         {
             InitializeComponent();
-
-            medicalAppointments = PatientController.Instance.GetByID(PatientSelectionForTemporaryPurpose.LoggedPatient.Id).MedicalAppointment;
+            LoggedPatient = patient;
+            medicalAppointments = PatientController.Instance.GetByID(LoggedPatient.Id).MedicalAppointment;
             MedicalAppointmentList = new ObservableCollection<MedicalAppointment>(medicalAppointments);
             DataGridAppointment.ItemsSource = MedicalAppointmentList;
 
 
-            MedicalRecord medRec = MedicalRecordController.Instance.GetAll().Where(r => r.Patient.Id == PatientSelectionForTemporaryPurpose.LoggedPatient.Id).FirstOrDefault();
+            MedicalRecord medRec = patient.medicalRecord;
             if (medRec == null)
-            {              
+            {
                 MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();
             }
             else
             {
-            List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
-            MedicalReceiptsList = new ObservableCollection<MedicalReceipt>(MedicalReceipts);
+                List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
+                MedicalReceiptsList = new ObservableCollection<MedicalReceipt>(MedicalReceipts);
 
             }
 
             DataGridReciepts.ItemsSource = MedicalReceiptsList;
+
+            GeneralInfoForPatientMedicalRecord();
+
+        }
+
+        private void GeneralInfoForPatientMedicalRecord()
+        {
+            GridPatientName.Content = LoggedPatient.Name;
+            GridPatientSurname.Content = LoggedPatient.Surname;
+            GridPatientEmail.Content = LoggedPatient.Email;
+            GridPatientJmbg.Content = LoggedPatient.Jmbg;
+            GridPatientDateOfBirth.Content = LoggedPatient.Birthday.ToString("dd/MM/yyyy");
+            GridPatientPhone.Content = LoggedPatient.Phone;
+            GridPatientAdress.Content = LoggedPatient.Address.ToString();
+
+
+            switch (LoggedPatient.Gender)
+            {
+                case Gender.male:
+                    GridPatientGender.Content = "Muški";
+                    break;
+                case Gender.female:
+                    GridPatientGender.Content = "Ženski";
+                    break;
+                case Gender.other:
+                    GridPatientGender.Content = "Nepoznat";
+                    break;
+                default:
+                    GridPatientGender.Content = "Nepoznat";
+                    break;
+            }
+
 
         }
 
@@ -57,10 +94,18 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
+            PatientController.Instance.AntiTroll(LoggedPatient);
+            if (LoggedPatient == null)
+            {
+
+               
+
+                Close();
+                return;
+            }
 
             MedicalAppointmentController.Instance.DeleteByID(MedicalAppointmentSelected.Id);
             MedicalAppointmentList.Remove(MedicalAppointmentSelected);
-
 
         }
 
@@ -84,15 +129,30 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
             Close();
-            PatientSelectionForTemporaryPurpose.LoggedPatient = null;
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
         {
-        
+
+            ReviewTheHospital reviewTheHospital = new ReviewTheHospital();
+            reviewTheHospital.ShowDialog();
+        }
+
+
+        private void ZdravoCorpTabs_OnClosing(object sender, CancelEventArgs e)
+        {
+
+            LoggedPatient = null;
+            AuthenticationController.Instance.Logout();
+            App.Current.MainWindow.Show();
+        }
+
+        private void MedicalReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalReportsWindow medicalReportsWindow = new MedicalReportsWindow();
+            medicalReportsWindow.ShowDialog();
+
         }
     }
 }

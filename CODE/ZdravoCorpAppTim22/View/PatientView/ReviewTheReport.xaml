@@ -1,0 +1,28 @@
+﻿<Window
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReviewTheReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewsForMvvm="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
+    Title="Ocenite izveštaj"
+    Width="734"
+    Height="762"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center"
+    Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="1" Color="#FF00D2FF" />
+            <GradientStop Offset="0.5" Color="White" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <StackPanel>
+        <viewsForMvvm:ReportReviewViewxaml x:Name="ReportReviewViewxaml" />
+    </StackPanel>
+
+</Window>

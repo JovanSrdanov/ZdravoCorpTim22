@@ -10,9 +10,11 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Global.xaml"/>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource StandardComboBox}"/>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -25,23 +27,50 @@
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
                    FontSize="{StaticResource HeadingFontSize}">WAREHOUSE OVERVIEW</TextBlock>
-        <WrapPanel Grid.Row="1"
-                   Margin="0 0 0 10">
-            <Button x:Name="AddEquipment" Click="AddEquipment_Click">Add</Button>
-            <Button x:Name="EditEquipment" Click="EditEquipment_Click">Edit</Button>
-            <Button x:Name="RelocateEquipment" Click="RelocateEquipment_Click">Relocate</Button>
-            <Button x:Name="DeleteEquipment" Click="DeleteEquipment_Click">Delete</Button>
-        </WrapPanel>
+        <Grid Grid.Row="1"
+              Margin="0 0 0 10"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel HorizontalAlignment="Left"
+                       Grid.Column="0">
+                <Button x:Name="AddEquipment" Style="{StaticResource AddButtonStyle}" Command="{Binding OpenAddCommand}"/>
+                <Button x:Name="DeleteEquipment" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteEquipmentCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+                <Button x:Name="EditEquipment" Style="{StaticResource EditButtonStyle}" Command="{Binding OpenEditCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+                <Button x:Name="RelocateEquipment" Style="{StaticResource MoveToRoomButtonStyle}" Command="{Binding OpenRelocationCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems}"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right"
+                       Grid.Column="1">
+                <ComboBox Margin="0 0 10 0"
+                          MinWidth="120"
+                          Padding="13 0 23 0"
+                          SelectedIndex="{Binding Path=Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem>all</ComboBoxItem>
+                    <ComboBoxItem>static</ComboBoxItem>
+                    <ComboBoxItem>dynamic</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="SearchTextBox" 
+                         Width="170" 
+                         Margin="0 0 1 0" 
+                         MaxLength="14" 
+                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button x:Name="SearchButton" 
+                        Style="{StaticResource SearchButtonStyle}"
+                        Margin="0" 
+                        IsHitTestVisible="False"/>
+            </WrapPanel>
+        </Grid>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"
                   SelectionMode="Extended"
-                  ItemsSource="{Binding Path=EquipmentCollection}"
-                  SelectionChanged="DataGrid_SelectionChanged">
+                  ItemsSource="{Binding Path=FilteredEquipment}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=EquipmentData.Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="2*"/>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

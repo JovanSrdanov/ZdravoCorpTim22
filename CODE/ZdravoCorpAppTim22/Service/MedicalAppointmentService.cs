@@ -45,6 +45,7 @@ namespace Service
                 durationOfAppointment = Constants.Constants.DURATION_OPERATION;
             }
 
+
             List<Doctor> suggestedDoctors = new List<Doctor>(DoctorService.Instance.GetAll());
             List<Room> suggestetRooms = new List<Room>(RoomService.Instance.GetAll());
 
@@ -54,7 +55,8 @@ namespace Service
 
                 foreach (Doctor doctor in suggestedDoctors)
                 {
-                    if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+                    if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
                     {
                         temporaryDoctors.Add(doctor);
                     }
@@ -221,7 +223,7 @@ namespace Service
 
                 foreach (Doctor doctor in suggestedDoctors)
                 {
-                    if (doctor.DoctorType == DoctorSpecialisationType.specialist)
+                    if (doctor.DoctorSpecialization == appointmentPreferences.enteredDoctor.DoctorSpecialization)
                     {
                         temporaryDoctors.Add(doctor);
                     }
@@ -332,7 +334,6 @@ namespace Service
             }
             return availableMedicalAppointments;
         }
-
         public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
         {
             ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
@@ -376,6 +377,38 @@ namespace Service
             }
 
             return availableMedicalAppointments;
+        }
+
+        public ObservableCollection<MedicalAppointment> GetUnavailableMedicalAppointmentsInNextHour(AppointmentPreferences appointmentPreferences)
+        {
+            ObservableCollection<MedicalAppointment> medicalAppointmentsAll = instance.GetAll();
+            ObservableCollection<MedicalAppointment> medicalAppointments = new ObservableCollection<MedicalAppointment>();
+            for (int i = 0; i < medicalAppointmentsAll.Count; i++)
+            {
+                if (medicalAppointmentsAll[i].Interval.Start >= DateTime.Now.AddHours(1) || medicalAppointmentsAll[i].Interval.Start <= DateTime.Now)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].Interval.End <= DateTime.Now)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].isUrgent)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].Doctor.DoctorSpecialization != appointmentPreferences.enteredDoctor.DoctorSpecialization)
+                {
+                    continue;
+                }
+
+                medicalAppointments.Add(medicalAppointmentsAll[i]);
+            }
+
+            return medicalAppointments;
         }
     }
 }

@@ -1,86 +1,58 @@
 [
   {
     "Id": 0,
-    "Amount": 760,
-    "EquipmentData": 0,
+    "Amount": 1000,
+    "EquipmentData": 2,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 1,
+    "Amount": 100,
+    "EquipmentData": 4,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
     "Id": 2,
-    "Amount": 1350,
-    "EquipmentData": 2,
+    "Amount": 300,
+    "EquipmentData": 5,
     "Room": null,
     "EquipmentRelocation": null
   },
   {
-    "Id": 13,
-    "Amount": 150,
-    "EquipmentData": 2,
-    "Room": 2,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 16,
-    "Amount": 200,
-    "EquipmentData": 0,
-    "Room": 2,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 18,
-    "Amount": 350,
-    "EquipmentData": 2,
-    "Room": 4,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 21,
-    "Amount": 50,
-    "EquipmentData": 0,
-    "Room": 4,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 22,
-    "Amount": 70,
-    "EquipmentData": 3,
-    "Room": null,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 24,
-    "Amount": 11,
-    "EquipmentData": 3,
-    "Room": 4,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 25,
-    "Amount": 3,
-    "EquipmentData": 3,
-    "Room": 5,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 26,
-    "Amount": 100,
-    "EquipmentData": 2,
-    "Room": 5,
-    "EquipmentRelocation": null
-  },
-  {
-    "Id": 27,
-    "Amount": 50,
+    "Id": 3,
+    "Amount": 500,
     "EquipmentData": 2,
     "Room": 1,
     "EquipmentRelocation": null
   },
   {
-    "Id": 29,
-    "Amount": 2,
-    "EquipmentData": 3,
+    "Id": 4,
+    "Amount": 36,
+    "EquipmentData": 4,
     "Room": 1,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 5,
+    "Amount": 130,
+    "EquipmentData": 5,
+    "Room": 1,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 6,
+    "Amount": 1000,
+    "EquipmentData": 6,
+    "Room": null,
+    "EquipmentRelocation": null
+  },
+  {
+    "Id": 7,
+    "Amount": 250,
+    "EquipmentData": 7,
+    "Room": null,
     "EquipmentRelocation": null
   }
 ]
