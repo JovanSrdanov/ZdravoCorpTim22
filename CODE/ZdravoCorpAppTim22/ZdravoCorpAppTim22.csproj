@@ -442,6 +442,12 @@
     <Compile Include="View\Secretary\SecretaryEmergency.xaml.cs">
       <DependentUpon>SecretaryEmergency.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergencyAvailableAppointments.xaml.cs">
+      <DependentUpon>SecretaryEmergencyAvailableAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryEmergencyChangeSchedule.xaml.cs">
+      <DependentUpon>SecretaryEmergencyChangeSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryEmergencyOptions.xaml.cs">
       <DependentUpon>SecretaryEmergencyOptions.xaml</DependentUpon>
     </Compile>
@@ -714,6 +720,14 @@
     <Page Include="View\Secretary\SecretaryEmergency.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Secretary\SecretaryEmergencyAvailableAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryEmergencyChangeSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Secretary\SecretaryEmergencyOptions.xaml">
       <SubType>Designer</SubType>

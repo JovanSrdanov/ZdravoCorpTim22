@@ -379,5 +379,37 @@ namespace Service
 
             return availableMedicalAppointments;
         }
+
+        public ObservableCollection<MedicalAppointment> GetUnavailableMedicalAppointmentsInNextHour(AppointmentPreferences appointmentPreferences)
+        {
+            ObservableCollection<MedicalAppointment> medicalAppointmentsAll = instance.GetAll();
+            ObservableCollection<MedicalAppointment> medicalAppointments = new ObservableCollection<MedicalAppointment>();
+            for (int i = 0; i < medicalAppointmentsAll.Count; i++)
+            {
+                if (medicalAppointmentsAll[i].Interval.Start >= DateTime.Now.AddHours(1) || medicalAppointmentsAll[i].Interval.Start <= DateTime.Now)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].Interval.End <= DateTime.Now)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].isUrgent)
+                {
+                    continue;
+                }
+
+                if (medicalAppointmentsAll[i].Doctor.DoctorSpecialization != appointmentPreferences.enteredDoctor.DoctorSpecialization)
+                {
+                    continue;
+                }
+
+                medicalAppointments.Add(medicalAppointmentsAll[i]);
+            }
+
+            return medicalAppointments;
+        }
     }
 }
