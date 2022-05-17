@@ -40,5 +40,12 @@
     "EquipmentData": 5,
     "Room": 1,
     "EquipmentRelocation": null
+  },
+  {
+    "Id": 6,
+    "Amount": 1000,
+    "EquipmentData": 6,
+    "Room": null,
+    "EquipmentRelocation": null
   }
 ]

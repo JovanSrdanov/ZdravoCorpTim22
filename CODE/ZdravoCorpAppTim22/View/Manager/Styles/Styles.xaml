@@ -225,7 +225,7 @@
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 SnapsToDevicePixels="true"
-                                Padding="2"
+                                Padding="5"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Left"/>
                         </Border>
@@ -255,7 +255,7 @@
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource StandardComboBoxItem}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Padding" Value="3,0,23,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -272,7 +272,7 @@
                                           Content="{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          Margin="0,0,23,0"
+                                          Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"/>
                         <TextBox x:Name="PART_EditableTextBox"
@@ -342,7 +342,7 @@
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Width" Value="Auto"/>
-        <Setter Property="MaxLength" Value="6"/>
+        <Setter Property="MaxLength" Value="10"/>
     </Style>
 
     <Style x:Key="AmountDataGridRow" TargetType="DataGridRow">

@@ -38,17 +38,8 @@
                 <Button x:Name="AddMedicine" Style="{StaticResource AddButtonStyle}" Command="{Binding OpenAddCommand}"/>
                 <Button x:Name="DeleteMedicine" Style="{StaticResource DeleteButtonStyle}" Command="{Binding DeleteMedicineCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
                 <Button x:Name="EditMedicine" Style="{StaticResource EditButtonStyle}" Command="{Binding OpenEditCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
+                <Button x:Name="Details" Style="{StaticResource DetailsButtonStyle}" Command="{Binding OpenDetailsCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
             </WrapPanel>
-            <!--
-            <WrapPanel HorizontalAlignment="Right"
-                       Grid.Column="1">
-                <TextBox x:Name="SearchTextBox" Width="260" Margin="0 0 1 0" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button x:Name="SearchButton" 
-                        Style="{StaticResource SearchButtonStyle}"
-                        Margin="0" 
-                        IsHitTestVisible="False"/>
-            </WrapPanel>
-            -->
         </Grid>
         <DataGrid Grid.Row="2"
                   Name="DataGrid"
@@ -58,7 +49,8 @@
                 <DataGridTextColumn Binding="{Binding Path=MedicineData.Id}" Header="ID" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=MedicineData.Name}" Header="Name" Width="2*"/>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.Doctor.Name}" Header="Approved By" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.Doctor.Name}" Header="Reviewed By" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.IsApproved}" Header="Approved" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
