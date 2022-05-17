@@ -92,6 +92,11 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
             OldMedicine.MedicineData.Name = MedicineName;
             OldMedicine.Amount = Amount;
+            OldMedicine.MedicineData.Approval = new Approval()
+            {   
+                Id = OldMedicine.MedicineData.Approval.Id,
+                IsApproved = false
+            };
 
             List<Ingredient> ingredientsToRemove = new List<Ingredient>();
             List<Ingredient> ingredientsToAdd = new List<Ingredient>();
@@ -141,6 +146,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
                 ReplacementController.Instance.Create(replacement);
             }
 
+            ApprovalController.Instance.Update(OldMedicine.MedicineData.Approval);
             MedicineDataController.Instance.Update(OldMedicine.MedicineData);
             MedicineController.Instance.Update(OldMedicine);
 

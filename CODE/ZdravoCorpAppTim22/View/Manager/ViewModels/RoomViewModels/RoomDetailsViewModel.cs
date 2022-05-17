@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -91,6 +92,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
             SourceRoom = room;
             EquipmentCollection = room.Equipment;
+
+            EquipmentCollection.CollectionChanged += EquipmentListChangedEvent;
+        }
+
+        private void EquipmentListChangedEvent(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("FilteredEquipment");
         }
 
         public void OnPropertyChanged(string property)
