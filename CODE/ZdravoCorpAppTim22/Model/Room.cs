@@ -245,7 +245,7 @@ namespace Model
         }
         public bool CanMergeOrDiverge()
         {
-            if(Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0)
+            if(MedicalAppointment.Count > 0 || Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0)
             {
                 return false;
             }

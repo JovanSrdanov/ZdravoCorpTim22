@@ -1,22 +1,12 @@
 [
   {
-    "DoctorType": 0,
     "MedicalRecord": [
       {
         "Id": 0,
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "1",
           "1"
-        ]
-      },
-      {
-        "Id": 1,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
-          "neka dijagnoza"
         ]
       }
     ],
@@ -33,8 +23,20 @@
     "Address": 0
   },
   {
-    "DoctorType": 1,
-    "MedicalRecord": [],
+    "MedicalRecord": [
+      {
+        "Id": 0,
+        "BloodType": 1,
+        "AllergiesList": [],
+        "ConditionList": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ],
     "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",
@@ -48,7 +50,6 @@
     "Address": 1
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "OpstaPraksa1",
@@ -63,7 +64,6 @@
     "Address": 15
   },
   {
-    "DoctorType": 1,
     "MedicalRecord": [],
     "DoctorSpecialization": 3,
     "Name": "Specijalista",
@@ -78,7 +78,6 @@
     "Address": 16
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "Regularni",
@@ -91,5 +90,61 @@
     "Gender": 0,
     "Id": 4,
     "Address": 17
+  },
+  {
+    "MedicalRecord": [],
+    "DoctorSpecialization": 1,
+    "Name": "spec1",
+    "Surname": "s",
+    "Email": "1",
+    "Jmbg": "123123123",
+    "Password": "1",
+    "Birthday": "2022-05-17T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 5,
+    "Address": 33
+  },
+  {
+    "MedicalRecord": [],
+    "DoctorSpecialization": 2,
+    "Name": "specNeuro",
+    "Surname": "2",
+    "Email": "2",
+    "Jmbg": "2",
+    "Password": "2",
+    "Birthday": "2022-05-17T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 6,
+    "Address": 34
+  },
+  {
+    "MedicalRecord": [],
+    "DoctorSpecialization": 2,
+    "Name": "SpecNeuro2",
+    "Surname": "2",
+    "Email": "11111111",
+    "Jmbg": "2",
+    "Password": "2",
+    "Birthday": "2022-05-17T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 7,
+    "Address": 35
+  },
+  {
+    "MedicalRecord": [],
+    "DoctorSpecialization": 2,
+    "Name": "SpecNeuro3",
+    "Surname": "z",
+    "Email": "1231512",
+    "Jmbg": "321312",
+    "Password": "1",
+    "Birthday": "2022-05-17T00:00:00+02:00",
+    "Phone": "",
+    "Gender": 0,
+    "Id": 8,
+    "Address": 36
   }
 ]
