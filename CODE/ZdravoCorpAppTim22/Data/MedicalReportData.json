@@ -4,6 +4,10 @@
     "DoctorID": 0,
     "Anamnesis": "1",
     "Diagnosis": "1",
+    "ReportDate": "2022-05-17T10:06:41.6415636+02:00",
+    "MedicalReceipt": 0,
+    "ReportReview": null,
+    "MedicalRecord": 0
     "ReportDate": "2022-05-16T21:18:27.8971764+02:00",
     "ReportReviewed": false,
     "MedicalReceipt": 0,
@@ -13,6 +17,11 @@
   {
     "Id": 1,
     "DoctorID": 0,
+    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/28/2022 10:00:00 AM\nComment for the specialist:\n1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-05-17T10:07:18.274463+02:00",
+    "MedicalReceipt": 1,
+    "ReportReview": null,
     "Anamnesis": "2",
     "Diagnosis": "2",
     "ReportDate": "2022-05-16T21:18:36.925244+02:00",

@@ -1,8 +1,8 @@
 [
   {
     "Id": 0,
-    "EndDate": "2022-05-25T00:00:00",
-    "NotifyNextDateTime": "2022-05-16T10:00:00",
+    "EndDate": "2022-06-02T00:00:00",
+    "NotifyNextDateTime": "2022-05-17T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
@@ -65,7 +65,7 @@
   {
     "Id": 10,
     "EndDate": "2022-05-25T00:00:00",
-    "NotifyNextDateTime": "2022-05-13T10:00:00",
+    "NotifyNextDateTime": "2022-05-17T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "4",
     "TherapyPurpose": "4",

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MedicalRecordView" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <Label Content="Conditions" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Problems" HorizontalAlignment="Left" Margin="110,108,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Name &amp; Surname" HorizontalAlignment="Left" Margin="63,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Allergies" HorizontalAlignment="Left" Margin="548,108,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Past reports" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Center" FontSize="18"/>
@@ -16,16 +16,16 @@
         <Label Content="Gender" HorizontalAlignment="Left" Margin="316,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Date of birth" HorizontalAlignment="Left" Margin="438,24,0,0" VerticalAlignment="Top" FontSize="18"/>
 
-        <Button x:Name="CreateReportBtn" Content="Create report" Margin="624,647,0,0" Click="CreateReportBtnClick" 
-                Height="30" FontSize="16"
+        <Button x:Name="CreateReportBtn" Content="Create report" Margin="237,647,0,0" Click="CreateReportBtnClick" 
+                Height="40" FontSize="16"
                 Style="{StaticResource normalButton}"/>
-        <Button Content="Back" Margin="870,694,0,0" Click="BackBtn" Height="30" FontSize="16"
+        <Button Content="Back" Margin="632,646,0,0" Click="BackBtn" Height="40" FontSize="16"
+                Style="{StaticResource normalButton}" Width="89"/>
+        <Button x:Name="OpenReportBtn" Content="Change report" Margin="367,647,0,0" Click="OpenReportBtnClick" 
+                Height="40" FontSize="16"
                 Style="{StaticResource normalButton}"/>
-        <Button x:Name="OpenReportBtn" Content="Open report" Margin="501,647,0,0" Click="OpenReportBtnClick" 
-                Height="30" FontSize="16"
-                Style="{StaticResource normalButton}"/>
-        <Button x:Name="FinishReportBtn" Content="Finish report" Margin="757,647,0,0" 
-                Click="FinishReportClick" Height="30" FontSize="16"
+        <Button x:Name="FinishReportBtn" Content="Finish report" Margin="505,647,0,0" 
+                Click="FinishReportClick" Height="40" FontSize="16"
                 Style="{StaticResource normalButton}"/>
 
         <TextBlock x:Name="NameSurnameBlock" HorizontalAlignment="Left" Margin="70,50,0,0" TextWrapping="Wrap" 
@@ -45,17 +45,32 @@
                  BorderBrush="#FF8C39A5" BorderThickness="2"/>
         <ListBox x:Name="MedicationsListBox" Margin="548,398,168,150" FontSize="15" DisplayMemberPath="Name"
                  BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Button Margin="973,348,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
         <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
             Style="{StaticResource ResourceKey=statusBarButtonStyle}">
             <Button.Background>
                 <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
             </Button.Background>
         </Button>
-        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
             </Button.Background>
         </Button>
-        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

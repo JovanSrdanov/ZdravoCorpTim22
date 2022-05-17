@@ -1,13 +1,13 @@
 [
   {
-    "Id": 0,
+    "Id": 1,
     "Type": 2,
     "Interval": {
       "Start": "2022-05-28T09:45:00",
       "End": "2022-05-28T10:45:00"
     },
-    "isUrgent": false,
-    "Room": 1,
+    "isUrgent": true,
+    "Room": null,
     "Patient": 0,
     "Doctor": 1
   },

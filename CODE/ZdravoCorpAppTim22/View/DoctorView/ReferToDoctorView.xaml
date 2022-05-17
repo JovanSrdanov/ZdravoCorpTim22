@@ -12,18 +12,6 @@
     <Grid>
         <TextBlock Margin="266,76,0,0" Text="Refer to another doctor"
                    Style="{StaticResource ResourceKey=h1}"/>
-        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
-            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
-            </Button.Background>
-        </Button>
-        <Button Margin="973,520,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}" Click="HomeButtonClick" >
-            <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
-            </Button.Background>
-        </Button>
-        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
         <Button x:Name="ConfirmBtn" Content="Confirm" Margin="356,600,0,0"
                 Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="ConfirmBtnClick"/>
         <Button x:Name="CancelBtn" Content="Cancel" Margin="524,600,0,0"
@@ -58,5 +46,32 @@
             FontSize="18"/>
         <CheckBox x:Name="UrgentCheckBox" Content="Urgent" HorizontalAlignment="Left" Margin="342,361,0,0" VerticalAlignment="Top" Height="31"
                   FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+        <Button Margin="973,348,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
