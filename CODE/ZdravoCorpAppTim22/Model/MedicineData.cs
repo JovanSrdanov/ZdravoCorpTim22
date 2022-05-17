@@ -1,8 +1,6 @@
-﻿using Model;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
-using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace ZdravoCorpAppTim22.Model
 {

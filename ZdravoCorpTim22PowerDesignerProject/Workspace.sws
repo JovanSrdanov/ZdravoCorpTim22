@@ -5,9 +5,9 @@
 <Workspace>
 	<Local Expanded="Yes">
 		<Model ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../Diagrams/ClassDiagram/ObjectOrientedModel_1.oom"/>
-		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Loaded="No" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../Diagrams/ClassDiagram/ObjectOrientedModel_1.oom"/>
+		<Model Expanded="Yes" ID="{883AE398-4358-4F6D-8DFB-8143B0F490CA}" Name="ObjectOrientedModel_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="../Diagrams/ClassDiagram/ObjectOrientedModel_1.oom"/>
 		<Model Expanded="Yes" ID="{F77A39E1-2B27-4D44-931D-B7EA3812A686}" Loaded="No" Name="ZdravoCorpTim22PowerDesignerProject" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="ZdravoCorpTim22PowerDesignerProject.prj"/>
-		<Model Expanded="Yes" ID="{B8BB9250-E545-4C2C-A5BF-40DD51AFF4BE}" Name="PatientAppointmentPriorityChoosing" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="PatientAppointmentPriorityChoosing.oom"/>
+		<Model Expanded="Yes" ID="{B8BB9250-E545-4C2C-A5BF-40DD51AFF4BE}" Loaded="No" Name="PatientAppointmentPriorityChoosing" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="PatientAppointmentPriorityChoosing.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

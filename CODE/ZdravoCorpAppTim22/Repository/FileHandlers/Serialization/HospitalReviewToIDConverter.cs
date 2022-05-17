@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Repository;
 
 namespace Model
 {
