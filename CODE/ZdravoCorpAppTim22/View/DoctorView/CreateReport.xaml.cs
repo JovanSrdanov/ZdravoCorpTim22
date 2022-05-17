@@ -170,6 +170,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             medicalReceipt.MedicalRecord = medRec;
             MedicalReceiptController.Instance.Update(medicalReceipt);
 
+            //
+            MedicineController.Instance.Update(medicine);
+            //
+
             MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
 
             medicalRecordView.Show();

@@ -1,10 +1,10 @@
 [
   {
     "Id": 0,
-    "IsApproved": false,
-    "Doctor": null,
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 0,
-    "Message": null
+    "Message": ""
   },
   {
     "Id": 1,
@@ -15,10 +15,10 @@
   },
   {
     "Id": 2,
-    "IsApproved": false,
-    "Doctor": null,
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 2,
-    "Message": null
+    "Message": ""
   },
   {
     "Id": 3,
@@ -29,10 +29,10 @@
   },
   {
     "Id": 4,
-    "IsApproved": false,
-    "Doctor": null,
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 4,
-    "Message": null
+    "Message": ""
   },
   {
     "Id": 5,
