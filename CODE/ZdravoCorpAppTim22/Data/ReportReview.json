@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 0,
+    "Diagnosis": 5,
+    "RecommendedTherapy": 5,
+    "AppointmentDuration": 5,
+    "DoctorKindness": 4,
+    "DoctorExpertise": 4,
+    "DoctorDiscretion": 4
+  },
+  {
+    "Id": 1,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 5,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 4,
+    "DoctorExpertise": 4,
+    "DoctorDiscretion": 4
+  }
+]

@@ -1,6 +1,9 @@
 ﻿using Controller;
 using Model;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -11,50 +14,61 @@ namespace ZdravoCorpAppTim22.View.Secretary
     public partial class SecretaryEmergency : Window
     {
         private SecretaryHome SecretaryHome;
+        private bool Registered = false;
 
-        public SecretaryEmergency(SecretaryHome secretaryHome)
+        public SecretaryEmergency(SecretaryHome secretaryHome, bool registered)
         {
             InitializeComponent();
             SecretaryHome = secretaryHome;
-            AppointmentPreferences appointmentPreferences = new AppointmentPreferences();
-            appointmentPreferences.enteredAppointmentType = AppointmentType.Examination;
-            appointmentPreferences.enteredDateTime = System.DateTime.Now;
-            Doctor doctorTemp = new Doctor();
-            Patient patientTemp = new Patient();
-            appointmentPreferences.enteredDoctor = doctorTemp;
-            appointmentPreferences.enteredPatient = patientTemp;
-            appointmentPreferences.enteredPriority = AppointemntPriorityEnum.Time;
-            dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);
+
+            comboBoxDoctorSpecialisation.ItemsSource = DoctorSpecializationController.Instance.GetAll();
+            comboBoxExaminationType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
+            Registered = registered;
+            if (Registered)
+            {
+                NameTextBox.Visibility = Visibility.Hidden;
+                comboBoxPatient.Visibility = Visibility.Visible;
+                comboBoxPatient.ItemsSource = PatientController.Instance.GetAll();
+                MaleRB.Visibility = Visibility.Hidden;
+                FemaleRB.Visibility = Visibility.Hidden;
+                OtherRB.Visibility = Visibility.Hidden;
+                genderLbl.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                NameTextBox.Visibility = Visibility.Visible;
+                comboBoxPatient.Visibility = Visibility.Hidden;
+                MaleRB.Visibility = Visibility.Visible;
+                FemaleRB.Visibility = Visibility.Visible;
+                OtherRB.Visibility = Visibility.Visible;
+                genderLbl.Visibility = Visibility.Visible;
+            }
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentStruct medicalAppointmentStruct = null;
-            if (NameTextBox.Text == "")
+            if (!Registered)
             {
-                MessageBox.Show("Must enter name!");
-                return;
-            }
-
-            if (dataGridSuggestedMedicalAppointments.SelectedItem != null)
-            {
-                try
+                if (NameTextBox.Text == "")
                 {
-                    medicalAppointmentStruct = (MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem;
-                }
-                catch
-                {
-                    MessageBox.Show("Select appointment for emergencyy");
+                    MessageBox.Show("Must enter name!");
                     return;
                 }
             }
-            else
+
+            if (comboBoxDoctorSpecialisation.SelectedItem == null)
             {
-                MessageBox.Show("Select appointment for emergency");
+                MessageBox.Show("Must enter doctor specialisation!");
                 return;
             }
 
-            MessageBoxResult result = MessageBox.Show("Are you sure?", "Create emergency account", MessageBoxButton.YesNo);
+            if (comboBoxExaminationType.SelectedItem == null)
+            {
+                MessageBox.Show("Must enter examination type!");
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Create emergency appointment", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -63,6 +77,73 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 case MessageBoxResult.No:
                     return;
             }
+            Patient patient = new Patient();
+
+            if (Registered)
+            {
+                if (comboBoxPatient.SelectedItem != null)
+                {
+                    patient = (Patient)comboBoxPatient.SelectedItem;
+                }
+                else
+                {
+                    MessageBox.Show("Must select patient from list!");
+                }
+            }
+            else
+            {
+
+                patient.Name = NameTextBox.Text;
+                if ((bool)MaleRB.IsChecked)
+                {
+                    patient.Gender = Gender.male;
+                }
+                else if ((bool)FemaleRB.IsChecked)
+                {
+                    patient.Gender = Gender.female;
+                }
+                else
+                {
+                    patient.Gender = Gender.other;
+                }
+            }
+
+
+            AppointmentPreferences appointmentPreferences = GetPrefrences();
+            MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
+            if (medicalAppointmentStruct == null)
+            {
+                MessageBox.Show("NO AVAILABLE APPOINTMENTS");
+                SecretaryEmergencyChangeSchedule secretaryEmergencyChangeSchedule = new SecretaryEmergencyChangeSchedule(this, appointmentPreferences);
+                try
+                {
+                    secretaryEmergencyChangeSchedule.ShowDialog();
+                }
+                catch { }
+
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Start: " + medicalAppointmentStruct.Interval.Start + "\n Doctor: " + medicalAppointmentStruct.Doctor.Name + "\n Room: " + medicalAppointmentStruct.Room.Name);
+            }
+
+            MedicalAppointment medicalAppointment = new MedicalAppointment(medicalAppointmentStruct);
+            if (!Registered)
+            {
+                PatientController.Instance.Create(patient);
+            }
+            medicalAppointment.Patient = patient;
+
+            PatientController.Instance.GetPatient(patient).AddMedicalAppointment(medicalAppointment);
+
+            MedicalAppointmentController.Instance.Create(medicalAppointment);
+            SecretaryHome.Show();
+            this.Close();
+        }
+
+        public void TryToSchedule()
+        {
             Patient patient = new Patient();
 
             patient.Name = NameTextBox.Text;
@@ -79,15 +160,61 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 patient.Gender = Gender.other;
             }
 
+            AppointmentPreferences appointmentPreferences = GetPrefrences();
+            MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
+            if (medicalAppointmentStruct == null)
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Start: " + medicalAppointmentStruct.Interval.Start + "\n Doctor: " + medicalAppointmentStruct.Doctor.Name + "\n Room: " + medicalAppointmentStruct.Room.Name);
+            }
+
             MedicalAppointment medicalAppointment = new MedicalAppointment(medicalAppointmentStruct);
             PatientController.Instance.Create(patient);
             medicalAppointment.Patient = patient;
+            medicalAppointment.isUrgent = true;
 
             PatientController.Instance.GetPatient(patient).AddMedicalAppointment(medicalAppointment);
 
             MedicalAppointmentController.Instance.Create(medicalAppointment);
             SecretaryHome.Show();
             this.Close();
+        }
+
+        public AppointmentPreferences GetPrefrences()
+        {
+            AppointmentPreferences appointmentPreferencesTemp = new AppointmentPreferences();
+            Doctor doctorTemp = new Doctor();
+            doctorTemp.DoctorSpecialization = (DoctorSpecialization)comboBoxDoctorSpecialisation.SelectedItem;
+            Patient patientTemp = new Patient();
+            appointmentPreferencesTemp.enteredDoctor = doctorTemp;
+            appointmentPreferencesTemp.enteredPatient = patientTemp;
+            appointmentPreferencesTemp.enteredPriority = AppointemntPriorityEnum.Time;
+            appointmentPreferencesTemp.enteredAppointmentType = (AppointmentType)comboBoxExaminationType.SelectedItem;
+            appointmentPreferencesTemp.enteredDateTime = System.DateTime.Now;
+
+            return appointmentPreferencesTemp;
+        }
+
+        public MedicalAppointmentStruct GetMedicalAppointmentStruct()
+        {
+            MedicalAppointmentStruct medicalAppointmentStructTemp = null;
+            AppointmentPreferences appointmentPreferencesTemp = GetPrefrences();
+            ObservableCollection<MedicalAppointmentStruct> tempAppointments = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferencesTemp);
+            for (int i = 0; i < tempAppointments.Count; i++)
+            {
+                if (tempAppointments[i].Interval.Start <= System.DateTime.Now.AddHours(1) && tempAppointments[i].Doctor.DoctorSpecialization == appointmentPreferencesTemp.enteredDoctor.DoctorSpecialization)
+                {
+
+                    medicalAppointmentStructTemp = tempAppointments[i];
+                    break;
+                }
+            }
+
+
+            return medicalAppointmentStructTemp;
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

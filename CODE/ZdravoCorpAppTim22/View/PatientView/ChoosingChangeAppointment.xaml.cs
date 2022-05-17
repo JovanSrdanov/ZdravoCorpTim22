@@ -45,6 +45,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             PatientController.Instance.AntiTroll(ZdravoCorpTabs.LoggedPatient);
             if (ZdravoCorpTabs.LoggedPatient == null)
             {
+                
                 Close();
                 return;
             }

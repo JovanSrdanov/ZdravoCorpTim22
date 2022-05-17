@@ -3,15 +3,6 @@
     "Id": 0,
     "BloodType": 1,
     "AllergiesList": [],
-    "ConditionList": [
-      "1",
-      "2",
-      "1",
-      "6",
-      "1",
-      "1",
-      "1",
-      "1"
-    ]
+    "ConditionList": ["nekaDijagnoza", "12321"]
   }
 ]

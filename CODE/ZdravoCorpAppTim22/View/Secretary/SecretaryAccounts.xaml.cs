@@ -53,7 +53,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     DataGridTextColumn dataGridColumnSpecialisation = new DataGridTextColumn();
                     dataGridColumnSpecialisation.Header = "Specialisation";
                     var binding = new Binding();
-                    binding.Path = new PropertyPath("DoctorType");
+                    binding.Path = new PropertyPath("DoctorSpecialization.Name");
                     dataGridColumnSpecialisation.Binding = binding;
                     dataGridColumnSpecialisation.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
                     AccountsDataGrid.Columns.Add(dataGridColumnSpecialisation);

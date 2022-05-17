@@ -8,18 +8,6 @@
         Title="RequestForLeaveView" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <TextBlock Style="{StaticResource h1}" Text="Request for absence" Margin="273,56,0,0"/>
-        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
-            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
-            </Button.Background>
-        </Button>
-        <Button Margin="973,520,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
-            </Button.Background>
-        </Button>
-        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
         <Label Content="Reason for absence" HorizontalAlignment="Left" Margin="283,168,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Absence start date" HorizontalAlignment="Left" Margin="283,419,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="ReasonForAbsenceTextBox" HorizontalAlignment="Left" Margin="283,226,0,0" TextWrapping="Wrap" 
@@ -30,13 +18,40 @@
                     BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"/>
         <CheckBox x:Name="UrgentCheckBox" Content="Urgent" HorizontalAlignment="Left" Margin="429,530,0,0" VerticalAlignment="Top"
                   FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
-        <Button x:Name="SendBtn" Content="Send" Margin="356,600,0,0"
+        <Button x:Name="SendBtn" Content="Confirm" Margin="356,600,0,0"
             Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="SendBtnClick"/>
         <Button x:Name="CancelBtn" Content="Cancel" Margin="524,600,0,0"
             Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="CancelBtnClick"/>
         <Label Content="Absence end date" HorizontalAlignment="Left" Margin="488,419,0,0" VerticalAlignment="Top" FontSize="18"/>
         <DatePicker x:Name="AbsenceEndDatePicker" HorizontalAlignment="Left" Margin="494,464,0,0" VerticalAlignment="Top"
             BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"/>
+        <Button Margin="973,348,0,0" Click="HomeButtonClick" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LogOut" Margin="974,10,0,0" Click="LogOutBtn"
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/magnifyingglass.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

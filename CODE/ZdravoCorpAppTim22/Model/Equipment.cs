@@ -101,5 +101,15 @@ namespace Model
                 }
             }
         }
+
+        public override string ToString()
+        {
+            if (EquipmentData != null)
+            {
+                return EquipmentData.Name;
+            }
+
+            return "";
+        }
     }
 }

@@ -2,6 +2,8 @@
 using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
+
 namespace ZdravoCorpAppTim22.View.Secretary
 {
     public partial class SecretaryAccountsEdit : Window
@@ -62,8 +64,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (SpecialisationComboBox != null && SpecialisationLbl != null)
             {
+                if (visible == Visibility.Visible)
+                {
+                    SpecialisationComboBox.ItemsSource = DoctorSpecializationController.Instance.GetAll();
+                }
                 SpecialisationComboBox.Visibility = visible;
                 SpecialisationLbl.Visibility = visible;
+
             }
         }
 
@@ -195,7 +202,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     }
                     SetSpecialisationComboBox(Visibility.Visible);
                     SetMedicalReportButton(Visibility.Hidden);
-                    SpecialisationComboBox.SelectedItem = Doctor.DoctorType;
+                    SpecialisationComboBox.SelectedItem = Doctor.DoctorSpecialization;
                     break;
 
 
@@ -225,6 +232,50 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (EMailTextBox.Text == "")
+            {
+                MessageBox.Show("Must enter unique email");
+            }
+            else
+            {
+                ObservableCollection<Patient> patients = PatientController.Instance.GetAll();
+                for (int i = 0; i < patients.Count; i++)
+                {
+                    if (EMailTextBox.Text == patients[i].Email && patients[i] != Patient)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<Doctor> doctors = DoctorController.Instance.GetAll();
+                for (int i = 0; i < doctors.Count; i++)
+                {
+                    if (EMailTextBox.Text == doctors[i].Email && doctors[i] != Doctor)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<ManagerClass> managers = ManagerController.Instance.GetAll();
+                for (int i = 0; i < managers.Count; i++)
+                {
+                    if (EMailTextBox.Text == managers[i].Email && managers[i] != Manager)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+                for (int i = 0; i < secretaries.Count; i++)
+                {
+                    if (EMailTextBox.Text == secretaries[i].Email && secretaries[i] != Secretary)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+            }
+
             if (NameTextBox.Text == "")
             {
                 MessageBox.Show("Must enter name!");
@@ -396,6 +447,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         {
                             Doctor.Address = addressTemp;
                         }
+                        Doctor.DoctorSpecialization = (Model.DoctorSpecialization)SpecialisationComboBox.SelectedItem;
                         Doctor.Phone = PhoneTextBox.Text;
                         Doctor.Birthday = (System.DateTime)BirthDayPicker.SelectedDate;
                         Doctor.Jmbg = JMBGTextBox.Text;

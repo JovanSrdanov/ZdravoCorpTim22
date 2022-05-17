@@ -6,20 +6,16 @@
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center"
+    HorizontalContentAlignment="Center"
+    VerticalContentAlignment="Center"
     mc:Ignorable="d">
-    <UserControl.Background>
-        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-            <GradientStop Offset="1" Color="#FF00D2FF" />
-            <GradientStop Offset="0.5" Color="White" />
-        </LinearGradientBrush>
-    </UserControl.Background>
+
     <UserControl.DataContext>
         <viewModel:HospitalReviewViewModel />
     </UserControl.DataContext>
-    <StackPanel
-        Margin="42,0,42,42"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
         <Image
             Width="200"

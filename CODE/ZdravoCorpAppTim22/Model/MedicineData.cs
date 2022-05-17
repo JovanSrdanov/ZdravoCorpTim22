@@ -17,7 +17,7 @@ namespace ZdravoCorpAppTim22.Model
             get => approval;
             set
             {
-                if(value != approval)
+                if (value != approval)
                 {
                     approval = value;
                     approval.MedicineData = this;
@@ -212,6 +212,11 @@ namespace ZdravoCorpAppTim22.Model
             {
                 replacements.Clear();
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
     }
