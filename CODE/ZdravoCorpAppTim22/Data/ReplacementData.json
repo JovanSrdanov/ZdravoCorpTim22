@@ -35,18 +35,18 @@
     "ReplacementToMedicine": 0
   },
   {
-    "Id": 9,
+    "Id": 11,
+    "ReplacingMedicine": 1,
+    "ReplacementToMedicine": 2
+  },
+  {
+    "Id": 12,
     "ReplacingMedicine": 2,
     "ReplacementToMedicine": 4
   },
   {
-    "Id": 10,
+    "Id": 13,
     "ReplacingMedicine": 5,
     "ReplacementToMedicine": 4
-  },
-  {
-    "Id": 11,
-    "ReplacingMedicine": 1,
-    "ReplacementToMedicine": 2
   }
 ]
