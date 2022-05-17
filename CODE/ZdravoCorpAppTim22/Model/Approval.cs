@@ -8,9 +8,11 @@ namespace ZdravoCorpAppTim22.Model
 {
     public class Approval : IHasID, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int Id { get; set; }
 
-        bool isApproved;
+        private bool isApproved;
         public bool IsApproved
         {
             get { return isApproved; }
@@ -24,7 +26,7 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
-        Doctor doctor;
+        private Doctor doctor;
         [JsonConverter(typeof(DoctorToIDConverter))]
         public Doctor Doctor
         {
@@ -60,8 +62,7 @@ namespace ZdravoCorpAppTim22.Model
 
         [JsonConstructor]
         public Approval() { }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        
         private void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

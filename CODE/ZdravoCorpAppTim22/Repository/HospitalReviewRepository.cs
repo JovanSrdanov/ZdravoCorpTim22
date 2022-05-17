@@ -1,7 +1,7 @@
 ﻿using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository.Generic;
 
-namespace Model
+namespace ZdravoCorpAppTim22.Repository
 {
     public class HospitalReviewRepository : GenericRepository<HospitalReview>
     {
