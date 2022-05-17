@@ -4,23 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using MahApps.Metro.Controls;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView
 {
-   
+
     public partial class ZdravoCorpTabs : Window
     {
 
-        
+
         public static ObservableCollection<MedicalAppointment> MedicalAppointmentList { get; set; }
-        public static MedicalAppointment MedicalAppointmentSelected { get;  set; }
-        public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get;  set; }
+        public static MedicalAppointment MedicalAppointmentSelected { get; set; }
+        public static ObservableCollection<MedicalReceipt> MedicalReceiptsList { get; set; }
 
         public List<MedicalAppointment> medicalAppointments;
 
@@ -37,13 +34,13 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
             MedicalRecord medRec = patient.medicalRecord;
             if (medRec == null)
-            {              
+            {
                 MedicalReceiptsList = new ObservableCollection<MedicalReceipt>();
             }
             else
             {
-            List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
-            MedicalReceiptsList = new ObservableCollection<MedicalReceipt>(MedicalReceipts);
+                List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
+                MedicalReceiptsList = new ObservableCollection<MedicalReceipt>(MedicalReceipts);
 
             }
 
@@ -100,6 +97,9 @@ namespace ZdravoCorpAppTim22.View.PatientView
             PatientController.Instance.AntiTroll(LoggedPatient);
             if (LoggedPatient == null)
             {
+
+               
+
                 Close();
                 return;
             }
@@ -129,14 +129,12 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            
             Close();
-           
         }
 
         private void RateZdravoCorp_Click(object sender, RoutedEventArgs e)
         {
-           
+
             ReviewTheHospital reviewTheHospital = new ReviewTheHospital();
             reviewTheHospital.ShowDialog();
         }
@@ -144,11 +142,17 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void ZdravoCorpTabs_OnClosing(object sender, CancelEventArgs e)
         {
-            
+
             LoggedPatient = null;
             AuthenticationController.Instance.Logout();
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            App.Current.MainWindow.Show();
+        }
+
+        private void MedicalReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MedicalReportsWindow medicalReportsWindow = new MedicalReportsWindow();
+            medicalReportsWindow.ShowDialog();
+
         }
     }
 }

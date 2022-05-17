@@ -2,10 +2,10 @@
   {
     "Blocked": false,
     "SuspiciousActivity": [
-     
+    
     ],
     "HospitalReview": 0,
-    "MedicalRecord": null,
+    "MedicalRecord": 0,
     "Name": "Jovan",
     "Surname": "Srdanov",
     "Email": "j",

@@ -5,8 +5,10 @@
     "Anamnesis": "1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:18:27.8971764+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 0,
-    "MedicalRecord": 0
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 1,
@@ -14,8 +16,10 @@
     "Anamnesis": "2",
     "Diagnosis": "2",
     "ReportDate": "2022-05-16T21:18:36.925244+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 1,
-    "MedicalRecord": 0
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 2,
@@ -23,8 +27,10 @@
     "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/20/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:19:01.2028067+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 2,
-    "MedicalRecord": 0
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 3,
@@ -32,8 +38,10 @@
     "Anamnesis": "6\n\nReffered to: Specijalista Specijalista1\nAppointment date: 5/27/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "6",
     "ReportDate": "2022-05-16T21:19:23.9117536+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 3,
-    "MedicalRecord": 0
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 4,
@@ -41,8 +49,10 @@
     "Anamnesis": "1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:20:23.5674095+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 4,
-    "MedicalRecord": 0
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 5,
@@ -50,8 +60,10 @@
     "Anamnesis": "1\n\nReffered to: doc docprez\nAppointment date: 5/28/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:20:50.4520945+02:00",
-    "MedicalReceipt": 5,
-    "MedicalRecord": 0
+    "ReportReviewed": false,
+    "MedicalReceipt": null,
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 6,
@@ -59,8 +71,10 @@
     "Anamnesis": "1\n\nReffered to: Specijalista Specijalista1\nAppointment date: 5/20/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:21:41.9009523+02:00",
-    "MedicalReceipt": 6,
-    "MedicalRecord": 0
+    "ReportReviewed": false,
+    "MedicalReceipt": null,
+    "ReportReview": null,
+    "MedicalRecord": null
   },
   {
     "Id": 7,
@@ -68,7 +82,31 @@
     "Anamnesis": "1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-16T21:22:02.8038928+02:00",
-    "MedicalReceipt": 7,
+    "ReportReviewed": false,
+    "MedicalReceipt": null,
+    "ReportReview": null,
+    "MedicalRecord": null
+  },
+  {
+    "Id": 8,
+    "DoctorID": 0,
+    "Anamnesis": "NekaAnamneza",
+    "Diagnosis": "nekaDijagnoza",
+    "ReportDate": "2022-05-17T09:06:28.0593938+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 20,
+    "ReportReview": 0,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 9,
+    "DoctorID": 0,
+    "Anamnesis": "123123",
+    "Diagnosis": "12321",
+    "ReportDate": "2022-05-17T09:29:13.0326511+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 21,
+    "ReportReview": 1,
     "MedicalRecord": 0
   }
 ]
