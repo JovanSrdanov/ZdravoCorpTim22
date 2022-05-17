@@ -223,8 +223,7 @@ namespace Service
 
                 foreach (Doctor doctor in suggestedDoctors)
                 {
-                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
-                    if (doctor.DoctorSpecialization == doctor.DoctorSpecialization)
+                    if (doctor.DoctorSpecialization == appointmentPreferences.enteredDoctor.DoctorSpecialization)
                     {
                         temporaryDoctors.Add(doctor);
                     }

@@ -20,7 +20,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             AppointmentPreferences appointmentPreferences = new AppointmentPreferences();
             appointmentPreferences.enteredDateTime = System.DateTime.Now;
             appointmentPreferences.enteredPatient = medicalAppointment.patient;
-            appointmentPreferences.enteredDoctor = medicalAppointment.doctor;
+            appointmentPreferences.enteredDoctor = medicalAppointment.Doctor;
             appointmentPreferences.enteredPriority = AppointemntPriorityEnum.Time;
             appointmentPreferences.enteredAppointmentType = medicalAppointment.Type;
             dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);

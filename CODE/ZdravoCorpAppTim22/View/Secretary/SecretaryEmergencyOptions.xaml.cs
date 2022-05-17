@@ -16,12 +16,14 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void btnRegisteredAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(SecretaryHome, true);
+            secretaryEmergency.Show();
+            this.Hide();
         }
 
         private void btnNewAccount_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(SecretaryHome);
+            SecretaryEmergency secretaryEmergency = new SecretaryEmergency(SecretaryHome, false);
             secretaryEmergency.Show();
             this.Hide();
         }

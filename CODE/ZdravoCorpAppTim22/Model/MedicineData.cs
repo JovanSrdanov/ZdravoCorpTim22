@@ -1,8 +1,6 @@
-﻿using Model;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
-using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace ZdravoCorpAppTim22.Model
 {
@@ -19,7 +17,7 @@ namespace ZdravoCorpAppTim22.Model
             get => approval;
             set
             {
-                if(value != approval)
+                if (value != approval)
                 {
                     approval = value;
                     approval.MedicineData = this;
@@ -214,6 +212,11 @@ namespace ZdravoCorpAppTim22.Model
             {
                 replacements.Clear();
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
     }

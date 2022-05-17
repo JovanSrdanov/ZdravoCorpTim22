@@ -1,6 +1,5 @@
 [
   {
-    "DoctorType": 0,
     "MedicalRecord": [
       {
         "Id": 0,
@@ -15,17 +14,16 @@
     "DoctorSpecialization": 0,
     "Name": "doc",
     "Surname": "docprez",
-    "Email": "",
+    "Email": "5555",
     "Jmbg": "123",
-    "Password": "123",
+    "Password": "5555",
     "Birthday": "2022-04-14T00:00:00+02:00",
     "Phone": "",
     "Gender": 0,
     "Id": 0,
-    "Address": 0
+    "Address": 31
   },
   {
-    "DoctorType": 1,
     "MedicalRecord": [
       {
         "Id": 0,
@@ -47,17 +45,16 @@
     "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",
-    "Email": "",
+    "Email": "44444",
     "Jmbg": "123123213",
-    "Password": "123",
+    "Password": "321",
     "Birthday": "2022-04-18T00:00:00+02:00",
     "Phone": "",
     "Gender": 0,
     "Id": 1,
-    "Address": 1
+    "Address": 29
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [],
     "DoctorSpecialization": 0,
     "Name": "OpstaPraksa1",
@@ -72,7 +69,6 @@
     "Address": 15
   },
   {
-    "DoctorType": 1,
     "MedicalRecord": [
       {
         "Id": 0,
@@ -103,7 +99,6 @@
     "Address": 16
   },
   {
-    "DoctorType": 0,
     "MedicalRecord": [
       {
         "Id": 0,

@@ -14,22 +14,46 @@ namespace ZdravoCorpAppTim22.View.Secretary
     public partial class SecretaryEmergency : Window
     {
         private SecretaryHome SecretaryHome;
+        private bool Registered = false;
 
-        public SecretaryEmergency(SecretaryHome secretaryHome)
+        public SecretaryEmergency(SecretaryHome secretaryHome, bool registered)
         {
             InitializeComponent();
             SecretaryHome = secretaryHome;
 
             comboBoxDoctorSpecialisation.ItemsSource = DoctorSpecializationController.Instance.GetAll();
             comboBoxExaminationType.ItemsSource = Enum.GetValues(typeof(AppointmentType));
+            Registered = registered;
+            if (Registered)
+            {
+                NameTextBox.Visibility = Visibility.Hidden;
+                comboBoxPatient.Visibility = Visibility.Visible;
+                comboBoxPatient.ItemsSource = PatientController.Instance.GetAll();
+                MaleRB.Visibility = Visibility.Hidden;
+                FemaleRB.Visibility = Visibility.Hidden;
+                OtherRB.Visibility = Visibility.Hidden;
+                genderLbl.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                NameTextBox.Visibility = Visibility.Visible;
+                comboBoxPatient.Visibility = Visibility.Hidden;
+                MaleRB.Visibility = Visibility.Visible;
+                FemaleRB.Visibility = Visibility.Visible;
+                OtherRB.Visibility = Visibility.Visible;
+                genderLbl.Visibility = Visibility.Visible;
+            }
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (NameTextBox.Text == "")
+            if (!Registered)
             {
-                MessageBox.Show("Must enter name!");
-                return;
+                if (NameTextBox.Text == "")
+                {
+                    MessageBox.Show("Must enter name!");
+                    return;
+                }
             }
 
             if (comboBoxDoctorSpecialisation.SelectedItem == null)
@@ -44,7 +68,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 return;
             }
 
-            MessageBoxResult result = MessageBox.Show("Are you sure?", "Create emergency account", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Create emergency appointment", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -55,18 +79,33 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             Patient patient = new Patient();
 
-            patient.Name = NameTextBox.Text;
-            if ((bool)MaleRB.IsChecked)
+            if (Registered)
             {
-                patient.Gender = Gender.male;
-            }
-            else if ((bool)FemaleRB.IsChecked)
-            {
-                patient.Gender = Gender.female;
+                if (comboBoxPatient.SelectedItem != null)
+                {
+                    patient = (Patient)comboBoxPatient.SelectedItem;
+                }
+                else
+                {
+                    MessageBox.Show("Must select patient from list!");
+                }
             }
             else
             {
-                patient.Gender = Gender.other;
+
+                patient.Name = NameTextBox.Text;
+                if ((bool)MaleRB.IsChecked)
+                {
+                    patient.Gender = Gender.male;
+                }
+                else if ((bool)FemaleRB.IsChecked)
+                {
+                    patient.Gender = Gender.female;
+                }
+                else
+                {
+                    patient.Gender = Gender.other;
+                }
             }
 
 
@@ -74,7 +113,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
             if (medicalAppointmentStruct == null)
             {
-                MessageBox.Show("NO APPOINTMENTS");
+                MessageBox.Show("NO AVAILABLE APPOINTMENTS");
                 SecretaryEmergencyChangeSchedule secretaryEmergencyChangeSchedule = new SecretaryEmergencyChangeSchedule(this, appointmentPreferences);
                 try
                 {
@@ -90,7 +129,10 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
 
             MedicalAppointment medicalAppointment = new MedicalAppointment(medicalAppointmentStruct);
-            PatientController.Instance.Create(patient);
+            if (!Registered)
+            {
+                PatientController.Instance.Create(patient);
+            }
             medicalAppointment.Patient = patient;
 
             PatientController.Instance.GetPatient(patient).AddMedicalAppointment(medicalAppointment);
@@ -122,7 +164,6 @@ namespace ZdravoCorpAppTim22.View.Secretary
             MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
             if (medicalAppointmentStruct == null)
             {
-                MessageBox.Show("Something not wrong");
                 return;
             }
             else

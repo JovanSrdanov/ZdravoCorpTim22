@@ -232,6 +232,50 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (EMailTextBox.Text == "")
+            {
+                MessageBox.Show("Must enter unique email");
+            }
+            else
+            {
+                ObservableCollection<Patient> patients = PatientController.Instance.GetAll();
+                for (int i = 0; i < patients.Count; i++)
+                {
+                    if (EMailTextBox.Text == patients[i].Email && patients[i] != Patient)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<Doctor> doctors = DoctorController.Instance.GetAll();
+                for (int i = 0; i < doctors.Count; i++)
+                {
+                    if (EMailTextBox.Text == doctors[i].Email && doctors[i] != Doctor)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<ManagerClass> managers = ManagerController.Instance.GetAll();
+                for (int i = 0; i < managers.Count; i++)
+                {
+                    if (EMailTextBox.Text == managers[i].Email && managers[i] != Manager)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+                ObservableCollection<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+                for (int i = 0; i < secretaries.Count; i++)
+                {
+                    if (EMailTextBox.Text == secretaries[i].Email && secretaries[i] != Secretary)
+                    {
+                        MessageBox.Show("Must enter unique email");
+                        return;
+                    }
+                }
+            }
+
             if (NameTextBox.Text == "")
             {
                 MessageBox.Show("Must enter name!");
