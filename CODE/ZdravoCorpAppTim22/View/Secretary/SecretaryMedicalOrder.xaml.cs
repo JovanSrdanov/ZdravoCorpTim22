@@ -129,11 +129,5 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 MessageBox.Show("Must select item in table that you want to delete");
             }
         }
-
-        private void comboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            comboBox.ItemsSource = EquipmentDataController.Instance.GetAllConsumable();
-            comboBox.Items.Refresh();
-        }
     }
 }

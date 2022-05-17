@@ -33,12 +33,15 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 };
                 EquipmentController.Instance.AddWarehouseEquipment(equipment);
                 MessageBox.Show("Equipement created");
+                SecretaryMedicalOrder.comboBox.ItemsSource = EquipmentDataController.Instance.GetAllConsumable();
+                SecretaryMedicalOrder.comboBox.Items.Refresh();
+                SecretaryMedicalOrder.Hide();
+                SecretaryMedicalOrder.Show();
             }
             else
             {
                 MessageBox.Show("That equipement already exists!");
             }
-
             this.Close();
         }
     }
