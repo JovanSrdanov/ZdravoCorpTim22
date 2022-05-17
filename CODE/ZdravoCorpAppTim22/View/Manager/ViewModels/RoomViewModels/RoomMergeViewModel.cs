@@ -93,7 +93,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             }
             if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval) || !Room_1.CanMergeOrDiverge() || !Room_2.CanMergeOrDiverge())
             {
-                InfoModal.Show("Rooms aren't available");
+                InfoModal.Show("One of the rooms isn't available");
                 return;
             }
             if (!Room_1.Name.Equals(name) && !Room_2.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
