@@ -33,6 +33,8 @@ namespace Model
         [JsonIgnore]
         private List<RoomDiverge> diverges;
 
+        #region properties
+
         [JsonIgnore]
         public ObservableCollection<Equipment> Equipment
         {
@@ -193,6 +195,7 @@ namespace Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public Room() { }

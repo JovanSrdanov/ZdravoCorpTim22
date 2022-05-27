@@ -9,6 +9,11 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
         public int Amount { get; set; }
 
+        #region properties
+
+
+        #endregion
+
         [JsonConstructor]
         public Medicine() { }
         public Medicine(Medicine m)

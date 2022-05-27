@@ -8,15 +8,12 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IngredientData() { }
-
-        public IngredientData(string name)
-        {
-            Name = name;
-        }
 
         [JsonIgnore]
         private ObservableCollection<Ingredient> ingredient;
+
+        #region properties
+
         [JsonIgnore]
         public ObservableCollection<Ingredient> Ingredient
         {
@@ -36,6 +33,16 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
+
+        public IngredientData() { }
+
+        public IngredientData(string name)
+        {
+            Name = name;
+        }
+
+        #region boilerplate
 
         public void AddIngredient(Ingredient newIngredient)
         {
@@ -73,5 +80,6 @@ namespace ZdravoCorpAppTim22.Model
                 tmpIngredient.Clear();
             }
         }
+        #endregion
     }
 }

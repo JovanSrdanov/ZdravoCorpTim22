@@ -12,8 +12,8 @@ namespace ZdravoCorpAppTim22.Model
         public EquipmentType Type { get; set; }
         public double Price { get; set; }
 
-        [JsonIgnore]
-        public ObservableCollection<Equipment> equipment;
+        #region properties
+
         [JsonIgnore]
         public ObservableCollection<Equipment> Equipment
         {
@@ -33,6 +33,11 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
+
+        [JsonIgnore]
+        public ObservableCollection<Equipment> equipment;
+        
 
         [JsonConstructor]
         public EquipmentData() { }
@@ -55,6 +60,12 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        #region boilerplate
 
         public void AddEquipment(Equipment newEquipment)
         {
@@ -92,10 +103,6 @@ namespace ZdravoCorpAppTim22.Model
                 tmpEquipment.Clear();
             }
         }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        #endregion
     }
 }

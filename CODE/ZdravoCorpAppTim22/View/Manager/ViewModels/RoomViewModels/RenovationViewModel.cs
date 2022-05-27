@@ -2,7 +2,6 @@
 using Model;
 using System;
 using System.ComponentModel;
-using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;

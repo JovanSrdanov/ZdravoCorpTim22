@@ -2,8 +2,6 @@
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository;
@@ -27,40 +25,50 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-        public void DeleteMany(List<RoomMerge> list)
+        public void DeleteByList(List<RoomMerge> list)
         {
             foreach(RoomMerge roomMerge in list)
             {
                 DeleteByID(roomMerge.Id);
             }
         }
+
+        //Method that's being run every second from the background thread
         public void BackgroundTask()
         {
-            DoExpiredMerges();
-        }
-
-        public void DoExpiredMerges()
-        {
             List<RoomMerge> list = GetAllExpired();
-            if (App.Current != null)
+            if(list.Count > 0)
             {
-                App.Current.Dispatcher.Invoke(delegate
-                {
-                    foreach (RoomMerge item in list)
-                    {
-                        Room room_1 = item.FirstRoom;
-                        Room room_2 = item.SecondRoom;
-                        Room newRoom = item.NewRoom;
-                        item.FirstRoom = null;
-                        item.SecondRoom = null;
-                        Merge(room_1, room_2, newRoom);
-                        DeleteByID(item.Id);
-                    }
-                });
+                App.Current?.Dispatcher?.Invoke(DoExpiredMerges);
             }
         }
 
-        public void Merge(Room room_1, Room room_2, Room newRoom)
+        public void Create(Room room_1, Room room_2, Room newRoom, Interval interval)
+        {
+            if (room_1.CanMergeOrDiverge() && room_2.CanMergeOrDiverge())
+            {
+                RoomMerge merge = new RoomMerge
+                {
+                    Interval = interval,
+                    FirstRoom = room_1,
+                    SecondRoom = room_2,
+                    NewRoom = newRoom
+                };
+                Create(merge);
+            }
+        }
+
+        public void MergeInstant(Room room_1, Room room_2, Room newRoom)
+        {
+            if (room_1.CanMergeOrDiverge() && room_2.CanMergeOrDiverge())
+            {
+                Merge(room_1, room_2, newRoom);
+            }
+        }
+
+        #region private
+
+        private void Merge(Room room_1, Room room_2, Room newRoom)
         {
             if (room_1 != null && room_2 != null && newRoom != null)
             {
@@ -88,27 +96,21 @@ namespace ZdravoCorpAppTim22.Service
             }
         }
 
-        public void MergeInstant(Room room_1, Room room_2, Room newRoom)
+        private void DoExpiredMerges()
         {
-            if (room_1.CanMergeOrDiverge() && room_2.CanMergeOrDiverge())
+            List<RoomMerge> list = GetAllExpired();
+            foreach (RoomMerge item in list)
             {
+                Room room_1 = item.FirstRoom;
+                Room room_2 = item.SecondRoom;
+                Room newRoom = item.NewRoom;
+                item.FirstRoom = null;
+                item.SecondRoom = null;
                 Merge(room_1, room_2, newRoom);
+                DeleteByID(item.Id);
             }
         }
-        public void Create(Room room_1, Room room_2, Room newRoom, Interval interval)
-        {
-            if (room_1.CanMergeOrDiverge() && room_2.CanMergeOrDiverge())
-            {
-                RoomMerge merge = new RoomMerge
-                {
-                    Interval = interval,
-                    FirstRoom = room_1,
-                    SecondRoom = room_2,
-                    NewRoom = newRoom
-                };
-                Create(merge);
-            }
-        }
+
         private List<RoomMerge> GetAllExpired()
         {
             List<RoomMerge> list = new List<RoomMerge>();
@@ -124,5 +126,6 @@ namespace ZdravoCorpAppTim22.Service
             }
             return list;
         }
+        #endregion
     }
 }

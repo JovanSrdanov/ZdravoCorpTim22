@@ -13,6 +13,15 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
 
         private bool isApproved;
+        public string Message { get; set; }
+
+        private Doctor doctor;
+
+        [JsonConverter(typeof(MedicineDataToIDConverter))]
+        private MedicineData medicineData;
+
+        #region properties
+
         public bool IsApproved
         {
             get { return isApproved; }
@@ -26,11 +35,10 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
-        private Doctor doctor;
         [JsonConverter(typeof(DoctorToIDConverter))]
         public Doctor Doctor
         {
-            get { return doctor;}
+            get { return doctor; }
             set
             {
                 if (doctor != value)
@@ -40,9 +48,6 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
-        [JsonConverter(typeof(MedicineDataToIDConverter))]
-        private MedicineData medicineData;
 
         [JsonConverter(typeof(MedicineDataToIDConverter))]
         public MedicineData MedicineData
@@ -57,8 +62,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
-        public string Message { get; set; }
+        #endregion
 
         [JsonConstructor]
         public Approval() { }

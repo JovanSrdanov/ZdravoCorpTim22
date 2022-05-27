@@ -21,13 +21,14 @@ namespace ZdravoCorpAppTim22.Service
             }
         }
         
-        public void DeleteMany(List<Replacement> list)
+        public void DeleteByList(List<Replacement> list)
         {
             foreach (Replacement rel in list)
             {
                 DeleteByID(rel.Id);
             }
         }
+
         public void DeleteByReplacementTarget(MedicineData medicineData)
         {
             List<Replacement> replacementsToRemove = new List<Replacement>();
@@ -38,7 +39,7 @@ namespace ZdravoCorpAppTim22.Service
                     replacementsToRemove.Add(replacement);
                 }
             }
-            DeleteMany(replacementsToRemove);
+            DeleteByList(replacementsToRemove);
         }
 
         public void DeleteByMedicineData(MedicineData medicineData)
@@ -51,7 +52,7 @@ namespace ZdravoCorpAppTim22.Service
                     replacementsToRemove.Add(replacement);
                 }
             }
-            DeleteMany(replacementsToRemove);
+            DeleteByList(replacementsToRemove);
         }
     }
 }

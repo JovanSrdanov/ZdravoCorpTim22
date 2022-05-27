@@ -26,7 +26,7 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-        public void DeleteMany(List<RoomDiverge> list)
+        public void DeleteByList(List<RoomDiverge> list)
         {
             foreach (RoomDiverge roomDiverge in list)
             {
@@ -34,60 +34,13 @@ namespace ZdravoCorpAppTim22.Service
             }
         }
 
+        //Method that's being run every second from the background thread
         public void BackgroundTask()
         {
-            DoExpiredDiverges();
-        }
-
-        public void DoExpiredDiverges()
-        {
             List<RoomDiverge> list = GetAllExpired();
-            if (App.Current != null)
+            if(list.Count > 0)
             {
-                App.Current.Dispatcher.Invoke(delegate
-                {
-                    foreach (RoomDiverge item in list)
-                    {
-                        Room room_1 = item.FirstRoom;
-                        Room room_2 = item.SecondRoom;
-                        Room sourceRoom = item.SourceRoom;
-                        item.SourceRoom = null;
-                        List<Equipment> equipment_1 = item.FirstRoomEquipment;
-                        List<Equipment> equipment_2 = item.SecondRoomEquipment;
-                        Diverge(room_1, room_2, sourceRoom, equipment_1, equipment_2);
-                        DeleteByID(item.Id);
-                    }
-                });
-            }
-        }
-
-        public void Diverge(Room room_1, Room room_2, Room sourceRoom, List<Equipment> equipment_1, List<Equipment> equipment_2)
-        {
-            if(room_1 != null && room_2 != null && sourceRoom != null && equipment_1 != null && equipment_2 != null)
-            {
-                RoomService.Instance.Create(room_1);
-                RoomService.Instance.Create(room_2);
-
-                room_1.Equipment = new ObservableCollection<Equipment>(equipment_1);
-                room_2.Equipment = new ObservableCollection<Equipment>(equipment_2);
-
-                foreach (Equipment eq in equipment_1)
-                {
-                    EquipmentService.Instance.Create(eq);
-                }
-                foreach (Equipment eq in equipment_2)
-                {
-                    EquipmentService.Instance.Create(eq);
-                }
-                RoomService.Instance.Update(room_1);
-                RoomService.Instance.Update(room_2);
-
-                foreach (Equipment eq in sourceRoom.Equipment)
-                {
-                    EquipmentService.Instance.DeleteByID(eq.Id);
-                }
-                sourceRoom.RemoveAllEquipment();
-                RoomService.Instance.DeleteByID(sourceRoom.Id);
+                App.Current?.Dispatcher?.Invoke(DoExpiredDiverges);
             }
         }
 
@@ -116,6 +69,54 @@ namespace ZdravoCorpAppTim22.Service
             }
         }
 
+        #region private
+
+        private void DoExpiredDiverges()
+        {
+            List<RoomDiverge> list = GetAllExpired();
+            foreach (RoomDiverge item in list)
+            {
+                Room room_1 = item.FirstRoom;
+                Room room_2 = item.SecondRoom;
+                Room sourceRoom = item.SourceRoom;
+                item.SourceRoom = null;
+                List<Equipment> equipment_1 = item.FirstRoomEquipment;
+                List<Equipment> equipment_2 = item.SecondRoomEquipment;
+                Diverge(room_1, room_2, sourceRoom, equipment_1, equipment_2);
+                DeleteByID(item.Id);
+            }
+        }
+
+        private void Diverge(Room room_1, Room room_2, Room sourceRoom, List<Equipment> equipment_1, List<Equipment> equipment_2)
+        {
+            if (room_1 != null && room_2 != null && sourceRoom != null && equipment_1 != null && equipment_2 != null)
+            {
+                RoomService.Instance.Create(room_1);
+                RoomService.Instance.Create(room_2);
+
+                room_1.Equipment = new ObservableCollection<Equipment>(equipment_1);
+                room_2.Equipment = new ObservableCollection<Equipment>(equipment_2);
+
+                foreach (Equipment eq in equipment_1)
+                {
+                    EquipmentService.Instance.Create(eq);
+                }
+                foreach (Equipment eq in equipment_2)
+                {
+                    EquipmentService.Instance.Create(eq);
+                }
+                RoomService.Instance.Update(room_1);
+                RoomService.Instance.Update(room_2);
+
+                foreach (Equipment eq in sourceRoom.Equipment)
+                {
+                    EquipmentService.Instance.DeleteByID(eq.Id);
+                }
+                sourceRoom.RemoveAllEquipment();
+                RoomService.Instance.DeleteByID(sourceRoom.Id);
+            }
+        }
+
         private List<RoomDiverge> GetAllExpired()
         {
             List<RoomDiverge> list = new List<RoomDiverge>();
@@ -131,5 +132,6 @@ namespace ZdravoCorpAppTim22.Service
             }
             return list;
         }
+        #endregion
     }
 }
