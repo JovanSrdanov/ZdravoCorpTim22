@@ -1,26 +1,18 @@
 [
   {
-    "Id": 0,
-    "Name": "lijek"
-  },
-  {
     "Id": 1,
-    "Name": "2"
+    "Name": "lijek_2"
   },
   {
     "Id": 2,
-    "Name": "3"
+    "Name": "lijek_3"
   },
   {
     "Id": 3,
-    "Name": "4"
+    "Name": "lijek_4"
   },
   {
     "Id": 4,
-    "Name": "5"
-  },
-  {
-    "Id": 5,
-    "Name": "lijek_5251"
+    "Name": "1321"
   }
 ]

@@ -17,7 +17,7 @@ namespace Model
         public double Surface { get; set; }
 
         [JsonIgnore]
-        private ObservableCollection<Equipment> equipment;
+        private List<Equipment> equipment;
         [JsonIgnore]
         private List<MedicalAppointment> medicalAppointment;
         [JsonIgnore]
@@ -36,12 +36,12 @@ namespace Model
         #region properties
 
         [JsonIgnore]
-        public ObservableCollection<Equipment> Equipment
+        public List<Equipment> Equipment
         {
             get
             {
                 if (equipment == null)
-                    equipment = new ObservableCollection<Equipment>();
+                    equipment = new List<Equipment>();
                 return equipment;
             }
             set
@@ -261,7 +261,7 @@ namespace Model
             if (newEquipment == null)
                 return;
             if (this.equipment == null)
-                this.equipment = new ObservableCollection<Equipment>();
+                this.equipment = new List<Equipment>();
             if (!this.equipment.Contains(newEquipment))
             {
                 this.equipment.Add(newEquipment);

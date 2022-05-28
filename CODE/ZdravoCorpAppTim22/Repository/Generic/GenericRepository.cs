@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
@@ -11,7 +9,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
     {
         public readonly object _lock = new object();
         public readonly GenericFileHandler<T> FileHandler;
-        public ObservableCollection<T> List = new ObservableCollection<T>();
+        public List<T> List = new List<T>();
         public GenericRepository(string fileName)
         {
             FileHandler = new GenericFileHandler<T>(fileName);
@@ -19,9 +17,9 @@ namespace ZdravoCorpAppTim22.Repository.Generic
 
         public virtual void Load()
         {
-            List = new ObservableCollection<T>(FileHandler.LoadData()); 
+            List = new List<T>(FileHandler.LoadData()); 
         }
-        public virtual ObservableCollection<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return List;
         }
@@ -68,8 +66,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
                 return;
             }
             int index = List.IndexOf(item);
-            List.Remove(item);
-            List.Insert(index, obj);
+            List[index] = obj;
             FileHandler.SaveData(new List<T>(List));
         }
     }

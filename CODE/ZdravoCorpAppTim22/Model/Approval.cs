@@ -1,15 +1,12 @@
 ﻿using Model;
-using System.ComponentModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
 namespace ZdravoCorpAppTim22.Model
 {
-    public class Approval : IHasID, INotifyPropertyChanged
+    public class Approval : IHasID
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public int Id { get; set; }
 
         private bool isApproved;
@@ -30,7 +27,6 @@ namespace ZdravoCorpAppTim22.Model
                 if (isApproved != value)
                 {
                     isApproved = value;
-                    OnPropertyChanged("IsApproved");
                 }
             }
         }
@@ -44,7 +40,6 @@ namespace ZdravoCorpAppTim22.Model
                 if (doctor != value)
                 {
                     doctor = value;
-                    OnPropertyChanged("Doctor");
                 }
             }
         }
@@ -66,10 +61,5 @@ namespace ZdravoCorpAppTim22.Model
 
         [JsonConstructor]
         public Approval() { }
-        
-        private void OnPropertyChanged(string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

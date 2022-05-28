@@ -9,26 +9,14 @@ namespace ZdravoCorpAppTim22.Model
         public int Id { get; set; }
         public int Amount { get; set; }
 
-        #region properties
-
-
-        #endregion
-
-        [JsonConstructor]
-        public Medicine() { }
-        public Medicine(Medicine m)
-        {
-            if (m != null)
-            {
-                Id = m.Id;
-                Amount = m.Amount;
-                MedicineData = new MedicineData(m.MedicineData);
-
-            }
-        }
-
         [JsonConverter(typeof(MedicineDataToIDConverter))]
         private MedicineData medicineData;
+
+        [JsonConverter(typeof(MedicalReceiptToIDConverter))]
+        private MedicalReceipt medicalReceipt;
+
+        #region properties
+
         [JsonConverter(typeof(MedicineDataToIDConverter))]
         public MedicineData MedicineData
         {
@@ -54,9 +42,6 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
-        [JsonConverter(typeof(MedicalReceiptToIDConverter))]
-        private MedicalReceipt medicalReceipt;
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
         public MedicalReceipt MedicalReceipt
         {
@@ -82,12 +67,24 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
+
+        [JsonConstructor]
+        public Medicine() { }
+        public Medicine(Medicine m)
+        {
+            if (m != null)
+            {
+                Id = m.Id;
+                Amount = m.Amount;
+                MedicineData = new MedicineData(m.MedicineData);
+
+            }
+        }
 
         public override string ToString()
         {
             return MedicineData.Name;
         }
-
-
     }
 }

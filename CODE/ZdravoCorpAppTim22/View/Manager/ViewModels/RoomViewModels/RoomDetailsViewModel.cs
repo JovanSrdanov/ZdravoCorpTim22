@@ -1,10 +1,12 @@
 ﻿using Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.Pages.RoomPages;
 
@@ -91,13 +93,18 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             Filter = 0;
 
             SourceRoom = room;
-            EquipmentCollection = room.Equipment;
-
-            EquipmentCollection.CollectionChanged += EquipmentListChangedEvent;
+            EquipmentCollection = new ObservableCollection<Equipment>(room.Equipment);
+            EquipmentController.Instance.DataChanged += EquipmentDataChangedHandler;
         }
 
-        private void EquipmentListChangedEvent(object sender, NotifyCollectionChangedEventArgs e)
+        private void EquipmentDataChangedHandler(object sender, EventArgs e)
         {
+            List<Equipment> equipment = SourceRoom.Equipment;
+            EquipmentCollection.Clear();
+            foreach (Equipment eq in equipment)
+            {
+                EquipmentCollection.Add(eq);
+            }
             OnPropertyChanged("FilteredEquipment");
         }
 

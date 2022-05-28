@@ -1,8 +1,8 @@
 ﻿using Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using ZdravoCorpAppTim22.Controller;
@@ -97,7 +97,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);
-            EquipmentController.Instance.GetAll().CollectionChanged += EquipmentListChangedEvent;
+            EquipmentController.Instance.DataChanged += EquipmentDataChangedHandler;
         }
 
         public void OnPropertyChanged(string property)
@@ -105,7 +105,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        private void EquipmentListChangedEvent(object sender, NotifyCollectionChangedEventArgs e)
+        private void EquipmentDataChangedHandler(object sender, EventArgs e)
         {
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection.Clear();
@@ -153,7 +153,14 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         }
         public void OpenRelocation(object obj)
         {
-            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+            List<Equipment> selectedEquipment = new List<Equipment>();
+            foreach (Equipment eq in ((IList)obj).Cast<Equipment>().ToList())
+            {
+                if (eq.Amount > 0)
+                {
+                    selectedEquipment.Add(eq);
+                }
+            }
             ManagerHome.NavigationService.Navigate(new WarehouseRelocationView(selectedEquipment));   
         }
 

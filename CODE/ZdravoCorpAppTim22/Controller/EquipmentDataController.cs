@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
@@ -26,10 +27,10 @@ namespace ZdravoCorpAppTim22.Controller
             return EquipmentDataService.Instance.GetByName(name);
         }
 
-        public ObservableCollection<EquipmentData> GetAllConsumable()
+        public List<EquipmentData> GetAllConsumable()
         {
-            ObservableCollection<EquipmentData> tempListAll = instance.GetAll();
-            ObservableCollection<EquipmentData> tempList = new ObservableCollection<EquipmentData>();
+            List<EquipmentData> tempListAll = GetAll();
+            List<EquipmentData> tempList = new List<EquipmentData>();
             for (int i = 0; i < tempListAll.Count; i++)
             {
                 if (tempListAll[i].Type == EquipmentType.consumable)

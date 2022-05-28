@@ -381,7 +381,7 @@ namespace Service
 
         public ObservableCollection<MedicalAppointment> GetUnavailableMedicalAppointmentsInNextHour(AppointmentPreferences appointmentPreferences)
         {
-            ObservableCollection<MedicalAppointment> medicalAppointmentsAll = instance.GetAll();
+            ObservableCollection<MedicalAppointment> medicalAppointmentsAll = new ObservableCollection<MedicalAppointment>(GetAll());
             ObservableCollection<MedicalAppointment> medicalAppointments = new ObservableCollection<MedicalAppointment>();
             for (int i = 0; i < medicalAppointmentsAll.Count; i++)
             {

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
@@ -12,6 +12,15 @@ namespace ZdravoCorpAppTim22.Model
         [JsonIgnore]
         private Approval approval;
         [JsonIgnore]
+        private List<Medicine> medicine;
+        [JsonIgnore]
+        private List<Ingredient> ingredient;
+        [JsonIgnore]
+        private List<MedicineData> replacements;
+
+        #region properties
+
+        [JsonIgnore]
         public Approval Approval
         {
             get => approval;
@@ -24,16 +33,13 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
         [JsonIgnore]
-        private ObservableCollection<Medicine> medicine;
-        [JsonIgnore]
-        public ObservableCollection<Medicine> Medicine
+        public List<Medicine> Medicine
         {
             get
             {
                 if (medicine == null)
-                    medicine = new ObservableCollection<Medicine>();
+                    medicine = new List<Medicine>();
                 return medicine;
             }
             set
@@ -46,16 +52,13 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
         [JsonIgnore]
-        private ObservableCollection<Ingredient> ingredient;
-        [JsonIgnore]
-        public ObservableCollection<Ingredient> Ingredient
+        public List<Ingredient> Ingredient
         {
             get
             {
                 if (ingredient == null)
-                    ingredient = new ObservableCollection<Ingredient>();
+                    ingredient = new List<Ingredient>();
                 return ingredient;
             }
             set
@@ -69,14 +72,12 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
         [JsonIgnore]
-        private ObservableCollection<MedicineData> replacements;
-        [JsonIgnore]
-        public ObservableCollection<MedicineData> Replacements
+        public List<MedicineData> Replacements
         {
             get
             {
                 if (replacements == null)
-                    replacements = new ObservableCollection<MedicineData>();
+                    replacements = new List<MedicineData>();
                 return replacements;
             }
             set
@@ -89,6 +90,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public MedicineData() { }
@@ -111,12 +113,19 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        #region boilerplate
+
         public void AddMedicine(Medicine newMedicine)
         {
             if (newMedicine == null)
                 return;
             if (this.medicine == null)
-                this.medicine = new ObservableCollection<Medicine>();
+                this.medicine = new List<Medicine>();
             if (!this.medicine.Contains(newMedicine))
             {
                 this.medicine.Add(newMedicine);
@@ -153,7 +162,7 @@ namespace ZdravoCorpAppTim22.Model
             if (newIngredient == null)
                 return;
             if (this.ingredient == null)
-                this.ingredient = new ObservableCollection<Ingredient>();
+                this.ingredient = new List<Ingredient>();
             if (!this.ingredient.Contains(newIngredient))
             {
                 this.ingredient.Add(newIngredient);
@@ -190,7 +199,7 @@ namespace ZdravoCorpAppTim22.Model
             if (newReplacement == null)
                 return;
             if (this.replacements == null)
-                this.replacements = new ObservableCollection<MedicineData>();
+                this.replacements = new List<MedicineData>();
             if (!this.replacements.Contains(newReplacement))
             {
                 this.replacements.Add(newReplacement);
@@ -214,10 +223,6 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-
+        #endregion
     }
 }

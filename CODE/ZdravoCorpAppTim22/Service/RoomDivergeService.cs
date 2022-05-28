@@ -94,8 +94,8 @@ namespace ZdravoCorpAppTim22.Service
                 RoomService.Instance.Create(room_1);
                 RoomService.Instance.Create(room_2);
 
-                room_1.Equipment = new ObservableCollection<Equipment>(equipment_1);
-                room_2.Equipment = new ObservableCollection<Equipment>(equipment_2);
+                room_1.Equipment = equipment_1;
+                room_2.Equipment = equipment_2;
 
                 foreach (Equipment eq in equipment_1)
                 {
