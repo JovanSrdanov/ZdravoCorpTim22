@@ -21,6 +21,8 @@ namespace ZdravoCorpAppTim22.Model
         public List<Equipment> FirstRoomEquipment { get; set; }
         public List<Equipment> SecondRoomEquipment { get; set; }
 
+        #region properties
+
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room SourceRoom
         {
@@ -46,6 +48,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public RoomDiverge() 

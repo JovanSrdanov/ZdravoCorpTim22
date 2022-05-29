@@ -1,52 +1,27 @@
 [
   {
-    "Id": 0,
-    "ReplacingMedicine": 0,
-    "ReplacementToMedicine": 1
-  },
-  {
-    "Id": 2,
+    "Id": 8,
     "ReplacingMedicine": 2,
     "ReplacementToMedicine": 3
   },
   {
-    "Id": 4,
-    "ReplacingMedicine": 3,
-    "ReplacementToMedicine": 5
-  },
-  {
-    "Id": 5,
+    "Id": 9,
     "ReplacingMedicine": 4,
-    "ReplacementToMedicine": 5
+    "ReplacementToMedicine": 3
   },
   {
-    "Id": 6,
-    "ReplacingMedicine": 2,
-    "ReplacementToMedicine": 0
-  },
-  {
-    "Id": 7,
-    "ReplacingMedicine": 1,
-    "ReplacementToMedicine": 0
-  },
-  {
-    "Id": 8,
-    "ReplacingMedicine": 5,
-    "ReplacementToMedicine": 0
-  },
-  {
-    "Id": 11,
-    "ReplacingMedicine": 1,
+    "Id": 10,
+    "ReplacingMedicine": 4,
     "ReplacementToMedicine": 2
   },
   {
-    "Id": 12,
+    "Id": 11,
     "ReplacingMedicine": 2,
     "ReplacementToMedicine": 4
   },
   {
-    "Id": 13,
-    "ReplacingMedicine": 5,
+    "Id": 12,
+    "ReplacingMedicine": 3,
     "ReplacementToMedicine": 4
   }
 ]

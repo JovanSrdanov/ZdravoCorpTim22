@@ -48,7 +48,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                ObservableCollection<Patient> patients = PatientController.Instance.GetAll();
+                ObservableCollection<Patient> patients = new ObservableCollection<Patient>(PatientController.Instance.GetAll());
                 for (int i = 0; i < patients.Count; i++)
                 {
                     if (EMailTextBox.Text == patients[i].Email)
@@ -57,7 +57,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<Doctor> doctors = DoctorController.Instance.GetAll();
+                ObservableCollection<Doctor> doctors = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
                 for (int i = 0; i < doctors.Count; i++)
                 {
                     if (EMailTextBox.Text == doctors[i].Email)
@@ -66,7 +66,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<ManagerClass> managers = ManagerController.Instance.GetAll();
+                ObservableCollection<ManagerClass> managers = new ObservableCollection<ManagerClass>(ManagerController.Instance.GetAll());
                 for (int i = 0; i < managers.Count; i++)
                 {
                     if (EMailTextBox.Text == managers[i].Email)
@@ -75,7 +75,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+                ObservableCollection<SecretaryClass> secretaries = new ObservableCollection<SecretaryClass>(SecretaryController.Instance.GetAll());
                 for (int i = 0; i < secretaries.Count; i++)
                 {
                     if (EMailTextBox.Text == secretaries[i].Email)

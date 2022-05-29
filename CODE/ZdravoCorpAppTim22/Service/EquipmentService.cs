@@ -22,7 +22,6 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-
         public List<Equipment> GetWarehouseEquipment()
         {
             List<Equipment> equipmentList = new List<Equipment>();
@@ -34,6 +33,27 @@ namespace ZdravoCorpAppTim22.Service
                 }
             }
             return equipmentList;
+        }
+        public void DeleteWarehouseEquipmentByID(int id)
+        {
+            Equipment equipment = GetByID(id);
+            if(equipment.Room == null)
+            {
+                List<Equipment> eqToRemove = new List<Equipment>();
+                foreach (Equipment eq in GetAll())
+                {
+                    if (eq.EquipmentData.Id == equipment.EquipmentData.Id)
+                    {
+                        eqToRemove.Add(eq);
+                    }
+                }
+                foreach (Equipment eq in eqToRemove)
+                {
+                    eq.Room = null;
+                    DeleteByID(eq.Id);
+                }
+                EquipmentDataService.Instance.DeleteByID(equipment.EquipmentData.Id);
+            }
         }
         public void AddWarehouseEquipment(Equipment eq)
         {

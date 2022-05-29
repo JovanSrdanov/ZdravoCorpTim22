@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             OpenMergeCommand = new RelayCommand(OpenMerge, CanMerge);
             OpenDivergeCommand = new RelayCommand(OpenDiverge, IsSelected);
 
-            RoomList = RoomController.Instance.GetAll();
+            RoomList = new ObservableCollection<Room>(RoomController.Instance.GetAll());
+            RoomController.Instance.DataChanged += RoomDataChangedHandler;
         }
         public RoomViewModel(Room room)
         {
@@ -40,6 +42,17 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 int index = list.FindIndex(r => r.Id == room.Id);
                 list.RemoveAt(index);
                 RoomList = new ObservableCollection<Room>(list);
+                RoomController.Instance.DataChanged += RoomDataChangedHandler;
+            }
+        }
+
+        public void RoomDataChangedHandler(object sender, EventArgs e)
+        {
+            List<Room> rooms = RoomController.Instance.GetAll();
+            RoomList.Clear();
+            foreach (Room room in rooms)
+            {
+                RoomList.Add(room);
             }
         }
 
@@ -61,6 +74,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             {
                 List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
                 Room room = selectedRooms[0];
+                RoomList.Remove(room);
                 RoomController.Instance.DeleteByID(room.Id);
             }
         }

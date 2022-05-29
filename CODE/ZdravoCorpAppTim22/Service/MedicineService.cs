@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
 using ZdravoCorpAppTim22.Service.Generic;
@@ -19,6 +20,44 @@ namespace ZdravoCorpAppTim22.Service
                 }
                 return instance;
             }
+        }
+
+        public void DeleteByList(List<Medicine> list)
+        {
+            foreach (Medicine m in list)
+            {
+                DeleteByID(m.Id);
+            }
+        }
+
+        public void Create(MedicineData medicineData, int amount, List<Ingredient> ingredients, List<MedicineData> replacements)
+        {
+            foreach (Ingredient ingredient in ingredients)
+            {
+                ingredient.MedicineData = medicineData;
+                IngredientService.Instance.Create(ingredient);
+            }
+
+            MedicineDataService.Instance.AddReplacements(medicineData, replacements);
+
+            Medicine medicine = new Medicine
+            {
+                MedicineData = medicineData,
+                Amount = amount
+            };
+
+            MedicineDataService.Instance.Update(medicineData);
+            Create(medicine);
+        }
+
+        public void Update(Medicine medicine, List<Ingredient> ingredients, List<MedicineData> replacements)
+        {
+            IngredientService.Instance.AddIngredientsToMedicineData(medicine.MedicineData, ingredients);
+            ReplacementService.Instance.AddReplacementsToMedicineData(medicine.MedicineData, replacements);
+
+            ApprovalService.Instance.Update(medicine.MedicineData.Approval);
+            MedicineDataService.Instance.Update(medicine.MedicineData);
+            Update(medicine);
         }
 
         public List<Medicine> GetAllFree()
@@ -46,5 +85,7 @@ namespace ZdravoCorpAppTim22.Service
             }
             return list;
         }
+
+        
     }
 }

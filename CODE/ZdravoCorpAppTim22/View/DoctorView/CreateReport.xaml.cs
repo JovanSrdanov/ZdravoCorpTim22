@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             //List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
             List<Medicine> medicineList = MedicineController.Instance.GetAllApproved();
             ObservableCollection<Medicine> medicineObservableList = new ObservableCollection<Medicine>(medicineList);
-            ObservableCollection<MedicineData> medicineDataList = MedicineDataController.Instance.GetAll();
+            ObservableCollection<MedicineData> medicineDataList = new ObservableCollection<MedicineData>(MedicineDataController.Instance.GetAll());
 
             MedicationComboBox.ItemsSource = medicineObservableList;
             MedicationComboBox.SelectedIndex = 0;

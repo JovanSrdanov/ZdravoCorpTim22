@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Controller.Generic
@@ -8,15 +7,20 @@ namespace ZdravoCorpAppTim22.Controller.Generic
     public abstract class GenericController<Service, T> : IController<T> where Service : IService<T>
     {
         private readonly Service _Service;
+        public event EventHandler DataChanged;
         public GenericController(Service service)
         {
             _Service = service;
+            _Service.DataChanged += delegate
+            {
+                DataChanged?.Invoke(this, EventArgs.Empty);
+            };
         }
         public virtual void Load()
         {
             _Service.Load();
         }
-        public virtual ObservableCollection<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return _Service.GetAll();
         }

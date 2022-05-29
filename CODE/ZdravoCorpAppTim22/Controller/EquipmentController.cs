@@ -20,7 +20,19 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+        public void Update(Equipment oldEquipment, string name, int amount, EquipmentType type)
+        {
+            oldEquipment.EquipmentData.Name = name;
+            oldEquipment.EquipmentData.Type = type;
+            oldEquipment.Amount = amount;
+            EquipmentDataController.Instance.Update(oldEquipment.EquipmentData);
+            Update(oldEquipment);
+        }
 
+        public void DeleteWarehouseEquipmentByID(int id)
+        {
+            EquipmentService.Instance.DeleteWarehouseEquipmentByID(id);
+        }
         public List<Equipment> GetWarehouseEquipment()
         {
             return EquipmentService.Instance.GetWarehouseEquipment();

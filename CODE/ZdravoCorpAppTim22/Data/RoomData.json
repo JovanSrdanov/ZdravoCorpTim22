@@ -3,28 +3,21 @@
     "Id": 1,
     "Level": 4,
     "Type": 0,
-    "Name": "soba_2",
+    "Name": "soba_1",
     "Surface": 30
   },
   {
     "Id": 3,
-    "Level": 2,
+    "Level": 3,
     "Type": 0,
-    "Name": "soba_3",
+    "Name": "soba_2",
     "Surface": 10
   },
   {
-    "Id": 4,
-    "Level": 2,
-    "Type": 1,
-    "Name": "soba_4",
-    "Surface": 5
-  },
-  {
-    "Id": 5,
-    "Level": 3,
+    "Id": 6,
+    "Level": 21,
     "Type": 4,
-    "Name": "soba_1",
-    "Surface": 25
+    "Name": "soba_3",
+    "Surface": 150
   }
 ]

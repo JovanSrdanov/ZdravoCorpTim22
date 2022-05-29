@@ -1,5 +1,5 @@
 ﻿using Model;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
@@ -11,16 +11,18 @@ namespace ZdravoCorpAppTim22.Model
         public string Name { get; set; }
         public EquipmentType Type { get; set; }
         public double Price { get; set; }
+        [JsonIgnore]
+        public List<Equipment> equipment;
+
+        #region properties
 
         [JsonIgnore]
-        public ObservableCollection<Equipment> equipment;
-        [JsonIgnore]
-        public ObservableCollection<Equipment> Equipment
+        public List<Equipment> Equipment
         {
             get
             {
                 if (equipment == null)
-                    equipment = new ObservableCollection<Equipment>();
+                    equipment = new List<Equipment>();
                 return equipment;
             }
             set
@@ -33,6 +35,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public EquipmentData() { }
@@ -55,13 +58,19 @@ namespace ZdravoCorpAppTim22.Model
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        #region boilerplate
 
         public void AddEquipment(Equipment newEquipment)
         {
             if (newEquipment == null)
                 return;
             if (this.equipment == null)
-                this.equipment = new ObservableCollection<Equipment>();
+                this.equipment = new List<Equipment>();
             if (!this.equipment.Contains(newEquipment))
             {
                 this.equipment.Add(newEquipment);
@@ -92,10 +101,6 @@ namespace ZdravoCorpAppTim22.Model
                 tmpEquipment.Clear();
             }
         }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        #endregion
     }
 }

@@ -36,15 +36,7 @@ namespace ZdravoCorpAppTim22.Service
 
         public override void DeleteByID(int id)
         {
-            foreach(MedicineData medicineData in GetAll())
-            {
-                MedicineData temp = medicineData.Replacements.Where(x => x.Id == id).FirstOrDefault();
-                if(temp != null)
-                {
-                    medicineData.RemoveReplacement(temp);
-                }
-            }
-            ReplacementService.Instance.DeleteByMedicineData(MedicineDataRepository.Instance.GetByID(id));
+            ClearAllReferences(id);
             base.DeleteByID(id);
         }
 
@@ -72,5 +64,67 @@ namespace ZdravoCorpAppTim22.Service
             }
             return list;
         }
+
+        public void AddReplacements(MedicineData medicineData, List<MedicineData> replacements)
+        {
+            foreach (MedicineData m in replacements)
+            {
+                medicineData.AddReplacement(m);
+                Replacement replacement = new Replacement
+                {
+                    ReplacementToMedicine = medicineData,
+                    ReplacingMedicine = m
+                };
+                ReplacementService.Instance.Create(replacement);
+            }
+        }
+
+        #region private
+
+        private void ClearAllReferences(int id)
+        {
+            MedicineData medicineData = GetByID(id);
+
+            ClearIngredientReferences(medicineData);
+            ClearMedicineReferences(medicineData);
+            ClearReplacementReferences(medicineData);
+
+            if (medicineData.Approval != null)
+            {
+                ApprovalService.Instance.DeleteByID(medicineData.Approval.Id);
+            }
+        }
+
+        private void ClearIngredientReferences(MedicineData medicineData)
+        {
+            IngredientService.Instance.DeleteByMedicineData(medicineData);
+        }
+
+        private void ClearMedicineReferences(MedicineData medicineData)
+        {
+            List<Medicine> medicineToRemove = new List<Medicine>();
+            foreach (Medicine m in MedicineService.Instance.GetAll())
+            {
+                if (m.MedicineData.Id == medicineData.Id)
+                {
+                    medicineToRemove.Add(m);
+                }
+            }
+            MedicineService.Instance.DeleteByList(medicineToRemove);
+        }
+
+        private void ClearReplacementReferences(MedicineData medicineData)
+        {
+            foreach (MedicineData m in GetAll())
+            {
+                MedicineData temp = m.Replacements.Where(x => x.Id == medicineData.Id).FirstOrDefault();
+                if (temp != null)
+                {
+                    m.RemoveReplacement(temp);
+                }
+            }
+            ReplacementService.Instance.DeleteByMedicineData(medicineData);
+        }
+        #endregion
     }
 }

@@ -14,6 +14,9 @@ namespace ZdravoCorpAppTim22.Model
 
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room room;
+
+        #region properties
+
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room Room
         {
@@ -39,6 +42,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public Renovation() { }

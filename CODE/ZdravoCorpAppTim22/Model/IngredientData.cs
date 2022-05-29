@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model.Generic;
 
@@ -8,22 +8,19 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IngredientData() { }
-
-        public IngredientData(string name)
-        {
-            Name = name;
-        }
 
         [JsonIgnore]
-        private ObservableCollection<Ingredient> ingredient;
+        private List<Ingredient> ingredient;
+
+        #region properties
+
         [JsonIgnore]
-        public ObservableCollection<Ingredient> Ingredient
+        public List<Ingredient> Ingredient
         {
             get
             {
                 if (ingredient == null)
-                    ingredient = new ObservableCollection<Ingredient>();
+                    ingredient = new List<Ingredient>();
                 return ingredient;
             }
             set
@@ -36,13 +33,23 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
+
+        public IngredientData() { }
+
+        public IngredientData(string name)
+        {
+            Name = name;
+        }
+
+        #region boilerplate
 
         public void AddIngredient(Ingredient newIngredient)
         {
             if (newIngredient == null)
                 return;
             if (this.ingredient == null)
-                this.ingredient = new ObservableCollection<Ingredient>();
+                this.ingredient = new List<Ingredient>();
             if (!this.ingredient.Contains(newIngredient))
             {
                 this.ingredient.Add(newIngredient);
@@ -73,5 +80,6 @@ namespace ZdravoCorpAppTim22.Model
                 tmpIngredient.Clear();
             }
         }
+        #endregion
     }
 }

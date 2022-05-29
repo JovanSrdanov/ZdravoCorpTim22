@@ -1,11 +1,6 @@
 ﻿using Controller;
 using Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
@@ -17,7 +12,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         {
             /*List<Doctor> doctorRep = DoctorController.Instance.GetAll();
             DoctorList = new ObservableCollection<Doctor>(doctorRep);*/
-            DoctorList = DoctorController.Instance.GetAll();
+            DoctorList = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
         }
     }
 }
