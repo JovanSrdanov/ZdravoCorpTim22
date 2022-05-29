@@ -1,37 +1,30 @@
 [
   {
-    "Id": 5,
-    "Message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "IsApproved": false,
-    "Doctor": 0,
-    "MedicineData": null
-  },
-  {
-    "Id": 7,
+    "Id": 1,
     "Message": null,
     "IsApproved": false,
     "Doctor": null,
     "MedicineData": 1
   },
   {
-    "Id": 8,
-    "Message": "ne valja",
+    "Id": 2,
+    "Message": null,
     "IsApproved": false,
-    "Doctor": 0,
+    "Doctor": null,
     "MedicineData": 2
   },
   {
-    "Id": 9,
+    "Id": 3,
     "Message": null,
     "IsApproved": false,
     "Doctor": null,
     "MedicineData": 3
   },
   {
-    "Id": 10,
-    "Message": null,
+    "Id": 4,
+    "Message": "ne valja",
     "IsApproved": false,
-    "Doctor": null,
+    "Doctor": 0,
     "MedicineData": 4
   }
 ]

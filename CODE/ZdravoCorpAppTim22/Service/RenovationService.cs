@@ -55,6 +55,7 @@ namespace ZdravoCorpAppTim22.Service
                     oldRoom.Name = item.NewRoom.Name;
                     oldRoom.Level = item.NewRoom.Level;
                     oldRoom.Type = item.NewRoom.Type;
+                    oldRoom.Surface = item.NewRoom.Surface;
                     RoomService.Instance.Update(oldRoom);
                     oldRoom.RemoveRenovation(item);
                 }

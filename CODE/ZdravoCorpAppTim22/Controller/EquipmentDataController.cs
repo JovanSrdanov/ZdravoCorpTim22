@@ -1,6 +1,5 @@
 ﻿using Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;

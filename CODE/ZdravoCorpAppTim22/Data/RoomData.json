@@ -8,16 +8,16 @@
   },
   {
     "Id": 3,
-    "Level": 2,
+    "Level": 3,
     "Type": 0,
-    "Name": "soba_3",
+    "Name": "soba_2",
     "Surface": 10
   },
   {
     "Id": 6,
-    "Level": 2,
+    "Level": 21,
     "Type": 4,
-    "Name": "soba_10",
-    "Surface": 0
+    "Name": "soba_3",
+    "Surface": 150
   }
 ]

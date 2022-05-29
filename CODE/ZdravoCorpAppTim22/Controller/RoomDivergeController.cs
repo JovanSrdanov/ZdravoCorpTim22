@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using System.Collections.Generic;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
@@ -33,7 +34,14 @@ namespace ZdravoCorpAppTim22.Controller
         }
         public void Create(Room room_1, Room room_2, Room sourceRoom, List<Equipment> equipment_1, List<Equipment> equipment_2, Interval interval)
         {
-            RoomDivergeService.Instance.Create(room_1, room_2 , sourceRoom, equipment_1, equipment_2, interval);
+            if (interval.End <= DateTime.Now)
+            {
+                DivergeInstant(room_1, room_2, sourceRoom, equipment_1, equipment_2);
+            }
+            else
+            {
+                RoomDivergeService.Instance.Create(room_1, room_2, sourceRoom, equipment_1, equipment_2, interval);
+            }
         }
     }
 }

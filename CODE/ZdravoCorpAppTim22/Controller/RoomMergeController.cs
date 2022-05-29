@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -33,7 +34,14 @@ namespace ZdravoCorpAppTim22.Controller
 
         public void Create(Room room_1, Room room_2, Room newRoom, Interval interval)
         {
-            RoomMergeService.Instance.Create(room_1, room_2 , newRoom, interval);
+            if(interval.End <= DateTime.Now)
+            {
+                MergeInstant(room_1, room_2, newRoom);
+            }
+            else
+            {
+                RoomMergeService.Instance.Create(room_1, room_2 , newRoom, interval);
+            }
         }
             
     }

@@ -90,65 +90,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
                 return;
             }
 
-            OldMedicine.MedicineData.Name = MedicineName;
-            OldMedicine.Amount = Amount;
-            OldMedicine.MedicineData.Approval = new Approval()
-            {   
-                Id = OldMedicine.MedicineData.Approval.Id,
-                IsApproved = false
-            };
-
-            List<Ingredient> ingredientsToRemove = new List<Ingredient>();
-            List<Ingredient> ingredientsToAdd = new List<Ingredient>();
-
-            foreach (Ingredient ingredient in SelectedIngredients)
-            {
-                Ingredient temp = OldMedicine.MedicineData.Ingredient.Where(x => x.IngredientData.Id == ingredient.IngredientData.Id).FirstOrDefault();
-                if (temp == null)
-                {
-                    ingredientsToAdd.Add(ingredient);
-
-                }
-            }
-
-            foreach (Ingredient ingredient in OldMedicine.MedicineData.Ingredient)
-            {
-                Ingredient temp = SelectedIngredients.Where(x => x.IngredientData.Id == ingredient.IngredientData.Id).FirstOrDefault();
-                if(temp == null)
-                {
-                    ingredientsToRemove.Add(ingredient);
-                }
-            }
-
-            foreach (Ingredient ingredient in ingredientsToRemove)
-            {
-                OldMedicine.MedicineData.RemoveIngredient(ingredient);
-                IngredientController.Instance.DeleteByID(ingredient.Id);
-            }
-
-            foreach(Ingredient ingredient in ingredientsToAdd)
-            {
-                OldMedicine.MedicineData.AddIngredient(ingredient);
-                IngredientController.Instance.Create(ingredient);
-            }
-
-            ReplacementController.Instance.DeleteByReplacementTarget(OldMedicine.MedicineData);
-            OldMedicine.MedicineData.RemoveAllReplacements();
-
-            foreach (MedicineData m in SelectedMedicines)
-            {
-                OldMedicine.MedicineData.AddReplacement(m);
-                Replacement replacement = new Replacement
-                {
-                    ReplacementToMedicine = OldMedicine.MedicineData,
-                    ReplacingMedicine = m
-                };
-                ReplacementController.Instance.Create(replacement);
-            }
-
-            ApprovalController.Instance.Update(OldMedicine.MedicineData.Approval);
-            MedicineDataController.Instance.Update(OldMedicine.MedicineData);
-            MedicineController.Instance.Update(OldMedicine);
+            MedicineController.Instance.Update(OldMedicine, MedicineName, Amount, new List<Ingredient>(SelectedIngredients), new List<MedicineData>(SelectedMedicines));
 
             ManagerHome.NavigationService.Navigate(new MedicineView());
         }
