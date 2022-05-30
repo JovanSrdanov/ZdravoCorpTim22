@@ -58,7 +58,6 @@
             <local:CustomListItem NavigateUri="/View/Manager/Pages/WarehousePages/WarehouseView.xaml">Warehouse Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/RoomPages/RoomView.xaml">Room Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/MedicinePages/MedicineView.xaml">Medicine Overview</local:CustomListItem>
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/StaffPages/StaffView.xaml">Staff Overview</local:CustomListItem>
             <local:CustomListItem NavigateUri="/View/Manager/Pages/RatingPages/RatingsView.xaml">Ratings</local:CustomListItem>
         </ListBox>
     </Grid>
