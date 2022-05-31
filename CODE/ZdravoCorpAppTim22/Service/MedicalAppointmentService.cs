@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Model.PackedObjects;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Service.Generic;
 namespace Service
@@ -25,143 +26,256 @@ namespace Service
                 return instance;
             }
         }
-        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(Patient enteredPatient, DateTime enteredDateTime, AppointmentType enteredAppointmentType, string enteredPriority, Doctor enteredDoctor)
+
+
+
+
+        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(EnteredPreferences enteredPreferences)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = GetAvailableMedicalAppointments(enteredPreferences);
+            DefaultRearrange(enteredPreferences.EnteredDoctor, availableMedicalAppointments);
+            RearrangeByPriority(enteredPreferences, availableMedicalAppointments);
+            return availableMedicalAppointments;
+        }
+        private static ObservableCollection<MedicalAppointmentStruct> GetAvailableMedicalAppointments(EnteredPreferences enteredPreferences)
+        {
+            DateTime appointmentTimeStart = new DateTime(enteredPreferences.EnteredDateTime.Year,
+                enteredPreferences.EnteredDateTime.Month, enteredPreferences.EnteredDateTime.Day,
+                Constants.Constants.WORK_DAY_START_TIME, 0, 0);
 
-            DateTime appointmentTimeStart = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
-            DateTime workDayEndTime = new DateTime(enteredDateTime.Year, enteredDateTime.Month, enteredDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
+            DateTime workDayEndTime = new DateTime(enteredPreferences.EnteredDateTime.Year,
+                enteredPreferences.EnteredDateTime.Month, enteredPreferences.EnteredDateTime.Day,
+                Constants.Constants.WORK_DAY_END_TIME, 0, 0);
 
-            int jumpToNextAppointmetnTime = Constants.Constants.NEXT_TIMESLOT_START_CHECK;
-            int durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
+            List<Doctor> suggestedDoctors = FilterDoctors(enteredPreferences.EnteredAppointmentType);
+            List<Room> suggestedRooms = FilterRooms(enteredPreferences.EnteredAppointmentType);
 
-            if (enteredAppointmentType == AppointmentType.Examination)
-            {
-                durationOfAppointment = Constants.Constants.DURATION_EXAMINATION;
-            }
+            SearchParametersForCreating searchParametersForCreating =
+                new SearchParametersForCreating(enteredPreferences.EnteredPatient, enteredPreferences.EnteredAppointmentType,
+                    appointmentTimeStart, SetDurationOfAppointment(enteredPreferences.EnteredAppointmentType), workDayEndTime, suggestedDoctors, suggestedRooms);
+
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments =
+                CreateMedicalAppointments(searchParametersForCreating);
+            return availableMedicalAppointments;
+        }
+        private static List<Doctor> FilterDoctors(AppointmentType enteredAppointmentType)
+        {
+            List<Doctor> suggestedDoctors = DoctorService.Instance.GetAll();
 
             if (enteredAppointmentType == AppointmentType.Operation)
             {
-                durationOfAppointment = Constants.Constants.DURATION_OPERATION;
+                suggestedDoctors = (from doctor in suggestedDoctors
+                                    let doctorSpecializationTemp = new DoctorSpecialization("Regular")
+                                    where doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name
+                                    select doctor).ToList();
             }
 
-
-            List<Doctor> suggestedDoctors = new List<Doctor>(DoctorService.Instance.GetAll());
-            List<Room> suggestetRooms = new List<Room>(RoomService.Instance.GetAll());
+            return suggestedDoctors;
+        }
+        private static List<Room> FilterRooms(AppointmentType enteredAppointmentType)
+        {
+            List<Room> suggestedRooms = new List<Room>(RoomService.Instance.GetAll());
 
             if (enteredAppointmentType == AppointmentType.Operation)
             {
-                List<Doctor> temporaryDoctors = new List<Doctor>();
-
-                foreach (Doctor doctor in suggestedDoctors)
-                {
-                    DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
-                    if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
-                    {
-                        temporaryDoctors.Add(doctor);
-                    }
-                }
-                suggestedDoctors = temporaryDoctors;
-
-                List<Room> temporaryRoomsOperation = new List<Room>();
-
-                foreach (Room room in suggestetRooms)
-                {
-                    if (room.Type == RoomType.operation)
-                    {
-                        temporaryRoomsOperation.Add(room);
-                    }
-                }
-                suggestetRooms = temporaryRoomsOperation;
-
-
+                suggestedRooms = suggestedRooms.Where(room => room.Type == RoomType.operation).ToList();
             }
             else
             {
-                List<Room> temporaryRooms = new List<Room>();
-
-                foreach (Room room in suggestetRooms)
-                {
-                    if (room.Type == RoomType.examination)
-                    {
-                        temporaryRooms.Add(room);
-                    }
-                }
-                suggestetRooms = temporaryRooms;
+                suggestedRooms = suggestedRooms.Where(room => room.Type == RoomType.examination).ToList();
             }
 
-            Interval interval = new Interval();
-            for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
+            return suggestedRooms;
+        }
+        private static int SetDurationOfAppointment(AppointmentType enteredAppointmentType)
+        {
+            int durationOfAppointment;
+            switch (enteredAppointmentType)
             {
-                DateTime appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
-
-                interval.Start = appointmentTimeStart;
-                interval.End = appointmentTimeEnd;
-
-                if (enteredPatient.IsAvailable(interval))
-                {
-                    foreach (Doctor doctor in suggestedDoctors)
-                    {
-                        if (doctor.IsAvailable(interval))
-                        {
-                            foreach (Room room in suggestetRooms)
-                            {
-                                if (room.IsAvailable(interval))
-                                {
-                                    MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(-1, enteredAppointmentType, interval, enteredPatient, doctor, room);
-                                    availableMedicalAppointments.Add(medicalAppointmentToAdd);
-
-                                }
-                            }
-                        }
-                    }
-                }
-                appointmentTimeStart = appointmentTimeStart.AddMinutes(jumpToNextAppointmetnTime);
-
+                case AppointmentType.Examination:
+                    durationOfAppointment = Constants.Constants.DURATION_EXAMINATION;
+                    break;
+                case AppointmentType.Checkup:
+                    durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
+                    break;
+                case AppointmentType.Operation:
+                    durationOfAppointment = Constants.Constants.DURATION_OPERATION;
+                    break;
+                default:
+                    durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
+                    break;
             }
 
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault = new ObservableCollection<MedicalAppointmentStruct>();
-
-            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
-            {
-                if (item.Doctor.Id == enteredDoctor.Id)
-                {
-                    availableMedicalAppointmentsSortDefault.Add(item);
-                }
-            }
-
-            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
-            {
-                if (!(item.Doctor.Id == enteredDoctor.Id))
-                {
-                    availableMedicalAppointmentsSortDefault.Add(item);
-                }
-            }
-
-            availableMedicalAppointments = availableMedicalAppointmentsSortDefault;
-
-            if (enteredPriority.Equals("Lekar"))
-            {
-                ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDoctor = new ObservableCollection<MedicalAppointmentStruct>();
-
-                foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
-                {
-                    if (item.Doctor.Id == enteredDoctor.Id)
-                    {
-                        availableMedicalAppointmentsSortDoctor.Add(item);
-                    }
-                }
-
-                if (availableMedicalAppointmentsSortDoctor.Count == 0)
-                {
-                    availableMedicalAppointmentsSortDoctor = Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime.AddDays(1), enteredAppointmentType, enteredPriority, enteredDoctor);
-                }
-                availableMedicalAppointments = availableMedicalAppointmentsSortDoctor;
-
-            }
+            return durationOfAppointment;
+        }
+        private static ObservableCollection<MedicalAppointmentStruct> CreateMedicalAppointments(SearchParametersForCreating searchParametersForCreating)
+        {
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+            PatientDoctorsRoomsAreAvailableCheck(searchParametersForCreating, availableMedicalAppointments);
             return availableMedicalAppointments;
         }
 
+        private static void PatientDoctorsRoomsAreAvailableCheck(SearchParametersForCreating searchParametersForCreating, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        {
+            Interval interval = new Interval();
+
+            for (; CheckIfEndOfWorkHours(searchParametersForCreating); MoveToNextTimeSlot(searchParametersForCreating))
+            {
+                interval.Start = searchParametersForCreating.AppointmentTimeStart;
+                interval.End = interval.Start.AddMinutes(searchParametersForCreating.DurationOfAppointment);
+
+                if (searchParametersForCreating.EnteredPatient.IsAvailable(interval))
+                {
+                    foreach (var medicalAppointmentToAdd in from doctor in searchParametersForCreating.SuggestedDoctors
+                                                            where doctor.IsAvailable(interval)
+                                                            from room in searchParametersForCreating.SuggestedRooms
+                                                            where room.IsAvailable(interval)
+                                                            select new MedicalAppointmentStruct(-1, searchParametersForCreating.EnteredAppointmentType, interval,
+                                                                searchParametersForCreating.EnteredPatient, doctor, room))
+                    {
+                        availableMedicalAppointments.Add(medicalAppointmentToAdd);
+                    }
+                }
+            }
+        }
+
+
+
+
+        private static void MoveToNextTimeSlot(SearchParametersForCreating searchParametersForCreating)
+        {
+            searchParametersForCreating.AppointmentTimeStart = searchParametersForCreating.AppointmentTimeStart.AddMinutes(Constants.Constants.NEXT_TIMESLOT_START_CHECK);
+        }
+
+        private static bool CheckIfEndOfWorkHours(SearchParametersForCreating searchParametersForCreating)
+        {
+            return searchParametersForCreating.AppointmentTimeStart.AddMinutes(searchParametersForCreating.DurationOfAppointment) <= searchParametersForCreating.WorkDayEndTime;
+        }
+
+        private static void DefaultRearrange(Doctor enteredDoctor, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        {
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault = PreferredDoctorFirst(enteredDoctor, availableMedicalAppointments);
+
+            foreach (MedicalAppointmentStruct medicalAppointmentStruct in availableMedicalAppointments)
+            {
+                if (medicalAppointmentStruct.Doctor.Id != enteredDoctor.Id)
+                {
+                    availableMedicalAppointmentsSortDefault.Add(medicalAppointmentStruct);
+                }
+            }
+            availableMedicalAppointments = availableMedicalAppointmentsSortDefault;
+        }
+
+        private static ObservableCollection<MedicalAppointmentStruct> PreferredDoctorFirst(Doctor enteredDoctor, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        {
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault =
+                new ObservableCollection<MedicalAppointmentStruct>();
+
+            foreach (MedicalAppointmentStruct medicalAppointmentStruct in availableMedicalAppointments)
+            {
+                if (medicalAppointmentStruct.Doctor.Id == enteredDoctor.Id)
+                {
+                    availableMedicalAppointmentsSortDefault.Add(medicalAppointmentStruct);
+                }
+            }
+
+            return availableMedicalAppointmentsSortDefault;
+        }
+
+        private static void RearrangeByPriority(EnteredPreferences enteredPreferences, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        {
+            if (!enteredPreferences.EnteredPriority.Equals("Lekar")) return;
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDoctor =
+                new ObservableCollection<MedicalAppointmentStruct>();
+
+            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+            {
+                if (item.Doctor.Id == enteredPreferences.EnteredDoctor.Id)
+                {
+                    availableMedicalAppointmentsSortDoctor.Add(item);
+                }
+            }
+
+            if (availableMedicalAppointmentsSortDoctor.Count == 0)
+            {
+                EnteredPreferences enteredPreferencesRecursive = new EnteredPreferences(
+                    enteredPreferences.EnteredPatient, enteredPreferences.EnteredDateTime.AddDays(1),
+                    enteredPreferences.EnteredAppointmentType, enteredPreferences.EnteredPriority,
+                    enteredPreferences.EnteredDoctor);
+                availableMedicalAppointmentsSortDoctor =
+                    Instance.GetSuggestedMedicalAppointments(enteredPreferencesRecursive);
+            }
+
+            availableMedicalAppointments = availableMedicalAppointmentsSortDoctor;
+
+
+        }
+
+
+
+
+        ///  ///  ///  ///  ///  ///  ///  /// ///  ///  ///  ///  ///  ///  ///  /// ///  ///  ///  ///  ///  ///  ///  /// 
+        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(ForChangeMedicalAppointment forChangeMedicalAppointment)
+        {
+
+            DateTime appointmentTimeStart = new DateTime(forChangeMedicalAppointment.SelectedDateTime.Year, forChangeMedicalAppointment.SelectedDateTime.Month, forChangeMedicalAppointment.SelectedDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
+            DateTime workDayEndTime = new DateTime(forChangeMedicalAppointment.SelectedDateTime.Year, forChangeMedicalAppointment.SelectedDateTime.Month, forChangeMedicalAppointment.SelectedDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
+
+            int jumpToNextAppointmetnTime = Constants.Constants.NEXT_TIMESLOT_START_CHECK;
+            int durationOfAppointment = SetDurationOfAppointment(forChangeMedicalAppointment.Type);
+
+            SearchParametersForChanging searchParametersForChanging = new SearchParametersForChanging(forChangeMedicalAppointment, appointmentTimeStart, durationOfAppointment, workDayEndTime, jumpToNextAppointmetnTime);
+
+            var availableMedicalAppointments = CreateMedicalAppointmentForChange(searchParametersForChanging);
+
+            return availableMedicalAppointments;
+        }
+
+        private static ObservableCollection<MedicalAppointmentStruct> CreateMedicalAppointmentForChange(SearchParametersForChanging searchParametersForChanging)
+        {
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+
+            PatientDoctorRoomAreAvailableCheck(searchParametersForChanging, availableMedicalAppointments);
+
+            return availableMedicalAppointments;
+        }
+
+        private static void PatientDoctorRoomAreAvailableCheck(SearchParametersForChanging searchParametersForChanging,
+            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        {
+            Interval interval = new Interval();
+
+            for (;
+                 searchParametersForChanging.AppointmentTimeStart.AddMinutes(searchParametersForChanging
+                     .DurationOfAppointment) <= searchParametersForChanging.WorkDayEndTime;
+                 searchParametersForChanging.AppointmentTimeStart =
+                     searchParametersForChanging.AppointmentTimeStart.AddMinutes(searchParametersForChanging
+                         .JumpToNextAppointmetnTime))
+            {
+                interval.Start = searchParametersForChanging.AppointmentTimeStart;
+                interval.End = interval.Start.AddMinutes(searchParametersForChanging.DurationOfAppointment);
+
+
+                if (IsAvailablePatientDoctorRoom(searchParametersForChanging, interval))
+                {
+                    availableMedicalAppointments.Add(new MedicalAppointmentStruct(1,
+                        searchParametersForChanging.ForChangeMedicalAppointment.Type, interval,
+                        searchParametersForChanging.ForChangeMedicalAppointment.EnteredPatient,
+                        searchParametersForChanging.ForChangeMedicalAppointment.Doctor,
+                        searchParametersForChanging.ForChangeMedicalAppointment.Room));
+                }
+            }
+        }
+
+        private static bool IsAvailablePatientDoctorRoom(SearchParametersForChanging searchParametersForChanging, Interval interval)
+        {
+            return searchParametersForChanging.ForChangeMedicalAppointment.EnteredPatient.IsAvailable(interval) &&
+                   searchParametersForChanging.ForChangeMedicalAppointment.Doctor.IsAvailable(interval) &&
+                   searchParametersForChanging.ForChangeMedicalAppointment.Room.IsAvailable(interval);
+        }
+
+
+        // SEKRETAROVO
         public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(AppointmentPreferences appointmentPreferences)
         {
             ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
@@ -334,51 +448,6 @@ namespace Service
             }
             return availableMedicalAppointments;
         }
-        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
-        {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
-
-            DateTime appointmentTimeStart = new DateTime(selectedDateTime.Year, selectedDateTime.Month, selectedDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
-            DateTime workDayEndTime = new DateTime(selectedDateTime.Year, selectedDateTime.Month, selectedDateTime.Day, Constants.Constants.WORK_DAY_END_TIME, 0, 0);
-
-            int jumpToNextAppointmetnTime = Constants.Constants.NEXT_TIMESLOT_START_CHECK;
-            int durationOfAppointment = Constants.Constants.DURATION_CHECKUP;
-
-            if (type == AppointmentType.Examination)
-            {
-                durationOfAppointment = Constants.Constants.DURATION_EXAMINATION;
-            }
-
-            if (type == AppointmentType.Operation)
-            {
-                durationOfAppointment = Constants.Constants.DURATION_OPERATION;
-            }
-
-            Interval interval = new Interval();
-            for (; appointmentTimeStart.AddMinutes(durationOfAppointment) <= workDayEndTime;)
-            {
-                DateTime appointmentTimeEnd = appointmentTimeStart.AddMinutes(durationOfAppointment);
-                interval.Start = appointmentTimeStart;
-                interval.End = appointmentTimeEnd;
-
-                if (enteredPatient.IsAvailable(interval))
-                {
-                    if (doctor.IsAvailable(interval))
-                    {
-                        if (room.IsAvailable(interval))
-                        {
-                            MedicalAppointmentStruct medicalAppointmentStructToAdd = new MedicalAppointmentStruct(1, type, interval, enteredPatient, doctor, room);
-                            availableMedicalAppointments.Add(medicalAppointmentStructToAdd);
-
-                        }
-                    }
-                }
-                appointmentTimeStart = appointmentTimeStart.AddMinutes(jumpToNextAppointmetnTime);
-            }
-
-            return availableMedicalAppointments;
-        }
-
         public ObservableCollection<MedicalAppointment> GetUnavailableMedicalAppointmentsInNextHour(AppointmentPreferences appointmentPreferences)
         {
             ObservableCollection<MedicalAppointment> medicalAppointmentsAll = new ObservableCollection<MedicalAppointment>(GetAll());
