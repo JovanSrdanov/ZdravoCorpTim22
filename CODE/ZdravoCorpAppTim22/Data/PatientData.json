@@ -1,7 +1,7 @@
 [
   {
     "Blocked": false,
-    "SuspiciousActivity": [],
+    "SuspiciousActivity": null,
     "HospitalReview": 0,
     "MedicalRecord": 0,
     "Name": "Jovan",

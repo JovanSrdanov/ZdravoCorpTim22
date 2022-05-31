@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -168,5 +169,19 @@ namespace Service
                 patient.SuspiciousActivity.Remove(dateTime);
             }
         }
+
+        ///STEFAN DODAO
+        public void checkIfPatientHasMedicalRecord(Patient patient)
+        {
+            MedicalRecord patientMedicalRecord = patient.MedicalRecord;
+            if (patientMedicalRecord == null)
+            {
+                patientMedicalRecord = new MedicalRecord(-1, BloodType.A_PLUS, patient,
+                    new List<string>(), new List<string>());
+                MedicalRecordRepository.Instance.Create(patientMedicalRecord);
+                patient.MedicalRecord = patientMedicalRecord;
+            }
+        }
+        ///STEFAN DODAO
     }
 }

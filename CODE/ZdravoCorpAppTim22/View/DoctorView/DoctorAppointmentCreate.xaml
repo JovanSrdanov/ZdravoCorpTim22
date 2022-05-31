@@ -28,13 +28,13 @@
         </ComboBox>
 
         <Label Content="Room:" HorizontalAlignment="Left" Margin="210,390,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <ComboBox x:Name="AppointmentType_Copy" HorizontalAlignment="Left" Margin="542,400,0,0" 
+        <ComboBox x:Name="RoomComboBox" HorizontalAlignment="Left" Margin="542,400,0,0" 
                   VerticalAlignment="Top" Width="256"
                   ItemsSource="{Binding Path=RoomList}" DisplayMemberPath="Name" FontSize="20"
                   BorderBrush="#FF8C39A5" BorderThickness="2"/>
 
         <Label Content="Patient:" HorizontalAlignment="Left" Margin="210,486,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.493,2.706" FontSize="20"/>
-        <ComboBox x:Name="AppointmentType_Copy1" HorizontalAlignment="Left" Margin="542,490,0,0" 
+        <ComboBox x:Name="PatientComboBox" HorizontalAlignment="Left" Margin="542,490,0,0" 
                   VerticalAlignment="Top" Width="256"
                   ItemsSource="{Binding Path=PatientList}" DisplayMemberPath="Name" FontSize="20"
                   BorderBrush="#FF8C39A5" BorderThickness="2"/>

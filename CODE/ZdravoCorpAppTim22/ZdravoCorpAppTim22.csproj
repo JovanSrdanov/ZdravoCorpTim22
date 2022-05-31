@@ -154,6 +154,7 @@
     <Compile Include="Controller\RequestForAbsenceController.cs" />
     <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
+    <Compile Include="DTO\MedicalAppointmentDTO.cs" />
     <Compile Include="Model\Approval.cs" />
     <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="Model\EquipmentData.cs" />
@@ -263,9 +264,6 @@
     </Compile>
     <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
       <DependentUpon>DoctorAppointments.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DoctorView\DoctorAppointmentUpdate.xaml.cs">
-      <DependentUpon>DoctorAppointmentUpdate.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
@@ -490,10 +488,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\DoctorAppointments.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DoctorView\DoctorAppointmentUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,7 +2,7 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "1",
+    "Anamnesis": "1111",
     "Diagnosis": "1",
     "ReportDate": "2022-05-17T15:36:42.0963642+02:00",
     "ReportReviewed": true,
@@ -19,61 +19,6 @@
     "ReportReviewed": true,
     "MedicalReceipt": 1,
     "ReportReview": 3,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 2,
-    "DoctorID": 0,
-    "Anamnesis": "\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/27/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T15:38:11.5876785+02:00",
-    "ReportReviewed": false,
-    "MedicalReceipt": 2,
-    "ReportReview": null,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 3,
-    "DoctorID": 0,
-    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/4/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T16:16:54.012098+02:00",
-    "ReportReviewed": false,
-    "MedicalReceipt": 3,
-    "ReportReview": null,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 4,
-    "DoctorID": 1,
-    "Anamnesis": "1\n\nReffered to: doc docprez\nAppointment date: 5/28/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T16:18:01.8753311+02:00",
-    "ReportReviewed": false,
-    "MedicalReceipt": 4,
-    "ReportReview": null,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 5,
-    "DoctorID": 0,
-    "Anamnesis": "\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/26/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T16:19:27.6627178+02:00",
-    "ReportReviewed": false,
-    "MedicalReceipt": 5,
-    "ReportReview": null,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 6,
-    "DoctorID": 0,
-    "Anamnesis": "\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/27/2022 11:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T16:19:50.9757563+02:00",
-    "ReportReviewed": false,
-    "MedicalReceipt": 6,
-    "ReportReview": null,
     "MedicalRecord": 0
   }
 ]
