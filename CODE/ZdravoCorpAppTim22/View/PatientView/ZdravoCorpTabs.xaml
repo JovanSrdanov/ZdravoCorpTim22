@@ -609,6 +609,15 @@
                         <GradientStop Offset="1" Color="DeepSkyBlue" />
                     </LinearGradientBrush>
                 </Border.Background>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                <Setter Property="Visibility" Value="Hidden" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
                 <StackPanel Margin="10,10,10,10">
                     <TextBlock
                         Margin="0,0,0,10"
@@ -664,15 +673,6 @@
                 FontSize="18"
                 Foreground="White" />
 
-            <StackPanel.Style>
-                <Style TargetType="StackPanel">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
         </StackPanel>
 
     </Grid>

@@ -23,5 +23,10 @@
     "Id": 12,
     "ReplacingMedicine": 3,
     "ReplacementToMedicine": 4
+  },
+  {
+    "Id": 13,
+    "ReplacingMedicine": 3,
+    "ReplacementToMedicine": 5
   }
 ]

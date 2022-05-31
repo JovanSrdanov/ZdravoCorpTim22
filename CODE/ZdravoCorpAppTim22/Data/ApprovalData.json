@@ -1,23 +1,23 @@
 [
   {
     "Id": 1,
-    "Message": null,
-    "IsApproved": false,
-    "Doctor": null,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 1
   },
   {
     "Id": 2,
-    "Message": null,
-    "IsApproved": false,
-    "Doctor": null,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 2
   },
   {
     "Id": 3,
-    "Message": null,
-    "IsApproved": false,
-    "Doctor": null,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 3
   },
   {
@@ -26,5 +26,12 @@
     "IsApproved": false,
     "Doctor": 0,
     "MedicineData": 4
+  },
+  {
+    "Id": 5,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
+    "MedicineData": 5
   }
 ]

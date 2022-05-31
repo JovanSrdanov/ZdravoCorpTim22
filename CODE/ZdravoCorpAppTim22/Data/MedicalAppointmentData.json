@@ -1,49 +1,13 @@
 [
   {
-    "Id": 1,
-    "Type": 2,
-    "Interval": {
-      "Start": "2022-05-27T10:00:00",
-      "End": "2022-05-27T10:00:00"
-    },
-    "isUrgent": true,
-    "Room": null,
-    "Patient": 0,
-    "Doctor": 1
-  },
-  {
-    "Id": 5,
+    "Id": 0,
     "Type": 0,
     "Interval": {
-      "Start": "2022-05-26T10:00:00",
-      "End": "2022-05-26T10:00:00"
-    },
-    "isUrgent": true,
-    "Room": null,
-    "Patient": 0,
-    "Doctor": 1
-  },
-  {
-    "Id": 6,
-    "Type": 2,
-    "Interval": {
-      "Start": "2022-05-27T11:00:00",
-      "End": "2022-05-27T11:00:00"
-    },
-    "isUrgent": true,
-    "Room": null,
-    "Patient": 0,
-    "Doctor": 1
-  },
-  {
-    "Id": 7,
-    "Type": 0,
-    "Interval": {
-      "Start": "2022-05-27T10:30:00",
-      "End": "2022-05-27T10:30:00"
+      "Start": "2022-07-03T07:45:00",
+      "End": "2022-07-03T08:00:00"
     },
     "isUrgent": false,
-    "Room": 1,
+    "Room": 7,
     "Patient": 0,
     "Doctor": 0
   }

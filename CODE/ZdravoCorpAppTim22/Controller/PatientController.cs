@@ -32,10 +32,10 @@ namespace Controller
             PatientService.Instance.TherapyNotification();
         }
 
-        public void AntiTroll(Patient patient)
+        public bool AntiTroll(Patient patient)
         {
 
-            PatientService.Instance.AntiTroll(patient);
+           return PatientService.Instance.AntiTroll(patient);
 
         }
     }

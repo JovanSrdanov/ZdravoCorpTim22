@@ -115,7 +115,7 @@
                                         <TextBlock Text=" " />
                                         <TextBlock Text="{Binding Path=Surname}" />
                                         <TextBlock Text=" - " />
-                                        <TextBlock Text="{Binding Path=DoctorType}" />
+                                        <TextBlock Text="{Binding Path=DoctorSpecialization.Name}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>

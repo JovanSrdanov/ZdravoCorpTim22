@@ -75,5 +75,16 @@
     "MedicalReceipt": 6,
     "ReportReview": null,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 7,
+    "DoctorID": 0,
+    "Anamnesis": "neka anamneza",
+    "Diagnosis": "Neka dijagnoza",
+    "ReportDate": "2022-05-31T13:12:57.6076649+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 7,
+    "ReportReview": null,
+    "MedicalRecord": 0
   }
 ]

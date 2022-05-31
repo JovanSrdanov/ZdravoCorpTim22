@@ -38,7 +38,7 @@
   {
     "Id": 4,
     "EndDate": "2022-06-03T00:00:00",
-    "NotifyNextDateTime": "2022-05-17T10:30:00",
+    "NotifyNextDateTime": "2022-05-01T10:30:00",
     "Time": "10:30",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
@@ -47,7 +47,7 @@
   {
     "Id": 5,
     "EndDate": "2022-06-02T00:00:00",
-    "NotifyNextDateTime": "2022-05-17T10:00:00",
+    "NotifyNextDateTime": "2022-05-01T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
@@ -56,10 +56,19 @@
   {
     "Id": 6,
     "EndDate": "2022-06-01T00:00:00",
-    "NotifyNextDateTime": "2022-05-17T10:00:00",
+    "NotifyNextDateTime": "2022-05-01T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 7,
+    "EndDate": "2022-06-05T00:00:00",
+    "NotifyNextDateTime": "2022-05-01T13:44:00",
+    "Time": "13:44",
+    "AdditionalInstructions": "Uzmi ga",
+    "TherapyPurpose": "zato",
     "MedicalRecord": 0
   }
 ]
