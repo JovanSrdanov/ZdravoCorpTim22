@@ -5,12 +5,13 @@
     "AllergiesList": [],
     "ConditionList": [
       "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
       "1"
     ]
+  },
+  {
+    "Id": 1,
+    "BloodType": 0,
+    "AllergiesList": null,
+    "ConditionList": null
   }
 ]

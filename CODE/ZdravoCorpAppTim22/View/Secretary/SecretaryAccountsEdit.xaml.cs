@@ -238,7 +238,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                ObservableCollection<Patient> patients = PatientController.Instance.GetAll();
+                ObservableCollection<Patient> patients = new ObservableCollection<Patient>(PatientController.Instance.GetAll());
                 for (int i = 0; i < patients.Count; i++)
                 {
                     if (EMailTextBox.Text == patients[i].Email && patients[i] != Patient)
@@ -247,7 +247,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<Doctor> doctors = DoctorController.Instance.GetAll();
+                ObservableCollection<Doctor> doctors = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
                 for (int i = 0; i < doctors.Count; i++)
                 {
                     if (EMailTextBox.Text == doctors[i].Email && doctors[i] != Doctor)
@@ -256,7 +256,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<ManagerClass> managers = ManagerController.Instance.GetAll();
+                ObservableCollection<ManagerClass> managers = new ObservableCollection<ManagerClass>(ManagerController.Instance.GetAll());
                 for (int i = 0; i < managers.Count; i++)
                 {
                     if (EMailTextBox.Text == managers[i].Email && managers[i] != Manager)
@@ -265,7 +265,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                         return;
                     }
                 }
-                ObservableCollection<SecretaryClass> secretaries = SecretaryController.Instance.GetAll();
+                ObservableCollection<SecretaryClass> secretaries = new ObservableCollection<SecretaryClass>(SecretaryController.Instance.GetAll());
                 for (int i = 0; i < secretaries.Count; i++)
                 {
                     if (EMailTextBox.Text == secretaries[i].Email && secretaries[i] != Secretary)
@@ -540,7 +540,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void MedicalRecordBtn_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<MedicalRecord> medicalRecords = MedicalRecordController.Instance.GetAll();
+            ObservableCollection<MedicalRecord> medicalRecords = new ObservableCollection<MedicalRecord>(MedicalRecordController.Instance.GetAll());
             for (int i = 0; i < medicalRecords.Count; i++)
             {
                 if (medicalRecords[i].Patient == Patient)

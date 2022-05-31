@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -65,49 +66,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
         public void AddMedicine(object obj)
         {
-            MedicineData medicineData = MedicineDataController.Instance.GetByName(name);
-            if(medicineData == null)
-            {
-                medicineData = new MedicineData(-1, name);
-                Approval approval = new Approval
-                {
-                    IsApproved = false
-                };
-                medicineData.Approval = approval;
-                MedicineDataController.Instance.Create(medicineData);
-                ApprovalController.Instance.Create(approval);
-            }
-            else
+            if(MedicineDataController.Instance.GetByName(name) != null)
             {
                 InfoModal.Show("Medicine with that name already exists");
                 return;
             }
-            
-            foreach (Ingredient ingredient in SelectedIngredients)
-            {
-                ingredient.MedicineData = medicineData;
-                IngredientController.Instance.Create(ingredient);
-            }
 
-            foreach(MedicineData m in SelectedMedicines)
-            {
-                medicineData.AddReplacement(m);
-                Replacement replacement = new Replacement
-                {
-                    ReplacementToMedicine = medicineData,
-                    ReplacingMedicine = m
-                };
-                ReplacementController.Instance.Create(replacement);
-            }
-
-            Medicine medicine = new Medicine
-            {
-                MedicineData = medicineData,
-                Amount = amount
-            };
-
-            MedicineDataController.Instance.Update(medicineData);
-            MedicineController.Instance.Create(medicine);
+            MedicineController.Instance.Create(MedicineName, Amount, new List<Ingredient>(SelectedIngredients), new List<MedicineData>(SelectedMedicines));
             
             ManagerHome.NavigationService.Navigate(new MedicineView());
         }

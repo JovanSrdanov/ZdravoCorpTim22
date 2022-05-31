@@ -10,17 +10,17 @@ namespace Model
         public int Id { get; set; }
         public int Amount { get; set; }
 
-        [JsonConstructor]
-        public Equipment() { }
-        public Equipment(Equipment eq)
-        {
-            Id = eq.Id;
-            Amount = eq.Amount;
-            EquipmentData = new EquipmentData(eq.EquipmentData);
-        }
-
         [JsonConverter(typeof(EquipmentDataToIDConverter))]
         public EquipmentData equipmentData;
+
+        [JsonConverter(typeof(RoomToIDConverter))]
+        public Room room;
+
+        [JsonConverter(typeof(EquipmentRelocationToIDConverter))]
+        public EquipmentRelocation equipmentRelocation;
+
+        #region properties
+
         [JsonConverter(typeof(EquipmentDataToIDConverter))]
         public EquipmentData EquipmentData
         {
@@ -48,8 +48,6 @@ namespace Model
         }
 
         [JsonConverter(typeof(RoomToIDConverter))]
-        public Room room;
-        [JsonConverter(typeof(RoomToIDConverter))]
         public Room Room
         {
             get
@@ -74,8 +72,7 @@ namespace Model
                 }
             }
         }
-        [JsonConverter(typeof(EquipmentRelocationToIDConverter))]
-        public EquipmentRelocation equipmentRelocation;
+
         [JsonConverter(typeof(EquipmentRelocationToIDConverter))]
         public EquipmentRelocation EquipmentRelocation
         {
@@ -100,6 +97,16 @@ namespace Model
                     }
                 }
             }
+        }
+        #endregion
+
+        [JsonConstructor]
+        public Equipment() { }
+        public Equipment(Equipment eq)
+        {
+            Id = eq.Id;
+            Amount = eq.Amount;
+            EquipmentData = new EquipmentData(eq.EquipmentData);
         }
 
         public override string ToString()

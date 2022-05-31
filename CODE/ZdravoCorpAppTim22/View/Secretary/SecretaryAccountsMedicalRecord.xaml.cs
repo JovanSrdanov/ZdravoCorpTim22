@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
@@ -63,7 +64,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MedicalRecord.AllergiesList = new ObservableCollection<string>();
+                MedicalRecord.AllergiesList = new List<string>();       //STEFAN MENJAO
             }
 
             for (int i = 0; i < listBoxAllergies.Items.Count; i++)

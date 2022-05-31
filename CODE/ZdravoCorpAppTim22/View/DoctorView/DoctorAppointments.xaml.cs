@@ -12,93 +12,103 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public static ObservableCollection<MedicalAppointment> CurDocAppointemntsObservable { get; set; }
         public static MedicalAppointment medicalAppointment;
 
-        private DoctorHomeScreen doctorHomeScreen;
-        private Doctor doctor;
+        private readonly DoctorHomeScreen _doctorHomeScreen;
+        private readonly Doctor _loggedInDoctor;
 
         public DoctorAppointments(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
-            doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-            List<MedicalAppointment> allMedicalAppointment = doctor.MedicalAppointment;
-            CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allMedicalAppointment);
+            _loggedInDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            var allDoctorMedicalAppointments = _loggedInDoctor.MedicalAppointment;
+            CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allDoctorMedicalAppointments);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
 
-            this.doctorHomeScreen = doctorHomeScreen;
+            this._doctorHomeScreen = doctorHomeScreen;
+        }
+
+        private bool isMedicalAppointmentSelected()
+        {
+            bool returnValue = true;
+            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
+            if (medicalAppointment == null)
+            {
+                MessageBox.Show("Please select an appointment", "Delete appointment",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false; ;
+            }
+            return returnValue;
+        }
+
+        private bool patientHasMedicalRecord()
+        {
+            bool returnValue = true;
+            var medicalRecord = PatientController.Instance.GetByID(medicalAppointment.Patient.Id).medicalRecord;
+            if (medicalRecord == null)
+            {
+                MessageBox.Show("Selected patient does not have a medical record", "View record", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+            }
+            return returnValue;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            DoctorAppointmentCreate appCreate = new DoctorAppointmentCreate(this);
-            appCreate.Owner = this;
-            appCreate.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            var appCreate = new DoctorAppointmentCreate(this)
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
             appCreate.Show();
+
+            this.Hide();
+        }
+
+        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            if(!(isMedicalAppointmentSelected())) return;
+
+            var medicalRecordView = new MedicalRecordView(1, medicalAppointment.Patient.Id, this)   //prosledjujem 1 ako doktor sme
+            {                                                                                   //da napravi novi izvestaj, u suprotnom -1
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            medicalRecordView.Show();
 
             this.Hide();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
-            if (medicalAppointment == null)
-            {
-                MessageBox.Show("Please select an appointment", "Delete appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+            if (!(isMedicalAppointmentSelected())) return;
 
             MedicalAppointmentController.Instance.DeleteByID(medicalAppointment.Id);
-            doctor.MedicalAppointment.Remove(medicalAppointment);
-            DoctorController.Instance.Update(doctor);
+            _loggedInDoctor.MedicalAppointment.Remove(medicalAppointment);
+            DoctorController.Instance.Update(_loggedInDoctor);
             CurDocAppointemntsObservable.Remove(medicalAppointment);
-            MessageBox.Show("Apointment with ID " + medicalAppointment.Id + " deleted");
+            MessageBox.Show("Appointment with ID " + medicalAppointment.Id + " deleted");
 
         }
 
         private void ViewRecordBtn(object sender, RoutedEventArgs e)
         {
-            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
-            if (medicalAppointment == null)
-            {
-                MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+            if (!(isMedicalAppointmentSelected())) return;
+            if(!(patientHasMedicalRecord())) return;
 
-            //DODAO
-            Patient selectedPatient = PatientController.Instance.GetByID(medicalAppointment.Patient.Id);
-            if (selectedPatient.MedicalRecord == null)
+            var medicalRecordView = new MedicalRecordView(-1, medicalAppointment.Patient.Id, this)
             {
-                MessageBox.Show("Selected patient does not have a medical record", "View record", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalAppointment.Patient.Id, this);
-            medicalRecordView.Owner = this;
-            medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
             medicalRecordView.Show();
 
             this.Hide();
 
-        }
-
-        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
-        {
-            medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
-            if (medicalAppointment == null)
-            {
-                MessageBox.Show("Please select an appointment", "View medical record", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            MedicalRecordView medicalRecordView = new MedicalRecordView(1, medicalAppointment.Patient.Id, this);
-            medicalRecordView.Owner = this;
-            medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            medicalRecordView.Show();
-
-            this.Hide();
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)
         {
-            doctorHomeScreen.Show();
+            _doctorHomeScreen.Show();
             this.Close();
         }
 

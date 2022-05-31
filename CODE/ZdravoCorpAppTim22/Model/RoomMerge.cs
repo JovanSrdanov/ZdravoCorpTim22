@@ -15,6 +15,11 @@ namespace ZdravoCorpAppTim22.Model
         [JsonConverter(typeof(RoomToIDConverter))]
         private Room firstRoom;
         [JsonConverter(typeof(RoomToIDConverter))]
+        private Room secondRoom;
+
+        #region properties
+
+        [JsonConverter(typeof(RoomToIDConverter))]
         public Room FirstRoom
         {
             get
@@ -39,9 +44,6 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-
-        [JsonConverter(typeof(RoomToIDConverter))]
-        private Room secondRoom;
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room SecondRoom
         {
@@ -67,6 +69,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public RoomMerge() { }

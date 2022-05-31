@@ -24,7 +24,7 @@ namespace Repository
 
         public Patient GetPatient(Patient patient)
         {
-            ObservableCollection<Patient> observableCollection = instance.GetAll();
+            ObservableCollection<Patient> observableCollection = new ObservableCollection<Patient>(GetAll());
             for (int i = 0; i < observableCollection.Count; i++)
             {
                 if (observableCollection[i] == patient)

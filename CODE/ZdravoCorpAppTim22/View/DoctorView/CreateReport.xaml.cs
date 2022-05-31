@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             //List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
             List<Medicine> medicineList = MedicineController.Instance.GetAllApproved();
             ObservableCollection<Medicine> medicineObservableList = new ObservableCollection<Medicine>(medicineList);
-            ObservableCollection<MedicineData> medicineDataList = MedicineDataController.Instance.GetAll();
+            ObservableCollection<MedicineData> medicineDataList = new ObservableCollection<MedicineData>(MedicineDataController.Instance.GetAll());
 
             MedicationComboBox.ItemsSource = medicineObservableList;
             MedicationComboBox.SelectedIndex = 0;
@@ -137,7 +137,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec);
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
 
-            MedicalRecordView.medicineDataObservableList.Add(medicine.MedicineData);
+            MedicalRecordView.selectedPatientMedicineHistory.Add(medicine.MedicineData);
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
             medicine.MedicalReceipt = medicalReceipt;
 
@@ -164,7 +164,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec.ConditionList.Add(diagnosis);
             }
             medRec.MedicalReport.Add(medicalReport);
-            MedicalRecordView.medRepList.Add(medicalReport);
+            MedicalRecordView.selectedPatientReportHistory.Add(medicalReport);
             MedicalRecordController.Instance.Update(medRec);
 
             medicalReceipt.MedicalRecord = medRec;

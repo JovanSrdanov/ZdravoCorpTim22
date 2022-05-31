@@ -243,16 +243,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             Room first = new Room(-1, level_1, rt_1, name_1, surface_1);
             Room second = new Room(-1, level_2, rt_2, name_2, surface_2);
 
-            if (Interval.End <= DateTime.Now)
-            {
-                RoomDivergeController.Instance.DivergeInstant(first, second, Room, new List<Equipment>(Equipment_1), new List<Equipment>(Equipment_2));
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
-            else
-            {
-                RoomDivergeController.Instance.Create(first, second, Room, new List<Equipment>(Equipment_1), new List<Equipment>(Equipment_2), Interval);
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
+            RoomDivergeController.Instance.Create(first, second, Room, new List<Equipment>(Equipment_1), new List<Equipment>(Equipment_2), Interval);
+            
+            ManagerHome.NavigationService.Navigate(new RoomView());
         }
 
         public bool CanAddDiverge(object obj)

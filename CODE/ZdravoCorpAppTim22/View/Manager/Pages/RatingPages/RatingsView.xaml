@@ -4,11 +4,29 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Pages.RatingPages"
+      xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RatingsView">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBox" BasedOn="{StaticResource StandardTextBox}"/>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel>
+            <ContentPresenter x:Name="StaffHospitality"/>
+            <ContentPresenter x:Name="Accessibility"/>
+            <ContentPresenter x:Name="Hygiene"/>
+            <ContentPresenter x:Name="Appearance"/>
+            <ContentPresenter x:Name="Application"/>
+        </WrapPanel>
     </Grid>
 </Page>

@@ -38,7 +38,7 @@ namespace Service
             rel.DestinationRoom = null;
             base.DeleteByID(id);
         }
-        public void DeleteMany(List<EquipmentRelocation> list)
+        public void DeleteByList(List<EquipmentRelocation> list)
         {
             foreach (EquipmentRelocation rel in list)
             {
@@ -46,45 +46,45 @@ namespace Service
             }
         }
 
-        //Method that's being run every second from background thread
+        //Method that's being run every second from the background thread
         public void BackgroundTask()
         {
-            DoExpiredRelocations();
+            List<EquipmentRelocation> list = GetAllExpiredRelocations();
+            if(list.Count > 0)
+            {
+                App.Current?.Dispatcher?.Invoke(DoExpiredRelocations);
+            }
         }
+
+        #region private
 
         private void DoExpiredRelocations()
         {
-            List<EquipmentRelocation> list = GetAllExpired();
-            if (App.Current != null)
+            List<EquipmentRelocation> list = GetAllExpiredRelocations();
+            foreach (var item in list)
             {
-                App.Current.Dispatcher.Invoke(delegate
+                Room destination = item.DestinationRoom;
+                if (destination == null)
                 {
-                    foreach (var item in list)
+                    foreach (Equipment eq in item.Equipment)
                     {
-                        Room destination = item.DestinationRoom;
-                        if (destination == null)
-                        {
-                            foreach (Equipment eq in item.Equipment)
-                            {
-                                item.SourceRoom = null;
-                                EquipmentService.Instance.AddWarehouseEquipment(eq);
-                            }
-                        }
-                        else
-                        {
-                            foreach (Equipment eq in item.Equipment)
-                            {
-                                item.DestinationRoom = null;
-                                item.SourceRoom = null;
-                                EquipmentService.Instance.AddRoomEquipment(destination, eq);
-                            }
-                        }
-                        DeleteExpired(item);
+                        item.SourceRoom = null;
+                        EquipmentService.Instance.AddWarehouseEquipment(eq);
                     }
-                });
+                }
+                else
+                {
+                    foreach (Equipment eq in item.Equipment)
+                    {
+                        item.DestinationRoom = null;
+                        item.SourceRoom = null;
+                        EquipmentService.Instance.AddRoomEquipment(destination, eq);
+                    }
+                }
+                DeleteExpiredRelocation(item);
             }
         }
-        private List<EquipmentRelocation> GetAllExpired()
+        private List<EquipmentRelocation> GetAllExpiredRelocations()
         {
             List<EquipmentRelocation> list = new List<EquipmentRelocation>();
             lock (EquipmentRelocationRepository.Instance._lock)
@@ -99,7 +99,7 @@ namespace Service
             }
             return list;
         }
-        private void DeleteExpired(EquipmentRelocation relocation)
+        private void DeleteExpiredRelocation(EquipmentRelocation relocation)
         {
             foreach (Equipment eq in relocation.Equipment)
             {
@@ -108,5 +108,6 @@ namespace Service
             relocation.RemoveAllEquipment();
             DeleteByID(relocation.Id);
         }
+        #endregion
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using ZdravoCorpAppTim22.Controller;
@@ -97,7 +97,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
 
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection = new ObservableCollection<Equipment>(equipment);
-            EquipmentController.Instance.GetAll().CollectionChanged += EquipmentListChangedEvent;
+            EquipmentController.Instance.DataChanged += EquipmentDataChangedHandler;
         }
 
         public void OnPropertyChanged(string property)
@@ -105,7 +105,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        private void EquipmentListChangedEvent(object sender, NotifyCollectionChangedEventArgs e)
+        private void EquipmentDataChangedHandler(object sender, EventArgs e)
         {
             List<Equipment> equipment = EquipmentController.Instance.GetWarehouseEquipment();
             EquipmentCollection.Clear();
@@ -135,25 +135,19 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
                 Equipment equipment = selectedEquipment[0];
                 EquipmentCollection.Remove(equipment);
 
-                List<Equipment> eqToRemove = new List<Equipment>();
-                foreach (Equipment eq in EquipmentController.Instance.GetAll())
-                {
-                    if (eq.EquipmentData.Id == equipment.EquipmentData.Id)
-                    {
-                        eqToRemove.Add(eq);
-                    }
-                }
-                foreach (Equipment eq in eqToRemove)
-                {
-                    eq.Room = null;
-                    EquipmentController.Instance.DeleteByID(eq.Id);
-                }
-                EquipmentDataController.Instance.DeleteByID(equipment.EquipmentData.Id);
+                EquipmentController.Instance.DeleteWarehouseEquipmentByID(equipment.Id);
             }
         }
         public void OpenRelocation(object obj)
         {
-            List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
+            List<Equipment> selectedEquipment = new List<Equipment>();
+            foreach (Equipment eq in ((IList)obj).Cast<Equipment>().ToList())
+            {
+                if (eq.Amount > 0)
+                {
+                    selectedEquipment.Add(eq);
+                }
+            }
             ManagerHome.NavigationService.Navigate(new WarehouseRelocationView(selectedEquipment));   
         }
 

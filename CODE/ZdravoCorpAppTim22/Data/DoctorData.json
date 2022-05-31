@@ -6,6 +6,7 @@
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
+          "1",
           "1"
         ]
       }
@@ -23,20 +24,7 @@
     "Address": 0
   },
   {
-    "MedicalRecord": [
-      {
-        "Id": 0,
-        "BloodType": 1,
-        "AllergiesList": [],
-        "ConditionList": [
-          "1",
-          "1",
-          "1",
-          "1",
-          "1"
-        ]
-      }
-    ],
+    "MedicalRecord": [],
     "DoctorSpecialization": 1,
     "Name": "Stefan",
     "Surname": "Apostolovic",

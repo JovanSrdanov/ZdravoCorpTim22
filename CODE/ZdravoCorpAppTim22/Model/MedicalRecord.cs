@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model;
@@ -11,8 +12,8 @@ namespace Model
         public int Id { get; set; }
         public BloodType BloodType { get; set; }
 
-        public ObservableCollection<string> AllergiesList { get; set; }
-        public ObservableCollection<string> ConditionList { get; set; }
+        public List<string> AllergiesList { get; set; }
+        public List<string> ConditionList { get; set; }
 
 
         [JsonIgnore]
@@ -136,33 +137,6 @@ namespace Model
                 tmpMedicalReport.Clear();
             }
         }
-        //dodao
-
-        /*[JsonIgnore]
-        public Patient patient;
-        [JsonIgnore]
-        public Patient Patient
-        {
-            get
-            {
-                return patient;
-            }
-            set
-            {
-                if (this.patient == null || !this.patient.Equals(value))
-                {
-                    if (this.patient != null)
-                    {
-                        this.patient = null;
-                    }
-                    if (value != null)
-                    {
-                        this.patient = value;
-                        this.patient.MedicalRecord = this;
-                    }
-                }
-            }
-        }*/
 
         [JsonIgnore]
         public Patient Patient { get; set; }
@@ -172,7 +146,7 @@ namespace Model
         {
         }
 
-        public MedicalRecord(int id, BloodType bloodType, Patient patient, ObservableCollection<string> allergiesList, ObservableCollection<string> conditionList)
+        public MedicalRecord(int id, BloodType bloodType, Patient patient, List<string> allergiesList, List<string> conditionList)
         {
             Id = id;
             BloodType = bloodType;

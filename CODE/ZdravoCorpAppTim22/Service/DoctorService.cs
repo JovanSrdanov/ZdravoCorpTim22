@@ -1,5 +1,6 @@
 using Model;
 using Repository;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace Service
@@ -20,5 +21,26 @@ namespace Service
                 return instance;
             }
         }
+
+        public bool isDoctorRegular(Doctor doctor)
+        {
+            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
+            return doctor.DoctorSpecialization.Name.Equals(doctorSpecializationTemp.Name);
+        }
+
+        //DODAO
+        public bool doctorHasMedicalRecord(Doctor doctor, Patient patient)
+        {
+            bool returnValue = false;
+            foreach (MedicalRecord temp in doctor.MedicalRecord)
+            {
+                if (temp.Id == patient.MedicalRecord.Id)
+                {
+                    returnValue = true;
+                }
+            }
+            return returnValue;
+        }
+        //DODAO
     }
 }

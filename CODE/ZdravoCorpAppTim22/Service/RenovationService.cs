@@ -24,7 +24,7 @@ namespace ZdravoCorpAppTim22.Service
                 return instance;
             }
         }
-        public void DeleteMany(List<Renovation> list)
+        public void DeleteByList(List<Renovation> list)
         {
             foreach(Renovation renovation in list)
             {
@@ -32,33 +32,34 @@ namespace ZdravoCorpAppTim22.Service
             }
         }
         
-        //Method that's being run every second from background thread
+        //Method that's being run every second from the background thread
         public void BackgroundTask()
         {
-            DoExpiredRenovations();
+            List<Renovation> list = GetAllExpired();
+            if(list.Count > 0)
+            {
+                App.Current?.Dispatcher?.Invoke(DoExpiredRenovations);
+            }
         }
+
+        #region private
 
         private void DoExpiredRenovations()
         {
             List<Renovation> list = GetAllExpired();
-            if (App.Current != null)
+            foreach (Renovation item in list)
             {
-                App.Current.Dispatcher.Invoke(delegate
+                if (item.NewRoom != null)
                 {
-                    foreach (Renovation item in list)
-                    {
-                        if (item.NewRoom != null)
-                        {
-                            Room oldRoom = RoomService.Instance.GetByID(item.Room.Id);
-                            oldRoom.Name = item.NewRoom.Name;
-                            oldRoom.Level = item.NewRoom.Level;
-                            oldRoom.Type = item.NewRoom.Type;
-                            RoomService.Instance.Update(oldRoom);
-                            oldRoom.RemoveRenovation(item);
-                        }
-                        Instance.DeleteByID(item.Id);
-                    }
-                });
+                    Room oldRoom = RoomService.Instance.GetByID(item.Room.Id);
+                    oldRoom.Name = item.NewRoom.Name;
+                    oldRoom.Level = item.NewRoom.Level;
+                    oldRoom.Type = item.NewRoom.Type;
+                    oldRoom.Surface = item.NewRoom.Surface;
+                    RoomService.Instance.Update(oldRoom);
+                    oldRoom.RemoveRenovation(item);
+                }
+                Instance.DeleteByID(item.Id);
             }
         }
         private List<Renovation> GetAllExpired()
@@ -76,5 +77,6 @@ namespace ZdravoCorpAppTim22.Service
             }
             return list;
         }
+        #endregion
     }
 }

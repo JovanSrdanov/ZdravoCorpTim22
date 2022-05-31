@@ -68,11 +68,8 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
                 return;
             }
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);
-            OldEquipment.EquipmentData.Name = name;
-            OldEquipment.EquipmentData.Type = et;
-            OldEquipment.Amount = amount;
-            EquipmentDataController.Instance.Update(OldEquipment.EquipmentData);
-            EquipmentController.Instance.Update(OldEquipment);
+
+            EquipmentController.Instance.Update(OldEquipment, EquipmentName, Amount, et);
 
             ManagerHome.NavigationService.Navigate(new WarehouseView());
         }

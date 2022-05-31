@@ -12,6 +12,12 @@ namespace ZdravoCorpAppTim22.Model
 
         [JsonConverter(typeof(IngredientDataToIDConverter))]
         private IngredientData ingredientData;
+        
+        [JsonConverter(typeof(MedicineDataToIDConverter))]
+        private MedicineData medicineData;
+
+        #region properties
+
         [JsonConverter(typeof(IngredientDataToIDConverter))]
         public IngredientData IngredientData
         {
@@ -37,8 +43,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-        [JsonConverter(typeof(MedicineDataToIDConverter))]
-        private MedicineData medicineData;
+
         [JsonConverter(typeof(MedicineDataToIDConverter))]
         public MedicineData MedicineData
         {
@@ -64,6 +69,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public Ingredient() { }

@@ -1,44 +1,51 @@
 [
   {
-    "Id": 0,
-    "IsApproved": true,
-    "Doctor": 0,
-    "MedicineData": 0,
-    "Message": ""
-  },
-  {
     "Id": 1,
-    "IsApproved": true,
-    "Doctor": 0,
-    "MedicineData": 1,
-    "Message": ""
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 1
   },
   {
     "Id": 2,
-    "IsApproved": true,
-    "Doctor": 0,
-    "MedicineData": 2,
-    "Message": ""
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 2
   },
   {
     "Id": 3,
-    "IsApproved": true,
-    "Doctor": 0,
-    "MedicineData": 3,
-    "Message": ""
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 3
   },
   {
     "Id": 4,
-    "IsApproved": true,
+    "Message": "ne valja",
+    "IsApproved": false,
     "Doctor": 0,
-    "MedicineData": 4,
-    "Message": ""
+    "MedicineData": 4
   },
   {
     "Id": 5,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
+    "MedicineData": 5
+  },
+  {
+    "Id": 6,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
+    "MedicineData": 6
+  },
+  {
+    "Id": 7,
+    "Message": "213",
     "IsApproved": false,
     "Doctor": 0,
-    "MedicineData": 5,
-    "Message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+    "MedicineData": 7
   }
 ]

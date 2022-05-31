@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    /// <summary>
-    /// Interaction logic for DoctorHomeScreen.xaml
-    /// </summary>
     public partial class DoctorHomeScreen : Window
     {
         public static DoctorHomeScreen doctorHomeScreen;

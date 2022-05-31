@@ -14,6 +14,15 @@ namespace ZdravoCorpAppTim22.Model
 
         [JsonIgnore]
         public List<Equipment> equipment;
+        
+        [JsonConverter(typeof(RoomToIDConverter))]
+        public Room sourceRoom;
+
+        [JsonConverter(typeof(RoomToIDConverter))]
+        public Room destinationRoom;
+
+        #region properties
+
         [JsonIgnore]
         public List<Equipment> Equipment
         {
@@ -33,8 +42,7 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-        [JsonConverter(typeof(RoomToIDConverter))]
-        public Room sourceRoom;
+
         [JsonConverter(typeof(RoomToIDConverter))]
         public Room SourceRoom
         {
@@ -62,8 +70,6 @@ namespace ZdravoCorpAppTim22.Model
         }
 
         [JsonConverter(typeof(RoomToIDConverter))]
-        public Room destinationRoom;
-        [JsonConverter(typeof(RoomToIDConverter))]
         public Room DestinationRoom
         {
             get
@@ -88,9 +94,12 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
+        #endregion
 
         [JsonConstructor]
         public EquipmentRelocation() { }
+
+        #region boilerplate
 
         public void AddEquipment(Equipment newEquipment)
         {
@@ -128,5 +137,6 @@ namespace ZdravoCorpAppTim22.Model
                 tmpEquipment.Clear();
             }
         }
+        #endregion
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace ZdravoCorpAppTim22.Repository.Generic
 {
     public interface IRepository<T>
     {
         void Load();
-        ObservableCollection<T> GetAll();
+        List<T> GetAll();
         T GetByID(int id);
         void DeleteByID(int id);
         void Create(T obj);

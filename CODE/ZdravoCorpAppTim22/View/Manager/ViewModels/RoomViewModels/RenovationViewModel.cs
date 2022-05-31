@@ -2,7 +2,6 @@
 using Model;
 using System;
 using System.ComponentModel;
-using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -109,22 +108,10 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
-            if (RenovationInterval.End <= DateTime.Now)
-            {
-                OldRoom.Name = name;
-                OldRoom.Level = level;
-                OldRoom.Type = rt;
-                OldRoom.Surface = surface;
-                RoomController.Instance.Update(OldRoom);
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
-            else
-            {
-                Room room = new Room(0, level, rt, name, surface);
-                Renovation renovation = new Renovation(0, OldRoom, room, RenovationInterval);
-                RenovationController.Instance.Create(renovation);
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
+
+            RenovationController.Instance.Create(OldRoom, RoomName, Level, rt, Surface, RenovationInterval);
+
+            ManagerHome.NavigationService.Navigate(new RoomView());
         }
         public bool CanAddRenovation(object obj)
         {

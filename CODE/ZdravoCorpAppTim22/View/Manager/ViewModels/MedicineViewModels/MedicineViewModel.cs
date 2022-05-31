@@ -46,36 +46,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
             {
                 Medicine medicine = (Medicine)obj;
                 MedicineCollection.Remove(medicine);
-                List<Medicine> medicineToRemove = new List<Medicine>();
-                List<Ingredient> ingredientToRemove = new List<Ingredient>();
 
-                foreach (Ingredient ingredient in medicine.MedicineData.Ingredient)
-                {
-                    ingredientToRemove.Add(ingredient);
-                }
-
-                foreach (Medicine m in MedicineController.Instance.GetAll())
-                {
-                    if(m.MedicineData.Id == medicine.MedicineData.Id)
-                    {
-                        medicineToRemove.Add(m);
-                    
-                    }
-                }
-                foreach(Ingredient ingredient in ingredientToRemove)
-                {
-                    ingredient.MedicineData = null;
-                    IngredientController.Instance.DeleteByID(ingredient.Id);
-                }
-                foreach(Medicine m in medicineToRemove)
-                {
-                    MedicineController.Instance.DeleteByID(m.Id);
-                }
-                medicine.MedicineData.RemoveAllIngredient();
-                if(medicine.MedicineData.Approval != null)
-                {
-                    ApprovalController.Instance.DeleteByID(medicine.MedicineData.Approval.Id);
-                }
                 MedicineDataController.Instance.DeleteByID(medicine.MedicineData.Id);
             }
         }

@@ -189,7 +189,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 }
             }
 
-            MedicalRecordView.medicineDataObservableList[MedicalRecordView.medRepList.IndexOf(selectedMedicalReport)] =
+            MedicalRecordView.selectedPatientMedicineHistory[MedicalRecordView.selectedPatientReportHistory.IndexOf(selectedMedicalReport)] =
             selectedMedicine.MedicineData;
         medicalRecordView.Show();
             this.Close();

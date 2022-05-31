@@ -104,16 +104,9 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room newRoom = new Room(0, level, rt, name, surface);
 
-            if (Interval.End <= DateTime.Now)
-            {
-                RoomMergeController.Instance.MergeInstant(Room_1, Room_2, newRoom);
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
-            else
-            {
-                RoomMergeController.Instance.Create(Room_1, Room_2, newRoom, Interval);
-                ManagerHome.NavigationService.Navigate(new RoomView());
-            }
+            RoomMergeController.Instance.Create(Room_1, Room_2, newRoom, Interval);
+            
+            ManagerHome.NavigationService.Navigate(new RoomView());
         }
 
         public bool CanAddMerge(object obj)
