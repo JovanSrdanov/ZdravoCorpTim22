@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="ZdravoCorpAppTim22.View.Manager.Views.GradesBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
+             xmlns:converters="clr-namespace:ZdravoCorpAppTim22.View.Manager.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Margin="0 0 15 15">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/Global.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+            </Style>
+            <Style TargetType="{x:Type Canvas}">
+                <Setter Property="Height" Value="6"/>
+                <Setter Property="Margin" Value="6 0 0 0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type Rectangle}">
+                <Setter Property="Fill" Value="{StaticResource ActivePrimary}"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+            </Style>
+            <Style TargetType="{x:Type WrapPanel}">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+            <Style x:Key="TitleStyle"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Padding" Value="0 4 0 4"/>
+            </Style>
+            <Style x:Key="AverageStyle"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource ActivePrimary}"/>
+            </Style>
+            <converters:PercentageConverter x:Key="PercentageConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid MinWidth="400"
+          Background="{StaticResource DarkPrimary}">
+        <Grid Margin="20 0 20 20"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Right">
+                <TextBlock x:Name="Title" Style="{StaticResource TitleStyle}"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="1"
+                   Grid.RowSpan="5"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Margin="0 0 12 0">
+                <TextBlock x:Name="Average" Style="{StaticResource AverageStyle}"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="1"
+                   Grid.Column="1">
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+            </WrapPanel>
+            <Canvas x:Name="canvas_1"
+                Grid.Row="1"
+                Grid.Column="2">
+                <Rectangle x:Name="rect_1"
+                       Fill="{StaticResource ActivePrimary}"
+                       Height="{Binding ElementName=canvas_1, Path=Height}"/>
+            </Canvas>
+            <WrapPanel Grid.Row="2"
+                   Grid.Column="1">
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+            </WrapPanel>
+            <Canvas x:Name="canvas_2"
+                Grid.Row="2"
+                Grid.Column="2">
+                <Rectangle x:Name="rect_2"
+                       Height="{Binding ElementName=canvas_2, Path=Height}"/>
+            </Canvas>
+            <WrapPanel Grid.Row="3"
+                   Grid.Column="1">
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+            </WrapPanel>
+            <Canvas x:Name="canvas_3"
+                Grid.Row="3"
+                Grid.Column="2">
+                <Rectangle x:Name="rect_3"
+                       Height="{Binding ElementName=canvas_3, Path=Height}"/>
+            </Canvas>
+            <WrapPanel Grid.Row="4"
+                   Grid.Column="1">
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+            </WrapPanel>
+            <Canvas x:Name="canvas_4"
+                Grid.Row="4"
+                Grid.Column="2">
+                <Rectangle x:Name="rect_4"
+                       Height="{Binding ElementName=canvas_4, Path=Height}"/>
+            </Canvas>
+            <WrapPanel Grid.Row="5"
+                   Grid.Column="1">
+                <TextBlock FontFamily="{StaticResource Icons}" Text="&#xe735;"/>
+            </WrapPanel>
+            <Canvas x:Name="canvas_5"
+                Grid.Row="5"
+                Grid.Column="2">
+                <Rectangle x:Name="rect_5"
+                       Height="{Binding ElementName=canvas_5, Path=Height}"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+   
+</UserControl>

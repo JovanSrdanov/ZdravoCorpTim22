@@ -2,6 +2,7 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
@@ -42,9 +43,9 @@ namespace ZdravoCorpAppTim22.Service
         {
             foreach (User user in Users)
             {
-                if (user.Email == null)
+                if (user.Email == null || user.Password == null)
                 {
-                    break;
+                    continue;
                 }
                 if (user.Email.Equals(email) && user.Password.Equals(password))
                 {
