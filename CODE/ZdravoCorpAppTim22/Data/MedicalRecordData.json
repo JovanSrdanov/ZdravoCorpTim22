@@ -13,5 +13,11 @@
       "1",
       "Neka dijagnoza"
     ]
+  },
+  {
+    "Id": 1,
+    "BloodType": 0,
+    "AllergiesList": null,
+    "ConditionList": null
   }
 ]

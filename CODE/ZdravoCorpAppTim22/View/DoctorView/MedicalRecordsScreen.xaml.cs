@@ -8,36 +8,49 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 {
     public partial class MedicalRecordsScreen : Window
     {
-        public ObservableCollection<MedicalRecord> MedRecList { get; set; }
         private DoctorHomeScreen doctorHomeScreen;
         public MedicalRecordsScreen(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
             this.doctorHomeScreen = doctorHomeScreen;
-            MedRecList = new ObservableCollection<MedicalRecord>(DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).MedicalRecord);
+            ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords = new ObservableCollection<MedicalRecord>
+                (DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).MedicalRecord);
+            setPatientInMedicalRecord(loggedInDoctorMedicalRecords);
 
-            foreach (MedicalRecord medRec in MedRecList)
+            MedRecGrid.ItemsSource = loggedInDoctorMedicalRecords;
+        }
+
+        private void setPatientInMedicalRecord(ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords)
+        {
+            foreach (MedicalRecord medRec in loggedInDoctorMedicalRecords)
             {
                 MedicalRecord medRecTemp = MedicalRecordController.Instance.GetByID(medRec.Id);
                 medRec.Patient = medRecTemp.Patient;
             }
-            MedRecGrid.ItemsSource = MedRecList;
+        }
+
+        private bool isMedicalRecordSelected(MedicalRecord medicalRecord)
+        {
+            bool returnValue = true;
+            if (medicalRecord == null)
+            {
+                MessageBox.Show("Please select a medical record", "Medical record list", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+            }
+            return returnValue;
         }
 
         private void OpenBtnClick(object sender, RoutedEventArgs e)
         {
             MedicalRecord medicalRecord = MedRecGrid.SelectedItem as MedicalRecord;
-            if (medicalRecord == null)
-            {
-                MessageBox.Show("Please select a medical record", "Medical record list", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+            if(!(isMedicalRecordSelected(medicalRecord))) return;
 
             MedicalRecord medRecTemp = MedicalRecordController.Instance.GetByID(medicalRecord.Id);
             medicalRecord.Patient = medRecTemp.Patient;
 
+            //-1 ako doktor ne moze da pravi izvestaj, u suprotnom se konstruktoru prosledjuje 1
             MedicalRecordView medicalRecordView = new MedicalRecordView(-1, medicalRecord.Patient.Id, null, this);
-            medicalRecordView.Owner = this;
+            medicalRecordView.Owner = this;                                                                 
             medicalRecordView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             medicalRecordView.Show();
             this.Hide();

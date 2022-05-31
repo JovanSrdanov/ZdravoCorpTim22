@@ -1,28 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using ZdravoCorpAppTim22.View.Manager.Views;
 
 namespace ZdravoCorpAppTim22.View.Manager.Pages.RatingPages
 {
-    /// <summary>
-    /// Interaction logic for RatingsView.xaml
-    /// </summary>
     public partial class RatingsView : Page
     {
         public RatingsView()
         {
             InitializeComponent();
+            int[] grades = { 1, 2, 1, 2, 3, 2, 5, 5, 4, 3, 4, 2, 5, 1, 2, 3, 2, 5, 5, 5, 5 };
+            StaffHospitality.Content = new GradesBlock("Staff", grades);
+            Accessibility.Content = new GradesBlock("Accessibility", grades);
+            Hygiene.Content = new GradesBlock("Hygiene", grades);
+            Appearance.Content = new GradesBlock("Appearance", grades);
+            Application.Content = new GradesBlock("Application", grades);
         }
     }
 }

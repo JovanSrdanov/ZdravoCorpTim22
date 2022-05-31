@@ -31,8 +31,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -155,6 +154,7 @@
     <Compile Include="Controller\RequestForAbsenceController.cs" />
     <Compile Include="Controller\RoomDivergeController.cs" />
     <Compile Include="Controller\RoomMergeController.cs" />
+    <Compile Include="DTO\MedicalAppointmentDTO.cs" />
     <Compile Include="Model\Approval.cs" />
     <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="Model\EquipmentData.cs" />
@@ -268,9 +268,6 @@
     <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
       <DependentUpon>DoctorAppointments.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DoctorView\DoctorAppointmentUpdate.xaml.cs">
-      <DependentUpon>DoctorAppointmentUpdate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
       <DependentUpon>DoctorHome.xaml</DependentUpon>
     </Compile>
@@ -300,6 +297,7 @@
       <DependentUpon>RequestForLeaveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
+    <Compile Include="View\Manager\Converters\PercentageConverter.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -340,9 +338,6 @@
     <Compile Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml.cs">
       <DependentUpon>RoomWarehouseRelocationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
-      <DependentUpon>StaffView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
@@ -377,6 +372,9 @@
     </Compile>
     <Compile Include="View\Manager\Views\ConfirmModal.xaml.cs">
       <DependentUpon>ConfirmModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Views\GradesBlock.xaml.cs">
+      <DependentUpon>GradesBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Views\InfoModal.xaml.cs">
       <DependentUpon>InfoModal.xaml</DependentUpon>
@@ -496,10 +494,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DoctorView\DoctorAppointmentUpdate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\DoctorView\DoctorHomeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -588,10 +582,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Pages\StaffPages\StaffView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -652,6 +642,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Views\ConfirmModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\GradesBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
