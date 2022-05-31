@@ -145,28 +145,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem>
-                <TabItem.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Offset="0.615" Color="#FFADF0FF" />
-                        <GradientStop Offset="0.147" Color="White" />
-                    </LinearGradientBrush>
-                </TabItem.Background>
 
-
-                <TabItem.Header>
-                    <TextBlock Text="Obaveštenja" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
-                </TabItem.Header>
-                <Grid Background="Transparent">
-                    <Label
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        VerticalContentAlignment="Center"
-                        Content="Obaveštenja"
-                        FontSize="36"
-                        FontWeight="Bold" />
-                </Grid>
-            </TabItem>
 
             <TabItem>
                 <TabItem.Background>
@@ -438,14 +417,6 @@
                                 Background="Yellow"
                                 Click="MedicalReportsButton_Click"
                                 Content="Medicinski izveštaji" />
-                            <Button
-                                Padding="10,1"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Background="#FFDE3232"
-                                Content="Obriši nalog"
-                                FontSize="18"
-                                Foreground="White" />
                         </Grid>
                     </StackPanel>
                     <StackPanel
@@ -497,7 +468,7 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Podsetnik" ToolTip="Podsetnik za terapije i personalne stvari" />
+                    <TextBlock Text="Terapije" ToolTip="Pregled terapija i informacija o njima" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel Background="Transparent" Orientation="Vertical">
@@ -506,7 +477,7 @@
                             VerticalAlignment="Top"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
-                            Content="Podsetnik"
+                            Content="Terapije"
                             FontSize="36"
                             FontWeight="Bold" />
                         <DataGrid
@@ -536,8 +507,19 @@
                                 Padding="10,1"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
-                                Background="Yellow"
-                                Content="Vidi lekove" />
+                                Background="White">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Label>Kreiraj izveštaj</Label>
+                                    <Image
+                                        Height="32"
+                                        Margin="0"
+                                        Source="../../Resource/PatientResource/pdfIco.png" />
+
+                                </StackPanel>
+
+
+                            </Button>
 
                         </Grid>
 
@@ -569,7 +551,12 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="14"
-                                    TextWrapping="Wrap"><Run Text="BICE DODATO KASNIJE"/><LineBreak/><Run/></TextBlock>
+                                    TextWrapping="Wrap">
+                                    <Run Text="Pritiskom na dugme &quot;Kreiraj izveštaj&quot; unutar foldera PacijentIzveštaj" />
+                                    <LineBreak />
+                                    <Run Text="će se pronaći PDF izvestaj o rasporedu terapije na sedmičnom nivou." />
+
+                                </TextBlock>
                                 <Image
                                     Width="50"
                                     Height="50"
@@ -590,31 +577,32 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
 
-                <TabItem.Header>
-                    <TextBlock
-                        Background="#00000000"
-                        Text="Elektronska potvrda"
-                        ToolTip="Slanje zahteva za elektronsku potvrdu,&#10;njen prikaz i preuzimanje" />
-                </TabItem.Header>
 
-                <Grid>
+                <TabItem.Header>
+                    <TextBlock Text="Personalni podsetnik" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
+                </TabItem.Header>
+                <Grid Background="Transparent">
                     <Label
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         VerticalContentAlignment="Center"
-                        Content="Elektronska potvrda"
+                        Content="Personalni podsetnik"
                         FontSize="36"
                         FontWeight="Bold" />
                 </Grid>
             </TabItem>
 
+
         </TabControl>
 
         <StackPanel
-            Margin="15,0,0,150"
+            Margin="15,0,0,32"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom">
-            <Border BorderBrush="Black" BorderThickness="2">
+            <Border
+                Margin="0,0,0,10"
+                BorderBrush="Black"
+                BorderThickness="2">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="White" />
@@ -632,21 +620,8 @@
                 </StackPanel>
 
             </Border>
-            <StackPanel.Style>
-                <Style TargetType="StackPanel">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
-        </StackPanel>
 
-        <StackPanel
-            Margin="42,0,0,42"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom">
+
             <mah:ToggleSwitch
                 x:Name="HelpToggleSwitch"
                 Margin="0,0,0,10"
@@ -671,16 +646,33 @@
                 </mah:ToggleSwitch.Resources>
             </mah:ToggleSwitch>
 
+            <Button
+                x:Name="WizardButton"
+                Margin="0,0,0,10"
+                Padding="10,1"
+                Background="DeepSkyBlue"
+                Content="Čarobnjak "
+                FontSize="18"
+                Foreground="black" />
 
             <Button
                 x:Name="LogOutButton"
                 Padding="10,1"
-                HorizontalAlignment="Center"
                 Background="#FFDE3232"
                 Click="LogOutButton_Click"
                 Content="Odjava"
                 FontSize="18"
                 Foreground="White" />
+
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
         </StackPanel>
 
     </Grid>

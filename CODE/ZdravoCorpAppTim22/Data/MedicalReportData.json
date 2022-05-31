@@ -27,9 +27,9 @@
     "Anamnesis": "\n\nReffered to: Stefan Apostolovic\nAppointment date: 5/27/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-05-17T15:38:11.5876785+02:00",
-    "ReportReviewed": false,
+    "ReportReviewed": true,
     "MedicalReceipt": 2,
-    "ReportReview": null,
+    "ReportReview": 2,
     "MedicalRecord": 0
   },
   {

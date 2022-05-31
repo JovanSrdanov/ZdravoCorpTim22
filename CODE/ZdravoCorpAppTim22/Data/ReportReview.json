@@ -16,5 +16,14 @@
     "DoctorKindness": 4,
     "DoctorExpertise": 4,
     "DoctorDiscretion": 4
+  },
+  {
+    "Id": 2,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 1,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 1,
+    "DoctorExpertise": 1,
+    "DoctorDiscretion": 1
   }
 ]
