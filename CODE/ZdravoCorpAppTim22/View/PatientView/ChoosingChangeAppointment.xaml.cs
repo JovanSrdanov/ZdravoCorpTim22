@@ -3,7 +3,9 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
@@ -42,11 +44,16 @@ namespace ZdravoCorpAppTim22.View.PatientView
             {
                 return;
             }
-            PatientController.Instance.AntiTroll(ZdravoCorpTabs.LoggedPatient);
-            if (ZdravoCorpTabs.LoggedPatient == null)
+           
+            if (PatientController.Instance.AntiTroll(ZdravoCorpTabs.LoggedPatient))
             {
-                
-                Close();
+
+                MessageBox.Show("Pacijent je blokiran!");
+                List<Window> windows = Application.Current.Windows.Cast<Window>().Where(window => window.Visibility != Visibility.Hidden).ToList();
+                foreach (Window window in windows)
+                {
+                    window.Close();
+                }
                 return;
             }
             

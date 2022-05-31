@@ -1,18 +1,10 @@
 [
   {
     "Id": 0,
-    "StaffHospitality": 2,
-    "Accessibility": 4,
-    "Hygiene": 3,
-    "Appearance": 3,
-    "Application": 4
-  },
-  {
-    "Id": 1,
-    "StaffHospitality": 4,
+    "StaffHospitality": 5,
     "Accessibility": 3,
     "Hygiene": 3,
-    "Appearance": 4,
-    "Application": 3
+    "Appearance": 3,
+    "Application": 5
   }
 ]

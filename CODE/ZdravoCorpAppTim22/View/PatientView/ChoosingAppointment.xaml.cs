@@ -1,7 +1,6 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Model;
 
@@ -20,8 +19,6 @@ namespace ZdravoCorpAppTim22.View.PatientView
         public AppointmentType enteredAppointmentType;
         public string enteredPriority;
 
-
-        public ObservableCollection<MedicalAppointmentStruct> MedicalAppointmentsList { get; set; }
 
         public ChoosingAppointment()
         {

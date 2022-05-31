@@ -37,97 +37,106 @@ namespace Service
 
         public void TherapyNotification()
         {
-
-            if (ZdravoCorpTabs.LoggedPatient == null)
-            {
-                return;
-            }
-            else
-            {
-
-                if (App.Current != null)
+            if (App.Current != null && ZdravoCorpTabs.LoggedPatient != null)
+                App.Current.Dispatcher.Invoke(delegate
                 {
-                    App.Current.Dispatcher.Invoke(delegate
-                    {
-                        MedicalRecord medRec = ZdravoCorpTabs.LoggedPatient.medicalRecord;
+                    MedicalRecord medicalRecord = ZdravoCorpTabs.LoggedPatient.medicalRecord;
 
+                    if (medicalRecord == null) return;
+                    List<MedicalReceipt> MedicalReceipts = medicalRecord.MedicalReceipt;
+                    CheckingUnfinishedTherapies(MedicalReceipts);
+                });
+        }
 
-                        if (medRec == null)
-                        {
-                            return;
-                        }
-                        List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
-
-
-                        foreach (MedicalReceipt medicalReceipt in MedicalReceipts)
-                        {
-
-
-                            if (DateTime.Now.Date > medicalReceipt.EndDate.Date)
-                            {
-                               
-                                return;
-                            }
-
-
-                            if (DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-30) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-5))
-                            {
-
-
-                                string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
-                                message += medicalReceipt.TherapyPurpose;
-                                message += "\n\n";
-
-
-                                message += "Način upotrebe: ";
-                                message += medicalReceipt.AdditionalInstructions;
-                                message += "\n\n";
-
-                                message += "Lekovi: ";
-                                foreach (Medicine m in medicalReceipt.Medicine)
-                                {
-                                    message += m.MedicineData.Name;
-                                    message += "\n\n";
-                                }
-
-                                message += "Uzeti u: ";
-                                message += medicalReceipt.Time;
-
-
-
-                                MessageBox.Show(message);
-
-                                int hour = medicalReceipt.NotifyNextDateTime.Hour;
-                                int minute = medicalReceipt.NotifyNextDateTime.Minute;
-
-                                medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day, hour, minute, 0);
-                                MedicalReceiptController.Instance.Update(medicalReceipt);
-                            }
-                            if (DateTime.Now > medicalReceipt.NotifyNextDateTime)
-                            {
-                                int hour = medicalReceipt.NotifyNextDateTime.Hour;
-                                int minute = medicalReceipt.NotifyNextDateTime.Minute;
-
-                                medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day, hour, minute, 0);
-
-                                MedicalReceiptController.Instance.Update(medicalReceipt);
-                            }
-                        }
-                    });
+        private static void CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
+        {
+            foreach (var medicalReceipt in MedicalReceipts.Where(medicalReceipt =>
+                         !CheckIfTherapyIsOver(medicalReceipt)))
+            {
+                if (CheckIfTimeForMessage(medicalReceipt))
+                {
+                    string message = CreatingMessageForTherapy(medicalReceipt);
+                    // ovdde dodaj neki event sta ja znam
+                    MessageBox.Show(message);
+                    UpdateNotifyNextDateTime(medicalReceipt);
                 }
+
+                UpdateMissedNotification(medicalReceipt);
             }
         }
 
-        public void AntiTroll(Patient patient)
+        private static void UpdateMissedNotification(MedicalReceipt medicalReceipt)
+        {
+            if (DateTime.Now > medicalReceipt.NotifyNextDateTime)
+            {
+                UpdateNotifyNextDateTime(medicalReceipt);
+            }
+        }
+
+        private static bool CheckIfTherapyIsOver(MedicalReceipt medicalReceipt)
+        {
+            return DateTime.Now.Date > medicalReceipt.EndDate.Date;
+        }
+
+        private static bool CheckIfTimeForMessage(MedicalReceipt medicalReceipt)
+        {
+            return DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-Constants.Constants.NOTIFICATION_TIME_START) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-Constants.Constants.NOTIFICATION_TIME_END);
+        }
+
+        private static void UpdateNotifyNextDateTime(MedicalReceipt medicalReceipt)
+        {
+            int hour = medicalReceipt.NotifyNextDateTime.Hour;
+            int minute = medicalReceipt.NotifyNextDateTime.Minute;
+
+            medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day,
+                hour, minute, 0);
+            MedicalReceiptController.Instance.Update(medicalReceipt);
+        }
+
+        private static string CreatingMessageForTherapy(MedicalReceipt medicalReceipt)
+        {
+            string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
+            message += medicalReceipt.TherapyPurpose;
+            message += "\n\n";
+
+
+            message += "Način upotrebe: ";
+            message += medicalReceipt.AdditionalInstructions;
+            message += "\n\n";
+
+            message += "Lekovi: ";
+            foreach (Medicine m in medicalReceipt.Medicine)
+            {
+                message += m.MedicineData.Name;
+                message += "\n\n";
+            }
+
+            message += "Uzeti u: ";
+            message += medicalReceipt.Time;
+            return message;
+        }
+
+        public bool AntiTroll(Patient patient)
         {
 
+            UpdatingSuspiciousActivity(patient);
+            bool Troll = false;
+
+            if (CheckIfTroll(patient))
+            {
+                Blocking(patient);
+                Troll = true;
+            }
+
+            return Troll;
+
+        }
+
+        private static void UpdatingSuspiciousActivity(Patient patient)
+        {
             RemovingOutdatedSuspiciousActivity(patient);
             patient.SuspiciousActivity.Add(DateTime.Now);
             Instance.Update(patient);
-            if (CheckIfTroll(patient))
-            {
-                SanctioningTroll(patient);
-            }
         }
 
         private static bool CheckIfTroll(Patient patient)
@@ -135,29 +144,12 @@ namespace Service
             return patient.SuspiciousActivity.Count >= Constants.Constants.MAX_SUSPICIOUS_ACTIVITY_COUNT;
         }
 
-        private static void SanctioningTroll(Patient patient)
-        {
-            Blocking(patient);
-            TrollLogOut();
-        }
-
         private static void Blocking(Patient patient)
         {
             patient.Blocked = true;
             Instance.Update(patient);
             ZdravoCorpTabs.LoggedPatient = null;
-            MessageBox.Show("Pacijent je blokiran!");
-        }
-
-        private static void TrollLogOut()
-        {
             AuthenticationController.Instance.Logout();
-            List<Window> windows = Application.Current.Windows.Cast<Window>().Where(window => window.Visibility != Visibility.Hidden).ToList();
-            foreach (Window window in windows)
-            {
-                window.Close();
-            }
-
 
         }
 

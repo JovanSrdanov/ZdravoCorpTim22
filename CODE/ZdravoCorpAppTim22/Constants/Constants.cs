@@ -10,5 +10,8 @@
         public const int DURATION_OPERATION = 60;
         public const int MAX_SUSPICIOUS_ACTIVITY_COUNT = 3;
         public const int SUSPICIOUS_ACTIVITY_DAYS_RANGE = 30;
+
+        public const int NOTIFICATION_TIME_START = 30;
+        public const int NOTIFICATION_TIME_END = 1;
     }
 }

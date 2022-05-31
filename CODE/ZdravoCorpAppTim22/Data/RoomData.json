@@ -19,5 +19,12 @@
     "Type": 1,
     "Name": "soba_3",
     "Surface": 35
+  },
+  {
+    "Id": 7,
+    "Level": 232,
+    "Type": 4,
+    "Name": "SOBA ZA PREGLED",
+    "Surface": 213
   }
 ]

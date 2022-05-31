@@ -7,8 +7,9 @@
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM"
-    Width="846"
-    Height="258"
+    Width="1035"
+    Height="533.475"
+    VerticalContentAlignment="Top"
     mc:Ignorable="d">
     <UserControl.Resources>
         <cvtr:ConvertReportReviewed x:Key="crr" />
@@ -18,7 +19,7 @@
     <UserControl.DataContext>
         <viewModel:MedicalReportsViewModel />
     </UserControl.DataContext>
-    <StackPanel Margin="21,0">
+    <StackPanel Margin="0,0,0,0">
         <Label
             Margin="0,0,0,5"
             HorizontalAlignment="Center"
@@ -29,7 +30,7 @@
 
         <DataGrid
             x:Name="ReportsAll"
-            Height="150"
+            Height="425"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
