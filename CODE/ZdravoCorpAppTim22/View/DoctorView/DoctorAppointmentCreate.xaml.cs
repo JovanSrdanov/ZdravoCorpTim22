@@ -6,27 +6,18 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
-    public partial class DoctorAppointmentCreate : Window, INotifyPropertyChanged
+    public partial class DoctorAppointmentCreate : Window
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private string type;
         private DoctorAppointments doctorAppointments;
-        private Doctor doctor;
+        private Doctor loggedInDoctor;
 
-        //date time 
-        private string date;
-        private string time;
-        private DateTime dateTime;
-        //date time 
-
-        public ObservableCollection<Room> RoomList { get; set; }
-        public List<Room> rooms;
+        private DateTime startDateTime;
         public ObservableCollection<Patient> PatientList { get; set; }
         public List<Patient> patients;
 
@@ -36,75 +27,88 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.DataContext = this;
             this.doctorAppointments = doctorAppointments;
 
+            loggedInDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            setItemSources();
+
+        }
+
+        private void setItemSources()
+        {
+            AppointmentTypeCBOX.ItemsSource = new ObservableCollection<AppointmentType>(getAppropriateSpecializationAppointmentTypes());
+            AppointmentTypeCBOX.SelectedIndex = 0;
+
+            RoomComboBox.ItemsSource = new ObservableCollection<Room>(new List<Room>(RoomController.Instance.GetAll()));
+            RoomComboBox.SelectedIndex = 0;
+
+            PatientComboBox.ItemsSource = new ObservableCollection<Patient>(new List<Patient>(PatientController.Instance.GetAll()));
+            PatientComboBox.SelectedIndex = 0;
+        }
+
+        private List<AppointmentType> getAppropriateSpecializationAppointmentTypes()
+        {
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
-            ObservableCollection<AppointmentType> newAppointmentTypes = new ObservableCollection<AppointmentType>(appointmentTypes);
-            newAppointmentTypes.Remove(AppointmentType.Operation);
-            doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
-            if (doctor.DoctorSpecialization.Name != doctorSpecializationTemp.Name)
+            if (DoctorController.Instance.isDoctorRegular(loggedInDoctor))
             {
-                AppointmentTypeCBOX.ItemsSource = Enum.GetValues(typeof(AppointmentType));
+                appointmentTypes.Remove(global::Model.AppointmentType.Operation);
             }
-            else
-            {
-                AppointmentTypeCBOX.ItemsSource = newAppointmentTypes;
-            }
-
-            rooms = new List<Room>(RoomController.Instance.GetAll());
-            RoomList = new ObservableCollection<Room>(rooms);
-            AppointmentType_Copy.ItemsSource = RoomList;
-
-            patients = new List<Patient>(PatientController.Instance.GetAll());
-            PatientList = new ObservableCollection<Patient>(patients);
-            AppointmentType_Copy1.ItemsSource = PatientList;
+            return appointmentTypes;
         }
 
-        private void OnPropertyChanged(string propertyName = "")
+        private bool isDateValid(string startDate, string startTime)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+#pragma warning disable CS0168 // Variable is declared but never used
+            bool returnValue = true;
+            try
+            {
+                startDateTime = DateTime.Parse(startDate + " " + startTime);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please enter the valid date and time", "Create appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+                
+            }
+            return returnValue;
+#pragma warning restore CS0168 // Variable is declared but never used
         }
 
-        public string Type
+        private bool isFormFilled(MedicalAppointmentDTO medicalAppointmentDTO)
         {
-            get => type;
-            set
+            bool returnValue = true;
+            if (medicalAppointmentDTO.AppointmentType == null || medicalAppointmentDTO.StartDate == null || 
+                medicalAppointmentDTO.StartTime == null)
             {
-                type = value;
-                OnPropertyChanged("Type");
+                MessageBox.Show("Please fill out all fields", "Create appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
             }
+            return returnValue;
+        }
+
+        private Interval getInterval(DateTime startDateTime)
+        {
+            Interval interval = new Interval();
+            interval.Start = startDateTime;
+            interval.End = startDateTime;
+            return interval;
         }
 
         private void confirmButton_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = AppointmentType_Copy1.SelectedItem as Patient;
-            Room room = AppointmentType_Copy.SelectedItem as Room;
-            date = datePicker.Text;
-            time = TimeComboBox.Text;
-#pragma warning disable CS0168 // Variable is declared but never used
-            try
-            {
-                dateTime = DateTime.Parse(date + " " + time);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please enter the valid time", "Create appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-#pragma warning restore CS0168 // Variable is declared but never used
+            Patient patient = PatientComboBox.SelectedItem as Patient;
+            Room room = RoomComboBox.SelectedItem as Room;
+            string startDate = datePicker.Text;
+            string startTime = TimeComboBox.Text;
+            
+            if(!(isDateValid(startDate, startTime))) return;
+            MedicalAppointmentDTO medicalAppointmentDTO = 
+                new MedicalAppointmentDTO(datePicker.SelectedDate, startTime, AppointmentTypeCBOX.SelectedItem);
+            if(!(isFormFilled(medicalAppointmentDTO))) return;
 
-            if (type == null || doctor == null || patient == null || room == null || datePicker.SelectedDate == null || time == "")
-            {
-                MessageBox.Show("Please fill out all fields", "Create appointment", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+            string appointmentTypeText = AppointmentTypeCBOX.SelectedItem.ToString();
+            Interval interval = getInterval(startDateTime);
+            AppointmentType appointmentType = (AppointmentType)Enum.Parse(typeof(AppointmentType), appointmentTypeText);
 
-            AppointmentType at = (AppointmentType)Enum.Parse(typeof(AppointmentType), type);
-
-            Interval interval = new Interval();
-            interval.Start = dateTime;
-            interval.End = dateTime;
-
-            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1, at, interval, room, patient, doctor);
+            MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1, appointmentType, interval, room, patient, loggedInDoctor);        //-1 je privremeni id
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
 

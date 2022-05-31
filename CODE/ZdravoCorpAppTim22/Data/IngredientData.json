@@ -64,5 +64,23 @@
     "Amount": 1,
     "IngredientData": 5,
     "MedicineData": 4
+  },
+  {
+    "Id": 23,
+    "Amount": 1,
+    "IngredientData": 1,
+    "MedicineData": 6
+  },
+  {
+    "Id": 24,
+    "Amount": 1,
+    "IngredientData": 0,
+    "MedicineData": 5
+  },
+  {
+    "Id": 25,
+    "Amount": 1,
+    "IngredientData": 1,
+    "MedicineData": 7
   }
 ]

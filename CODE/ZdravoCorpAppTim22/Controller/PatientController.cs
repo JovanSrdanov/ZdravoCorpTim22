@@ -38,5 +38,12 @@ namespace Controller
             PatientService.Instance.AntiTroll(patient);
 
         }
+
+        ///STEFAN DODAO
+        public void checkIfPatientHasMedicalRecord(Patient patient)
+        {
+            PatientService.Instance.checkIfPatientHasMedicalRecord(patient);
+        }   
+        ///STEFAN DODAO
     }
 }

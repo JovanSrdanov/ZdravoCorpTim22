@@ -137,7 +137,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec);
             medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
 
-            MedicalRecordView.medicineDataObservableList.Add(medicine.MedicineData);
+            MedicalRecordView.selectedPatientMedicineHistory.Add(medicine.MedicineData);
             MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
             medicine.MedicalReceipt = medicalReceipt;
 
@@ -164,7 +164,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 medRec.ConditionList.Add(diagnosis);
             }
             medRec.MedicalReport.Add(medicalReport);
-            MedicalRecordView.medRepList.Add(medicalReport);
+            MedicalRecordView.selectedPatientReportHistory.Add(medicalReport);
             MedicalRecordController.Instance.Update(medRec);
 
             medicalReceipt.MedicalRecord = medRec;
