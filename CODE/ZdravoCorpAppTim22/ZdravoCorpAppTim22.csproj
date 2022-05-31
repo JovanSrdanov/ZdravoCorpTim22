@@ -296,6 +296,7 @@
       <DependentUpon>RequestForLeaveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
+    <Compile Include="View\Manager\Converters\PercentageConverter.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
@@ -336,9 +337,6 @@
     <Compile Include="View\Manager\Pages\RoomPages\RoomWarehouseRelocationView.xaml.cs">
       <DependentUpon>RoomWarehouseRelocationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
-      <DependentUpon>StaffView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml.cs">
       <DependentUpon>AddEquipmentView.xaml</DependentUpon>
     </Compile>
@@ -373,6 +371,9 @@
     </Compile>
     <Compile Include="View\Manager\Views\ConfirmModal.xaml.cs">
       <DependentUpon>ConfirmModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Views\GradesBlock.xaml.cs">
+      <DependentUpon>GradesBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Views\InfoModal.xaml.cs">
       <DependentUpon>InfoModal.xaml</DependentUpon>
@@ -584,10 +585,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Manager\Pages\StaffPages\StaffView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Manager\Pages\WarehousePages\AddEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -648,6 +645,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Manager\Views\ConfirmModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Views\GradesBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -890,6 +891,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\DoctorResource\demo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Manager\ViewModels\RatingViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />
