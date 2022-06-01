@@ -3,21 +3,20 @@
     "Id": 0,
     "BloodType": 1,
     "AllergiesList": [],
-    "ConditionList": [
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "Neka dijagnoza"
-    ]
+    "ConditionList": []
   },
   {
     "Id": 1,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": []
+  },
+  {
+    "Id": 2,
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": [
+      "1"
+    ]
   }
 ]

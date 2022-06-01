@@ -8,6 +8,7 @@ using System.Windows;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
+using ZdravoCorpAppTim22.Service;
 using ZdravoCorpAppTim22.Service.Generic;
 using ZdravoCorpAppTim22.View.PatientView;
 
@@ -35,20 +36,22 @@ namespace Service
             return PatientRepository.Instance.GetPatient(patient);
         }
 
-        public void TherapyNotification()
+        public string TherapyNotification()
         {
             if (App.Current != null && ZdravoCorpTabs.LoggedPatient != null)
-                App.Current.Dispatcher.Invoke(delegate
-                {
-                    MedicalRecord medicalRecord = ZdravoCorpTabs.LoggedPatient.medicalRecord;
+            {
+                MedicalRecord medicalRecord = ZdravoCorpTabs.LoggedPatient.medicalRecord;
 
-                    if (medicalRecord == null) return;
-                    List<MedicalReceipt> MedicalReceipts = medicalRecord.MedicalReceipt;
-                    CheckingUnfinishedTherapies(MedicalReceipts);
-                });
+                if (medicalRecord == null) return "";
+                List<MedicalReceipt> MedicalReceipts = medicalRecord.MedicalReceipt;
+                return CheckingUnfinishedTherapies(MedicalReceipts);
+            }
+            return "";
         }
 
-        private static void CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
+        
+
+        private string CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
         {
             foreach (var medicalReceipt in MedicalReceipts.Where(medicalReceipt =>
                          !CheckIfTherapyIsOver(medicalReceipt)))
@@ -57,12 +60,13 @@ namespace Service
                 {
                     string message = CreatingMessageForTherapy(medicalReceipt);
                     // ovdde dodaj neki event sta ja znam
-                    MessageBox.Show(message);
                     UpdateNotifyNextDateTime(medicalReceipt);
+                    return message;
                 }
 
                 UpdateMissedNotification(medicalReceipt);
             }
+            return "";
         }
 
         private static void UpdateMissedNotification(MedicalReceipt medicalReceipt)

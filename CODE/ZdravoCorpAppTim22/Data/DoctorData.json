@@ -2,11 +2,10 @@
   {
     "MedicalRecord": [
       {
-        "Id": 0,
+        "Id": 2,
         "BloodType": 1,
         "AllergiesList": [],
         "ConditionList": [
-          "1",
           "1"
         ]
       }
