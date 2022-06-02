@@ -4,41 +4,8 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "6",
+      "sad",
       "1"
     ]
-  },
-  {
-    "Id": 1,
-    "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": [
-      "K",
-      "J"
-    ]
-  },
-  {
-    "Id": 3,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
-  },
-  {
-    "Id": 4,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
-  },
-  {
-    "Id": 5,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
-  },
-  {
-    "Id": 6,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
   }
 ]

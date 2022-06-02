@@ -57,7 +57,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void setAbilityToChangeReport()     //ne pomeraj
         {
-            if (selectedMedicalReport.DoctorID != DoctorHome.selectedDoctorId)
+            if (selectedMedicalReport.DoctorID != DoctorHomeScreen.LoggedInDoctor.Id)
             {
                 ChangeReportBtn.IsEnabled = false;
                 ChangeReportBtn.Foreground = new SolidColorBrush(Colors.Black);
@@ -192,8 +192,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj

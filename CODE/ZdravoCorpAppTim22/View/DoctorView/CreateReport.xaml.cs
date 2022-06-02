@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             MedicalReport newReport = new MedicalReport(-1, AnamnesisBox.Text, DiagnosisBox.Text, DateTime.Now,
                 selectedPatientMedicalRecord);
-            newReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao
+            newReport.DoctorID = DoctorHomeScreen.LoggedInDoctor.Id;       //da bih prepoznao koji doktor je kreirao
                                                                     //koji izvestaj, da bih kontrolisao ko moze da ga menja
 
             MedicalReceipt newReportMedicalReceipt = new MedicalReceipt((DateTime)EndDateDatePicker.SelectedDate,
@@ -155,8 +155,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)       //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
