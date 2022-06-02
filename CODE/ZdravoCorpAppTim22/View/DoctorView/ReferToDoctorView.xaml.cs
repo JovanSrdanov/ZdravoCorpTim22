@@ -50,7 +50,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private ObservableCollection<Doctor> getAvailableDoctorsForRefferal()       //mozda?
         {
-            Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             ObservableCollection<Doctor> allDoctors = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
             allDoctors.Remove(selectedDoctor);
             return allDoctors;
@@ -145,8 +145,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj

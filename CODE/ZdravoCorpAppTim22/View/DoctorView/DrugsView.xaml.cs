@@ -56,7 +56,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void updateMedicineApproval(Medicine medicine)      //ne pomeraj
         {
             medicine.MedicineData.Approval.IsApproved = true;
-            medicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            medicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             medicine.MedicineData.Approval.Message = "";
         }
 
@@ -71,8 +71,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj

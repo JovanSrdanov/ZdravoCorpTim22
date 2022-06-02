@@ -112,7 +112,7 @@ namespace ZdravoCorpAppTim22
             }
             else if(user.GetType() == typeof(Doctor))
             {
-                window = new DoctorHome((Doctor)user);
+                window = new DoctorHomeScreen((Doctor)user);
             }
             else if(user.GetType() == typeof(Patient))
             {

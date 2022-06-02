@@ -29,23 +29,37 @@
   },
   {
     "Id": 5,
-    "Message": null,
-    "IsApproved": false,
-    "Doctor": null,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 0
   },
   {
     "Id": 6,
-    "Message": null,
-    "IsApproved": false,
-    "Doctor": null,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
     "MedicineData": 1
   },
   {
     "Id": 7,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
+    "MedicineData": 2
+  },
+  {
+    "Id": 8,
+    "Message": "",
+    "IsApproved": true,
+    "Doctor": 0,
+    "MedicineData": 3
+  },
+  {
+    "Id": 9,
     "Message": null,
     "IsApproved": false,
     "Doctor": null,
-    "MedicineData": 2
+    "MedicineData": 4
   }
 ]

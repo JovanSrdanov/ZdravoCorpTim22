@@ -1,14 +1,17 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
     public partial class DoctorHomeScreen : Window
     {
         public static DoctorHomeScreen doctorHomeScreen;
-        public DoctorHomeScreen()
+        public static Doctor LoggedInDoctor { get; set; }
+        public DoctorHomeScreen(Doctor loggedInDoctor)
         {
             InitializeComponent();
             doctorHomeScreen = this;
+            LoggedInDoctor = loggedInDoctor;
         }
         private void ScheduleListBtn(object sender, RoutedEventArgs e)
         {
@@ -50,8 +53,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
     }
 }

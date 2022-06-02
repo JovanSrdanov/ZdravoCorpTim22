@@ -25,7 +25,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.DataContext = this;
             this.doctorAppointments = doctorAppointments;
 
-            loggedInDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            loggedInDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             setItemSources();
 
         }
@@ -138,8 +138,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj

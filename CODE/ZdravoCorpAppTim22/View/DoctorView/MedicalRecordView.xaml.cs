@@ -143,7 +143,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void FinishReportClick(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             PatientController.Instance.Update(selectedPatient);
-            Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
 
             if (!(DoctorController.Instance.doctorHasMedicalRecord(selectedDoctor, selectedPatient)))
                 selectedDoctor.AddMedicalRecord(selectedPatient.MedicalRecord);
@@ -227,8 +227,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
