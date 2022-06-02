@@ -7,5 +7,23 @@
     "DoctorKindness": 4,
     "DoctorExpertise": 5,
     "DoctorDiscretion": 5
+  },
+  {
+    "Id": 4,
+    "Diagnosis": 3,
+    "RecommendedTherapy": 3,
+    "AppointmentDuration": 5,
+    "DoctorKindness": 1,
+    "DoctorExpertise": 2,
+    "DoctorDiscretion": 3
+  },
+  {
+    "Id": 5,
+    "Diagnosis": 3,
+    "RecommendedTherapy": 3,
+    "AppointmentDuration": 5,
+    "DoctorKindness": 2,
+    "DoctorExpertise": 5,
+    "DoctorDiscretion": 5
   }
 ]
