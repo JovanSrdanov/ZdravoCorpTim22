@@ -5,9 +5,9 @@
     "Anamnesis": "1",
     "Diagnosis": "1",
     "ReportDate": "2022-06-01T09:25:33.8380651+02:00",
-    "ReportReviewed": false,
+    "ReportReviewed": true,
     "MedicalReceipt": 0,
-    "ReportReview": null,
+    "ReportReview": 3,
     "MedicalRecord": 2
   }
 ]

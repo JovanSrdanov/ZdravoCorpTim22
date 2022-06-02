@@ -4,34 +4,48 @@
     "Message": "",
     "IsApproved": true,
     "Doctor": 0,
-    "MedicineData": 1
+    "MedicineData": null
   },
   {
     "Id": 2,
     "Message": "",
     "IsApproved": true,
     "Doctor": 0,
-    "MedicineData": 2
+    "MedicineData": null
   },
   {
     "Id": 3,
     "Message": "",
     "IsApproved": true,
     "Doctor": 0,
-    "MedicineData": 3
+    "MedicineData": null
   },
   {
     "Id": 4,
     "Message": "ne valja",
     "IsApproved": false,
     "Doctor": 0,
-    "MedicineData": 4
+    "MedicineData": null
   },
   {
     "Id": 5,
-    "Message": "",
-    "IsApproved": true,
-    "Doctor": 0,
-    "MedicineData": 5
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 0
+  },
+  {
+    "Id": 6,
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 1
+  },
+  {
+    "Id": 7,
+    "Message": null,
+    "IsApproved": false,
+    "Doctor": null,
+    "MedicineData": 2
   }
 ]

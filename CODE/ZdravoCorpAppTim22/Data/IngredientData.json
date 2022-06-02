@@ -1,74 +1,38 @@
 [
   {
-    "Id": 2,
+    "Id": 0,
     "Amount": 1,
     "IngredientData": 0,
-    "MedicineData": 1
+    "MedicineData": 0
   },
   {
-    "Id": 3,
+    "Id": 1,
+    "Amount": 1,
+    "IngredientData": 3,
+    "MedicineData": 0
+  },
+  {
+    "Id": 2,
     "Amount": 1,
     "IngredientData": 1,
     "MedicineData": 1
   },
   {
-    "Id": 4,
+    "Id": 3,
     "Amount": 1,
     "IngredientData": 3,
     "MedicineData": 1
   },
   {
-    "Id": 14,
-    "Amount": 1,
-    "IngredientData": 0,
-    "MedicineData": 3
-  },
-  {
-    "Id": 15,
-    "Amount": 1,
-    "IngredientData": 2,
-    "MedicineData": 3
-  },
-  {
-    "Id": 16,
-    "Amount": 1,
-    "IngredientData": 5,
-    "MedicineData": 3
-  },
-  {
-    "Id": 17,
-    "Amount": 1,
-    "IngredientData": 4,
-    "MedicineData": 3
-  },
-  {
-    "Id": 18,
+    "Id": 4,
     "Amount": 1,
     "IngredientData": 0,
     "MedicineData": 2
   },
   {
-    "Id": 19,
-    "Amount": 1,
-    "IngredientData": 3,
-    "MedicineData": 2
-  },
-  {
-    "Id": 20,
-    "Amount": 1,
-    "IngredientData": 2,
-    "MedicineData": 4
-  },
-  {
-    "Id": 21,
-    "Amount": 1,
-    "IngredientData": 5,
-    "MedicineData": 4
-  },
-  {
-    "Id": 22,
+    "Id": 5,
     "Amount": 1,
     "IngredientData": 4,
-    "MedicineData": 5
+    "MedicineData": 2
   }
 ]
