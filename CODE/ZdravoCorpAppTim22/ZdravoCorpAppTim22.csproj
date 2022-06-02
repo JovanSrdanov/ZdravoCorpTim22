@@ -31,7 +31,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -302,6 +303,12 @@
       <DependentUpon>ManagerHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\DataModel\EquipmentDataModel.cs" />
+    <Compile Include="View\Manager\Pages\StaffPages\StaffRatingsView.xaml.cs">
+      <DependentUpon>StaffRatingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Manager\Pages\StaffPages\StaffView.xaml.cs">
+      <DependentUpon>StaffView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager\Pages\MedicinePages\AddMedicineView.xaml.cs">
       <DependentUpon>AddMedicineView.xaml</DependentUpon>
     </Compile>
@@ -354,6 +361,7 @@
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\EditMedicineViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\MedicineViewModels\MedicineViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\RatingsViewModels\RatingsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAppointmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDetailsViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomDivergeViewModel.cs" />
@@ -363,6 +371,8 @@
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomAddViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomRelocationViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\RoomViewModels\RoomWarehouseRelocationViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\StaffViewModels\StaffRatingsViewModel.cs" />
+    <Compile Include="View\Manager\ViewModels\StaffViewModels\StaffViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\AddEquipmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\EditEquipmentViewModel.cs" />
     <Compile Include="View\Manager\ViewModels\WarehouseViewModels\WarehouseViewModel.cs" />
@@ -523,6 +533,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorView\RequestForLeaveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\StaffPages\StaffRatingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Manager\Pages\StaffPages\StaffView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

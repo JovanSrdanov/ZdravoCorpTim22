@@ -1,32 +1,12 @@
 [
   {
-    "Id": 8,
-    "ReplacingMedicine": 2,
-    "ReplacementToMedicine": 3
+    "Id": 0,
+    "ReplacingMedicine": 0,
+    "ReplacementToMedicine": 1
   },
   {
-    "Id": 9,
-    "ReplacingMedicine": 4,
-    "ReplacementToMedicine": 3
-  },
-  {
-    "Id": 10,
-    "ReplacingMedicine": 4,
+    "Id": 1,
+    "ReplacingMedicine": 0,
     "ReplacementToMedicine": 2
-  },
-  {
-    "Id": 11,
-    "ReplacingMedicine": 2,
-    "ReplacementToMedicine": 4
-  },
-  {
-    "Id": 12,
-    "ReplacingMedicine": 3,
-    "ReplacementToMedicine": 4
-  },
-  {
-    "Id": 13,
-    "ReplacingMedicine": 3,
-    "ReplacementToMedicine": 5
   }
 ]
