@@ -16,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public DoctorAppointments(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
-            _loggedInDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            _loggedInDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             var allDoctorMedicalAppointments = _loggedInDoctor.MedicalAppointment;
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allDoctorMedicalAppointments);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
@@ -112,8 +112,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
         private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
