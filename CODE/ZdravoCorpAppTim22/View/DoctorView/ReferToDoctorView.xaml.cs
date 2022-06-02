@@ -6,35 +6,49 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
 {
     public partial class ReferToDoctorView : Window
     {
-        private List<AppointmentType> allAppointmentTypes;
-        private List<AppointmentType> allNonSpecialistAppointmentTypes;
         private Patient forwardedPatient;
         private CreateReport parentWindow;
         public ReferToDoctorView(CreateReport parentWindow, Patient forwardedPatient)
         {
             InitializeComponent();
 
-            allAppointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
-            allNonSpecialistAppointmentTypes = new List<AppointmentType>(allAppointmentTypes);
-            allNonSpecialistAppointmentTypes.Remove(AppointmentType.Operation);
             this.forwardedPatient = forwardedPatient;
             this.parentWindow = parentWindow;
 
+            setItemSources();
+        }
+
+        private void setItemSources()       //ne pomeraj
+        {
             DoctorComboBox.ItemsSource = getAvailableDoctorsForRefferal();         //vraca listu svih doktora izuzev ulogovanog
             DoctorComboBox.SelectedIndex = 0;
-            setAppropriateAppointmentTypes();
-            AppointmentTypeComboBox.SelectedIndex = 0;
+            setAppointmentTypeItemSource();
             TimeComboBox.SelectedIndex = 0;
         }
 
-        ObservableCollection<Doctor> getAvailableDoctorsForRefferal()
+        private void setAppointmentTypeItemSource()     //ne pomeraj
+        {
+            AppointmentTypeComboBox.ItemsSource = new ObservableCollection<AppointmentType>(getAppropriateSpicializationAppointmentTypes());
+            AppointmentTypeComboBox.SelectedIndex = 0;
+        }
+
+        private List<AppointmentType> getAppropriateSpicializationAppointmentTypes()       //pomerio
+        {
+            List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
+            if (DoctorController.Instance.isDoctorRegular(DoctorComboBox.SelectedItem as Doctor))
+            {
+                appointmentTypes.Remove(global::Model.AppointmentType.Operation);
+            }
+            return appointmentTypes;
+        }
+
+        private ObservableCollection<Doctor> getAvailableDoctorsForRefferal()       //mozda?
         {
             Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
             ObservableCollection<Doctor> allDoctors = new ObservableCollection<Doctor>(DoctorController.Instance.GetAll());
@@ -42,16 +56,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return allDoctors;
         }
 
-        void setAppropriateAppointmentTypes()
-        {
-            DoctorSpecialization doctorSpecializationTemp = new DoctorSpecialization("Regular");
-            if ((DoctorComboBox.SelectedItem as Doctor).DoctorSpecialization.Name != doctorSpecializationTemp.Name)
-                AppointmentTypeComboBox.ItemsSource = new ObservableCollection<AppointmentType>(allAppointmentTypes);
-            else
-                AppointmentTypeComboBox.ItemsSource = new ObservableCollection<AppointmentType>(allNonSpecialistAppointmentTypes);
-        }
-
-        void setChecBoxVisibility()
+        private void setChecBoxVisibility()     //ne pomeraj
         {
             if (AppointmentTypeComboBox.SelectedItem == null || (AppointmentType)(AppointmentTypeComboBox.SelectedItem) != AppointmentType.Operation)
             {
@@ -62,7 +67,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 UrgentCheckBox.Visibility = Visibility.Visible;
         }
 
-        bool validateInputData()
+        private bool isInputDataValid()             //ne pomeraj   
         {
 #pragma warning disable CS0168
             try
@@ -79,7 +84,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 #pragma warning restore CS0168 
         }
 
-        void updateAnamnesis()
+        private void updateAnamnesis()      //ne pomeraj
         {
 
             Doctor refferedDoctor = DoctorComboBox.SelectedItem as Doctor;
@@ -88,7 +93,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             parentWindow.AnamnesisBox.Text += referralComment;
         }
 
-        Interval getInterval(DateTime forwardedDate)
+        private Interval getInterval(DateTime forwardedDate)        //ne pomeraj
         {
             Interval forvardedAppointmentTimeLength = new Interval();
             forvardedAppointmentTimeLength.Start = forwardedDate;
@@ -96,15 +101,16 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return forvardedAppointmentTimeLength;
         }
 
-        DateTime getForwardedAppointmentDate()
+        private DateTime getForwardedAppointmentDate()      //ne pomeraj
         {
             return DateTime.Parse(AppointmentDatePicker.Text + " " + TimeComboBox.Text);
         }
 
-        void createForwardedAppointment()
+        private void createForwardedAppointment()       //ne pomeraj
         {
             MedicalAppointment forwardedAppointment =
-                new MedicalAppointment(-1, (AppointmentType)AppointmentTypeComboBox.SelectedItem, getInterval(getForwardedAppointmentDate()), null,
+                new MedicalAppointment(-1, (AppointmentType)AppointmentTypeComboBox.SelectedItem, 
+                getInterval(getForwardedAppointmentDate()), null,
                 forwardedPatient, (DoctorComboBox.SelectedItem as Doctor));
             forwardedAppointment.isUrgent = true;
             MedicalAppointmentController.Instance.Create(forwardedAppointment);
@@ -113,23 +119,21 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         //Selection changed event handlers
 
-        private void selectedDoctorChanged(object sender, SelectionChangedEventArgs e)
+        private void selectedDoctorChanged(object sender, SelectionChangedEventArgs e)      //ne pomeraj
         {
-            setAppropriateAppointmentTypes();
-            AppointmentTypeComboBox.SelectedIndex = 0;
+            setAppointmentTypeItemSource();
         }
 
-        private void selectedAppointmentTypeChanged(object sender, SelectionChangedEventArgs e)
+        private void selectedAppointmentTypeChanged(object sender, SelectionChangedEventArgs e)     //ne pomeraj
         {
             setChecBoxVisibility();
         }
 
         //Button click event handlers
 
-
-        private void ConfirmBtnClick(object sender, RoutedEventArgs e)
+        private void ConfirmBtnClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
-            if (!validateInputData())
+            if (!isInputDataValid())
                 return;
             updateAnamnesis();
             createForwardedAppointment();
@@ -139,19 +143,19 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             DoctorHome.doctorHome.Show();
             this.Close();
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Refer to another doctor", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)

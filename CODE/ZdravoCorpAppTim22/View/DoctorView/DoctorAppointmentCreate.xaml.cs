@@ -3,11 +3,9 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.DTO;
-using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -32,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void setItemSources()
+        private void setItemSources()       //ne pomeraj
         {
             AppointmentTypeCBOX.ItemsSource = new ObservableCollection<AppointmentType>(getAppropriateSpecializationAppointmentTypes());
             AppointmentTypeCBOX.SelectedIndex = 0;
@@ -44,7 +42,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             PatientComboBox.SelectedIndex = 0;
         }
 
-        private List<AppointmentType> getAppropriateSpecializationAppointmentTypes()
+        private List<AppointmentType> getAppropriateSpecializationAppointmentTypes()        //pomerio
         {
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
             if (DoctorController.Instance.isDoctorRegular(loggedInDoctor))
@@ -54,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return appointmentTypes;
         }
 
-        private bool isDateValid(string startDate, string startTime)
+        private bool isDateValid(string startDate, string startTime)        //ne pomeraj
         {
 #pragma warning disable CS0168 // Variable is declared but never used
             bool returnValue = true;
@@ -72,7 +70,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 #pragma warning restore CS0168 // Variable is declared but never used
         }
 
-        private bool isFormFilled(MedicalAppointmentDTO medicalAppointmentDTO)
+        private bool isFormFilled(MedicalAppointmentDTO medicalAppointmentDTO)      //ne pomeraj
         {
             bool returnValue = true;
             if (medicalAppointmentDTO.AppointmentType == null || medicalAppointmentDTO.StartDate == null || 
@@ -84,7 +82,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private Interval getInterval(DateTime startDateTime)
+        private Interval getInterval(DateTime startDateTime)        //ne pomeraj
         {
             Interval interval = new Interval();
             interval.Start = startDateTime;
@@ -92,7 +90,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return interval;
         }
 
-        private void confirmButton_Click(object sender, RoutedEventArgs e)
+        private void confirmButton_Click(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             Patient patient = PatientComboBox.SelectedItem as Patient;
             Room room = RoomComboBox.SelectedItem as Room;
@@ -110,6 +108,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             MedicalAppointment newMedicalAppointment = new MedicalAppointment(-1, appointmentType, interval, room, patient, loggedInDoctor);        //-1 je privremeni id
             MedicalAppointmentController.Instance.Create(newMedicalAppointment);
+
             DoctorAppointments.CurDocAppointemntsObservable.Add(newMedicalAppointment);
 
             doctorAppointments.Show();
@@ -117,12 +116,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             CancelDialogBox();
         }
 
-        private void CancelDialogBox()
+        private void CancelDialogBox()      //ne pomeraj
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)
@@ -137,13 +136,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             DoctorHome.doctorHome.Show();
             this.Close();
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

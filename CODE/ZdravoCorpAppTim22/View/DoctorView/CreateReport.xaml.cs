@@ -1,9 +1,7 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -14,29 +12,133 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     {
         private Patient selectedPatient;
         private MedicalRecordView medicalRecordView;
-
-        private string diagnosis;
         public static string anamnesis;
         public CreateReport(Patient selectedPatient, MedicalRecordView medicalRecordView)
         {
             InitializeComponent();
             this.medicalRecordView = medicalRecordView;
             this.selectedPatient = selectedPatient;
+            setWPFDisplayText();
+            setItemSources();
+        }
 
+        private void setWPFDisplayText()        //ne pomeraj
+        {
             DateBlock.Text = DateTime.Now.ToShortDateString();
             NameBlock.Text = selectedPatient.Name;
             SurnameBlock.Text = selectedPatient.Surname;
-
-            //List<Medicine> medicineList = MedicineController.Instance.GetAllFree();
-            List<Medicine> medicineList = MedicineController.Instance.GetAllApproved();
-            ObservableCollection<Medicine> medicineObservableList = new ObservableCollection<Medicine>(medicineList);
-            ObservableCollection<MedicineData> medicineDataList = new ObservableCollection<MedicineData>(MedicineDataController.Instance.GetAll());
-
-            MedicationComboBox.ItemsSource = medicineObservableList;
-            MedicationComboBox.SelectedIndex = 0;
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        private void setItemSources()       //ne pomeraj
+        {
+            
+            MedicationComboBox.ItemsSource = new ObservableCollection<Medicine>(MedicineController.Instance.GetAllApproved());
+            MedicationComboBox.SelectedIndex = 0;
+        }
+        private void ConfirmBtnClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        {
+
+            if (!(isDateTimeValid())) return;
+
+            Medicine selectedMedicineFromStorage = MedicationComboBox.SelectedItem as Medicine;
+            Medicine requestedMedicine = new Medicine();
+            requestedMedicine.MedicineData = selectedMedicineFromStorage.MedicineData;
+            if (!(isAmountValid(requestedMedicine))) return;
+
+            MedicalRecord selectedPatientMedicalRecord = selectedPatient.MedicalRecord;
+
+            MedicalReport newReport = new MedicalReport(-1, AnamnesisBox.Text, DiagnosisBox.Text, DateTime.Now,
+                selectedPatientMedicalRecord);
+            newReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao
+                                                                    //koji izvestaj, da bih kontrolisao ko moze da ga menja
+
+            MedicalReceipt newReportMedicalReceipt = new MedicalReceipt((DateTime)EndDateDatePicker.SelectedDate,
+                TimeComboBox.Text, requestedMedicine,
+                AdditionalInstructionsTextBox.Text, PurposeComboBox.Text, selectedPatientMedicalRecord);
+
+            requestedMedicine.MedicalReceipt = newReportMedicalReceipt;
+            if (!(hasStorageEnoughMedicine(selectedMedicineFromStorage, requestedMedicine))) return;
+            MedicineController.Instance.Update(selectedMedicineFromStorage);
+
+            newReport.MedicalReceipt = newReportMedicalReceipt;
+            MedicalReportController.Instance.Create(newReport);
+
+            addDiagnosisToMedicalRecord(selectedPatientMedicalRecord);
+            selectedPatientMedicalRecord.MedicalReport.Add(newReport);
+            MedicalRecordController.Instance.Update(selectedPatientMedicalRecord);
+
+            newReportMedicalReceipt.MedicalRecord = selectedPatientMedicalRecord;
+            MedicalReceiptController.Instance.Create(newReportMedicalReceipt);
+            MedicineController.Instance.Create(requestedMedicine);
+
+            updateMedicalRecordView(requestedMedicine, newReport);
+            medicalRecordView.Show();
+            this.Close();
+        }
+
+        private bool isDateTimeValid()      //ne pomeraj
+        {
+            bool returnValue = true;
+            if (EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
+            {
+                MessageBox.Show("Please fill out the date and time fields correctly", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+            }
+            return returnValue;
+        }
+
+        private bool isAmountValid(Medicine medicine)       //ne pomeraj
+        {
+            bool returnValue = true;
+#pragma warning disable CS0168 // Variable is declared but never used
+            try
+            {
+                medicine.Amount = Int32.Parse(AmountComboBox.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The field 'Amount' is not filled in correctly!", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+            }
+#pragma warning restore CS0168 // Variable is declared but never used
+            return returnValue;
+        }
+
+        private bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)       //pomerio
+        {
+            bool returnValue = true;
+            if (!(MedicineController.Instance.hasStorageEnoughMedicine(medicineInStorage, requestedMedicine)))
+            {
+                MessageBox.Show("Selected amount excedes the amount located in the werehouse", "Create report",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                returnValue = false;
+            }
+            else medicineInStorage.Amount -= requestedMedicine.Amount;
+            return returnValue;
+        }
+
+        private void addDiagnosisToMedicalRecord(MedicalRecord medicalRecord)       //ne pomeraj
+        {
+            if (!DiagnosisBox.Text.Equals(""))
+            {
+                medicalRecord.ConditionList.Add(DiagnosisBox.Text);
+            }
+        }
+
+        
+
+        private void updateMedicalRecordView(Medicine medicine, MedicalReport medicalReport)        //ne pomeraj
+        {
+            MedicalRecordView.selectedPatientMedicineHistory.Add(medicine.MedicineData);
+            MedicalRecordView.newlyCreatedReports.Add(medicalReport);
+            MedicalRecordView.selectedPatientReportHistory.Add(medicalReport);
+            MedicalRecordView.newlyCreatedDiagnosis.Add(DiagnosisBox.Text);
+            MedicalRecordView.selectedPatientConditionHistory.Add(DiagnosisBox.Text);
+        }
+
+        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)
@@ -51,148 +153,19 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void ConfirmBtnClick(object sender, RoutedEventArgs e)
-        {
-            if (AnamnesisBox.Text == null)
-            {
-                anamnesis = "";
-            }
-            else
-            {
-                anamnesis = AnamnesisBox.Text;
-            }
-
-            if (DiagnosisBox.Text == null)
-            {
-                diagnosis = "";
-            }
-            else
-            {
-                diagnosis = DiagnosisBox.Text;
-            }
-
-            string additionalInstructions;
-
-            if (AdditionalInstructionsTextBox.Text == null)
-            {
-                additionalInstructions = "";
-            }
-            else
-            {
-                additionalInstructions = AdditionalInstructionsTextBox.Text;
-            }
-
-            string therapyPurpose;
-
-            if (PurposeComboBox.Text == null)
-            {
-                therapyPurpose = "";
-            }
-            else
-            {
-                therapyPurpose = PurposeComboBox.Text;
-            }
-
-            string amount;
-
-            if (AmountComboBox.Text == null)
-            {
-                amount = "";
-            }
-            else
-            {
-                amount = AmountComboBox.Text;
-            }
-
-            //recept
-            if (MedicationComboBox.SelectedItem == null || EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
-            {
-                MessageBox.Show("Please fill out Medication, End date and Time fields", "Create report",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            Medicine selectedMedicine = MedicationComboBox.SelectedItem as Medicine;
-            //Medicine medicine = new Medicine(selectedMedicine);
-            Medicine medicine = new Medicine();
-            medicine.MedicineData = selectedMedicine.MedicineData;
-#pragma warning disable CS0168 // Variable is declared but never used
-            try
-            {
-                medicine.Amount = Int32.Parse(amount);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("The field 'Amount' not filled in correctly!", "Create report",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-#pragma warning restore CS0168 // Variable is declared but never used
-
-            DateTime endDate = (DateTime)EndDateDatePicker.SelectedDate;
-            string time = TimeComboBox.Text;
-            MedicalRecord medRec = selectedPatient.MedicalRecord;
-
-            MedicalReport medicalReport = new MedicalReport(-1, anamnesis, diagnosis, DateTime.Now,
-                medRec);
-            medicalReport.DoctorID = DoctorHome.selectedDoctorId;       //da bih prepoznao koji doktor je kreirao koji izvestaj, da bih kontrolisao ko moze da ga menja
-
-            MedicalRecordView.selectedPatientMedicineHistory.Add(medicine.MedicineData);
-            MedicalReceipt medicalReceipt = new MedicalReceipt(endDate, time, medicine, additionalInstructions, therapyPurpose, medRec);
-            medicine.MedicalReceipt = medicalReceipt;
-
-            MedicineController.Instance.Create(medicine);
-            if (selectedMedicine.Amount - medicine.Amount < 0)
-            {
-                MessageBox.Show("Selected amount excedes the amount located in the werehouse", "Create report",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            else
-            {
-                selectedMedicine.Amount -= medicine.Amount;
-            }
-            MedicineController.Instance.Update(selectedMedicine);
-            MedicalReceiptController.Instance.Create(medicalReceipt);
-
-            medicalReport.MedicalReceipt = medicalReceipt;
-            MedicalReportController.Instance.Create(medicalReport);
-            MedicalRecordView.newlyCreatedReports.Add(medicalReport);
-
-            if (!diagnosis.Equals(""))
-            {
-                medRec.ConditionList.Add(diagnosis);
-            }
-            medRec.MedicalReport.Add(medicalReport);
-            MedicalRecordView.selectedPatientReportHistory.Add(medicalReport);
-            MedicalRecordController.Instance.Update(medRec);
-
-            medicalReceipt.MedicalRecord = medRec;
-            MedicalReceiptController.Instance.Update(medicalReceipt);
-
-            //
-            MedicineController.Instance.Update(medicine);
-            //
-
-            MedicalRecordView.newlyCreatedDiagnosis.Add(diagnosis);
-
-            medicalRecordView.Show();
-            this.Close();
-        }
-
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             DoctorHome.doctorHome.Show();
             this.Close();
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
 
-        private void ReferToSpecialistBtnClick(object sender, RoutedEventArgs e)
+        private void ReferToSpecialistBtnClick(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             ReferToDoctorView referToDoctorView = new ReferToDoctorView(this, selectedPatient);
             referToDoctorView.Owner = this;

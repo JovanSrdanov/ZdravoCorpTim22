@@ -5,7 +5,16 @@
     "NotifyNextDateTime": "2022-06-03T09:56:00",
     "Time": "9:56",
     "AdditionalInstructions": "1",
-    "TherapyPurpose": "1",
-    "MedicalRecord": 2
+    "TherapyPurpose": "132",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 1,
+    "EndDate": "2022-06-23T00:00:00",
+    "NotifyNextDateTime": "2022-06-02T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "5123",
+    "TherapyPurpose": "432",
+    "MedicalRecord": 1
   }
 ]

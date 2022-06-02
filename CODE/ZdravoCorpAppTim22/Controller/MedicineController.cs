@@ -60,5 +60,12 @@ namespace ZdravoCorpAppTim22.Controller
         {
             return MedicineService.Instance.GetAllApproved();
         }
+
+        ///STEFAN DODAO
+        public bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)
+        {
+            return MedicineService.Instance.hasStorageEnoughMedicine(medicineInStorage, requestedMedicine);
+        }
+        ///STEFAN DODAO
     }
 }
