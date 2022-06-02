@@ -12,7 +12,7 @@
                   Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
                   Margin="51,160,104,0" FontSize="25" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date and Time" Binding="{Binding Path=Interval.Start.Date}" Width="auto"/>
+                <DataGridTextColumn Header="Date and Time" Binding="{Binding Path=Interval.Start}" Width="auto"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.Id}" Width="*"/>
                 <DataGridTextColumn Header="Appointment type" Binding="{Binding Path=Type}" Width="auto"/>
                 <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}" Width="*"/>

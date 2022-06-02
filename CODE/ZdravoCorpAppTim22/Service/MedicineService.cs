@@ -86,6 +86,16 @@ namespace ZdravoCorpAppTim22.Service
             return list;
         }
 
-        
+        ///STEFAN DODAO
+        public bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)
+        {
+            bool returnValue = true;
+            if (medicineInStorage.Amount - requestedMedicine.Amount < 0)
+            {
+                returnValue = false;
+            }
+            return returnValue;
+        }
+        ///STEFAN DODAO
     }
 }

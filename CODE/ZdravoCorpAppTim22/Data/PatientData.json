@@ -6,7 +6,7 @@
       "2022-05-31T23:21:13.7616783+02:00"
     ],
     "HospitalReview": 0,
-    "MedicalRecord": 2,
+    "MedicalRecord": 1,
     "Name": "Jovan",
     "Surname": "Srdanov",
     "Email": "j",
@@ -102,7 +102,7 @@
     "Blocked": false,
     "SuspiciousActivity": [],
     "HospitalReview": null,
-    "MedicalRecord": 1,
+    "MedicalRecord": null,
     "Name": "novi",
     "Surname": "pacijent",
     "Email": "12345",

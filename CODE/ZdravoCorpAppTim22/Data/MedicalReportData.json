@@ -2,12 +2,23 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-06-01T09:25:33.8380651+02:00",
+    "Anamnesis": "123",
+    "Diagnosis": "K",
+    "ReportDate": "2022-06-02T17:36:31.3000342+02:00",
     "ReportReviewed": false,
     "MedicalReceipt": 0,
     "ReportReview": null,
-    "MedicalRecord": 2
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 1,
+    "DoctorID": 0,
+    "Anamnesis": "2432",
+    "Diagnosis": "J",
+    "ReportDate": "2022-06-02T17:36:43.0840596+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 1,
+    "ReportReview": null,
+    "MedicalRecord": 1
   }
 ]

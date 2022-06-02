@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "Id": 0,
+    "Type": 0,
+    "Interval": {
+      "Start": "2022-06-30T10:00:00",
+      "End": "2022-06-30T10:00:00"
+    },
+    "isUrgent": false,
+    "Room": 1,
+    "Patient": 0,
+    "Doctor": 0
+  },
+  {
+    "Id": 1,
+    "Type": 0,
+    "Interval": {
+      "Start": "2022-06-22T10:00:00",
+      "End": "2022-06-22T10:00:00"
+    },
+    "isUrgent": true,
+    "Room": null,
+    "Patient": 0,
+    "Doctor": 2
+  },
+  {
+    "Id": 2,
+    "Type": 2,
+    "Interval": {
+      "Start": "2022-06-09T10:00:00",
+      "End": "2022-06-09T10:00:00"
+    },
+    "isUrgent": true,
+    "Room": null,
+    "Patient": 0,
+    "Doctor": 1
+  }
+]
