@@ -1,29 +1,11 @@
 [
   {
-    "Id": 2,
-    "Diagnosis": 5,
-    "RecommendedTherapy": 5,
-    "AppointmentDuration": 3,
-    "DoctorKindness": 4,
-    "DoctorExpertise": 4,
-    "DoctorDiscretion": 3
-  },
-  {
     "Id": 3,
     "Diagnosis": 3,
-    "RecommendedTherapy": 5,
+    "RecommendedTherapy": 3,
     "AppointmentDuration": 5,
     "DoctorKindness": 4,
-    "DoctorExpertise": 2,
-    "DoctorDiscretion": 4
-  },
-  {
-    "Id": 2,
-    "Diagnosis": 1,
-    "RecommendedTherapy": 1,
-    "AppointmentDuration": 1,
-    "DoctorKindness": 1,
-    "DoctorExpertise": 1,
-    "DoctorDiscretion": 1
+    "DoctorExpertise": 5,
+    "DoctorDiscretion": 5
   }
 ]

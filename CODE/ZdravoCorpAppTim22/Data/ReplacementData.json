@@ -1,7 +1,12 @@
 [
   {
-    "Id": 8,
-    "ReplacingMedicine": 2,
-    "ReplacementToMedicine": 3
+    "Id": 0,
+    "ReplacingMedicine": 0,
+    "ReplacementToMedicine": 1
+  },
+  {
+    "Id": 1,
+    "ReplacingMedicine": 0,
+    "ReplacementToMedicine": 2
   }
 ]

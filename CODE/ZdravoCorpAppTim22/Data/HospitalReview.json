@@ -6,5 +6,61 @@
     "Hygiene": 3,
     "Appearance": 3,
     "Application": 5
+  },
+  {
+    "Id": 1,
+    "StaffHospitality": 5,
+    "Accessibility": 3,
+    "Hygiene": 4,
+    "Appearance": 3,
+    "Application": 5
+  },
+  {
+    "Id": 2,
+    "StaffHospitality": 5,
+    "Accessibility": 5,
+    "Hygiene": 5,
+    "Appearance": 5,
+    "Application": 4
+  },
+  {
+    "Id": 3,
+    "StaffHospitality": 5,
+    "Accessibility": 5,
+    "Hygiene": 3,
+    "Appearance": 5,
+    "Application": 2
+  },
+  {
+    "Id": 4,
+    "StaffHospitality": 5,
+    "Accessibility": 5,
+    "Hygiene": 5,
+    "Appearance": 5,
+    "Application": 5
+  },
+  {
+    "Id": 5,
+    "StaffHospitality": 5,
+    "Accessibility": 4,
+    "Hygiene": 3,
+    "Appearance": 3,
+    "Application": 3
+  },
+  {
+    "Id": 6,
+    "StaffHospitality": 5,
+    "Accessibility": 4,
+    "Hygiene": 4,
+    "Appearance": 3,
+    "Application": 5
+  },
+  {
+    "Id": 7,
+    "StaffHospitality": 5,
+    "Accessibility": 3,
+    "Hygiene": 4,
+    "Appearance": 1,
+    "Application": 1
   }
 ]

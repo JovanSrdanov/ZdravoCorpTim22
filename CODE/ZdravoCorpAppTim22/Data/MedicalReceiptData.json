@@ -1,9 +1,9 @@
 [
   {
     "Id": 0,
-    "EndDate": "2022-06-20T00:00:00",
-    "NotifyNextDateTime": "2022-06-02T10:00:00",
-    "Time": "10:00",
+    "EndDate": "2022-06-23T00:00:00",
+    "NotifyNextDateTime": "2022-06-03T09:56:00",
+    "Time": "9:56",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "132",
     "MedicalRecord": 1
