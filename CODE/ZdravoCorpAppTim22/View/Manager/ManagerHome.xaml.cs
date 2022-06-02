@@ -1,11 +1,13 @@
 ﻿using Model;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.Views;
+using System;
 
 namespace ZdravoCorpAppTim22.View.Manager
 {
@@ -15,9 +17,12 @@ namespace ZdravoCorpAppTim22.View.Manager
         public static NavigationService NavigationService { get; private set; }
         public ManagerHome(ManagerClass manager)
         {
+            
             InitializeComponent();
             NavigationService = ContentFrame.NavigationService;
             Instance = this;
+            
+            
         }
 
         public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
@@ -76,6 +81,18 @@ namespace ZdravoCorpAppTim22.View.Manager
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
             InfoModal.Show("Work in progress!");
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ThemeComboBox.SelectedIndex == 1)
+            {
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerLight.xaml", UriKind.Relative) };
+            }
+            else
+            {
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerDark.xaml", UriKind.Relative) };
+            }
         }
     }
 }

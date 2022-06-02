@@ -44,7 +44,7 @@
                         Style="{StaticResource StartTimeButtonStyle}" 
                         Click="ButtonSelectStartTime_Click"/>
                 <ContentControl x:Name="SelectStartTimeContent"
-                                Foreground="{StaticResource TextPrimary}"
+                                Foreground="{DynamicResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Margin="20 7 0 0"/>
             </WrapPanel>
@@ -54,7 +54,7 @@
                         Style="{StaticResource EndTimeButtonStyle}" 
                         Click="ButtonSelectEndTime_Click"/>
                 <ContentControl x:Name="SelectEndTimeContent"
-                            Foreground="{StaticResource TextPrimary}"
+                            Foreground="{DynamicResource TextPrimary}"
                             FontSize="{StaticResource StandardFontSize}"
                             Margin="20 7 0 0"/>
             </WrapPanel>

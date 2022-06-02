@@ -9,5 +9,27 @@
     "MedicalReceipt": 0,
     "ReportReview": 3,
     "MedicalRecord": 2
+  },
+  {
+    "Id": 1,
+    "DoctorID": 0,
+    "Anamnesis": "1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-06-01T09:25:33.8380651+02:00",
+    "ReportReviewed": true,
+    "MedicalReceipt": 0,
+    "ReportReview": 4,
+    "MedicalRecord": 2
+  },
+  {
+    "Id": 2,
+    "DoctorID": 1,
+    "Anamnesis": "1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-06-01T09:25:33.8380651+02:00",
+    "ReportReviewed": true,
+    "MedicalReceipt": 0,
+    "ReportReview": 5,
+    "MedicalRecord": 2
   }
 ]

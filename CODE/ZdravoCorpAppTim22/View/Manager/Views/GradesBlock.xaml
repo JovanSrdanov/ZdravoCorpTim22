@@ -24,7 +24,7 @@
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
             <Style TargetType="{x:Type Rectangle}">
-                <Setter Property="Fill" Value="{StaticResource ActivePrimary}"/>
+                <Setter Property="Fill" Value="{DynamicResource ActivePrimary}"/>
                 <Setter Property="SnapsToDevicePixels" Value="True"/>
             </Style>
             <Style TargetType="{x:Type WrapPanel}">
@@ -44,7 +44,7 @@
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="35"/>
                 <Setter Property="Padding" Value="0"/>
-                <Setter Property="Foreground" Value="{StaticResource ActivePrimary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ActivePrimary}"/>
             </Style>
             <Style x:Key="GradeNumber" 
                    TargetType="{x:Type TextBlock}" 
@@ -59,7 +59,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid MinWidth="450"
-          Background="{StaticResource DarkPrimary}">
+          Background="{DynamicResource DarkPrimary}">
         <Grid Margin="20 0 20 20"
               >
             <Grid.ColumnDefinitions>
@@ -102,7 +102,7 @@
                     Grid.Row="1"
                     Grid.Column="2">
                 <Rectangle x:Name="rect_1"
-                       Fill="{StaticResource ActivePrimary}"
+                       Fill="{DynamicResource ActivePrimary}"
                        Height="{Binding ElementName=canvas_1, Path=Height}"/>
             </Canvas>
             <TextBlock x:Name="grade_number_1"

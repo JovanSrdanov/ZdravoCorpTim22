@@ -24,14 +24,22 @@ namespace ZdravoCorpAppTim22.View.Manager.Views
                 gradeNumbers[grades[i] - 1]++;
                 total += grades[i];
             }
-            double average = (double)total / grades.Count;
 
-            Average.Text = string.Format("{0:F2}", average);
-            SetLineWidth(rect_1, "canvas_1", (double)gradeNumbers[4] / grades.Count);
-            SetLineWidth(rect_2, "canvas_2", (double)gradeNumbers[3] / grades.Count);
-            SetLineWidth(rect_3, "canvas_3", (double)gradeNumbers[2] / grades.Count);
-            SetLineWidth(rect_4, "canvas_4", (double)gradeNumbers[1] / grades.Count);
-            SetLineWidth(rect_5, "canvas_5", (double)gradeNumbers[0] / grades.Count);
+            if(grades.Count != 0)
+            {
+                double average = (double)total / grades.Count;
+
+                Average.Text = string.Format("{0:F2}", average);
+                SetLineWidth(rect_1, "canvas_1", (double)gradeNumbers[4] / grades.Count);
+                SetLineWidth(rect_2, "canvas_2", (double)gradeNumbers[3] / grades.Count);
+                SetLineWidth(rect_3, "canvas_3", (double)gradeNumbers[2] / grades.Count);
+                SetLineWidth(rect_4, "canvas_4", (double)gradeNumbers[1] / grades.Count);
+                SetLineWidth(rect_5, "canvas_5", (double)gradeNumbers[0] / grades.Count);
+            }
+            else
+            {
+                Average.Text = string.Format("{0:F2}", 0);
+            }
             SetGradeNumbers(gradeNumbers);
         }
 

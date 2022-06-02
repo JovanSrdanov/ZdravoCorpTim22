@@ -23,7 +23,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="WindowButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStandard}">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
                 <Setter Property="FontFamily" Value="{StaticResource Icons}"/>
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Content" Value="&#xe738;"/>
@@ -56,13 +56,13 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.Background>
-                                        <SolidColorBrush Color="{StaticResource DarkPrimaryColor}"/>
+                                        <SolidColorBrush Color="{DynamicResource DarkPrimaryColor}"/>
                                     </Grid.Background>
                                     <StackPanel Grid.ColumnSpan="2">
                                         <TextBlock TextAlignment="Center"
                                                        Margin="0 1 0 5"
                                                        FontSize="22"
-                                                       Foreground="{StaticResource ActivePrimary}"
+                                                       Foreground="{DynamicResource ActivePrimary}"
                                                        Text="{TemplateBinding Title}"/>
                                     </StackPanel>
                                     <StackPanel Grid.Row="0" 
@@ -105,21 +105,22 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" 
-                BorderBrush="{StaticResource DarkSecondary}"
+                BorderBrush="{DynamicResource DarkSecondary}"
                 BorderThickness="0 2 0 0">
-            <Grid Background="{StaticResource DarkPrimary}" 
+            <Grid Background="{DynamicResource DarkPrimary}" 
                   Width="250">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <views:NavMenu Grid.Row="1" 
+                               BorderThickness="0"
                                NavigationServiceProp="{Binding NavigationService, ElementName=ContentFrame}"/>
-        </Grid>
+            </Grid>
         </Border>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -127,12 +128,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0"
-                    Background="{StaticResource DarkPrimary}"
+                    Background="{DynamicResource DarkPrimary}"
                     BorderThickness="2 2 0 0"
-                    BorderBrush="{StaticResource DarkSecondary}">
+                    BorderBrush="{DynamicResource DarkSecondary}">
                 <WrapPanel HorizontalAlignment="Right">
                     <ComboBox Style="{StaticResource StandardComboBox}"
-                              SelectedIndex="0">
+                              Name="ThemeComboBox"
+                              SelectedIndex="0" 
+                              SelectionChanged="ComboBox_SelectionChanged">
                         <ComboBoxItem Content="Dark Theme"/>
                         <ComboBoxItem Content="Light Theme"/>
                     </ComboBox>
@@ -152,7 +155,8 @@
             </Border>
             <ScrollViewer Grid.Row="1" 
                           PreviewMouseWheel="Content_PreviewMouseWheel" 
-                          Background="{StaticResource DarkSecondary}">
+                          Background="{DynamicResource DarkSecondary}"
+                          BorderThickness="0">
                 <Frame x:Name="ContentFrame" 
                        Source="Pages/WarehousePages/WarehouseView.xaml" 
                        NavigationUIVisibility="Hidden"

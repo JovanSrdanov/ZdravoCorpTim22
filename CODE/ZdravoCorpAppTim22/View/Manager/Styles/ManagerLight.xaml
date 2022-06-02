@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Color x:Key="TextPrimaryColor">#121212</Color>
+    <Color x:Key="DarkPrimaryColor">#fefffe</Color>
+    <Color x:Key="DarkSecondaryColor">#eee</Color>
+    <Color x:Key="ActivePrimaryColor">#0198ff</Color>
+    <Color x:Key="ActiveSecondaryColor">#ccc</Color>
+    
+    <Color x:Key="DisabledPrimaryColor">#ddd</Color>
+    <Color x:Key="DarkTernaryColor">#eee</Color>
+
+    <SolidColorBrush x:Key="DarkSecondary" Color="{StaticResource DarkSecondaryColor}"/>
+    <SolidColorBrush x:Key="DarkPrimary" Color="{StaticResource DarkPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActivePrimary" Color="{StaticResource ActivePrimaryColor}"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="{StaticResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="DisabledPrimary" Color="{StaticResource DisabledPrimaryColor}"/>
+    <SolidColorBrush x:Key="ActiveSecondary" Color="{StaticResource ActiveSecondaryColor}"/>
+    <SolidColorBrush x:Key="DarkTernary" Color="{StaticResource DarkTernaryColor}"/>
+
+    <sys:Double x:Key="HeadingFontSize">20</sys:Double>
+    <sys:Double x:Key="MenuFontSize">18</sys:Double>
+    <sys:Double x:Key="StandardFontSize">17</sys:Double>
+</ResourceDictionary>

@@ -12,18 +12,24 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.StaffViewModels
         public RelayCommand NavigateBackCommand { get; private set; }
         public Doctor Doctor { get; private set; }
 
-        public List<int> StaffGrades = new List<int>();
-        public List<int> AccessibilityGrades = new List<int>();
-        public List<int> HygieneGrades = new List<int>();
-        public List<int> AppearanceGrades = new List<int>();
-        public List<int> ApplicationGrades = new List<int>();
+        public List<int> KindnessGrades = new List<int>();
+        public List<int> ExpertiseGrades = new List<int>();
+        public List<int> DiscretionGrades = new List<int>();
 
         public StaffRatingsViewModel(Doctor doctor)
         {
             NavigateBackCommand = new RelayCommand(NavigateBack);
             Doctor = doctor;
-            
-            
+
+            foreach(MedicalReport report in MedicalReportController.Instance.GetAll())
+            {
+                if(report.DoctorID == doctor.Id)
+                {
+                    KindnessGrades.Add(report.ReportReview.DoctorKindness);
+                    ExpertiseGrades.Add(report.ReportReview.DoctorExpertise);
+                    DiscretionGrades.Add(report.ReportReview.DoctorDiscretion);
+                }
+            }
         }
         public void NavigateBack(object obj)
         {
