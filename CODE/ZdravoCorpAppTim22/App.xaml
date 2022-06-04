@@ -7,6 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Manager/Language/eng.xaml"/>
                 <ResourceDictionary Source="View/Manager/Styles/ManagerDark.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="Icons">pack://application:,,,/View/Fonts/#Segoe Fluent Icons</FontFamily>

@@ -83,15 +83,27 @@ namespace ZdravoCorpAppTim22.View.Manager
             InfoModal.Show("Work in progress!");
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ThemeComboBox.SelectedIndex == 1)
+            if (LanguageComboBox.SelectedIndex == 1)
             {
-                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerLight.xaml", UriKind.Relative) };
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Language/srb.xaml", UriKind.Relative) };
             }
             else
             {
-                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerDark.xaml", UriKind.Relative) };
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Language/eng.xaml", UriKind.Relative) };
+            }
+        }
+
+        private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ThemeComboBox.SelectedIndex == 1)
+            {
+                App.Current.Resources.MergedDictionaries[1] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerLight.xaml", UriKind.Relative) };
+            }
+            else
+            {
+                App.Current.Resources.MergedDictionaries[1] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerDark.xaml", UriKind.Relative) };
             }
         }
     }

@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="Manager" 
+        Title="{DynamicResource Manager_MainWindow_Heading}" 
         Height="720" 
         Width="1280"
         Background="#292c35"
@@ -135,9 +135,16 @@
                     <ComboBox Style="{StaticResource StandardComboBox}"
                               Name="ThemeComboBox"
                               SelectedIndex="0" 
-                              SelectionChanged="ComboBox_SelectionChanged">
+                              SelectionChanged="ThemeComboBox_SelectionChanged">
                         <ComboBoxItem Content="Dark Theme"/>
                         <ComboBoxItem Content="Light Theme"/>
+                    </ComboBox>
+                    <ComboBox Style="{StaticResource StandardComboBox}"
+                              Name="LanguageComboBox"
+                              SelectedIndex="0" 
+                              SelectionChanged="LanguageComboBox_SelectionChanged">
+                        <ComboBoxItem Content="English"/>
+                        <ComboBoxItem Content="Srpski"/>
                     </ComboBox>
                     <Button Style="{DynamicResource SettingsButtonStyle}"
                             x:Name="ButtonSettings"

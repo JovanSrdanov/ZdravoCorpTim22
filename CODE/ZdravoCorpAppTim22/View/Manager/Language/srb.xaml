@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Main Window -->
+    <sys:String x:Key="Manager_MainWindow_Heading">Upravnik</sys:String>
+
+    <sys:String x:Key="Manager_Menu_Warehouse">Pregled Skladišta</sys:String>
+    <sys:String x:Key="Manager_Menu_Room">Pregled Soba</sys:String>
+    <sys:String x:Key="Manager_Menu_Medicine">Pregled Lijekova</sys:String>
+    <sys:String x:Key="Manager_Menu_Staff">Pregled Zaposlenih</sys:String>
+    <sys:String x:Key="Manager_Menu_Hospital">Ocjene Bolnice</sys:String>
+
+    <sys:String x:Key="Manager_DarkTheme">Tamna Tema</sys:String>
+    <sys:String x:Key="Manager_LightTheme">Svijetla Tema</sys:String>
+
+    <!-- Buttons -->
+    <sys:String x:Key="Manager_Button_Confirm">Potvrdi</sys:String>
+    <sys:String x:Key="Manager_Button_Cancel">Odustani</sys:String>
+    <sys:String x:Key="Manager_Button_MoveToRoom">Soba</sys:String>
+    <sys:String x:Key="Manager_Button_MoveToWarehouse">Skladište</sys:String>
+    <sys:String x:Key="Manager_Button_Details">Detalji</sys:String>
+    <sys:String x:Key="Manager_Button_Renovate">Renoviraj</sys:String>
+    <sys:String x:Key="Manager_Button_Merge">Spoji</sys:String>
+    <sys:String x:Key="Manager_Button_Diverge">Razdvoji</sys:String>
+    <sys:String x:Key="Manager_Button_StartTime">Vrijeme Početka</sys:String>
+    <sys:String x:Key="Manager_Button_EndTime">Vrijeme Kraja</sys:String>
+    <sys:String x:Key="Manager_Button_Logout">Izloguj se</sys:String>
+    <sys:String x:Key="Manager_Button_Settings">Opcije</sys:String>
+
+    <!-- Warehouse Page -->
+    <sys:String x:Key="Manager_Warehouse_PageHeading">PREGLED SKLADIŠTA</sys:String>
+
+    <!-- Room Page -->
+    <sys:String x:Key="Manager_Room_PageHeading">PREGLED SOBA</sys:String>
+
+    <!-- Other -->
+    <sys:String x:Key="Manager_Name">Naziv</sys:String>
+    <sys:String x:Key="Manager_Amount">Količina</sys:String>
+    <sys:String x:Key="Manager_Type">Tip</sys:String>
+
+    <sys:String x:Key="Manager_Level">Sprat</sys:String>
+    <sys:String x:Key="Manager_Surface">Površina</sys:String>
+
+    <sys:String x:Key="Manager_NameInput">Naziv: </sys:String>
+    <sys:String x:Key="Manager_AmountInput">Količina: </sys:String>
+    <sys:String x:Key="Manager_TypeInput">Tip: </sys:String>
+
+    <sys:String x:Key="Manager_LevelInput">Količina: </sys:String>
+    <sys:String x:Key="Manager_SurfaceInput">Površina: </sys:String>
+
+    <sys:String x:Key="Manager_All">Sva Oprema</sys:String>
+    <sys:String x:Key="Manager_Static">Nepokretna</sys:String>
+    <sys:String x:Key="Manager_Dynamic">Pokretna</sys:String>
+
+</ResourceDictionary>
