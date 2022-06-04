@@ -1,14 +1,12 @@
-﻿using System.Configuration;
+﻿using System.Windows;
 using Controller;
 using MVVM1;
-using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
-using System;
 
-namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
+namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab
 {
-    class HospitalReviewViewModel : BindableBase
+    public class HospitalReviewViewModel : BindableBase
     {
 
         public int StaffHospitality { get; set; }
@@ -159,7 +157,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         /// <summary>
         /// Application
         /// </summary>
-        
+
 
 
         public bool ApplicationGroup1 { get; set; }
@@ -369,7 +367,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         public HospitalReviewViewModel()
         {
             SubmitReviewCommand = new MyICommand(SubmitReview);
+            
 
+            /*
             if (ZdravoCorpTabs.LoggedPatient.HospitalReview == null)
             {
                 SelectedHospitalReview = new HospitalReview();
@@ -384,7 +384,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
             }
 
             SetAll();
-
+            */
 
         }
         public void SubmitReview()

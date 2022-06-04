@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MVVM1
+namespace ZdravoCorpAppTim22.View
 {
     //Remembering to raise the event every time you change a property’s value can get very tedious.
     //Because this pattern is so common, many MVVM frameworks provide a base class

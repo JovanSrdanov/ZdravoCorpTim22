@@ -1,20 +1,19 @@
-﻿<UserControl
-    x:Class="ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM.HospitalReviewView"
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab.HospitalReviewView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hospitalInformationTab="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab"
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM"
     HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    HorizontalContentAlignment="Center"
-    VerticalContentAlignment="Center"
+    VerticalAlignment="Top"
     mc:Ignorable="d">
 
-    <UserControl.DataContext>
-        <viewModel:HospitalReviewViewModel />
-    </UserControl.DataContext>
+    <Page.DataContext>
+        <hospitalInformationTab:HospitalReviewViewModel />
+    </Page.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
         <Image
@@ -200,13 +199,14 @@
         <Grid>
 
             <Button
+                x:Name="CancleButton"
                 Padding="10,1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Background="Yellow"
                 Content="Obustavi"
                 FontSize="18"
-                IsCancel="True" />
+                IsCancel="True" Click="CancleButton_Click" />
             <Button
                 Padding="10,1"
                 HorizontalAlignment="Right"
@@ -220,4 +220,4 @@
 
 
     </StackPanel>
-</UserControl>
+</Page>

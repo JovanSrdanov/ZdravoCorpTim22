@@ -8,6 +8,7 @@ using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.DoctorView;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.PatientView;
+using ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM;
 using ZdravoCorpAppTim22.View.Secretary;
 
 namespace ZdravoCorpAppTim22
@@ -123,7 +124,7 @@ namespace ZdravoCorpAppTim22
                     return;
                 }
 
-                window = new ZdravoCorpTabs((Patient)user);
+                window = new MainWindowZdravoCorpTabs((Patient)user);
             }
 
             if (window != null)
