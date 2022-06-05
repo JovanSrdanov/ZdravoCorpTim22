@@ -2,7 +2,6 @@
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab
 {
-
     public partial class HospitalReviewPageView : Page
     {
         public HospitalReviewPageView(HospitalReviewPageViewModel hospitalReviewPageViewModel)
@@ -10,14 +9,12 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             this.DataContext = hospitalReviewPageViewModel;
             InitializeComponent();
         }
-
-        private void CancleButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
             GeneralInformationView generalInformationView = new GeneralInformationView();
             this.NavigationService.Navigate(generalInformationView);
         }
-
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             GeneralInformationView generalInformationView = new GeneralInformationView();

@@ -196,12 +196,12 @@
         <Grid>
 
             <Button
-                x:Name="CancleButton"
+                x:Name="CancelButton"
                 Padding="10,1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Background="Yellow"
-                Click="CancleButton_Click"
+                Click="CancelButton_Click"
                 Content="Obustavi"
                 FontSize="18"
                 IsCancel="True" />
@@ -210,10 +210,11 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Background="Green"
+                Click="Button_Click"
                 Command="{Binding SubmitReviewCommand}"
                 Content="Oceni"
                 FontSize="18"
-                Foreground="White" Click="Button_Click" />
+                Foreground="White" />
         </Grid>
 
 

@@ -23,25 +23,8 @@
             Margin="15,0,0,32"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom">
-            <Border
-                Margin="0,0,0,10"
-                BorderBrush="Black"
-                BorderThickness="2">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="White" />
-                        <GradientStop Offset="1" Color="DeepSkyBlue" />
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Style>
-                    <Style TargetType="{x:Type Border}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
-                                <Setter Property="Visibility" Value="Hidden" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
+            <Border Visibility="Hidden">
+
                 <StackPanel Margin="10,10,10,10">
                     <TextBlock
                         Margin="0,0,0,10"
@@ -55,38 +38,6 @@
             </Border>
 
 
-            <mah:ToggleSwitch
-                x:Name="HelpToggleSwitch"
-                Margin="0,0,0,10"
-                HorizontalAlignment="Center"
-                Content=" Pomoć"
-                FontSize="18"
-                FontWeight="Bold"
-                IsOn="True">
-
-                <mah:ToggleSwitch.Resources>
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.StrokeOff" Color="Black" />
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOff" Color="DimGray" />
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.FillOff" Color="LightGray" />
-
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.StrokeOn" Color="Black" />
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOn" Color="white" />
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.FillOn" Color="DeepSkyBlue" />
-
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOnPointerOver" Color="DimGray" />
-                    <SolidColorBrush x:Key="MahApps.Brushes.ToggleSwitch.KnobFillOffPointerOver" Color="white" />
-
-                </mah:ToggleSwitch.Resources>
-            </mah:ToggleSwitch>
-
-            <Button
-                x:Name="WizardButton"
-                Margin="0,0,0,10"
-                Padding="10,1"
-                Background="DeepSkyBlue"
-                Content="Čarobnjak "
-                FontSize="18"
-                Foreground="black" />
 
             <Button
                 x:Name="LogOutButton"
