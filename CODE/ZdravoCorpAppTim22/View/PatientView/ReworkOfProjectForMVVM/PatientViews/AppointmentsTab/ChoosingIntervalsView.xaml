@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab.ChoosingIntervalsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ChoosingIntervals"
+    d:DataContext="{d:DesignInstance Type=local:ChoosingIntervalsViewModel}"
+    FontSize="18"
+    mc:Ignorable="d">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Label
+            Margin="0,0,0,15"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Ponuđena vremena za promenu:"
+            FontSize="36"
+            FontWeight="Bold" />
+
+        <DataGrid
+            x:Name="NewAppotimentsDataGrid"
+            Width="450"
+            Height="500"
+            Margin="0,0,0,15"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            ColumnWidth="*"
+            IsReadOnly="True"
+            ItemsSource="{Binding Intervals}"
+            SelectedItem="{Binding SelectedInterval}"
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Binding="{Binding Start, StringFormat=\{0:HH:mm\}}" Header="Početak novog termina" />
+                <DataGridTextColumn Binding="{Binding End, StringFormat=\{0:HH:mm\}}" Header="Kraj novog termina" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid>
+
+            <Button
+                x:Name="StartPage"
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                Background="Yellow"
+                Click="StartPage_Click"
+                Content="Povratak na glavnu stranicu" />
+            <Button
+                x:Name="Confirm"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Green"
+                Click="Confirm_Click"
+                Command="{Binding UpdateMedicalAppointmentCommand}"
+                Content="Potvrdi"
+                Foreground="White" />
+        </Grid>
+    </StackPanel>
+</Page>

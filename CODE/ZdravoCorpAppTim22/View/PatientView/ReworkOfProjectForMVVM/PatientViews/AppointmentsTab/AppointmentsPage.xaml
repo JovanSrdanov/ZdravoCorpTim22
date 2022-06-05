@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab.AppointmentsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:ZdravoCorpAppTim22.View.PatientView.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AppointmentsPage"
+    d:DataContext="{d:DesignInstance Type=local:AppointmentsPageViewModel}"
+    FontSize="18"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converter:ConverterToSerbian x:Key="cts" />
+    </Page.Resources>
+
+    <StackPanel Background="Transparent" Orientation="Vertical">
+        <Label
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Termini"
+            FontSize="36"
+            FontWeight="Bold" />
+
+        <DataGrid
+            x:Name="DataGridAppointment"
+            Height="300"
+            Margin="42,21,42,42"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            ColumnWidth="*"
+            IsReadOnly="True"
+            ItemsSource="{Binding MedicalAppointments}"
+            SelectedItem="{Binding SelectedMedicalAppointmentsViewModel}"
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:dd.MM.yyyy\}}" Header="Datum" />
+                <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:HH:mm\}}" Header="Početak termina" />
+                <DataGridTextColumn Binding="{Binding Interval.End, StringFormat=\{0:HH:mm\}}" Header="Kraj termina" />
+                <DataGridTextColumn Binding="{Binding Room.Id}" Header="Šifra sobe" />
+                <DataGridTextColumn Binding="{Binding Room.Name}" Header="Naziv sobe" />
+                <DataGridTextColumn Binding="{Binding Type, Converter={StaticResource cts}}" Header="Vrsta termina" />
+
+                <DataGridTemplateColumn Header="Lekar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Doctor.Name}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding Doctor.Surname}" />
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Margin="42,0,42,0">
+            <Button
+                x:Name="RemoveAppointment"
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Center"
+                Background="#FFDE3232"
+                Command="{Binding DeleteAppointmentCommand}"
+                Content="Otkaži termin"
+                Foreground="White" />
+            <Button
+                Click="ChangeAppointment_OnClick"
+                x:Name="ChangeAppointment"
+                Padding="10,1"
+                HorizontalAlignment="Center"
+                Background="Yellow"
+                Command="{Binding ChangeAppointmentCommand}"
+                Content="Izmena termina" />
+            <Button
+                x:Name="AddAppointment"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Background="Green"
+                Content="Zakažite termin"
+                Foreground="White" />
+
+        </Grid>
+    </StackPanel>
+
+</Page>

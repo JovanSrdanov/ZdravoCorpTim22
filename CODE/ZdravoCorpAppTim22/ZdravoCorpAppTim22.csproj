@@ -435,6 +435,21 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\MainWindowZdravoCorpTabs.xaml.cs">
       <DependentUpon>MainWindowZdravoCorpTabs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentDoctorViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentPatientViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentRoomViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPage.xaml.cs">
+      <DependentUpon>AppointmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml.cs">
+      <DependentUpon>ChoosingDateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsView.xaml.cs">
+      <DependentUpon>ChoosingIntervalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\MedicalAppointmentsViewModel.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml.cs">
       <DependentUpon>GeneralInformationView.xaml</DependentUpon>
     </Compile>
@@ -749,6 +764,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -949,8 +976,6 @@
     <Resource Include="Resource\PatientResource\pdfIco.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\PatientView\ReworkOfProjectForMVVM\ClassViewModels\" />
-    <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\" />
     <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\" />
     <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\" />
   </ItemGroup>

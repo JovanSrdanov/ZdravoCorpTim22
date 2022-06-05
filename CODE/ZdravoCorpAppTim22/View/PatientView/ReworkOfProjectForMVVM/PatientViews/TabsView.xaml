@@ -105,7 +105,12 @@
                 <TabItem.Header>
                     <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#xA;izmena i otkazivanje postojećih" />
                 </TabItem.Header>
-
+                <Grid>
+                    <Frame
+                        x:Name="FrameAppointments"
+                        NavigationUIVisibility="Hidden"
+                        Source="AppointmentsTab/AppointmentsPage.xaml" />
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Background>
