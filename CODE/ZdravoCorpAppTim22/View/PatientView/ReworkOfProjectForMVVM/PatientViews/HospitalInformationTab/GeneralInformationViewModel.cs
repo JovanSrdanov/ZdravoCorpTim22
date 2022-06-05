@@ -5,18 +5,12 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
     public class GeneralInformationViewModel : BindableBase
     {
 
-        public MyICommand ReviewHospitalCommand { get; set; }
-
         public GeneralInformationViewModel()
         {
-            ReviewHospitalCommand = new MyICommand(ReviewHospital);
+          
 
         }
 
-        public void ReviewHospital()
-        {
-           
-        }
 
     }
 }

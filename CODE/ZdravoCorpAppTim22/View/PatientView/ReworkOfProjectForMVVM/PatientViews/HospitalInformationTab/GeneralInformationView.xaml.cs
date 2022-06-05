@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Model;
+using System.Windows.Controls;
+using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab
 {
@@ -14,8 +16,13 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
         private void RateZdravoCorp_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            HospitalReviewView hospitalReviewView = new HospitalReviewView();
-            this.NavigationService.Navigate(hospitalReviewView);
+            Patient patient = (Patient)AuthenticationController.Instance.GetLoggedUser();
+
+            HospitalReviewPageViewModel hospitalReviewPageViewModel = new HospitalReviewPageViewModel(patient.hospitalReview.Id);
+
+
+            HospitalReviewPageView hospitalReviewPageView = new HospitalReviewPageView(hospitalReviewPageViewModel);
+            this.NavigationService.Navigate(hospitalReviewPageView);
 
         }
     }

@@ -21,9 +21,6 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <StackPanel>
-        <hospitalInformationTab:HospitalReviewView x:Name="HospitalReviewView" />
-    </StackPanel>
 
 
 </Window>

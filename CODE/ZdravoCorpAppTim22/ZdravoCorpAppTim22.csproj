@@ -442,12 +442,12 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsView.xaml.cs">
       <DependentUpon>TabsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageViewModel.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsViewModel.cs" />
     <Compile Include="View\PatientView\ViewModelForMVVM\MedicalReportsViewModel.cs" />
     <Compile Include="View\PatientView\ViewModelForMVVM\ReportReviewViewModel.cs" />
-    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewView.xaml.cs">
-      <DependentUpon>HospitalReviewView.xaml</DependentUpon>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageView.xaml.cs">
+      <DependentUpon>HospitalReviewPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ViewsForMVVM\MedicalReportsView.xaml.cs">
       <DependentUpon>MedicalReportsView.xaml</DependentUpon>
@@ -755,7 +755,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewView.xaml">
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -943,6 +943,7 @@
     <Resource Include="Resource\PatientResource\pdfIco.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="View\PatientView\ReworkOfProjectForMVVM\ClassViewModels\" />
     <Folder Include="View\PatientView\ReworkOfProjectForMVVM\ConvertersToViewModel\" />
     <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\" />
     <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\" />

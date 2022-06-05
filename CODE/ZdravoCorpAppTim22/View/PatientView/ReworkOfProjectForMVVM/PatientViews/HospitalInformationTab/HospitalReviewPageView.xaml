@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab.HospitalReviewView"
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab.HospitalReviewPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,9 +11,6 @@
     VerticalAlignment="Top"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <hospitalInformationTab:HospitalReviewViewModel />
-    </Page.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
         <Image
@@ -204,9 +201,10 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Background="Yellow"
+                Click="CancleButton_Click"
                 Content="Obustavi"
                 FontSize="18"
-                IsCancel="True" Click="CancleButton_Click" />
+                IsCancel="True" />
             <Button
                 Padding="10,1"
                 HorizontalAlignment="Right"
@@ -215,7 +213,7 @@
                 Command="{Binding SubmitReviewCommand}"
                 Content="Oceni"
                 FontSize="18"
-                Foreground="White" />
+                Foreground="White" Click="Button_Click" />
         </Grid>
 
 
