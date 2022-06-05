@@ -16,6 +16,7 @@ namespace Model
         public string Diagnosis { get; set; }
         public DateTime ReportDate { get; set; }
         public bool ReportReviewed { get; set; }
+        public string ReportComment { get; set; }
 
         //recept
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
@@ -51,6 +52,7 @@ namespace Model
             this.ReportDate = ReportDate;
             this.medicalRecord = medicalRecord;
             ReportReviewed = false;
+            ReportComment = "";
         }
 
         //karton
