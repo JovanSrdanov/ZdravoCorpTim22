@@ -74,13 +74,13 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Manager_NameInput}"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource Manager_LevelInput}"/>
                     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Surface: "/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource Manager_SurfaceInput}"/>
                     <TextBox x:Name="SurfaceInput" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Surface, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=250}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Type: "/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource Manager_TypeInput}"/>
                     <ComboBox x:Name="TypeComboBox" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <WrapPanel Grid.Row="5" 
                                Grid.ColumnSpan="2"

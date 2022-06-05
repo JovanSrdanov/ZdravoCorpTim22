@@ -25,7 +25,7 @@
         <TextBlock Foreground="{DynamicResource TextPrimary}" 
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
-                   FontSize="{StaticResource HeadingFontSize}">STAFF OVERVIEW</TextBlock>
+                   FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_Staff_PageHeading}"/>
         <WrapPanel Grid.Row="1"
                    Margin="0 0 0 10">
             <Button x:Name="OpenGrades" Style="{StaticResource DetailsButtonStyle}" Command="{Binding OpenRatingsCommand}" CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem}"/>
@@ -36,11 +36,11 @@
                   SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="3*"/>
-                <DataGridTextColumn Binding="{Binding Path=Surname}" Header="Surname" Width="3*"/>
-                <DataGridTextColumn Binding="{Binding Path=Gender}" Header="Gender" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email" Width="3*"/>
-                <DataGridTextColumn Binding="{Binding Path=Jmbg}" Header="Jmbg" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="{DynamicResource Manager_Name}" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Path=Surname}" Header="{DynamicResource Manager_Surname}" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Path=Gender}" Header="{DynamicResource Manager_Gender}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Email}" Header="{DynamicResource Manager_Email}" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Path=Jmbg}" Header="{DynamicResource Manager_Jmbg}" Width="3*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

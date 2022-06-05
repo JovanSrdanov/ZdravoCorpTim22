@@ -42,7 +42,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
 
         public void DeleteMedicine(object obj)
         {
-            if (ConfirmModal.Show("Are you sure?"))
+            string msg = "Are you sure?";
+            if (ManagerHome.CurrentLanguage == 1)
+            {
+                msg = "Da li ste sigurni?";
+            }
+            if (ConfirmModal.Show(msg))
             {
                 Medicine medicine = (Medicine)obj;
                 MedicineCollection.Remove(medicine);

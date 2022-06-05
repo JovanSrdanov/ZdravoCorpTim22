@@ -42,13 +42,23 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if (RoomController.Instance.GetByID(SourceRoom.Id) == null)
             {
-                InfoModal.Show("Room was deleted in the meantime");
+                string msg = "Room was deleted in the meantime";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba je izbrisana u medjuvremenu";
+                }
+                InfoModal.Show(msg);
                 ManagerHome.NavigationService.Navigate(new RoomView());
                 return;
             }
             if (!SourceRoom.IsAvailable(Interval))
             {
-                InfoModal.Show("Room isn't available");
+                string msg = "Room isn't available";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba nije dostupna";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             EquipmentRelocationController.Instance.MoveRoomToWarehouse(SourceRoom, new List<EquipmentDataModel>(EquipmentList), Interval);

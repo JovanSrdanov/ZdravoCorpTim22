@@ -14,9 +14,9 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.StaffPages
             ViewModel = new StaffRatingsViewModel(doctor);
             DataContext = ViewModel;
 
-            Kindness.Content = new GradesBlock("Kindness", ViewModel.KindnessGrades);
-            Expertise.Content = new GradesBlock("Expertise", ViewModel.ExpertiseGrades);
-            Discretion.Content = new GradesBlock("Expertise", ViewModel.DiscretionGrades);
+            Kindness.Content = new GradesBlock((string)FindResource("Manager_Kindness"), ViewModel.KindnessGrades);
+            Expertise.Content = new GradesBlock((string)FindResource("Manager_Expertise"), ViewModel.ExpertiseGrades);
+            Discretion.Content = new GradesBlock((string)FindResource("Manager_Discretion"), ViewModel.DiscretionGrades);
             
         }
     }

@@ -86,7 +86,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.MedicineViewModels
         {
             if (!OldMedicine.MedicineData.Name.Equals(name) && MedicineDataController.Instance.GetByName(name) != null)
             {
-                InfoModal.Show("Medicine with that name already exists");
+                string msg = "Medicine with that name already exists";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Lijek sa tim nazivom već postoji";
+                }
+                InfoModal.Show(msg);
                 return;
             }
 

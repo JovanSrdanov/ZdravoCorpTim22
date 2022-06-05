@@ -69,10 +69,10 @@
                       Margin="0 0 0 20">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding Path=Level}" Header="Level" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=Surface}" Header="Surface Area" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="{DynamicResource Manager_Name}" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Level}" Header="{DynamicResource Manager_Level}" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Surface}" Header="{DynamicResource Manager_Surface}" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Type}" Header="{DynamicResource Manager_Type}" Width="2*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel Grid.Row="2"

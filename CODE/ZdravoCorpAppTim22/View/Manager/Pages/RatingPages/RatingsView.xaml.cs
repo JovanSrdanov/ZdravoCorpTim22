@@ -12,11 +12,11 @@ namespace ZdravoCorpAppTim22.View.Manager.Pages.RatingPages
             InitializeComponent();
             ViewModel = new RatingsViewModel();
             //int[] grades = { 1, 2, 1, 2, 3, 2, 5, 5, 4, 3, 4, 2, 5, 1, 2, 3, 2, 5, 5, 5, 5 };
-            StaffHospitality.Content = new GradesBlock("Staff", ViewModel.StaffGrades);
-            Accessibility.Content = new GradesBlock("Accessibility", ViewModel.AccessibilityGrades);
-            Hygiene.Content = new GradesBlock("Hygiene", ViewModel.HygieneGrades);
-            Appearance.Content = new GradesBlock("Appearance", ViewModel.AppearanceGrades);
-            Application.Content = new GradesBlock("Application", ViewModel.ApplicationGrades);
+            StaffHospitality.Content = new GradesBlock((string)FindResource("Manager_Hospitality"), ViewModel.StaffGrades);
+            Accessibility.Content = new GradesBlock((string)FindResource("Manager_Accessibility"), ViewModel.AccessibilityGrades);
+            Hygiene.Content = new GradesBlock((string)FindResource("Manager_Hygiene"), ViewModel.HygieneGrades);
+            Appearance.Content = new GradesBlock((string)FindResource("Manager_Appearance"), ViewModel.AppearanceGrades);
+            Application.Content = new GradesBlock((string)FindResource("Manager_Appearance"), ViewModel.ApplicationGrades);
         }
     }
 }
