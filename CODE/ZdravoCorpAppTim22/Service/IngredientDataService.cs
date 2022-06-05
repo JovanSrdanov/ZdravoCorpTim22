@@ -6,18 +6,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class IngredientDataService : GenericService<IngredientDataRepository, IngredientData>
     {
-        private static IngredientDataService instance;
         private IngredientDataService() : base(IngredientDataRepository.Instance) { }
         public static IngredientDataService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new IngredientDataService();
-                }
-
-                return instance;
+                return new IngredientDataService();
             }
         }
     }

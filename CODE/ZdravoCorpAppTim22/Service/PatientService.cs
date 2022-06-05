@@ -1,14 +1,11 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
-using ZdravoCorpAppTim22.Service;
 using ZdravoCorpAppTim22.Service.Generic;
 using ZdravoCorpAppTim22.View.PatientView;
 
@@ -16,18 +13,12 @@ namespace Service
 {
     public class PatientService : GenericService<PatientRepository, Patient>
     {
-        private static PatientService instance;
         private PatientService() : base(PatientRepository.Instance) { }
         public static PatientService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new PatientService();
-                }
-
-                return instance;
+                return new PatientService();
             }
         }
 

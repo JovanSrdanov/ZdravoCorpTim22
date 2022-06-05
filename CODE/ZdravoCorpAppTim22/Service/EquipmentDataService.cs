@@ -6,18 +6,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class EquipmentDataService : GenericService<EquipmentDataRepository, EquipmentData>
     {
-        private static EquipmentDataService instance;
         private EquipmentDataService() : base(EquipmentDataRepository.Instance) { }
         public static EquipmentDataService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new EquipmentDataService();
-                }
-
-                return instance;
+                return new EquipmentDataService();
             }
         }
 
