@@ -9,17 +9,12 @@ namespace Service
 {
     public class RoomService : GenericService<RoomRepository, Room>
     {
-        private static RoomService instance;
         private RoomService() : base(RoomRepository.Instance) { }
         public static RoomService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new RoomService();
-                }
-                return instance;
+                return new RoomService();
             }
         }
 

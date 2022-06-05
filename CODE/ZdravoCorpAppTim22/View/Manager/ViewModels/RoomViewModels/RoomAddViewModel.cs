@@ -74,8 +74,13 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if(RoomController.Instance.GetByName(name) != null)
             {
-                InfoModal.Show("Room with that name already exists");
-                return;
+                string msg = "Room with that name already exists";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba sa tim imenom već postoji";
+                }
+                InfoModal.Show(msg);
+                return; 
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);
             Room room = new Room(0, level, rt, name, surface);

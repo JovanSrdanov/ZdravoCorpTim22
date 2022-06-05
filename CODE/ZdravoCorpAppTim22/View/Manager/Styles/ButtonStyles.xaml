@@ -29,7 +29,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe73e;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Confirm"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Confirm}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -39,7 +39,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe711;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Cancel"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Cancel}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -49,7 +49,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe7c2;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Room"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_MoveToRoom}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -59,7 +59,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe7c2;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Warehouse"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_MoveToWarehouse}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -69,7 +69,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe81e;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Details"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Details}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -79,7 +79,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe8f5;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Renovate"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Renovate}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -89,7 +89,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe73f;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Merge"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Merge}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -99,7 +99,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xe740;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Diverge"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Diverge}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -109,7 +109,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xec92;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Start Time"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_StartTime}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -119,7 +119,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="24" Text="&#xec92;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="End Time"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_EndTime}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -134,7 +134,7 @@
             <Setter.Value>
                 <WrapPanel>
                      <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="20" Text="&#xe7e8;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Logout"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Logout}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>
@@ -144,7 +144,7 @@
             <Setter.Value>
                 <WrapPanel>
                     <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="20" Text="&#xe713;"/>
-                    <TextBlock Margin="18 0 0 0" Padding="0" Text="Settings"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="{DynamicResource Manager_Button_Settings}"/>
                 </WrapPanel>
             </Setter.Value>
         </Setter>

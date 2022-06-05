@@ -57,11 +57,11 @@
                  SelectionChanged="NavigationMenuListBox_SelectionChanged"
                  SelectedIndex="0"
                  BorderThickness="0">
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/WarehousePages/WarehouseView.xaml">Warehouse Overview</local:CustomListItem>
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/RoomPages/RoomView.xaml">Room Overview</local:CustomListItem>
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/MedicinePages/MedicineView.xaml">Medicine Overview</local:CustomListItem>
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/StaffPages/StaffView.xaml">Staff Overview</local:CustomListItem>
-            <local:CustomListItem NavigateUri="/View/Manager/Pages/RatingPages/RatingsView.xaml">Hospital Ratings</local:CustomListItem>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/WarehousePages/WarehouseView.xaml" Content="{DynamicResource Manager_Menu_Warehouse}"/>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/RoomPages/RoomView.xaml" Content="{DynamicResource Manager_Menu_Room}"/>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/MedicinePages/MedicineView.xaml" Content="{DynamicResource Manager_Menu_Medicine}"/>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/StaffPages/StaffView.xaml" Content="{DynamicResource Manager_Menu_Staff}"/>
+            <local:CustomListItem NavigateUri="/View/Manager/Pages/RatingPages/RatingsView.xaml" Content="{DynamicResource Manager_Menu_Hospital}"/>
         </ListBox>
     </Grid>
 </UserControl>

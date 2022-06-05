@@ -27,9 +27,9 @@
                   SelectionChanged="DataGrid_SelectionChanged"
                   MaxWidth="600">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Interval.Start.TimeOfDay}" Header="Start Time" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Interval.End.TimeOfDay}" Header="End Time" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Interval.Start.TimeOfDay}" Header="{DynamicResource Manager_Button_StartTime}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Interval.End.TimeOfDay}" Header="{DynamicResource Manager_Button_EndTime}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="{DynamicResource Manager_Type}" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

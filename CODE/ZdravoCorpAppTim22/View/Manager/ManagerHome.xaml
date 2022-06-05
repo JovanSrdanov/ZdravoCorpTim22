@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="Manager" 
+        Title="{DynamicResource Manager_MainWindow_Heading}" 
         Height="720" 
         Width="1280"
         Background="#292c35"
@@ -114,9 +114,36 @@
             <Grid Background="{DynamicResource DarkPrimary}" 
                   Width="250">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        BorderThickness="0 0 0 2"
+                        BorderBrush="{DynamicResource DarkSecondary}">
+                    <StackPanel>
+                        <Border HorizontalAlignment="Center"
+                            Margin="0 20 0 25"
+                            CornerRadius="100"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource TextPrimary}">
+                            <TextBlock FontFamily="{StaticResource Icons}" 
+                                   Text="&#xea8c;"
+                                   Foreground="{DynamicResource TextPrimary}"
+                                   FontSize="63"
+                                   Padding="22"/>
+                        </Border>
+                        <TextBlock x:Name="NameTextBlock"
+                               Foreground="{DynamicResource TextPrimary}"
+                               HorizontalAlignment="Center"
+                               FontSize="{StaticResource HeadingFontSize}"/>
+                        <TextBlock Foreground="{DynamicResource ActivePrimary}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="16"
+                                   Text="{DynamicResource Manager_MainWindow_Heading}"
+                                   Margin="0 5 0 20"/>
+                    </StackPanel>
+                </Border>
+                
                 <views:NavMenu Grid.Row="1" 
                                BorderThickness="0"
                                NavigationServiceProp="{Binding NavigationService, ElementName=ContentFrame}"/>
@@ -135,9 +162,16 @@
                     <ComboBox Style="{StaticResource StandardComboBox}"
                               Name="ThemeComboBox"
                               SelectedIndex="0" 
-                              SelectionChanged="ComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Dark Theme"/>
-                        <ComboBoxItem Content="Light Theme"/>
+                              SelectionChanged="ThemeComboBox_SelectionChanged">
+                        <ComboBoxItem Content="{DynamicResource Manager_DarkTheme}"/>
+                        <ComboBoxItem Content="{DynamicResource Manager_LightTheme}"/>
+                    </ComboBox>
+                    <ComboBox Style="{StaticResource StandardComboBox}"
+                              Name="LanguageComboBox"
+                              SelectedIndex="0" 
+                              SelectionChanged="LanguageComboBox_SelectionChanged">
+                        <ComboBoxItem Content="English"/>
+                        <ComboBoxItem Content="Srpski"/>
                     </ComboBox>
                     <Button Style="{DynamicResource SettingsButtonStyle}"
                             x:Name="ButtonSettings"

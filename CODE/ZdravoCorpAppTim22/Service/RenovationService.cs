@@ -10,18 +10,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class RenovationService : GenericService<RenovationRepository, Renovation>
     {
-        private static RenovationService instance;
         private RenovationService() : base(RenovationRepository.Instance) { }
         public static RenovationService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new RenovationService();
-                }
-
-                return instance;
+                return new RenovationService();
             }
         }
         public void DeleteByList(List<Renovation> list)

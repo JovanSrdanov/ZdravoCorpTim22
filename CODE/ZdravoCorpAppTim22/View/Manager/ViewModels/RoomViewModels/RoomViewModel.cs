@@ -70,7 +70,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
 
         public void DeleteRoom(object obj)
         {
-            if (ConfirmModal.Show("Are you sure?"))
+            string msg = "Are you sure?";
+            if (ManagerHome.CurrentLanguage == 1)
+            {
+                msg = "Da li ste sigurni?";
+            }
+            if (ConfirmModal.Show(msg))
             {
                 List<Room> selectedRooms = ((IList)obj).Cast<Room>().ToList();
                 Room room = selectedRooms[0];

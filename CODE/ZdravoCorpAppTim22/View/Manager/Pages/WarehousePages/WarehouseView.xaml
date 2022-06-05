@@ -26,7 +26,7 @@
         <TextBlock Foreground="{DynamicResource TextPrimary}" 
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
-                   FontSize="{StaticResource HeadingFontSize}">WAREHOUSE OVERVIEW</TextBlock>
+                   FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_Warehouse_PageHeading}"/>
         <Grid Grid.Row="1"
               Margin="0 0 0 10"
               >
@@ -47,9 +47,9 @@
                           MinWidth="120"
                           Padding="13 0 23 0"
                           SelectedIndex="{Binding Path=Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ComboBoxItem>all</ComboBoxItem>
-                    <ComboBoxItem>static</ComboBoxItem>
-                    <ComboBoxItem>dynamic</ComboBoxItem>
+                    <ComboBoxItem Content="{DynamicResource Manager_All}"/>
+                    <ComboBoxItem Content="{DynamicResource Manager_Static}"/>
+                    <ComboBoxItem Content="{DynamicResource Manager_Dynamic}"/>
                 </ComboBox>
                 <TextBox x:Name="SearchTextBox" 
                          Width="170" 
@@ -68,9 +68,9 @@
                   ItemsSource="{Binding Path=FilteredEquipment}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=EquipmentData.Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="Type" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="{DynamicResource Manager_Name}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="{DynamicResource Manager_Amount}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=EquipmentData.Type}" Header="{DynamicResource Manager_Type}" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -11,10 +11,10 @@ namespace ZdravoCorpAppTim22.Controller.Generic
         public GenericController(Service service)
         {
             _Service = service;
-            _Service.DataChanged += delegate
+            _Service.SetDataChangedHandler(delegate
             {
                 DataChanged?.Invoke(this, EventArgs.Empty);
-            };
+            });
         }
         public virtual void Load()
         {

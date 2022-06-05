@@ -11,17 +11,12 @@ namespace Service
 {
     public class EquipmentRelocationService : GenericService<EquipmentRelocationRepository, EquipmentRelocation>
     {
-        private static EquipmentRelocationService instance;
         private EquipmentRelocationService() : base(EquipmentRelocationRepository.Instance) { }
         public static EquipmentRelocationService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new EquipmentRelocationService();
-                }
-                return instance;
+                return new EquipmentRelocationService();
             }
         }
         public override void DeleteByID(int id)

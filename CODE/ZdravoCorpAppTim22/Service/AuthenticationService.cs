@@ -1,8 +1,6 @@
 ﻿using Model;
 using Service;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service
@@ -10,7 +8,6 @@ namespace ZdravoCorpAppTim22.Service
     public class AuthenticationService
     {
         private static AuthenticationService instance;
-
         private List<User> Users { get; set; }
         public User LoggedUser { get; private set; }
 
@@ -26,7 +23,6 @@ namespace ZdravoCorpAppTim22.Service
                 {
                     instance = new AuthenticationService();
                 }
-
                 return instance;
             }
         }

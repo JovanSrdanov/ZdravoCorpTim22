@@ -129,7 +129,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         }
         public void DeleteEquipment(object obj)
         {
-            if (ConfirmModal.Show("Are you sure?"))
+            string msg = "Are you sure?";
+            if (ManagerHome.CurrentLanguage == 1)
+            {
+                msg = "Da li ste sigurni?";
+            }
+            if (ConfirmModal.Show(msg))
             {
                 List<Equipment> selectedEquipment = ((IList)obj).Cast<Equipment>().ToList();
                 Equipment equipment = selectedEquipment[0];
