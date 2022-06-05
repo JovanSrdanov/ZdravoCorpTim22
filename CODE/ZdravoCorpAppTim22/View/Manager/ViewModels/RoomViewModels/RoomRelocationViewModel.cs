@@ -2,7 +2,6 @@
 using Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
 using ZdravoCorpAppTim22.View.Manager.DataModel;
@@ -41,13 +40,23 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if (RoomController.Instance.GetByID(SourceRoom.Id) == null || RoomController.Instance.GetByID(DestinationRoom.Id) == null)
             {
-                InfoModal.Show("One of the rooms was deleted in the meantime");
+                string msg = "One of the rooms was deleted in the meantime";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Jedna od soba je izbrisana u medjuvremenu";
+                }
+                InfoModal.Show(msg);
                 ManagerHome.NavigationService.Navigate(new RoomView());
                 return;
             }
             if (!SourceRoom.IsAvailable(Interval) || !DestinationRoom.IsAvailable(Interval))
             {
-                InfoModal.Show("Rooms aren't available");
+                string msg = "One of the rooms isn't available";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Jedna od soba nije dostupna";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             EquipmentRelocationController.Instance.MoveRoomToRoom(SourceRoom, DestinationRoom, new List<EquipmentDataModel>(EquipmentList), Interval);

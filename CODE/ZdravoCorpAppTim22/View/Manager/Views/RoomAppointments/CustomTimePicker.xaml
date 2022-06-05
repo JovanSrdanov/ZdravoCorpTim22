@@ -56,12 +56,12 @@
     </UserControl.Resources>
     <Grid>
         <WrapPanel>
-            <TextBlock Text="Hours"/>
+            <TextBlock Text="{DynamicResource Manager_Hours}"/>
             <ComboBox Name="HourComboBox"
                       Margin="0 0 10 0"
                       ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <TextBlock Text="Minutes"/>
+            <TextBlock Text="{DynamicResource Manager_Minutes}"/>
             <ComboBox Name="MinuteComboBox"
                       ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>

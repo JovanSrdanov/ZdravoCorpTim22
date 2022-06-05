@@ -27,7 +27,7 @@
         <TextBlock Foreground="{DynamicResource TextPrimary}" 
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
-                   FontSize="{StaticResource HeadingFontSize}">HOSPITAL RATINGS</TextBlock>
+                   FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_Ratings_PageHeading}"/>
         <WrapPanel Grid.Row="1">
             <ContentPresenter x:Name="StaffHospitality"/>
             <ContentPresenter x:Name="Accessibility"/>

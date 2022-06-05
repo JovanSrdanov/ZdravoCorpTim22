@@ -34,6 +34,15 @@
     <!-- Room Page -->
     <sys:String x:Key="Manager_Room_PageHeading">PREGLED SOBA</sys:String>
 
+    <!-- Medicine Page -->
+    <sys:String x:Key="Manager_Medicine_PageHeading">PREGLED LIJEKOVA</sys:String>
+
+    <!-- Staff Page -->
+    <sys:String x:Key="Manager_Staff_PageHeading">PREGLED ZAPOSLENIH</sys:String>
+
+    <!-- Ratings Page -->
+    <sys:String x:Key="Manager_Ratings_PageHeading">OCJENE BOLNICE</sys:String>
+
     <!-- Other -->
     <sys:String x:Key="Manager_Name">Naziv</sys:String>
     <sys:String x:Key="Manager_Amount">Količina</sys:String>
@@ -42,6 +51,29 @@
     <sys:String x:Key="Manager_Level">Sprat</sys:String>
     <sys:String x:Key="Manager_Surface">Površina</sys:String>
 
+    <sys:String x:Key="Manager_ReviewedBy">Pregledao</sys:String>
+    <sys:String x:Key="Manager_Approved">Odobreno</sys:String>
+    <sys:String x:Key="Manager_PossibleIngredients">Mogući sastojci</sys:String>
+    <sys:String x:Key="Manager_SelectedIngredients">Izabrani sastojci</sys:String>
+    <sys:String x:Key="Manager_PossibleReplacements">Moguće zamjene</sys:String>
+    <sys:String x:Key="Manager_SelectedReplacements">Izabrane zamjene</sys:String>
+    <sys:String x:Key="Manager_IsApproved">Odobreno</sys:String>
+    <sys:String x:Key="Manager_Doctor">Doktor</sys:String>
+
+    <sys:String x:Key="Manager_Surname">Prezime</sys:String>
+    <sys:String x:Key="Manager_Gender">Pol</sys:String>
+    <sys:String x:Key="Manager_Email">Email</sys:String>
+    <sys:String x:Key="Manager_Jmbg">Jmbg</sys:String>
+    <sys:String x:Key="Manager_Kindness">Ljubaznost</sys:String>
+    <sys:String x:Key="Manager_Expertise">Stručnost</sys:String>
+    <sys:String x:Key="Manager_Discretion">Diskretnost</sys:String>
+
+    <sys:String x:Key="Manager_Hospitality">Osoblje</sys:String>
+    <sys:String x:Key="Manager_Accessibility">Pristupačnost</sys:String>
+    <sys:String x:Key="Manager_Hygiene">Higijena</sys:String>
+    <sys:String x:Key="Manager_Appearance">Izgled</sys:String>
+    <sys:String x:Key="Manager_Application">Aplikacija</sys:String>
+
     <sys:String x:Key="Manager_NameInput">Naziv: </sys:String>
     <sys:String x:Key="Manager_AmountInput">Količina: </sys:String>
     <sys:String x:Key="Manager_TypeInput">Tip: </sys:String>
@@ -49,8 +81,15 @@
     <sys:String x:Key="Manager_LevelInput">Količina: </sys:String>
     <sys:String x:Key="Manager_SurfaceInput">Površina: </sys:String>
 
+    <sys:String x:Key="Manager_DoctorInput">Doktor: </sys:String>
+
     <sys:String x:Key="Manager_All">Sva Oprema</sys:String>
     <sys:String x:Key="Manager_Static">Nepokretna</sys:String>
     <sys:String x:Key="Manager_Dynamic">Pokretna</sys:String>
+
+    <sys:String x:Key="Manager_Hours">Sat</sys:String>
+    <sys:String x:Key="Manager_Minutes">Minuta</sys:String>
+
+    <sys:String x:Key="Manager_SelectAmount">Izaberi Količinu</sys:String>
 
 </ResourceDictionary>

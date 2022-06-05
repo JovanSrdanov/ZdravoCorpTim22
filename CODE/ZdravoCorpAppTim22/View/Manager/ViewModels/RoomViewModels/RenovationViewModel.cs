@@ -93,18 +93,33 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if (RoomController.Instance.GetByID(OldRoom.Id) == null)
             {
-                InfoModal.Show("Room was deleted in the meantime");
+                string msg = "Room was deleted in the meantime";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba je izbrisana u medjuvremenu";
+                }
+                InfoModal.Show(msg);
                 ManagerHome.NavigationService.Navigate(new RoomView());
                 return;
             }
             if (!OldRoom.IsAvailable(RenovationInterval))
             {
-                InfoModal.Show("Room isn't available");
+                string msg = "Room isn't available";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba nije dostupna";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             if (!OldRoom.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
             {
-                InfoModal.Show("Room with that name already exists");
+                string msg = "Room with that name already exists";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba sa tim imenom već postoji";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);

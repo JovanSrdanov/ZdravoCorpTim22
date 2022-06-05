@@ -31,7 +31,7 @@
         </WrapPanel>
         <WrapPanel Grid.Row="1" 
                    Margin="0 0 0 30">
-            <TextBlock Style="{StaticResource StaffCaption}" Text="Doctor: "/>
+            <TextBlock Style="{StaticResource StaffCaption}" Text="{DynamicResource Manager_DoctorInput}"/>
             <TextBlock Style="{StaticResource StaffCaption}" Text="{Binding Doctor.Name}" Foreground="{DynamicResource ActivePrimary}"/>
             <TextBlock Style="{StaticResource StaffCaption}" Text=" "/>
             <TextBlock Style="{StaticResource StaffCaption}" Text="{Binding Doctor.Surname}" Foreground="{DynamicResource ActivePrimary}"/>

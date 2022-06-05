@@ -289,7 +289,7 @@
         </Border.Effect>
         <Grid Margin="7" Background="{DynamicResource DarkSecondary}">
             <StackPanel Margin="30 20 30 30">
-                <TextBlock FontSize="{StaticResource HeadingFontSize}" Text="Select Amount" Margin="0 0 0 20" TextAlignment="Center"/>
+                <TextBlock FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_SelectAmount}" Margin="0 0 0 20" TextAlignment="Center"/>
                 <WrapPanel>
                     <Slider x:Name="Slider" Style="{StaticResource StandardSlider}" Width="300" Value="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Margin="5 0 0 0" Width="Auto" MinWidth="60" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

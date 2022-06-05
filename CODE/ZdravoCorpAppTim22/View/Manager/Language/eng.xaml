@@ -34,6 +34,15 @@
     <!-- Room Page -->
     <sys:String x:Key="Manager_Room_PageHeading">ROOM OVERVIEW</sys:String>
 
+    <!-- Medicine Page -->
+    <sys:String x:Key="Manager_Medicine_PageHeading">MEDICINE OVERVIEW</sys:String>
+
+    <!-- Staff Page -->
+    <sys:String x:Key="Manager_Staff_PageHeading">STAFF OVERVIEW</sys:String>
+
+    <!-- Ratings Page -->
+    <sys:String x:Key="Manager_Ratings_PageHeading">RATINGS OVERVIEW</sys:String>
+
     <!-- Other -->
     <sys:String x:Key="Manager_Name">Name</sys:String>
     <sys:String x:Key="Manager_Amount">Amount</sys:String>
@@ -41,7 +50,30 @@
     
     <sys:String x:Key="Manager_Level">Level</sys:String>
     <sys:String x:Key="Manager_Surface">Surface Area</sys:String>
-    
+
+    <sys:String x:Key="Manager_ReviewedBy">Reviewed By</sys:String>
+    <sys:String x:Key="Manager_Approved">Approved</sys:String>
+    <sys:String x:Key="Manager_PossibleIngredients">Possible Ingredients</sys:String>
+    <sys:String x:Key="Manager_SelectedIngredients">Selected Ingredients</sys:String>
+    <sys:String x:Key="Manager_PossibleReplacements">Possible Replacements</sys:String>
+    <sys:String x:Key="Manager_SelectedReplacements">Selected Replacements</sys:String>
+    <sys:String x:Key="Manager_IsApproved">Is Approved</sys:String>
+    <sys:String x:Key="Manager_Doctor">Doctor</sys:String>
+
+    <sys:String x:Key="Manager_Surname">Surname</sys:String>
+    <sys:String x:Key="Manager_Gender">Gender</sys:String>
+    <sys:String x:Key="Manager_Email">Email</sys:String>
+    <sys:String x:Key="Manager_Jmbg">Jmbg</sys:String>
+    <sys:String x:Key="Manager_Kindness">Kindness</sys:String>
+    <sys:String x:Key="Manager_Expertise">Expertise</sys:String>
+    <sys:String x:Key="Manager_Discretion">Discretion</sys:String>
+
+    <sys:String x:Key="Manager_Hospitality">Staff</sys:String>
+    <sys:String x:Key="Manager_Accessibility">Accessibility</sys:String>
+    <sys:String x:Key="Manager_Hygiene">Hygiene</sys:String>
+    <sys:String x:Key="Manager_Appearance">Appearance</sys:String>
+    <sys:String x:Key="Manager_Application">Application</sys:String>
+
     <sys:String x:Key="Manager_NameInput">Name: </sys:String>
     <sys:String x:Key="Manager_AmountInput">Amount: </sys:String>
     <sys:String x:Key="Manager_TypeInput">Type: </sys:String>
@@ -49,8 +81,15 @@
     <sys:String x:Key="Manager_LevelInput">Level: </sys:String>
     <sys:String x:Key="Manager_SurfaceInput">Surface Area: </sys:String>
 
+    <sys:String x:Key="Manager_DoctorInput">Doctor: </sys:String>
+
     <sys:String x:Key="Manager_All">All</sys:String>
     <sys:String x:Key="Manager_Static">Static</sys:String>
     <sys:String x:Key="Manager_Dynamic">Dynamic</sys:String>
+
+    <sys:String x:Key="Manager_Hours">Hours</sys:String>
+    <sys:String x:Key="Manager_Minutes">Minutes</sys:String>
+
+    <sys:String x:Key="Manager_SelectAmount">Select Amount</sys:String>
 
 </ResourceDictionary>

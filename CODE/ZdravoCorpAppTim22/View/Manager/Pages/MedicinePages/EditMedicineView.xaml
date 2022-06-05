@@ -41,9 +41,9 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Manager_NameInput}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=MedicineName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Amount: "/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource Manager_AmountInput}"/>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="0 15 0 15">
@@ -63,7 +63,7 @@
                           Drop="DataGridAllIngredients_Drop"
                           AllowDrop="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Possible Ingredients" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="{DynamicResource Manager_PossibleIngredients}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid Grid.Column="2"
@@ -77,7 +77,7 @@
                           PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
                           MouseMove="IngredientMouseMoveHandler">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="Selected Ingredients" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=IngredientData.Name}" Header="{DynamicResource Manager_SelectedIngredients}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -98,7 +98,7 @@
                           Drop="DataGridAllMedicines_Drop"
                           AllowDrop="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Possible Replacements" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="{DynamicResource Manager_PossibleReplacements}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid Grid.Column="2"
@@ -112,7 +112,7 @@
                           PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
                           MouseMove="MedicineMouseMoveHandler">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Selected Replacements" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="{DynamicResource Manager_SelectedReplacements}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
