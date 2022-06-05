@@ -7,17 +7,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class ReplacementService : GenericService<ReplacementRepository, Replacement>
     {
-        private static ReplacementService instance;
         private ReplacementService() : base(ReplacementRepository.Instance) { }
         public static ReplacementService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new ReplacementService();
-                }
-                return instance;
+                return new ReplacementService();
             }
         }
         

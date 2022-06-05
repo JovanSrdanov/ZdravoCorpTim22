@@ -78,7 +78,7 @@
     <sys:String x:Key="Manager_AmountInput">Količina: </sys:String>
     <sys:String x:Key="Manager_TypeInput">Tip: </sys:String>
 
-    <sys:String x:Key="Manager_LevelInput">Količina: </sys:String>
+    <sys:String x:Key="Manager_LevelInput">Sprat: </sys:String>
     <sys:String x:Key="Manager_SurfaceInput">Površina: </sys:String>
 
     <sys:String x:Key="Manager_DoctorInput">Doktor: </sys:String>

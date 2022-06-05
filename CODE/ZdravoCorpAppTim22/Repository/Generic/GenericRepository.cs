@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Repository.FileHandlers;
@@ -9,6 +10,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
     {
         public readonly object _lock = new object();
         public readonly GenericFileHandler<T> FileHandler;
+        public event EventHandler DataChanged;
         public List<T> List = new List<T>();
         public GenericRepository(string fileName)
         {
@@ -36,6 +38,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             }
             List.Remove(item);
             FileHandler.SaveData(new List<T>(List));
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
         public virtual void Create(T obj)
         {
@@ -53,6 +56,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             }
             List.Add(obj);
             FileHandler.SaveData(new List<T>(List));
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
         public virtual void Update(T obj)
         {
@@ -68,6 +72,7 @@ namespace ZdravoCorpAppTim22.Repository.Generic
             int index = List.IndexOf(item);
             List[index] = obj;
             FileHandler.SaveData(new List<T>(List));
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

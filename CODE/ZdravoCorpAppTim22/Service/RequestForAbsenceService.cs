@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository;
@@ -14,17 +12,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class RequestForAbsenceService : GenericService<RequestForAbsenceRepository, RequestForAbsence>
     {
-        private static RequestForAbsenceService instance;
         private RequestForAbsenceService() : base(RequestForAbsenceRepository.Instance) { }
         public static RequestForAbsenceService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new RequestForAbsenceService();
-                }
-                return instance;
+                return new RequestForAbsenceService();
             }
         }
         public bool validateDate(Interval requestInterval)
