@@ -46,7 +46,7 @@
                         Style="{StaticResource StartTimeButtonStyle}" 
                         Click="ButtonSelectStartTime_Click"/>
                 <ContentControl x:Name="SelectStartTimeContent"
-                                Foreground="{StaticResource TextPrimary}"
+                                Foreground="{DynamicResource TextPrimary}"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Margin="20 7 0 0"/>
             </WrapPanel>
@@ -56,7 +56,7 @@
                         Style="{StaticResource EndTimeButtonStyle}" 
                         Click="ButtonSelectEndTime_Click"/>
                 <ContentControl x:Name="SelectEndTimeContent"
-                            Foreground="{StaticResource TextPrimary}"
+                            Foreground="{DynamicResource TextPrimary}"
                             FontSize="{StaticResource StandardFontSize}"
                             Margin="20 7 0 0"/>
             </WrapPanel>
@@ -82,13 +82,13 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Manager_NameInput}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource Manager_LevelInput}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Surface: "/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource Manager_SurfaceInput}"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Surface_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=250}"/>
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Type: "/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource Manager_TypeInput}"/>
                         <ComboBox x:Name="TypeComboBox_1" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Type_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         
                     </Grid>
@@ -105,13 +105,13 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Manager_NameInput}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=RoomName_2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Level: "/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource Manager_LevelInput}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Level_2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Surface: "/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource Manager_SurfaceInput}"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Surface_2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=250}"/>
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Type: "/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource Manager_TypeInput}"/>
                         <ComboBox x:Name="TypeComboBox_2" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Type_2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                 </Grid>
@@ -137,8 +137,8 @@
                         Drop="DataGridEquipment_1_Drop"
                         AllowDrop="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
-                        <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="{DynamicResource Manager_Name}" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=Amount}" Header="{DynamicResource Manager_Amount}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid Grid.Column="2"
@@ -152,8 +152,8 @@
                         PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownHandler"
                         MouseMove="MouseMoveHandler">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="Name" Width="*"/>
-                        <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=EquipmentData.Name}" Header="{DynamicResource Manager_Name}" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=Amount}" Header="{DynamicResource Manager_Amount}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

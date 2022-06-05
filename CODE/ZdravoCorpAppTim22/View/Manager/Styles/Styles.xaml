@@ -2,30 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views">
-
-    <Color x:Key="DarkSecondaryColor">#292c35</Color>
-    <Color x:Key="DarkPrimaryColor">#20242b</Color>
-    <Color x:Key="ActivePrimaryColor">#4287f5</Color>
-    <!--<Color x:Key="ActivePrimaryColor">#7f00ff</Color>-->
-    <Color x:Key="TextPrimaryColor">#ccc</Color>
-    <Color x:Key="DisabledPrimaryColor">#363a42</Color>
-    <Color x:Key="ActiveSecondaryColor">#000</Color>
-    <Color x:Key="DarkTernaryColor">#111</Color>
-    <SolidColorBrush x:Key="DarkSecondary" Color="{StaticResource DarkSecondaryColor}"/>
-    <SolidColorBrush x:Key="DarkPrimary" Color="{StaticResource DarkPrimaryColor}"/>
-    <SolidColorBrush x:Key="ActivePrimary" Color="{StaticResource ActivePrimaryColor}"/>
-    <SolidColorBrush x:Key="TextPrimary" Color="{StaticResource TextPrimaryColor}"/>
-    <SolidColorBrush x:Key="DisabledPrimary" Color="{StaticResource DisabledPrimaryColor}"/>
-    <SolidColorBrush x:Key="ActiveSecondary" Color="{StaticResource ActiveSecondaryColor}"/>
-    <SolidColorBrush x:Key="DarkTernary" Color="{StaticResource DarkTernaryColor}"/>
-
-    <sys:Double x:Key="HeadingFontSize">20</sys:Double>
-    <sys:Double x:Key="MenuFontSize">18</sys:Double>
-    <sys:Double x:Key="StandardFontSize">17</sys:Double>
-
+    
     <Style x:Key="ButtonStandard" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"></Setter>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Padding" Value="16 8"></Setter>
         <Setter Property="Cursor" Value="Hand"></Setter>
@@ -41,10 +21,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
+                            <Setter Property="Background" Value="{DynamicResource ActivePrimary}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                            <Setter Property="Background" Value="{DynamicResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
 
@@ -54,59 +34,59 @@
     </Style>
     <Style TargetType="DataGrid">
         <Setter Property="AutoGenerateColumns" Value="False"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource DarkSecondary}"/>
-        <Setter Property="VerticalGridLinesBrush" Value="{StaticResource DarkSecondary}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DarkSecondary}"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DarkSecondary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="IsReadOnly" Value="True"/>
 
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style TargetType="DataGridRow">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#000"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveSecondary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style TargetType="DataGridColumnHeader">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="10"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#000"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveSecondary}"/>
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource DisabledPrimary}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style TargetType="DataGridRowHeader">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
         <Setter Property="Width" Value="0"/>
     </Style>
     <Style TargetType="DataGridCell">
         <Setter Property="Padding" Value="10"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -118,8 +98,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                            <Setter Property="Background" Value="{StaticResource ActivePrimary}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+                            <Setter Property="Background" Value="{DynamicResource ActivePrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -129,7 +109,7 @@
 
     <Style x:Key="StandardTextBlock" TargetType="TextBlock">
         <Setter Property="Width" Value="Auto"></Setter>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
         <Setter Property="Padding" Value="9"/>
     </Style>
@@ -137,8 +117,8 @@
     <Style x:Key="StandardTextBox" TargetType="TextBox">
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="MaxLength" Value="50"/>
         <Setter Property="Margin" Value="0 0 0 20"/>
         <Setter Property="Padding" Value="9"/>
@@ -153,7 +133,7 @@
                                   Height="{TemplateBinding Height}"
                                   Background="{TemplateBinding Background}"
                                   Padding="{TemplateBinding Padding}"
-                                  BorderBrush="{StaticResource DarkPrimary}"
+                                  BorderBrush="{DynamicResource DarkPrimary}"
                                   BorderThickness="1"
                                   MinWidth="{TemplateBinding MinWidth}"
                                   MinHeight="{TemplateBinding MinHeight}"
@@ -165,7 +145,7 @@
                             <Setter TargetName="PART_ContentHost" Property="BorderBrush" Value="#000"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                            <Setter TargetName="PART_ContentHost" Property="Background" Value="{DynamicResource DisabledPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -181,21 +161,21 @@
             <Border x:Name="Border"
                     Grid.ColumnSpan="2"
                     CornerRadius="0"
-                    Background="{StaticResource DarkPrimary}"
-                    BorderBrush="{StaticResource DarkPrimary}"
+                    Background="{DynamicResource DarkPrimary}"
+                    BorderBrush="{DynamicResource DarkPrimary}"
                     BorderThickness="0"/>
             <Path x:Name="Arrow"
                   Grid.Column="1"
-                  Fill="{StaticResource ActivePrimary}"
+                  Fill="{DynamicResource ActivePrimary}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledPrimary}"/>
-                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledPrimary}"/>
-                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource TextPrimary}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource DisabledPrimary}"/>
+                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledPrimary}"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource TextPrimary}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -208,9 +188,9 @@
     </ControlTemplate>
     <Style x:Key="StandardComboBoxItem" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="Background" Value="{StaticResource DarkSecondary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkSecondary}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -232,10 +212,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource ActivePrimary}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ActivePrimary}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{StaticResource ActivePrimary}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ActivePrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -243,8 +223,8 @@
         </Setter>
     </Style>
     <Style x:Key="StandardComboBox" TargetType="ComboBox">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -282,8 +262,8 @@
                                  VerticalAlignment="Center" 
                                  Margin="3,3,23,3"
                                  Focusable="True"
-                                 Background="{StaticResource DarkSecondary}"
-                                 Foreground="{StaticResource TextPrimary}"
+                                 Background="{DynamicResource DarkSecondary}"
+                                 Foreground="{DynamicResource TextPrimary}"
                                  Visibility="Hidden"
                                  IsReadOnly="{TemplateBinding IsReadOnly}"
                                  Padding="{TemplateBinding Padding}"/>
@@ -298,9 +278,9 @@
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border x:Name="DropDownBorder"
-                                        Background="{StaticResource DarkSecondary}"
+                                        Background="{DynamicResource DarkSecondary}"
                                         BorderThickness="2"
-                                        BorderBrush="{StaticResource DarkPrimary}"/>
+                                        BorderBrush="{DynamicResource DarkPrimary}"/>
                                 <ScrollViewer Margin="4,6,4,6" 
                                               SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" 
@@ -314,7 +294,7 @@
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{StaticResource DisabledPrimary}"/>
+                            <Setter Property="Background" Value="{DynamicResource DisabledPrimary}"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -346,13 +326,13 @@
     </Style>
 
     <Style x:Key="AmountDataGridRow" TargetType="DataGridRow">
-        <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
         <Setter Property="FontSize" Value="{StaticResource StandardFontSize}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
@@ -360,7 +340,7 @@
 
     <Style x:Key="AmountDataGridCell" TargetType="DataGridCell">
         <Setter Property="Padding" Value="10"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="Template">
@@ -373,8 +353,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
-                            <Setter Property="Background" Value="{StaticResource DarkPrimary}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+                            <Setter Property="Background" Value="{DynamicResource DarkPrimary}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -428,7 +408,7 @@
                            Maximum="{TemplateBinding ScrollableHeight}"
                            ViewportSize="{TemplateBinding ViewportHeight}"
                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                           Background="{StaticResource DarkPrimary}"/>
+                           Background="{DynamicResource DarkPrimary}"/>
 
                 <ScrollBar Name="PART_HorizontalScrollBar"
                             Grid.Column="0" Grid.Row="1"
@@ -441,11 +421,11 @@
 
                 <DockPanel Grid.Column="1" Grid.Row="1"
                            LastChildFill="false"
-                           Background="{StaticResource DarkSecondary}"/>
+                           Background="{DynamicResource DarkSecondary}"/>
 
                 <ResizeGrip HorizontalAlignment="Right" VerticalAlignment="Stretch"
                             Grid.Column="1" Grid.Row="1"
-                            Background="{StaticResource DarkSecondary}"/>
+                            Background="{DynamicResource DarkSecondary}"/>
             </Grid>
         </Border>
     </ControlTemplate>

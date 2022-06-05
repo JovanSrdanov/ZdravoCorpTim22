@@ -1,18 +1,7 @@
 ﻿using Controller;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -25,10 +14,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public RequestForLeaveView()
         {
             InitializeComponent();
-            requestingDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            requestingDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
         }
 
-        private bool validateDate(Interval absenceInterval)
+        private bool validateDate(Interval absenceInterval)     //pomerio
         {
             bool returnValue = true;
             if (!RequestForAbsenceController.Instance.validateDate(absenceInterval))
@@ -39,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool hasAlreadyRequestedAbsenceInSelectedPeriod(Interval absenceInterval, Doctor requestingDoctor)
+        private bool hasAlreadyRequestedAbsenceInSelectedPeriod(Interval absenceInterval, Doctor requestingDoctor)      //pomerio
         {
             bool returnValue = false;
             if (RequestForAbsenceController.Instance.hasAlreadyRequestedAbsenceInSelectedPeriod(absenceInterval, requestingDoctor))
@@ -51,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool alreadyHasAnAppointment(Interval absenceInterval, Doctor requestingDoctor) 
+        private bool alreadyHasAnAppointment(Interval absenceInterval, Doctor requestingDoctor)     //pomerio
         {
             bool returnValue = false;
             if (RequestForAbsenceController.Instance.alreadyHasAnAppointment(absenceInterval, requestingDoctor))
@@ -63,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool areMultipleDoctorsOfSameTypeOnLeave(bool isUrgent, Interval absenceInterval)
+        private bool areMultipleDoctorsOfSameTypeOnLeave(bool isUrgent, Interval absenceInterval)       //pomerio
         {
             bool returnValue = false;
             if (isUrgent == false && RequestForAbsenceController.Instance.
@@ -76,12 +65,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void SendBtnClick(object sender, RoutedEventArgs e)
+        private void SendBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
         {
             string reasonForAbsence = ReasonForAbsenceTextBox.Text;
-            Interval absenceInterval = new Interval();
-            absenceInterval.Start = (DateTime)AbsenceStartDatePicker.SelectedDate;
-            absenceInterval.End = (DateTime)AbsenceEndDatePicker.SelectedDate;
+            Interval absenceInterval = getInterval();
             bool isUrgent = (bool)UrgentCheckBox.IsChecked;
 
             if (!validateDate(absenceInterval)) return;
@@ -96,9 +83,18 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        private Interval getInterval()      //ne pomeraj
         {
-            MessageBoxResult cancleAnswer = MessageBox.Show("Close window without saving?", "Request for absence", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            Interval interval = new Interval();
+            interval.Start = (DateTime)AbsenceStartDatePicker.SelectedDate;
+            interval.End = (DateTime)AbsenceEndDatePicker.SelectedDate;
+            return interval;
+        }
+
+        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        {
+            MessageBoxResult cancleAnswer = MessageBox.Show("Close window without saving?", "Request for absence", 
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (cancleAnswer)
             {
                 case MessageBoxResult.Yes:
@@ -110,13 +106,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

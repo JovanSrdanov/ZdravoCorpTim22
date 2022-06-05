@@ -20,7 +20,7 @@
         <Border.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="7" RenderingBias="Quality"  Opacity="1" Color="#000" />
         </Border.Effect>
-        <Grid Margin="7" Background="{StaticResource DarkSecondary}">
+        <Grid Margin="7" Background="{DynamicResource DarkSecondary}">
             <StackPanel Margin="30 25 30 30">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -44,12 +44,12 @@
                                Grid.Row="1"
                                MinWidth="150"
                                TextAlignment="Right"
-                               Text="Is Approved"
+                               Text="{DynamicResource Manager_IsApproved}"
                                Margin="0 0 0 8"
                                Opacity="0.7"/>
                     <Border Grid.Column="1"
                             Grid.Row="1"
-                            BorderBrush="{StaticResource ActivePrimary}"
+                            BorderBrush="{DynamicResource ActivePrimary}"
                             BorderThickness="1 0 0 0"
                             Margin="0 0 0 8">
                         <TextBlock MinWidth="150"
@@ -60,12 +60,12 @@
                                Grid.Row="2"
                                MinWidth="150"
                                TextAlignment="Right"
-                               Text="Doctor"
+                               Text="{DynamicResource Manager_Doctor}"
                                Margin="0 0 0 5"
                                Opacity="0.7"/>
                     <Border Grid.Column="1"
                             Grid.Row="2"
-                            BorderBrush="{StaticResource ActivePrimary}"
+                            BorderBrush="{DynamicResource ActivePrimary}"
                             BorderThickness="1 0 0 0"
                             Margin="0 0 0 5">
                         <TextBlock MinWidth="150"
@@ -75,7 +75,7 @@
                                 Grid.ColumnSpan="2"
                                 Grid.Row="3">
                         <Border 
-                            BorderBrush="{StaticResource ActivePrimary}"
+                            BorderBrush="{DynamicResource ActivePrimary}"
                             BorderThickness="0 0 0 1"
                             HorizontalAlignment="Center">
                             <TextBlock Grid.Row="3"

@@ -5,7 +5,7 @@ namespace ZdravoCorpAppTim22.Service.Generic
 {
     public interface IService<T>
     {
-        event EventHandler DataChanged;
+        void SetDataChangedHandler(EventHandler eh);
         void Load();
         List<T> GetAll();
         T GetByID(int id);

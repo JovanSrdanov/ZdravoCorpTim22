@@ -4,14 +4,8 @@
     "BloodType": 1,
     "AllergiesList": [],
     "ConditionList": [
-      "1",
+      "sad",
       "1"
     ]
-  },
-  {
-    "Id": 1,
-    "BloodType": 0,
-    "AllergiesList": null,
-    "ConditionList": null
   }
 ]

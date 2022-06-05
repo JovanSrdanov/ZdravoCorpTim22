@@ -64,7 +64,12 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.WarehouseViewModels
         {
             if (!OldEquipment.EquipmentData.Name.Equals(name) && EquipmentDataController.Instance.GetByName(name) != null)
             {
-                InfoModal.Show("Equipment with that name already exists");
+                string msg = "Equipment with that name already exists";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Oprema sa tim imenom već postoji";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             EquipmentType et = (EquipmentType)Enum.Parse(typeof(EquipmentType), type);

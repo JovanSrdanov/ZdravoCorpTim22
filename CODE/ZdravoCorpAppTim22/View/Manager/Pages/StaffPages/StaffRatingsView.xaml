@@ -1,0 +1,46 @@
+﻿<Page x:Class="ZdravoCorpAppTim22.View.Manager.Pages.StaffPages.StaffRatingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Pages.StaffPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StaffRatingsView"
+      Margin="0 0 0 100">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/Global.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStandard}"/>
+            <Style x:Key="StaffCaption" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" Margin="0 0 0 30">
+            <Button Command="{Binding NavigateBackCommand}"
+                    Style="{StaticResource BackButtonStyle}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" 
+                   Margin="0 0 0 30">
+            <TextBlock Style="{StaticResource StaffCaption}" Text="{DynamicResource Manager_DoctorInput}"/>
+            <TextBlock Style="{StaticResource StaffCaption}" Text="{Binding Doctor.Name}" Foreground="{DynamicResource ActivePrimary}"/>
+            <TextBlock Style="{StaticResource StaffCaption}" Text=" "/>
+            <TextBlock Style="{StaticResource StaffCaption}" Text="{Binding Doctor.Surname}" Foreground="{DynamicResource ActivePrimary}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2">
+            <ContentPresenter x:Name="Kindness"/>
+            <ContentPresenter x:Name="Expertise"/>
+            <ContentPresenter x:Name="Discretion"/>
+        </WrapPanel>
+        
+    </Grid>
+</Page>

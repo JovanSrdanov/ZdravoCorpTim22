@@ -1,18 +1,8 @@
 ﻿using Controller;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
@@ -35,7 +25,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         }
 
         //selection changed event handlers
-        private void MedicineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MedicineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)      //mozda?
         {
             Medicine selectedMedicine = MedicineDataGrid.SelectedItem as Medicine;
             if (selectedMedicine == null || selectedMedicine.MedicineData.Approval.IsApproved)
@@ -51,21 +41,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         }
 
         //Button event handlers
-        private void ApproveBtnClick(object sender, RoutedEventArgs e)
+        private void ApproveBtnClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
-            Medicine selected = MedicineDataGrid.SelectedItem as Medicine;
-            selected.MedicineData.Approval.IsApproved = true;
-            selected.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-            selected.MedicineData.Approval.Message = "";
-            
-            ApprovalController.Instance.Update(selected.MedicineData.Approval);
-            MedicineDataController.Instance.Update(selected.MedicineData);
-            MedicineController.Instance.Update(selected);
+            Medicine selectedMedicine = MedicineDataGrid.SelectedItem as Medicine;
+            updateMedicineApproval(selectedMedicine);
 
-            allMedicineInStorageObservable[MedicineDataGrid.SelectedIndex] = selected;
+            ApprovalController.Instance.Update(selectedMedicine.MedicineData.Approval);
+            MedicineDataController.Instance.Update(selectedMedicine.MedicineData);
+            MedicineController.Instance.Update(selectedMedicine);
+
+            allMedicineInStorageObservable[MedicineDataGrid.SelectedIndex] = selectedMedicine;
         }
 
-        private void RejectBtnClick(object sender, RoutedEventArgs e)
+        private void updateMedicineApproval(Medicine medicine)      //ne pomeraj
+        {
+            medicine.MedicineData.Approval.IsApproved = true;
+            medicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
+            medicine.MedicineData.Approval.Message = "";
+        }
+
+        private void RejectBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             RejectDrugView rejectDrugView = new RejectDrugView(MedicineDataGrid.SelectedItem as Medicine);
             rejectDrugView.Owner = this;
@@ -74,19 +69,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)
+        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
         {
             this.Owner.Show();
             this.Close();

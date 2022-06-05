@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="DoctorHomeScreen" Height="768" Width="1024" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <TextBlock Margin="256,53,0,0" Text="Welcome to Zdravo Corp"

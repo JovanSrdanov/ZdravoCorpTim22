@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.Manager.Pages.MedicinePages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MedicineView">
+      Title="MedicineView"
+      Margin="0 0 0 100">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,10 +23,10 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Foreground="{StaticResource TextPrimary}" 
+        <TextBlock Foreground="{DynamicResource TextPrimary}" 
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
-                   FontSize="{StaticResource HeadingFontSize}">MEDICINE OVERVIEW</TextBlock>
+                   FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_Medicine_PageHeading}"/>
         <Grid Grid.Row="1"
               Margin="0 0 0 10"
               >
@@ -47,10 +48,10 @@
                   ItemsSource="{Binding Path=MedicineCollection}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=MedicineData.Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.Name}" Header="Name" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.Doctor.Name}" Header="Reviewed By" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.IsApproved}" Header="Approved" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Name}" Header="{DynamicResource Manager_Name}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="{DynamicResource Manager_Amount}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.Doctor.Name}" Header="{DynamicResource Manager_ReviewedBy}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=MedicineData.Approval.IsApproved}" Header="{DynamicResource Manager_Approved}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

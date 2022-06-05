@@ -18,9 +18,9 @@
             <Style TargetType="ComboBox" BasedOn="{StaticResource StandardComboBox}"/>
             <Style x:Key="TimeComboBoxItem" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="true"/>
-                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
-                <Setter Property="Background" Value="{StaticResource DarkSecondary}"/>
+                <Setter Property="Background" Value="{DynamicResource DarkSecondary}"/>
                 <Setter Property="HorizontalContentAlignment" Value="Left"/>
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Template">
@@ -42,10 +42,10 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsHighlighted" Value="true">
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource ActivePrimary}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ActivePrimary}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Foreground" Value="{StaticResource ActivePrimary}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource ActivePrimary}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -56,12 +56,12 @@
     </UserControl.Resources>
     <Grid>
         <WrapPanel>
-            <TextBlock Text="Hours"/>
+            <TextBlock Text="{DynamicResource Manager_Hours}"/>
             <ComboBox Name="HourComboBox"
                       Margin="0 0 10 0"
                       ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <TextBlock Text="Minutes"/>
+            <TextBlock Text="{DynamicResource Manager_Minutes}"/>
             <ComboBox Name="MinuteComboBox"
                       ItemContainerStyle="{StaticResource TimeComboBoxItem}"
                       SelectedItem="{Binding Path=Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>

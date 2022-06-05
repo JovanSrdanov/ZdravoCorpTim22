@@ -6,8 +6,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
     public partial class DoctorHome : Window
     {
         public DoctorViewModel DoctorViewModel;
-        public static int selectedDoctorId;
+        //public static int selectedDoctorId;
         public static DoctorHome doctorHome;
+        public static Doctor LoggedInDoctor { get; set; }
 
         public DoctorHome(Doctor doctor)
         {
@@ -22,10 +23,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Doctor doctor = SelectDoctorCBOX.SelectedItem as Doctor;
-            selectedDoctorId = doctor.Id;
+            //selectedDoctorId = doctor.Id;
             doctorHome = this;
 
-            DoctorHomeScreen doctorHomeScreen = new DoctorHomeScreen();
+            DoctorHomeScreen doctorHomeScreen = new DoctorHomeScreen(LoggedInDoctor);
             doctorHomeScreen.Owner = this;
             doctorHomeScreen.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             doctorHomeScreen.Show();
@@ -36,7 +37,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void BackBtnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Show();
-            this.Close();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
     }
 }

@@ -27,15 +27,15 @@ namespace Controller
             return PatientService.Instance.GetPatient(patient);
         }
         
-        public void TherapyNotification()
+        public string TherapyNotification()
         {
-            PatientService.Instance.TherapyNotification();
+            return PatientService.Instance.TherapyNotification();
         }
 
-        public void AntiTroll(Patient patient)
+        public bool AntiTroll(Patient patient)
         {
 
-            PatientService.Instance.AntiTroll(patient);
+           return PatientService.Instance.AntiTroll(patient);
 
         }
 

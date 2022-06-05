@@ -68,9 +68,17 @@ namespace ZdravoCorpAppTim22
                 Thread.Sleep(1000);
                 RenovationController.Instance.BackgroundTask();
                 EquipmentRelocationController.Instance.BackgroundTask();
-                PatientController.Instance.TherapyNotification();
                 RoomMergeController.Instance.BackgroundTask();
                 RoomDivergeController.Instance.BackgroundTask();
+
+                string message = PatientController.Instance.TherapyNotification();
+                if (!message.Equals(""))
+                {
+                    App.Current?.Dispatcher?.Invoke(delegate
+                    {
+                        MessageBox.Show(message);
+                    });
+                }
             }
         }
 
@@ -104,7 +112,7 @@ namespace ZdravoCorpAppTim22
             }
             else if(user.GetType() == typeof(Doctor))
             {
-                window = new DoctorHome((Doctor)user);
+                window = new DoctorHomeScreen((Doctor)user);
             }
             else if(user.GetType() == typeof(Patient))
             {

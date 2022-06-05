@@ -2,7 +2,6 @@
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository;
@@ -12,18 +11,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class RoomDivergeService : GenericService<RoomDivergeRepository, RoomDiverge>
     {
-        private static RoomDivergeService instance;
         private RoomDivergeService() : base(RoomDivergeRepository.Instance) { }
         public static RoomDivergeService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new RoomDivergeService();
-                }
-
-                return instance;
+                return new RoomDivergeService();
             }
         }
         public void DeleteByList(List<RoomDiverge> list)

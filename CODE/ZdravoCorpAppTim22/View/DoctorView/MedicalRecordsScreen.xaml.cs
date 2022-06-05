@@ -1,6 +1,5 @@
 ﻿using Controller;
 using Model;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -14,13 +13,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             InitializeComponent();
             this.doctorHomeScreen = doctorHomeScreen;
             ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords = new ObservableCollection<MedicalRecord>
-                (DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId).MedicalRecord);
+                (DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id).MedicalRecord);
             setPatientInMedicalRecord(loggedInDoctorMedicalRecords);
 
             MedRecGrid.ItemsSource = loggedInDoctorMedicalRecords;
         }
 
-        private void setPatientInMedicalRecord(ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords)
+        private void setPatientInMedicalRecord(ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords)        //mozda?
         {
             foreach (MedicalRecord medRec in loggedInDoctorMedicalRecords)
             {
@@ -29,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private bool isMedicalRecordSelected(MedicalRecord medicalRecord)
+        private bool isMedicalRecordSelected(MedicalRecord medicalRecord)       //ne pomeraj
         {
             bool returnValue = true;
             if (medicalRecord == null)
@@ -40,7 +39,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void OpenBtnClick(object sender, RoutedEventArgs e)
+        private void OpenBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
         {
             MedicalRecord medicalRecord = MedRecGrid.SelectedItem as MedicalRecord;
             if(!(isMedicalRecordSelected(medicalRecord))) return;
@@ -56,19 +55,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)
+        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
         {
             doctorHomeScreen.Show();
             this.Close();
         }
  
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

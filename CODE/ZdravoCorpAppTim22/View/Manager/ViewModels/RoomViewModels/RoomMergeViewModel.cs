@@ -2,7 +2,6 @@
 using Model;
 using System;
 using System.ComponentModel;
-using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.View.Manager.Commands;
@@ -87,18 +86,33 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.RoomViewModels
         {
             if (RoomController.Instance.GetByID(Room_1.Id) == null || RoomController.Instance.GetByID(Room_2.Id) == null)
             {
-                InfoModal.Show("One of the rooms was deleted in the meantime");
+                string msg = "One of the rooms was deleted in the meantime";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Jedna od soba je izbrisana u medjuvremenu";
+                }
+                InfoModal.Show(msg);
                 ManagerHome.NavigationService.Navigate(new RoomView());
                 return;
             }
             if (!Room_1.IsAvailable(Interval) || !Room_2.IsAvailable(Interval) || !Room_1.CanMergeOrDiverge() || !Room_2.CanMergeOrDiverge())
             {
-                InfoModal.Show("One of the rooms isn't available");
+                string msg = "One of the rooms isn't available";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Jedna od soba nije dostupna";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             if (!Room_1.Name.Equals(name) && !Room_2.Name.Equals(name) && RoomController.Instance.GetByName(name) != null)
             {
-                InfoModal.Show("Room with that name already exists");
+                string msg = "Room with that name already exists";
+                if (ManagerHome.CurrentLanguage == 1)
+                {
+                    msg = "Soba sa tim imenom već postoji";
+                }
+                InfoModal.Show(msg);
                 return;
             }
             RoomType rt = (RoomType)Enum.Parse(typeof(RoomType), type);

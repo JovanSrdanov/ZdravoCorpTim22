@@ -1,10 +1,8 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using ZdravoCorpAppTim22;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -15,18 +13,12 @@ namespace Service
 {
     public class PatientService : GenericService<PatientRepository, Patient>
     {
-        private static PatientService instance;
         private PatientService() : base(PatientRepository.Instance) { }
         public static PatientService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new PatientService();
-                }
-
-                return instance;
+                return new PatientService();
             }
         }
 
@@ -35,99 +27,111 @@ namespace Service
             return PatientRepository.Instance.GetPatient(patient);
         }
 
-        public void TherapyNotification()
+        public string TherapyNotification()
         {
-
-            if (ZdravoCorpTabs.LoggedPatient == null)
+            if (App.Current != null && ZdravoCorpTabs.LoggedPatient != null)
             {
-                return;
+                MedicalRecord medicalRecord = ZdravoCorpTabs.LoggedPatient.medicalRecord;
+
+                if (medicalRecord == null) return "";
+                List<MedicalReceipt> MedicalReceipts = medicalRecord.MedicalReceipt;
+                return CheckingUnfinishedTherapies(MedicalReceipts);
             }
-            else
+            return "";
+        }
+
+        
+
+        private string CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
+        {
+            foreach (var medicalReceipt in MedicalReceipts.Where(medicalReceipt =>
+                         !CheckIfTherapyIsOver(medicalReceipt)))
             {
-
-                if (App.Current != null)
+                if (CheckIfTimeForMessage(medicalReceipt))
                 {
-                    App.Current.Dispatcher.Invoke(delegate
-                    {
-                        MedicalRecord medRec = ZdravoCorpTabs.LoggedPatient.medicalRecord;
-
-
-                        if (medRec == null)
-                        {
-                            return;
-                        }
-                        List<MedicalReceipt> MedicalReceipts = medRec.MedicalReceipt;
-
-
-                        foreach (MedicalReceipt medicalReceipt in MedicalReceipts)
-                        {
-
-
-                            if (DateTime.Now.Date > medicalReceipt.EndDate.Date)
-                            {
-                               
-                                return;
-                            }
-
-
-                            if (DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-30) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-5))
-                            {
-
-
-                                string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
-                                message += medicalReceipt.TherapyPurpose;
-                                message += "\n\n";
-
-
-                                message += "Način upotrebe: ";
-                                message += medicalReceipt.AdditionalInstructions;
-                                message += "\n\n";
-
-                                message += "Lekovi: ";
-                                foreach (Medicine m in medicalReceipt.Medicine)
-                                {
-                                    message += m.MedicineData.Name;
-                                    message += "\n\n";
-                                }
-
-                                message += "Uzeti u: ";
-                                message += medicalReceipt.Time;
-
-
-
-                                MessageBox.Show(message);
-
-                                int hour = medicalReceipt.NotifyNextDateTime.Hour;
-                                int minute = medicalReceipt.NotifyNextDateTime.Minute;
-
-                                medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day, hour, minute, 0);
-                                MedicalReceiptController.Instance.Update(medicalReceipt);
-                            }
-                            if (DateTime.Now > medicalReceipt.NotifyNextDateTime)
-                            {
-                                int hour = medicalReceipt.NotifyNextDateTime.Hour;
-                                int minute = medicalReceipt.NotifyNextDateTime.Minute;
-
-                                medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day, hour, minute, 0);
-
-                                MedicalReceiptController.Instance.Update(medicalReceipt);
-                            }
-                        }
-                    });
+                    string message = CreatingMessageForTherapy(medicalReceipt);
+                    // ovdde dodaj neki event sta ja znam
+                    UpdateNotifyNextDateTime(medicalReceipt);
+                    return message;
                 }
+
+                UpdateMissedNotification(medicalReceipt);
+            }
+            return "";
+        }
+
+        private static void UpdateMissedNotification(MedicalReceipt medicalReceipt)
+        {
+            if (DateTime.Now > medicalReceipt.NotifyNextDateTime)
+            {
+                UpdateNotifyNextDateTime(medicalReceipt);
             }
         }
 
-        public void AntiTroll(Patient patient)
+        private static bool CheckIfTherapyIsOver(MedicalReceipt medicalReceipt)
+        {
+            return DateTime.Now.Date > medicalReceipt.EndDate.Date;
+        }
+
+        private static bool CheckIfTimeForMessage(MedicalReceipt medicalReceipt)
+        {
+            return DateTime.Now > medicalReceipt.NotifyNextDateTime.AddMinutes(-Constants.Constants.NOTIFICATION_TIME_START) && DateTime.Now < medicalReceipt.NotifyNextDateTime.AddMinutes(-Constants.Constants.NOTIFICATION_TIME_END);
+        }
+
+        private static void UpdateNotifyNextDateTime(MedicalReceipt medicalReceipt)
+        {
+            int hour = medicalReceipt.NotifyNextDateTime.Hour;
+            int minute = medicalReceipt.NotifyNextDateTime.Minute;
+
+            medicalReceipt.NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day,
+                hour, minute, 0);
+            MedicalReceiptController.Instance.Update(medicalReceipt);
+        }
+
+        private static string CreatingMessageForTherapy(MedicalReceipt medicalReceipt)
+        {
+            string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
+            message += medicalReceipt.TherapyPurpose;
+            message += "\n\n";
+
+
+            message += "Način upotrebe: ";
+            message += medicalReceipt.AdditionalInstructions;
+            message += "\n\n";
+
+            message += "Lekovi: ";
+            foreach (Medicine m in medicalReceipt.Medicine)
+            {
+                message += m.MedicineData.Name;
+                message += "\n\n";
+            }
+
+            message += "Uzeti u: ";
+            message += medicalReceipt.Time;
+            return message;
+        }
+
+        public bool AntiTroll(Patient patient)
         {
 
+            UpdatingSuspiciousActivity(patient);
+            bool Troll = false;
+
+            if (CheckIfTroll(patient))
+            {
+                Blocking(patient);
+                Troll = true;
+            }
+
+            return Troll;
+
+        }
+
+        private static void UpdatingSuspiciousActivity(Patient patient)
+        {
             RemovingOutdatedSuspiciousActivity(patient);
             patient.SuspiciousActivity.Add(DateTime.Now);
             Instance.Update(patient);
-            if (CheckIfTroll(patient))
-            {
-                SanctioningTroll(patient);
-            }
         }
 
         private static bool CheckIfTroll(Patient patient)
@@ -135,29 +139,12 @@ namespace Service
             return patient.SuspiciousActivity.Count >= Constants.Constants.MAX_SUSPICIOUS_ACTIVITY_COUNT;
         }
 
-        private static void SanctioningTroll(Patient patient)
-        {
-            Blocking(patient);
-            TrollLogOut();
-        }
-
         private static void Blocking(Patient patient)
         {
             patient.Blocked = true;
             Instance.Update(patient);
             ZdravoCorpTabs.LoggedPatient = null;
-            MessageBox.Show("Pacijent je blokiran!");
-        }
-
-        private static void TrollLogOut()
-        {
             AuthenticationController.Instance.Logout();
-            List<Window> windows = Application.Current.Windows.Cast<Window>().Where(window => window.Visibility != Visibility.Hidden).ToList();
-            foreach (Window window in windows)
-            {
-                window.Close();
-            }
-
 
         }
 

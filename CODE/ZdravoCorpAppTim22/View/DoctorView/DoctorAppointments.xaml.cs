@@ -1,8 +1,6 @@
 ﻿using Controller;
 using Model;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 
 namespace ZdravoCorpAppTim22.View.DoctorView
@@ -18,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         public DoctorAppointments(DoctorHomeScreen doctorHomeScreen)
         {
             InitializeComponent();
-            _loggedInDoctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
+            _loggedInDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             var allDoctorMedicalAppointments = _loggedInDoctor.MedicalAppointment;
             CurDocAppointemntsObservable = new ObservableCollection<MedicalAppointment>(allDoctorMedicalAppointments);
             appointmentListGrid.ItemsSource = CurDocAppointemntsObservable;
@@ -26,7 +24,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this._doctorHomeScreen = doctorHomeScreen;
         }
 
-        private bool isMedicalAppointmentSelected()
+        private bool isMedicalAppointmentSelected()     //ne pomeraj
         {
             bool returnValue = true;
             medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
@@ -39,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool patientHasMedicalRecord()
+        private bool patientHasMedicalRecord()      //mozda?
         {
             bool returnValue = true;
             var medicalRecord = PatientController.Instance.GetByID(medicalAppointment.Patient.Id).medicalRecord;
@@ -52,7 +50,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void btnCreate_Click(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             var appCreate = new DoctorAppointmentCreate(this)
             {
@@ -64,7 +62,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
+        private void BeginAppointmentClick(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             if(!(isMedicalAppointmentSelected())) return;
 
@@ -78,7 +76,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             if (!(isMedicalAppointmentSelected())) return;
 
@@ -90,7 +88,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void ViewRecordBtn(object sender, RoutedEventArgs e)
+        private void ViewRecordBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             if (!(isMedicalAppointmentSelected())) return;
             if(!(patientHasMedicalRecord())) return;
@@ -106,19 +104,26 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)
+        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
         {
             _doctorHomeScreen.Show();
             this.Close();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

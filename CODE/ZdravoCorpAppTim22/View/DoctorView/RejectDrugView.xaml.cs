@@ -1,18 +1,5 @@
 ﻿using Controller;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
@@ -30,9 +17,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         //Button click event handlers
         private void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
-            rejectedMedicine.MedicineData.Approval.IsApproved = false;
-            rejectedMedicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHome.selectedDoctorId);
-            rejectedMedicine.MedicineData.Approval.Message = ReasonTextBox.Text;
+            updateMedicineApproval();
 
             DrugsView.allMedicineInStorageObservable.Remove(rejectedMedicine);
 
@@ -44,7 +29,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        private void updateMedicineApproval()       //ne pomeraj
+        {
+            rejectedMedicine.MedicineData.Approval.IsApproved = false;
+            rejectedMedicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
+            rejectedMedicine.MedicineData.Approval.Message = ReasonTextBox.Text;
+        }
+
+        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Reject drug request", 
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -60,13 +52,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)
+        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
-            DoctorHome.doctorHome.Show();
-            this.Close();
+            //DoctorHome.doctorHome.Show();
+            Application.Current.MainWindow.Show();
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != Application.Current.MainWindow)
+                {
+                    item.Close();
+                }
+            }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

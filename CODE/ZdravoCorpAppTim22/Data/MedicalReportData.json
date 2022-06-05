@@ -2,23 +2,34 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "1111",
-    "Diagnosis": "1",
-    "ReportDate": "2022-05-17T15:36:42.0963642+02:00",
-    "ReportReviewed": true,
+    "Anamnesis": "1dsa",
+    "Diagnosis": "sad",
+    "ReportDate": "2022-06-02T19:48:41.4772798+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 0,
-    "ReportReview": 2,
-    "MedicalRecord": 0
+    "ReportReview": 3,
+    "MedicalRecord": 2
   },
   {
     "Id": 1,
     "DoctorID": 0,
-    "Anamnesis": "1",
+    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
-    "ReportDate": "2022-05-17T15:37:18.1402708+02:00",
-    "ReportReviewed": true,
+    "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
+    "ReportReviewed": false,
     "MedicalReceipt": 1,
-    "ReportReview": 3,
+    "ReportReview": 4,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 2,
+    "DoctorID": 1,
+    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 1,
+    "ReportReview": 5,
     "MedicalRecord": 0
   }
 ]

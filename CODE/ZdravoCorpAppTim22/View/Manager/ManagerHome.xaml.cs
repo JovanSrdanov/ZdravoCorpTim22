@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.View.Manager.Views;
+using System;
 
 namespace ZdravoCorpAppTim22.View.Manager
 {
@@ -13,11 +14,14 @@ namespace ZdravoCorpAppTim22.View.Manager
     {
         public static ManagerHome Instance { get; private set; }
         public static NavigationService NavigationService { get; private set; }
+        public static int CurrentLanguage { get; private set; }
         public ManagerHome(ManagerClass manager)
         {
             InitializeComponent();
             NavigationService = ContentFrame.NavigationService;
             Instance = this;
+            CurrentLanguage = 0;
+            NameTextBlock.Text = manager.Name + " " + manager.Surname;
         }
 
         public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
@@ -75,7 +79,40 @@ namespace ZdravoCorpAppTim22.View.Manager
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e)
         {
-            InfoModal.Show("Work in progress!");
+            if(CurrentLanguage == 0)
+            {
+                InfoModal.Show("Work in progress!");
+            }
+            else
+            {
+                InfoModal.Show("Nije završeno!");
+            }
+        }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (LanguageComboBox.SelectedIndex == 1)
+            {
+                CurrentLanguage = 1;
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Language/srb.xaml", UriKind.Relative) };
+            }
+            else
+            {
+                CurrentLanguage = 0;
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new Uri("View/Manager/Language/eng.xaml", UriKind.Relative) };
+            }
+        }
+
+        private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ThemeComboBox.SelectedIndex == 1)
+            {
+                App.Current.Resources.MergedDictionaries[1] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerLight.xaml", UriKind.Relative) };
+            }
+            else
+            {
+                App.Current.Resources.MergedDictionaries[1] = new ResourceDictionary() { Source = new Uri("View/Manager/Styles/ManagerDark.xaml", UriKind.Relative) };
+            }
         }
     }
 }

@@ -22,10 +22,10 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Foreground="{StaticResource TextPrimary}" 
+        <TextBlock Foreground="{DynamicResource TextPrimary}" 
                    Grid.Row="0" 
                    Margin="0 0 0 30" 
-                   FontSize="{StaticResource HeadingFontSize}">ROOM OVERVIEW</TextBlock>
+                   FontSize="{StaticResource HeadingFontSize}" Text="{DynamicResource Manager_Room_PageHeading}"/>
         <WrapPanel Grid.Row="1"
                    Margin="0 0 0 10">
             <Button x:Name="AddRoom" Style="{StaticResource AddButtonStyle}" Command="{Binding OpenAddCommand}"/>
@@ -41,10 +41,10 @@
                   SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=Level}" Header="Level" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Surface}" Header="Surface Area" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="Type" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="{DynamicResource Manager_Name}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Path=Level}" Header="{DynamicResource Manager_Level}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Surface}" Header="{DynamicResource Manager_Surface}" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="{DynamicResource Manager_Type}" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

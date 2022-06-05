@@ -11,18 +11,12 @@ namespace ZdravoCorpAppTim22.Service
 {
     public class RoomMergeService : GenericService<RoomMergeRepository, RoomMerge>
     {
-        private static RoomMergeService instance;
         private RoomMergeService() : base(RoomMergeRepository.Instance) { }
         public static RoomMergeService Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new RoomMergeService();
-                }
-
-                return instance;
+                return new RoomMergeService();
             }
         }
         public void DeleteByList(List<RoomMerge> list)

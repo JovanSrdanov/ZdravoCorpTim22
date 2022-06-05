@@ -33,7 +33,6 @@ namespace ZdravoCorpAppTim22.Repository
                 if (replacingMedicine != null && replacementToMedicine != null)
                 {
                     replacementToMedicine.AddReplacement(replacingMedicine);
-                    //replacingMedicine.ReplacementTo = replacementToMedicine;
                 }
                 else
                 {
