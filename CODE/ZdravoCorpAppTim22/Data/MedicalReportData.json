@@ -8,7 +8,7 @@
     "ReportReviewed": false,
     "MedicalReceipt": 0,
     "ReportReview": 3,
-    "MedicalRecord": 2
+    "MedicalRecord": null
   },
   {
     "Id": 1,
@@ -30,6 +30,17 @@
     "ReportReviewed": false,
     "MedicalReceipt": 1,
     "ReportReview": 5,
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "DoctorID": 0,
+    "Anamnesis": "za",
+    "Diagnosis": "nesto",
+    "ReportDate": "2022-06-05T13:01:46.2617199+02:00",
+    "ReportReviewed": false,
+    "MedicalReceipt": 0,
+    "ReportReview": null,
     "MedicalRecord": 0
   }
 ]

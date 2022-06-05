@@ -432,11 +432,39 @@
     <Compile Include="View\PatientView\ReviewTheReport.xaml.cs">
       <DependentUpon>ReviewTheReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientView\ViewModelForMVVM\HospitalReviewViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\MainWindowZdravoCorpTabs.xaml.cs">
+      <DependentUpon>MainWindowZdravoCorpTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentDoctorViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentPatientViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentRoomViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPage.xaml.cs">
+      <DependentUpon>AppointmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml.cs">
+      <DependentUpon>ChoosingDateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsView.xaml.cs">
+      <DependentUpon>ChoosingIntervalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\MedicalAppointmentsViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml.cs">
+      <DependentUpon>GeneralInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsView.xaml.cs">
+      <DependentUpon>TabsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TherapyTab\TherapyViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TherapyTab\TherapyTableView.xaml.cs">
+      <DependentUpon>TherapyTableView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ViewModelForMVVM\MedicalReportsViewModel.cs" />
     <Compile Include="View\PatientView\ViewModelForMVVM\ReportReviewViewModel.cs" />
-    <Compile Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml.cs">
-      <DependentUpon>HospitalReviewView.xaml</DependentUpon>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageView.xaml.cs">
+      <DependentUpon>HospitalReviewPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ViewsForMVVM\MedicalReportsView.xaml.cs">
       <DependentUpon>MedicalReportsView.xaml</DependentUpon>
@@ -492,6 +520,7 @@
     <Compile Include="View\Secretary\SecretaryScheduleOptions.xaml.cs">
       <DependentUpon>SecretaryScheduleOptions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewModel.cs" />
     <Page Include="View\DoctorView\CreateReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -739,7 +768,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PatientView\ViewsForMVVM\HospitalReviewView.xaml">
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\MainWindowZdravoCorpTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TherapyTab\TherapyTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -926,7 +983,10 @@
   <ItemGroup>
     <Resource Include="Resource\PatientResource\pdfIco.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\" />
+    <Folder Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

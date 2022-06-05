@@ -26,5 +26,12 @@
     "Type": 4,
     "Name": "SOBA ZA PREGLED",
     "Surface": 213
+  },
+  {
+    "Id": 8,
+    "Level": 2,
+    "Type": 4,
+    "Name": "NAJJACA",
+    "Surface": 232
   }
 ]
