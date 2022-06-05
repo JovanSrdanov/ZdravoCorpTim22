@@ -70,7 +70,7 @@
                 Background="#FFDE3232"
                 Command="{Binding DeleteAppointmentCommand}"
                 Content="Otkaži termin"
-                Foreground="White" />
+                Foreground="White" Click="RemoveAppointment_Click" />
             <Button
                 Click="ChangeAppointment_OnClick"
                 x:Name="ChangeAppointment"

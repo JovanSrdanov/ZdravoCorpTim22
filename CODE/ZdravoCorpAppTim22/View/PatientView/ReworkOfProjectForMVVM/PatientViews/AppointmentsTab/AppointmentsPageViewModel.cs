@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Forms;
-using Controller;
+﻿using Controller;
 using Model;
 using MVVM1;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab
@@ -66,28 +64,29 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             ObservableCollection<MedicalAppointmentsViewModel> medicalAppointmentsViewModels =
                 new ObservableCollection<MedicalAppointmentsViewModel>();
 
-            foreach (MedicalAppointment medicalAppointment in medicalAppointments)
-            {
-                AppointmentDoctorViewModel appointmentDoctorViewModel =
-                    new AppointmentDoctorViewModel(medicalAppointment.doctor.Id, medicalAppointment.doctor.Name,
-                        medicalAppointment.doctor.Surname, medicalAppointment.doctor.DoctorSpecialization.Name);
+            if (medicalAppointments != null)
+                foreach (MedicalAppointment medicalAppointment in medicalAppointments)
+                {
+                    AppointmentDoctorViewModel appointmentDoctorViewModel =
+                        new AppointmentDoctorViewModel(medicalAppointment.doctor.Id, medicalAppointment.doctor.Name,
+                            medicalAppointment.doctor.Surname, medicalAppointment.doctor.DoctorSpecialization.Name);
 
-                AppointmentRoomViewModel appointmentRoomViewModel =
-                    new AppointmentRoomViewModel(medicalAppointment.room.Id, medicalAppointment.room.Level, medicalAppointment.room.Name);
+                    AppointmentRoomViewModel appointmentRoomViewModel =
+                        new AppointmentRoomViewModel(medicalAppointment.room.Id, medicalAppointment.room.Level, medicalAppointment.room.Name);
 
 
-                AppointmentPatientViewModel appointmentPatientViewModel =
-                    new AppointmentPatientViewModel(medicalAppointment.patient.Id, medicalAppointment.patient.Name,
-                        medicalAppointment.patient.Surname);
+                    AppointmentPatientViewModel appointmentPatientViewModel =
+                        new AppointmentPatientViewModel(medicalAppointment.patient.Id, medicalAppointment.patient.Name,
+                            medicalAppointment.patient.Surname);
 
-                MedicalAppointmentsViewModel medicalAppointmentsViewModel =
-                    new MedicalAppointmentsViewModel(medicalAppointment.Id, medicalAppointment.Type,
-                        medicalAppointment.Interval, appointmentRoomViewModel, appointmentPatientViewModel,
-                        appointmentDoctorViewModel);
+                    MedicalAppointmentsViewModel medicalAppointmentsViewModel =
+                        new MedicalAppointmentsViewModel(medicalAppointment.Id, medicalAppointment.Type,
+                            medicalAppointment.Interval, appointmentRoomViewModel, appointmentPatientViewModel,
+                            appointmentDoctorViewModel);
 
-                medicalAppointmentsViewModels.Add(medicalAppointmentsViewModel);
+                    medicalAppointmentsViewModels.Add(medicalAppointmentsViewModel);
 
-            }
+                }
 
 
             return medicalAppointmentsViewModels;
