@@ -14,8 +14,8 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ProfileView profileView = new ProfileView();
-            this.NavigationService.Navigate(profileView);
+            SuccesReportReviewPage succesReportReviewPage = new SuccesReportReviewPage();
+            this.NavigationService.Navigate(succesReportReviewPage);
         }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)

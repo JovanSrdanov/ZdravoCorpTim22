@@ -61,5 +61,59 @@
     "DoctorKindness": 1,
     "DoctorExpertise": 1,
     "DoctorDiscretion": 1
+  },
+  {
+    "Id": 10,
+    "Diagnosis": 5,
+    "RecommendedTherapy": 5,
+    "AppointmentDuration": 5,
+    "DoctorKindness": 5,
+    "DoctorExpertise": 5,
+    "DoctorDiscretion": 5
+  },
+  {
+    "Id": 11,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 1,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 1,
+    "DoctorExpertise": 1,
+    "DoctorDiscretion": 1
+  },
+  {
+    "Id": 12,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 1,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 1,
+    "DoctorExpertise": 1,
+    "DoctorDiscretion": 1
+  },
+  {
+    "Id": 13,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 1,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 5,
+    "DoctorExpertise": 1,
+    "DoctorDiscretion": 1
+  },
+  {
+    "Id": 14,
+    "Diagnosis": 1,
+    "RecommendedTherapy": 1,
+    "AppointmentDuration": 1,
+    "DoctorKindness": 1,
+    "DoctorExpertise": 1,
+    "DoctorDiscretion": 1
+  },
+  {
+    "Id": 15,
+    "Diagnosis": 5,
+    "RecommendedTherapy": 5,
+    "AppointmentDuration": 5,
+    "DoctorKindness": 5,
+    "DoctorExpertise": 5,
+    "DoctorDiscretion": 5
   }
 ]

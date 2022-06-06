@@ -9,7 +9,10 @@
     FontSize="18"
     mc:Ignorable="d">
 
-    <StackPanel Margin="42,0,42,0">
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top">
         <Label
             Margin="0,0,0,5"
             HorizontalAlignment="Center"
@@ -17,24 +20,28 @@
             Content="Ostavljanje komentara:"
             FontSize="36"
             FontWeight="Bold" />
-        <RichTextBox x:Name="CommentTextBox" Height="232">
+        <RichTextBox
+            x:Name="CommentTextBox"
+            Height="407"
+            GotFocus="CommentTextBox_OnGotFocus">
             <FlowDocument>
                 <Paragraph />
             </FlowDocument>
 
         </RichTextBox>
         <Button
+            Width="159"
             Margin="0,10,0,0"
             HorizontalAlignment="Right"
-            Click="ButtonBase_OnClick"
             VerticalAlignment="Center"
-            Background="DeepSkyBlue">
+            Background="DeepSkyBlue"
+            Click="ButtonBase_OnClick">
             <StackPanel Orientation="Horizontal">
 
-                <Label Content="Virtuelna Tastatura" />
+                <Label Content="Tastatura" />
                 <Image
-                    Height="32"
-                    Margin="0"
+                    Height="28"
+                    Margin="10,0,0,0"
                     Source="../../../../../Resource/PatientResource/keyboards.png" />
 
             </StackPanel>
@@ -56,7 +63,6 @@
                 VerticalAlignment="Bottom"
                 Background="Green"
                 Click="Button_Click_1"
-                Command="{Binding ReviewReportCommand}"
                 Content="Potvrdi komentar"
                 Foreground="White" />
         </Grid>

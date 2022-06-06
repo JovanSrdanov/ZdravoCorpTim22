@@ -20,7 +20,7 @@
     "ReportReviewed": true,
     "ReportComment": null,
     "MedicalReceipt": 1,
-    "ReportReview": 6,
+    "ReportReview": 15,
     "MedicalRecord": 0
   },
   {
@@ -29,10 +29,10 @@
     "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
-    "ReportReviewed": true,
+    "ReportReviewed": false,
     "ReportComment": null,
     "MedicalReceipt": 1,
-    "ReportReview": 7,
+    "ReportReview": 13,
     "MedicalRecord": 0
   },
   {
@@ -41,10 +41,10 @@
     "Anamnesis": "za",
     "Diagnosis": "nesto",
     "ReportDate": "2022-06-05T13:01:46.2617199+02:00",
-    "ReportReviewed": true,
+    "ReportReviewed": false,
     "ReportComment": null,
     "MedicalReceipt": 0,
-    "ReportReview": 9,
+    "ReportReview": 14,
     "MedicalRecord": 0
   }
 ]

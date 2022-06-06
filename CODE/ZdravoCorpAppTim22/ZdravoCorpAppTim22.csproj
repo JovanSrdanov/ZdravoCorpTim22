@@ -489,6 +489,9 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\ReportReviewPageView.xaml.cs">
       <DependentUpon>ReportReviewPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccesReportReviewPage.xaml.cs">
+      <DependentUpon>SuccesReportReviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsView.xaml.cs">
       <DependentUpon>TabsView.xaml</DependentUpon>
     </Compile>
@@ -837,6 +840,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\ReportReviewPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccesReportReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

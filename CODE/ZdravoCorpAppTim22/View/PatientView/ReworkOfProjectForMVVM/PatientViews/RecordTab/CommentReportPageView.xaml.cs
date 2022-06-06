@@ -29,5 +29,10 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
         {
             System.Diagnostics.Process.Start("osk.exe");
         }
+
+        private void CommentTextBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("osk.exe");
+        }
     }
 }

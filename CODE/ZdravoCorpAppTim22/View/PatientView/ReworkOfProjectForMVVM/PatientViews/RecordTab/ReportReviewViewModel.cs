@@ -45,7 +45,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
                 AppointmentDuration, DoctorKindness, DoctorExpertise, DoctorDiscretion);
 
 
-            MessageBox.Show("Pregled i lekar uspešno ocenjenjeni!");
         }
 
 
