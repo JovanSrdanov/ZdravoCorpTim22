@@ -57,9 +57,9 @@
   },
   {
     "Id": 9,
-    "Message": null,
+    "Message": "1",
     "IsApproved": false,
-    "Doctor": null,
+    "Doctor": 0,
     "MedicineData": 4
   }
 ]

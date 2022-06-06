@@ -2,49 +2,13 @@
   {
     "Id": 0,
     "DoctorID": 0,
-    "Anamnesis": "1dsa",
-    "Diagnosis": "sad",
-    "ReportDate": "2022-06-02T19:48:41.4772798+02:00",
-    "ReportReviewed": false,
-    "ReportComment": null,
-    "MedicalReceipt": 0,
-    "ReportReview": 3,
-    "MedicalRecord": null
-  },
-  {
-    "Id": 1,
-    "DoctorID": 0,
-    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
+    "Anamnesis": "1",
     "Diagnosis": "1",
-    "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
-    "ReportReviewed": true,
-    "ReportComment": null,
-    "MedicalReceipt": 1,
-    "ReportReview": 15,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 2,
-    "DoctorID": 1,
-    "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
-    "Diagnosis": "1",
-    "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
+    "ReportDate": "2022-06-06T21:41:07.055465+02:00",
     "ReportReviewed": false,
-    "ReportComment": null,
-    "MedicalReceipt": 1,
-    "ReportReview": 13,
-    "MedicalRecord": 0
-  },
-  {
-    "Id": 3,
-    "DoctorID": 0,
-    "Anamnesis": "za",
-    "Diagnosis": "nesto",
-    "ReportDate": "2022-06-05T13:01:46.2617199+02:00",
-    "ReportReviewed": false,
-    "ReportComment": null,
+    "ReportComment": "",
     "MedicalReceipt": 0,
-    "ReportReview": 14,
+    "ReportReview": null,
     "MedicalRecord": 0
   }
 ]

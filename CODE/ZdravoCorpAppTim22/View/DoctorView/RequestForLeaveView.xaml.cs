@@ -106,6 +106,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
+        private void ViewRequestsBtnClick(object sender, RoutedEventArgs e)
+        {
+            RequestListView requestListView = new RequestListView();
+            requestListView.Owner = this;
+            requestListView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            requestListView.Show();
+            this.Hide();
+        }
+
         private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
         {
             //DoctorHome.doctorHome.Show();

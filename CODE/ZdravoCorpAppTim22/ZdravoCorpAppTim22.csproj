@@ -314,8 +314,14 @@
     <Compile Include="View\DoctorView\RejectDrugView.xaml.cs">
       <DependentUpon>RejectDrugView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\RequestDeniedView.xaml.cs">
+      <DependentUpon>RequestDeniedView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\RequestForLeaveView.xaml.cs">
       <DependentUpon>RequestForLeaveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\RequestListView.xaml.cs">
+      <DependentUpon>RequestListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\Converters\PercentageConverter.cs" />
@@ -600,7 +606,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DoctorView\RequestDeniedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView\RequestForLeaveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\RequestListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
