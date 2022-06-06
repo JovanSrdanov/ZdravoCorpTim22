@@ -10,6 +10,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
         public CommentReportPageView(int id, string reportComment)
         {
             InitializeComponent();
+
+            CommentReportPageViewModel commentReportPageViewModel = new CommentReportPageViewModel(id,reportComment);
+            this.DataContext = commentReportPageViewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -20,9 +23,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Komentar usešno dodat!");
-            ProfileView profileView = new ProfileView();
-            this.NavigationService.Navigate(profileView);
+
+            SuccessReportCommented successReportCommented = new SuccessReportCommented();
+            this.NavigationService.Navigate(successReportCommented);
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

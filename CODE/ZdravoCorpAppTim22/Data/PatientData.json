@@ -1,6 +1,7 @@
 [
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [
       "2022-06-05T19:30:42.8535073+02:00",
       "2022-06-05T20:08:11.4360789+02:00"
@@ -20,6 +21,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": null,
     "HospitalReview": 1,
     "MedicalRecord": null,
@@ -36,6 +38,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 2,
     "MedicalRecord": null,
@@ -52,6 +55,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 3,
     "MedicalRecord": null,
@@ -68,6 +72,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 4,
     "MedicalRecord": null,
@@ -84,6 +89,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 5,
     "MedicalRecord": null,
@@ -100,6 +106,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 6,
     "MedicalRecord": null,
@@ -116,6 +123,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 7,
     "MedicalRecord": null,

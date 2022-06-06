@@ -474,9 +474,13 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml.cs">
       <DependentUpon>GeneralInformationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\SuccesHospitalReviewPage.xaml.cs">
+      <DependentUpon>SuccesHospitalReviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\CommentReportPageView.xaml.cs">
       <DependentUpon>CommentReportPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\CommentReportPageViewModel.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\MedicalReportsPageViewModel.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\MedicalReportsView.xaml.cs">
       <DependentUpon>MedicalReportsView.xaml</DependentUpon>
@@ -489,8 +493,11 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\ReportReviewPageView.xaml.cs">
       <DependentUpon>ReportReviewPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccesReportReviewPage.xaml.cs">
-      <DependentUpon>SuccesReportReviewPage.xaml</DependentUpon>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccessReportCommented.xaml.cs">
+      <DependentUpon>SuccessReportCommented.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccessReportReviewPage.xaml.cs">
+      <DependentUpon>SuccessReportReviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TabsView.xaml.cs">
       <DependentUpon>TabsView.xaml</DependentUpon>
@@ -827,6 +834,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\SuccesHospitalReviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\CommentReportPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -843,7 +854,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccesReportReviewPage.xaml">
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccessReportCommented.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\SuccessReportReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,5 +25,14 @@
     "AdditionalInstructions": "uf",
     "TherapyPurpose": "21312",
     "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-06-24T00:00:00",
+    "NotifyNextDateTime": "2022-06-06T12:33:00",
+    "Time": "12:33",
+    "AdditionalInstructions": "Nek se leci ovaj jadan bolestan raspadnud covek",
+    "TherapyPurpose": "Jer je jadan",
+    "MedicalRecord": 0
   }
 ]
