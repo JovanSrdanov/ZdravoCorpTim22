@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM
 {
     /// <summary>
-    /// Interaction logic for MedicalReportsView.xaml
+    /// Interaction logic for MedicalReportsViewSTARI.xaml
     /// </summary>
-    public partial class MedicalReportsView : UserControl
+    public partial class MedicalReportsViewSTARI : UserControl
     {
-        public MedicalReportsView()
+        public MedicalReportsViewSTARI()
         {
             InitializeComponent();
             

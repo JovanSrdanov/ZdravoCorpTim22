@@ -1,56 +1,50 @@
 ﻿using Model;
 using MVVM1;
 using System.Windows;
-using Controller;
 using ZdravoCorpAppTim22.Controller;
-using ZdravoCorpAppTim22.Model;
 
-namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
+namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {
     class ReportReviewViewModel : BindableBase
     {
 
         public MedicalReport MedicalReport { get; set; }
-        public ReportReview CreateReportReview { get; set; }
+        public int Diagnosis { get; set; }
+        public int RecommendedTherapy { get; set; }
+        public int AppointmentDuration { get; set; }
+
+        public int DoctorKindness { get; set; }
+        public int DoctorExpertise { get; set; }
+        public int DoctorDiscretion { get; set; }
 
         public MyICommand SubmitReviewCommand { get; set; }
-        public ReportReviewViewModel()
+        public int MedicalReportId { get; set; }
+
+        public ReportReviewViewModel(int id)
         {
-            MedicalReport = MedicalReportsViewModel.selectedMedicalReport;
+            MedicalReportId = id;
             SubmitReviewCommand = new MyICommand(SubmitReview);
 
 
-            if (MedicalReport.reportReview == null)
-            {
-                CreateReportReview = new ReportReview();
-                MedicalReport.reportReview = CreateReportReview;
-                ReportReviewController.Instance.Create(CreateReportReview);
-                MedicalReportController.Instance.Update(MedicalReport);
-            }
-
-            else
-            {
-                CreateReportReview = MedicalReport.reportReview;
-            }
 
 
             SetAll();
         }
         public void SubmitReview()
         {
-            CreateReportReview.Diagnosis = DiagnosisCheck();
-            CreateReportReview.RecommendedTherapy = RecommendedTherapyCheck();
-            CreateReportReview.AppointmentDuration = AppointmentDurationCheck();
 
-            CreateReportReview.DoctorKindness = DoctorKindnessCheck();
-            CreateReportReview.DoctorExpertise = DoctorExpertiseCheck();
-            CreateReportReview.DoctorDiscretion = DoctorDiscretionCheck();
+            Diagnosis = DiagnosisCheck();
+            RecommendedTherapy = RecommendedTherapyCheck();
+            AppointmentDuration = AppointmentDurationCheck();
 
-            MedicalReport.reportReview = CreateReportReview;
-            MedicalReport.ReportReviewed = true;
+            DoctorKindness = DoctorKindnessCheck();
+            DoctorExpertise = DoctorExpertiseCheck();
+            DoctorDiscretion = DoctorDiscretionCheck();
 
-            ReportReviewController.Instance.Update(CreateReportReview);
-            MedicalReportController.Instance.Update(MedicalReport);
+            MedicalReportController.Instance.ReviewTheReport(MedicalReportId, Diagnosis, RecommendedTherapy,
+                AppointmentDuration, DoctorKindness, DoctorExpertise, DoctorDiscretion);
+
+
             MessageBox.Show("Pregled i lekar uspešno ocenjenjeni!");
         }
 

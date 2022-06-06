@@ -155,6 +155,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="Yellow"
+                    Click="MedicalReportsButton_Click"
                     Content="Medicinski izveštaji" />
             </Grid>
         </StackPanel>

@@ -6,6 +6,7 @@
     "Diagnosis": "sad",
     "ReportDate": "2022-06-02T19:48:41.4772798+02:00",
     "ReportReviewed": false,
+    "ReportComment": null,
     "MedicalReceipt": 0,
     "ReportReview": 3,
     "MedicalRecord": null
@@ -16,9 +17,10 @@
     "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
-    "ReportReviewed": false,
+    "ReportReviewed": true,
+    "ReportComment": null,
     "MedicalReceipt": 1,
-    "ReportReview": 4,
+    "ReportReview": 6,
     "MedicalRecord": 0
   },
   {
@@ -27,9 +29,10 @@
     "Anamnesis": "1\n\nReffered to: Stefan Apostolovic\nAppointment date: 6/2/2022 10:00:00 AM\nComment for the specialist:\n1",
     "Diagnosis": "1",
     "ReportDate": "2022-06-02T21:00:06.7573919+02:00",
-    "ReportReviewed": false,
+    "ReportReviewed": true,
+    "ReportComment": null,
     "MedicalReceipt": 1,
-    "ReportReview": 5,
+    "ReportReview": 7,
     "MedicalRecord": 0
   },
   {
@@ -38,9 +41,10 @@
     "Anamnesis": "za",
     "Diagnosis": "nesto",
     "ReportDate": "2022-06-05T13:01:46.2617199+02:00",
-    "ReportReviewed": false,
+    "ReportReviewed": true,
+    "ReportComment": null,
     "MedicalReceipt": 0,
-    "ReportReview": null,
+    "ReportReview": 9,
     "MedicalRecord": 0
   }
 ]

@@ -1,26 +1,21 @@
-﻿<UserControl
-    x:Class="ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM.ReportReviewViewxaml"
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab.ReportReviewPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:recordTab="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab"
-    xmlns:viewModel="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center"
-    HorizontalContentAlignment="Center"
-    VerticalContentAlignment="Center"
+    Title="ReportReviewPageView"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <recordTab:ReportReviewViewModel />
-    </UserControl.DataContext>
+
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
-        <Image
-            Width="200"
-            Height="200"
-            Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpBigLogo.jpg" />
+        <Label
+            HorizontalAlignment="Center"
+            Content="Ocenjivanje pregleda i lekara"
+            FontSize="36"
+            FontWeight="Bold" />
+
         <Label
             HorizontalAlignment="Center"
             Content="Pregled"
@@ -246,23 +241,20 @@
             <Button
                 Padding="10,1"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
                 Background="Yellow"
                 Content="Obustavi"
                 FontSize="18"
-                IsCancel="True" />
+                IsCancel="True" Click="Button_Click_1" />
             <Button
                 Padding="10,1"
                 HorizontalAlignment="Right"
                 Background="Green"
-                Click="Button_Click"
                 Command="{Binding SubmitReviewCommand}"
                 Content="Oceni"
                 FontSize="18"
-                Foreground="White" />
+                Foreground="White" Click="Button_Click" />
         </Grid>
 
 
     </StackPanel>
-
-</UserControl>
+</Page>

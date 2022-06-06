@@ -1,9 +1,10 @@
-﻿using System;
-using Model;
+﻿using Model;
+using System;
+using System.Collections.ObjectModel;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {
-    public class ProfileViewModel:ViewModel
+    public class ProfileViewModel : ViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +16,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
         public Gender Gender { get; set; }
         public string Adress { get; set; }
 
-
+        public ObservableCollection<MedicalReportsViewModel> MedicalReportsViewModels { get; set; }
 
         public ProfileViewModel(Patient patient)
         {
@@ -28,6 +29,15 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             Phone = patient.Phone;
             Gender = patient.Gender;
             Adress = patient.address.ToString();
+
+            MedicalReportsViewModels = new ObservableCollection<MedicalReportsViewModel>();
+
+            foreach (MedicalReport medicalReport in patient.medicalRecord.medicalReport)
+            {
+                MedicalReportsViewModels.Add(new MedicalReportsViewModel(medicalReport));
+
+            }
+
 
         }
     }

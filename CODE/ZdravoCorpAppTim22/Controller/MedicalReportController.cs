@@ -1,5 +1,7 @@
 ﻿using Model;
+using System;
 using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
 
 namespace ZdravoCorpAppTim22.Controller
@@ -18,6 +20,17 @@ namespace ZdravoCorpAppTim22.Controller
                 }
                 return instance;
             }
+        }
+
+        public void ReviewTheReport(int medicalReportId, int diagnosis, int recommendedTherapy, int appointmentDuration, int doctorKindness, int doctorExpertise, int doctorDiscretion)
+        {
+            MedicalReport medicalReport = Instance.GetByID(medicalReportId);
+
+            ReportReview reportReview = new ReportReview(diagnosis, recommendedTherapy, appointmentDuration,
+                doctorKindness, doctorExpertise, doctorDiscretion); 
+
+            MedicalReportService.Instance.ReviewTheReport(medicalReport, reportReview);
+
         }
     }
 }
