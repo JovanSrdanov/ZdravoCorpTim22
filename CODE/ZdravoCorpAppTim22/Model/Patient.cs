@@ -11,26 +11,28 @@ namespace Model
     {
 
         public bool Blocked { get; set; }
-        public List<DateTime> SuspiciousActivity { get; set; } 
+
+        public bool HasBeenLoggedIn { get; set; }
+        public List<DateTime> SuspiciousActivity { get; set; }
 
 
         [JsonConverter(typeof(HospitalReviewToIDConverter))]
 
         public HospitalReview hospitalReview;
         [JsonConverter(typeof(HospitalReviewToIDConverter))]
-        
-            public HospitalReview HospitalReview
+
+        public HospitalReview HospitalReview
+        {
+            get
             {
-                get
-                {
-                    return hospitalReview;
-                }
-                set
-                {
-                    this.hospitalReview = value;
-                }
+                return hospitalReview;
             }
-    
+            set
+            {
+                this.hospitalReview = value;
+            }
+        }
+
 
         [JsonConverter(typeof(MedicalRecordToIDConverter))]
 
@@ -59,10 +61,10 @@ namespace Model
             }
         }
 
-public bool IsAvailable(Interval interval)
+        public bool IsAvailable(Interval interval)
         {
 
-            if (Blocked )
+            if (Blocked)
             {
                 return false;
             }
@@ -118,6 +120,7 @@ public bool IsAvailable(Interval interval)
             }
 
             Blocked = false;
+            HasBeenLoggedIn = false;
 
             SuspiciousActivity = new List<DateTime>();
 
@@ -144,6 +147,7 @@ public bool IsAvailable(Interval interval)
                 this.medicalAppointment = medicalAppointment;
             }
             Blocked = false;
+            HasBeenLoggedIn = false;
             SuspiciousActivity = new List<DateTime>();
 
         }
@@ -214,7 +218,7 @@ public bool IsAvailable(Interval interval)
             return Name + " " + Surname + " " + Jmbg;
         }
 
-       
+
 
 
     }

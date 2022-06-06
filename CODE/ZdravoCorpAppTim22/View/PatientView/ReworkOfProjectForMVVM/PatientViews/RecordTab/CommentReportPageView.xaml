@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab.CommentReportPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="CommentReportPageView"
+    FontSize="18"
+    mc:Ignorable="d">
+
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top">
+        <Label
+            Margin="0,0,0,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Ostavljanje komentara:"
+            FontSize="36"
+            FontWeight="Bold" />
+        <RichTextBox
+            x:Name="CommentTextBox"
+            Height="407"
+            GotFocus="CommentTextBox_OnGotFocus">
+            <FlowDocument>
+                <Paragraph />
+            </FlowDocument>
+
+        </RichTextBox>
+        <Button
+            Width="159"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Background="DeepSkyBlue"
+            Click="ButtonBase_OnClick">
+            <StackPanel Orientation="Horizontal">
+
+                <Label Content="Tastatura" />
+                <Image
+                    Height="28"
+                    Margin="10,0,0,0"
+                    Source="../../../../../Resource/PatientResource/keyboards.png" />
+
+            </StackPanel>
+        </Button>
+
+        <Grid Margin="0,21,0,0">
+
+            <Button
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="Yellow"
+                Click="Button_Click"
+                Content="Obustavi" />
+
+            <Button
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="Green"
+                Click="Button_Click_1"
+                Content="Potvrdi komentar"
+                Foreground="White" />
+        </Grid>
+
+
+
+    </StackPanel>
+</Page>
