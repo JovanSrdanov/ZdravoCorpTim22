@@ -526,7 +526,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>7E4F1394-6D95-4900-BB1A-411466C8709D</a:CustomPictureID>
+<a:CustomPictureID>F66CB09C-EBDE-48C0-99ED-9799DDCF4A30</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -548,7 +548,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>7E4F1394-6D95-4900-BB1A-411466C8709D</a:CustomPictureID>
+<a:CustomPictureID>F66CB09C-EBDE-48C0-99ED-9799DDCF4A30</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -588,7 +588,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1651608360</a:CreationDate>
 <a:Creator>Pikula</a:Creator>
 <a:ModificationDate>1652807297</a:ModificationDate>
-<a:Modifier>rade-</a:Modifier>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/DoctorSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>24A4C8F9-90D8-4D5D-B0C6-B3E45CD4D73D</a:ModelDocument.ModelID>
@@ -601,7 +601,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1652713704</a:CreationDate>
 <a:Creator>Jana Jovan</a:Creator>
 <a:ModificationDate>1652725296</a:ModificationDate>
-<a:Modifier>Pikula</a:Modifier>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/PatientAntiTrollSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>AF4CB804-CD70-4AA0-886A-E24AB6DAE6FE</a:ModelDocument.ModelID>
@@ -613,8 +613,8 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ManagerSequenceDiagram</a:Code>
 <a:CreationDate>1652814983</a:CreationDate>
 <a:Creator>rade-</a:Creator>
-<a:ModificationDate>1652816071</a:ModificationDate>
-<a:Modifier>rade-</a:Modifier>
+<a:ModificationDate>1654451738</a:ModificationDate>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ManagerSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>13E14499-BE5B-4586-ABC5-FBEAE6EF5A26</a:ModelDocument.ModelID>
@@ -651,7 +651,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1651565115</a:CreationDate>
 <a:Creator>rade-</a:Creator>
 <a:ModificationDate>1651567183</a:ModificationDate>
-<a:Modifier>Pikula</a:Modifier>
+<a:Modifier>rade-</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ManagerEquipmentRelocation.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>8A79065E-A413-469A-A4EA-A8B503AF76AC</a:ModelDocument.ModelID>
@@ -664,7 +664,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1652791867</a:CreationDate>
 <a:Creator>Pikula</a:Creator>
 <a:ModificationDate>1652794415</a:ModificationDate>
-<a:Modifier>ASUS ROG</a:Modifier>
+<a:Modifier>rade-</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/SecretaryEmergencyAppointment.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>87D72CE9-EE9D-468A-9714-045CC5521CEB</a:ModelDocument.ModelID>

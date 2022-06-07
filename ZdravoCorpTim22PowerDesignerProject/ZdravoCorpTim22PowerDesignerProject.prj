@@ -526,7 +526,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>4036CE04-4907-4AA2-A23B-3C16AC0188DC</a:CustomPictureID>
+<a:CustomPictureID>80A7736E-2E28-46EA-84FA-D1ADAA379A69</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -548,7 +548,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>4036CE04-4907-4AA2-A23B-3C16AC0188DC</a:CustomPictureID>
+<a:CustomPictureID>80A7736E-2E28-46EA-84FA-D1ADAA379A69</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -587,8 +587,8 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>DoctorSequenceDiagram</a:Code>
 <a:CreationDate>1651608360</a:CreationDate>
 <a:Creator>Pikula</a:Creator>
-<a:ModificationDate>1652807297</a:ModificationDate>
-<a:Modifier>rade-</a:Modifier>
+<a:ModificationDate>1654622184</a:ModificationDate>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/DoctorSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>24A4C8F9-90D8-4D5D-B0C6-B3E45CD4D73D</a:ModelDocument.ModelID>
@@ -601,7 +601,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1652713704</a:CreationDate>
 <a:Creator>Jana Jovan</a:Creator>
 <a:ModificationDate>1652725296</a:ModificationDate>
-<a:Modifier>Pikula</a:Modifier>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/PatientAntiTrollSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>AF4CB804-CD70-4AA0-886A-E24AB6DAE6FE</a:ModelDocument.ModelID>
@@ -613,8 +613,8 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ManagerSequenceDiagram</a:Code>
 <a:CreationDate>1652814983</a:CreationDate>
 <a:Creator>rade-</a:Creator>
-<a:ModificationDate>1652824229</a:ModificationDate>
-<a:Modifier>rade-</a:Modifier>
+<a:ModificationDate>1654451738</a:ModificationDate>
+<a:Modifier>ASUS ROG</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ManagerSequenceDiagram.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>13E14499-BE5B-4586-ABC5-FBEAE6EF5A26</a:ModelDocument.ModelID>
