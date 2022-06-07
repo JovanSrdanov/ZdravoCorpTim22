@@ -1,4 +1,6 @@
-﻿namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab
+﻿using Model;
+
+namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab
 {
     public class AppointmentPatientViewModel : ViewModel
     {
@@ -11,6 +13,14 @@
             Id = id;
             Name = name;
             Surname = surname;
+        }
+
+        public AppointmentPatientViewModel(Patient patient)
+        {
+            Id = patient.Id;
+            Name = patient.Name;
+            Surname = patient.Surname;
+
         }
     }
 }

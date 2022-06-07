@@ -13,6 +13,9 @@
 
     <Page.Resources>
         <converter:ConvertReportReviewed x:Key="crr" />
+        <Style x:Key="WrapText" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
     </Page.Resources>
 
     <StackPanel Margin="42,0,42,0">
@@ -30,7 +33,6 @@
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
-            CanUserResizeColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding Path=MedicalReportsViewModels}"
             SelectedItem="{Binding SelectedMedicalReportViewModel}"
@@ -38,12 +40,21 @@
             VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ReportDate, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Kraj termina" />
-                <DataGridTextColumn Binding="{Binding Anamnesis}" Header="Anamneza" />
-                <DataGridTextColumn Binding="{Binding Diagnosis}" Header="Dijagnoza" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Anamnesis}"
+                    ElementStyle="{StaticResource WrapText}"
+                    Header="Anamneza" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Diagnosis}"
+                    ElementStyle="{StaticResource WrapText}"
+                    Header="Dijagnoza" />
                 <DataGridTextColumn Binding="{Binding ReportReviewed, Converter={StaticResource crr}}" Header="Izveštaj ocenjen" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding ReportComment}"
+                    ElementStyle="{StaticResource WrapText}"
                     Header="Komentar pacijenta" />
             </DataGrid.Columns>
         </DataGrid>

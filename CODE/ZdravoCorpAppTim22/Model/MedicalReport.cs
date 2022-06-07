@@ -24,7 +24,7 @@ namespace Model
 
         [JsonConverter(typeof(ReportReviewToIDConverter))]
 
-        public ReportReview reportReview;
+        private ReportReview reportReview;
         [JsonConverter(typeof(ReportReviewToIDConverter))]
 
         public ReportReview ReportReview

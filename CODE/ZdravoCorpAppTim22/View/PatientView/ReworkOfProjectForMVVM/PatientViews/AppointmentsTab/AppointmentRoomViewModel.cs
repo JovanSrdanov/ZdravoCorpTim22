@@ -16,5 +16,15 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             Level = level;
             Name = name;
         }
+
+        public AppointmentRoomViewModel(Room room)
+        {
+            Id = room.Id;
+            Level = room.Level;
+            Name = room.Name;
+        }
+
+
+
     }
 }

@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab.ChooseAppointmentFromSuggestedPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:appointmentstab="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ChooseAppointmentFromSuggestedPageView"
+    d:DataContext="{d:DesignInstance Type=appointmentstab:ChooseAppointmentFromSuggestedPageViewModel}"
+    mc:Ignorable="d">
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <Label
+            Margin="0,0,0,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Ponuđeni termini:"
+            FontSize="36"
+            FontWeight="Bold" />
+
+        <DataGrid
+            x:Name="dataGridSuggestedMedicalAppointments"
+            Height="250"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            ColumnWidth="*"
+            FontSize="18"
+            HorizontalScrollBarVisibility="Disabled"
+            IsReadOnly="True"
+            ItemsSource="{Binding MedicalAppointmentsViewModels}"
+            SelectedItem="{Binding SelectedMedicalAppointmentsViewModel}"
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Visible">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:dd.MM.yyyy\}}" Header="Datum" />
+                <DataGridTextColumn Binding="{Binding Interval.Start, StringFormat=\{0:HH:mm\}}" Header="Početak termina" />
+                <DataGridTemplateColumn Header="Lekar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Doctor.Name}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding Path=Doctor.Surname}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Room.Id}" Header="Šifra sobe" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Margin="0,15,0,0">
+            <Button
+                x:Name="ConfirmAppointment"
+                Margin="0,0,10,0"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Green"
+                Click="ConfirmAppointment_Click"
+                Command="{Binding MakeAppointmentCommand}"
+                Content="Zakaži ovaj termin"
+                FontSize="18"
+                Foreground="White" />
+            <Button
+                x:Name="Cancle"
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Yellow"
+                Click="Cancle_Click"
+                Content="Nazad"
+                FontSize="18" />
+        </Grid>
+    </StackPanel>
+</Page>

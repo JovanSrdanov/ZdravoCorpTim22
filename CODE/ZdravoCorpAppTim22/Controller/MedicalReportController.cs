@@ -32,5 +32,12 @@ namespace ZdravoCorpAppTim22.Controller
             MedicalReportService.Instance.ReviewTheReport(medicalReport, reportReview);
 
         }
+
+        public void CommentTheReport(int medicalReportId, string reportComment)
+        {
+            MedicalReport medicalReport = Instance.GetByID(medicalReportId);
+
+            MedicalReportService.Instance.CommentTheReport(medicalReport, reportComment);
+        }
     }
 }
