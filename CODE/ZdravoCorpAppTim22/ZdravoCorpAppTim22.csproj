@@ -463,6 +463,22 @@
       <DependentUpon>AppointmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\AppointmentsPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChooseAppointmentFromSuggestedPageView.xaml.cs">
+      <DependentUpon>ChooseAppointmentFromSuggestedPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChooseAppointmentFromSuggestedPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePreferredDatePageView.xaml.cs">
+      <DependentUpon>ChoosePreferredDatePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePreferredDoctorPageView.xaml.cs">
+      <DependentUpon>ChoosePreferredDoctorPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePriorityPageView.xaml.cs">
+      <DependentUpon>ChoosePriorityPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChooseTypeOfAppoitnmentPageView.xaml.cs">
+      <DependentUpon>ChooseTypeOfAppoitnmentPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml.cs">
       <DependentUpon>ChoosingDateView.xaml</DependentUpon>
     </Compile>
@@ -471,6 +487,16 @@
       <DependentUpon>ChoosingIntervalsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\MedicalAppointmentsViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\PreferencesViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessCancelAppointment.xaml.cs">
+      <DependentUpon>SuccessCancelAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessChangingAppointment.xaml.cs">
+      <DependentUpon>SuccessChangingAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessCreatingAppointment.xaml.cs">
+      <DependentUpon>SuccessCreatingAppointment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\GeneralInformationView.xaml.cs">
       <DependentUpon>GeneralInformationView.xaml</DependentUpon>
     </Compile>
@@ -822,11 +848,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChooseAppointmentFromSuggestedPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePreferredDatePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePreferredDoctorPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosePriorityPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChooseTypeOfAppoitnmentPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingDateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\ChoosingIntervalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessCancelAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessChangingAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\AppointmentsTab\SuccessCreatingAppointment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

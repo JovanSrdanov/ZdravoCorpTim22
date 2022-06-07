@@ -64,7 +64,7 @@ namespace Model
                     if (value != null)
                     {
                         this.room = value;
-                        this.room.AddMedicalAppointment(this);
+                     
                     }
                 }
             }
@@ -93,7 +93,7 @@ namespace Model
                     if (value != null)
                     {
                         this.patient = value;
-                        this.patient.AddMedicalAppointment(this);
+                       
                     }
                 }
             }
@@ -122,7 +122,7 @@ namespace Model
                     if (value != null)
                     {
                         this.doctor = value;
-                        this.doctor.AddMedicalAppointment(this);
+                  
                     }
                 }
             }

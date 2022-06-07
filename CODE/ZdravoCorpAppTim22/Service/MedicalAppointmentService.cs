@@ -21,14 +21,14 @@ namespace Service
             }
         }
 
-        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(EnteredPreferences enteredPreferences)
+        public List<MedicalAppointment> GetSuggestedMedicalAppointments(EnteredPreferences enteredPreferences)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = GetAvailableMedicalAppointments(enteredPreferences);
-            DefaultRearrange(enteredPreferences.EnteredDoctor, availableMedicalAppointments);
-            RearrangeByPriority(enteredPreferences, availableMedicalAppointments);
+            List<MedicalAppointment> availableMedicalAppointments = GetAvailableMedicalAppointments(enteredPreferences);
+            availableMedicalAppointments= DefaultRearrange(enteredPreferences.EnteredDoctor, availableMedicalAppointments);
+            availableMedicalAppointments = RearrangeByPriority(enteredPreferences, availableMedicalAppointments);
             return availableMedicalAppointments;
         }
-        private static ObservableCollection<MedicalAppointmentStruct> GetAvailableMedicalAppointments(EnteredPreferences enteredPreferences)
+        private static List<MedicalAppointment> GetAvailableMedicalAppointments(EnteredPreferences enteredPreferences)
         {
             DateTime appointmentTimeStart = new DateTime(enteredPreferences.EnteredDateTime.Year,
                 enteredPreferences.EnteredDateTime.Month, enteredPreferences.EnteredDateTime.Day,
@@ -45,10 +45,26 @@ namespace Service
                 new SearchParametersForCreating(enteredPreferences.EnteredPatient, enteredPreferences.EnteredAppointmentType,
                     appointmentTimeStart, SetDurationOfAppointment(enteredPreferences.EnteredAppointmentType), workDayEndTime, suggestedDoctors, suggestedRooms);
 
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments =
+            List<MedicalAppointment> availableMedicalAppointments =
                 CreateMedicalAppointments(searchParametersForCreating);
             return availableMedicalAppointments;
         }
+
+        public void MakeAppointment(MedicalAppointment medicalAppointment)
+        {
+            Instance.Create(medicalAppointment);
+
+            medicalAppointment.patient.MedicalAppointment.Add(medicalAppointment);
+            medicalAppointment.Doctor.MedicalAppointment.Add(medicalAppointment);
+            medicalAppointment.Room.MedicalAppointment.Add(medicalAppointment);
+
+            PatientService.Instance.Update(medicalAppointment.patient);
+            DoctorService.Instance.Update(medicalAppointment.doctor);
+            RoomService.Instance.Update(medicalAppointment.Room);
+
+
+        }
+
         private static List<Doctor> FilterDoctors(AppointmentType enteredAppointmentType)
         {
             List<Doctor> suggestedDoctors = DoctorService.Instance.GetAll();
@@ -99,14 +115,14 @@ namespace Service
 
             return durationOfAppointment;
         }
-        private static ObservableCollection<MedicalAppointmentStruct> CreateMedicalAppointments(SearchParametersForCreating searchParametersForCreating)
+        private static List<MedicalAppointment> CreateMedicalAppointments(SearchParametersForCreating searchParametersForCreating)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+            List<MedicalAppointment> availableMedicalAppointments = new List<MedicalAppointment>();
             PatientDoctorsRoomsAreAvailableCheck(searchParametersForCreating, availableMedicalAppointments);
             return availableMedicalAppointments;
         }
 
-        private static void PatientDoctorsRoomsAreAvailableCheck(SearchParametersForCreating searchParametersForCreating, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        private static void PatientDoctorsRoomsAreAvailableCheck(SearchParametersForCreating searchParametersForCreating, List<MedicalAppointment> availableMedicalAppointments)
         {
             Interval interval = new Interval();
 
@@ -121,8 +137,8 @@ namespace Service
                                                             where doctor.IsAvailable(interval)
                                                             from room in searchParametersForCreating.SuggestedRooms
                                                             where room.IsAvailable(interval)
-                                                            select new MedicalAppointmentStruct(-1, searchParametersForCreating.EnteredAppointmentType, interval,
-                                                                searchParametersForCreating.EnteredPatient, doctor, room))
+                                                            select new MedicalAppointment(-1, searchParametersForCreating.EnteredAppointmentType, interval, room,
+                                                                searchParametersForCreating.EnteredPatient, doctor))
                     {
                         availableMedicalAppointments.Add(medicalAppointmentToAdd);
                     }
@@ -143,26 +159,28 @@ namespace Service
             return searchParametersForCreating.AppointmentTimeStart.AddMinutes(searchParametersForCreating.DurationOfAppointment) <= searchParametersForCreating.WorkDayEndTime;
         }
 
-        private static void DefaultRearrange(Doctor enteredDoctor, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        private static List<MedicalAppointment> DefaultRearrange(Doctor enteredDoctor, List<MedicalAppointment> availableMedicalAppointments)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault = PreferredDoctorFirst(enteredDoctor, availableMedicalAppointments);
+            List<MedicalAppointment> availableMedicalAppointmentsSortDefault = PreferredDoctorFirst(enteredDoctor, availableMedicalAppointments);
 
-            foreach (MedicalAppointmentStruct medicalAppointmentStruct in availableMedicalAppointments)
+            foreach (MedicalAppointment medicalAppointmentStruct in availableMedicalAppointments)
             {
                 if (medicalAppointmentStruct.Doctor.Id != enteredDoctor.Id)
                 {
                     availableMedicalAppointmentsSortDefault.Add(medicalAppointmentStruct);
                 }
             }
-            availableMedicalAppointments = availableMedicalAppointmentsSortDefault;
+
+
+            return availableMedicalAppointmentsSortDefault;
         }
 
-        private static ObservableCollection<MedicalAppointmentStruct> PreferredDoctorFirst(Doctor enteredDoctor, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        private static List<MedicalAppointment> PreferredDoctorFirst(Doctor enteredDoctor, List<MedicalAppointment> availableMedicalAppointments)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault =
-                new ObservableCollection<MedicalAppointmentStruct>();
+            List<MedicalAppointment> availableMedicalAppointmentsSortDefault =
+                new List<MedicalAppointment>();
 
-            foreach (MedicalAppointmentStruct medicalAppointmentStruct in availableMedicalAppointments)
+            foreach (MedicalAppointment medicalAppointmentStruct in availableMedicalAppointments)
             {
                 if (medicalAppointmentStruct.Doctor.Id == enteredDoctor.Id)
                 {
@@ -173,13 +191,13 @@ namespace Service
             return availableMedicalAppointmentsSortDefault;
         }
 
-        private static void RearrangeByPriority(EnteredPreferences enteredPreferences, ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+        private static List<MedicalAppointment> RearrangeByPriority(EnteredPreferences enteredPreferences, List<MedicalAppointment> availableMedicalAppointments)
         {
-            if (!enteredPreferences.EnteredPriority.Equals("Lekar")) return;
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDoctor =
-                new ObservableCollection<MedicalAppointmentStruct>();
+            if (!enteredPreferences.EnteredPriority.Equals("Lekar")) return availableMedicalAppointments;
+            List<MedicalAppointment> availableMedicalAppointmentsSortDoctor =
+                new List<MedicalAppointment>();
 
-            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+            foreach (MedicalAppointment item in availableMedicalAppointments)
             {
                 if (item.Doctor.Id == enteredPreferences.EnteredDoctor.Id)
                 {
@@ -197,7 +215,7 @@ namespace Service
                     Instance.GetSuggestedMedicalAppointments(enteredPreferencesRecursive);
             }
 
-            availableMedicalAppointments = availableMedicalAppointmentsSortDoctor;
+            return availableMedicalAppointmentsSortDoctor;
 
 
         }

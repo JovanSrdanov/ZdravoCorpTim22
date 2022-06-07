@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             enteredPriority = MakeAppointment.selectedPriority;
             enteredPatient = ZdravoCorpTabs.LoggedPatient;
 
-            dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
+          //  dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
 
         }
 
