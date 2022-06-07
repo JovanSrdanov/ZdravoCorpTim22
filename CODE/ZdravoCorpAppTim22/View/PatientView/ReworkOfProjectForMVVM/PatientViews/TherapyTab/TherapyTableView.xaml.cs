@@ -27,13 +27,20 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             ObservableCollection<TherapyViewModel> medicalReceiptsViewModel = new ObservableCollection<TherapyViewModel>();
             foreach (MedicalReceipt medicalReceipt in medicalReceipts)
             {
-                TherapyViewModel therapyViewModel = new TherapyViewModel(medicalReceipt.Id, medicalReceipt.EndDate, medicalReceipt.NotifyNextDateTime, medicalReceipt.Time, medicalReceipt.AdditionalInstructions, medicalReceipt.TherapyPurpose);
-                foreach (Medicine medicine in medicalReceipt.medicine)
+                TherapyViewModel therapyViewModel = new TherapyViewModel(medicalReceipt.Id, medicalReceipt.EndDate,
+                    medicalReceipt.NotifyNextDateTime, medicalReceipt.Time, medicalReceipt.AdditionalInstructions,
+                    medicalReceipt.TherapyPurpose);
+                if (medicalReceipt.medicine != null)
                 {
-                    therapyViewModel.MedicineName.Add(medicine.MedicineData.Name);
+                    foreach (Medicine medicine in medicalReceipt.medicine)
+                    {
+                        therapyViewModel.MedicineName.Add(medicine.MedicineData.Name);
+                    }
+
+                    medicalReceiptsViewModel.Add(therapyViewModel);
                 }
-                medicalReceiptsViewModel.Add(therapyViewModel);
             }
+
             return medicalReceiptsViewModel;
         }
     }
