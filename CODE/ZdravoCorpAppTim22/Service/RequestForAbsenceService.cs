@@ -35,9 +35,9 @@ namespace ZdravoCorpAppTim22.Service
             return returnValue;
         }
 
-        private ObservableCollection<RequestForAbsence> getUniqueDoctorRequests(string specialization, Interval requestInterval)
+        private List<RequestForAbsence> getUniqueDoctorRequests(string specialization, Interval requestInterval)
         {       
-            ObservableCollection<RequestForAbsence> result = new ObservableCollection<RequestForAbsence>();
+            List<RequestForAbsence> result = new List<RequestForAbsence>();
             foreach (RequestForAbsence request in RequestForAbsenceRepository.Instance.GetAll())
             {   
                 if (request.Doctor.DoctorSpecialization.Name.Equals(specialization) && checkIfCrossedDates(requestInterval, request)
@@ -47,12 +47,12 @@ namespace ZdravoCorpAppTim22.Service
             return removeDuplicateDoctorsInRequests(result);
         }
 
-        private ObservableCollection<RequestForAbsence> removeDuplicateDoctorsInRequests(ObservableCollection<RequestForAbsence> requests)
+        private List<RequestForAbsence> removeDuplicateDoctorsInRequests(List<RequestForAbsence> requests)
         {   
             List<RequestForAbsence> result = (from req in requests
                                                               select req)
                                                               .Distinct().ToList();
-            return new ObservableCollection<RequestForAbsence>(result);
+            return new List<RequestForAbsence>(result);
         }
         private bool checkIfCrossedDates(Interval requestedInterval, RequestForAbsence request)
         {
