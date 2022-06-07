@@ -29,9 +29,9 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
         }
         public RequestForAbsencePageViewModel(List<RequestForAbsence> requestForAbsenceModelViews)
         {
-            ApproveRequestForAbsenceCommand = new MyICommand(ApproveSelectedRequestForAbsence, isRequestForAbsenceSelected);
+            ApproveRequestForAbsenceCommand = new MyICommand(null, isRequestForAbsenceSelected);
 
-            DenyRequestForAbsenceCommand = new MyICommand(DenySelectedRequestForAbsence, isRequestForAbsenceSelected);
+            DenyRequestForAbsenceCommand = new MyICommand(null, isRequestForAbsenceSelected);
 
             for (int i = 0; i < requestForAbsenceModelViews.Count; i++)
             {
@@ -47,14 +47,6 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
                 }
             }
 
-        }
-        public void ApproveSelectedRequestForAbsence()
-        {
-
-        }
-
-        public void DenySelectedRequestForAbsence()
-        {
         }
     }
 }

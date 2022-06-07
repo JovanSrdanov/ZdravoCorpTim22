@@ -9,7 +9,9 @@ namespace ZdravoCorpAppTim22.Model
     {
         public int Id { get; set; }
         public Interval Interval { get; set; }
+        public Room Room { get => room; set => room = value; }
 
+        private Room room;
         public List<SecretaryClass> Secretaries;
         public List<Doctor> Doctors;
         public List<ManagerClass> Managers;
@@ -21,6 +23,7 @@ namespace ZdravoCorpAppTim22.Model
             this.Secretaries = secretaries;
             this.Doctors = doctors;
             this.Managers = managers;
+            this.Room = room;
         }
     }
 }

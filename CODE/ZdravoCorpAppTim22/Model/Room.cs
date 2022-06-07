@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
@@ -208,7 +207,10 @@ namespace Model
             this.Name = name;
             this.Surface = surface;
         }
-
+        public override string ToString()
+        {
+            return Name;
+        }
         public bool IsAvailable(DateTime start, DateTime end)
         {
             if (MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0) return false;
@@ -248,7 +250,7 @@ namespace Model
         }
         public bool CanMergeOrDiverge()
         {
-            if(MedicalAppointment.Count > 0 || Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0)
+            if (MedicalAppointment.Count > 0 || Renovations.Count > 0 || RelocationSources.Count > 0 || RelocationDestinations.Count > 0 || MergesWhereFirst.Count > 0 || MergesWhereSecond.Count > 0 || Diverges.Count > 0)
             {
                 return false;
             }
@@ -329,7 +331,7 @@ namespace Model
                 tmpRenovations.Clear();
             }
         }
-      
+
         public void AddMedicalAppointment(MedicalAppointment newMedicalAppointment)
         {
             if (newMedicalAppointment == null)
@@ -366,7 +368,7 @@ namespace Model
                 tmpMedicalAppointment.Clear();
             }
         }
-        
+
         public void AddRelocationSource(EquipmentRelocation newEquipmentRelocation)
         {
             if (newEquipmentRelocation == null)

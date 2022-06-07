@@ -159,6 +159,7 @@
     <Compile Include="Controller\ApprovalController.cs" />
     <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
+    <Compile Include="Controller\StuffMeetingController.cs" />
     <Compile Include="Model\PackedObjects\EnteredPreferences.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Repository\RoomMergeRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SecretaryRepository.cs" />
+    <Compile Include="Repository\StuffMeetingRepository.cs" />
     <Compile Include="Service\AddressService.cs" />
     <Compile Include="Service\ApprovalService.cs" />
     <Compile Include="Service\AuthenticationService.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Service\RoomMergeService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
+    <Compile Include="Service\StuffMeetingService.cs" />
     <Compile Include="View\BindableBase.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
     <Compile Include="View\DoctorView\CreateReport.xaml.cs">
@@ -597,6 +600,10 @@
     <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryAbsenceRequestDialog.xaml.cs">
       <DependentUpon>SecretaryAbsenceRequestDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryNewStuffMeetingPage.xaml.cs">
+      <DependentUpon>SecretaryNewStuffMeetingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryNewStuffMeetingPageViewModel.cs" />
     <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryRequestForAbsencePage.xaml.cs">
       <DependentUpon>SecretaryRequestForAbsencePage.xaml</DependentUpon>
     </Compile>
@@ -1025,6 +1032,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryAbsenceRequestDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryNewStuffMeetingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
