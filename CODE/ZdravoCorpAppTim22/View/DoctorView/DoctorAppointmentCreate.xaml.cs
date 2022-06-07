@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void setItemSources()       //ne pomeraj
+        private void setItemSources()
         {
             AppointmentTypeCBOX.ItemsSource = new ObservableCollection<AppointmentType>(getAppropriateSpecializationAppointmentTypes());
             AppointmentTypeCBOX.SelectedIndex = 0;
@@ -42,7 +42,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             PatientComboBox.SelectedIndex = 0;
         }
 
-        private List<AppointmentType> getAppropriateSpecializationAppointmentTypes()        //pomerio
+        private List<AppointmentType> getAppropriateSpecializationAppointmentTypes()
         {
             List<AppointmentType> appointmentTypes = Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList();
             if (DoctorController.Instance.isDoctorRegular(loggedInDoctor))
@@ -52,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return appointmentTypes;
         }
 
-        private bool isDateValid(string startDate, string startTime)        //ne pomeraj
+        private bool isDateValid(string startDate, string startTime)
         {
 #pragma warning disable CS0168 // Variable is declared but never used
             bool returnValue = true;
@@ -70,7 +70,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 #pragma warning restore CS0168 // Variable is declared but never used
         }
 
-        private bool isFormFilled(MedicalAppointmentDTO medicalAppointmentDTO)      //ne pomeraj
+        private bool isFormFilled(MedicalAppointmentDTO medicalAppointmentDTO)
         {
             bool returnValue = true;
             if (medicalAppointmentDTO.AppointmentType == null || medicalAppointmentDTO.StartDate == null || 
@@ -82,7 +82,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private Interval getInterval(DateTime startDateTime)        //ne pomeraj
+        private Interval getInterval(DateTime startDateTime)
         {
             Interval interval = new Interval();
             interval.Start = startDateTime;
@@ -90,7 +90,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return interval;
         }
 
-        private void confirmButton_Click(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void confirmButton_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = PatientComboBox.SelectedItem as Patient;
             Room room = RoomComboBox.SelectedItem as Room;
@@ -116,14 +116,15 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             CancelDialogBox();
         }
 
-        private void CancelDialogBox()      //ne pomeraj
+        private void CancelDialogBox()
         {
-            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", 
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -136,9 +137,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -149,7 +149,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

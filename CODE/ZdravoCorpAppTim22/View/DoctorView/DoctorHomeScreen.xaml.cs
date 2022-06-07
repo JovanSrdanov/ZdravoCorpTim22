@@ -53,7 +53,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {

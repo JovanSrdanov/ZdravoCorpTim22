@@ -23,7 +23,7 @@ namespace ZdravoCorpAppTim22.View.Manager.ViewModels.StaffViewModels
 
             foreach(MedicalReport report in MedicalReportController.Instance.GetAll())
             {
-                if(report.DoctorID == doctor.Id)
+                if(report.DoctorId == doctor.Id)
                 {
                     KindnessGrades.Add(report.ReportReview.DoctorKindness);
                     ExpertiseGrades.Add(report.ReportReview.DoctorExpertise);

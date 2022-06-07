@@ -34,5 +34,11 @@
     "Amount": 1,
     "IngredientData": 4,
     "MedicineData": 2
+  },
+  {
+    "Id": 6,
+    "Amount": 1,
+    "IngredientData": 0,
+    "MedicineData": 5
   }
 ]

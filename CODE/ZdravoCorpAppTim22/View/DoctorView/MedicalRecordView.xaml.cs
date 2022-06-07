@@ -48,13 +48,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             setItemSources();
 
         }
-        private void initializeListsForNewlyCreatedData()       //ne pomeraj
+        private void initializeListsForNewlyCreatedData()
         {
             newlyCreatedReports = new List<MedicalReport>();
             newlyCreatedDiagnosis = new List<string>();
             newlyCreatedAppointments = new List<MedicalAppointment>();
         }
-        private void checkIfCanCreateReport()   //ne pomeraj
+        private void checkIfCanCreateReport()
         {
             if (canCreateReport == -1)
             {
@@ -64,14 +64,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
 
         }
-        private void setWPFDisplayText()        //ne pomeraj
+        private void setWPFDisplayText()
         {
             NameSurnameBlock.Text = selectedPatient.Name + " " + selectedPatient.Surname;
             GenderBlock.Text = selectedPatient.Gender.ToString();
             DateBirthBlock.Text = selectedPatient.Birthday.Date.ToShortDateString();
             JMBGBlock.Text = selectedPatient.Jmbg;
         }
-        private void initializePatientReportDataHistory()       //ne pomeraj
+        private void initializePatientReportDataHistory()
         {
             List<Medicine> patientMedicine = getSelectedPatientMedicine();
             selectedPatientMedicineHistory =
@@ -80,7 +80,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             selectedPatientConditionHistory = new ObservableCollection<string>(selectedPatient.MedicalRecord.ConditionList);
             selectedPatientAlergyHistory = new ObservableCollection<string>(selectedPatient.MedicalRecord.AllergiesList);
         }
-        private List<Medicine> getSelectedPatientMedicine()     //mozda?
+        private List<Medicine> getSelectedPatientMedicine()
         {
             List<Medicine> patientMedicine = new List<Medicine>();
 
@@ -92,14 +92,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         }
         private List<MedicineData> getSelectedPatientMedicineData(List<Medicine> selectedPatientMedicineHistory)
         {
-            List<MedicineData> patientMedicineData = new List<MedicineData>();      //mozda?
+            List<MedicineData> patientMedicineData = new List<MedicineData>();
             foreach (Medicine medicine in selectedPatientMedicineHistory)
             {
                 patientMedicineData.Add(medicine.MedicineData);
             }
             return patientMedicineData;
         }
-        private void setItemSources()       //ne pomeraj
+        private void setItemSources()
         {
             ProblemsListBox.ItemsSource = selectedPatientConditionHistory;
             AllergiesListBox.ItemsSource = selectedPatientAlergyHistory;
@@ -107,7 +107,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             PastReportsListBox.ItemsSource = selectedPatientReportHistory;
         }
 
-        private void CreateReportBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void CreateReportBtnClick(object sender, RoutedEventArgs e)
         {
             CreateReport createReportView = new CreateReport(selectedPatient, this);
             createReportView.Owner = this;
@@ -117,7 +117,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void OpenReportBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void OpenReportBtnClick(object sender, RoutedEventArgs e)
         {
             MedicalReport medicalReport = PastReportsListBox.SelectedItem as MedicalReport;
             if (!(isReportSelected(medicalReport))) return;
@@ -129,7 +129,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             this.Hide();
         }
-        private bool isReportSelected(MedicalReport medicalReport)      //ne pomeraj
+        private bool isReportSelected(MedicalReport medicalReport)
         {
             bool returnValue = true;
             if (medicalReport == null)
@@ -140,7 +140,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void FinishReportClick(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void FinishReportClick(object sender, RoutedEventArgs e)
         {
             PatientController.Instance.Update(selectedPatient);
             Doctor selectedDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
@@ -157,7 +157,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             doctorAppointmentsView.Show();
             this.Close();
         }
-        private void BackBtn(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void BackBtn(object sender, RoutedEventArgs e)
         {
             CancelAndCloseRemove();
 
@@ -168,14 +168,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void CancelAndCloseRemove()     //ne pomeraj
+        private void CancelAndCloseRemove()
         {
             if (newlyCreatedReports.Count > 0) clearCreatedReports(newlyCreatedReports);
             if (newlyCreatedAppointments.Count > 0) clearCreatedAppoinments(newlyCreatedAppointments);
             if (newlyCreatedDiagnosis.Count > 0) clearCreatedDiagnosis(newlyCreatedDiagnosis);
         }
 
-        private void clearCreatedReports(List<MedicalReport> newlyCreatedReports)       //mozda?
+        private void clearCreatedReports(List<MedicalReport> newlyCreatedReports)
         {
             foreach (MedicalReport medicalReport in newlyCreatedReports)
             {
@@ -188,7 +188,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             newlyCreatedReports.Clear();
         }
 
-        private void clearMedicineFromCreatedReport(ObservableCollection<Medicine> reportMedicine)      //mozda?
+        private void clearMedicineFromCreatedReport(ObservableCollection<Medicine> reportMedicine)
         {
             foreach (Medicine medicine in reportMedicine)
             {
@@ -197,13 +197,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void clearMedicalReceiptFromCreatedReport(MedicalReport medicalReport)      //mozda?
+        private void clearMedicalReceiptFromCreatedReport(MedicalReport medicalReport)
         {
             selectedPatient.medicalRecord.MedicalReceipt.Remove(medicalReport.MedicalReceipt);
             MedicalReceiptController.Instance.DeleteByID(medicalReport.MedicalReceipt.Id);
         }
 
-        private void clearCreatedAppoinments(List<MedicalAppointment> newlyCreatedAppointments)     //mozda?
+        private void clearCreatedAppoinments(List<MedicalAppointment> newlyCreatedAppointments)
         {
             foreach (MedicalAppointment medicalAppointment in newlyCreatedAppointments)
             {
@@ -214,7 +214,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             newlyCreatedAppointments.Clear();
         }
 
-        private void clearCreatedDiagnosis(List<string> newlyCreatedDiagnosis)      //mozda?
+        private void clearCreatedDiagnosis(List<string> newlyCreatedDiagnosis)
         {
             foreach (string diagnosis in newlyCreatedDiagnosis)
             {
@@ -225,9 +225,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             newlyCreatedDiagnosis.Clear();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -238,7 +237,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

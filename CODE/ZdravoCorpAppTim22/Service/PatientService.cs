@@ -157,7 +157,6 @@ namespace Service
             }
         }
 
-        ///STEFAN DODAO
         public void checkIfPatientHasMedicalRecord(Patient patient)
         {
             MedicalRecord patientMedicalRecord = patient.MedicalRecord;
@@ -169,6 +168,5 @@ namespace Service
                 patient.MedicalRecord = patientMedicalRecord;
             }
         }
-        ///STEFAN DODAO
     }
 }

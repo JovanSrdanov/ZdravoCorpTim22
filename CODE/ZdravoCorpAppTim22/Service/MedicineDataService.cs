@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using System.Linq;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Repository;
@@ -72,6 +73,20 @@ namespace ZdravoCorpAppTim22.Service
                 };
                 ReplacementService.Instance.Create(replacement);
             }
+        }
+
+        public bool isPatientAlergic(Patient patient, Medicine medicine)           
+        {
+            bool returnValue = false;
+            foreach (var alergy in patient.medicalRecord.AllergiesList)
+            {
+                if (medicine.MedicineData.Name.Equals(alergy) || IngredientDataService.Instance.isPatientAlergic(alergy, medicine))
+                {
+                    returnValue = true;
+                    break;
+                }
+            }
+            return returnValue;
         }
 
         #region private

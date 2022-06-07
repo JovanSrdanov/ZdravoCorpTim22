@@ -24,7 +24,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this._doctorHomeScreen = doctorHomeScreen;
         }
 
-        private bool isMedicalAppointmentSelected()     //ne pomeraj
+        private bool isMedicalAppointmentSelected()
         {
             bool returnValue = true;
             medicalAppointment = (MedicalAppointment)appointmentListGrid.SelectedItem;
@@ -37,7 +37,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool patientHasMedicalRecord()      //mozda?
+        private bool patientHasMedicalRecord()
         {
             bool returnValue = true;
             var medicalRecord = PatientController.Instance.GetByID(medicalAppointment.Patient.Id).medicalRecord;
@@ -50,7 +50,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             var appCreate = new DoctorAppointmentCreate(this)
             {
@@ -62,7 +62,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void BeginAppointmentClick(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void BeginAppointmentClick(object sender, RoutedEventArgs e)
         {
             if(!(isMedicalAppointmentSelected())) return;
 
@@ -76,7 +76,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (!(isMedicalAppointmentSelected())) return;
 
@@ -88,7 +88,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void ViewRecordBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void ViewRecordBtn(object sender, RoutedEventArgs e)
         {
             if (!(isMedicalAppointmentSelected())) return;
             if(!(patientHasMedicalRecord())) return;
@@ -104,15 +104,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void BackBtnClick(object sender, RoutedEventArgs e)
         {
             _doctorHomeScreen.Show();
             this.Close();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -123,7 +122,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
