@@ -32,10 +32,6 @@ namespace ZdravoCorpAppTim22.Model
             var parts = time.Split(':');
 
             NotifyNextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(parts[0]),int.Parse(parts[1]),0);
-
-            //Medicine = medicine;
-
-
         }
 
         [JsonConverter(typeof(MedicalRecordToIDConverter))]

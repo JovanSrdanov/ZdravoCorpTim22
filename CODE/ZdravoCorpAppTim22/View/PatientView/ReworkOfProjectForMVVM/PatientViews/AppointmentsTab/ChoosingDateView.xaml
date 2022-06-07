@@ -1,0 +1,126 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab.ChoosingDateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="ChoosingDateView"
+    FontSize="18"
+    mc:Ignorable="d">
+
+
+    <Grid>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label
+                Margin="0,0,0,42"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="Promena vremena termina:"
+                FontSize="36"
+                FontWeight="Bold" />
+            <Label
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Ime doktora:"
+                FontWeight="Bold" />
+            <Label
+                x:Name="SelectedAppointmentDoctor"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Doctor.Name}" />
+            <Label
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Prezime doktora:"
+                FontWeight="Bold" />
+
+            <Label
+                x:Name="SelectedAppointmentRoom"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Doctor.Surname}"
+                FontSize="18" />
+            <Label
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Specijalizacija doktora:"
+                FontWeight="Bold" />
+            <Label
+                x:Name="SelectedAppointmentDate"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Doctor.DoctorSpecializationName}"
+                FontSize="18" />
+            <Label
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Broj sobe"
+                FontWeight="Bold" />
+            <Label
+                x:Name="SelectedAppointmentEndTime"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Room.Id}"
+                FontSize="18" />
+            <Label
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Naziv sobe:"
+                FontWeight="Bold" />
+            <Label
+                x:Name="SelectedAppointmentStartTime"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding Room.Name}"
+                FontSize="18" />
+            <Label
+                Margin="0,25,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="Izaberite novi datum:"
+                FontSize="18"
+                FontWeight="Bold" />
+
+
+
+            <DatePicker
+                x:Name="DatePickerChangeAppoinment"
+                Margin="0,0,0,50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Left"
+                Background="White"
+                DisplayDate="{Binding Interval.Start}"
+                DisplayDateEnd="{Binding MaxDaysForward}"
+                DisplayDateStart="{Binding MaxDaysBackward}"
+                FontSize="18" />
+            <Grid>
+                <Button
+                    x:Name="Cancle"
+                    Padding="10,1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="Yellow"
+                    Click="Cancle_Click"
+                    Content="Obustavi"
+                    FontSize="18" />
+                <Button
+                    x:Name="ChooseChangeAppointment"
+                    Padding="10,1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="Green"
+                    Click="ChooseChangeAppointment_Click"
+                    Content="Dalje"
+                    FontSize="18"
+                    Foreground="White" />
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+
+
+</Page>

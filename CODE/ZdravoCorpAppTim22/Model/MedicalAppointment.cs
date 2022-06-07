@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -25,7 +26,7 @@ namespace Model
             isUrgent = false;
         }
 
-        public MedicalAppointment(MedicalAppointmentStruct medicalAppointmentStruct)
+        public MedicalAppointment(MedicalAppointmentDTOforSuggestions medicalAppointmentStruct)
         {
             Id = medicalAppointmentStruct.Id;
             Type = medicalAppointmentStruct.Type;
@@ -64,7 +65,8 @@ namespace Model
                     if (value != null)
                     {
                         this.room = value;
-                        this.room.AddMedicalAppointment(this);
+                        this.Room.AddMedicalAppointment(this);
+
                     }
                 }
             }
@@ -94,6 +96,7 @@ namespace Model
                     {
                         this.patient = value;
                         this.patient.AddMedicalAppointment(this);
+
                     }
                 }
             }

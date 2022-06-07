@@ -47,7 +47,7 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Odabir vrste termina" />
+                    <TextBlock Text="Odabir vrste termina " />
                 </TabItem.Header>
                 <Grid Margin="42,0,42,0" Background="Transparent">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical">

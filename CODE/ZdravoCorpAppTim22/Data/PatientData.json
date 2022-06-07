@@ -1,12 +1,16 @@
 [
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [
-      "2022-05-31T22:53:45.0174783+02:00",
-      "2022-05-31T23:21:13.7616783+02:00"
+      "2022-06-07T17:29:43.0963101+02:00",
+      "2022-06-07T17:29:45.4374281+02:00",
+      "2022-06-07T17:29:47.5014479+02:00",
+      "2022-06-07T17:29:50.3694702+02:00",
+      "2022-06-07T17:29:52.8883601+02:00"
     ],
     "HospitalReview": 0,
-    "MedicalRecord": 0,
+    "MedicalRecord": 1,
     "Name": "Jovan",
     "Surname": "Srdanov",
     "Email": "j",
@@ -20,6 +24,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": null,
     "HospitalReview": 1,
     "MedicalRecord": null,
@@ -36,6 +41,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 2,
     "MedicalRecord": null,
@@ -52,6 +58,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 3,
     "MedicalRecord": null,
@@ -68,6 +75,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 4,
     "MedicalRecord": null,
@@ -84,6 +92,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 5,
     "MedicalRecord": null,
@@ -100,6 +109,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 6,
     "MedicalRecord": null,
@@ -116,6 +126,7 @@
   },
   {
     "Blocked": false,
+    "HasBeenLoggedIn": false,
     "SuspiciousActivity": [],
     "HospitalReview": 7,
     "MedicalRecord": null,

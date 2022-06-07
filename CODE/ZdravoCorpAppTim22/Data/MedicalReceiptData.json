@@ -2,7 +2,7 @@
   {
     "Id": 0,
     "EndDate": "2022-06-29T00:00:00",
-    "NotifyNextDateTime": "2022-06-03T10:00:00",
+    "NotifyNextDateTime": "2022-06-08T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1sda",
     "TherapyPurpose": "1",
@@ -11,10 +11,55 @@
   {
     "Id": 1,
     "EndDate": "2022-06-30T00:00:00",
-    "NotifyNextDateTime": "2022-06-02T10:00:00",
+    "NotifyNextDateTime": "2022-06-08T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 1,
+    "EndDate": "2022-06-23T00:00:00",
+    "NotifyNextDateTime": "2022-06-07T10:00:00",
+    "Time": "10:00",
+    "AdditionalInstructions": "1",
+    "TherapyPurpose": "1",
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 2,
+    "EndDate": "2022-06-24T00:00:00",
+    "NotifyNextDateTime": "2022-06-08T12:22:00",
+    "Time": "12:22",
+    "AdditionalInstructions": "uf",
+    "TherapyPurpose": "21312",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "EndDate": "2022-06-24T00:00:00",
+    "NotifyNextDateTime": "2022-06-08T12:33:00",
+    "Time": "12:33",
+    "AdditionalInstructions": "Nek se leci ovaj jadan bolestan raspadnud covek",
+    "TherapyPurpose": "Jer je jadan",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 4,
+    "EndDate": "2022-06-24T00:00:00",
+    "NotifyNextDateTime": "2022-06-08T09:08:00",
+    "Time": "09:08",
+    "AdditionalInstructions": "MNOGO KUL",
+    "TherapyPurpose": "ZATO",
+    "MedicalRecord": 0
+  },
+  {
+    "Id": 5,
+    "EndDate": "2022-06-18T00:00:00",
+    "NotifyNextDateTime": "2022-06-08T09:17:00",
+    "Time": "09:17",
+    "AdditionalInstructions": "oki doki",
+    "TherapyPurpose": "Zato",
     "MedicalRecord": 0
   }
 ]

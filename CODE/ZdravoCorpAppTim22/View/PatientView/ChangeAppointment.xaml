@@ -75,6 +75,8 @@
                 VerticalAlignment="Top"
                 HorizontalContentAlignment="Left"
                 Background="White"
+                DisplayDateEnd="{Binding MaxDaysForward.Date}"
+                DisplayDateStart="{Binding MaxDaysBackward.Date}"
                 FontSize="18" />
             <Grid>
                 <Button

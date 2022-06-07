@@ -22,20 +22,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             setItemSources();
         }
 
-        private void setWPFDisplayText()        //ne pomeraj
+        private void setWPFDisplayText()
         {
             DateBlock.Text = DateTime.Now.ToShortDateString();
             NameBlock.Text = selectedPatient.Name;
             SurnameBlock.Text = selectedPatient.Surname;
         }
 
-        private void setItemSources()       //ne pomeraj
+        private void setItemSources()
         {
             
             MedicationComboBox.ItemsSource = new ObservableCollection<Medicine>(MedicineController.Instance.GetAllApproved());
             MedicationComboBox.SelectedIndex = 0;
         }
-        private void ConfirmBtnClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
 
             if (!(isDateTimeValid())) return;
@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
             MedicalReport newReport = new MedicalReport(-1, AnamnesisBox.Text, DiagnosisBox.Text, DateTime.Now,
                 selectedPatientMedicalRecord);
-            newReport.DoctorID = DoctorHomeScreen.LoggedInDoctor.Id;       //da bih prepoznao koji doktor je kreirao
+            newReport.DoctorId = DoctorHomeScreen.LoggedInDoctor.Id;       //da bih prepoznao koji doktor je kreirao
                                                                     //koji izvestaj, da bih kontrolisao ko moze da ga menja
 
             MedicalReceipt newReportMedicalReceipt = new MedicalReceipt((DateTime)EndDateDatePicker.SelectedDate,
@@ -76,7 +76,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private bool isDateTimeValid()      //ne pomeraj
+        private bool isDateTimeValid()
         {
             bool returnValue = true;
             if (EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == "")
@@ -88,7 +88,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool isAmountValid(Medicine medicine)       //ne pomeraj
+        private bool isAmountValid(Medicine medicine)
         {
             bool returnValue = true;
 #pragma warning disable CS0168 // Variable is declared but never used
@@ -106,12 +106,12 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)       //pomerio
+        private bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)
         {
             bool returnValue = true;
             if (!(MedicineController.Instance.hasStorageEnoughMedicine(medicineInStorage, requestedMedicine)))
             {
-                MessageBox.Show("Selected amount excedes the amount located in the werehouse", "Create report",
+                MessageBox.Show("Selected amount excedes the amount located in the warehouse", "Create report",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 returnValue = false;
             }
@@ -119,7 +119,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void addDiagnosisToMedicalRecord(MedicalRecord medicalRecord)       //ne pomeraj
+        private void addDiagnosisToMedicalRecord(MedicalRecord medicalRecord)
         {
             if (!DiagnosisBox.Text.Equals(""))
             {
@@ -127,9 +127,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        
-
-        private void updateMedicalRecordView(Medicine medicine, MedicalReport medicalReport)        //ne pomeraj
+        private void updateMedicalRecordView(Medicine medicine, MedicalReport medicalReport)
         {
             MedicalRecordView.selectedPatientMedicineHistory.Add(medicine.MedicineData);
             MedicalRecordView.newlyCreatedReports.Add(medicalReport);
@@ -137,10 +135,33 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedicalRecordView.newlyCreatedDiagnosis.Add(DiagnosisBox.Text);
             MedicalRecordView.selectedPatientConditionHistory.Add(DiagnosisBox.Text);
         }
-
-        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void ReferToSpecialistBtnClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            ReferToDoctorView referToDoctorView = new ReferToDoctorView(this, selectedPatient);
+            referToDoctorView.Owner = this;
+            referToDoctorView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            referToDoctorView.Show();
+
+            this.Hide();
+        }
+        private void MedicationComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (MedicineDataController.Instance.isPatientAlergic(selectedPatient, (MedicationComboBox.SelectedItem as Medicine)))
+            {
+                ConfirmClick.IsEnabled = false;
+                AlergicLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ConfirmClick.IsEnabled = true;
+                AlergicLabel.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void CancelBtnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", 
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -153,9 +174,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -166,20 +186,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();
-        }
-
-        private void ReferToSpecialistBtnClick(object sender, RoutedEventArgs e)        //ne pomeraj
-        {
-            ReferToDoctorView referToDoctorView = new ReferToDoctorView(this, selectedPatient);
-            referToDoctorView.Owner = this;
-            referToDoctorView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            referToDoctorView.Show();
-
-            this.Hide();
         }
     }
 }

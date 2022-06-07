@@ -22,7 +22,6 @@ namespace Service
             return doctor.DoctorSpecialization.Name.Equals(doctorSpecializationTemp.Name);
         }
 
-        //DODAO
         public bool doctorHasMedicalRecord(Doctor doctor, Patient patient)
         {
             bool returnValue = false;
@@ -35,6 +34,5 @@ namespace Service
             }
             return returnValue;
         }
-        //DODAO
     }
 }

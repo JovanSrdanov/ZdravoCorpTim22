@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab.ChooseTypeOfAppoitnmentPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:ZdravoCorpAppTim22.View.PatientView.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ChooseTypeOfAppoitnmentPageView"
+    FontSize="18"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converter:ConverterToSerbian x:Key="cts" />
+    </Page.Resources>
+
+
+
+    <StackPanel
+        Width="300"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Vertical">
+        <Label
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Izabrati vrstu termina:" />
+        <ComboBox
+            x:Name="ChooseAppointmentType"
+            Height="30"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentPresenter Content="{Binding Converter={StaticResource cts}}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Grid Margin="0,100,0,0">
+            <Button
+                x:Name="Back"
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="Yellow"
+                Click="Back_Click"
+                Content="Nazad" />
+            <Button
+                x:Name="AppointmentNext"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="Green"
+                Click="AppointmentNext_OnClick"
+                Content="Dalje"
+                Foreground="White" />
+        </Grid>
+
+    </StackPanel>
+
+
+
+</Page>
