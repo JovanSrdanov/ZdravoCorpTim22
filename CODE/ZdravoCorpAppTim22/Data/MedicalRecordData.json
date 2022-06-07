@@ -3,7 +3,18 @@
     "Id": 0,
     "BloodType": 1,
     "AllergiesList": [],
+    "ConditionList": []
+  },
+  {
+    "Id": 1,
+    "BloodType": 1,
+    "AllergiesList": [
+      "lijek_1",
+      "sastojak_2"
+    ],
     "ConditionList": [
+      "1",
+      "1",
       "1"
     ]
   }

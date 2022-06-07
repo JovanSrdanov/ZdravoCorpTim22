@@ -32,13 +32,13 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 "Vestibulum sit amet nulla eu nunc convallis dapibus.";
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void BackBtnClick(object sender, RoutedEventArgs e)
         {
             this.Owner.Show();
             this.Close();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 }
             }
         }
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

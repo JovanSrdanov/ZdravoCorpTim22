@@ -17,7 +17,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             requestingDoctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
         }
 
-        private bool validateDate(Interval absenceInterval)     //pomerio
+        private bool validateDate(Interval absenceInterval)
         {
             bool returnValue = true;
             if (!RequestForAbsenceController.Instance.validateDate(absenceInterval))
@@ -28,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool hasAlreadyRequestedAbsenceInSelectedPeriod(Interval absenceInterval, Doctor requestingDoctor)      //pomerio
+        private bool hasAlreadyRequestedAbsenceInSelectedPeriod(Interval absenceInterval, Doctor requestingDoctor)
         {
             bool returnValue = false;
             if (RequestForAbsenceController.Instance.hasAlreadyRequestedAbsenceInSelectedPeriod(absenceInterval, requestingDoctor))
@@ -40,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool alreadyHasAnAppointment(Interval absenceInterval, Doctor requestingDoctor)     //pomerio
+        private bool alreadyHasAnAppointment(Interval absenceInterval, Doctor requestingDoctor)
         {
             bool returnValue = false;
             if (RequestForAbsenceController.Instance.alreadyHasAnAppointment(absenceInterval, requestingDoctor))
@@ -52,7 +52,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool areMultipleDoctorsOfSameTypeOnLeave(bool isUrgent, Interval absenceInterval)       //pomerio
+        private bool areMultipleDoctorsOfSameTypeOnLeave(bool isUrgent, Interval absenceInterval)
         {
             bool returnValue = false;
             if (isUrgent == false && RequestForAbsenceController.Instance.
@@ -65,7 +65,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void SendBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void SendBtnClick(object sender, RoutedEventArgs e)
         {
             string reasonForAbsence = ReasonForAbsenceTextBox.Text;
             Interval absenceInterval = getInterval();
@@ -83,7 +83,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private Interval getInterval()      //ne pomeraj
+        private Interval getInterval()
         {
             Interval interval = new Interval();
             interval.Start = (DateTime)AbsenceStartDatePicker.SelectedDate;
@@ -91,7 +91,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return interval;
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             MessageBoxResult cancleAnswer = MessageBox.Show("Close window without saving?", "Request for absence", 
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -115,9 +115,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -128,7 +127,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

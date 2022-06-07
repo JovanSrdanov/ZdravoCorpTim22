@@ -14,7 +14,6 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.rejectedMedicine = rejectedMedicine;
         }
 
-        //Button click event handlers
         private void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
             updateMedicineApproval();
@@ -29,14 +28,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private void updateMedicineApproval()       //ne pomeraj
+        private void updateMedicineApproval()
         {
             rejectedMedicine.MedicineData.Approval.IsApproved = false;
             rejectedMedicine.MedicineData.Approval.Doctor = DoctorController.Instance.GetByID(DoctorHomeScreen.LoggedInDoctor.Id);
             rejectedMedicine.MedicineData.Approval.Message = ReasonTextBox.Text;
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Close window without saving?", "Reject drug request", 
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -52,9 +51,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -65,7 +63,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

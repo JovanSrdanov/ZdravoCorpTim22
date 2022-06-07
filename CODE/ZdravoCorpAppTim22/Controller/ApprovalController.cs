@@ -20,5 +20,15 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+
+        public bool isApproved(Approval approval)
+        {
+            return ApprovalService.Instance.isApproved(approval);
+        }
+
+        public bool isRejected(Medicine medicine)
+        {
+            return ApprovalService.Instance.isRejected(medicine);
+        }
     }
 }

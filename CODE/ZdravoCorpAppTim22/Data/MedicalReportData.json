@@ -1,14 +1,82 @@
 [
   {
     "Id": 0,
-    "DoctorID": 0,
+    "Doctor": null,
     "Anamnesis": "1",
     "Diagnosis": "1",
-    "ReportDate": "2022-06-06T21:41:07.055465+02:00",
+    "ReportDate": "2022-06-07T08:46:25.7506598+02:00",
     "ReportReviewed": false,
     "ReportComment": "",
     "MedicalReceipt": 0,
     "ReportReview": null,
-    "MedicalRecord": 0
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 1,
+    "Doctor": {
+      "MedicalRecord": [
+        {
+          "Id": 1,
+          "BloodType": 1,
+          "AllergiesList": [],
+          "ConditionList": [
+            "1"
+          ]
+        }
+      ],
+      "DoctorSpecialization": null,
+      "Name": "doc",
+      "Surname": "docprez",
+      "Email": "",
+      "Jmbg": "123",
+      "Password": "123",
+      "Birthday": "2022-04-14T00:00:00+02:00",
+      "Phone": "",
+      "Gender": 0,
+      "Id": 0,
+      "Address": 0
+    },
+    "Anamnesis": "1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-06-07T14:03:48.734563+02:00",
+    "ReportReviewed": false,
+    "ReportComment": "",
+    "MedicalReceipt": 0,
+    "ReportReview": null,
+    "MedicalRecord": 1
+  },
+  {
+    "Id": 2,
+    "Doctor": {
+      "MedicalRecord": [
+        {
+          "Id": 1,
+          "BloodType": 1,
+          "AllergiesList": [],
+          "ConditionList": [
+            "1"
+          ]
+        }
+      ],
+      "DoctorSpecialization": 0,
+      "Name": "doc",
+      "Surname": "docprez",
+      "Email": "",
+      "Jmbg": "123",
+      "Password": "123",
+      "Birthday": "2022-04-14T00:00:00+02:00",
+      "Phone": "",
+      "Gender": 0,
+      "Id": 0,
+      "Address": 0
+    },
+    "Anamnesis": "1",
+    "Diagnosis": "1",
+    "ReportDate": "2022-06-07T14:05:19.2771681+02:00",
+    "ReportReviewed": false,
+    "ReportComment": "",
+    "MedicalReceipt": 2,
+    "ReportReview": null,
+    "MedicalRecord": 1
   }
 ]

@@ -31,5 +31,16 @@
     },
     "RequestState": 0,
     "Doctor": 0
+  },
+  {
+    "Id": 3,
+    "Reason": "1",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-07-09T00:00:00",
+      "End": "2022-07-14T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
   }
 ]

@@ -22,30 +22,11 @@ namespace ZdravoCorpAppTim22.Service
         }
         public bool validateDate(Interval requestInterval)
         {
-            bool validDate = true;      //ako je pocetak posle kraja ili se pocetak odsustva trazi na manje od 2 dana razlike od trenutnog dana
+            bool validDate = true;
             if (requestInterval.Start > requestInterval.End || (requestInterval.Start.Subtract(DateTime.Now).TotalDays < 2))
                 validDate = false;
             return validDate;
         }
-
-        /*public bool areMultipleDoctorsOfSameTypeOnLeave(string specialization, Interval requestInterval)
-        {
-            int numOfDoctors = 0;
-            bool returnValue = false;
-            foreach (RequestForAbsence request in RequestForAbsenceRepository.Instance.GetAll())
-            {
-                if(request.Doctor.DoctorSpecialization.Name.Equals(specialization) && checkIfCrossedDates(requestInterval, request)
-                    && (request.RequestState != RequestState.rejected))     //ako je doktor iste specijalizacije
-                    numOfDoctors++;                                         //vec na odustvu u trazenom periodu i njegov zahtev nije odbijen
-                if(numOfDoctors > 1)
-                {
-                    returnValue = true;
-                    break;
-                }
-            }
-            return returnValue;
-        }*/
-        //////////////DODAO/////////////
         public bool areMultipleDoctorsOfSameTypeOnLeave(string specialization, Interval requestInterval)
         {
             bool returnValue = false;
@@ -54,7 +35,6 @@ namespace ZdravoCorpAppTim22.Service
             return returnValue;
         }
 
-        //nalazi sve zahteve u trazenom periodu, ukljucujuci i slucajeve gde jedan doktor salje vise zahteva
         private ObservableCollection<RequestForAbsence> getUniqueDoctorRequests(string specialization, Interval requestInterval)
         {       
             ObservableCollection<RequestForAbsence> result = new ObservableCollection<RequestForAbsence>();
@@ -67,7 +47,6 @@ namespace ZdravoCorpAppTim22.Service
             return removeDuplicateDoctorsInRequests(result);
         }
 
-        //vraca listu svih zahteva, sa jedinstvenim doktorima
         private ObservableCollection<RequestForAbsence> removeDuplicateDoctorsInRequests(ObservableCollection<RequestForAbsence> requests)
         {   
             List<RequestForAbsence> result = (from req in requests
@@ -75,7 +54,6 @@ namespace ZdravoCorpAppTim22.Service
                                                               .Distinct().ToList();
             return new ObservableCollection<RequestForAbsence>(result);
         }
-        //////////////DODAO//////////////
         private bool checkIfCrossedDates(Interval requestedInterval, RequestForAbsence request)
         {
             bool returnValue = true;
@@ -115,6 +93,11 @@ namespace ZdravoCorpAppTim22.Service
                 }
             }
             return returnValue;
+        }
+
+        public bool isRequestDenied(RequestForAbsence request)
+        {
+            return request.RequestState == RequestState.rejected;
         }
     }
 }

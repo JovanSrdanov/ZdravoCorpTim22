@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
@@ -39,20 +29,20 @@ namespace ZdravoCorpAppTim22.View.DoctorView
         private void RequestDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RequestForAbsence selectedRequest = RequestListDataGrid.SelectedItem as RequestForAbsence;
-            if (selectedRequest == null || selectedRequest.RequestState != RequestState.rejected)
+            if (selectedRequest == null || !(RequestForAbsenceController.Instance.isRequestDenied(selectedRequest)))
             {
                 DetailsBtn.IsEnabled = false;
             }
             else DetailsBtn.IsEnabled = true;
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void BackBtnClick(object sender, RoutedEventArgs e)
         {
             this.Owner.Show();
             this.Close();
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
@@ -63,7 +53,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 }
             }
         }
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

@@ -115,7 +115,7 @@ namespace Model
         {
             return Name + " " + Surname + " " + Jmbg;
         }
-        //*********************DODAO KARTONE, NE ZABORAVI SERIJALIZACIJU**********************************
+
         public System.Collections.Generic.List<MedicalRecord> medicalRecord;
 
         public System.Collections.Generic.List<MedicalRecord> MedicalRecord
@@ -162,7 +162,6 @@ namespace Model
                 medicalRecord.Clear();
         }
 
-        ///////////////////////////ZAHTEVI ZA ODSUSTVO////////////////////////////////
         [JsonIgnore]
         public System.Collections.Generic.List<RequestForAbsence> requestForAbsence;
 
@@ -225,7 +224,6 @@ namespace Model
             }
         }
 
-        //////////SPECIJALZIACIJA///////////
         [JsonConverter(typeof(DoctorSerializationToIDConverter))]
         public DoctorSpecialization DoctorSpecialization { get; set; }
     }

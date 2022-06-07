@@ -289,9 +289,6 @@
     <Compile Include="View\DoctorView\DoctorAppointments.xaml.cs">
       <DependentUpon>DoctorAppointments.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DoctorView\DoctorHome.xaml.cs">
-      <DependentUpon>DoctorHome.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DoctorView\DoctorHomeScreen.xaml.cs">
       <DependentUpon>DoctorHomeScreen.xaml</DependentUpon>
     </Compile>
@@ -725,10 +722,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DoctorView\DoctorHome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Manager\ManagerHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

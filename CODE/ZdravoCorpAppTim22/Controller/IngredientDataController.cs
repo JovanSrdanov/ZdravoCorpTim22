@@ -19,5 +19,10 @@ namespace ZdravoCorpAppTim22.Controller
                 return instance;
             }
         }
+
+        public bool isPatientAlergic(string alergy, Medicine medicine)
+        {
+            return IngredientDataService.Instance.isPatientAlergic(alergy, medicine);
+        }
     }
 }

@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "Id": 0,
+    "Type": 1,
+    "Interval": {
+      "Start": "2022-07-07T10:00:00",
+      "End": "2022-07-07T10:00:00"
+    },
+    "isUrgent": false,
+    "Room": 1,
+    "Patient": 0,
+    "Doctor": 0
+  }
+]
