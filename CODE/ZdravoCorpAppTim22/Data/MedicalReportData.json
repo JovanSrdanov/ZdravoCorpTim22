@@ -20,7 +20,7 @@
     "ReportReviewed": false,
     "ReportComment": "ooooo",
     "MedicalReceipt": 0,
-    "ReportReview": null,
+    "ReportReview": 4,
     "MedicalRecord": 0
   },
   {
@@ -32,7 +32,7 @@
     "ReportReviewed": false,
     "ReportComment": "oooo",
     "MedicalReceipt": 5,
-    "ReportReview": null,
+    "ReportReview": 5,
     "MedicalRecord": 0
   }
 ]
