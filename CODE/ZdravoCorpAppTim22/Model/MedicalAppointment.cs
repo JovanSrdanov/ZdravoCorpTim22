@@ -12,7 +12,6 @@ namespace Model
         public int Id { get; set; }
         public AppointmentType Type { get; set; }
         public Interval Interval { get; set; }
-
         public bool isUrgent { get; set; }
 
         public MedicalAppointment(int id, AppointmentType type, Interval interval, Room room, Patient patient, Doctor doctor)

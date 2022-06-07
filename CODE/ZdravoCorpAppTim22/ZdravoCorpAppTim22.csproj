@@ -87,8 +87,14 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Core.XForms, Version=20.1451.0.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Xamarin.Core.20.1.0.59\lib\netstandard2.0\Syncfusion.Core.XForms.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Pdf.Base, Version=20.1460.0.59, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Pdf.Wpf.20.1.0.59\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPicker.XForms, Version=20.1451.0.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Xamarin.SfPicker.20.1.0.59\lib\netstandard2.0\Syncfusion.SfPicker.XForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -148,6 +154,21 @@
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Xamarin.Forms.5.0.0.2401\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -159,6 +180,7 @@
     <Compile Include="Controller\ApprovalController.cs" />
     <Compile Include="Controller\DoctorSpecializationController.cs" />
     <Compile Include="Controller\AuthenticationController.cs" />
+    <Compile Include="Controller\PersonalNoteController.cs" />
     <Compile Include="Model\PackedObjects\EnteredPreferences.cs" />
     <Compile Include="Controller\EquipmentDataController.cs" />
     <Compile Include="Controller\Generic\GenericController.cs" />
@@ -188,6 +210,7 @@
     <Compile Include="Model\HospitalReview.cs" />
     <Compile Include="Model\PackedObjects\ForChangeMedicalAppointment.cs" />
     <Compile Include="Model\PackedObjects\SearchParametersForChanging.cs" />
+    <Compile Include="Model\PersonalNote.cs" />
     <Compile Include="Model\ReportReview.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ReportReviewToIDConverter.cs" />
     <Compile Include="Repository\ApprovalRepository.cs" />
@@ -242,6 +265,7 @@
     <Compile Include="Repository\MedicineDataRepository.cs" />
     <Compile Include="Repository\MedicineRepository.cs" />
     <Compile Include="Repository\PatientRepository.cs" />
+    <Compile Include="Repository\PersonalNoteRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\EquipmentRelocationRepository.cs" />
     <Compile Include="Repository\ReplacementRepository.cs" />
@@ -268,6 +292,7 @@
     <Compile Include="Service\MedicalReportService.cs" />
     <Compile Include="Service\MedicineDataService.cs" />
     <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\PersonalNoteService.cs" />
     <Compile Include="Service\RenovationService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\ManagerService.cs" />

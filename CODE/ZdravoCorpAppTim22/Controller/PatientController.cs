@@ -2,6 +2,7 @@ using Model;
 using Service;
 using System;
 using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.Model;
 
 namespace Controller
 {

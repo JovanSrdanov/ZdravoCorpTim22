@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using ZdravoCorpAppTim22.Model;
+using Model;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
 
-namespace Model
+namespace ZdravoCorpAppTim22.Model
 {
     public class Patient : User
     {
@@ -15,6 +15,85 @@ namespace Model
         public bool HasBeenLoggedIn { get; set; }
         public List<DateTime> SuspiciousActivity { get; set; }
 
+        [JsonIgnore]
+        public System.Collections.Generic.List<PersonalNote> personalNote;
+
+        [JsonIgnore]
+        public System.Collections.Generic.List<PersonalNote> PersonalNote
+        {
+            get
+            {
+                if (personalNote == null)
+                    personalNote = new System.Collections.Generic.List<PersonalNote>();
+                return personalNote;
+            }
+            set
+            {
+                RemoveAllPersonalNote();
+                if (value != null)
+                {
+                    foreach (PersonalNote oPersonalNote in value)
+                        AddPersonalNote(oPersonalNote);
+                }
+            }
+        }
+
+       
+        public void AddPersonalNote(PersonalNote newPersonalNote)
+        {
+            if (newPersonalNote == null)
+                return;
+            if (this.personalNote == null)
+                this.personalNote = new System.Collections.Generic.List<PersonalNote>();
+            if (!this.personalNote.Contains(newPersonalNote))
+            {
+                this.personalNote.Add(newPersonalNote);
+                newPersonalNote.Patient = this;
+            }
+        }
+
+        public void RemovePersonalNote(PersonalNote oldPersonalNote)
+        {
+            if (oldPersonalNote == null)
+                return;
+            if (this.personalNote != null)
+                if (this.personalNote.Contains(oldPersonalNote))
+                {
+                    this.personalNote.Remove(oldPersonalNote);
+                    oldPersonalNote.Patient = null;
+                }
+        }
+
+     
+        public void RemoveAllPersonalNote()
+        {
+            if (personalNote != null)
+            {
+                System.Collections.ArrayList tmpPersonalNote = new System.Collections.ArrayList();
+                foreach (PersonalNote oldPersonalNote in personalNote)
+                    tmpPersonalNote.Add(oldPersonalNote);
+                personalNote.Clear();
+                foreach (PersonalNote oldPersonalNote in tmpPersonalNote)
+                    oldPersonalNote.Patient = null;
+                tmpPersonalNote.Clear();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
         [JsonConverter(typeof(HospitalReviewToIDConverter))]
 

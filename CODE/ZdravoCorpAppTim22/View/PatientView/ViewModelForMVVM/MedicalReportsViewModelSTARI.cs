@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using Model;
 using MVVM1;
+using ZdravoCorpAppTim22.Model;
 
 
 namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM

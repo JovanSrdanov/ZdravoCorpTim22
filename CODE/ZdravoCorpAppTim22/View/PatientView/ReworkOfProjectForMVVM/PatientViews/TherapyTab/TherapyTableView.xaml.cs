@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Forms;
+using Controller;
 using Model;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
@@ -42,6 +45,17 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             }
 
             return medicalReceiptsViewModel;
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Patient patient = (Patient)AuthenticationController.Instance.GetLoggedUser();
+            PersonalNote personal = new PersonalNote(2323, patient, 3,"Probaaa","ma da",DateTime.Now);
+            PersonalNoteController.Instance.Create(personal);
+
+            MessageBox.Show(PersonalNoteController.Instance.GetByID(personal.Id).Patient.Name);
+
+
         }
     }
 }

@@ -5,10 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.PresonalNoteTab"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="PersonalNotesPageView"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    FontSize="18"
     mc:Ignorable="d">
 
-    <Grid />
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <xctk:DateTimeUpDown Format="ShortTime" Value="12:00" />
+    </Grid>
 </Page>

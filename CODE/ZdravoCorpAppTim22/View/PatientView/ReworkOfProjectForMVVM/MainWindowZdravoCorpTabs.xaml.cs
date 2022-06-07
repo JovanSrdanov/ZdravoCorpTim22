@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM
 {
