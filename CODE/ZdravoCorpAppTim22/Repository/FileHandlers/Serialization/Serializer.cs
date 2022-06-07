@@ -21,7 +21,7 @@ namespace ZdravoCorpAppTim22.Repository.FileHandlers.Serialization
             {
                 File.Delete(path);
             }
-            string jsonString = JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = true});
+            string jsonString = JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, jsonString);
         }
 

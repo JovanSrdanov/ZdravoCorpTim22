@@ -1,5 +1,6 @@
 ﻿using Model;
 using System.Windows;
+using ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -43,6 +44,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             SecretaryMedicalOrder secretarySchedule = new SecretaryMedicalOrder(this);
             secretarySchedule.Show();
+            this.Hide();
+        }
+
+        private void RequestsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMVVMwindow secretaryMVVMwindow = new SecretaryMVVMwindow();
+            secretaryMVVMwindow.Show();
             this.Hide();
         }
     }

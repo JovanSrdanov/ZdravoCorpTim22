@@ -1,0 +1,13 @@
+[
+  {
+    "Id": 0,
+    "Reason": "Moze mi se",
+    "Urgent": true,
+    "AbsenceInterval": {
+      "Start": "2022-06-09T13:18:24.6102689+02:00",
+      "End": "2022-06-11T13:18:24.6102689+02:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
+  }
+]

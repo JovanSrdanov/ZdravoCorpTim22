@@ -550,6 +550,14 @@
     <Compile Include="View\Secretary\SecretaryMedicalOrder.xaml.cs">
       <DependentUpon>SecretaryMedicalOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryMVVMwindow.xaml.cs">
+      <DependentUpon>SecretaryMVVMwindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\RequestForAbsenceModelView.cs" />
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\RequestForAbsencePageViewModel.cs" />
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryRequestForAbsencePage.xaml.cs">
+      <DependentUpon>SecretaryRequestForAbsencePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Secretary\SecretaryNewEquipement.xaml.cs">
       <DependentUpon>SecretaryNewEquipement.xaml</DependentUpon>
     </Compile>
@@ -916,6 +924,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Secretary\SecretaryMedicalOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryMVVMwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryRequestForAbsencePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
