@@ -3,7 +3,10 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
+using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.PackedObjects;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -27,8 +30,9 @@ namespace Controller
             }
         }
 
-        public List<MedicalAppointment> GetSuggestedMedicalAppointments(int PatiendID, DateTime enteredDateTime, AppointmentType enteredAppointmentType, string enteredPriority, int DoctorID)
+        public List<MedicalAppointmentDTOforSuggestions> GetSuggestedMedicalAppointments(int PatiendID, DateTime enteredDateTime, AppointmentType enteredAppointmentType, string enteredPriority, int DoctorID)
         {
+           
             EnteredPreferences enteredPreferences = new EnteredPreferences(PatientController.Instance.GetByID(PatiendID), enteredDateTime, enteredAppointmentType, enteredPriority, DoctorController.Instance.GetByID(DoctorID));
 
              return MedicalAppointmentService.Instance.GetSuggestedMedicalAppointments(enteredPreferences);
@@ -44,17 +48,13 @@ namespace Controller
             return MedicalAppointmentService.Instance.GetNewMedicalAppointments(forChangeMedicalAppointment);
         }
 
-        public void MakeAppointment(int PatientID, int DoctorID, int RoomID, Interval interval, AppointmentType type)
+        public void MakeAppointment( int DoctorID, int RoomID, Interval interval, AppointmentType type)
         {
-            Patient patient = PatientController.Instance.GetByID(PatientID);
+            Patient patient = (Patient)AuthenticationController.Instance.GetLoggedUser();
             Room room = RoomController.Instance.GetByID(RoomID);
             Doctor doctor = DoctorController.Instance.GetByID(DoctorID);
-            MedicalAppointment medicalAppointment = new MedicalAppointment(-1,type,interval,room,patient,doctor);
-
-
+            MedicalAppointment medicalAppointment = new MedicalAppointment(-2,type,interval,room,patient,doctor);
             MedicalAppointmentService.Instance.MakeAppointment(medicalAppointment);
-
-
 
         }
 
@@ -66,7 +66,7 @@ namespace Controller
 
 
         /// ///////////////////// ///////////////////// ///////////////////// ///////////////////// //////////////////
-        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(AppointmentPreferences appointmentPreferences)
+        public ObservableCollection<MedicalAppointmentDTOforSuggestions> GetSuggestedMedicalAppointments(AppointmentPreferences appointmentPreferences)
         {
             //luka
             return MedicalAppointmentService.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);
@@ -86,5 +86,7 @@ namespace Controller
             medicalAppointment.Interval = selectedInterval;
             MedicalAppointmentController.instance.Update(medicalAppointment);
         }
+
+     
     }
 }

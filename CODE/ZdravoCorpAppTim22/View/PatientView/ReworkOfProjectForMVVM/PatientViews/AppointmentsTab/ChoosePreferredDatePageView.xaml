@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="ChoosePreferredDatePageView"
+    d:DataContext="{d:DesignInstance Type=local:PreferencesViewModel}"
     FontSize="18"
     mc:Ignorable="d">
 
@@ -23,8 +24,7 @@
             x:Name="datePicker"
             Height="30"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            DisplayDateStart="{x:Static sys:DateTime.Today}" />
+            VerticalAlignment="Top" />
         <Grid Margin="0,100,0,0">
             <Button
                 x:Name="Back"

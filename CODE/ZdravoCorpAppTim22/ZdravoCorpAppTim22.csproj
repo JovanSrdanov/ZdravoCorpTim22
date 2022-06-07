@@ -192,7 +192,7 @@
     <Compile Include="Repository\FileHandlers\Serialization\HospitalReviewToIDConverter.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\IngredientData.cs" />
-    <Compile Include="Model\MedicalAppointmentStruct.cs" />
+    <Compile Include="DTO\MedicalAppointmentDTOforSuggestions.cs" />
     <Compile Include="Model\MedicalReceipt.cs" />
     <Compile Include="Model\MedicalReport.cs" />
     <Compile Include="Model\Medicine.cs" />

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.PackedObjects;
 using ZdravoCorpAppTim22.Model.Utility;
@@ -21,14 +22,14 @@ namespace Service
             }
         }
 
-        public List<MedicalAppointment> GetSuggestedMedicalAppointments(EnteredPreferences enteredPreferences)
+        public List<MedicalAppointmentDTOforSuggestions> GetSuggestedMedicalAppointments(EnteredPreferences enteredPreferences)
         {
-            List<MedicalAppointment> availableMedicalAppointments = GetAvailableMedicalAppointments(enteredPreferences);
-            availableMedicalAppointments= DefaultRearrange(enteredPreferences.EnteredDoctor, availableMedicalAppointments);
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments = GetAvailableMedicalAppointments(enteredPreferences);
+            availableMedicalAppointments = DefaultRearrange(enteredPreferences.EnteredDoctor, availableMedicalAppointments);
             availableMedicalAppointments = RearrangeByPriority(enteredPreferences, availableMedicalAppointments);
             return availableMedicalAppointments;
         }
-        private static List<MedicalAppointment> GetAvailableMedicalAppointments(EnteredPreferences enteredPreferences)
+        private static List<MedicalAppointmentDTOforSuggestions> GetAvailableMedicalAppointments(EnteredPreferences enteredPreferences)
         {
             DateTime appointmentTimeStart = new DateTime(enteredPreferences.EnteredDateTime.Year,
                 enteredPreferences.EnteredDateTime.Month, enteredPreferences.EnteredDateTime.Day,
@@ -45,21 +46,19 @@ namespace Service
                 new SearchParametersForCreating(enteredPreferences.EnteredPatient, enteredPreferences.EnteredAppointmentType,
                     appointmentTimeStart, SetDurationOfAppointment(enteredPreferences.EnteredAppointmentType), workDayEndTime, suggestedDoctors, suggestedRooms);
 
-            List<MedicalAppointment> availableMedicalAppointments =
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments =
                 CreateMedicalAppointments(searchParametersForCreating);
             return availableMedicalAppointments;
         }
 
         public void MakeAppointment(MedicalAppointment medicalAppointment)
         {
-            Instance.Create(medicalAppointment);
 
-            medicalAppointment.patient.MedicalAppointment.Add(medicalAppointment);
-            medicalAppointment.Doctor.MedicalAppointment.Add(medicalAppointment);
-            medicalAppointment.Room.MedicalAppointment.Add(medicalAppointment);
+            Create(medicalAppointment);
+          
 
-            PatientService.Instance.Update(medicalAppointment.patient);
-            DoctorService.Instance.Update(medicalAppointment.doctor);
+            PatientService.Instance.Update(medicalAppointment.Patient);
+            DoctorService.Instance.Update(medicalAppointment.Doctor);
             RoomService.Instance.Update(medicalAppointment.Room);
 
 
@@ -79,6 +78,9 @@ namespace Service
 
             return suggestedDoctors;
         }
+
+
+
         private static List<Room> FilterRooms(AppointmentType enteredAppointmentType)
         {
             List<Room> suggestedRooms = new List<Room>(RoomService.Instance.GetAll());
@@ -115,14 +117,14 @@ namespace Service
 
             return durationOfAppointment;
         }
-        private static List<MedicalAppointment> CreateMedicalAppointments(SearchParametersForCreating searchParametersForCreating)
+        private static List<MedicalAppointmentDTOforSuggestions> CreateMedicalAppointments(SearchParametersForCreating searchParametersForCreating)
         {
-            List<MedicalAppointment> availableMedicalAppointments = new List<MedicalAppointment>();
-            PatientDoctorsRoomsAreAvailableCheck(searchParametersForCreating, availableMedicalAppointments);
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments = new List<MedicalAppointmentDTOforSuggestions>();
+            availableMedicalAppointments = PatientDoctorsRoomsAreAvailableCheck(searchParametersForCreating, availableMedicalAppointments);
             return availableMedicalAppointments;
         }
 
-        private static void PatientDoctorsRoomsAreAvailableCheck(SearchParametersForCreating searchParametersForCreating, List<MedicalAppointment> availableMedicalAppointments)
+        private static List<MedicalAppointmentDTOforSuggestions> PatientDoctorsRoomsAreAvailableCheck(SearchParametersForCreating searchParametersForCreating, List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments)
         {
             Interval interval = new Interval();
 
@@ -137,13 +139,16 @@ namespace Service
                                                             where doctor.IsAvailable(interval)
                                                             from room in searchParametersForCreating.SuggestedRooms
                                                             where room.IsAvailable(interval)
-                                                            select new MedicalAppointment(-1, searchParametersForCreating.EnteredAppointmentType, interval, room,
-                                                                searchParametersForCreating.EnteredPatient, doctor))
+                                                            select new MedicalAppointmentDTOforSuggestions(-99, searchParametersForCreating.EnteredAppointmentType, interval, searchParametersForCreating.EnteredPatient,
+                                                                 doctor, room))
                     {
+
                         availableMedicalAppointments.Add(medicalAppointmentToAdd);
                     }
                 }
             }
+
+            return availableMedicalAppointments;
         }
 
 
@@ -159,11 +164,11 @@ namespace Service
             return searchParametersForCreating.AppointmentTimeStart.AddMinutes(searchParametersForCreating.DurationOfAppointment) <= searchParametersForCreating.WorkDayEndTime;
         }
 
-        private static List<MedicalAppointment> DefaultRearrange(Doctor enteredDoctor, List<MedicalAppointment> availableMedicalAppointments)
+        private static List<MedicalAppointmentDTOforSuggestions> DefaultRearrange(Doctor enteredDoctor, List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments)
         {
-            List<MedicalAppointment> availableMedicalAppointmentsSortDefault = PreferredDoctorFirst(enteredDoctor, availableMedicalAppointments);
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointmentsSortDefault = PreferredDoctorFirst(enteredDoctor, availableMedicalAppointments);
 
-            foreach (MedicalAppointment medicalAppointmentStruct in availableMedicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions medicalAppointmentStruct in availableMedicalAppointments)
             {
                 if (medicalAppointmentStruct.Doctor.Id != enteredDoctor.Id)
                 {
@@ -175,12 +180,12 @@ namespace Service
             return availableMedicalAppointmentsSortDefault;
         }
 
-        private static List<MedicalAppointment> PreferredDoctorFirst(Doctor enteredDoctor, List<MedicalAppointment> availableMedicalAppointments)
+        private static List<MedicalAppointmentDTOforSuggestions> PreferredDoctorFirst(Doctor enteredDoctor, List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments)
         {
-            List<MedicalAppointment> availableMedicalAppointmentsSortDefault =
-                new List<MedicalAppointment>();
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointmentsSortDefault =
+                new List<MedicalAppointmentDTOforSuggestions>();
 
-            foreach (MedicalAppointment medicalAppointmentStruct in availableMedicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions medicalAppointmentStruct in availableMedicalAppointments)
             {
                 if (medicalAppointmentStruct.Doctor.Id == enteredDoctor.Id)
                 {
@@ -191,13 +196,13 @@ namespace Service
             return availableMedicalAppointmentsSortDefault;
         }
 
-        private static List<MedicalAppointment> RearrangeByPriority(EnteredPreferences enteredPreferences, List<MedicalAppointment> availableMedicalAppointments)
+        private static List<MedicalAppointmentDTOforSuggestions> RearrangeByPriority(EnteredPreferences enteredPreferences, List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments)
         {
             if (!enteredPreferences.EnteredPriority.Equals("Lekar")) return availableMedicalAppointments;
-            List<MedicalAppointment> availableMedicalAppointmentsSortDoctor =
-                new List<MedicalAppointment>();
+            List<MedicalAppointmentDTOforSuggestions> availableMedicalAppointmentsSortDoctor =
+                new List<MedicalAppointmentDTOforSuggestions>();
 
-            foreach (MedicalAppointment item in availableMedicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions item in availableMedicalAppointments)
             {
                 if (item.Doctor.Id == enteredPreferences.EnteredDoctor.Id)
                 {
@@ -211,9 +216,11 @@ namespace Service
                     enteredPreferences.EnteredPatient, enteredPreferences.EnteredDateTime.AddDays(1),
                     enteredPreferences.EnteredAppointmentType, enteredPreferences.EnteredPriority,
                     enteredPreferences.EnteredDoctor);
+
                 availableMedicalAppointmentsSortDoctor =
                     Instance.GetSuggestedMedicalAppointments(enteredPreferencesRecursive);
             }
+
 
             return availableMedicalAppointmentsSortDoctor;
 
@@ -281,9 +288,9 @@ namespace Service
 
 
         // SEKRETAROVO
-        public ObservableCollection<MedicalAppointmentStruct> GetSuggestedMedicalAppointments(AppointmentPreferences appointmentPreferences)
+        public ObservableCollection<MedicalAppointmentDTOforSuggestions> GetSuggestedMedicalAppointments(AppointmentPreferences appointmentPreferences)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+            ObservableCollection<MedicalAppointmentDTOforSuggestions> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentDTOforSuggestions>();
 
             int hour = Constants.Constants.WORK_DAY_START_TIME;
             int min = 0;
@@ -394,7 +401,7 @@ namespace Service
                             {
                                 if (room.IsAvailable(interval))
                                 {
-                                    MedicalAppointmentStruct medicalAppointmentToAdd = new MedicalAppointmentStruct(-1, appointmentPreferences.enteredAppointmentType, interval, appointmentPreferences.enteredPatient, doctor, room);
+                                    MedicalAppointmentDTOforSuggestions medicalAppointmentToAdd = new MedicalAppointmentDTOforSuggestions(-1, appointmentPreferences.enteredAppointmentType, interval, appointmentPreferences.enteredPatient, doctor, room);
                                     availableMedicalAppointments.Add(medicalAppointmentToAdd);
 
                                 }
@@ -406,9 +413,9 @@ namespace Service
 
             }
 
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDefault = new ObservableCollection<MedicalAppointmentStruct>();
+            ObservableCollection<MedicalAppointmentDTOforSuggestions> availableMedicalAppointmentsSortDefault = new ObservableCollection<MedicalAppointmentDTOforSuggestions>();
 
-            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions item in availableMedicalAppointments)
             {
                 if (item.Doctor.Id == appointmentPreferences.enteredDoctor.Id)
                 {
@@ -416,7 +423,7 @@ namespace Service
                 }
             }
 
-            foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions item in availableMedicalAppointments)
             {
                 if (!(item.Doctor.Id == appointmentPreferences.enteredDoctor.Id))
                 {
@@ -424,7 +431,7 @@ namespace Service
                 }
             }
 
-            availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>(availableMedicalAppointmentsSortDefault.OrderBy(i => i.Interval.Start));
+            availableMedicalAppointments = new ObservableCollection<MedicalAppointmentDTOforSuggestions>(availableMedicalAppointmentsSortDefault.OrderBy(i => i.Interval.Start));
             if (appointmentPreferences.enteredPriority == AppointemntPriorityEnum.Time)
             {
                 return availableMedicalAppointments;
@@ -432,9 +439,9 @@ namespace Service
 
             if (appointmentPreferences.enteredPriority == AppointemntPriorityEnum.Doctor)
             {
-                ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointmentsSortDoctor = new ObservableCollection<MedicalAppointmentStruct>();
+                ObservableCollection<MedicalAppointmentDTOforSuggestions> availableMedicalAppointmentsSortDoctor = new ObservableCollection<MedicalAppointmentDTOforSuggestions>();
 
-                foreach (MedicalAppointmentStruct item in availableMedicalAppointments)
+                foreach (MedicalAppointmentDTOforSuggestions item in availableMedicalAppointments)
                 {
                     if (item.Doctor.Id == appointmentPreferences.enteredDoctor.Id)
                     {

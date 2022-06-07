@@ -1,30 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Net.Sockets;
-using System.Windows;
-using Controller;
+﻿using Controller;
 using Model;
 using MVVM1;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using ZdravoCorpAppTim22.DTO;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.AppointmentsTab
 {
-    public class ChooseAppointmentFromSuggestedPageViewModel:ViewModel
+    public class ChooseAppointmentFromSuggestedPageViewModel : ViewModel
     {
         private void ConvertToViewModel(PreferencesViewModel preferencesViewModel)
         {
-            List<MedicalAppointment> medicalAppointments =
+            List<MedicalAppointmentDTOforSuggestions> medicalAppointments =
                 MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(preferencesViewModel.Patient.Id,
                     preferencesViewModel.SelectedDateTime, preferencesViewModel.EnteredAppointmentType,
                     preferencesViewModel.EnteredPriority, preferencesViewModel.Doctor.Id);
             MedicalAppointmentsViewModels = new ObservableCollection<MedicalAppointmentsViewModel>();
-            foreach (MedicalAppointment medicalAppointment in medicalAppointments)
+            foreach (MedicalAppointmentDTOforSuggestions medicalAppointment in medicalAppointments)
             {
                 MedicalAppointmentsViewModels.Add(new MedicalAppointmentsViewModel(medicalAppointment.Id,
-                    medicalAppointment.Type, medicalAppointment.Interval, new AppointmentRoomViewModel(medicalAppointment.room),
-                    new AppointmentPatientViewModel(medicalAppointment.patient),
-                    new AppointmentDoctorViewModel(medicalAppointment.doctor)));
+                    medicalAppointment.Type, medicalAppointment.Interval, new AppointmentRoomViewModel(medicalAppointment.Room),
+                    new AppointmentPatientViewModel(medicalAppointment.Patient),
+                    new AppointmentDoctorViewModel(medicalAppointment.Doctor)));
             }
+
         }
+
+
         public ObservableCollection<MedicalAppointmentsViewModel> MedicalAppointmentsViewModels { get; set; }
 
         private MedicalAppointmentsViewModel selectedMedicalAppointmentsViewModel;
@@ -42,8 +45,13 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
         public void MakeAppointment()
         {
-            MedicalAppointmentController.Instance.MakeAppointment(SelectedMedicalAppointmentsViewModel.Patient.Id, SelectedMedicalAppointmentsViewModel.Doctor.Id, SelectedMedicalAppointmentsViewModel.Room.Id,SelectedMedicalAppointmentsViewModel.Interval, SelectedMedicalAppointmentsViewModel.Type);
+            MedicalAppointmentController.Instance.MakeAppointment( SelectedMedicalAppointmentsViewModel.Doctor.Id, SelectedMedicalAppointmentsViewModel.Room.Id, SelectedMedicalAppointmentsViewModel.Interval, SelectedMedicalAppointmentsViewModel.Type);
+
+
+
+
         }
+
 
 
         public MedicalAppointmentsViewModel SelectedMedicalAppointmentsViewModel

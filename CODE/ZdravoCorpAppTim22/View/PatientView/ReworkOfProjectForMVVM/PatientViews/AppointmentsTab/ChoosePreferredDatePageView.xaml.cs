@@ -14,6 +14,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             InitializeComponent();
             _preferencesViewModel = preferencesViewModel;
             datePicker.SelectedDate = DateTime.Now.AddDays(1).Date;
+            datePicker.DisplayDateStart = DateTime.Now.AddDays(1).Date;
         }
 
         private void Back_OnClick(object sender, RoutedEventArgs e)
