@@ -16,16 +16,16 @@ namespace ZdravoCorpAppTim22.Model
         public List<DateTime> SuspiciousActivity { get; set; }
 
         [JsonIgnore]
-        public System.Collections.Generic.List<PersonalNote> personalNote;
+        public System.Collections.Generic.List<PersonalNote> personalNotes;
 
         [JsonIgnore]
-        public System.Collections.Generic.List<PersonalNote> PersonalNote
+        public System.Collections.Generic.List<PersonalNote> PersonalNotes
         {
             get
             {
-                if (personalNote == null)
-                    personalNote = new System.Collections.Generic.List<PersonalNote>();
-                return personalNote;
+                if (personalNotes == null)
+                    personalNotes = new System.Collections.Generic.List<PersonalNote>();
+                return personalNotes;
             }
             set
             {
@@ -43,11 +43,11 @@ namespace ZdravoCorpAppTim22.Model
         {
             if (newPersonalNote == null)
                 return;
-            if (this.personalNote == null)
-                this.personalNote = new System.Collections.Generic.List<PersonalNote>();
-            if (!this.personalNote.Contains(newPersonalNote))
+            if (this.personalNotes == null)
+                this.personalNotes = new System.Collections.Generic.List<PersonalNote>();
+            if (!this.personalNotes.Contains(newPersonalNote))
             {
-                this.personalNote.Add(newPersonalNote);
+                this.personalNotes.Add(newPersonalNote);
                 newPersonalNote.Patient = this;
             }
         }
@@ -56,10 +56,10 @@ namespace ZdravoCorpAppTim22.Model
         {
             if (oldPersonalNote == null)
                 return;
-            if (this.personalNote != null)
-                if (this.personalNote.Contains(oldPersonalNote))
+            if (this.personalNotes != null)
+                if (this.personalNotes.Contains(oldPersonalNote))
                 {
-                    this.personalNote.Remove(oldPersonalNote);
+                    this.personalNotes.Remove(oldPersonalNote);
                     oldPersonalNote.Patient = null;
                 }
         }
@@ -67,12 +67,12 @@ namespace ZdravoCorpAppTim22.Model
      
         public void RemoveAllPersonalNote()
         {
-            if (personalNote != null)
+            if (personalNotes != null)
             {
                 System.Collections.ArrayList tmpPersonalNote = new System.Collections.ArrayList();
-                foreach (PersonalNote oldPersonalNote in personalNote)
+                foreach (PersonalNote oldPersonalNote in personalNotes)
                     tmpPersonalNote.Add(oldPersonalNote);
-                personalNote.Clear();
+                personalNotes.Clear();
                 foreach (PersonalNote oldPersonalNote in tmpPersonalNote)
                     oldPersonalNote.Patient = null;
                 tmpPersonalNote.Clear();

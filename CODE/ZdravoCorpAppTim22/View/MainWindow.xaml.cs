@@ -81,6 +81,17 @@ namespace ZdravoCorpAppTim22
                         MessageBox.Show(message);
                     });
                 }
+
+                message = PatientController.Instance.PersonalNoteNotification();
+                if (!message.Equals(""))
+                {
+                    App.Current?.Dispatcher?.Invoke(delegate
+                    {
+                        MessageBox.Show(message);
+                    });
+                }
+
+
             }
         }
 

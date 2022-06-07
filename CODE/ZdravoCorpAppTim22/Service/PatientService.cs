@@ -44,6 +44,81 @@ namespace Service
             return App.Current != null && (AuthenticationController.Instance.GetLoggedUser()!=null) && ( AuthenticationController.Instance.GetLoggedUser().GetType() == typeof(Patient));
         }
 
+        public string PersonalNoteNotification()
+        {
+            string returnMessage = "";
+            if (IsPatientLoggedIn())
+            {
+                if (((Patient)AuthenticationController.Instance.GetLoggedUser()).personalNotes != null)
+                {
+                    returnMessage = CheckingUnfinishedPersonalNotes(((Patient)AuthenticationController.Instance.GetLoggedUser()).personalNotes);
+                }
+            }
+            return returnMessage;
+        }
+
+        private string CheckingUnfinishedPersonalNotes(List<PersonalNote> personalNotes)
+        {
+            string message = "";
+            foreach (PersonalNote personalNote in personalNotes.Where(personalNote =>
+                         !CheckIfPersonalNoteIsOver(personalNote)))
+            {
+                message = CheckForTimeDifference(personalNote, message);
+                if (message != "") break;
+            }
+            return message;
+        }
+
+        private string CheckForTimeDifference(PersonalNote personalNote, string message)
+        {
+            foreach (DateTime dateTime in personalNote.NextNotification.ToList())
+            {
+                if (CheckIfTimeForPersonalNoteMessage(dateTime))
+                {
+                    message = personalNote.Message;
+
+                    UpdateNotifyNextDateTimePersonalNoteMessage(dateTime, personalNote);
+                }
+
+                if (message != "") break;
+
+                UpdateMissedNotificationPersonalNoteMessage(dateTime, personalNote);
+            }
+
+            return message;
+        }
+
+        private void UpdateMissedNotificationPersonalNoteMessage(DateTime dateTime, PersonalNote personalNote)
+        {
+            if (DateTime.Now > dateTime)
+            {
+                UpdateNotifyNextDateTimePersonalNoteMessage(dateTime, personalNote);
+            }
+        }
+
+        private void UpdateNotifyNextDateTimePersonalNoteMessage(DateTime dateTime, PersonalNote personalNote)
+        {
+            int hour = dateTime.Hour;
+            int minute = dateTime.Minute;
+            personalNote.NextNotification.Remove(dateTime);
+
+            dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day,
+                hour, minute, 0);
+
+            personalNote.NextNotification.Add(dateTime);
+            PersonalNoteService.Instance.Update(personalNote);
+        }
+
+        private bool CheckIfTimeForPersonalNoteMessage(DateTime dateTime)
+        {
+            return DateTime.Now > dateTime.AddMinutes(-1) && DateTime.Now < dateTime.AddMinutes(1);
+
+        }
+
+        private bool CheckIfPersonalNoteIsOver(PersonalNote personalNote)
+        {
+            return DateTime.Now.Date > personalNote.EndOfShowing.Date;
+        }
 
         private string CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
         {

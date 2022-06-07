@@ -61,5 +61,14 @@
     "AdditionalInstructions": "oki doki",
     "TherapyPurpose": "Zato",
     "MedicalRecord": 0
+  },
+  {
+    "Id": 6,
+    "EndDate": "2022-06-26T00:00:00",
+    "NotifyNextDateTime": "2022-06-08T11:00:00",
+    "Time": "11:00",
+    "AdditionalInstructions": "vau",
+    "TherapyPurpose": "zatooo",
+    "MedicalRecord": 1
   }
 ]

@@ -534,8 +534,19 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\SuccesHospitalReviewPage.xaml.cs">
       <DependentUpon>SuccesHospitalReviewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\ChooseAnamnesisPageView.xaml.cs">
+      <DependentUpon>ChooseAnamnesisPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\CreatePersonalNotePageView.xaml.cs">
+      <DependentUpon>CreatePersonalNotePageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\PersonalNotesPageView.xaml.cs">
       <DependentUpon>PersonalNotesPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\PersonalNotesPageViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\PersonalNotesViewModel.cs" />
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\SuccessPersonalNoteCreated.xaml.cs">
+      <DependentUpon>SuccessPersonalNoteCreated.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\CommentReportPageView.xaml.cs">
       <DependentUpon>CommentReportPageView.xaml</DependentUpon>
@@ -934,7 +945,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\ChooseAnamnesisPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\CreatePersonalNotePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\PersonalNotesPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\PresonalNoteTab\SuccessPersonalNoteCreated.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

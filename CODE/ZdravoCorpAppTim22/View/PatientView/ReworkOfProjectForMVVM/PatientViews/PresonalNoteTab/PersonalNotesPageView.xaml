@@ -8,12 +8,56 @@
     xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="PersonalNotesPageView"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance Type=local:PersonalNotesPageViewModel}"
     FontSize="18"
     mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <xctk:DateTimeUpDown Format="ShortTime" Value="12:00" />
-    </Grid>
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <Label
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Personalni podsetnik"
+            FontSize="36"
+            FontWeight="Bold" />
+        <DataGrid
+            x:Name="DataGridAppointment"
+            Height="300"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            ColumnWidth="*"
+            IsReadOnly="True"
+            ItemsSource="{Binding PersonalNotesViewModels}"
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+
+
+                <DataGridTextColumn Binding="{Binding Path=Reason}" Header="Razlog" />
+                <DataGridTextColumn Binding="{Binding Path=Message}" Header="Poruka" />
+                <DataGridTextColumn Binding="{Binding Path=EndOfShowing}" Header="Kraj podsetnika" />
+                <DataGridTextColumn Binding="{Binding Path=Frequency}" Header="Učestalost" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Margin="0,15,0,0">
+
+            <Button
+                x:Name="MakeNote"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Background="Green"
+                Click="MakeNote_Click"
+                Content="Napravi podsetnik"
+                Foreground="White" />
+
+        </Grid>
+    </StackPanel>
 </Page>

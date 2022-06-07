@@ -42,6 +42,11 @@ namespace Controller
         public void checkIfPatientHasMedicalRecord(Patient patient)
         {
             PatientService.Instance.checkIfPatientHasMedicalRecord(patient);
-        }   
+        }
+
+        public string PersonalNoteNotification()
+        {
+            return PatientService.Instance.PersonalNoteNotification();
+        }
     }
 }

@@ -16,20 +16,18 @@ using System.Windows.Shapes;
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.PresonalNoteTab
 {
     /// <summary>
-    /// Interaction logic for PersonalNotesPageView.xaml
+    /// Interaction logic for SuccessPersonalNoteCreated.xaml
     /// </summary>
-    public partial class PersonalNotesPageView : Page
+    public partial class SuccessPersonalNoteCreated : Page
     {
-        public PersonalNotesPageView()
+        public SuccessPersonalNoteCreated()
         {
             InitializeComponent();
-
-            this.DataContext = new PersonalNotesPageViewModel();
         }
 
-        private void MakeNote_Click(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ChooseAnamnesisPageView());
+            this.NavigationService.Navigate(new PersonalNotesPageView());
         }
     }
 }
