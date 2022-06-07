@@ -149,4 +149,14 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="PDFButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStandard}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <WrapPanel>
+                    <TextBlock Padding="0" FontFamily="{StaticResource Icons}" VerticalAlignment="Center" FontSize="20" Text="&#xea90;"/>
+                    <TextBlock Margin="18 0 0 0" Padding="0" Text="PDF"/>
+                </WrapPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
