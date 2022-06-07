@@ -189,6 +189,7 @@
     <Compile Include="Model\PackedObjects\ForChangeMedicalAppointment.cs" />
     <Compile Include="Model\PackedObjects\SearchParametersForChanging.cs" />
     <Compile Include="Model\ReportReview.cs" />
+    <Compile Include="Model\StuffMeeting.cs" />
     <Compile Include="Repository\FileHandlers\Serialization\ReportReviewToIDConverter.cs" />
     <Compile Include="Repository\ApprovalRepository.cs" />
     <Compile Include="Repository\HospitalReviewRepository.cs" />
@@ -599,6 +600,13 @@
     <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryRequestForAbsencePage.xaml.cs">
       <DependentUpon>SecretaryRequestForAbsencePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingDialogPage.xaml.cs">
+      <DependentUpon>SecretaryStuffMeetingDialogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingOverviewPage.xaml.cs">
+      <DependentUpon>SecretaryStuffMeetingOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingOverviewPageViewModel.cs" />
     <Compile Include="View\Secretary\SecretaryNewEquipement.xaml.cs">
       <DependentUpon>SecretaryNewEquipement.xaml</DependentUpon>
     </Compile>
@@ -1023,6 +1031,14 @@
     <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryRequestForAbsencePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingDialogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Secretary\SecretaryNewEquipement.xaml">
       <SubType>Designer</SubType>

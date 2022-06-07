@@ -9,10 +9,21 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder
     public partial class SecretaryMVVMwindow : Window
     {
         private SecretaryHome secretaryHome;
-        public SecretaryMVVMwindow(SecretaryHome secretaryHome)
+
+        public SecretaryMVVMwindow(SecretaryHome secretaryHome, bool RequestForAbsence)
         {
             InitializeComponent();
             this.secretaryHome = secretaryHome;
+            if (RequestForAbsence)
+            {
+                SecretaryRequestForAbsence.Source =
+                    new Uri("SecretaryRequestForAbsenceMVVMFolder/SecretaryRequestForAbsencePage.xaml", UriKind.Relative);
+            }
+            else
+            {
+                SecretaryRequestForAbsence.Source =
+                    new Uri("SecretaryRequestForAbsenceMVVMFolder/SecretaryStuffMeetingOverviewPage.xaml", UriKind.Relative);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

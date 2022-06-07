@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
@@ -32,6 +33,13 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             secretaryHome.Show();
             this.Close();
+        }
+
+        private void btnNewStuffMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMVVMwindow secretaryMVVMwindow = new SecretaryMVVMwindow(secretaryHome, false);
+            secretaryMVVMwindow.Show();
+            this.Hide();
         }
     }
 }
