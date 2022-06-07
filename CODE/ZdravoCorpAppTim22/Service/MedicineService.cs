@@ -80,7 +80,6 @@ namespace ZdravoCorpAppTim22.Service
             return list;
         }
 
-        ///STEFAN DODAO
         public bool hasStorageEnoughMedicine(Medicine medicineInStorage, Medicine requestedMedicine)
         {
             bool returnValue = true;
@@ -90,6 +89,5 @@ namespace ZdravoCorpAppTim22.Service
             }
             return returnValue;
         }
-        ///STEFAN DODAO
     }
 }

@@ -3,10 +3,21 @@
     "Id": 0,
     "BloodType": 1,
     "AllergiesList": [],
+    "ConditionList": []
+  },
+  {
+    "Id": 1,
+    "BloodType": 1,
+    "AllergiesList": [
+      "lijek_1",
+      "sastojak_2"
+    ],
     "ConditionList": [
-      "sad",
       "1",
-      "nesto"
+      "nesto",
+      "Covek se raspada",
+      "NAJJACI",
+      "Mudre rije\u010Di cara Lazara koje i danas imaju zna\u010Daj..."
     ]
   }
 ]

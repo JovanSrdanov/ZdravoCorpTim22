@@ -45,5 +45,10 @@ namespace ZdravoCorpAppTim22.Controller
         {
             return RequestForAbsenceService.Instance.hasAlreadyRequestedAbsenceInSelectedPeriod(requestedInterval, requesting);
         }
+
+        public bool isRequestDenied(RequestForAbsence request)
+        {
+            return RequestForAbsenceService.Instance.isRequestDenied(request);
+        }
     }
 }

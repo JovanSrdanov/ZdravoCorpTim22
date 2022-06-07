@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:patientViews="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews"
     Title="ZdravoCorp Aplikacija"
-    Width="1380"
-    Height="820"
+    Width="1280"
+    Height="720"
     Closing="MainWindowZdravoCorpTabs_OnClosing"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="CanMinimize"
@@ -20,7 +20,7 @@
         </Grid>
 
         <StackPanel
-            Margin="15,0,0,32"
+            Margin="15,0,0,30"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom">
             <Border Visibility="Hidden">

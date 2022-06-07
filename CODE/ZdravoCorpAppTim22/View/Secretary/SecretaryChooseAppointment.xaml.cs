@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Windows;
+using ZdravoCorpAppTim22.DTO;
 
 public enum AppointemntPriorityEnum
 {
@@ -42,7 +43,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                        MedicalAppointment medicalAppointmentTemp = new MedicalAppointment((Model.MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem);
+                        MedicalAppointment medicalAppointmentTemp = new MedicalAppointment((MedicalAppointmentDTOforSuggestions)dataGridSuggestedMedicalAppointments.SelectedItem);
                         MedicalAppointmentController.Instance.Create(medicalAppointmentTemp);
                         this.Close();
                         break;

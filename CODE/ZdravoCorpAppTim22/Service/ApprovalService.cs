@@ -14,5 +14,13 @@ namespace ZdravoCorpAppTim22.Service
                 return new ApprovalService();
             }
         }
+        public bool isApproved(Approval approval)
+        {
+            return approval.IsApproved;
+        }
+        public bool isRejected(Medicine medicine)
+        {
+            return (medicine.MedicineData.Approval.Doctor != null && medicine.MedicineData.Approval.IsApproved == false);
+        }
     }
 }

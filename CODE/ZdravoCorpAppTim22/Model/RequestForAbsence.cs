@@ -14,7 +14,6 @@ namespace ZdravoCorpAppTim22.Model
         public Interval AbsenceInterval { get; set; }
         public RequestState RequestState { get; set; }
 
-        //Constructor
         [JsonConstructor]
         public RequestForAbsence() { }
         public RequestForAbsence(string reason, bool urgent, Interval absenceInterval, Doctor doctor)
@@ -26,7 +25,6 @@ namespace ZdravoCorpAppTim22.Model
             RequestState = RequestState.pending;
         }
 
-        //Doctor
         [JsonConverter(typeof(DoctorToIDConverter))]
         public Doctor doctor;
 
@@ -55,7 +53,6 @@ namespace ZdravoCorpAppTim22.Model
                 }
             }
         }
-        ///DODAO////////////
         public override bool Equals(object obj)
         {
             try

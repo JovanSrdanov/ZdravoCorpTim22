@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -110,7 +111,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
 
             AppointmentPreferences appointmentPreferences = GetPrefrences();
-            MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
+            MedicalAppointmentDTOforSuggestions medicalAppointmentStruct = GetMedicalAppointmentStruct();
             if (medicalAppointmentStruct == null)
             {
                 MessageBox.Show("NO AVAILABLE APPOINTMENTS");
@@ -161,7 +162,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
 
             AppointmentPreferences appointmentPreferences = GetPrefrences();
-            MedicalAppointmentStruct medicalAppointmentStruct = GetMedicalAppointmentStruct();
+            MedicalAppointmentDTOforSuggestions medicalAppointmentStruct = GetMedicalAppointmentStruct();
             if (medicalAppointmentStruct == null)
             {
                 return;
@@ -198,11 +199,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
             return appointmentPreferencesTemp;
         }
 
-        public MedicalAppointmentStruct GetMedicalAppointmentStruct()
+        public MedicalAppointmentDTOforSuggestions GetMedicalAppointmentStruct()
         {
-            MedicalAppointmentStruct medicalAppointmentStructTemp = null;
+            MedicalAppointmentDTOforSuggestions medicalAppointmentStructTemp = null;
             AppointmentPreferences appointmentPreferencesTemp = GetPrefrences();
-            ObservableCollection<MedicalAppointmentStruct> tempAppointments = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferencesTemp);
+            ObservableCollection<MedicalAppointmentDTOforSuggestions> tempAppointments = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferencesTemp);
             for (int i = 0; i < tempAppointments.Count; i++)
             {
                 if (tempAppointments[i].Interval.Start <= System.DateTime.Now.AddHours(1) && tempAppointments[i].Doctor.DoctorSpecialization == appointmentPreferencesTemp.enteredDoctor.DoctorSpecialization)

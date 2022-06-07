@@ -44,5 +44,11 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
             MessageBox.Show("Termin otkazan!");
         }
+
+        private void AddAppointment_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChooseTypeOfAppoitnmentPageView chooseTypeOfAppoitnmentPageView = new ChooseTypeOfAppoitnmentPageView();
+            this.NavigationService.Navigate(chooseTypeOfAppoitnmentPageView);
+        }
     }
 }

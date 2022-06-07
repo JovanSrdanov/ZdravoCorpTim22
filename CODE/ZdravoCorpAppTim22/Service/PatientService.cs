@@ -29,35 +29,39 @@ namespace Service
 
         public string TherapyNotification()
         {
-            if (App.Current != null && ZdravoCorpTabs.LoggedPatient != null)
+            string returnMessage = "";
+            if (IsPatientLoggedIn() )
             {
-                MedicalRecord medicalRecord = ZdravoCorpTabs.LoggedPatient.medicalRecord;
-
-                if (medicalRecord == null) return "";
-                List<MedicalReceipt> MedicalReceipts = medicalRecord.MedicalReceipt;
-                return CheckingUnfinishedTherapies(MedicalReceipts);
+                if (((Patient)AuthenticationController.Instance.GetLoggedUser()).MedicalRecord == null) return "";
+                returnMessage = CheckingUnfinishedTherapies(((Patient)AuthenticationController.Instance.GetLoggedUser()).MedicalRecord.MedicalReceipt);
             }
-            return "";
+
+            return returnMessage;
         }
 
-        
+        private static bool IsPatientLoggedIn()
+        {
+            return App.Current != null && (AuthenticationController.Instance.GetLoggedUser()!=null) && ( AuthenticationController.Instance.GetLoggedUser().GetType() == typeof(Patient));
+        }
+
 
         private string CheckingUnfinishedTherapies(List<MedicalReceipt> MedicalReceipts)
         {
+            string message = "";
             foreach (var medicalReceipt in MedicalReceipts.Where(medicalReceipt =>
                          !CheckIfTherapyIsOver(medicalReceipt)))
             {
                 if (CheckIfTimeForMessage(medicalReceipt))
                 {
-                    string message = CreatingMessageForTherapy(medicalReceipt);
-                    // ovdde dodaj neki event sta ja znam
+                    message = CreatingMessageForTherapy(medicalReceipt);
+                   
                     UpdateNotifyNextDateTime(medicalReceipt);
-                    return message;
+                   
                 }
 
                 UpdateMissedNotification(medicalReceipt);
             }
-            return "";
+            return message;
         }
 
         private static void UpdateMissedNotification(MedicalReceipt medicalReceipt)
@@ -93,7 +97,6 @@ namespace Service
             string message = "Podsetnik za terapiju:\n\nSvrha terapije: ";
             message += medicalReceipt.TherapyPurpose;
             message += "\n\n";
-
 
             message += "Način upotrebe: ";
             message += medicalReceipt.AdditionalInstructions;
@@ -143,7 +146,6 @@ namespace Service
         {
             patient.Blocked = true;
             Instance.Update(patient);
-            ZdravoCorpTabs.LoggedPatient = null;
             AuthenticationController.Instance.Logout();
 
         }
@@ -157,7 +159,6 @@ namespace Service
             }
         }
 
-        ///STEFAN DODAO
         public void checkIfPatientHasMedicalRecord(Patient patient)
         {
             MedicalRecord patientMedicalRecord = patient.MedicalRecord;
@@ -169,6 +170,5 @@ namespace Service
                 patient.MedicalRecord = patientMedicalRecord;
             }
         }
-        ///STEFAN DODAO
     }
 }

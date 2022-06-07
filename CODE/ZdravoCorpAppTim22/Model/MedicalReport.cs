@@ -9,16 +9,14 @@ namespace Model
 {
     public class MedicalReport : IHasID
     {
-        //izvestaj
         public int Id { get; set; }
-        public int DoctorID { get; set;}            //ko je napravio izvestaj
+        public int DoctorId { get; set;}            //ko je napravio izvestaj
         public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
         public DateTime ReportDate { get; set; }
         public bool ReportReviewed { get; set; }
         public string ReportComment { get; set; }
 
-        //recept
         [JsonConverter(typeof(MedicalReceiptToIDConverter))]
         public MedicalReceipt MedicalReceipt { get; set; }
 
@@ -26,7 +24,7 @@ namespace Model
 
         [JsonConverter(typeof(ReportReviewToIDConverter))]
 
-        public ReportReview reportReview;
+        private ReportReview reportReview;
         [JsonConverter(typeof(ReportReviewToIDConverter))]
 
         public ReportReview ReportReview
@@ -55,7 +53,6 @@ namespace Model
             ReportComment = "";
         }
 
-        //karton
         [JsonConverter(typeof(MedicalRecordToIDConverter))]
         public MedicalRecord medicalRecord;
 

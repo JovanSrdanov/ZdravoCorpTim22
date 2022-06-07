@@ -14,7 +14,11 @@
         <converter:ConverterToSerbian x:Key="cts" />
     </Page.Resources>
 
-    <StackPanel Background="Transparent" Orientation="Vertical">
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
         <Label
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
@@ -27,7 +31,6 @@
         <DataGrid
             x:Name="DataGridAppointment"
             Height="300"
-            Margin="42,21,42,42"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserResizeColumns="False"
@@ -61,22 +64,23 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Margin="42,0,42,0">
+        <Grid Margin="0,15,0,0">
             <Button
                 x:Name="RemoveAppointment"
                 Padding="10,1"
                 HorizontalAlignment="Left"
                 VerticalContentAlignment="Center"
                 Background="#FFDE3232"
+                Click="RemoveAppointment_Click"
                 Command="{Binding DeleteAppointmentCommand}"
-                Content="Otkaži termin"
-                Foreground="White" Click="RemoveAppointment_Click" />
+                Content="Otkazivanje termina"
+                Foreground="White" />
             <Button
-                Click="ChangeAppointment_OnClick"
                 x:Name="ChangeAppointment"
                 Padding="10,1"
                 HorizontalAlignment="Center"
                 Background="Yellow"
+                Click="ChangeAppointment_OnClick"
                 Command="{Binding ChangeAppointmentCommand}"
                 Content="Izmena termina" />
             <Button
@@ -85,7 +89,8 @@
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Center"
                 Background="Green"
-                Content="Zakažite termin"
+                Click="AddAppointment_OnClick"
+                Content="Zakazivanje termina"
                 Foreground="White" />
 
         </Grid>

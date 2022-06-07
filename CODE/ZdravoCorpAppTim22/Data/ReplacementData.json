@@ -8,5 +8,10 @@
     "Id": 1,
     "ReplacingMedicine": 0,
     "ReplacementToMedicine": 2
+  },
+  {
+    "Id": 2,
+    "ReplacingMedicine": 0,
+    "ReplacementToMedicine": 5
   }
 ]
