@@ -20,7 +20,7 @@ namespace ZdravoCorpAppTim22.Service
         public void ReviewTheReport(MedicalReport medicalReport, ReportReview reportReview)
         {
             ReportReviewService.Instance.Create(reportReview);
-            medicalReport.reportReview = reportReview;
+            medicalReport.ReportReview = reportReview;
             medicalReport.ReportReviewed = true;
             Instance.Update(medicalReport);
         }
