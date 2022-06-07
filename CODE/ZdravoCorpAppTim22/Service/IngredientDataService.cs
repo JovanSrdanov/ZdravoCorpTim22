@@ -14,5 +14,19 @@ namespace ZdravoCorpAppTim22.Service
                 return new IngredientDataService();
             }
         }
+
+        public bool isPatientAlergic(string alergy, Medicine medicine)
+        {
+            bool returnValue = false;
+            foreach (var ingredient in medicine.MedicineData.Ingredient)
+            {
+                if (ingredient.IngredientData.Name.Equals(alergy))
+                {
+                    returnValue = true;
+                    break;
+                }
+            }
+            return returnValue;
+        }
     }
 }

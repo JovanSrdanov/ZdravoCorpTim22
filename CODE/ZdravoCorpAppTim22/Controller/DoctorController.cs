@@ -28,11 +28,9 @@ namespace Controller
             return DoctorService.Instance.isDoctorRegular(doctor);
         }
 
-        //DODAO
         public bool doctorHasMedicalRecord(Doctor doctor, Patient patient)
         {
             return DoctorService.Instance.doctorHasMedicalRecord(doctor, patient);
         }
-        //DODAO
     }
 }

@@ -1,0 +1,46 @@
+[
+  {
+    "Id": 0,
+    "Reason": "1",
+    "Urgent": true,
+    "AbsenceInterval": {
+      "Start": "2022-06-23T00:00:00",
+      "End": "2022-07-02T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
+  },
+  {
+    "Id": 1,
+    "Reason": "2",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-08-23T00:00:00",
+      "End": "2022-09-02T00:00:00"
+    },
+    "RequestState": 2,
+    "Doctor": 0
+  },
+  {
+    "Id": 2,
+    "Reason": "1",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-06-10T00:00:00",
+      "End": "2022-06-11T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
+  },
+  {
+    "Id": 3,
+    "Reason": "1",
+    "Urgent": false,
+    "AbsenceInterval": {
+      "Start": "2022-07-09T00:00:00",
+      "End": "2022-07-14T00:00:00"
+    },
+    "RequestState": 0,
+    "Doctor": 0
+  }
+]

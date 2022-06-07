@@ -30,7 +30,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             setAbilityToChangeReport();
         }
 
-        private void setWPFDisplayText(Medicine medicine)       //ne pomeraj
+        private void setWPFDisplayText(Medicine medicine)
         {
             DateBlock.Text = selectedMedicalReport.ReportDate.ToShortDateString();
             NameBlock.Text = selectedMedicalReport.MedicalRecord.Patient.Name;
@@ -47,7 +47,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
 
         }
 
-        private void setItemSources()       //ne pomeraj
+        private void setItemSources()
         {
             MedicationComboBox.ItemsSource = MedicineDataController.Instance.GetAllApproved();
             MedicationComboBox.SelectedValuePath = "Id";
@@ -55,9 +55,9 @@ namespace ZdravoCorpAppTim22.View.DoctorView
                 MedicationComboBox.SelectedValue = selectedMedicalReport.MedicalReceipt.Medicine[0].MedicineData.Id;
         }
 
-        private void setAbilityToChangeReport()     //ne pomeraj
+        private void setAbilityToChangeReport()
         {
-            if (selectedMedicalReport.DoctorID != DoctorHomeScreen.LoggedInDoctor.Id)
+            if (selectedMedicalReport.DoctorId != DoctorHomeScreen.LoggedInDoctor.Id)
             {
                 ChangeReportBtn.IsEnabled = false;
                 ChangeReportBtn.Foreground = new SolidColorBrush(Colors.Black);
@@ -72,7 +72,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void ChangeReportClick(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void ChangeReportClick(object sender, RoutedEventArgs e)
         {
             if (!(isDateAndTimeValid())) return;
 
@@ -85,7 +85,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             if (!(hasStorageEnoughMedicine(medicineInStorage))) return;
             else
             {
-                medicineInStorage.Amount -= selectedMedicine.Amount;            //izmena leka u skladistu
+                medicineInStorage.Amount -= selectedMedicine.Amount;
                 MedicineController.Instance.Update(medicineInStorage);
             }
 
@@ -106,7 +106,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Close();
         }
 
-        private bool isDateAndTimeValid()       //ne pomeraj
+        private bool isDateAndTimeValid()
         {
             bool returnValue = true;
             if (EndDateDatePicker.SelectedDate == null || TimeComboBox.Text == null)
@@ -118,7 +118,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool isMedicineAmountValid()        //ne pomeraj
+        private bool isMedicineAmountValid()
         {
             bool returnValue = true;
 #pragma warning disable CS0168 // Variable is declared but never used
@@ -136,7 +136,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private bool hasStorageEnoughMedicine(Medicine medicineInStorage)       //pomerio
+        private bool hasStorageEnoughMedicine(Medicine medicineInStorage)
         {
             bool returnValue = true;
             if (!(MedicineController.Instance.hasStorageEnoughMedicine(medicineInStorage, selectedMedicine)))
@@ -148,7 +148,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void updateMedicalReport()      //ne pomeraj
+        private void updateMedicalReport()
         {
             selectedMedicalReport.Anamnesis = AnamnesisBox.Text;
             selectedMedicalReport.Diagnosis = DiagnosisBox.Text;
@@ -160,7 +160,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             selectedMedicalReport.MedicalReceipt.TherapyPurpose = PurposeComboBox.Text;
         }
 
-        private void updateDiagnosis(MedicalRecord medicalRecord)          //ne pomeraj
+        private void updateDiagnosis(MedicalRecord medicalRecord)
         {
             foreach (string diagnosis in medicalRecord.ConditionList)
             {
@@ -175,9 +175,10 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void CancelBtnClick(object sender, RoutedEventArgs e)       //ne pomeraj
+        private void CancelBtnClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Close window without saving?", "Create appointment", 
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -190,9 +191,8 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -203,7 +203,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

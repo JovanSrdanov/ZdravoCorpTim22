@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
@@ -32,6 +33,11 @@ namespace ZdravoCorpAppTim22.Controller
         public List<MedicineData> GetAllUnapproved()
         {
             return MedicineDataService.Instance.GetAllUnapproved();
+        }
+
+        public bool isPatientAlergic(Patient patient, Medicine medicine)
+        {
+            return MedicineDataService.Instance.isPatientAlergic(patient, medicine);
         }
     }
 

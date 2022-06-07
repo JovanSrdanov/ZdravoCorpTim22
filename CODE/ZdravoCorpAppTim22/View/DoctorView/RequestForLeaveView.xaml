@@ -52,6 +52,8 @@
                 <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="RequestListBtn" Content="Requests" Margin="773,170,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80" Click="ViewRequestsBtnClick" />
 
     </Grid>
 </Window>

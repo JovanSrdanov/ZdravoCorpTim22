@@ -19,7 +19,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             MedRecGrid.ItemsSource = loggedInDoctorMedicalRecords;
         }
 
-        private void setPatientInMedicalRecord(ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords)        //mozda?
+        private void setPatientInMedicalRecord(ObservableCollection<MedicalRecord> loggedInDoctorMedicalRecords)
         {
             foreach (MedicalRecord medRec in loggedInDoctorMedicalRecords)
             {
@@ -28,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private bool isMedicalRecordSelected(MedicalRecord medicalRecord)       //ne pomeraj
+        private bool isMedicalRecordSelected(MedicalRecord medicalRecord)
         {
             bool returnValue = true;
             if (medicalRecord == null)
@@ -39,7 +39,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             return returnValue;
         }
 
-        private void OpenBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void OpenBtnClick(object sender, RoutedEventArgs e)
         {
             MedicalRecord medicalRecord = MedRecGrid.SelectedItem as MedicalRecord;
             if(!(isMedicalRecordSelected(medicalRecord))) return;
@@ -55,15 +55,14 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             this.Hide();
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)     //ne pomeraj
+        private void BackBtnClick(object sender, RoutedEventArgs e)
         {
             doctorHomeScreen.Show();
             this.Close();
         }
  
-        private void LogOutBtn(object sender, RoutedEventArgs e)        //ne pomeraj
+        private void LogOutBtn(object sender, RoutedEventArgs e)
         {
-            //DoctorHome.doctorHome.Show();
             Application.Current.MainWindow.Show();
             foreach (Window item in App.Current.Windows)
             {
@@ -74,7 +73,7 @@ namespace ZdravoCorpAppTim22.View.DoctorView
             }
         }
 
-        private void HomeButtonClick(object sender, RoutedEventArgs e)      //ne pomeraj
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
         {
             DoctorHomeScreen.doctorHomeScreen.Show();
             this.Close();

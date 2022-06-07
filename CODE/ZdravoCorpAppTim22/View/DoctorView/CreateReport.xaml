@@ -35,7 +35,8 @@
         <Label Content="Additional instructions" HorizontalAlignment="Left" Margin="347,436,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
         <Label Content="Medication" HorizontalAlignment="Left" Margin="347,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.416,5.086" FontSize="18"/>
         <ComboBox x:Name="MedicationComboBox" HorizontalAlignment="Left" Margin="347,354,0,0" VerticalAlignment="Top" Width="189" FontSize="18"
-            DisplayMemberPath="MedicineData.Name" BorderBrush="#FF8C39A5" BorderThickness="2"/>
+            DisplayMemberPath="MedicineData.Name" BorderBrush="#FF8C39A5" BorderThickness="2" 
+                  SelectionChanged="MedicationComboBox_SelectionChanged"/>
         <TextBox x:Name="PurposeComboBox" HorizontalAlignment="Left" Margin="581,355,0,0" VerticalAlignment="Top" 
                  TextWrapping="Wrap" MaxHeight="31" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
             Width="137" Height="31" FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"/>
@@ -95,6 +96,8 @@
                 <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
             </Button.Background>
         </Button>
+        <Label x:Name="AlergicLabel" Content="Alergic!" HorizontalAlignment="Left" Margin="252,350,0,0" VerticalAlignment="Top"
+               Foreground="Red" FontSize="18" FontWeight="Bold"/>
 
     </Grid>
 </Window>
