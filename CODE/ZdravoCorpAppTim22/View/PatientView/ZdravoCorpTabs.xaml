@@ -2,6 +2,7 @@
     x:Class="ZdravoCorpAppTim22.View.PatientView.ZdravoCorpTabs"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:ZdravoCorpAppTim22.View.Manager.Views"
     xmlns:cvt="clr-namespace:ZdravoCorpAppTim22.View.PatientView.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
@@ -50,7 +51,7 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#10;radno vreme, ocenjivanje bolnice" />
+                    <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#xA;radno vreme, ocenjivanje bolnice" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel
@@ -98,6 +99,7 @@
                                     Click="RateZdravoCorp_Click"
                                     Content="Ostavite recenziju bolnice"
                                     Foreground="White" />
+
                             </StackPanel>
 
 
@@ -110,9 +112,9 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom">
                         <StackPanel.Style>
-                            <Style TargetType="StackPanel">
+                            <Style TargetType="{x:Type StackPanel}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -157,7 +159,7 @@
 
 
                 <TabItem.Header>
-                    <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#10;izmena i otkazivanje postojećih" />
+                    <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#xA;izmena i otkazivanje postojećih" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel Background="Transparent" Orientation="Vertical">
@@ -194,9 +196,9 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Path=Doctor.Name}" />
+                                                <TextBlock Text="{Binding Doctor.Name}" />
                                                 <TextBlock Text=" " />
-                                                <TextBlock Text="{Binding Path=Doctor.Surname}" />
+                                                <TextBlock Text="{Binding Doctor.Surname}" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -237,9 +239,9 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom">
                         <StackPanel.Style>
-                            <Style TargetType="StackPanel">
+                            <Style TargetType="{x:Type StackPanel}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -279,7 +281,7 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#10;medicinskog kartona, istorija pregleda" />
+                    <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#xA;medicinskog kartona, istorija pregleda" />
                 </TabItem.Header>
                 <Grid>
                     <StackPanel Margin="42,0,42,0" Background="Transparent">
@@ -424,9 +426,9 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom">
                         <StackPanel.Style>
-                            <Style TargetType="StackPanel">
+                            <Style TargetType="{x:Type StackPanel}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -510,7 +512,7 @@
                                 Background="White">
                                 <StackPanel Orientation="Horizontal">
 
-                                    <Label>Kreiraj izveštaj</Label>
+                                    <Label Content="Kreiraj izveštaj" />
                                     <Image
                                         Height="32"
                                         Margin="0"
@@ -530,9 +532,9 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom">
                         <StackPanel.Style>
-                            <Style TargetType="StackPanel">
+                            <Style TargetType="{x:Type StackPanel}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -551,12 +553,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="14"
-                                    TextWrapping="Wrap">
-                                    <Run Text="Pritiskom na dugme &quot;Kreiraj izveštaj&quot; unutar foldera PacijentIzveštaj" />
-                                    <LineBreak />
-                                    <Run Text="će se pronaći PDF izvestaj o rasporedu terapije na sedmičnom nivou." />
-
-                                </TextBlock>
+                                    TextWrapping="Wrap"><Run Text="Pritiskom na dugme &quot;Kreiraj izveštaj&quot; unutar foldera PacijentIzveštaj" /><LineBreak /><Run Text="će se pronaći PDF izvestaj o rasporedu terapije na sedmičnom nivou." /></TextBlock>
                                 <Image
                                     Width="50"
                                     Height="50"
@@ -579,7 +576,7 @@
 
 
                 <TabItem.Header>
-                    <TextBlock Text="Personalni podsetnik" ToolTip="Prikaz raznih obaveštenja poput &#10;otkazivanja i zakazivanja termina, popusta" />
+                    <TextBlock Text="Personalni podsetnik" ToolTip="Prikaz raznih obaveštenja poput &#xA;otkazivanja i zakazivanja termina, popusta" />
                 </TabItem.Header>
                 <Grid Background="Transparent">
                     <Label
@@ -610,9 +607,9 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <Border.Style>
-                    <Style TargetType="Border">
+                    <Style TargetType="{x:Type Border}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=HelpToggleSwitch, Path=IsOn}" Value="False">
+                            <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
                                 <Setter Property="Visibility" Value="Hidden" />
                             </DataTrigger>
                         </Style.Triggers>

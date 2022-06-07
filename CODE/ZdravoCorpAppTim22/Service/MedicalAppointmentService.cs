@@ -206,7 +206,7 @@ namespace Service
 
 
         ///  ///  ///  ///  ///  ///  ///  /// ///  ///  ///  ///  ///  ///  ///  /// ///  ///  ///  ///  ///  ///  ///  /// 
-        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(ForChangeMedicalAppointment forChangeMedicalAppointment)
+        public List<Interval> GetNewMedicalAppointments(ForChangeMedicalAppointment forChangeMedicalAppointment)
         {
 
             DateTime appointmentTimeStart = new DateTime(forChangeMedicalAppointment.SelectedDateTime.Year, forChangeMedicalAppointment.SelectedDateTime.Month, forChangeMedicalAppointment.SelectedDateTime.Day, Constants.Constants.WORK_DAY_START_TIME, 0, 0);
@@ -222,9 +222,9 @@ namespace Service
             return availableMedicalAppointments;
         }
 
-        private static ObservableCollection<MedicalAppointmentStruct> CreateMedicalAppointmentForChange(SearchParametersForChanging searchParametersForChanging)
+        private static List<Interval> CreateMedicalAppointmentForChange(SearchParametersForChanging searchParametersForChanging)
         {
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments = new ObservableCollection<MedicalAppointmentStruct>();
+            List<Interval> availableMedicalAppointments = new List<Interval>();
 
             PatientDoctorRoomAreAvailableCheck(searchParametersForChanging, availableMedicalAppointments);
 
@@ -232,7 +232,7 @@ namespace Service
         }
 
         private static void PatientDoctorRoomAreAvailableCheck(SearchParametersForChanging searchParametersForChanging,
-            ObservableCollection<MedicalAppointmentStruct> availableMedicalAppointments)
+            List<Interval> availableMedicalAppointments)
         {
             Interval interval = new Interval();
 
@@ -249,11 +249,7 @@ namespace Service
 
                 if (IsAvailablePatientDoctorRoom(searchParametersForChanging, interval))
                 {
-                    availableMedicalAppointments.Add(new MedicalAppointmentStruct(1,
-                        searchParametersForChanging.ForChangeMedicalAppointment.Type, interval,
-                        searchParametersForChanging.ForChangeMedicalAppointment.EnteredPatient,
-                        searchParametersForChanging.ForChangeMedicalAppointment.Doctor,
-                        searchParametersForChanging.ForChangeMedicalAppointment.Room));
+                    availableMedicalAppointments.Add(interval);
                 }
             }
         }

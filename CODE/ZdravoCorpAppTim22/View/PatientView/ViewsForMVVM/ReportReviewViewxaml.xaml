@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:recordTab="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab"
     xmlns:viewModel="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM"
     HorizontalAlignment="Center"
     VerticalAlignment="Center"
@@ -12,7 +13,7 @@
     VerticalContentAlignment="Center"
     mc:Ignorable="d">
     <UserControl.DataContext>
-        <viewModel:ReportReviewViewModel />
+        <recordTab:ReportReviewViewModel />
     </UserControl.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 

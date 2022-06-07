@@ -20,6 +20,6 @@
         </LinearGradientBrush>
     </Window.Background>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-        <viewsForMvvm:MedicalReportsView x:Name="MedicalReportsView" />
+        <viewsForMvvm:MedicalReportsViewSTARI x:Name="MedicalReportsView" />
     </StackPanel>
 </Window>

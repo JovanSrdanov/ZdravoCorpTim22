@@ -1,45 +1,27 @@
-﻿using System.Configuration;
-using Controller;
-using MVVM1;
+﻿using MVVM1;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
-using System;
 
-namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
+namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.HospitalInformationTab
 {
-    class HospitalReviewViewModel : BindableBase
+    public class HospitalReviewPageViewModel : BindableBase
     {
-
+        public int Id { get; set; }
         public int StaffHospitality { get; set; }
         public int Accessibility { get; set; }
         public int Hygiene { get; set; }
         public int Appearance { get; set; }
         public int Application { get; set; }
         public MyICommand SubmitReviewCommand { get; set; }
-        public HospitalReview SelectedHospitalReview { get; set; }
-
-        /// <summary>
-        /// StaffHospitality
-        /// </summary>
-        /// 
         public bool StaffHospitalityGroup1 { get; set; }
-
-
         public bool StaffHospitalityGroup2 { get; set; }
-
-
         public bool StaffHospitalityGroup3 { get; set; }
-
-
         public bool StaffHospitalityGroup4 { get; set; }
-
-
         public bool StaffHospitalityGroup5 { get; set; }
-
         private void StaffHospitalitySet()
         {
-            switch (SelectedHospitalReview.StaffHospitality)
+            switch (StaffHospitality)
             {
                 case 1:
                     StaffHospitalityGroup1 = true;
@@ -61,7 +43,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     break;
             }
         }
-
         private int StaffHospitalityCheck()
         {
             if (StaffHospitalityGroup1)
@@ -87,27 +68,14 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
 
             return -1;
         }
-
-        /// <summary>
-        /// Application
-        /// </summary>
         public bool AccessibilityGroup1 { get; set; }
-
-
         public bool AccessibilityGroup2 { get; set; }
-
-
         public bool AccessibilityGroup3 { get; set; }
-
-
         public bool AccessibilityGroup4 { get; set; }
-
-
         public bool AccessibilityGroup5 { get; set; }
-
         private void AccessibilitySet()
         {
-            switch (SelectedHospitalReview.Accessibility)
+            switch (Accessibility)
             {
                 case 1:
                     AccessibilityGroup1 = true;
@@ -129,7 +97,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     break;
             }
         }
-
         private int AccessibilityCheck()
         {
             if (AccessibilityGroup1)
@@ -155,29 +122,14 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
 
             return -1;
         }
-
-        /// <summary>
-        /// Application
-        /// </summary>
-        
-
-
         public bool ApplicationGroup1 { get; set; }
-
         public bool ApplicationGroup2 { get; set; }
-
-
         public bool ApplicationGroup3 { get; set; }
-
-
         public bool ApplicationGroup4 { get; set; }
-
-
         public bool ApplicationGroup5 { get; set; }
-
         private void ApplicationSet()
         {
-            switch (SelectedHospitalReview.Application)
+            switch (Application)
             {
                 case 1:
                     ApplicationGroup1 = true;
@@ -199,8 +151,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     break;
             }
         }
-
-
         private int ApplicationCheck()
         {
             if (ApplicationGroup1)
@@ -226,23 +176,11 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
 
             return -1;
         }
-
-        /// <summary>
-        /// Hygiene
-        /// </summary>
         public bool HygieneGroup1 { get; set; }
-
         public bool HygieneGroup2 { get; set; }
-
-
         public bool HygieneGroup3 { get; set; }
-
-
         public bool HygieneGroup4 { get; set; }
-
-
         public bool HygieneGroup5 { get; set; }
-
         private int HygieneCheck()
         {
             if (HygieneGroup1)
@@ -270,7 +208,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         }
         private void HygieneSet()
         {
-            switch (SelectedHospitalReview.Hygiene)
+            switch (Hygiene)
             {
                 case 1:
                     HygieneGroup1 = true;
@@ -292,24 +230,11 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     break;
             }
         }
-
-        /// <summary>
-        /// Appearance
-        /// </summary>
-
         public bool AppearanceGroup1 { get; set; }
-
         public bool AppearanceGroup2 { get; set; }
-
-
         public bool AppearanceGroup3 { get; set; }
-
-
         public bool AppearanceGroup4 { get; set; }
-
-
         public bool AppearanceGroup5 { get; set; }
-
         private int AppearanceCheck()
         {
             if (AppearanceGroup1)
@@ -335,11 +260,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
 
             return -1;
         }
-
-
         private void AppearanceSet()
         {
-            switch (SelectedHospitalReview.Appearance)
+            switch (Appearance)
             {
                 case 1:
                     AppearanceGroup1 = true;
@@ -361,49 +284,48 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
                     break;
             }
         }
-
-
-
-
-
-        public HospitalReviewViewModel()
+        public HospitalReviewPageViewModel(int id)
         {
             SubmitReviewCommand = new MyICommand(SubmitReview);
 
-            if (ZdravoCorpTabs.LoggedPatient.HospitalReview == null)
-            {
-                SelectedHospitalReview = new HospitalReview();
-                ZdravoCorpTabs.LoggedPatient.HospitalReview = SelectedHospitalReview;
-                HospitalReviewController.Instance.Create(SelectedHospitalReview);
-                PatientController.Instance.Update(ZdravoCorpTabs.LoggedPatient);
-            }
+            SetStartValues(id);
 
-            else
-            {
-                SelectedHospitalReview = ZdravoCorpTabs.LoggedPatient.HospitalReview;
-            }
 
-            SetAll();
+            SetAllRadioButtons();
 
 
         }
+        private void SetStartValues(int id)
+        {
+            HospitalReview hospitalReview = HospitalReviewController.Instance.GetByID(id);
+
+            Id = hospitalReview.Id;
+            StaffHospitality = hospitalReview.StaffHospitality;
+            Accessibility = hospitalReview.Accessibility;
+            Hygiene = hospitalReview.Hygiene;
+            Appearance = hospitalReview.Appearance;
+            Application = hospitalReview.Application;
+        }
         public void SubmitReview()
         {
-            SelectedHospitalReview.StaffHospitality = StaffHospitalityCheck();
-            SelectedHospitalReview.Accessibility = AccessibilityCheck();
-            SelectedHospitalReview.Hygiene = HygieneCheck();
-            SelectedHospitalReview.Appearance = AppearanceCheck();
-            SelectedHospitalReview.Application = ApplicationCheck();
+            SaveSelectedGrades();
 
-            ZdravoCorpTabs.LoggedPatient.hospitalReview = SelectedHospitalReview;
-            HospitalReviewController.Instance.Update(SelectedHospitalReview);
-            PatientController.Instance.Update(ZdravoCorpTabs.LoggedPatient);
+            HospitalReviewController.Instance.SubmitReview(Id, StaffHospitality, Accessibility, Hygiene, Appearance,
+                Application);
+
             MessageBox.Show("Bolnica uspešno ocenjena!");
 
 
         }
-
-        private void SetAll()
+        private void SaveSelectedGrades()
+        {
+            StaffHospitality = StaffHospitalityCheck();
+            Accessibility = AccessibilityCheck();
+            Hygiene = HygieneCheck();
+            Appearance = AppearanceCheck();
+            Application = ApplicationCheck();
+        }
+        private void SetAllRadioButtons()
         {
             StaffHospitalitySet();
             AccessibilitySet();
@@ -411,7 +333,6 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
             AppearanceSet();
             HygieneSet();
         }
-
 
     }
 }

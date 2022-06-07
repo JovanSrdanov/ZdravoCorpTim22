@@ -1,4 +1,5 @@
 ﻿
+using System;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service;
@@ -20,6 +21,20 @@ namespace ZdravoCorpAppTim22.Controller
 
                 return instance;
             }
+        }
+
+        internal void SubmitReview(int id, int staffHospitality, int accessibility, int hygiene, int appearance, int application)
+        {
+            HospitalReview hospitalReview = Instance.GetByID(id);
+
+            hospitalReview.StaffHospitality = staffHospitality;
+            hospitalReview.Accessibility = accessibility;
+            hospitalReview.Hygiene = staffHospitality;
+            hospitalReview.Appearance = appearance;
+            hospitalReview.Application = application;
+
+            instance.Update(hospitalReview);
+
         }
     }
 }

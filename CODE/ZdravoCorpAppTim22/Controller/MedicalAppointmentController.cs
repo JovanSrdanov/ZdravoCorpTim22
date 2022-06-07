@@ -1,10 +1,12 @@
 using Model;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoCorpAppTim22.Controller.Generic;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.PackedObjects;
+using ZdravoCorpAppTim22.Model.Utility;
 
 namespace Controller
 {
@@ -33,11 +35,12 @@ namespace Controller
 
             return MedicalAppointmentService.Instance.GetSuggestedMedicalAppointments(enteredPreferences);
         }
-        public ObservableCollection<MedicalAppointmentStruct> GetNewMedicalAppointments(Doctor doctor, Room room, Patient enteredPatient, DateTime selectedDateTime, AppointmentType type)
+        public List<Interval> GetNewMedicalAppointments(int id, DateTime selecteDateTime)
         {
+            MedicalAppointment medicalAppointment = MedicalAppointmentController.Instance.GetByID(id);
 
             ForChangeMedicalAppointment forChangeMedicalAppointment =
-                new ForChangeMedicalAppointment(doctor, room, enteredPatient, selectedDateTime, type);
+                new ForChangeMedicalAppointment(medicalAppointment.doctor, medicalAppointment.room, medicalAppointment.patient, selecteDateTime, medicalAppointment.Type);
 
             return MedicalAppointmentService.Instance.GetNewMedicalAppointments(forChangeMedicalAppointment);
         }
@@ -64,5 +67,11 @@ namespace Controller
         }
 
 
+        public void ChangeToNew(int id, Interval selectedInterval)
+        { 
+            var  medicalAppointment= instance.GetByID(id);
+            medicalAppointment.Interval = selectedInterval;
+            MedicalAppointmentController.instance.Update(medicalAppointment);
+        }
     }
 }

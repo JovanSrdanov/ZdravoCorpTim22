@@ -21,6 +21,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
             SelectedAppointmentEndTime.Content = "Kraj termina: " + medicalAppointmentToChange.Interval.End.ToString("HH:mm");
 
             DatePickerChangeAppoinment.DisplayDateStart = medicalAppointmentToChange.Interval.Start.Date.AddDays(-2);
+
             if (DateTime.Now.AddDays(4).Date > medicalAppointmentToChange.Interval.Start.Date)
             {
 

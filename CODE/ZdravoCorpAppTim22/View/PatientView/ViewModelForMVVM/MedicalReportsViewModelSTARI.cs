@@ -8,7 +8,7 @@ using MVVM1;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
 {
-    class MedicalReportsViewModel :BindableBase
+    class MedicalReportsViewModelSTARI :BindableBase
     {
         public Patient Patient { get; set; }
         public ObservableCollection<MedicalReport> PatientMedicalReports { get; set; }
@@ -28,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ViewModelForMVVM
         }
         public MyICommand OpenReportReviewingCommand { get; set; }
 
-        public MedicalReportsViewModel()
+        public MedicalReportsViewModelSTARI()
         {
             OpenReportReviewingCommand = new MyICommand(OpenReportReviewing, CanOpenReportReviewing);
             Patient = ZdravoCorpTabs.LoggedPatient;

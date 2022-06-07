@@ -1,4 +1,6 @@
-﻿namespace Constants
+﻿using System;
+
+namespace Constants
 {
     public static class Constants
     {
@@ -12,6 +14,8 @@
         public const int SUSPICIOUS_ACTIVITY_DAYS_RANGE = 30;
 
         public const int NOTIFICATION_TIME_START = 30;
-        public const int NOTIFICATION_TIME_END = 1;
+        public const int NOTIFICATION_TIME_END = 5;
+
+        public const int MAX_DAYS_IN_ADVANCE = 2;
     }
 }

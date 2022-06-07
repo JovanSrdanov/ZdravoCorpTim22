@@ -13,19 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoCorpAppTim22.View.PatientView.ViewsForMVVM
+namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {
     /// <summary>
-    /// Interaction logic for HospitalReviewView.xaml
+    /// Interaction logic for SuccesReportReviewPage.xaml
     /// </summary>
-    public partial class HospitalReviewView : UserControl
+    public partial class SuccesReportReviewPage : Page
     {
-        public HospitalReviewView()
+        public SuccesReportReviewPage()
         {
             InitializeComponent();
         }
 
-
-      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileView profileView = new ProfileView();
+            this.NavigationService.Navigate(profileView);
+        }
     }
 }
