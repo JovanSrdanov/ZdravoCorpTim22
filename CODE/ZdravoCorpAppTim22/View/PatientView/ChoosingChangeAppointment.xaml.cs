@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Model.Utility;
 
@@ -15,8 +16,8 @@ namespace ZdravoCorpAppTim22.View.PatientView
     public partial class ChoosingChangeAppointment : Window
     {
 
-        public ObservableCollection<MedicalAppointmentStruct> MedicalAppointmentsList { get; set; }
-        public List<MedicalAppointmentStruct> medicalAppointments;
+        public ObservableCollection<MedicalAppointmentDTOforSuggestions> MedicalAppointmentsList { get; set; }
+        public List<MedicalAppointmentDTOforSuggestions> medicalAppointments;
         public Patient enteredPatient;
 
 
@@ -39,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.PatientView
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentStruct medicalAppointmentStruct = (MedicalAppointmentStruct)NewAppotimentsDataGrid.SelectedItem;
+            MedicalAppointmentDTOforSuggestions medicalAppointmentStruct = (MedicalAppointmentDTOforSuggestions)NewAppotimentsDataGrid.SelectedItem;
             if (medicalAppointmentStruct == null)
             {
                 return;

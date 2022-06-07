@@ -52,5 +52,23 @@
     "Amount": 0,
     "MedicineData": 3,
     "MedicalReceipt": 2
+  },
+  {
+    "Id": 8,
+    "Amount": 1,
+    "MedicineData": 0,
+    "MedicalReceipt": 3
+  },
+  {
+    "Id": 9,
+    "Amount": 1,
+    "MedicineData": 1,
+    "MedicalReceipt": 4
+  },
+  {
+    "Id": 10,
+    "Amount": 1,
+    "MedicineData": 0,
+    "MedicalReceipt": 5
   }
 ]

@@ -24,7 +24,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             }
         }
 
-        private bool IsMedicalAppointmetnSelected()
+        private bool IsMedicalAppointmentSelected()
         {
             return SelectedMedicalAppointmentsViewModel != null;
         }
@@ -50,9 +50,9 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
         public AppointmentsPageViewModel()
         {
-            ChangeAppointmentCommand = new MyICommand(null, IsMedicalAppointmetnSelected);
+            ChangeAppointmentCommand = new MyICommand(null, IsMedicalAppointmentSelected);
 
-            DeleteAppointmentCommand = new MyICommand(DeleteAppointment, IsMedicalAppointmetnSelected);
+            DeleteAppointmentCommand = new MyICommand(DeleteAppointment, IsMedicalAppointmentSelected);
 
             Patient patient = (Patient)AuthenticationController.Instance.GetLoggedUser();
             MedicalAppointments = ConvertMedicalAppoitnmentsToVM(patient.medicalAppointment);

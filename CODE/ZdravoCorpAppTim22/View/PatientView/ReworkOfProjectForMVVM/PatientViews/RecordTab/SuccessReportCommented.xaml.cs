@@ -16,16 +16,16 @@ using System.Windows.Shapes;
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {
     /// <summary>
-    /// Interaction logic for SuccesReportReviewPage.xaml
+    /// Interaction logic for SuccessReportCommented.xaml
     /// </summary>
-    public partial class SuccesReportReviewPage : Page
+    public partial class SuccessReportCommented : Page
     {
-        public SuccesReportReviewPage()
+        public SuccessReportCommented()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             ProfileView profileView = new ProfileView();
             this.NavigationService.Navigate(profileView);

@@ -313,7 +313,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             HospitalReviewController.Instance.SubmitReview(Id, StaffHospitality, Accessibility, Hygiene, Appearance,
                 Application);
 
-            MessageBox.Show("Bolnica uspešno ocenjena!");
+          
 
 
         }

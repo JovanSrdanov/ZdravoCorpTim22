@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using System.Windows;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
@@ -39,9 +40,9 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MedicalAppointment.Interval = ((MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem).Interval;
-                MedicalAppointment.doctor = ((MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem).Doctor;
-                MedicalAppointment.Room = ((MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem).Room;
+                MedicalAppointment.Interval = ((MedicalAppointmentDTOforSuggestions)dataGridSuggestedMedicalAppointments.SelectedItem).Interval;
+                MedicalAppointment.doctor = ((MedicalAppointmentDTOforSuggestions)dataGridSuggestedMedicalAppointments.SelectedItem).Doctor;
+                MedicalAppointment.Room = ((MedicalAppointmentDTOforSuggestions)dataGridSuggestedMedicalAppointments.SelectedItem).Room;
                 MedicalAppointmentController.Instance.Update(MedicalAppointment);
                 MessageBox.Show("Appointment moved to: " + MedicalAppointment.Interval.Start + "\n Doctor: " + MedicalAppointment.Doctor + "\n Room:" + MedicalAppointment.room);
                 SecretaryEmergencyChangeSchedule.Close();

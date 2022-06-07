@@ -17,8 +17,8 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
         }
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GeneralInformationView generalInformationView = new GeneralInformationView();
-            this.NavigationService.Navigate(generalInformationView);
+            SuccesHospitalReviewPage succesHospitalReviewPage = new SuccesHospitalReviewPage();
+            this.NavigationService.Navigate(succesHospitalReviewPage);
 
         }
     }

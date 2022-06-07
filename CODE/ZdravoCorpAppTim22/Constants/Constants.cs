@@ -10,7 +10,7 @@ namespace Constants
         public const int DURATION_CHECKUP = 15;
         public const int DURATION_EXAMINATION = 30;
         public const int DURATION_OPERATION = 60;
-        public const int MAX_SUSPICIOUS_ACTIVITY_COUNT = 3;
+        public const int MAX_SUSPICIOUS_ACTIVITY_COUNT = 17;
         public const int SUSPICIOUS_ACTIVITY_DAYS_RANGE = 30;
 
         public const int NOTIFICATION_TIME_START = 30;

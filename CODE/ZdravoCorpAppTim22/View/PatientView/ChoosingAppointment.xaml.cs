@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Windows;
+using ZdravoCorpAppTim22.DTO;
 using ZdravoCorpAppTim22.Model;
 
 
@@ -30,13 +31,13 @@ namespace ZdravoCorpAppTim22.View.PatientView
             enteredPriority = MakeAppointment.selectedPriority;
             enteredPatient = ZdravoCorpTabs.LoggedPatient;
 
-            dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
+          //  dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(enteredPatient, enteredDateTime, enteredAppointmentType, enteredPriority, enteredDoctor);
 
         }
 
         private void ConfirmAppointment_Click(object sender, RoutedEventArgs e)
         {
-            MedicalAppointmentStruct medicalAppointmentStruct = (MedicalAppointmentStruct)dataGridSuggestedMedicalAppointments.SelectedItem;
+            MedicalAppointmentDTOforSuggestions medicalAppointmentStruct = (MedicalAppointmentDTOforSuggestions)dataGridSuggestedMedicalAppointments.SelectedItem;
             if (medicalAppointmentStruct == null)
             {
                 return;

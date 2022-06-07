@@ -31,7 +31,7 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             Adress = patient.address.ToString();
 
             MedicalReportsViewModels = new ObservableCollection<MedicalReportsViewModel>();
-
+            if (patient.medicalRecord.medicalReport == null) return;
             foreach (MedicalReport medicalReport in patient.medicalRecord.medicalReport)
             {
                 MedicalReportsViewModels.Add(new MedicalReportsViewModel(medicalReport));
