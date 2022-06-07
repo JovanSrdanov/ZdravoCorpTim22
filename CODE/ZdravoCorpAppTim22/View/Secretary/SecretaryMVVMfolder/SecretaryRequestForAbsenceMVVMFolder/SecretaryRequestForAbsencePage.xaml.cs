@@ -14,7 +14,26 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
         public SecretaryRequestForAbsencePage()
         {
             InitializeComponent();
+            bool shouldMakeRequest = false;
             if (RequestForAbsenceController.Instance.GetAll().Count == 0)
+            {
+                shouldMakeRequest = true;
+            }
+            else
+            {
+                shouldMakeRequest = true;
+                for (int i = 0; i < RequestForAbsenceController.Instance.GetAll().Count; i++)
+                {
+                    if (RequestForAbsenceController.Instance.GetAll()[i].RequestState == RequestState.pending)
+                    {
+                        shouldMakeRequest = false;
+                        break;
+                    }
+                }
+
+            }
+
+            if (shouldMakeRequest)
             {
                 Interval interval = new Interval();
                 interval.Start = System.DateTime.Now.AddDays(2);
@@ -25,6 +44,20 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
 
             RequestForAbsencePageViewModel requestForAbsencePageView = new RequestForAbsencePageViewModel(RequestForAbsenceController.Instance.GetAll());
             this.DataContext = requestForAbsencePageView;
+        }
+
+        private void btnApprove_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SecretaryAbsenceRequestDialog secretaryAbsenceRequestDialog = new SecretaryAbsenceRequestDialog((RequestForAbsence)DataGridRequestForAbsence.SelectedItem, true);
+
+            NavigationService.Navigate(secretaryAbsenceRequestDialog);
+        }
+
+        private void btnDeny_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SecretaryAbsenceRequestDialog secretaryAbsenceRequestDialog = new SecretaryAbsenceRequestDialog((RequestForAbsence)DataGridRequestForAbsence.SelectedItem, false);
+
+            NavigationService.Navigate(secretaryAbsenceRequestDialog);
         }
     }
 }

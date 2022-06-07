@@ -1,10 +1,5 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using ZdravoCorpAppTim22.Model.Generic;
 using ZdravoCorpAppTim22.Model.Utility;
 using ZdravoCorpAppTim22.Repository.FileHandlers.Serialization;
@@ -63,7 +58,14 @@ namespace ZdravoCorpAppTim22.Model
         ///DODAO////////////
         public override bool Equals(object obj)
         {
-            return this.Doctor.Id == ((RequestForAbsence)obj).Doctor.Id;
+            try
+            {
+                return this.Doctor.Id == ((RequestForAbsence)obj).Doctor.Id;
+            }
+            catch
+            {
+            }
+            return false;
         }
         public override int GetHashCode()
         {

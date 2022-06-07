@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void RequestsBtn_Click(object sender, RoutedEventArgs e)
         {
-            SecretaryMVVMwindow secretaryMVVMwindow = new SecretaryMVVMwindow();
+            SecretaryMVVMwindow secretaryMVVMwindow = new SecretaryMVVMwindow(this);
             secretaryMVVMwindow.Show();
             this.Hide();
         }
