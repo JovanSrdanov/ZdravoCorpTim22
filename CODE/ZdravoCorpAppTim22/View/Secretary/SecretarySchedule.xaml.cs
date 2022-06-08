@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Windows;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
