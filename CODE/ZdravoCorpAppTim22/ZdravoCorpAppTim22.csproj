@@ -610,6 +610,7 @@
     <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingDialogPage.xaml.cs">
       <DependentUpon>SecretaryStuffMeetingDialogPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingDialogPageViewModel.cs" />
     <Compile Include="View\Secretary\SecretaryMVVMfolder\SecretaryRequestForAbsenceMVVMFolder\SecretaryStuffMeetingOverviewPage.xaml.cs">
       <DependentUpon>SecretaryStuffMeetingOverviewPage.xaml</DependentUpon>
     </Compile>

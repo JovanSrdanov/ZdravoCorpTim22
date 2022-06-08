@@ -23,10 +23,10 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
             InitializeComponent();
             for (int i = Constants.Constants.WORK_DAY_START_TIME; i < Constants.Constants.WORK_DAY_END_TIME; i++)
             {
-                comboBoxRoom.ItemsSource = RoomController.Instance.GetAll();
                 comboBoxTimeStart.Items.Add(i + ":00");
                 comboBoxTimeEnd.Items.Add(i + ":00");
             }
+            comboBoxRoom.ItemsSource = RoomController.Instance.GetAll();
         }
 
         public bool CheckIfAllDataIsValid()

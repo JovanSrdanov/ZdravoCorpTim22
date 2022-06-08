@@ -16,8 +16,8 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
             set
             {
                 selectedStuffMeeting = value;
-                //ApproveRequestForAbsenceCommand.RaiseCanExecuteChanged();
-                //DenyRequestForAbsenceCommand.RaiseCanExecuteChanged();
+                EditStuffMeeting.RaiseCanExecuteChanged();
+                DeleteStuffMeeting.RaiseCanExecuteChanged();
             }
         }
         public MyICommand EditStuffMeeting { get; set; }
