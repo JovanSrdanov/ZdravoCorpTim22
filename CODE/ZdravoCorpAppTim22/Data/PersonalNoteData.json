@@ -1,0 +1,61 @@
+[
+  {
+    "Id": 2,
+    "Frequency": 3,
+    "Message": "NEKA PORUKA",
+    "Reason": "Anamneza:\nAnamneza\nKomentar:\ndaaaaaaaaaaaaaaaaaaaaaaa",
+    "EndOfShowing": "2022-06-24T00:00:00",
+    "NextNotification": [
+      "2022-06-09T18:00:00",
+      "2022-06-09T18:00:00",
+      "2022-06-09T18:00:00"
+    ],
+    "Patient": 0
+  },
+  {
+    "Id": 3,
+    "Frequency": 2,
+    "Message": "pokusaj 2",
+    "Reason": "Anamneza:\nAnamneza\nKomentar:\ndaaaaaaaaaaaaaaaaaaaaaaa",
+    "EndOfShowing": "2022-06-25T00:00:00",
+    "NextNotification": [
+      "2022-06-08T03:00:00",
+      "2022-06-09T15:00:00"
+    ],
+    "Patient": 0
+  },
+  {
+    "Id": 4,
+    "Frequency": 1,
+    "Message": "AJDE RADI",
+    "Reason": "Anamneza:\nAnamneza\nKomentar:\ndaaaaaaaaaaaaaaaaaaaaaaa",
+    "EndOfShowing": "2022-06-24T00:00:00",
+    "NextNotification": [
+      "2022-06-09T00:14:00"
+    ],
+    "Patient": 0
+  },
+  {
+    "Id": 5,
+    "Frequency": 2,
+    "Message": "HEHE",
+    "Reason": "Anamneza:\nAnamneza\nKomentar:\ndaaaaaaaaaaaaaaaaaaaaaaa",
+    "EndOfShowing": "2022-06-08T00:00:00",
+    "NextNotification": [
+      "2022-06-08T12:20:00",
+      "2022-06-09T00:20:00"
+    ],
+    "Patient": 0
+  },
+  {
+    "Id": 6,
+    "Frequency": 1,
+    "Message": "43543534",
+    "Reason": "Anamneza:\nAnamneza\nKomentar:\ndaaaaaaaaaaaaaaaaaaaaaaa",
+    "EndOfShowing": "2022-06-08T00:00:00",
+    "NextNotification": [
+      "2022-06-08T12:00:00"
+    ],
+    "Patient": 0
+  }
+]

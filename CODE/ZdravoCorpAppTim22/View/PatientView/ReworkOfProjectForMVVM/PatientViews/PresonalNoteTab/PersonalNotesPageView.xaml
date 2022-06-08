@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.PresonalNoteTab.PersonalNotesPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.PresonalNoteTab"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="PersonalNotesPageView"
+    d:DataContext="{d:DesignInstance Type=local:PersonalNotesPageViewModel}"
+    FontSize="18"
+    mc:Ignorable="d">
+
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <Label
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Personalni podsetnik"
+            FontSize="36"
+            FontWeight="Bold" />
+        <DataGrid
+            x:Name="DataGridAppointment"
+            Height="300"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            ColumnWidth="*"
+            IsReadOnly="True"
+            ItemsSource="{Binding PersonalNotesViewModels}"
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+
+
+                <DataGridTextColumn Binding="{Binding Path=Reason}" Header="Razlog" />
+                <DataGridTextColumn Binding="{Binding Path=Message}" Header="Poruka" />
+                <DataGridTextColumn Binding="{Binding Path=EndOfShowing}" Header="Kraj podsetnika" />
+                <DataGridTextColumn Binding="{Binding Path=Frequency}" Header="Učestalost" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Margin="0,15,0,0">
+
+            <Button
+                x:Name="MakeNote"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Background="Green"
+                Click="MakeNote_Click"
+                Content="Napravi podsetnik"
+                Foreground="White" />
+
+        </Grid>
+    </StackPanel>
+</Page>

@@ -161,8 +161,16 @@
                 <TabItem.Header>
                     <TextBlock Text="Personalni podsetnik" ToolTip="Prikaz raznih obaveštenja poput &#xA;otkazivanja i zakazivanja termina, popusta" />
                 </TabItem.Header>
+                <Grid>
+                    <Frame
+                        x:Name="PersonalNote"
+                        NavigationUIVisibility="Hidden"
+                        Source="PresonalNoteTab/PersonalNotesPageView.xaml" />
+                </Grid>
+
 
             </TabItem>
+
 
 
         </TabControl>

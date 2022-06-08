@@ -1,6 +1,7 @@
 ﻿using Model;
 using Service;
 using System.Collections.Generic;
+using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.Service.Generic;
 
 namespace ZdravoCorpAppTim22.Service

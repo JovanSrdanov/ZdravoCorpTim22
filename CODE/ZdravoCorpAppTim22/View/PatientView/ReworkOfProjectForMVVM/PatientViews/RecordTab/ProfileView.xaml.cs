@@ -1,6 +1,7 @@
 ﻿using Model;
 using System.Windows.Controls;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.ObjectModel;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews.RecordTab
 {

@@ -3,6 +3,7 @@ using Model;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoCorpAppTim22.Controller;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
