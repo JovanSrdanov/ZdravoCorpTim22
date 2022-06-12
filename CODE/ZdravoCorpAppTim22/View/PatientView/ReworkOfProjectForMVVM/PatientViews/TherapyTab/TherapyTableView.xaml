@@ -53,8 +53,11 @@
 
                 </DataGrid.Columns>
             </DataGrid>
+
+
             <Grid Margin="0,15,0,0">
                 <DatePicker
+                    x:Name="StartTherapyReport"
                     Height="38"
                     Margin="0,0,200,0"
                     HorizontalAlignment="Right"
@@ -70,9 +73,8 @@
                     Background="White"
                     Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
-
-                        <Label Content="Kreiraj izveštaj" />
-                        <Image
+                        <ToolKit:Label Content="Kreiraj izveštaj" />
+                        <ToolKit:Image
                             Height="32"
                             Margin="0"
                             Source="../../../../../Resource/PatientResource/pdfIco.png" />
