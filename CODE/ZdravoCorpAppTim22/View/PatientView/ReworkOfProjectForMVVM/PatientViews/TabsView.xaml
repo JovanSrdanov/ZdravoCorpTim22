@@ -39,9 +39,10 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Informacije o bolnici" ToolTip="Kontakt, lokacija bolnice,&#xA;radno vreme, ocenjivanje bolnice" />
-                </TabItem.Header>
 
+                    <TextBlock ToolTip="Kontakt, lokacija bolnice,&#xA;radno vreme, ocenjivanje bolnice" ToolTipService.IsEnabled="{Binding IsOn, ElementName=HelpToggleSwitch}">Informacije o bolnici</TextBlock>
+
+                </TabItem.Header>
                 <Grid>
                     <Frame
                         x:Name="FrameHospitalInformation"
@@ -103,13 +104,51 @@
 
 
                 <TabItem.Header>
-                    <TextBlock Text="Termini" ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#xA;izmena i otkazivanje postojećih" />
+                    <TextBlock ToolTip="Prikaz zakazanih termina, zakazivanje novih,&#xA;izmena i otkazivanje postojećih" ToolTipService.IsEnabled="{Binding IsOn, ElementName=HelpToggleSwitch}">Termini</TextBlock>
+
                 </TabItem.Header>
                 <Grid>
                     <Frame
                         x:Name="FrameAppointments"
                         NavigationUIVisibility="Hidden"
                         Source="AppointmentsTab/AppointmentsPage.xaml" />
+                    <StackPanel
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"><Run Text="Dugmad za izmenu i otkazivanje termina nisu dostupna dok se ne odabere jedan termin." /><LineBreak /><Run Text="Zakazivanje termina se vr" /><Run Text="ši kroz nekoliko koraka, gde korisnik unosi svoje preference i onda mu se ponude odgovarajuči termini." /></TextBlock>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
                 </Grid>
             </TabItem>
             <TabItem>
@@ -121,13 +160,52 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Pregled kartona" ToolTip="Pregled personalnih informacija,&#xA;medicinskog kartona, istorija pregleda" />
+                    <TextBlock ToolTip="Pregled personalnih informacija &#xA;i istorija pregleda" ToolTipService.IsEnabled="{Binding IsOn, ElementName=HelpToggleSwitch}">Pregled kartona</TextBlock>
+
+
+
                 </TabItem.Header>
                 <Grid>
                     <Frame
                         x:Name="FrameRecord"
                         NavigationUIVisibility="Hidden"
                         Source="RecordTab/ProfileView.xaml" />
+                    <StackPanel
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"><Run Text="Pritiskom na dugme " /><Run Text="&quot;Medicinski izve" /><Run Text="štaji" /><Run Text="&quot;" /><Run Text=" korisnik dobija prikaz svojih završenih izveštaja. Svaki izve" /><Run Text="š" /><Run Text="taj se samo" /><LineBreak /><Run Text="jednom može oceniti, ali se može više puta komentarisati." /></TextBlock>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
 
             </TabItem>
@@ -140,13 +218,51 @@
                 </TabItem.Background>
 
                 <TabItem.Header>
-                    <TextBlock Text="Terapije" ToolTip="Pregled terapija i informacija o njima" />
+                    <TextBlock ToolTip="Pregled terapija " ToolTipService.IsEnabled="{Binding IsOn, ElementName=HelpToggleSwitch}">Terapije</TextBlock>
+
+
                 </TabItem.Header>
                 <Grid>
                     <Frame
                         x:Name="FrameTherapy"
                         NavigationUIVisibility="Hidden"
                         Source="TherapyTab/TherapyTableView.xaml" />
+                    <StackPanel
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"><Run Text="Pritiskom na dugme" /><Run Text=" " /><Run Text="&quot;" /><Run Text="Kreiraj izveštaj" /><Run Text="&quot; kreira se nova PDF datoteka koja sadr" /><Run Text="ži raspored terapija u narednih 7 dana " /><LineBreak /><Run Text="od i" /><Run Text="z" /><Run Text="abranog datuma" /><Run Text="." /></TextBlock>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem>
@@ -159,13 +275,52 @@
 
 
                 <TabItem.Header>
-                    <TextBlock Text="Personalni podsetnik" ToolTip="Prikaz raznih obaveštenja poput &#xA;otkazivanja i zakazivanja termina, popusta" />
+                    <TextBlock ToolTip="Pregled personalnih podsetnika,  &#xA;kao i pravljenje novih" ToolTipService.IsEnabled="{Binding IsOn, ElementName=HelpToggleSwitch}">Personalni podsetnik</TextBlock>
+
+
+
                 </TabItem.Header>
                 <Grid>
                     <Frame
                         x:Name="PersonalNote"
                         NavigationUIVisibility="Hidden"
                         Source="PresonalNoteTab/PersonalNotesPageView.xaml" />
+                    <StackPanel
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsOn, ElementName=HelpToggleSwitch}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="White" />
+                                    <GradientStop Offset="1" Color="DeepSkyBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,10,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"><Run Text="Podsetnik se kreira na osnovu anamne" /><Run Text="z" /><Run Text="e i komentara datog " /><Run Text="z" /><Run Text="a odre" /><Run Text="đ" /><Run Text="ni medicinski izve" /><Run Text="š" /><Run Text="taj" /><Run Text=". Korisnik je u mogućnosti da " /><LineBreak /><Run Text="odabere periodu ponavljanja u toku dana, krajnji datum kao i vreme kada šeli da mu se poruka prikaže." /></TextBlock>
+                                <Image
+                                    Width="50"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/info.png" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
 
 

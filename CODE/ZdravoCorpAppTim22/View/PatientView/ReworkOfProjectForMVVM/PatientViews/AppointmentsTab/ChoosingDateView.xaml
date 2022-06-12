@@ -8,10 +8,7 @@
     Title="ChoosingDateView"
     FontSize="18"
     mc:Ignorable="d">
-
-
     <Grid>
-
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label
                 Margin="0,0,0,42"
@@ -35,7 +32,6 @@
                 VerticalAlignment="Top"
                 Content="Prezime doktora:"
                 FontWeight="Bold" />
-
             <Label
                 x:Name="SelectedAppointmentRoom"
                 HorizontalAlignment="Left"
@@ -76,15 +72,11 @@
                 Content="{Binding Room.Name}"
                 FontSize="18" />
             <Label
-                Margin="0,25,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Content="Izaberite novi datum:"
                 FontSize="18"
                 FontWeight="Bold" />
-
-
-
             <DatePicker
                 x:Name="DatePickerChangeAppoinment"
                 Margin="0,0,0,50"
@@ -117,10 +109,6 @@
                     FontSize="18"
                     Foreground="White" />
             </Grid>
-
         </StackPanel>
-
     </Grid>
-
-
 </Page>

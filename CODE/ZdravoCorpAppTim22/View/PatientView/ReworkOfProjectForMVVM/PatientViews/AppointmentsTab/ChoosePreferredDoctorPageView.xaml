@@ -18,6 +18,7 @@
             Content="Izabrati preferiranog lekara:" />
         <ComboBox
             x:Name="ChooseDoctor"
+            Height="30"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             FontSize="18"

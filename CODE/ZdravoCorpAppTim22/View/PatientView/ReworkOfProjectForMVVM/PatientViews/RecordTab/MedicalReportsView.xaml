@@ -20,7 +20,7 @@
 
     <StackPanel Margin="42,0,42,0">
         <Label
-            Margin="0,0,0,5"
+            Margin="0,0,0,42"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Content="Izveštaji:"
@@ -29,7 +29,7 @@
 
         <DataGrid
             x:Name="ReportsAll"
-            Height="425"
+            Height="500"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -58,7 +58,7 @@
                     Header="Komentar pacijenta" />
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Margin="0,21,0,0">
+        <Grid Margin="0,15,0,0">
 
             <Button
                 Padding="10,1"

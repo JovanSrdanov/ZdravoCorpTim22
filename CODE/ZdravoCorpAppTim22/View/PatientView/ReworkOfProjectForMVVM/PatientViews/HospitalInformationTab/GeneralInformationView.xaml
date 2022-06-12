@@ -15,6 +15,7 @@
         Background="Transparent"
         Orientation="Vertical">
         <Label
+            Margin="0,0,0,42"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
@@ -40,7 +41,7 @@
                 <TextBlock
                     Margin="0,0,0,18"
                     HorizontalAlignment="Left"
-                    TextWrapping="Wrap"><Run Text="Lokacija: "/><LineBreak/><Run/><LineBreak/><Run Text="Frankopanova 34, Novi Sad"/></TextBlock>
+                    TextWrapping="Wrap"><Run Text="Lokacija: " /><LineBreak /><Run /><LineBreak /><Run Text="Frankopanova 34, Novi Sad" /></TextBlock>
 
                 <Image Height="300" Source="/ZdravoCorpAppTim22;component/Resource/PatientResource/MapLocation.jpg" />
                 <Button

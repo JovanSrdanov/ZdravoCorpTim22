@@ -20,6 +20,7 @@
         VerticalAlignment="Top"
         Orientation="Vertical">
         <Label
+            Margin="0,0,0,42"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
@@ -30,7 +31,7 @@
 
         <DataGrid
             x:Name="DataGridAppointment"
-            Height="300"
+            Height="500"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserResizeColumns="False"
@@ -65,6 +66,8 @@
         </DataGrid>
 
         <Grid Margin="0,15,0,0">
+
+
             <Button
                 x:Name="RemoveAppointment"
                 Padding="10,1"
@@ -92,7 +95,6 @@
                 Click="AddAppointment_OnClick"
                 Content="Zakazivanje termina"
                 Foreground="White" />
-
         </Grid>
     </StackPanel>
 

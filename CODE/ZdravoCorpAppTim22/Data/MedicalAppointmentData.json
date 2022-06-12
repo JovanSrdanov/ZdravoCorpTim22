@@ -34,5 +34,29 @@
     "Room": 8,
     "Patient": 0,
     "Doctor": 0
+  },
+  {
+    "Id": 3,
+    "Type": 0,
+    "Interval": {
+      "Start": "2022-06-09T07:30:00",
+      "End": "2022-06-09T07:45:00"
+    },
+    "isUrgent": false,
+    "Room": 7,
+    "Patient": 0,
+    "Doctor": 0
+  },
+  {
+    "Id": 4,
+    "Type": 0,
+    "Interval": {
+      "Start": "2022-06-13T08:30:00",
+      "End": "2022-06-13T08:45:00"
+    },
+    "isUrgent": false,
+    "Room": 7,
+    "Patient": 0,
+    "Doctor": 0
   }
 ]

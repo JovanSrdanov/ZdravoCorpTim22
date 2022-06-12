@@ -13,11 +13,12 @@
     mc:Ignorable="d">
 
     <StackPanel
-        Margin="42,0,42,0"
+        Margin="42,0"
         HorizontalAlignment="Center"
         VerticalAlignment="Top"
         Orientation="Vertical">
         <Label
+            Margin="0,0,0,42"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
@@ -27,7 +28,7 @@
             FontWeight="Bold" />
         <DataGrid
             x:Name="DataGridAppointment"
-            Height="300"
+            Height="500"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             CanUserResizeColumns="False"

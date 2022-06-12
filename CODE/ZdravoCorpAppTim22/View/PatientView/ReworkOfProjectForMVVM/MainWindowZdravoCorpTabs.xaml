@@ -8,7 +8,7 @@
     xmlns:patientViews="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientViews"
     Title="ZdravoCorp Aplikacija"
     Width="1280"
-    Height="720"
+    Height="820"
     Closing="MainWindowZdravoCorpTabs_OnClosing"
     Icon="/ZdravoCorpAppTim22;component/Resource/PatientResource/ZdravoCorpIcon.png"
     ResizeMode="CanMinimize"

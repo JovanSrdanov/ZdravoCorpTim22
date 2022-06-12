@@ -41,7 +41,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Grid>
+        <Grid Margin="0,15,0,0">
 
             <Button
                 x:Name="StartPage"
