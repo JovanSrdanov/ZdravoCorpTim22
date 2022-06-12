@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.WizardViews.W2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.WizardViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="W2"
+    d:DesignHeight="820"
+    d:DesignWidth="1280"
+    FontSize="18"
+    mc:Ignorable="d">
+
+    <StackPanel
+        Margin="42,0,42,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <Label
+            Margin="0,0,0,42"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Upoznavanje sa aplikacijom"
+            FontSize="36"
+            FontWeight="Bold" />
+        <Image Height="500" Source="../../../../Resource/WizardResource/02_APPOINTMENTS.jpg" />
+        <TextBlock Margin="0,42,0,0"><Run Text="Na kartici" /><Run Text=" &quot;Termini&quot;" /><Run Text=" " /><Run Text="možete pregledati sve vaše zakazane termine, otkazati ih, izmeniti im vreme" /><Run Text="," /><LineBreak /><Run /><Run Text="ili kroz niz jednostavnih koraka zakazati nove termine." /></TextBlock>
+        <Grid Margin="0,42,0,0">
+            <Button
+                x:Name="Back"
+                Padding="10,1"
+                HorizontalAlignment="Left"
+                Background="Yellow"
+                Click="Back_Click"
+                Content="Nazad" />
+            <Button
+                x:Name="Next"
+                Padding="10,1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="Green"
+                Click="Next_Click"
+                Content="Dalje"
+                Foreground="White" />
+        </Grid>
+    </StackPanel>
+</Page>

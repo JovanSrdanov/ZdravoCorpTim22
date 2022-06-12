@@ -12,5 +12,11 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
             InitializeComponent();
             
         }
+
+        private void WizardButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            WizardWindow wizardWindow = new WizardWindow();
+            wizardWindow.ShowDialog();
+        }
     }
 }

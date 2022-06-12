@@ -397,7 +397,7 @@
                 Background="DeepSkyBlue"
                 Content="Čarobnjak"
                 FontSize="18"
-                Foreground="black" />
+                Foreground="black" Click="WizardButton_Click" />
 
             <Button
                 x:Name="LogOutButton"

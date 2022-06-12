@@ -31,7 +31,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -577,6 +578,30 @@
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\TherapyTab\TherapyTableView.xaml.cs">
       <DependentUpon>TherapyTableView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W1.xaml.cs">
+      <DependentUpon>W1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W2.xaml.cs">
+      <DependentUpon>W2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W3.xaml.cs">
+      <DependentUpon>W3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W4.xaml.cs">
+      <DependentUpon>W4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W5.xaml.cs">
+      <DependentUpon>W5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\WizardStartPage.xaml.cs">
+      <DependentUpon>WizardStartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W_LAST.xaml.cs">
+      <DependentUpon>W_LAST.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientView\ReworkOfProjectForMVVM\WizardWindow.xaml.cs">
+      <DependentUpon>WizardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView\ViewModelForMVVM\MedicalReportsViewModelSTARI.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\RecordTab\ReportReviewViewModel.cs" />
     <Compile Include="View\PatientView\ReworkOfProjectForMVVM\PatientViews\HospitalInformationTab\HospitalReviewPageView.xaml.cs">
@@ -996,6 +1021,38 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\WizardStartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardViews\W_LAST.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientView\ReworkOfProjectForMVVM\WizardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PatientView\ViewsForMVVM\MedicalReportsViewSTARI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1182,6 +1239,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\PatientResource\keyboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\WizardResource\01_INFO.jpg" />
+    <Resource Include="Resource\WizardResource\02_APPOINTMENTS.jpg" />
+    <Resource Include="Resource\WizardResource\03_RECORD.jpg" />
+    <Resource Include="Resource\WizardResource\04_THERAPY.jpg" />
+    <Resource Include="Resource\WizardResource\05_PERSONAL_NOTE.jpg" />
+    <Resource Include="Resource\WizardResource\LastPage.jpg" />
+    <Resource Include="Resource\WizardResource\WIZARD.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />

@@ -137,6 +137,15 @@ namespace ZdravoCorpAppTim22
                 }
 
                 window = new MainWindowZdravoCorpTabs((Patient)user);
+                if (patientCheck.HasBeenLoggedIn == false)
+                {
+                    WizardWindow wizardWindow = new WizardWindow();
+                    wizardWindow.ShowDialog();
+                    patientCheck.HasBeenLoggedIn = true;
+                    PatientController.Instance.Update(patientCheck);
+
+
+                }
             }
 
             if (window != null)
