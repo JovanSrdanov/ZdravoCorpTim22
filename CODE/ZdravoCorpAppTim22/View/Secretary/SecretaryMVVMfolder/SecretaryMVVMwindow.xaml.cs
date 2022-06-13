@@ -31,5 +31,46 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder
             secretaryHome.Show();
             this.Close();
         }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            secretaryHome.Show();
+            this.Close();
+        }
+
+        private void Accounts_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryAccounts secretaryAccounts = new SecretaryAccounts(secretaryHome);
+            secretaryAccounts.Show();
+            this.Close();
+        }
+
+        private void Schedule_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryScheduleOptions secretaryScheduleOptions = new SecretaryScheduleOptions(secretaryHome);
+            secretaryScheduleOptions.Show();
+            this.Close();
+        }
+
+        private void Medical_order_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMedicalOrder secretaryMedicalOrder = new SecretaryMedicalOrder(secretaryHome);
+            secretaryMedicalOrder.Show();
+            this.Close();
+        }
+
+        private void Emergency_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryEmergencyOptions secretaryEmergency = new SecretaryEmergencyOptions(secretaryHome);
+            secretaryEmergency.Show();
+            this.Close();
+        }
+
+        private void Requests_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryMVVMfolder.SecretaryMVVMwindow secretaryMVVMwindow = new SecretaryMVVMfolder.SecretaryMVVMwindow(secretaryHome, true);
+            secretaryMVVMwindow.Show();
+            this.Close();
+        }
     }
 }
