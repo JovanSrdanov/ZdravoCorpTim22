@@ -11,21 +11,13 @@
   {
     "Id": 1,
     "EndDate": "2022-06-23T00:00:00",
-    "NotifyNextDateTime": "2022-06-13T10:00:00",
+    "NotifyNextDateTime": "2022-06-14T10:00:00",
     "Time": "10:00",
     "AdditionalInstructions": "1",
     "TherapyPurpose": "1",
     "MedicalRecord": 1
   },
-  {
-    "Id": 1,
-    "EndDate": "2022-06-23T00:00:00",
-    "NotifyNextDateTime": "2022-06-13T10:00:00",
-    "Time": "10:00",
-    "AdditionalInstructions": "1",
-    "TherapyPurpose": "1",
-    "MedicalRecord": 1
-  },
+
   {
     "Id": 2,
     "EndDate": "2022-06-24T00:00:00",
@@ -65,7 +57,7 @@
   {
     "Id": 6,
     "EndDate": "2022-06-26T00:00:00",
-    "NotifyNextDateTime": "2022-06-13T11:00:00",
+    "NotifyNextDateTime": "2022-06-14T11:00:00",
     "Time": "11:00",
     "AdditionalInstructions": "vau",
     "TherapyPurpose": "zatooo",

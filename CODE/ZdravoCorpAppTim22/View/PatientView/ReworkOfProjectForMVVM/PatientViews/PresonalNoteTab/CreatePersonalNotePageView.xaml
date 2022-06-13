@@ -54,7 +54,7 @@
                     Content="Vaša poruka glasi:"
                     FontWeight="Bold" />
 
-                <TextBox Name="MessageTextBox" />
+                <TextBox Name="MessageTextBox"  GotFocus="MessageTextBox_OnGotFocus"/>
                 <Label
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"

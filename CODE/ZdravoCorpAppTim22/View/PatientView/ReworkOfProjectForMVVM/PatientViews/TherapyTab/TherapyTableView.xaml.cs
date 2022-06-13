@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using Xamarin.Forms.Xaml;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 
@@ -66,12 +67,34 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
                         PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
                         doc.Open();
 
-                        PdfPTable table = new PdfPTable(7);
 
-                        PdfPCell cell = new PdfPCell(new Phrase("Izvestaj"));
+                        
+
+
+
+
+                        BaseFont baseFont = BaseFont.CreateFont("c:\\WINDOWS\\fonts\\times.ttf", BaseFont.IDENTITY_H, true);
+                        Font titleFont = new Font(baseFont);
+                        string Header = "Zdravo Korporacija\nIzveštaj o terapijama na sedmičnom nivou:\nOd: " + StartDate.Date.ToString("dd-MM-yyyy") + ", do: " + EndDate.ToString("dd-MM-yyyy") + "\n" + "Pacijent: " + patient.Name + " " + patient.Surname + "\n ";
+
+                        Paragraph title;
+                        title = new Paragraph(Header, titleFont);
+                        title.Alignment = Element.ALIGN_CENTER;
+
+                        
+                        doc.Add(title);
+
+
+
+
+                        PdfPTable table = new PdfPTable(7);
+                        
+
+                        PdfPCell cell = new PdfPCell(new Phrase("Izveštaj"));
+                        
 
                         cell.Colspan = 7;
-
+                        
                         cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
 
                         table.AddCell(cell);
@@ -97,12 +120,12 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
                                     table.AddCell(medicalReceipt.TherapyPurpose.ToString());
                                     table.AddCell(medicalReceipt.AdditionalInstructions.ToString());
                                     string medications = "";
-                                    if(medicalReceipt.medicine!=null)
-                                    foreach (var med in medicalReceipt.medicine)
-                                    {
-                                        medications = medications + med.MedicineData.Name + "\n";
+                                    if (medicalReceipt.medicine != null)
+                                        foreach (var med in medicalReceipt.medicine)
+                                        {
+                                            medications = medications + med.MedicineData.Name + "\n";
 
-                                    }
+                                        }
 
 
                                     table.AddCell(medications);
@@ -125,14 +148,14 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
                     }
                     finally
                     {
-                       
+
                         doc.Close();
 
                         ViewPdf viewPdf = new ViewPdf(sfd.FileName);
 
                         viewPdf.ShowDialog();
-                       
-                      
+
+
                     }
 
 
@@ -141,8 +164,8 @@ namespace ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM.PatientView
 
             }
             {
-               
-              
+
+
             }
 
 
