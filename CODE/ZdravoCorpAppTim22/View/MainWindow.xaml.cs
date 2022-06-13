@@ -43,14 +43,15 @@ namespace ZdravoCorpAppTim22
 
             MedicalReportController.Instance.Load();
             PatientController.Instance.Load();
-            //dodao
+           
             DoctorSpecializationController.Instance.Load();
             DoctorController.Instance.Load();
             RequestForAbsenceController.Instance.Load();
-            //dodao
+           
             EquipmentDataController.Instance.Load();
             EquipmentController.Instance.Load();
             MedicalAppointmentController.Instance.Load();
+            PersonalNoteController.Instance.Load();
             ManagerController.Instance.Load();
             SecretaryController.Instance.Load();
             RenovationController.Instance.Load();
@@ -80,6 +81,17 @@ namespace ZdravoCorpAppTim22
                         MessageBox.Show(message);
                     });
                 }
+
+                message = PatientController.Instance.PersonalNoteNotification();
+                if (!message.Equals(""))
+                {
+                    App.Current?.Dispatcher?.Invoke(delegate
+                    {
+                        MessageBox.Show(message);
+                    });
+                }
+
+
             }
         }
 

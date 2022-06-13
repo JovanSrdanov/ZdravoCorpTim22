@@ -1,7 +1,7 @@
 [
   {
     "Id": 0,
-    "DoctorID": 0,
+    "DoctorId": 0,
     "Anamnesis": "Jako bolestan covek",
     "Diagnosis": "Covek se raspada",
     "ReportDate": "2022-06-06T13:21:34.2129281+02:00",
@@ -13,26 +13,38 @@
   },
   {
     "Id": 1,
-    "DoctorID": 0,
+    "DoctorId": 0,
     "Anamnesis": "BRAT MOJ",
     "Diagnosis": "NAJJACI",
     "ReportDate": "2022-06-07T08:36:54.4579887+02:00",
     "ReportReviewed": false,
     "ReportComment": "ooooo",
     "MedicalReceipt": 0,
-    "ReportReview": null,
+    "ReportReview": 4,
     "MedicalRecord": 0
   },
   {
     "Id": 2,
-    "DoctorID": 0,
+    "DoctorId": 0,
     "Anamnesis": "Ja ne odlucujem da li \u0107u i\u0107i u bitku, po tome koja je sila koja mi preti, ve\u0107 po tome koliku svetinju branim.",
     "Diagnosis": "Mudre rije\u010Di cara Lazara koje i danas imaju zna\u010Daj...",
     "ReportDate": "2022-06-07T08:45:22.0726829+02:00",
     "ReportReviewed": false,
     "ReportComment": "oooo",
     "MedicalReceipt": 5,
-    "ReportReview": null,
+    "ReportReview": 5,
     "MedicalRecord": 0
+  },
+  {
+    "Id": 3,
+    "DoctorId": 0,
+    "Anamnesis": "Anamneza",
+    "Diagnosis": "dap",
+    "ReportDate": "2022-06-07T22:09:16.061646+02:00",
+    "ReportReviewed": false,
+    "ReportComment": "daaaaaaaaaaaaaaaaaaaaaaa",
+    "MedicalReceipt": 0,
+    "ReportReview": null,
+    "MedicalRecord": 1
   }
 ]

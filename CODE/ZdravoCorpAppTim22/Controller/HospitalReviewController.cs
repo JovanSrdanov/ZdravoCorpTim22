@@ -23,7 +23,7 @@ namespace ZdravoCorpAppTim22.Controller
             }
         }
 
-        internal void SubmitReview(int id, int staffHospitality, int accessibility, int hygiene, int appearance, int application)
+        public void SubmitReview(int id, int staffHospitality, int accessibility, int hygiene, int appearance, int application)
         {
             HospitalReview hospitalReview = Instance.GetByID(id);
 

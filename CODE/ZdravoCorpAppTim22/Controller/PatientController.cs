@@ -2,6 +2,7 @@ using Model;
 using Service;
 using System;
 using ZdravoCorpAppTim22.Controller.Generic;
+using ZdravoCorpAppTim22.Model;
 
 namespace Controller
 {
@@ -41,6 +42,11 @@ namespace Controller
         public void checkIfPatientHasMedicalRecord(Patient patient)
         {
             PatientService.Instance.checkIfPatientHasMedicalRecord(patient);
-        }   
+        }
+
+        public string PersonalNoteNotification()
+        {
+            return PatientService.Instance.PersonalNoteNotification();
+        }
     }
 }

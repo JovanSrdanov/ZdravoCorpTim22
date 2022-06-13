@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using ZdravoCorpAppTim22.Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
