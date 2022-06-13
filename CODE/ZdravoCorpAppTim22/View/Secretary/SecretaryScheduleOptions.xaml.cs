@@ -82,5 +82,12 @@ namespace ZdravoCorpAppTim22.View.Secretary
             secretaryMVVMwindow.Show();
             this.Close();
         }
+
+        private void gtnGenerateReport_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryGenerateReport secretaryGenerateReport = new SecretaryGenerateReport(secretaryHome);
+            secretaryGenerateReport.Show();
+            this.Close();
+        }
     }
 }

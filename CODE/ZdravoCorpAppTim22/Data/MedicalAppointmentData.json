@@ -34,5 +34,17 @@
     "Room": 8,
     "Patient": 0,
     "Doctor": 0
+  },
+  {
+    "Id": 3,
+    "Type": 1,
+    "Interval": {
+      "Start": "2022-06-13T22:30:00",
+      "End": "2022-06-13T23:00:00"
+    },
+    "isUrgent": false,
+    "Room": 8,
+    "Patient": 5,
+    "Doctor": 0
   }
 ]
