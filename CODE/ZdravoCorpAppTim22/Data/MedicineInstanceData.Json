@@ -1,26 +1,22 @@
 [
   {
     "Id": 0,
-    "Name": "lijek_1"
-  },
-  {
-    "Id": 1,
-    "Name": "lijek_2"
-  },
-  {
-    "Id": 2,
-    "Name": "lijek_3"
-  },
-  {
-    "Id": 3,
     "Name": "1"
   },
   {
-    "Id": 4,
+    "Id": 1,
     "Name": "2"
   },
   {
-    "Id": 5,
-    "Name": "lekSastojak"
+    "Id": 2,
+    "Name": "3"
+  },
+  {
+    "Id": 3,
+    "Name": "sa"
+  },
+  {
+    "Id": 4,
+    "Name": "da"
   }
 ]

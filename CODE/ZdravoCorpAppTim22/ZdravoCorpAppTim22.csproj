@@ -31,7 +31,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -73,8 +74,14 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
@@ -86,8 +93,14 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Portable, Version=20.1451.0.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Xamarin.Compression.20.1.0.59\lib\netstandard2.0\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Core.XForms, Version=20.1451.0.59, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Xamarin.Core.20.1.0.59\lib\netstandard2.0\Syncfusion.Core.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=20.1460.0.59, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Licensing.20.1.0.59\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base, Version=20.1460.0.59, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Pdf.Wpf.20.1.0.59\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
@@ -307,6 +320,8 @@
     <Compile Include="Service\SecretaryService.cs" />
     <Compile Include="View\BindableBase.cs" />
     <Compile Include="View\DoctorView\AppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Commands\CommandBase.cs" />
+    <Compile Include="View\DoctorView\Commands\NavigateCommand.cs" />
     <Compile Include="View\DoctorView\CreateReport.xaml.cs">
       <DependentUpon>CreateReport.xaml</DependentUpon>
     </Compile>
@@ -329,8 +344,91 @@
     <Compile Include="View\DoctorView\MedicalRecordView.xaml.cs">
       <DependentUpon>MedicalRecordView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\Navigation\NavigationBase.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\MainDoctorWindow.xaml.cs">
+      <DependentUpon>MainDoctorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\AppointmentTypeViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\CreateAppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\CreateReportViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\DrugsPageViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\DrugsViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\HomeScreenViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\ListAppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\ListMedicalRecordViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\MedicalAppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\MedicalRecordViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\MedicalReportViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\OpenReportViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\PatientHistoryDataViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\PatientViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RecordViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\ReferViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RejectDrugViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RequestDeniedViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RequestForAbsenceViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RequestListViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RequestViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\ViewModels\RoomViewModel.cs" />
+    <Compile Include="View\DoctorView\Novi MVVM\Views\CreateAppointmentPage.xaml.cs">
+      <DependentUpon>CreateAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\CreateReportPage.xaml.cs">
+      <DependentUpon>CreateReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\DrugsPage.xaml.cs">
+      <DependentUpon>DrugsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\HomeScreen.xaml.cs">
+      <DependentUpon>HomeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\ListAppointments.xaml.cs">
+      <DependentUpon>ListAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\ListMedicalRecordPage.xaml.cs">
+      <DependentUpon>ListMedicalRecordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\OpenReportPage.xaml.cs">
+      <DependentUpon>OpenReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\RecordPage.xaml.cs">
+      <DependentUpon>RecordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\ReferPage.xaml.cs">
+      <DependentUpon>ReferPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\RejectDrugRequestPage.xaml.cs">
+      <DependentUpon>RejectDrugRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\RequestDenied.xaml.cs">
+      <DependentUpon>RequestDenied.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\RequestForAbsence.xaml.cs">
+      <DependentUpon>RequestForAbsence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Novi MVVM\Views\RequestList.xaml.cs">
+      <DependentUpon>RequestList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorView\OpenReport.xaml.cs">
       <DependentUpon>OpenReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\ViewModels\CreateAppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\ViewModels\DoctorAppointmentsViewModel.cs" />
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\ViewModels\DoctorMainWindowViewModel.cs" />
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\ViewModels\HomeViewModel.cs" />
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\ViewModels\MedicalAppointmentViewModel.cs" />
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\Views\CreateAppointmentView.xaml.cs">
+      <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\Views\DoctorAppointmentsView.xaml.cs">
+      <DependentUpon>DoctorAppointmentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\Views\DoctorMainWindow.xaml.cs">
+      <DependentUpon>DoctorMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorView\Projekat u MVVM-u\Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorView\ReferToDoctorView.xaml.cs">
       <DependentUpon>ReferToDoctorView.xaml</DependentUpon>
@@ -347,6 +445,7 @@
     <Compile Include="View\DoctorView\RequestListView.xaml.cs">
       <DependentUpon>RequestListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorView\Services\NavService.cs" />
     <Compile Include="View\Manager\Commands\RelayCommand.cs" />
     <Compile Include="View\Manager\Converters\PercentageConverter.cs" />
     <Compile Include="View\Manager\ManagerHome.xaml.cs">
@@ -665,7 +764,79 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DoctorView\Novi MVVM\MainDoctorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\CreateAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\CreateReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\DrugsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\HomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\ListAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\ListMedicalRecordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\OpenReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\RecordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\ReferPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\RejectDrugRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\RequestDenied.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\RequestForAbsence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Novi MVVM\Views\RequestList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView\OpenReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Projekat u MVVM-u\Views\CreateAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Projekat u MVVM-u\Views\DoctorAppointmentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Projekat u MVVM-u\Views\DoctorMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorView\Projekat u MVVM-u\Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1140,9 +1311,6 @@
     <Resource Include="Resource\DoctorResource\signout.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\DoctorResource\home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\DoctorResource\hospital.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1176,12 +1344,53 @@
   <ItemGroup>
     <Resource Include="Resource\PatientResource\pdfIco.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resource\PatientResource\patientPlaceHolder.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\PatientResource\keyboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\DoctorResource\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\demo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\hospital.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\magnifyingglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\notificationicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\signout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\stethoscope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\syringe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\DoctorView\DoctorResource\schedule.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.5.0.0.2401\build\Xamarin.Forms.targets')" />

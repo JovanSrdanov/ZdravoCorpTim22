@@ -1,0 +1,38 @@
+﻿<Page x:Class="ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views.DrugsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="DrugsPage">
+
+    <Grid>
+        <DataGrid x:Name="MedicineDataGrid" Margin="102,199,147,275"
+                  AutoGenerateColumns="false" FontSize="25"
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
+                  VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+                  ItemsSource="{Binding AllMedicineInStorageObservable}"
+                  SelectedItem="{Binding SelectedDrugsViewModel}"
+                  SelectedIndex="{Binding SelectedIndex}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" Width="auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=DrugName}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}" Width="*"/>
+                <DataGridTextColumn Header="Approved" Binding="{Binding Path=IsApproved}" Width="*"/>
+                <DataGridTextColumn Header="Approved by" Binding="{Binding Path=DoctorName}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Style="{StaticResource h1}" Text="Drugs" Margin="407,56,0,0"/>
+        <Button x:Name="BackBtn" Content="Back" Margin="605,600,0,0" 
+                FontSize="16" Height="40" Width="80" Style="{StaticResource normalButton}"
+                Command="{Binding BackCommand}"/>
+        <Button x:Name="ApproveBtn" Content="Approve" Margin="271,600,0,0"
+                Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80"
+                Command="{Binding ApproveCommand}"/>
+        <Button x:Name="RejectBtn" Content="Reject" Margin="439,600,0,0" 
+                Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80"
+                Command="{Binding RejectCommand}"/>
+    </Grid>
+</Page>

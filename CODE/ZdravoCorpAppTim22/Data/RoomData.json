@@ -1,37 +1,16 @@
 [
   {
-    "Id": 1,
-    "Level": 4,
-    "Type": 0,
-    "Name": "soba_1",
-    "Surface": 30
-  },
-  {
-    "Id": 3,
-    "Level": 3,
-    "Type": 0,
-    "Name": "soba_2",
-    "Surface": 10
-  },
-  {
-    "Id": 6,
-    "Level": 55,
+    "Id": 0,
+    "Level": 0,
     "Type": 1,
-    "Name": "soba_3",
-    "Surface": 35
+    "Name": "Soba1",
+    "Surface": 0
   },
   {
-    "Id": 7,
-    "Level": 232,
-    "Type": 4,
-    "Name": "SOBA ZA PREGLED",
-    "Surface": 213
-  },
-  {
-    "Id": 8,
-    "Level": 2,
-    "Type": 4,
-    "Name": "NAJJACA",
-    "Surface": 232
+    "Id": 1,
+    "Level": 0,
+    "Type": 0,
+    "Name": "Operacijska",
+    "Surface": 0
   }
 ]

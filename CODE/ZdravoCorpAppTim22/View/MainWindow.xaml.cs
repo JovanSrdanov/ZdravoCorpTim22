@@ -6,6 +6,8 @@ using System.Windows;
 using ZdravoCorpAppTim22.Controller;
 using ZdravoCorpAppTim22.Model;
 using ZdravoCorpAppTim22.View.DoctorView;
+using ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM;
+using ZdravoCorpAppTim22.View.DoctorView.Projekat_u_MVVM_u.Views;
 using ZdravoCorpAppTim22.View.Manager;
 using ZdravoCorpAppTim22.View.PatientView;
 using ZdravoCorpAppTim22.View.PatientView.ReworkOfProjectForMVVM;
@@ -125,7 +127,8 @@ namespace ZdravoCorpAppTim22
             }
             else if(user.GetType() == typeof(Doctor))
             {
-                window = new DoctorHomeScreen((Doctor)user);
+                //window = new DoctorHomeScreen((Doctor)user);
+                window = new MainDoctorWindow();
             }
             else if(user.GetType() == typeof(Patient))
             {

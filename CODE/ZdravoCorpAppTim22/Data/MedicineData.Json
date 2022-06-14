@@ -1,21 +1,27 @@
 [
   {
     "Id": 0,
-    "Amount": 249,
+    "Amount": 99,
     "MedicineData": 0,
     "MedicalReceipt": null
   },
   {
     "Id": 1,
-    "Amount": 152,
+    "Amount": 99,
     "MedicineData": 1,
     "MedicalReceipt": null
   },
   {
     "Id": 2,
-    "Amount": 148,
+    "Amount": 100,
     "MedicineData": 2,
     "MedicalReceipt": null
+  },
+  {
+    "Id": 3,
+    "Amount": 0,
+    "MedicineData": 2,
+    "MedicalReceipt": 0
   },
   {
     "Id": 4,
@@ -31,50 +37,8 @@
   },
   {
     "Id": 6,
-    "Amount": 1,
-    "MedicineData": 0,
-    "MedicalReceipt": 0
-  },
-  {
-    "Id": 7,
-    "Amount": 10,
-    "MedicineData": 5,
-    "MedicalReceipt": null
-  },
-  {
-    "Id": 8,
-    "Amount": 1,
-    "MedicineData": 2,
-    "MedicalReceipt": 1
-  },
-  {
-    "Id": 9,
     "Amount": 0,
-    "MedicineData": 3,
-    "MedicalReceipt": 2
-  },
-  {
-    "Id": 8,
-    "Amount": 1,
     "MedicineData": 0,
-    "MedicalReceipt": 3
-  },
-  {
-    "Id": 9,
-    "Amount": 1,
-    "MedicineData": 1,
-    "MedicalReceipt": 4
-  },
-  {
-    "Id": 10,
-    "Amount": 1,
-    "MedicineData": 0,
-    "MedicalReceipt": 5
-  },
-  {
-    "Id": 11,
-    "Amount": 1,
-    "MedicineData": 2,
-    "MedicalReceipt": 6
+    "MedicalReceipt": 1
   }
 ]

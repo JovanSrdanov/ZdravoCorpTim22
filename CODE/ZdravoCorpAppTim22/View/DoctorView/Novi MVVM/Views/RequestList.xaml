@@ -1,0 +1,34 @@
+﻿<Page x:Class="ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views.RequestList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="RequestList">
+
+    <Grid>
+        <Button x:Name="BackBtn" Content="Back" Margin="554,594,0,0"  
+                FontSize="16" Height="40" Width="80" Style="{StaticResource normalButton}"
+                Command="{Binding BackCommand}"/>
+        <Button x:Name="DetailsBtn" Content="Details" Margin="316,594,0,0" 
+            FontSize="16" Height="40" Width="80" Style="{StaticResource normalButton}" 
+                Command="{Binding DetailsCommand}"/>
+        <DataGrid x:Name="RequestListDataGrid" Margin="102,199,147,275"
+            AutoGenerateColumns="false" FontSize="20"
+            Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
+            VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+                  ItemsSource="{Binding allRequests}" SelectedItem="{Binding SelectedRequest}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}" Width="auto"/>
+                <DataGridTextColumn Header="Reason" Binding="{Binding Path=Reason}" Width="auto"/>
+                <DataGridTextColumn Header="Is Urgent" Binding="{Binding Path=Urgent}" Width="auto"/>
+                <DataGridTextColumn Header="Absence Start Date" Binding="{Binding Path=AbsenceInterval.Start}" Width="auto"/>
+                <DataGridTextColumn Header="Absence End Date" Binding="{Binding Path=AbsenceInterval.End}" Width="auto"/>
+                <DataGridTextColumn Header="Request state" Binding="{Binding Path=RequestState}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Style="{StaticResource h1}" Text="Request list" Margin="367,56,0,0"/>
+    </Grid>
+</Page>

@@ -1,0 +1,127 @@
+﻿<Window x:Class="ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.MainDoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainDoctorWindow" Width="1024" Height="768" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Menu" x:Key="MenuStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Menu}">
+                        <Border BorderThickness="1">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="MediumPurple"
+                                                Offset="0.0" />
+                                            <GradientStop Color="MediumPurple"
+                                                Offset="1.0" />
+                                        </GradientStopCollection>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                                    <GradientStop Color="MediumPurple"
+                                        Offset="0" />
+                                    <GradientStop Color="MediumPurple"
+                                        Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel ClipToBounds="True"
+                                Orientation="Vertical"
+                                IsItemsHost="True" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="MenuItem" x:Key="BaseMenuItem">
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Grid x:Name="MenuItemGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="MenuItemBorder" Grid.ColumnSpan="2">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="MediumPurple"
+                                                Offset="0.0" />
+                                                <GradientStop Color="MediumPurple"
+                                                Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Border.BorderBrush>
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                                        <GradientStop Color="MediumPurple"
+                                        Offset="0" />
+                                        <GradientStop Color="MediumPurple"
+                                        Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <StackPanel ClipToBounds="True"
+                                    Orientation="Horizontal"
+                                    IsItemsHost="True" />
+                            </Border>
+                            <ContentPresenter x:Name="IconPresenter"  ContentSource="Icon"/>
+                            <ContentPresenter ContentSource="Header"
+                                          Margin="7, 1, 7, 148" Grid.Column="1" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Right" Style="{StaticResource MenuStyle}" >
+            <MenuItem Style="{StaticResource BaseMenuItem}" Name="LogOutMenuItem" Command="{Binding NavigateToLogInScreenCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/Resource/DoctorResource/signout.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Style="{StaticResource BaseMenuItem}" Command="">
+                <MenuItem.Icon>
+                    <Image Source="/Resource/DoctorResource/notificationicon.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Style="{StaticResource BaseMenuItem}" Command="{Binding NavigateToMainPageCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/Resource/DoctorResource/home.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Style="{StaticResource BaseMenuItem}" Command="">
+                <MenuItem.Icon>
+                    <Image Source="/Resource/DoctorResource/demo.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Style="{StaticResource BaseMenuItem}" Command="">
+                <MenuItem.Icon>
+                    <Image Source="/Resource/DoctorResource/magnifyingglass.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+        <Frame x:Name="frame" Source="\View\DoctorView\Novi MVVM\Views\HomeScreen.xaml"
+               NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</Window>

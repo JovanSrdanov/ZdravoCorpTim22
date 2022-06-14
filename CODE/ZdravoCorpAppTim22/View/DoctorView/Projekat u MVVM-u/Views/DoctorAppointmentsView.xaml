@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ZdravoCorpAppTim22.View.DoctorView.Projekat_u_MVVM_u.Views.DoctorAppointmentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Projekat_u_MVVM_u.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <Grid>
+            <DataGrid Name="appointmentListGrid" ItemsSource="{Binding MedicalAppoinemnts}"
+                  AutoGenerateColumns="False" Height="357" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" 
+                  Background="Transparent" BorderThickness="0" BorderBrush="Transparent" IsReadOnly="True" 
+                  Margin="51,160,104,0" FontSize="25" SelectionMode="Single"
+                      SelectedItem="{Binding SelectedItem}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Path=Interval.Start}" Width="auto"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Path=Room.Id}" Width="*"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding Path=Type}" Width="auto"/>
+                    <DataGridTextColumn Header="Patient" Binding="{Binding Path=Patient.Name}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Name="btnCreate" Content="Create appointment" Margin="56,608,0,0" Style="{StaticResource normalButton}" 
+                 FontSize="20" Height="40" Command="{Binding CreateAppointmentCommand}"/>
+            <Button Name="btnDelete" Content="Cancel appointment" Margin="541,608,0,0" 
+                FontSize="20" Style="{StaticResource normalButton}" Height="40" Command="{Binding CancelAppointmentCommand}"/>
+            <Button x:Name="BackBtn" Content="Back" Margin="796,608,0,0" 
+                FontSize="20" Style="{StaticResource normalButton}" Height="40" Width="102" 
+                    Command="{Binding BackCommand}"/>
+            <Button x:Name="ViewMedRecBtn" Content="View record" Margin="791,114,0,0" Height="40" 
+                 FontSize="20" Style="{StaticResource normalButton}"
+                    Command="{Binding CreateAppointmentCommand}" IsEnabled="{Binding Path=IsSelected}"/>
+            <Button x:Name="BeginAppointmentBtn" Content="Begin appointment" Margin="303,608,0,0" Height="40" 
+                 FontSize="20" Style="{StaticResource normalButton}" Command="{Binding BeginAppointmentCommand}"/>
+            <TextBlock Style="{StaticResource h1}" Text="Schedule" Margin="381,56,0,0"/>
+            <Button Margin="973,348,0,0"  Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/home.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="LogOut" Margin="974,10,0,0" 
+            Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/signout.png"/>
+                </Button.Background>
+            </Button>
+            <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+            <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/magnifyingglass.png"/>
+                </Button.Background>
+            </Button>
+            <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/notificationicon.png"/>
+                </Button.Background>
+            </Button>
+            <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/demo.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

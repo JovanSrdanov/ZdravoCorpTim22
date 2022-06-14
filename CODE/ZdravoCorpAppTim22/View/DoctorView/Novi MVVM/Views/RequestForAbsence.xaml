@@ -1,0 +1,45 @@
+﻿<Page x:Class="ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views.RequestForAbsence"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024" Background="White"
+      Title="RequestForAbsence">
+
+    <Grid>
+        <TextBlock Style="{StaticResource h1}" Text="Request for absence" Margin="293,104,0,0"/>
+        <Label Content="Reason for absence" HorizontalAlignment="Left" Margin="291,306,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Absence start date" HorizontalAlignment="Left" Margin="293,197,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="ReasonForAbsenceTextBox" HorizontalAlignment="Left" Margin="297,345,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="368" Height="166"
+                 VerticalScrollBarVisibility="Auto" FontSize="18" 
+                 BorderBrush="#FF8C39A5" BorderThickness="2"
+                 Text="{Binding ReasonForAbsence, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <DatePicker x:Name="AbsenceStartDatePicker" HorizontalAlignment="Left" Margin="297,241,0,0" VerticalAlignment="Top"
+                    BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"
+                    SelectedDate="{Binding SelectedStartDate}" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
+        <CheckBox x:Name="UrgentCheckBox" Content="Urgent" HorizontalAlignment="Left" Margin="297,534,0,0" VerticalAlignment="Top"
+                  FontSize="18" BorderBrush="#FF8C39A5" BorderThickness="2"
+                  IsChecked="{Binding IsUrgent}"/>
+        <Button x:Name="SendBtn" Content="Confirm" Margin="356,600,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80"
+                Command="{Binding CreateRequestCommand}"/>
+        <Button x:Name="CancelBtn" Content="Cancel" Margin="524,600,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80"
+                Command="{Binding CancelCommand}"/>
+        <Label Content="Absence end date" HorizontalAlignment="Left" Margin="504,197,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <DatePicker x:Name="AbsenceEndDatePicker" HorizontalAlignment="Left" Margin="508,241,0,0" VerticalAlignment="Top"
+            BorderBrush="#FF8C39A5" BorderThickness="2" FontSize="18" Width="158"
+                    SelectedDate="{Binding SelectedEndDate}" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
+        <Button x:Name="RequestListBtn" Content="Requests" Margin="773,170,0,0"
+            Style="{StaticResource normalButton}" FontSize="16" Height="40" Width="80"
+                Command="{Binding ViewRequestListCommand}"/>
+        <Button x:Name="DemoBtn" Content="Start demo" Margin="56,28,0,0" Height="40" Width="108" FontSize="20"
+                Command="{Binding DemoCommand}" Style="{StaticResource normalButton}"/>
+        <Button x:Name="STOP" Content="Stop demo" Margin="176,28,0,0" Height="40" Width="108" FontSize="20"
+                Command="{Binding StopCommand}" Style="{StaticResource normalButton}"/>
+    </Grid>
+</Page>

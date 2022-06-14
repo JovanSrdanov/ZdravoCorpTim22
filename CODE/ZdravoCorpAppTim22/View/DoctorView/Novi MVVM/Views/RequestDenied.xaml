@@ -1,0 +1,26 @@
+﻿<Page x:Class="ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views.RequestDenied"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Novi_MVVM.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="RequestDenied">
+
+    <Grid>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BackBtn" Content="Close" Margin="450,594,0,0"
+            FontSize="16" Height="40" Width="80" Style="{StaticResource normalButton}"
+                Command="{Binding BackCommand}"/>
+        <TextBlock x:Name="ReasonTextBlock" HorizontalAlignment="Left" Margin="175,170,0,0" TextWrapping="WrapWithOverflow" 
+                   VerticalAlignment="Top" Height="377" Width="618" FontSize="18"
+                   FontWeight="Bold" TextAlignment="Justify"
+                   Text="{Binding RequestDeniedReason}"/>
+        <TextBlock Style="{StaticResource h1}" Text="Reason for the rejection" Margin="259,56,0,0"/>
+    </Grid>
+</Page>

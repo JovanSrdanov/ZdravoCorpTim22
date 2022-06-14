@@ -2,23 +2,24 @@
   {
     "Id": 0,
     "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": []
+    "AllergiesList": [
+      "1"
+    ],
+    "ConditionList": [
+      "2",
+      "1"
+    ]
   },
   {
     "Id": 1,
     "BloodType": 1,
-    "AllergiesList": [
-      "lijek_1",
-      "sastojak_2"
-    ],
-    "ConditionList": [
-      "1",
-      "nesto",
-      "Covek se raspada",
-      "NAJJACI",
-      "Mudre rije\u010Di cara Lazara koje i danas imaju zna\u010Daj...",
-      "dap"
-    ]
+    "AllergiesList": [],
+    "ConditionList": []
+  },
+  {
+    "Id": 2,
+    "BloodType": 1,
+    "AllergiesList": [],
+    "ConditionList": []
   }
 ]

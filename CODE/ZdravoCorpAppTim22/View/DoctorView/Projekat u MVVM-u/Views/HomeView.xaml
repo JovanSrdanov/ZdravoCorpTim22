@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="ZdravoCorpAppTim22.View.DoctorView.Projekat_u_MVVM_u.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoCorpAppTim22.View.DoctorView.Projekat_u_MVVM_u.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <TextBlock Margin="256,53,0,0" Text="Welcome to Zdravo Corp"
+                   Style="{StaticResource ResourceKey=h1}"/>
+        <Button x:Name="SchedulingBtn" Margin="173,167,0,0"  
+                Style="{StaticResource ResourceKey=homeScreenButton}"
+                Command="{Binding ScheduleCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/View/DoctorView/DoctorResource/schedule.jpeg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SchedulingBtn_Copy" Margin="688,341,0,0"  
+                Style="{StaticResource ResourceKey=homeScreenButton}"
+                Command="{Binding ViewMedRecCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/book.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LogOut" Margin="974,10,0,0" 
+                Style="{StaticResource ResourceKey=statusBarButtonStyle}"
+                Command="{Binding LogOutCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/signout.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,348,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}"
+                Command="{Binding HomeCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/View/DoctorView/DoctorResource/home.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Scheduling list" Margin="163,271,0,0" FontSize="16" 
+               Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="View medical records" Margin="656,444,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button x:Name="RequestForAbsenceBtn" Margin="172,534,0,0"  
+            Style="{StaticResource ResourceKey=homeScreenButton}"
+                Command="{Binding RequestAbsenceCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/arrow.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Request for absence" Margin="142,640,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Rectangle Style="{StaticResource ResourceKey=statusBar}" Height="768" Margin="968,0,0,0"/>
+        <Button x:Name="DrugsBtn" Margin="704,166,0,0" Style="{StaticResource ResourceKey=homeScreenButton}"   
+                Command="{Binding DrugRequestsCommand}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/syringe.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Drug requests" Margin="688,271,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button Margin="440,170,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/document.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="173,355,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/gear.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="441,343,0,0" Style="{StaticResource ResourceKey=homeScreenButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/stethoscope.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Create certificate" Margin="421,280,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="Request consumable" Margin="408,460,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Label Content="Report malfunction" Margin="144,460,0,0" FontSize="16" 
+            Style="{StaticResource ResourceKey=normalLabels}"/>
+        <Button Margin="975,710,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/magnifyingglass.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="973,170,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/notificationicon.png"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="975,541,0,0" Style="{StaticResource ResourceKey=statusBarButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ZdravoCorpAppTim22;component/Resource/DoctorResource/demo.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</UserControl>
