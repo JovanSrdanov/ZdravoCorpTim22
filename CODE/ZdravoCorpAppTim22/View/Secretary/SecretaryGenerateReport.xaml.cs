@@ -3,6 +3,7 @@ using Model;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Tables;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows;
@@ -23,9 +24,14 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            if(dateStart.SelectedDate> DateEnd.SelectedDate)
+            {
+                MessageBox.Show("Start date must be before end date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (dateStart.SelectedDate == null || DateEnd.SelectedDate == null)
             {
-                MessageBox.Show("Must select start and end date!");
+                MessageBox.Show("Must select start and end date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             GenerateReport();
@@ -42,16 +48,20 @@ namespace ZdravoCorpAppTim22.View.Secretary
             PdfLightTable pdfLightTable = new PdfLightTable();
             DataTable table = new DataTable();
 
-            txt = "Izvještaj zakazanih operacija i pregleda";
+            txt = "Izveštaj zakazanih operacija i pregleda";
             table.Columns.Add("ID");
             table.Columns.Add("Tip");
             table.Columns.Add("Pocetak termina");
             table.Columns.Add("Kraj termina");
             table.Columns.Add("Hitan");
+            table.Columns.Add("Doktor");
+            table.Columns.Add("Pacijent");
+            table.Columns.Add("Soba");
 
 
             foreach (MedicalAppointment m in MedicalAppointmentController.Instance.GetAll())
             {
+
                 if (m.Interval.Start >= dateStart.SelectedDate && m.Interval.Start <= DateEnd.SelectedDate)
                 {
                     string id = m.Id.ToString();
@@ -59,8 +69,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     string start = m.Interval.Start.ToString();
                     string end = m.Interval.End.ToString();
                     string urgent = m.isUrgent.ToString();
+                    string doctor = m.doctor.ToString();
+                    string patient = m.patient.ToString();
+                    string room = m.room.ToString();
 
-                    table.Rows.Add(new string[] { id, type, start, end, urgent });
+                    table.Rows.Add(new string[] { id, type, start, end, urgent, doctor, patient, room });
                 }
             }
 
@@ -88,13 +101,16 @@ namespace ZdravoCorpAppTim22.View.Secretary
             pdfLightTable.Draw(page, new PointF(0, 75));
 
             doc.Save("../../Reports/SecretaryReport.pdf");
-
+            
             doc.Close(true);
+            MessageBox.Show("Report generated!");
         }
 
         private void Window_Closed(object sender, System.EventArgs e)
         {
             secretaryHome.Show();
         }
+
+        
     }
 }
