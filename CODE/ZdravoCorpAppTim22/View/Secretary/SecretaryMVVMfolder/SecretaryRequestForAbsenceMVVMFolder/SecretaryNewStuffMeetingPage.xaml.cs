@@ -33,33 +33,37 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
         {
             if (comboBoxRoom.SelectedItem == null)
             {
-                MessageBox.Show("You must select room!");
+                MessageBox.Show("You must select room!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (datePicker.SelectedDate == null)
             {
                 if (datePicker.SelectedDate < System.DateTime.Now)
                 {
-                    MessageBox.Show("You must choose date of meeting which is in future");
+                    MessageBox.Show("You must choose date of meeting which is in future", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
-                MessageBox.Show("You must choose date of meeting");
+                MessageBox.Show("You must choose date of meeting", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (comboBoxTimeEnd.SelectedItem == null)
             {
-                MessageBox.Show("You must start time of meeting");
+                MessageBox.Show("You must start time of meeting", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (comboBoxTimeEnd.SelectedItem == null)
             {
-                MessageBox.Show("You must end time of meeting");
+                MessageBox.Show("You must end time of meeting", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-
+            if(comboBoxTimeEnd.SelectedIndex<= comboBoxTimeStart.SelectedIndex)
+            {
+                MessageBox.Show("Start time must be before end time!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
             if (dataGridInvited.Items.Count < 2)
             {
-                MessageBox.Show("Meeting must have 2 or more participants");
+                MessageBox.Show("Meeting must have 2 or more participants", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

@@ -19,25 +19,13 @@ using Model;
 
 namespace ZdravoCorpAppTim22.View.Secretary
 {
-    /// <summary>
-    /// Interaction logic for SecretaryGraph.xaml
-    /// </summary>
-    /// 
-    public class Sales
-    {
-        public int count;
-        public string name;
-
-    }
-
     public partial class SecretaryGraph : Window
     {
-        public SecretaryGraph()
+        SecretaryMedicalOrder secretaryMedicalOrder;
+        public SecretaryGraph(SecretaryMedicalOrder secretaryMedicalOrder)
         {
             InitializeComponent();
-           
-            
-            
+            this.secretaryMedicalOrder = secretaryMedicalOrder;
         }
 
         private void rbColumn_Click(object sender, RoutedEventArgs e)
@@ -80,6 +68,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     Chart1.Series[0].Points.Add(eq.Amount).AxisLabel = eq.equipmentData.Name;
                 }
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            secretaryMedicalOrder.Show();
         }
     }
 }

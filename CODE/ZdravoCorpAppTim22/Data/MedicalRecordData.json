@@ -1,9 +1,12 @@
 [
   {
     "Id": 0,
-    "BloodType": 1,
-    "AllergiesList": [],
-    "ConditionList": []
+    "BloodType": 2,
+    "AllergiesList": [
+      "lijek_2",
+      "lekSastojak"
+    ],
+    "ConditionList": null
   },
   {
     "Id": 1,

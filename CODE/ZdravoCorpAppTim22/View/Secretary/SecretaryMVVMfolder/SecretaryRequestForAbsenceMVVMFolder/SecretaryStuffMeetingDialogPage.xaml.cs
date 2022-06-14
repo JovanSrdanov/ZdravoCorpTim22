@@ -86,7 +86,11 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
                 MessageBox.Show("You must end time of meeting");
                 return false;
             }
-
+            if (comboBoxTimeEnd.SelectedIndex <= comboBoxTimeStart.SelectedIndex)
+            {
+                MessageBox.Show("Start time must be before end time!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
             if (dataGridInvited.Items.Count < 2)
             {
                 MessageBox.Show("Meeting must have 2 or more participants");

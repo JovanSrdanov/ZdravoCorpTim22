@@ -62,6 +62,17 @@
       "Start": "2022-06-09T19:20:34.1805718+02:00",
       "End": "2022-06-11T19:20:34.1805718+02:00"
     },
+    "RequestState": 2,
+    "Doctor": 0
+  },
+  {
+    "Id": 6,
+    "Reason": "Moze mi se",
+    "Urgent": true,
+    "AbsenceInterval": {
+      "Start": "2022-06-16T12:28:25.8120271+02:00",
+      "End": "2022-06-18T12:28:25.8120271+02:00"
+    },
     "RequestState": 0,
     "Doctor": 0
   }

@@ -503,7 +503,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
         private void DeleteUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure?", "Cancel new account", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "Delete account", MessageBoxButton.YesNo, MessageBoxImage.Error);
             switch (result)
             {
                 case MessageBoxResult.Yes:

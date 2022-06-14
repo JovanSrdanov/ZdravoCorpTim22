@@ -2,15 +2,15 @@
   {
     "Id": 0,
     "Interval": {
-      "Start": "2022-06-08T09:00:00",
-      "End": "2022-06-08T11:00:00"
+      "Start": "2022-06-07T20:00:00",
+      "End": "2022-06-07T22:00:00"
     },
     "Room": {
-      "Id": 7,
-      "Level": 232,
-      "Type": 4,
-      "Name": "SOBA ZA PREGLED",
-      "Surface": 213
+      "Id": 1,
+      "Level": 4,
+      "Type": 0,
+      "Name": "soba_1",
+      "Surface": 30
     }
   }
 ]
