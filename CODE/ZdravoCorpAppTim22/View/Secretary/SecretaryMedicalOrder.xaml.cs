@@ -171,6 +171,11 @@ namespace ZdravoCorpAppTim22.View.Secretary
             this.Close();
         }
 
-
+        private void btnGraph_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryGraph secretaryGraph = new SecretaryGraph();
+            secretaryGraph.Show();
+            this.Close();
+        }
     }
 }
