@@ -27,7 +27,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             dataGridSuggestedMedicalAppointments.ItemsSource = MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences);
             if (MedicalAppointmentController.Instance.GetSuggestedMedicalAppointments(appointmentPreferences).Count == 0)
             {
-                MessageBox.Show("No available appointments!");
+                MessageBox.Show("No available appointments!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Close();
             }
         }
@@ -36,7 +36,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (dataGridSuggestedMedicalAppointments.SelectedItem == null)
             {
-                MessageBox.Show("Must choose appointment from list!");
+                MessageBox.Show("Must choose appointment from list!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

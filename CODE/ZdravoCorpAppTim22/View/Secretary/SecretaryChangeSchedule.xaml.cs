@@ -95,7 +95,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                     return;
                 }
 
-                MessageBoxResult result = MessageBox.Show("Are you sure?", "Delete this appointment", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Are you sure?", "Delete this appointment", MessageBoxButton.YesNo, MessageBoxImage.Error);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -112,7 +112,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Select appointment to delete");
+                MessageBox.Show("Select appointment to delete", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

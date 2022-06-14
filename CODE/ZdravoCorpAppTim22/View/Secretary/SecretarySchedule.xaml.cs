@@ -49,7 +49,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Sva polja moraju biti popunjena!");
+                MessageBox.Show("Sva polja moraju biti popunjena!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

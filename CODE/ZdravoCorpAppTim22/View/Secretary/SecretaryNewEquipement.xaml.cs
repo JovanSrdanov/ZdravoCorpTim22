@@ -40,7 +40,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("That equipement already exists!");
+                MessageBox.Show("That equipement already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.Close();
         }

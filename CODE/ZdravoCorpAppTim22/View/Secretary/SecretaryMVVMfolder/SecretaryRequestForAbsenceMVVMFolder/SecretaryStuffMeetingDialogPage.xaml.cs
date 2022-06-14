@@ -204,33 +204,33 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
             {
                 try
                 {
+                    doctors.Remove((Doctor)dataGridInvited.SelectedItem);
                     if (rbDoctors.IsChecked == true)
                     {
                         dataGridAll.Items.Add(dataGridInvited.SelectedItem);
                     }
-                    doctors.Remove((Doctor)dataGridInvited.SelectedItem);
 
                 }
                 catch { }
 
                 try
                 {
+                    managers.Remove((ManagerClass)dataGridInvited.SelectedItem);
                     if (rbManagers.IsChecked == true)
                     {
                         dataGridAll.Items.Add(dataGridInvited.SelectedItem);
                     }
-                    managers.Remove((ManagerClass)dataGridInvited.SelectedItem);
 
                 }
                 catch { }
 
                 try
                 {
+                    secretaries.Remove((SecretaryClass)dataGridInvited.SelectedItem);
                     if (rbSecretary.IsChecked == true)
                     {
                         dataGridAll.Items.Add(dataGridInvited.SelectedItem);
                     }
-                    secretaries.Remove((SecretaryClass)dataGridInvited.SelectedItem);
 
                 }
                 catch { }

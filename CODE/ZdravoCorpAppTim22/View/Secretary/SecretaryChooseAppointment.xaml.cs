@@ -54,7 +54,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Must select appointment from list!");
+                MessageBox.Show("Must select appointment from list!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

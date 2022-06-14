@@ -51,7 +51,7 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
             }
             else
             {
-                MessageBox.Show("You must give reasong for denying request");
+                MessageBox.Show("You must give reasong for denying request", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

@@ -235,7 +235,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (EMailTextBox.Text == "")
             {
-                MessageBox.Show("Must enter unique email");
+                MessageBox.Show("Must enter unique email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -244,7 +244,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     if (EMailTextBox.Text == patients[i].Email && patients[i] != Patient)
                     {
-                        MessageBox.Show("Must enter unique email");
+                        MessageBox.Show("Must enter unique email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -253,7 +253,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     if (EMailTextBox.Text == doctors[i].Email && doctors[i] != Doctor)
                     {
-                        MessageBox.Show("Must enter unique email");
+                        MessageBox.Show("Must enter unique email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -262,7 +262,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     if (EMailTextBox.Text == managers[i].Email && managers[i] != Manager)
                     {
-                        MessageBox.Show("Must enter unique email");
+                        MessageBox.Show("Must enter unique email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -271,7 +271,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 {
                     if (EMailTextBox.Text == secretaries[i].Email && secretaries[i] != Secretary)
                     {
-                        MessageBox.Show("Must enter unique email");
+                        MessageBox.Show("Must enter unique email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -279,25 +279,25 @@ namespace ZdravoCorpAppTim22.View.Secretary
 
             if (NameTextBox.Text == "")
             {
-                MessageBox.Show("Must enter name!");
+                MessageBox.Show("Must enter name!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (SurnameTextBox.Text == "")
             {
-                MessageBox.Show("Must enter surname!");
+                MessageBox.Show("Must enter surname!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (JMBGTextBox.Text == "")
             {
-                MessageBox.Show("Must enter JMBG!");
+                MessageBox.Show("Must enter JMBG!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (PasswordTextBox.Password == "")
             {
-                MessageBox.Show("Must enter password!");
+                MessageBox.Show("Must enter password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             Address addressTemp = new Address();
@@ -326,7 +326,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 }
                 else
                 {
-                    MessageBox.Show("Address must be in format Street/Number/City/Country");
+                    MessageBox.Show("Address must be in format Street/Number/City/Country", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     AddressTextBox.Focus();
                     return;
                 }

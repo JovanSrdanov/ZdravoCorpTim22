@@ -19,7 +19,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             if (dataGridSuggestedMedicalAppointments.Items.Count == 0)
             {
                 MessageBox.Show("No appointments in next hour that can be moved!" +
-                    "Our prayers are with you!");
+                    "Our prayers are with you!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Close();
             }
         }
@@ -28,7 +28,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (dataGridSuggestedMedicalAppointments.SelectedItem == null)
             {
-                MessageBox.Show("Must select appointment from table!");
+                MessageBox.Show("Must select appointment from table!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

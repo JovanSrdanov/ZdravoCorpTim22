@@ -39,14 +39,14 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 amount = Convert.ToInt32(txtAmount.Text);
                 if (amount <= 0)
                 {
-                    MessageBox.Show("Amount must be positive integer number!");
+                    MessageBox.Show("Amount must be positive integer number!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
 
                 }
             }
             catch
             {
-                MessageBox.Show("Amount must be positive integer number!");
+                MessageBox.Show("Amount must be positive integer number!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -81,7 +81,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Must select equipment from combo box!");
+                MessageBox.Show("Must select equipment from combo box!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
         }
@@ -113,7 +113,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Order is empty!");
+                MessageBox.Show("Order is empty!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -126,7 +126,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Must select item in table that you want to delete");
+                MessageBox.Show("Must select item in table that you want to delete", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

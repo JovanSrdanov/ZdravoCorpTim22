@@ -18,7 +18,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             InitializeComponent();
             MedicalRecord = medicalRecord;
-            comboBoxAllergies.ItemsSource = MedicineController.Instance.GetAll();
+            comboBoxAllergies.ItemsSource = MedicineController.Instance.GetAllApproved();
             if (MedicalRecord.AllergiesList != null)
             {
                 for (int i = 0; i < MedicalRecord.AllergiesList.Count; i++)
@@ -35,7 +35,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
         {
             if (listBoxAllergies.Items.Contains(comboBoxAllergies.SelectedItem))
             {
-                MessageBox.Show("Allergie is already in list!");
+                MessageBox.Show("Allergie is already in list!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -51,7 +51,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             }
             else
             {
-                MessageBox.Show("Must select allergie first!");
+                MessageBox.Show("Must select allergie first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

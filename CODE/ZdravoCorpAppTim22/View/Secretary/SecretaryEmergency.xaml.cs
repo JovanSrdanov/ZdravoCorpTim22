@@ -52,20 +52,20 @@ namespace ZdravoCorpAppTim22.View.Secretary
             {
                 if (NameTextBox.Text == "")
                 {
-                    MessageBox.Show("Must enter name!");
+                    MessageBox.Show("Must enter name!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
 
             if (comboBoxDoctorSpecialisation.SelectedItem == null)
             {
-                MessageBox.Show("Must enter doctor specialisation!");
+                MessageBox.Show("Must enter doctor specialisation!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (comboBoxExaminationType.SelectedItem == null)
             {
-                MessageBox.Show("Must enter examination type!");
+                MessageBox.Show("Must enter examination type!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -88,7 +88,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
                 }
                 else
                 {
-                    MessageBox.Show("Must select patient from list!");
+                    MessageBox.Show("Must select patient from list!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
@@ -114,7 +114,7 @@ namespace ZdravoCorpAppTim22.View.Secretary
             MedicalAppointmentDTOforSuggestions medicalAppointmentStruct = GetMedicalAppointmentStruct();
             if (medicalAppointmentStruct == null)
             {
-                MessageBox.Show("NO AVAILABLE APPOINTMENTS");
+                MessageBox.Show("NO AVAILABLE APPOINTMENTS", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 SecretaryEmergencyChangeSchedule secretaryEmergencyChangeSchedule = new SecretaryEmergencyChangeSchedule(this, appointmentPreferences);
                 try
                 {
