@@ -68,12 +68,13 @@ namespace ZdravoCorpAppTim22.View.Secretary.SecretaryMVVMfolder.SecretaryRequest
             }
             if (datePicker.SelectedDate == null)
             {
-                if (datePicker.SelectedDate < System.DateTime.Now)
-                {
-                    MessageBox.Show("You must choose date of meeting which is in future");
-                    return false;
-                }
+                
                 MessageBox.Show("You must choose date of meeting");
+                return false;
+            }
+            if (datePicker.SelectedDate <= System.DateTime.Now)
+            {
+                MessageBox.Show("You must choose date of meeting which is in future");
                 return false;
             }
             if (comboBoxTimeEnd.SelectedItem == null)

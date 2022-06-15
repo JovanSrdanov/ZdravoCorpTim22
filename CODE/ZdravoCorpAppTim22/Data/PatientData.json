@@ -140,5 +140,22 @@
     "Gender": 0,
     "Id": 12,
     "Address": 45
+  },
+  {
+    "Blocked": false,
+    "HasBeenLoggedIn": false,
+    "SuspiciousActivity": null,
+    "HospitalReview": null,
+    "MedicalRecord": null,
+    "Name": "asdasdasdasdas",
+    "Surname": null,
+    "Email": null,
+    "Jmbg": null,
+    "Password": null,
+    "Birthday": "0001-01-01T00:00:00",
+    "Phone": null,
+    "Gender": 1,
+    "Id": 13,
+    "Address": null
   }
 ]

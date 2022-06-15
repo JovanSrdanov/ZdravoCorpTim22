@@ -2,15 +2,15 @@
   {
     "Id": 0,
     "Interval": {
-      "Start": "2022-06-07T20:00:00",
-      "End": "2022-06-07T22:00:00"
+      "Start": "2022-06-07T12:00:00",
+      "End": "2022-06-07T15:00:00"
     },
     "Room": {
-      "Id": 1,
-      "Level": 4,
+      "Id": 3,
+      "Level": 3,
       "Type": 0,
-      "Name": "soba_1",
-      "Surface": 30
+      "Name": "soba_2",
+      "Surface": 10
     }
   }
 ]

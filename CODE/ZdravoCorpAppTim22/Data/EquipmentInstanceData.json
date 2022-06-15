@@ -28,5 +28,11 @@
     "Name": "dwdwd",
     "Type": 0,
     "Price": 0
+  },
+  {
+    "Id": 9,
+    "Name": "Stap",
+    "Type": 0,
+    "Price": 0
   }
 ]
